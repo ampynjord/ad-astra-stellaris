@@ -1,0 +1,4 @@
+# Fichiers de mod Stellaris : garder les fins de ligne LF, pas de conversion CRLF
+* text=auto eol=lf
+*.png binary
+*.dds binary
