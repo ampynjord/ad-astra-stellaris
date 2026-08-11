@@ -1,0 +1,223 @@
+# Ad Astra - cartes d'objectifs dédiées à l'ascension pré-PRL
+
+# Atteindre l'âge de la vapeur
+adastra_focus_100 = {
+	category = development
+	tier = 1
+	background = "GFX_focus_card_background_development_tier_1"
+
+	name = "adastra_focus_100.name"
+	desc = "adastra_focus_100.desc"
+	hint = "adastra_focus_100.hint"
+	lore = "adastra_focus_100.lore"
+
+	possible = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "adastra_focus_100.fail"
+			success_text = "adastra_focus_100.success"
+			has_country_flag = adastra_reached_steam
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = DEVELOPMENT }
+		add_focus_progress = { category = development amount = 10 }
+	}
+}
+
+# Atteindre l'âge de la machine
+adastra_focus_105 = {
+	base = adastra_focus_100
+
+	name = "adastra_focus_105.name"
+	desc = "adastra_focus_105.desc"
+	hint = "adastra_focus_105.hint"
+	lore = "adastra_focus_105.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "adastra_focus_105.fail"
+			success_text = "adastra_focus_105.success"
+			has_country_flag = adastra_reached_machine
+		}
+	}
+}
+
+# Atteindre l'âge de l'atome
+adastra_focus_110 = {
+	base = adastra_focus_100
+
+	name = "adastra_focus_110.name"
+	desc = "adastra_focus_110.desc"
+	hint = "adastra_focus_110.hint"
+	lore = "adastra_focus_110.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "adastra_focus_110.fail"
+			success_text = "adastra_focus_110.success"
+			has_country_flag = adastra_reached_atomic
+		}
+	}
+}
+
+# Atteindre les débuts de l'âge spatial
+adastra_focus_115 = {
+	base = adastra_focus_100
+	category = exploration
+	background = "GFX_focus_card_background_exploration_tier_1"
+
+	name = "adastra_focus_115.name"
+	desc = "adastra_focus_115.desc"
+	hint = "adastra_focus_115.hint"
+	lore = "adastra_focus_115.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "adastra_focus_115.fail"
+			success_text = "adastra_focus_115.success"
+			has_country_flag = adastra_reached_space
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = EXPLORATION }
+		add_focus_progress = { category = exploration amount = 10 }
+	}
+}
+
+# Maîtriser l'Hyperpropulsion
+adastra_focus_120 = {
+	category = exploration
+	tier = 1
+	background = "GFX_focus_card_background_exploration_tier_1"
+
+	name = "adastra_focus_120.name"
+	desc = "adastra_focus_120.desc"
+	hint = "adastra_focus_120.hint"
+	lore = "adastra_focus_120.lore"
+
+	possible = {
+		has_origin = origin_adastra
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "adastra_focus_120.fail"
+			success_text = "adastra_focus_120.success"
+			has_technology = tech_hyper_drive_1
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = EXPLORATION }
+		add_focus_progress = { category = exploration amount = 10 }
+	}
+}
+
+# Lancer le programme spatial (émergence)
+adastra_focus_125 = {
+	base = adastra_focus_120
+
+	name = "adastra_focus_125.name"
+	desc = "adastra_focus_125.desc"
+	hint = "adastra_focus_125.hint"
+	lore = "adastra_focus_125.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "adastra_focus_125.fail"
+			success_text = "adastra_focus_125.success"
+			has_country_flag = adastra_completed
+		}
+	}
+}
+
+# Lancer le premier vaisseau scientifique
+adastra_focus_130 = {
+	base = adastra_focus_120
+
+	name = "adastra_focus_130.name"
+	desc = "adastra_focus_130.desc"
+	hint = "adastra_focus_130.hint"
+	lore = "adastra_focus_130.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "adastra_focus_130.fail"
+			success_text = "adastra_focus_130.success"
+			has_country_flag = adastra_phase1_done
+		}
+	}
+}
+
+# Cartographier le système natal
+adastra_focus_135 = {
+	base = adastra_focus_120
+
+	name = "adastra_focus_135.name"
+	desc = "adastra_focus_135.desc"
+	hint = "adastra_focus_135.hint"
+	lore = "adastra_focus_135.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "adastra_focus_135.fail"
+			success_text = "adastra_focus_135.success"
+			has_country_flag = adastra_stage_orbital
+		}
+	}
+}
+
+# Industrialiser l'orbite
+adastra_focus_140 = {
+	base = adastra_focus_120
+
+	name = "adastra_focus_140.name"
+	desc = "adastra_focus_140.desc"
+	hint = "adastra_focus_140.hint"
+	lore = "adastra_focus_140.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "adastra_focus_140.fail"
+			success_text = "adastra_focus_140.success"
+			has_country_flag = adastra_stage_hyper
+		}
+	}
+}
+
+# Facultatif : lever la première flottille militaire
+adastra_focus_145 = {
+	category = conquest
+	tier = 1
+	background = "GFX_focus_card_background_conquest_tier_1"
+
+	name = "adastra_focus_145.name"
+	desc = "adastra_focus_145.desc"
+	hint = "adastra_focus_145.hint"
+	lore = "adastra_focus_145.lore"
+
+	possible = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "adastra_focus_145.fail"
+			success_text = "adastra_focus_145.success"
+			has_country_flag = adastra_navy_built
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = CONQUEST }
+		add_focus_progress = { category = conquest amount = 10 }
+	}
+}

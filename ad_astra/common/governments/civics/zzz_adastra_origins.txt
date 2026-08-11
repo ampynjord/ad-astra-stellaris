@@ -1,0 +1,27 @@
+# Ad Astra
+# Origine : commencer en tant que civilisation pré-PRL et gravir tous les âges jusqu'aux étoiles.
+
+origin_adastra = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_default_pre_ftl.dds"
+	picture = GFX_origin_lost_colony
+
+	description = "origin_adastra_effects"
+
+	playable = {
+		always = yes
+	}
+
+	possible = {
+	}
+
+	flags = { adastra_origin }
+
+	advanced_start = no
+	preferred_planet_class_neighbor = yes
+
+	# Jamais choisie aléatoirement par l'IA (elle serait paralysée)
+	random_weight = {
+		base = 0
+	}
+}

@@ -1,0 +1,62 @@
+# Ad Astra - designs de vaisseaux sous-luminiques (aucun module d'hyperpropulsion)
+# Livrés par le programme spatial ; l'empire verrouillé ne génère pas de designs automatiques.
+
+ship_design = {
+	name = "NAME_Adastra_Science"
+	ship_size = science
+
+	section = {
+		template = "DEFAULT_SCIENCESHIP_SECTION"
+		slot = "mid"
+	}
+
+	required_component = "SHIP_THRUSTER_1"
+	required_component = "SENSOR_1"
+	required_component = "CORVETTE_FISSION_REACTOR"
+}
+
+ship_design = {
+	name = "NAME_Adastra_Constructor"
+	ship_size = constructor
+
+	section = {
+		template = "DEFAULT_CONSTRUCTION_SECTION"
+		slot = "mid"
+	}
+
+	required_component = "SHIP_THRUSTER_1"
+	required_component = "SENSOR_1"
+	required_component = "CORVETTE_FISSION_REACTOR"
+}
+
+# Versions hyperspatiales, livrées à l'émergence en remplacement des sous-luminiques
+# (les vaisseaux civils ne sont pas améliorables en jeu)
+ship_design = {
+	name = "NAME_Adastra_Science_FTL"
+	ship_size = science
+
+	section = {
+		template = "DEFAULT_SCIENCESHIP_SECTION"
+		slot = "mid"
+	}
+
+	required_component = "SHIP_THRUSTER_1"
+	required_component = "SENSOR_1"
+	required_component = "CORVETTE_FISSION_REACTOR"
+	required_component = "HYPER_DRIVE_1"
+}
+
+ship_design = {
+	name = "NAME_Adastra_Constructor_FTL"
+	ship_size = constructor
+
+	section = {
+		template = "DEFAULT_CONSTRUCTION_SECTION"
+		slot = "mid"
+	}
+
+	required_component = "SHIP_THRUSTER_1"
+	required_component = "SENSOR_1"
+	required_component = "CORVETTE_FISSION_REACTOR"
+	required_component = "HYPER_DRIVE_1"
+}
