@@ -1,0 +1,1487 @@
+############################
+# Ad Astra
+# namespace: adastra
+############################
+
+namespace = adastra
+
+############################
+# adastra.1 : Choix de l'âge de départ (jour 1)
+############################
+country_event = {
+	id = adastra.1
+	title = "adastra.1.name"
+	desc = "adastra.1.desc"
+	picture = GFX_evt_metropolis
+	is_triggered_only = yes
+	major = yes
+
+	trigger = {
+		has_origin = origin_adastra
+	}
+
+	immediate = {
+		set_country_flag = adastra_locked
+		set_country_type = adastra_grounded
+		set_tutorial_level = 0
+		every_owned_starbase = {
+			fleet = {
+				dismantle = yes
+			}
+		}
+		every_owned_fleet = {
+			limit = { exists = starbase }
+			dismantle = yes
+		}
+		every_owned_fleet = {
+			delete_fleet = {
+				target = this
+				kill_leader = no
+			}
+		}
+	}
+
+	option = {
+		name = "adastra.1.a"
+		custom_tooltip = "adastra.1.a.tooltip"
+		hidden_effect = { set_country_flag = adastra_choice_stone country_event = { id = adastra.2 } }
+	}
+	option = {
+		name = "adastra.1.b"
+		custom_tooltip = "adastra.1.b.tooltip"
+		hidden_effect = { set_country_flag = adastra_choice_bronze country_event = { id = adastra.2 } }
+	}
+	option = {
+		name = "adastra.1.c"
+		custom_tooltip = "adastra.1.c.tooltip"
+		hidden_effect = { set_country_flag = adastra_choice_iron country_event = { id = adastra.2 } }
+	}
+	option = {
+		name = "adastra.1.d"
+		custom_tooltip = "adastra.1.d.tooltip"
+		hidden_effect = { set_country_flag = adastra_choice_medieval country_event = { id = adastra.2 } }
+	}
+	option = {
+		name = "adastra.1.e"
+		custom_tooltip = "adastra.1.e.tooltip"
+		hidden_effect = { set_country_flag = adastra_choice_renaissance country_event = { id = adastra.2 } }
+	}
+	option = {
+		name = "adastra.1.f"
+		custom_tooltip = "adastra.1.f.tooltip"
+		hidden_effect = { set_country_flag = adastra_choice_steam country_event = { id = adastra.2 } }
+	}
+	option = {
+		name = "adastra.1.g"
+		custom_tooltip = "adastra.1.g.tooltip"
+		hidden_effect = { set_country_flag = adastra_choice_industrial country_event = { id = adastra.2 } }
+	}
+	option = {
+		name = "adastra.1.h"
+		custom_tooltip = "adastra.1.h.tooltip"
+		hidden_effect = { set_country_flag = adastra_choice_machine country_event = { id = adastra.2 } }
+	}
+	option = {
+		name = "adastra.1.i"
+		custom_tooltip = "adastra.1.i.tooltip"
+		hidden_effect = { set_country_flag = adastra_choice_atomic country_event = { id = adastra.2 } }
+	}
+	option = {
+		name = "adastra.1.j"
+		custom_tooltip = "adastra.1.j.tooltip"
+		hidden_effect = { set_country_flag = adastra_choice_space country_event = { id = adastra.2 } }
+	}
+}
+
+############################
+# adastra.2 : Initialisation (caché)
+############################
+country_event = {
+	id = adastra.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = adastra_initializing
+
+		# Seconde passe de nettoyage (la première a eu lieu au chargement, dans adastra.1)
+		every_owned_starbase = {
+			fleet = {
+				dismantle = yes
+			}
+		}
+		every_owned_fleet = {
+			delete_fleet = {
+				target = this
+				kill_leader = no
+			}
+		}
+
+		# Départ réduit : population initiale selon l'âge choisi
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_stone has_country_flag = adastra_choice_bronze has_country_flag = adastra_choice_iron } }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.75 } }
+		}
+		else_if = {
+			limit = { OR = { has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance } }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.65 } }
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_choice_steam }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.50 } }
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_choice_industrial }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.40 } }
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_choice_machine }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.25 } }
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_choice_atomic }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.15 } }
+		}
+		else = {
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.05 } }
+		}
+
+		# Débloquer les âges déjà traversés (flags + technologies)
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_bronze has_country_flag = adastra_choice_iron has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			country_event = { id = adastra.40 }
+		}
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_iron has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			country_event = { id = adastra.41 }
+		}
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			country_event = { id = adastra.42 }
+		}
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			country_event = { id = adastra.43 }
+		}
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			country_event = { id = adastra.44 }
+		}
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			country_event = { id = adastra.45 }
+		}
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			country_event = { id = adastra.46 }
+		}
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			country_event = { id = adastra.47 }
+		}
+		if = {
+			limit = { has_country_flag = adastra_choice_space }
+			country_event = { id = adastra.48 }
+		}
+
+		# L'âge de départ lui-même
+		if = { limit = { has_country_flag = adastra_choice_stone } country_event = { id = adastra.40 } }
+		else_if = { limit = { has_country_flag = adastra_choice_bronze } country_event = { id = adastra.41 } }
+		else_if = { limit = { has_country_flag = adastra_choice_iron } country_event = { id = adastra.42 } }
+		else_if = { limit = { has_country_flag = adastra_choice_medieval } country_event = { id = adastra.43 } }
+		else_if = { limit = { has_country_flag = adastra_choice_renaissance } country_event = { id = adastra.44 } }
+		else_if = { limit = { has_country_flag = adastra_choice_steam } country_event = { id = adastra.45 } }
+		else_if = { limit = { has_country_flag = adastra_choice_industrial } country_event = { id = adastra.46 } }
+		else_if = { limit = { has_country_flag = adastra_choice_machine } country_event = { id = adastra.47 } }
+		else_if = { limit = { has_country_flag = adastra_choice_atomic } country_event = { id = adastra.48 } }
+		else = { country_event = { id = adastra.49 } }
+
+		# Lancer la situation d'ascension et se placer au bon âge
+		start_situation = { type = situation_adastra_ascension }
+		if = { limit = { has_country_flag = adastra_choice_bronze } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 12 } }
+		else_if = { limit = { has_country_flag = adastra_choice_iron } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 22 } }
+		else_if = { limit = { has_country_flag = adastra_choice_medieval } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 31 } }
+		else_if = { limit = { has_country_flag = adastra_choice_renaissance } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 39 } }
+		else_if = { limit = { has_country_flag = adastra_choice_steam } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 47 } }
+		else_if = { limit = { has_country_flag = adastra_choice_industrial } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 55 } }
+		else_if = { limit = { has_country_flag = adastra_choice_machine } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 64 } }
+		else_if = { limit = { has_country_flag = adastra_choice_atomic } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 74 } }
+		else_if = { limit = { has_country_flag = adastra_choice_space } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 86 } }
+
+		# Le système natal redevient inexploré (seule la planète natale est connue)
+		capital_scope = {
+			solar_system = {
+				set_surveyed = {
+					surveyed = no
+					surveyor = root
+				}
+				every_system_planet = {
+					limit = { NOT = { is_same_value = root.capital_scope } }
+					set_surveyed = {
+						surveyed = no
+						surveyor = root
+					}
+				}
+			}
+		}
+		capital_scope = {
+			set_surveyed = {
+				surveyed = yes
+				surveyor = root
+			}
+		}
+
+		# Stocks de départ ramenés au niveau de l'âge choisi
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_stone has_country_flag = adastra_choice_bronze has_country_flag = adastra_choice_iron has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance } }
+			add_resource = { energy = -180 minerals = -170 food = -150 consumer_goods = -80 alloys = -200 influence = -80 }
+		}
+		else_if = {
+			limit = { OR = { has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial } }
+			add_resource = { energy = -100 minerals = -100 food = -75 consumer_goods = -50 alloys = -150 influence = -50 }
+		}
+		else_if = {
+			limit = { OR = { has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic } }
+			add_resource = { energy = -50 minerals = -50 food = -25 consumer_goods = -25 alloys = -100 influence = -25 }
+		}
+		else = {
+			add_resource = { alloys = -50 }
+		}
+
+		# Nettoyage différé : la base stellaire de départ est créée par le jeu APRÈS cet événement
+		country_event = { id = adastra.8 days = 4 }
+
+		# Fin d'initialisation (différée pour couvrir les on_first_enter)
+		country_event = { id = adastra.3 days = 10 }
+		country_event = { id = adastra.4 }
+		country_event = { id = adastra.7 }
+	}
+}
+
+############################
+# adastra.3 : Fin d'initialisation (caché)
+############################
+country_event = {
+	id = adastra.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		remove_country_flag = adastra_initializing
+	}
+}
+
+############################
+# adastra.4 : Bienvenue dans l'Ascension (visible)
+############################
+country_event = {
+	id = adastra.4
+	title = "adastra.4.name"
+	desc = "adastra.4.desc"
+	picture = GFX_evt_alien_city
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = "adastra.4.a"
+		custom_tooltip = "adastra.4.a.tooltip"
+	}
+}
+
+############################
+# adastra.8 : Nettoyage différé (caché) - la base stellaire apparaît après le jour 1
+############################
+country_event = {
+	id = adastra.8
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = adastra_locked
+		NOT = { has_country_flag = adastra_program_started }
+	}
+
+	immediate = {
+		every_owned_starbase = {
+			fleet = {
+				dismantle = yes
+			}
+		}
+		every_owned_fleet = {
+			limit = { exists = starbase }
+			dismantle = yes
+		}
+		every_owned_fleet = {
+			delete_fleet = {
+				target = this
+				kill_leader = no
+			}
+		}
+		# La vision de la station a pu révéler le système : on le rend à l'inconnu
+		capital_scope = {
+			solar_system = {
+				set_surveyed = {
+					surveyed = no
+					surveyor = root
+				}
+				every_system_planet = {
+					limit = { NOT = { is_same_value = root.capital_scope } }
+					set_surveyed = {
+						surveyed = no
+						surveyor = root
+					}
+				}
+			}
+		}
+	}
+}
+
+############################
+# adastra.9 : Garde mensuelle (caché) - aucun vaisseau ni base tant que verrouillé
+############################
+country_event = {
+	id = adastra.9
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		NOT = { has_country_flag = adastra_program_started }
+	}
+
+	immediate = {
+		every_owned_starbase = {
+			fleet = {
+				dismantle = yes
+			}
+		}
+		every_owned_fleet = {
+			limit = { exists = starbase }
+			dismantle = yes
+		}
+		every_owned_fleet = {
+			delete_fleet = {
+				target = this
+				kill_leader = no
+			}
+		}
+	}
+}
+
+############################
+# adastra.7 : Le rythme de la galaxie (choix du joueur)
+############################
+country_event = {
+	id = adastra.7
+	title = "adastra.7.name"
+	desc = "adastra.7.desc"
+	picture = GFX_evt_star_chart
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.7.a"
+		custom_tooltip = "adastra.7.a.tooltip"
+	}
+
+	option = {
+		name = "adastra.7.b"
+		custom_tooltip = "adastra.7.b.tooltip"
+		hidden_effect = {
+			set_country_flag = adastra_dormant_active
+			every_playable_country = {
+				limit = {
+					NOT = { is_same_value = root }
+					is_ai = yes
+				}
+				set_country_type = adastra_dormant
+			}
+		}
+	}
+}
+
+############################
+# adastra.10 : Répartiteur - Hyperpropulsion recherchée (caché)
+############################
+country_event = {
+	id = adastra.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		last_increased_tech = tech_hyper_drive_1
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				any_situation = { is_situation_type = situation_adastra_ascension }
+			}
+			every_situation = {
+				limit = { is_situation_type = situation_adastra_ascension }
+				set_situation_progress = 130
+			}
+		}
+		else = {
+			country_event = { id = adastra.15 }
+		}
+	}
+}
+
+############################
+# adastra.16 : Les équations sont à nous (programme hyperspatial achevé)
+############################
+country_event = {
+	id = adastra.16
+	title = "adastra.16.name"
+	desc = "adastra.16.desc"
+	picture = GFX_evt_physics_research
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = "adastra.16.a"
+		custom_tooltip = "adastra.16.a.tooltip"
+	}
+}
+
+############################
+# adastra.71 : Surveillance - le système est-il cartographié ? (caché, mensuel)
+############################
+country_event = {
+	id = adastra.71
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_phase1_done
+		NOT = { has_country_flag = adastra_stage_orbital }
+		capital_scope = {
+			solar_system = {
+				NOT = {
+					any_system_planet = {
+						is_star = no
+						NOT = {
+							is_surveyed = {
+								who = root
+								status = yes
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	immediate = {
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 110
+		}
+	}
+}
+
+############################
+# adastra.72 : Surveillance - l'orbite est-elle exploitée ? (caché, mensuel)
+############################
+country_event = {
+	id = adastra.72
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_stage_orbital
+		NOT = { has_country_flag = adastra_stage_hyper }
+		OR = {
+			AND = {
+				has_country_flag = adastra_phase2_done
+				count_owned_fleet = {
+					count >= 1
+					limit = {
+						OR = {
+							is_ship_size = mining_station
+							is_ship_size = research_station
+						}
+					}
+				}
+			}
+			# Système natal occupé par un autre empire : impossible d'exploiter, on passe outre
+			capital_scope = {
+				solar_system = {
+					exists = starbase
+					starbase = {
+						exists = owner
+						owner = { NOT = { is_same_value = root } }
+					}
+				}
+			}
+		}
+	}
+
+	immediate = {
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 120
+		}
+	}
+}
+
+############################
+# adastra.80 : Le programme d'exploration spatiale (étape atteinte)
+############################
+country_event = {
+	id = adastra.80
+	title = "adastra.80.name"
+	desc = "adastra.80.desc"
+	picture = GFX_evt_satellite_in_orbit
+	is_triggered_only = yes
+	major = yes
+
+	immediate = {
+		set_country_flag = adastra_program_started
+		set_country_flag = adastra_stage_explore
+	}
+
+	option = {
+		name = "adastra.80.a"
+		custom_tooltip = "adastra.80.a.tooltip"
+	}
+}
+
+############################
+# adastra.81 : Le chantier orbital (étape atteinte)
+############################
+country_event = {
+	id = adastra.81
+	title = "adastra.81.name"
+	desc = "adastra.81.desc"
+	picture = GFX_evt_space_station
+	is_triggered_only = yes
+	major = yes
+
+	immediate = {
+		set_country_flag = adastra_stage_orbital
+	}
+
+	option = {
+		name = "adastra.81.a"
+		custom_tooltip = "adastra.81.a.tooltip"
+	}
+}
+
+############################
+# adastra.82 : Le programme hyperspatial (étape atteinte)
+############################
+country_event = {
+	id = adastra.82
+	title = "adastra.82.name"
+	desc = "adastra.82.desc"
+	picture = GFX_evt_wormhole
+	is_triggered_only = yes
+	major = yes
+
+	immediate = {
+		set_country_flag = adastra_stage_hyper
+	}
+
+	option = {
+		name = "adastra.82.a"
+		custom_tooltip = "adastra.82.a.tooltip"
+	}
+}
+
+############################
+# adastra.85 : Livraison du vaisseau scientifique (caché)
+############################
+country_event = {
+	id = adastra.85
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = adastra_phase1_done
+		capital_scope = {
+			save_event_target_as = adastra_capital_p
+			solar_system = {
+				every_system_planet = {
+					limit = { is_star = yes }
+					set_surveyed = {
+						surveyed = yes
+						surveyor = root
+					}
+				}
+			}
+		}
+		create_fleet = {
+			name = "adastra_fleet_science"
+			effect = {
+				set_owner = root
+				create_ship = {
+					name = random
+					design = "NAME_Adastra_Science"
+				}
+				set_location = {
+					target = event_target:adastra_capital_p
+					distance = 10
+					angle = random
+				}
+			}
+		}
+	}
+}
+
+############################
+# adastra.86 : Mise en service du chantier orbital (caché)
+############################
+country_event = {
+	id = adastra.86
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = adastra_phase2_done
+		capital_scope = {
+			save_event_target_as = adastra_capital_p
+			solar_system = {
+				if = {
+					limit = { NOT = { exists = starbase } }
+					create_starbase = {
+						owner = root
+						size = starbase_starport
+						module = shipyard
+						module = solar_panel_network
+						building = crew_quarters
+					}
+				}
+			}
+		}
+		create_fleet = {
+			name = "adastra_fleet_constructor"
+			effect = {
+				set_owner = root
+				create_ship = {
+					name = random
+					design = "NAME_Adastra_Constructor"
+				}
+				set_location = {
+					target = event_target:adastra_capital_p
+					distance = 10
+					angle = random
+				}
+			}
+		}
+	}
+}
+
+############################
+# adastra.87 : Livraison de la flottille militaire (caché)
+############################
+country_event = {
+	id = adastra.87
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = adastra_navy_built
+		capital_scope = { save_event_target_as = adastra_capital_p }
+		create_fleet = {
+			name = "adastra_fleet_navy"
+			effect = {
+				set_owner = root
+				create_ship = {
+					name = random
+					random_existing_design = corvette
+				}
+				create_ship = {
+					name = random
+					random_existing_design = corvette
+				}
+				create_ship = {
+					name = random
+					random_existing_design = corvette
+				}
+				set_location = {
+					target = event_target:adastra_capital_p
+					distance = 15
+					angle = random
+				}
+			}
+		}
+	}
+}
+
+############################
+# adastra.15 : Percée supraluminique - répartiteur (caché)
+############################
+country_event = {
+	id = adastra.15
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		remove_country_flag = adastra_locked
+		set_country_flag = adastra_completed
+		# Redevenir un empire spatial normal
+		set_country_type = default
+
+		# Réveiller la galaxie si elle était en attente
+		if = {
+			limit = { has_country_flag = adastra_dormant_active }
+			remove_country_flag = adastra_dormant_active
+			every_country = {
+				limit = { is_country_type = adastra_dormant }
+				set_country_type = default
+			}
+		}
+
+		# Héritage de l'Ascension : récompense permanente selon l'âge de départ
+		if = {
+			limit = { OR = { has_country_flag = adastra_choice_stone has_country_flag = adastra_choice_bronze has_country_flag = adastra_choice_iron } }
+			add_modifier = { modifier = adastra_heritage_4 }
+		}
+		else_if = {
+			limit = { OR = { has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam } }
+			add_modifier = { modifier = adastra_heritage_3 }
+		}
+		else_if = {
+			limit = { OR = { has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine } }
+			add_modifier = { modifier = adastra_heritage_2 }
+		}
+		else = {
+			add_modifier = { modifier = adastra_heritage_1 }
+		}
+
+		save_event_target_as = adastra_country
+		capital_scope = {
+			save_event_target_as = adastra_capital
+			solar_system = {
+				save_event_target_as = adastra_home_system
+			}
+		}
+
+		if = {
+			limit = {
+				event_target:adastra_home_system = {
+					exists = starbase
+					starbase = {
+						exists = owner
+						owner = {
+							NOT = { is_same_value = event_target:adastra_country }
+						}
+					}
+				}
+			}
+			event_target:adastra_home_system = {
+				starbase = {
+					owner = {
+						save_event_target_as = adastra_occupier
+						country_event = { id = adastra.25 }
+					}
+				}
+			}
+		}
+		else = {
+			country_event = { id = adastra.20 }
+		}
+	}
+}
+
+############################
+# adastra.20 : Les étoiles nous appartiennent (système vierge)
+############################
+country_event = {
+	id = adastra.20
+	title = "adastra.20.name"
+	desc = "adastra.20.desc"
+	picture = GFX_evt_ship_in_orbit
+	is_triggered_only = yes
+	major = yes
+
+	immediate = {
+		event_target:adastra_home_system = {
+			if = {
+				limit = { NOT = { exists = starbase } }
+				create_starbase = {
+					owner = event_target:adastra_country
+					size = starbase_starport
+					module = shipyard
+					module = solar_panel_network
+					building = crew_quarters
+				}
+			}
+		}
+		country_event = { id = adastra.28 }
+	}
+
+	option = {
+		name = "adastra.20.a"
+		custom_tooltip = "adastra.20.a.tooltip"
+		hidden_effect = {
+			add_modifier = { modifier = adastra_stellar_dawn days = 3600 }
+			every_playable_country = {
+				limit = {
+					NOT = { is_same_value = root }
+					has_communications = root
+				}
+				country_event = { id = adastra.22 }
+			}
+		}
+	}
+}
+
+############################
+# adastra.22 : Nouvelles galactiques
+############################
+country_event = {
+	id = adastra.22
+	title = "adastra.22.name"
+	desc = "adastra.22.desc"
+	picture = GFX_evt_unknown_ships
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.22.a"
+	}
+}
+
+############################
+# adastra.25 : Chez l'empire occupant le système natal
+############################
+country_event = {
+	id = adastra.25
+	title = "adastra.25.name"
+	desc = "adastra.25.desc"
+	picture = GFX_evt_observation
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = "adastra.25.a"
+		custom_tooltip = "adastra.25.a.tooltip"
+		ai_chance = {
+			base = 40
+			modifier = { factor = 2 has_ethic = ethic_xenophile }
+			modifier = { factor = 3 has_ethic = ethic_fanatic_xenophile }
+			modifier = { factor = 1.5 has_ethic = ethic_egalitarian }
+			modifier = { factor = 2 has_ethic = ethic_fanatic_egalitarian }
+			modifier = { factor = 0.5 has_ethic = ethic_authoritarian }
+			modifier = { factor = 0.25 has_ethic = ethic_fanatic_authoritarian }
+			modifier = { factor = 0.5 has_ethic = ethic_xenophobe }
+			modifier = { factor = 0.1 has_ethic = ethic_fanatic_xenophobe }
+		}
+		hidden_effect = {
+			event_target:adastra_home_system = {
+				starbase = {
+					set_owner = event_target:adastra_country
+				}
+			}
+			event_target:adastra_country = {
+				country_event = { id = adastra.26 }
+			}
+		}
+	}
+
+	option = {
+		name = "adastra.25.b"
+		custom_tooltip = "adastra.25.b.tooltip"
+		ai_chance = {
+			base = 40
+			modifier = { factor = 2 has_ethic = ethic_authoritarian }
+			modifier = { factor = 3 has_ethic = ethic_fanatic_authoritarian }
+			modifier = { factor = 1.5 has_ethic = ethic_xenophobe }
+			modifier = { factor = 2 has_ethic = ethic_fanatic_xenophobe }
+			modifier = { factor = 0.5 has_ethic = ethic_xenophile }
+			modifier = { factor = 0.25 has_ethic = ethic_fanatic_xenophile }
+		}
+		hidden_effect = {
+			event_target:adastra_home_system = {
+				starbase = {
+					set_owner = event_target:adastra_country
+				}
+			}
+			event_target:adastra_country = {
+				set_subject_of = {
+					who = root
+					preset = preset_protectorate
+				}
+				country_event = { id = adastra.27 }
+			}
+		}
+	}
+}
+
+############################
+# adastra.26 : Libres parmi les étoiles
+############################
+country_event = {
+	id = adastra.26
+	title = "adastra.26.name"
+	desc = "adastra.26.desc"
+	picture = GFX_evt_ship_in_orbit
+	is_triggered_only = yes
+	major = yes
+
+	immediate = {
+		country_event = { id = adastra.28 }
+	}
+
+	option = {
+		name = "adastra.26.a"
+		custom_tooltip = "adastra.26.a.tooltip"
+		hidden_effect = {
+			add_modifier = { modifier = adastra_stellar_dawn days = 3600 }
+			every_playable_country = {
+				limit = {
+					NOT = { is_same_value = root }
+					has_communications = root
+				}
+				country_event = { id = adastra.22 }
+			}
+		}
+	}
+}
+
+############################
+# adastra.27 : Sous l'aile d'un géant (protectorat)
+############################
+country_event = {
+	id = adastra.27
+	title = "adastra.27.name"
+	desc = "adastra.27.desc"
+	picture = GFX_evt_federation_fleet
+	is_triggered_only = yes
+	major = yes
+
+	immediate = {
+		country_event = { id = adastra.28 }
+	}
+
+	option = {
+		name = "adastra.27.a"
+		custom_tooltip = "adastra.27.a.tooltip"
+		hidden_effect = {
+			add_modifier = { modifier = adastra_stellar_dawn days = 3600 }
+			every_playable_country = {
+				limit = {
+					NOT = { is_same_value = root }
+					has_communications = root
+				}
+				country_event = { id = adastra.22 }
+			}
+		}
+	}
+}
+
+############################
+# adastra.28 : Flottille inaugurale (caché)
+# Remplace les vaisseaux civils sous-luminiques (non améliorables) par des versions FTL.
+############################
+country_event = {
+	id = adastra.28
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# Retirer les vaisseaux civils sous-luminiques du programme
+		every_owned_fleet = {
+			limit = {
+				OR = {
+					is_ship_size = science
+					is_ship_size = constructor
+				}
+			}
+			delete_fleet = {
+				target = this
+				kill_leader = no
+			}
+		}
+
+		create_fleet = {
+			name = "adastra_fleet_science"
+			effect = {
+				set_owner = event_target:adastra_country
+				create_ship = {
+					name = random
+					design = "NAME_Adastra_Science_FTL"
+				}
+				set_location = {
+					target = event_target:adastra_capital
+					distance = 12
+					angle = random
+				}
+			}
+		}
+		create_fleet = {
+			name = "adastra_fleet_constructor"
+			effect = {
+				set_owner = event_target:adastra_country
+				create_ship = {
+					name = random
+					design = "NAME_Adastra_Constructor_FTL"
+				}
+				set_location = {
+					target = event_target:adastra_capital
+					distance = 12
+					angle = random
+				}
+			}
+		}
+	}
+}
+
+############################
+# adastra.40-49 : Passage d'âge (cachés, idempotents)
+# Débloquent flags + technologies puis déclenchent l'événement narratif.
+############################
+country_event = {
+	id = adastra.40
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_stone } }
+			set_country_flag = adastra_reached_stone
+			if = {
+				limit = { NOT = { has_country_flag = adastra_initializing } }
+				country_event = { id = adastra.50 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = adastra.41
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_bronze } }
+			set_country_flag = adastra_reached_bronze
+			if = {
+				limit = { NOT = { has_country_flag = adastra_initializing } }
+				country_event = { id = adastra.51 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = adastra.42
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_iron } }
+			set_country_flag = adastra_reached_iron
+			if = {
+				limit = { NOT = { has_country_flag = adastra_initializing } }
+				country_event = { id = adastra.52 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = adastra.43
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_medieval } }
+			set_country_flag = adastra_reached_medieval
+			if = {
+				limit = { NOT = { has_country_flag = adastra_initializing } }
+				country_event = { id = adastra.53 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = adastra.44
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_renaissance } }
+			set_country_flag = adastra_reached_renaissance
+			set_country_flag = adastra_unlock_renaissance
+			give_technology = { tech = tech_basic_science_lab_1 message = no }
+			if = {
+				limit = { NOT = { has_country_flag = adastra_initializing } }
+				country_event = { id = adastra.54 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = adastra.45
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_steam } }
+			set_country_flag = adastra_reached_steam
+			set_country_flag = adastra_unlock_steam
+			give_technology = { tech = tech_basic_industry message = no }
+			if = {
+				limit = { NOT = { has_country_flag = adastra_initializing } }
+				country_event = { id = adastra.55 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = adastra.46
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_industrial } }
+			set_country_flag = adastra_reached_industrial
+			set_country_flag = adastra_unlock_industrial
+			give_technology = { tech = tech_mechanized_mining message = no }
+			give_technology = { tech = tech_industrial_farming message = no }
+			give_technology = { tech = tech_assault_armies message = no }
+			if = {
+				limit = { NOT = { has_country_flag = adastra_initializing } }
+				country_event = { id = adastra.56 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = adastra.47
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_machine } }
+			set_country_flag = adastra_reached_machine
+			set_country_flag = adastra_unlock_machine
+			give_technology = { tech = tech_power_plant_1 message = no }
+			give_technology = { tech = tech_planetary_government message = no }
+			give_technology = { tech = tech_basic_health message = no }
+			if = {
+				limit = { NOT = { has_country_flag = adastra_initializing } }
+				country_event = { id = adastra.57 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = adastra.48
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_atomic } }
+			set_country_flag = adastra_reached_atomic
+			set_country_flag = adastra_unlock_atomic
+			give_technology = { tech = tech_fission_power message = no }
+			give_technology = { tech = tech_planetary_defenses message = no }
+			give_technology = { tech = tech_missiles_1 message = no }
+			give_technology = { tech = tech_flak_batteries_1 message = no }
+			give_technology = { tech = tech_pd_tracking_1 message = no }
+			give_technology = { tech = tech_lasers_1 message = no }
+			give_technology = { tech = tech_holo_entertainment message = no }
+			if = {
+				limit = { NOT = { has_country_flag = adastra_initializing } }
+				country_event = { id = adastra.58 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = adastra.49
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_space } }
+			set_country_flag = adastra_reached_space
+			set_country_flag = adastra_unlock_space
+			give_technology = { tech = tech_space_exploration message = no }
+			give_technology = { tech = tech_thrusters_1 message = no }
+			give_technology = { tech = tech_solar_panel_network message = no }
+			give_technology = { tech = tech_space_construction message = no }
+			give_technology = { tech = tech_space_defense_station_1 message = no }
+			give_technology = { tech = tech_ship_armor_1 message = no }
+			give_technology = { tech = tech_shields_1 message = no }
+			give_technology = { tech = tech_reactor_boosters_1 message = no }
+			give_technology = { tech = tech_corvettes message = no }
+			give_technology = { tech = tech_starbase_1 message = no }
+			give_technology = { tech = tech_starbase_2 message = no }
+			give_technology = { tech = tech_colonization_1 message = no }
+			give_technology = { tech = tech_interplanetary_commerce message = no }
+			give_technology = { tech = tech_mass_drivers_1 message = no }
+			give_technology = { tech = tech_hydroponics message = no }
+			if = {
+				limit = { NOT = { has_country_flag = adastra_initializing } }
+				country_event = { id = adastra.59 }
+			}
+		}
+	}
+}
+
+############################
+# adastra.50-59 : Événements narratifs de passage d'âge
+############################
+country_event = {
+	id = adastra.50
+	title = "stone_age"
+	desc = "adastra.50.desc"
+	picture = GFX_evt_alien_cavemen
+	is_triggered_only = yes
+	option = { name = "adastra.age.ok" }
+}
+
+country_event = {
+	id = adastra.51
+	title = "bronze_age"
+	desc = "adastra.51.desc"
+	picture = GFX_evt_champions_forge
+	is_triggered_only = yes
+	option = { name = "adastra.age.ok" add_resource = { unity = 60 } }
+}
+
+country_event = {
+	id = adastra.52
+	title = "iron_age"
+	desc = "adastra.52.desc"
+	picture = GFX_evt_knights
+	is_triggered_only = yes
+	option = { name = "adastra.age.ok" add_resource = { unity = 80 } }
+}
+
+country_event = {
+	id = adastra.53
+	title = "late_medieval_age"
+	desc = "adastra.53.desc"
+	picture = GFX_evt_medieval_alien_civilization
+	is_triggered_only = yes
+	option = { name = "adastra.age.ok" add_resource = { unity = 100 } }
+}
+
+country_event = {
+	id = adastra.54
+	title = "renaissance_age"
+	desc = "adastra.54.desc"
+	picture = GFX_evt_society_research
+	is_triggered_only = yes
+	option = { name = "adastra.age.ok" add_resource = { unity = 120 } }
+}
+
+country_event = {
+	id = adastra.55
+	title = "steam_age"
+	desc = "adastra.55.desc"
+	picture = GFX_evt_engineering_research
+	is_triggered_only = yes
+	option = { name = "adastra.age.ok" add_resource = { unity = 150 } }
+}
+
+country_event = {
+	id = adastra.56
+	title = "industrial_age"
+	desc = "adastra.56.desc"
+	picture = GFX_evt_metropolis
+	is_triggered_only = yes
+	option = { name = "adastra.age.ok" add_resource = { unity = 180 } }
+}
+
+country_event = {
+	id = adastra.57
+	title = "machine_age"
+	desc = "adastra.57.desc"
+	picture = GFX_evt_robot_assembly_plant
+	is_triggered_only = yes
+	option = { name = "adastra.age.ok" add_resource = { unity = 220 } }
+}
+
+country_event = {
+	id = adastra.58
+	title = "atomic_age"
+	desc = "adastra.58.desc"
+	picture = GFX_evt_nuclear_explosion
+	is_triggered_only = yes
+	option = { name = "adastra.age.ok" add_resource = { unity = 260 } }
+}
+
+country_event = {
+	id = adastra.59
+	title = "early_space_age"
+	desc = "adastra.59.desc"
+	picture = GFX_evt_early_space_age
+	is_triggered_only = yes
+	option = { name = "adastra.age.ok" add_resource = { unity = 300 } }
+}
+
+############################
+# adastra.60-63 : Observation inversée (vécue du côté observé)
+############################
+country_event = {
+	id = adastra.60
+	title = "adastra.60.name"
+	desc = "adastra.60.desc"
+	picture = GFX_evt_unknown_ships
+
+	mean_time_to_happen = { months = 90 }
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		NOT = { has_country_flag = adastra_seen_ufo }
+		any_playable_country = {
+			NOT = { is_same_value = root }
+			has_communications = root
+		}
+	}
+
+	immediate = {
+		set_country_flag = adastra_seen_ufo
+	}
+
+	option = {
+		name = "adastra.60.a"
+		custom_tooltip = "adastra.60.a.tooltip"
+		add_resource = { influence = 25 }
+	}
+
+	option = {
+		name = "adastra.60.b"
+		custom_tooltip = "adastra.60.b.tooltip"
+		hidden_effect = {
+			add_modifier = { modifier = adastra_sky_fervor days = 1800 }
+			add_modifier = { modifier = adastra_ufo_panic days = 1080 }
+		}
+	}
+}
+
+country_event = {
+	id = adastra.61
+	title = "adastra.61.name"
+	desc = "adastra.61.desc"
+	picture = GFX_evt_alien_abduction
+
+	mean_time_to_happen = { months = 120 }
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		has_country_flag = adastra_seen_ufo
+		NOT = { has_country_flag = adastra_abductions }
+		any_playable_country = {
+			NOT = { is_same_value = root }
+			has_communications = root
+		}
+	}
+
+	immediate = {
+		set_country_flag = adastra_abductions
+	}
+
+	option = {
+		name = "adastra.61.a"
+		add_monthly_resource_mult = {
+			resource = society_research
+			value = 3
+			min = 90
+			max = 500
+		}
+	}
+
+	option = {
+		name = "adastra.61.b"
+		custom_tooltip = "adastra.61.b.tooltip"
+		hidden_effect = {
+			add_modifier = { modifier = adastra_ufo_panic days = 1080 }
+			add_resource = { influence = 40 }
+		}
+	}
+}
+
+country_event = {
+	id = adastra.62
+	title = "adastra.62.name"
+	desc = "adastra.62.desc"
+	picture = GFX_evt_mysterious_signal
+
+	mean_time_to_happen = { months = 120 }
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		has_country_flag = adastra_seen_ufo
+		NOT = { has_country_flag = adastra_signal_decoded }
+		any_playable_country = {
+			NOT = { is_same_value = root }
+			has_communications = root
+		}
+	}
+
+	immediate = {
+		set_country_flag = adastra_signal_decoded
+	}
+
+	option = {
+		name = "adastra.62.a"
+		add_monthly_resource_mult = {
+			resource = physics_research
+			value = 3
+			min = 90
+			max = 500
+		}
+	}
+
+	option = {
+		name = "adastra.62.b"
+		add_resource = { unity = 150 }
+	}
+}
+
+country_event = {
+	id = adastra.63
+	title = "adastra.63.name"
+	desc = "adastra.63.desc"
+	picture = GFX_evt_debris
+
+	mean_time_to_happen = { months = 140 }
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		has_country_flag = adastra_seen_ufo
+		NOT = { has_country_flag = adastra_debris_found }
+		any_playable_country = {
+			NOT = { is_same_value = root }
+			has_communications = root
+		}
+	}
+
+	immediate = {
+		set_country_flag = adastra_debris_found
+	}
+
+	option = {
+		name = "adastra.63.a"
+		custom_tooltip = "adastra.63.a.tooltip"
+		hidden_effect = {
+			add_modifier = { modifier = adastra_reverse_engineering days = 1800 }
+		}
+	}
+
+	option = {
+		name = "adastra.63.b"
+		add_resource = { unity = 200 }
+	}
+}

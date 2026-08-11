@@ -1,0 +1,282 @@
+# Ad Astra - La Longue Ascension
+# Une situation unique dont les 10 étapes sont les âges pré-PRL vanilla.
+# Les pénalités d'âge sont les modificateurs d'étape (visibles dans le journal).
+
+situation_adastra_ascension = {
+	picture = GFX_evt_metropolis
+	complete_icon = GFX_situation_outcome_positive
+	complete_icon_frame = GFX_situation_outcome_frame_blue
+	situation_log_category = empire_concerns
+
+	category = neutral
+	progress_direction = monodirectional
+
+	override_finisher_title = adastra_finisher_title
+	override_finisher_desc = adastra_finisher_desc
+
+	potential = {
+		has_origin = origin_adastra
+	}
+
+	abort_trigger = {
+		OR = {
+			NOT = { exists = owner }
+			owner = { has_country_flag = adastra_completed }
+		}
+	}
+
+	on_progress_complete = {
+		owner = {
+			country_event = { id = adastra.15 }
+		}
+		destroy_situation = this
+	}
+
+	stages = {
+		adastra_stage_stone_age = {
+			icon = GFX_adastra_age_stone
+			icon_background = GFX_situation_stage_frame_red
+			end = 12
+			on_first_enter = {
+				owner = { country_event = { id = adastra.40 } }
+			}
+			modifier = {
+				all_technology_research_speed = -0.90
+				planet_jobs_produces_mult = -0.70
+				country_unity_produces_mult = -0.80
+				leader_lifespan_add = -15
+			}
+		}
+		adastra_stage_bronze_age = {
+			icon = GFX_adastra_age_bronze
+			icon_background = GFX_situation_stage_frame_red
+			end = 22
+			on_first_enter = {
+				owner = { country_event = { id = adastra.41 } }
+			}
+			modifier = {
+				all_technology_research_speed = -0.85
+				planet_jobs_produces_mult = -0.65
+				country_unity_produces_mult = -0.75
+				leader_lifespan_add = -14
+			}
+		}
+		adastra_stage_iron_age = {
+			icon = GFX_adastra_age_iron
+			icon_background = GFX_situation_stage_frame_red
+			end = 31
+			on_first_enter = {
+				owner = { country_event = { id = adastra.42 } }
+			}
+			modifier = {
+				all_technology_research_speed = -0.80
+				planet_jobs_produces_mult = -0.60
+				country_unity_produces_mult = -0.70
+				leader_lifespan_add = -12
+			}
+		}
+		adastra_stage_late_medieval_age = {
+			icon = GFX_adastra_age_medieval
+			icon_background = GFX_situation_stage_frame_red
+			end = 39
+			on_first_enter = {
+				owner = { country_event = { id = adastra.43 } }
+			}
+			modifier = {
+				all_technology_research_speed = -0.75
+				planet_jobs_produces_mult = -0.55
+				country_unity_produces_mult = -0.65
+				leader_lifespan_add = -10
+			}
+		}
+		adastra_stage_renaissance_age = {
+			icon = GFX_adastra_age_renaissance
+			icon_background = GFX_situation_stage_frame_red
+			end = 47
+			on_first_enter = {
+				owner = { country_event = { id = adastra.44 } }
+			}
+			modifier = {
+				all_technology_research_speed = -0.70
+				planet_jobs_produces_mult = -0.50
+				country_unity_produces_mult = -0.55
+				leader_lifespan_add = -8
+			}
+		}
+		adastra_stage_steam_age = {
+			icon = GFX_adastra_age_steam
+			icon_background = GFX_situation_stage_frame_orange
+			end = 55
+			on_first_enter = {
+				owner = { country_event = { id = adastra.45 } }
+			}
+			modifier = {
+				all_technology_research_speed = -0.60
+				planet_jobs_produces_mult = -0.45
+				country_unity_produces_mult = -0.45
+				leader_lifespan_add = -6
+			}
+		}
+		adastra_stage_industrial_age = {
+			icon = GFX_adastra_age_industrial
+			icon_background = GFX_situation_stage_frame_orange
+			end = 64
+			on_first_enter = {
+				owner = { country_event = { id = adastra.46 } }
+			}
+			modifier = {
+				all_technology_research_speed = -0.50
+				planet_jobs_produces_mult = -0.40
+				country_unity_produces_mult = -0.40
+				leader_lifespan_add = -5
+			}
+		}
+		adastra_stage_machine_age = {
+			icon = GFX_adastra_age_machine
+			icon_background = GFX_situation_stage_frame_orange
+			end = 74
+			on_first_enter = {
+				owner = { country_event = { id = adastra.47 } }
+			}
+			modifier = {
+				all_technology_research_speed = -0.40
+				planet_jobs_produces_mult = -0.30
+				country_unity_produces_mult = -0.30
+				leader_lifespan_add = -3
+			}
+		}
+		adastra_stage_atomic_age = {
+			icon = GFX_adastra_age_atomic
+			icon_background = GFX_situation_stage_frame_green
+			end = 86
+			on_first_enter = {
+				owner = { country_event = { id = adastra.48 } }
+			}
+			modifier = {
+				all_technology_research_speed = -0.25
+				planet_jobs_produces_mult = -0.20
+				country_unity_produces_mult = -0.20
+			}
+		}
+		adastra_stage_early_space_age = {
+			icon = GFX_adastra_age_space
+			icon_background = GFX_situation_stage_frame_green
+			end = 100
+			on_first_enter = {
+				owner = { country_event = { id = adastra.49 } }
+			}
+			modifier = {
+				all_technology_research_speed = -0.10
+				planet_jobs_produces_mult = -0.10
+				country_unity_produces_mult = -0.10
+			}
+		}
+		adastra_stage_program_explore = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_blue
+			end = 110
+			on_first_enter = {
+				owner = { country_event = { id = adastra.80 } }
+			}
+		}
+		adastra_stage_program_orbital = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_blue
+			end = 120
+			on_first_enter = {
+				owner = { country_event = { id = adastra.81 } }
+			}
+		}
+		adastra_stage_program_hyperdrive = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_blue
+			end = 130
+			on_first_enter = {
+				owner = { country_event = { id = adastra.82 } }
+			}
+		}
+	}
+
+	approach = {
+		name = approach_adastra_tradition
+		icon = GFX_situation_approach_scales
+		default = yes
+		custom_tooltip_with_modifiers = adastra_approach_tradition_extra
+		modifier = {
+			planet_stability_add = 5
+			pop_happiness = 0.05
+		}
+	}
+
+	approach = {
+		name = approach_adastra_forced_march
+		icon = GFX_situation_approach_whip
+		custom_tooltip_with_modifiers = adastra_approach_forced_march_extra
+		modifier = {
+			pop_happiness = -0.05
+			planet_stability_add = -5
+		}
+	}
+
+	approach = {
+		name = approach_adastra_skywatchers
+		icon = GFX_situation_approach_research
+		custom_tooltip_with_modifiers = adastra_approach_skywatchers_extra
+		modifier = {
+			all_technology_research_speed = 0.10
+			country_unity_produces_mult = -0.05
+		}
+	}
+
+	monthly_progress = {
+		base = 0.35
+		modifier = {
+			add = -0.35
+			desc = adastra_progress_program
+			owner = { has_country_flag = adastra_program_started }
+		}
+		modifier = {
+			add = -0.05
+			desc = adastra_progress_tradition
+			current_situation_approach = approach_adastra_tradition
+			owner = { NOT = { has_country_flag = adastra_program_started } }
+		}
+		modifier = {
+			add = 0.15
+			desc = adastra_progress_forced_march
+			current_situation_approach = approach_adastra_forced_march
+			owner = { NOT = { has_country_flag = adastra_program_started } }
+		}
+		modifier = {
+			add = 0.05
+			desc = adastra_progress_skywatchers
+			current_situation_approach = approach_adastra_skywatchers
+			owner = { NOT = { has_country_flag = adastra_program_started } }
+		}
+		modifier = {
+			add = 0.10
+			desc = adastra_progress_unity
+			owner = {
+				NOT = { has_country_flag = adastra_program_started }
+				has_monthly_income = {
+					resource = unity
+					value >= 15
+				}
+			}
+		}
+		modifier = {
+			add = 0.10
+			desc = adastra_progress_research
+			owner = {
+				NOT = { has_country_flag = adastra_program_started }
+				has_monthly_income = {
+					resource = physics_research
+					value >= 15
+				}
+			}
+		}
+	}
+
+	on_monthly = {
+	}
+}

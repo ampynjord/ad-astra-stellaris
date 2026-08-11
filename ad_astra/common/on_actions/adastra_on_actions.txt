@@ -1,0 +1,21 @@
+# On actions du mod Ad Astra
+
+on_game_start_country = {
+	events = {
+		adastra.1
+	}
+}
+
+on_tech_increased = {
+	events = {
+		adastra.10
+	}
+}
+
+on_monthly_pulse_country = {
+	events = {
+		adastra.9
+		adastra.71
+		adastra.72
+	}
+}

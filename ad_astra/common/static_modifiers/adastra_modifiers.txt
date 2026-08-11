@@ -1,0 +1,63 @@
+# Modificateurs d'événements du mod Ad Astra
+# (les pénalités d'âge sont portées par les étapes de la situation d'ascension)
+
+# Rétro-ingénierie d'artefacts observés (temporaire)
+adastra_reverse_engineering = {
+	all_technology_research_speed = 0.10
+}
+
+# Panique face aux "visiteurs" (temporaire)
+adastra_ufo_panic = {
+	pop_happiness = -0.10
+	planet_stability_add = -5
+}
+
+# Ferveur du ciel (temporaire)
+adastra_sky_fervor = {
+	country_unity_produces_mult = 0.10
+}
+
+# L'aube stellaire : bonus après la percée supraluminique (temporaire)
+adastra_stellar_dawn = {
+	all_technology_research_speed = 0.05
+	country_unity_produces_mult = 0.10
+}
+
+# Héritage de l'Ascension : bonus permanent à l'émergence, selon l'âge de départ
+# Palier 1 : départ atomique/spatial
+adastra_heritage_1 = {
+	all_technology_research_speed = 0.03
+	country_unity_produces_mult = 0.03
+}
+
+# Palier 2 : départ industriel/machine
+adastra_heritage_2 = {
+	all_technology_research_speed = 0.05
+	country_unity_produces_mult = 0.05
+	planet_stability_add = 2
+}
+
+# Palier 3 : départ médiéval/renaissance/vapeur
+adastra_heritage_3 = {
+	all_technology_research_speed = 0.08
+	country_unity_produces_mult = 0.08
+	planet_stability_add = 3
+	pop_happiness = 0.05
+}
+
+# Palier 4 : départ pierre/bronze/fer
+adastra_heritage_4 = {
+	all_technology_research_speed = 0.10
+	country_unity_produces_mult = 0.12
+	planet_stability_add = 5
+	pop_happiness = 0.05
+	leader_lifespan_add = 10
+}
+
+# Galaxie assoupie : appliqué aux IA si le joueur choisit une galaxie en attente
+adastra_dormant_galaxy = {
+	all_technology_research_speed = -0.90
+	country_unity_produces_mult = -0.75
+	country_starbase_influence_cost_mult = 10
+	country_claim_influence_cost_mult = 10
+}

@@ -1,0 +1,913 @@
+# Ad Astra - verrouillage des technologies de depart, reparties selon l'histoire reelle
+
+### adastra_unlock_renaissance
+tech_basic_science_lab_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_renaissance
+		}
+	}
+	cost = @tier0cost1
+	area = physics
+	tier = 0
+	category = { computing }
+	start_tech = yes
+
+	# # unlock basic science lab lvl 1
+	weight_modifier = {
+		factor = 1000
+	}
+
+	ai_weight = {
+		weight = 10000
+	}
+
+	starting_potential = {
+		is_low_tech_start = no # So Broken Shackles origin players don't start with it
+	}
+}
+
+### adastra_unlock_steam
+tech_basic_industry = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_steam
+		}
+	}
+	cost = 0
+	area = engineering
+	start_tech = yes
+	category = { industry }
+	tier = 0
+
+	# unlocks basic buildings
+
+	technology_swap = { # Wilderness icon swap
+		name = tech_wilderness_industry
+		inherit_icon = no
+		inherit_effects = yes
+		trigger = {
+			is_wilderness_empire = yes
+		}
+	}
+}
+
+### adastra_unlock_industrial
+tech_mechanized_mining = {
+	cost = 0
+	area = engineering
+	start_tech = yes
+	category = { industry }
+	tier = 0
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_industrial
+		}
+		is_nomadic = no
+	}
+
+	# unlocks mining districts
+
+	starting_potential = {
+		is_nomadic = no
+	}
+}
+
+tech_industrial_farming = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_industrial
+		}
+	}
+	cost = 0
+	area = society
+	tier = 0
+	category = { biology }
+	start_tech = yes
+
+	# unlocks farming districts
+}
+
+tech_assault_armies = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_industrial
+		}
+	}
+	cost = @tier1cost1
+	area = engineering
+	tier = 0
+	category = { voidcraft }
+	prerequisites = { "tech_planetary_defenses" }
+	start_tech = yes
+}
+
+### adastra_unlock_machine
+tech_power_plant_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_machine
+		}
+	}
+	cost = 0
+	area = physics
+	tier = 0
+	category = { field_manipulation }
+	start_tech = yes
+
+	## unlock power plant lvl 1
+}
+
+tech_planetary_government = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_machine
+		}
+	}
+	cost = @tier0cost1
+	area = society
+	tier = 0
+	category = { statecraft }
+	start_tech = yes
+
+	# unlocks Planetary Outpost
+
+	technology_swap = { # Wilderness icon swap
+		name = tech_wilderness_government
+		inherit_icon = no
+		inherit_effects = yes
+		trigger = {
+			is_wilderness_empire = yes
+		}
+	}
+
+	starting_potential = {
+		is_low_tech_start = no # So Broken Shackles origin players don't start with it
+	}
+}
+
+tech_basic_health = {
+	cost = 0
+	area = society
+	start_tech = yes
+	tier = 0
+	category = { biology }
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_machine
+		}
+		is_regular_empire = yes
+		is_individual_machine = no
+	}
+}
+
+### adastra_unlock_atomic
+tech_fission_power = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_atomic
+		}
+	}
+	area = physics
+	cost = 0
+	tier = 0
+	start_tech = yes
+	category = { particles }
+	ai_update_type = all
+
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		custom = {
+			title = "TECH_UNLOCK_FISSION_POWER_TITLE"
+			desc = "TECH_UNLOCK_FISSION_POWER_DESC"
+		}
+	}
+
+	technology_swap = {
+		name = tech_bio_fission_power
+		inherit_icon = no
+		inherit_effects = no
+		trigger = {
+			country_uses_bio_ships = yes
+		}
+		prereqfor_desc = {
+			custom = {
+				title = "TECH_UNLOCK_BIO_FISSION_POWER_TITLE"
+				desc = "TECH_UNLOCK_BIO_FISSION_POWER_DESC"
+			}
+		}
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tech_planetary_defenses = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_atomic
+		}
+	}
+	cost = 0
+	area = society
+	start_tech = yes
+	category = { military_theory }
+	tier = 0
+
+	technology_swap = {
+		name = tech_nomads_arkship_defenses
+		inherit_icon = yes
+		inherit_effects = yes
+		trigger = {
+			is_nomadic = yes
+		}
+	}
+
+	technology_swap = { # Wilderness icon swap
+		name = tech_wilderness_planetary_defenses
+		inherit_icon = no
+		inherit_effects = yes
+		trigger = {
+			is_wilderness_empire = yes
+		}
+	}
+
+	## unlock defense army, militia and basic attachments
+}
+
+tech_missiles_1 = {
+	area = engineering
+	tier = 0
+	category = { propulsion }
+	ai_update_type = military
+	start_tech = yes
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_atomic
+		}
+		OR = {
+			country_uses_bio_ships = no
+			# Ascension / Crisis ships can equip missiles
+			has_tradition = tr_nanotech_4
+			has_crisis_level = crisis_level_2
+			has_technology = tech_cosmogenesis_escort
+		}
+	}
+}
+
+tech_flak_batteries_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_atomic
+		}
+	}
+	area = engineering
+	tier = 0
+	category = { propulsion }
+	ai_update_type = military
+	start_tech = yes
+
+	technology_swap = {
+		name = tech_bio_flak_batteries_1
+		inherit_icon = no
+		inherit_effects = yes
+		trigger = {
+			country_uses_bio_ships = yes
+		}
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tech_pd_tracking_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_atomic
+		}
+	}
+	area = physics
+	tier = 0
+	category = { computing }
+	ai_update_type = military
+	start_tech = yes
+
+	technology_swap = {
+		name = tech_bio_pd_tracking_1
+		inherit_icon = no
+		inherit_effects = yes
+		trigger = {
+			country_uses_bio_ships = yes
+		}
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tech_lasers_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_atomic
+		}
+	}
+	tier = 0
+	cost = @tier0cost1
+	area = physics
+	start_tech = yes
+	category = { particles }
+	ai_update_type = military
+	start_tech = yes
+
+	technology_swap = {
+		name = tech_bio_lasers_1
+		inherit_icon = no
+		inherit_effects = yes
+		trigger = {
+			country_uses_bio_ships = yes
+		}
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tech_holo_entertainment = {
+	cost = 0
+	area = society
+	start_tech = yes
+	category = { statecraft }
+	tier = 0
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_atomic
+		}
+		is_gestalt = no
+	}
+
+	## unlock holo-theatres building
+}
+
+### adastra_unlock_space
+tech_space_exploration = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+	}
+	cost = 0
+	area = physics
+	start_tech = yes
+	category = { computing }
+	tier = 0
+
+	#allow auto-explore on science ships
+	feature_flags = {
+		tech_automated_exploration
+		unlocks_auto_research
+	}
+
+	prereqfor_desc = {
+		ship = {
+			title = "TECH_UNLOCK_SCIENCE_SHIP_CONSTRUCTION_TITLE"
+			desc = "TECH_UNLOCK_SCIENCE_SHIP_CONSTRUCTION_DESC"
+		}
+	}
+}
+
+tech_thrusters_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+	}
+	area = engineering
+	cost = 0
+	start_tech = yes
+	tier = 0
+	category = { propulsion }
+	ai_update_type = all
+
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		custom = {
+			title = "TECH_UNLOCK_THRUSTER_1_TITLE"
+			desc = "TECH_UNLOCK_THRUSTER_1_DESC"
+		}
+	}
+
+	technology_swap = {
+		name = tech_bioship_thrusters_1
+		inherit_icon = no
+		inherit_effects = no
+		trigger = {
+			country_uses_bio_ships = yes
+		}
+		prereqfor_desc = {
+			custom = {
+				title = "TECH_UNLOCK_BIOSHIP_THRUSTER_1_TITLE"
+				desc = "TECH_UNLOCK_BIOSHIP_THRUSTER_1_DESC"
+			}
+		}
+	}
+}
+
+tech_solar_panel_network = {
+	area = engineering
+	tier = 0
+	category = { voidcraft }
+	prerequisites = { "tech_starbase_2" }
+	start_tech = yes
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+		is_nomadic = no
+	}
+
+	starting_potential = {
+		is_nomadic = no
+	}
+}
+
+tech_space_construction = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+	}
+	cost = 0
+	area = engineering
+	tier = 0
+	category = { industry }
+	start_tech = yes
+
+	prereqfor_desc = {
+		custom = {
+			title = "TECH_UNLOCK_CONSTRUCTION_SHIP_CONSTRUCTION_TITLE"
+			desc = "TECH_UNLOCK_CONSTRUCTION_SHIP_CONSTRUCTION_DESC"
+		}
+		# used to separate the entries
+		custom = {
+			title = "TECH_UNLOCK_MINING_STATION_TITLE"
+			desc = "TECH_UNLOCK_MINING_STATION_DESC"
+		}
+		# used to separate the entries
+		custom = {
+			title = "TECH_UNLOCK_RESEARCH_STATION_TITLE"
+			desc = "TECH_UNLOCK_RESEARCH_STATION_DESC"
+		}
+	}
+
+	technology_swap = {
+		name = tech_nomads_space_construction
+		inherit_icon = yes
+		inherit_effects = no
+		trigger = {
+			is_nomadic = yes
+		}
+		prereqfor_desc = {
+			custom = {
+				title = "TECH_UNLOCK_LOGISTIC_SHIP_CONSTRUCTION_TITLE"
+				desc = "TECH_UNLOCK_LOGISTIC_SHIP_CONSTRUCTION_DESC"
+			}
+		}
+		modifier = {
+			nomadic_constructor_limit_add = 2
+		}
+	}
+
+	ai_weight = {
+
+	}
+
+	## unlock construction ship, mining station, research station
+}
+
+tech_space_defense_station_1 = {
+	cost = 0
+	tier = 0
+	area = engineering
+	start_tech = yes
+	category = { voidcraft }
+	prerequisites = { "tech_starbase_1" }
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+		is_nomadic = no
+	}
+
+	starting_potential = {
+		is_nomadic = no
+	}
+}
+
+tech_ship_armor_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+	}
+	cost = @tier1cost1
+	area = engineering
+	tier = 0
+	category = { materials }
+	ai_update_type = all
+	start_tech = yes
+
+	technology_swap = {
+		name = tech_bio_ship_armor_1
+		inherit_icon = no
+		inherit_effects = no
+		trigger = {
+			country_uses_bio_ships = yes
+		}
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tech_shields_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+	}
+	area = physics
+	cost = 0
+	tier = 0
+	category = { field_manipulation }
+	ai_update_type = all
+	start_tech = yes
+
+	technology_swap = {
+		name = tech_bio_shields_1
+		inherit_icon = no
+		inherit_effects = yes
+		trigger = {
+			country_uses_bio_ships = yes
+		}
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tech_reactor_boosters_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+	}
+	area = physics
+	cost = 0
+	tier = 0
+	start_tech = yes
+	category = { particles }
+	ai_update_type = military
+	prerequisites = { "tech_fission_power" }
+}
+
+tech_corvettes = {
+	cost = @tier0cost1
+	area = engineering
+	start_tech = yes
+	category = { voidcraft }
+	tier = 0
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+		country_uses_bio_ships = no
+	}
+
+	prereqfor_desc = {
+		ship = {
+			title = "TECH_UNLOCK_CORVETTE_CONSTRUCTION_TITLE"
+			desc = "TECH_UNLOCK_CORVETTE_CONSTRUCTION_DESC"
+		}
+	}
+
+	weight_modifier = {
+		factor = 1000
+	}
+
+	ai_weight = {
+		weight = 10000
+	}
+
+	starting_potential = {
+		is_low_tech_start = no # So Broken Shackles origin players don't start with it
+		country_uses_bio_ships = no
+	}
+}
+
+tech_starbase_1 = {
+	cost = 0
+	area = engineering
+	start_tech = yes
+	category = { voidcraft }
+	prerequisites = { "tech_space_construction" }
+	tier = 0
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+		is_nomadic = no
+	}
+
+	prereqfor_desc = {
+		ship = {
+			title = "TECH_UNLOCK_OUTPOST_CONSTRUCTION_TITLE"
+			desc = "TECH_UNLOCK_OUTPOST_CONSTRUCTION_DESC"
+		}
+	}
+
+	# unlocks Outposts
+
+	starting_potential = {
+		is_nomadic = no
+	}
+}
+
+tech_starbase_2 = {
+	cost = 0
+	area = engineering
+	start_tech = yes
+	category = { voidcraft }
+	tier = 0
+	prerequisites = { "tech_starbase_1" }
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+		is_nomadic = no
+	}
+
+	prereqfor_desc = {
+		ship = {
+			title = "TECH_UNLOCK_STARPORT_CONSTRUCTION_TITLE"
+			desc = "TECH_UNLOCK_STARPORT_CONSTRUCTION_DESC"
+		}
+	}
+
+	# unlocks Starport
+	ai_weight = {
+		factor = @ai_starbase_types_factor
+		modifier = {
+			factor = @shattered_ring_ai_tech_factor
+			has_origin = origin_shattered_ring
+		}
+	}
+
+	starting_potential = {
+		is_nomadic = no
+	}
+}
+
+tech_colonization_1 = {
+	cost = 0
+	area = society
+	tier = 0
+	category = { new_worlds }
+	prerequisites = { "tech_space_exploration" }
+	start_tech = yes
+
+	prereqfor_desc = {
+		ship = {
+			title = "TECH_UNLOCK_COLONY_SHIP_CONSTRUCTION_TITLE"
+			desc = "TECH_UNLOCK_COLONY_SHIP_CONSTRUCTION_DESC"
+		}
+	}
+
+	weight_modifier = {
+		factor = 1000
+	}
+
+	technology_swap = {
+		name = tech_colonization_1_wilderness
+		inherit_icon = yes
+		inherit_effects = no
+		trigger = {
+			is_wilderness_empire = yes
+		}
+	}
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+		is_nomadic = no
+	}
+
+	starting_potential = {
+		is_nomadic = no
+	}
+
+	ai_weight = { }
+}
+
+tech_interplanetary_commerce = {
+	cost = 0
+	area = society
+	start_tech = yes
+	category = { statecraft }
+	tier = 0
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+		is_gestalt = no
+	}
+
+	## unlock commercial zone building
+}
+
+tech_mass_drivers_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+	}
+	tier = 0
+	cost = @tier0cost1
+	area = engineering
+	start_tech = yes
+	category = { propulsion }
+	ai_update_type = military
+	start_tech = yes
+
+	technology_swap = {
+		name = tech_bio_mass_drivers_1
+		inherit_icon = no
+		inherit_effects = yes
+		trigger = {
+			country_uses_bio_ships = yes
+		}
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tech_hydroponics = {
+	cost = 0
+	area = society
+	tier = 0
+	category = { biology }
+	start_tech = yes
+
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_space
+		}
+		is_wilderness_empire = no
+	}
+
+	# unlock hydroponics buildings
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 0.01
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+				is_individual_machine = yes
+				is_infernal_empire = yes
+				has_origin = origin_synthetic_fertility
+			}
+			NOR = {
+				has_country_flag = non_lithoid_subspecies
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_assimilator
+				any_owned_planet = {
+					OR = {
+						has_any_capped_planet_farming_district = yes
+						has_any_agriculture_zone = yes
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+				is_infernal_empire = yes
+				AND = {
+					is_individual_machine = yes
+					NOT = { has_country_flag = non_lithoid_subspecies }
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			has_relic = r_pox_sample
+		}
+		modifier = {
+			factor = 2
+			country_uses_bio_ships = yes
+		}
+	}
+
+	ai_weight = {
+	}
+}
+
+### adastra_unlock_ftl
+tech_hyper_drive_1 = {
+	potential = {
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			has_country_flag = adastra_unlock_ftl
+		}
+	}
+	cost = @tier0cost3
+	area = physics
+	tier = 0
+	category = { particles }
+	start_tech = yes
+
+	is_reverse_engineerable = no
+
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		custom = {
+			title = "TECH_UNLOCK_HYPERDRIVE_1_TITLE"
+			desc = "TECH_UNLOCK_HYPERDRIVE_1_DESC"
+		}
+	}
+
+	technology_swap = {
+		name = tech_bio_hyper_drive_1
+		inherit_icon = no
+		inherit_effects = no
+		trigger = {
+			country_uses_bio_ships = yes
+		}
+		prereqfor_desc = {
+			custom = {
+				title = "TECH_UNLOCK_BIO_HYPERDRIVE_1_TITLE"
+				desc = "TECH_UNLOCK_BIO_HYPERDRIVE_1_DESC"
+			}
+		}
+		weight = {
+			factor = 5
+		}
+	}
+
+	weight_modifier = {
+		factor = 1000
+	}
+
+	ai_weight = {
+		weight = 10000
+	}
+
+	starting_potential = {
+		is_eager_explorer_empire = no
+	}
+}

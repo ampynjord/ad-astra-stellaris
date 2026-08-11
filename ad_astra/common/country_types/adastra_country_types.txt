@@ -1,0 +1,363 @@
+# Ad Astra - type de pays inerte pour l'option 'galaxie assoupie'
+# Copie du type default vanilla 4.4.6 avec IA et guerres desactivees.
+
+adastra_dormant = {
+	has_difficulty_bonuses = yes
+	counts_for_victory = no
+	pop_growth = yes
+	playable = no
+	has_pulse_events = no
+	has_deficits = yes
+	piracy_risk = no
+	randomize_ethos = yes
+	shuffle_pop_ethos = yes
+	needs_survey = yes
+	diplomatic_wars = no
+	ship_disengagement = yes
+	army_disengagement = yes
+	relations = yes
+	observable = yes
+	can_use_invalid_technology = no
+	can_receive_envoys = yes
+	ownership_limits = default
+	do_critters_age = yes
+
+	ai = {
+		enabled = no
+	}
+
+	trade_routes_available = {
+		is_gestalt = no
+	}
+
+	modules = {
+		standard_event_module = {}
+		standard_economy_module = {}
+		standard_leader_module = {}
+		standard_diplomacy_module = { contact_rule = does_first_contact_sites }
+		standard_technology_module = {}
+		standard_pop_factions_module = {}
+		standard_expansion_module = {}
+		standard_species_rights_module = {}
+		standard_grand_archive_module = {}
+		standard_shroud_module = {}
+	}
+
+	resources = {
+		category = country_base
+		produces = {
+			energy = 20
+			physics_research = 10
+			society_research = 10
+			engineering_research = 10
+			influence = 3
+			unity = 10
+			alloys = 5
+		}
+		produces = {
+			trigger = {
+				is_nomadic = no
+			}
+			minerals = 20
+		}
+		produces = {
+			trigger = {
+				OR = {
+					is_gestalt = no
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+			consumer_goods = 15
+		}
+		produces = {
+			trigger = {
+				OR = { #Either
+					# You're a non-lithoid non-individual machine, regular empire or hive mind
+					AND = {
+						is_individual_machine = no
+						is_lithoid_empire = no
+						is_infernal_empire = no
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# You are a lithoid empire with a non-lithoid subspecies
+					AND = {
+						is_lithoid_empire = yes
+						has_country_flag = non_lithoid_subspecies
+					}
+					# Or a machine empire with a non-lithoid secondary species
+					AND = {
+						has_country_flag = non_lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or an individual machine with a non-lithoid species
+					AND = {
+						is_individual_machine = yes
+						has_country_flag = non_lithoid_subspecies
+					}
+					# Or have bioships
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 20
+		}
+		produces = {
+			trigger = {
+				# Either
+				OR = {
+					# You're a lithoid regular empire or hive mind
+					AND = {
+						is_lithoid_empire = yes
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# Or a machine empire with a lithoid secondary species
+					AND = {
+						has_country_flag = lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or a machine empire with no secondary species
+					AND = {
+						is_machine_empire = yes
+						NOR = {
+							has_country_flag = lithoid_subspecies
+							has_country_flag = non_lithoid_subspecies
+						}
+					}
+				}
+			}
+			minerals = 20
+		}
+		produces = {
+			trigger = {
+				is_machine_empire = yes
+			}
+			energy = 20
+		}
+		produces = {
+			trigger = {
+				is_lithoid_empire = yes
+				has_valid_civic = civic_hive_cordyceptic_drones
+			}
+			food = 10
+			minerals = -10
+		}
+		produces = {
+			trigger = {
+				OR = {
+					is_infernal_empire = yes
+					# Or a machine with an infernal species
+					AND = {
+						has_country_flag = infernal_subspecies
+						is_machine_empire = yes
+					}
+				}
+			}
+			alloys = 10
+		}
+	}
+
+	# planet scope
+	branch_office_resources = {
+		category = planet_branch_offices
+		cost = {
+			trade = 1000
+		}
+	}
+}
+
+# Type du JOUEUR pendant le verrouillage : identique a default (jouable, tous modules)
+# mais hors de portee du filet de securite qui reconstruit les avant-postes,
+# et a l'abri des declarations de guerre.
+
+adastra_grounded = {
+	has_difficulty_bonuses = yes
+	counts_for_victory = no
+	pop_growth = yes
+	playable = yes
+	has_pulse_events = yes
+	has_deficits = yes
+	piracy_risk = yes
+	randomize_ethos = yes
+	shuffle_pop_ethos = yes
+	needs_survey = yes
+	diplomatic_wars = no
+	ship_disengagement = yes
+	army_disengagement = yes
+	relations = yes
+	observable = yes
+	can_use_invalid_technology = no
+	can_receive_envoys = yes
+	ownership_limits = default
+	do_critters_age = yes
+
+	ai = {
+		enabled = yes
+		declare_war = yes
+		min_navy_for_wars = 0.5
+		min_assault_armies_for_wars = @armies_for_declaring_war
+		colonizer = yes
+		internal_policies = yes
+		modification = yes
+		government = yes
+		traditions = yes
+		ascension_perks = yes
+		construction = yes
+		follow = yes
+		can_use_market = yes
+		modules = {
+			military_minister_module
+			foreign_minister_module
+			interior_minister_module
+			mercenary_buyer_minister_module
+			enclave_founder_minister_module
+		}
+	}
+
+	trade_routes_available = {
+		is_gestalt = no
+	}
+
+	modules = {
+		standard_event_module = {}
+		standard_economy_module = {}
+		standard_leader_module = {}
+		standard_diplomacy_module = { contact_rule = does_first_contact_sites }
+		standard_technology_module = {}
+		standard_pop_factions_module = {}
+		standard_expansion_module = {}
+		standard_species_rights_module = {}
+		standard_grand_archive_module = {}
+		standard_shroud_module = {}
+	}
+
+	resources = {
+		category = country_base
+		produces = {
+			energy = 20
+			physics_research = 10
+			society_research = 10
+			engineering_research = 10
+			influence = 3
+			unity = 10
+			alloys = 5
+		}
+		produces = {
+			trigger = {
+				is_nomadic = no
+			}
+			minerals = 20
+		}
+		produces = {
+			trigger = {
+				OR = {
+					is_gestalt = no
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+			consumer_goods = 15
+		}
+		produces = {
+			trigger = {
+				OR = { #Either
+					# You're a non-lithoid non-individual machine, regular empire or hive mind
+					AND = {
+						is_individual_machine = no
+						is_lithoid_empire = no
+						is_infernal_empire = no
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# You are a lithoid empire with a non-lithoid subspecies
+					AND = {
+						is_lithoid_empire = yes
+						has_country_flag = non_lithoid_subspecies
+					}
+					# Or a machine empire with a non-lithoid secondary species
+					AND = {
+						has_country_flag = non_lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or an individual machine with a non-lithoid species
+					AND = {
+						is_individual_machine = yes
+						has_country_flag = non_lithoid_subspecies
+					}
+					# Or have bioships
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 20
+		}
+		produces = {
+			trigger = {
+				# Either
+				OR = {
+					# You're a lithoid regular empire or hive mind
+					AND = {
+						is_lithoid_empire = yes
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# Or a machine empire with a lithoid secondary species
+					AND = {
+						has_country_flag = lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or a machine empire with no secondary species
+					AND = {
+						is_machine_empire = yes
+						NOR = {
+							has_country_flag = lithoid_subspecies
+							has_country_flag = non_lithoid_subspecies
+						}
+					}
+				}
+			}
+			minerals = 20
+		}
+		produces = {
+			trigger = {
+				is_machine_empire = yes
+			}
+			energy = 20
+		}
+		produces = {
+			trigger = {
+				is_lithoid_empire = yes
+				has_valid_civic = civic_hive_cordyceptic_drones
+			}
+			food = 10
+			minerals = -10
+		}
+		produces = {
+			trigger = {
+				OR = {
+					is_infernal_empire = yes
+					# Or a machine with an infernal species
+					AND = {
+						has_country_flag = infernal_subspecies
+						is_machine_empire = yes
+					}
+				}
+			}
+			alloys = 10
+		}
+	}
+
+	# planet scope
+	branch_office_resources = {
+		category = planet_branch_offices
+		cost = {
+			trade = 1000
+		}
+	}
+}

@@ -1,0 +1,176 @@
+# Ad Astra - le programme spatial en trois phases
+# Chaque décision correspond à une étape de la situation Au-delà des étoiles.
+
+# Phase 1 : programme d'exploration spatiale (vaisseau scientifique sous-luminique)
+decision_adastra_explore = {
+	owned_planets_only = yes
+	icon = decision_satellite_in_orbit
+
+	enactment_time = 180
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 500
+			minerals = 300
+			alloys = 150
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = adastra_stage_explore
+			NOT = { has_country_flag = adastra_phase1_done }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_adastra_explore_tooltip
+		hidden_effect = {
+			owner = {
+				country_event = { id = adastra.85 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+# Phase 2 : programme de base stellaire (chantier orbital + vaisseau de construction)
+decision_adastra_starbase = {
+	owned_planets_only = yes
+	icon = decision_ship_in_orbit
+
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 1000
+			minerals = 800
+			alloys = 500
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = adastra_stage_orbital
+			NOT = { has_country_flag = adastra_phase2_done }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = "decision_adastra_starbase_fail"
+			solar_system = {
+				NOT = {
+					AND = {
+						exists = starbase
+						starbase = {
+							exists = owner
+							owner = {
+								NOT = { is_same_value = prevprevprev.owner }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_adastra_starbase_tooltip
+		hidden_effect = {
+			owner = {
+				country_event = { id = adastra.86 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+# Phase 3 : programme hyperspatial (débloque la recherche Hyperpropulsion)
+decision_adastra_hyperdrive = {
+	owned_planets_only = yes
+	icon = decision_wormhole
+
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 1500
+			alloys = 300
+			unity = 500
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = adastra_stage_hyper
+			NOT = { has_country_flag = adastra_phase3_done }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_adastra_hyperdrive_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = adastra_phase3_done
+				set_country_flag = adastra_unlock_ftl
+				add_research_option = tech_hyper_drive_1
+				country_event = { id = adastra.16 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+# Facultatif : programme de flotte militaire (disparaît à la découverte de l'Hyperpropulsion)
+decision_adastra_navy = {
+	owned_planets_only = yes
+	icon = decision_ship_in_orbit
+
+	enactment_time = 180
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 400
+			minerals = 200
+			alloys = 300
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = adastra_phase2_done
+			NOT = { has_technology = tech_hyper_drive_1 }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_adastra_navy_tooltip
+		hidden_effect = {
+			owner = {
+				country_event = { id = adastra.87 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}

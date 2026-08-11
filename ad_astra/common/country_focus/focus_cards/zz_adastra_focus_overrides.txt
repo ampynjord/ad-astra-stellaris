@@ -1,0 +1,1345 @@
+# Ad Astra - cartes d'objectifs purement spatiales masquées pendant le verrouillage
+# Copies exactes vanilla 4.4.6 avec une clause possible ajoutée.
+
+conquest_focus_105 = {
+	base = conquest_focus_100
+
+	name = "conquest.105.name"
+	desc = "conquest.105.desc"
+	hint = "conquest.105.hint"
+	lore = "conquest.105.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = no
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.105.fail"
+			success_text = "conquest.105.success"
+			simple_progress = {
+				OR = {
+					count_owned_starbase = {
+						limit = {
+							NOR = {
+								has_starbase_size = starbase_outpost
+								has_starbase_size = starbase_starport
+							}
+						}
+						count > 0
+					}
+					count_owned_starbase = {
+						limit = {
+							NOT = {	has_starbase_size = starbase_outpost }
+						}
+						count > 1
+					}
+				}
+			}
+		}
+	}
+}
+
+conquest_focus_105_1 = {
+	base = conquest_focus_100
+
+	name = "conquest.105_1.name"
+	desc = "conquest.105_1.desc"
+	hint = "conquest.105_1.hint"
+	lore = "conquest.105_1.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = yes
+		has_country_flag = core_focus_104_1_completed
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.105_1.fail"
+			success_text = "conquest.105_1.success"
+			simple_progress = {
+				any_owned_nonprimary_starbase = {
+					OR = {
+						has_starbase_size = starbase_waystation_2
+						has_starbase_size = starbase_waystation_3
+					}
+				}
+			}
+		}
+	}
+}
+
+conquest_focus_110 = {
+	base = conquest_focus_100
+
+	name = "conquest.110.name"
+	desc = "conquest.110.desc"
+	hint = "conquest.110.hint"
+	lore = "conquest.110.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		NOR = {
+			has_civic = civic_beastmasters
+			country_uses_bio_ships = yes
+		}
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.110.fail"
+			success_text = "conquest.110.success"
+			check_variable = {
+				which = "focus_built_corvettes"
+				value >= @focus_goal_built_corvettes
+			}
+		}
+	}
+}
+
+conquest_focus_111 = {
+	base = conquest_focus_100
+
+	name = "conquest.111.name"
+	desc = "conquest.111.desc"
+	hint = "conquest.111.hint"
+	lore = "conquest.111.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		has_civic = civic_beastmasters
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.111.fail"
+			success_text = "conquest.111.success"
+			check_variable = {
+				which = "focus_built_corvettes"
+				value >= @focus_goal_built_corvettes
+			}
+		}
+	}
+}
+
+conquest_focus_112 = {
+	base = conquest_focus_100
+
+	name = "conquest.112.name"
+	desc = "conquest.112.desc"
+	hint = "conquest.112.hint"
+	lore = "conquest.112.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		country_uses_bio_ships = yes
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.112.fail"
+			success_text = "conquest.112.success"
+			check_variable = {
+				which = "focus_produced_maulers"
+				value >= @focus_goal_produced_maulers
+			}
+		}
+	}
+}
+
+conquest_focus_125 = {
+	base = conquest_focus_100
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+	}
+
+	name = "conquest.125.name"
+	desc = "conquest.125.desc"
+	hint = "conquest.125.hint"
+	lore = "conquest.125.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.125.fail"
+			success_text = "conquest.125.success"
+			has_country_flag = has_won_space_battle
+		}
+	}
+}
+
+conquest_focus_210 = {
+	base = conquest_focus_200
+
+	name = "conquest.210.name"
+	desc = "conquest.210.desc"
+	hint = "conquest.210.hint"
+	lore = "conquest.210.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		NOR = {
+			has_civic = civic_beastmasters
+			country_uses_bio_ships = yes
+		}
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.210.fail"
+			success_text = "conquest.210.success"
+			check_variable = {
+				which = "focus_built_destroyers"
+				value >= @focus_goal_built_destroyers
+			}
+		}
+	}
+}
+
+conquest_focus_211 = {
+	base = conquest_focus_200
+
+	name = "conquest.211.name"
+	desc = "conquest.211.desc"
+	hint = "conquest.211.hint"
+	lore = "conquest.211.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		has_civic = civic_beastmasters
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.211.fail"
+			success_text = "conquest.211.success"
+			count_owned_ship = {
+				limit = { is_ship_size = space_amoeba_mother }
+				count >= 10
+			}
+		}
+	}
+}
+
+conquest_focus_212 = {
+	base = conquest_focus_200
+
+	name = "conquest.212.name"
+	desc = "conquest.212.desc"
+	hint = "conquest.212.hint"
+	lore = "conquest.212.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		country_uses_bio_ships = yes
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.212.fail"
+			success_text = "conquest.212.success"
+			check_variable = {
+				which = "focus_produced_weavers"
+				value >= @focus_goal_produced_weavers
+			}
+		}
+	}
+}
+
+conquest_focus_325_1 = {
+	base = conquest_focus_300
+
+	name = "conquest.325_1.name"
+	desc = "conquest.325_1.desc"
+	hint = "conquest.325_1.hint"
+	lore = "conquest.325_1.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_diplomatic = yes
+		is_nomadic = yes
+		any_playable_country = {
+			is_nomadic = yes
+			has_communications = prev
+		}
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.325_1.fail"
+			success_text = "conquest.325_1.success"
+			has_country_flag = has_conquered_arkship
+		}
+	}
+}
+
+conquest_focus_430 = {
+	base = conquest_focus_400
+
+	name = "conquest.430.name"
+	desc = "conquest.430.desc"
+	hint = "conquest.430.hint"
+	lore = "conquest.430.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = yes
+		has_technology = tech_arkship_construction
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.430.fail"
+			success_text = "conquest.430.success"
+			has_country_flag = arkship_built_military_arkship
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = CONQUEST }
+		add_focus_progress = { category = conquest amount = 100 }
+		set_country_flag = conquest_focus_430_completed
+	}
+}
+
+conquest_focus_500 = {
+	category = conquest
+	tier = 5
+	background = "GFX_focus_card_background_conquest_tier_5"
+
+	name = "conquest.500.name"
+	desc = "conquest.500.desc"
+	hint = "conquest.500.hint"
+	lore = "conquest.500.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		has_federations_dlc = yes
+		is_nomadic = no
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.500.fail"
+			success_text = "conquest.500.success"
+			has_country_flag = build_mega_shipyard
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = CONQUEST }
+		add_focus_progress = { category = conquest amount = 200 }
+	}
+}
+
+conquest_focus_505 = {
+	base = conquest_focus_500
+
+	name = "conquest.505.name"
+	desc = "conquest.505.desc"
+	hint = "conquest.505.hint"
+	lore = "conquest.505.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_diplomatic = yes
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.505.fail"
+			success_text = "conquest.505.success"
+			check_variable = {
+				which = conquest_subjects
+				value >= @focus_goal_subjects
+			}
+		}
+	}
+}
+
+conquest_focus_515 = {
+	base = conquest_focus_400
+	category = conquest
+	tier = 4
+	background = "GFX_focus_card_background_conquest_tier_4"
+
+	name = "conquest.515.name"
+	desc = "conquest.515.desc"
+	hint = "conquest.515.hint"
+	lore = "conquest.515.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_reanimator = yes
+		has_space_monster_dlc = yes
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.515.fail"
+			success_text = "conquest.515.success"
+			has_country_flag = reanimated_leviathan
+		}
+	}
+}
+
+conquest_focus_525 = {
+	base = conquest_focus_300
+
+	name = "conquest.525.name"
+	desc = "conquest.525.desc"
+	hint = "conquest.525.hint"
+	lore = "conquest.525.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		NOR = {
+			has_civic = civic_beastmasters
+			country_uses_bio_ships = yes
+		}
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.525.fail"
+			success_text = "conquest.525.success"
+			check_variable = {
+				which = focus_built_battleship
+				value >= @focus_goal_built_battleships
+			}
+		}
+	}
+}
+
+conquest_focus_530 = {
+	base = conquest_focus_400
+
+	name = "conquest.530.name"
+	desc = "conquest.530.desc"
+	hint = "conquest.530.hint"
+	lore = "conquest.530.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		NOR = {
+			has_civic = civic_beastmasters
+			country_uses_bio_ships = yes
+		}
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.530.fail"
+			success_text = "conquest.530.success"
+			check_variable = {
+				which = focus_built_titans
+				value >= @focus_goal_built_titans
+			}
+		}
+	}
+}
+
+conquest_focus_535 = {
+	base = conquest_focus_400
+
+	name = "conquest.535.name"
+	desc = "conquest.535.desc"
+	hint = "conquest.535.hint"
+	lore = "conquest.535.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		NOR = {
+			has_civic = civic_beastmasters
+			country_uses_bio_ships = yes
+		}
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.535.fail"
+			success_text = "conquest.535.success"
+			check_variable = {
+				which = focus_built_juggernaut
+				value >= @focus_goal_built_juggernaut
+			}
+		}
+	}
+}
+
+conquest_focus_540 = {
+	base = conquest_focus_500
+
+	name = "conquest.540.name"
+	desc = "conquest.540.desc"
+	hint = "conquest.540.hint"
+	lore = "conquest.540.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = yes
+		has_technology = tech_arkship_tier_3
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "conquest.540.fail"
+			success_text = "conquest.540.success"
+			simple_progress = {
+				any_owned_fleet = {
+					starbase? = {
+						is_arkship_starbase = yes
+						has_starbase_module = arkship_spinal_devastator_mount
+					}
+				}
+			}
+		}
+	}
+}
+
+core_focus_102 = {
+	base = core_focus_100
+
+	name = "core.102.name"
+	desc = "core.102.desc"
+	hint = "core.102.hint"
+	lore = "core.102.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = no
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.102.fail"
+			success_text = "core.102.success"
+			has_country_flag = first_colony_finished
+		}
+	}
+}
+
+core_focus_106 = {
+	base = core_focus_100
+
+	name = "core.106.name"
+	desc = "core.106.desc"
+	hint = "core.106.hint"
+	lore = "core.106.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = no
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.106.fail"
+			success_text = "core.106.success"
+			simple_progress = {
+				any_owned_colony = {
+					is_under_colonization = no
+					NOT = {	solar_system = { starting_system = yes } }
+					NOR = {
+						has_designation = col_capital
+						has_designation = col_capital_hive
+						has_designation = col_capital_machine
+						has_designation = col_wilderness_capital
+					}
+				}
+			}
+		}
+	}
+}
+
+core_focus_106_1 = {
+	base = core_focus_100
+
+	name = "core.106_1.name"
+	desc = "core.106_1.desc"
+	hint = "core.106_1.hint"
+	lore = "core.106_1.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = yes
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.106_1.fail"
+			success_text = "core.106_1.success"
+			simple_progress = {
+				any_owned_colony = {
+					OR = {
+						AND = {
+							ship? = {
+								is_civilian_arkship = yes
+							}
+							owner = {
+								country_uses_consumer_goods = yes
+							}
+							NOR = {
+								has_designation = col_capital_nomad
+								has_designation = col_nomad_factory
+							}
+						}
+						AND = {
+							ship? = {
+								is_civilian_arkship = yes
+							}
+							owner = {
+								country_uses_consumer_goods = no
+							}
+							NOR = {
+								has_designation = col_capital_nomad
+								has_designation = col_nomad_foundry
+							}
+						}
+						AND = {
+							ship? = {
+								is_military_arkship = yes
+							}
+							NOR = {
+								has_designation = col_capital_nomad
+								has_designation = col_nomad_fortress
+							}
+						}
+						AND = {
+							ship? = {
+								is_science_arkship = yes
+							}
+							NOR = {
+								has_designation = col_capital_nomad
+								has_designation = col_nomad_research
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+core_focus_108 = {
+	base = core_focus_100
+
+	name = "core.108.name"
+	desc = "core.108.desc"
+	hint = "core.108.hint"
+	lore = "core.108.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = no
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.108.fail"
+			success_text = "core.108.success"
+			simple_progress = {
+				any_owned_starbase = {
+					OR = {
+						AND = { # Starting system starts with modules
+							fleet.solar_system = { starting_system = yes }
+							count_starbase_modules = { count > 2 }
+						}
+						AND = { # Not starting system
+							NOT = {	fleet.solar_system = { starting_system = yes } }
+							count_starbase_modules = { count > 0 }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+core_focus_110 = {
+	base = core_focus_100
+
+	name = "core.110.name"
+	desc = "core.110.desc"
+	hint = "core.110.hint"
+	lore = "core.110.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = no
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.110.fail"
+			success_text = "core.110.success"
+			simple_progress = {
+				any_owned_starbase = {
+					OR = {
+						AND = { # Starting system starts with building
+							fleet.solar_system = { starting_system = yes }
+							count_starbase_buildings = { count > 1 }
+						}
+						AND = { # Not starting system
+							NOT = {	fleet.solar_system = { starting_system = yes } }
+							count_starbase_buildings = { count > 0 }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+core_focus_122 = {
+	base = core_focus_100
+
+	name = "core.122.name"
+	desc = "core.122.desc"
+	hint = "core.122.hint"
+	lore = "core.122.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = no
+		country_uses_food = yes
+		has_global_flag = game_started
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.122.fail"
+			success_text = "core.122.success"
+			if = {
+				limit = { has_country_flag = food_storage_1000 }
+				custom_progress = {
+					has_country_flag = food_storage_1000
+					current_val_coeff = 1000
+					final_val_coeff = 1000
+				}
+			}
+			else = {
+				custom_progress = {
+					has_resource = { type = food amount >= 1000 }
+					mode = clamped
+				}
+			}
+		}
+	}
+}
+
+core_focus_122_1 = {
+	base = core_focus_100
+
+	name = "core.122_1.name"
+	desc = "core.122_1.desc"
+	hint = "core.122_1.hint"
+	lore = "core.122_1.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = yes
+		country_uses_food = yes
+		has_global_flag = game_started
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.122_1.fail"
+			success_text = "core.122_1.success"
+			if = {
+				limit = { has_country_flag = food_storage_3000 }
+				custom_progress = {
+					has_country_flag = food_storage_3000
+					current_val_coeff = 3000
+					final_val_coeff = 3000
+				}
+			}
+			else = {
+				custom_progress = {
+					has_resource = { type = food amount >= 3000 }
+					mode = clamped
+				}
+			}
+		}
+	}
+}
+
+core_focus_124 = {
+	base = core_focus_100
+
+	name = "core.124.name"
+	desc = "core.124.desc"
+	hint = "core.124.hint"
+	lore = "core.124.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = no
+		country_uses_consumer_goods = yes
+		has_global_flag = game_started
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.124.fail"
+			success_text = "core.124.success"
+			if = {
+				limit = { has_country_flag = consumer_goods_storage_1000 }
+				custom_progress = {
+					has_country_flag = consumer_goods_storage_1000
+					current_val_coeff = 1000
+					final_val_coeff = 1000
+				}
+			}
+			else = {
+				custom_progress = {
+					has_resource = { type = consumer_goods amount >= 1000 }
+					mode = clamped
+				}
+			}
+		}
+	}
+}
+
+core_focus_124_1 = {
+	base = core_focus_100
+
+	name = "core.124_1.name"
+	desc = "core.124_1.desc"
+	hint = "core.124_1.hint"
+	lore = "core.124_1.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = yes
+		country_uses_consumer_goods = yes
+		has_global_flag = game_started
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.124_1.fail"
+			success_text = "core.124_1.success"
+			if = {
+				limit = { has_country_flag = consumer_goods_storage_2000 }
+				custom_progress = {
+					has_country_flag = consumer_goods_storage_2000
+					current_val_coeff = 2000
+					final_val_coeff = 2000
+				}
+			}
+			else = {
+				custom_progress = {
+					has_resource = { type = consumer_goods amount >= 2000 }
+					mode = clamped
+				}
+			}
+		}
+	}
+}
+
+core_focus_136 = {
+	base = core_focus_100
+
+	name = "core.136.name"
+	desc = "core.136.desc"
+	hint = "core.136.hint"
+	lore = "core.136.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_wilderness_empire = no
+		is_nomadic = no
+		country_uses_food = yes
+		has_global_flag = game_started
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.136.fail"
+			success_text = "core.136.success"
+			has_country_flag = built_farming_district
+		}
+	}
+}
+
+core_focus_136_2 = {
+	base = core_focus_100
+
+	name = "core.136_2.name"
+	desc = "core.136_2.desc"
+	hint = "core.136_2.hint"
+	lore = "core.136_2.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_wilderness_empire = no
+		is_nomadic = yes
+		country_uses_food = yes
+		has_global_flag = game_started
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "core.136_2.fail"
+			success_text = "core.136_2.success"
+			has_country_flag = built_district_ark_basic
+		}
+	}
+}
+
+development_focus_100 = {
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+	}
+	category = development
+	tier = 1
+	background = "GFX_focus_card_background_development_tier_1"
+
+	name = "development.100.name"
+	desc = "development.100.desc"
+	hint = "development.100.hint"
+	lore = "development.100.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "development.105.fail"
+			success_text = "development.105.success"
+			has_country_flag = had_first_contact
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = DEVELOPMENT }
+		add_focus_progress = { category = development amount = 10 }
+	}
+}
+
+development_focus_130 = {
+	base = development_focus_100
+
+	name = "development.130.name"
+	desc = "development.130.desc"
+	hint = "development.130.hint"
+	lore = "development.130.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_diplomatic = yes
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "development.130.fail"
+			success_text = "development.130.success"
+			has_good_relationships = yes
+		}
+	}
+}
+
+development_focus_220 = {
+	base = development_focus_200
+
+	name = "development.220.name"
+	desc = "development.220.desc"
+	hint = "development.220.hint"
+	lore = "development.220.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_diplomatic = yes
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = development.220.fail
+			success_text = development.220.success
+			is_galactic_community_member = yes
+		}
+	}
+}
+
+development_focus_315 = {
+	base = development_focus_300
+
+	name = "development.315.name"
+	desc = "development.315.desc"
+	hint = "development.315.hint"
+	lore = "development.315.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		any_relation = {
+			can_form_federation_with_empire = yes
+		}
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = development.315.fail
+			success_text = development.315.success
+			has_country_flag = federation_formed
+		}
+	}
+}
+
+development_focus_320 = {
+	base = development_focus_300
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		OR = {
+			has_federations_dlc = yes
+			has_nemesis = yes
+		}
+		is_galactic_community_member = yes
+	}
+
+	name = "development.320.name"
+	desc = "development.320.desc"
+	hint = "development.320.hint"
+	lore = "development.320.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = development.320.fail
+			success_text = development.320.success
+			has_country_flag = joined_council
+		}
+	}
+}
+
+development_focus_400 = {
+	category = development
+	tier = 4
+	background = "GFX_focus_card_background_development_tier_4"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		has_federations_dlc = yes
+		has_federation = yes
+	}
+
+	name = "development.400.name"
+	desc = "development.400.desc"
+	hint = "development.400.hint"
+	lore = "development.400.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = development.400.fail
+			success_text = development.400.success
+			simple_progress = {
+				has_federation = yes
+				federation = {
+					federation_level = 5
+				}
+			}
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = DEVELOPMENT }
+		add_focus_progress = { category = development amount = 100 }
+	}
+}
+
+development_focus_420 = {
+	base = development_focus_400
+
+	name = "development.420.name"
+	desc = "development.420.desc"
+	hint = "development.420.hint"
+	lore = "development.420.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		has_country_flag = core_focus_104_1_completed
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "development.420.fail"
+			success_text = "development.420.success"
+			simple_progress = {
+				any_owned_nonprimary_starbase = {
+					is_waystation_starbase = yes
+					starbase_network_size >= 5
+				}
+			}
+		}
+	}
+}
+
+development_focus_425 = {
+	base = development_focus_400
+
+	name = "development.425.name"
+	desc = "development.425.desc"
+	hint = "development.425.hint"
+	lore = "development.425.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		OR = {
+			has_country_flag = exploration_focus_425_completed
+			has_country_flag = conquest_focus_430_completed
+			has_country_flag = development_focus_435_completed
+		}
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "development.425.fail"
+			success_text = "development.425.success"
+			count_owned_fleet = {
+				limit = {
+					is_arkship_fleet = yes
+				}
+				count >= 3
+			}
+		}
+	}
+}
+
+development_focus_435 = {
+	base = development_focus_400
+
+	name = "development.435.name"
+	desc = "development.435.desc"
+	hint = "development.435.hint"
+	lore = "development.435.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = yes
+		has_technology = tech_arkship_construction
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "development.435.fail"
+			success_text = "development.435.success"
+			has_country_flag = arkship_built_civilian_arkship
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = DEVELOPMENT }
+		add_focus_progress = { category = development amount = 100 }
+		set_country_flag = development_focus_435_completed
+	}
+}
+
+development_focus_525 = {
+	base = development_focus_500
+
+	name = "development.525.name"
+	desc = "development.525.desc"
+	hint = "development.525.hint"
+	lore = "development.525.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = yes
+		has_technology = tech_arkship_tier_3
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "development.525.fail"
+			success_text = "development.525.success"
+			simple_progress = {
+				any_owned_fleet = {
+					is_arkship_fleet = yes
+					starbase? = {
+						has_starbase_module = arkship_capital_shipyard
+					}
+				}
+			}
+		}
+	}
+}
+
+exploration_focus_100 = {
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+	}
+	category = exploration
+	tier = 1
+	background = "GFX_focus_card_background_exploration_tier_1"
+
+	name = "exploration.100.name"
+	desc = "exploration.100.desc"
+	hint = "exploration.100.hint"
+	lore = "exploration.100.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "exploration.100.fail"
+			success_text = "exploration.100.success"
+			has_country_flag = first_anomaly_finished
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = EXPLORATION }
+		add_focus_progress = { category = exploration amount = 10 }
+	}
+}
+
+exploration_focus_105 = {
+	base = exploration_focus_100
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+	}
+
+	name = "exploration.105.name"
+	desc = "exploration.105.desc"
+	hint = "exploration.105.hint"
+	lore = "exploration.105.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "exploration.105.fail"
+			success_text = "exploration.105.success"
+			has_country_flag = first_system_survey_finished
+		}
+	}
+}
+
+exploration_focus_200 = {
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+	}
+	category = exploration
+	tier = 2
+	background = "GFX_focus_card_background_exploration_tier_2"
+
+	name = "exploration.200.name"
+	desc = "exploration.200.desc"
+	hint = "exploration.200.hint"
+	lore = "exploration.200.lore"
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "exploration.200.fail"
+			success_text = "exploration.200.success"
+			has_country_flag = first_archaeology_site_finished
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = EXPLORATION }
+		add_focus_progress = { category = exploration amount = 25 }
+	}
+}
+
+exploration_focus_220 = {
+	base = exploration_focus_200
+
+	name = "exploration.220.name"
+	desc = "exploration.220.desc"
+	hint = "exploration.220.hint"
+	lore = "exploration.220.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		has_technology = tech_wormhole_stabilization
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "exploration.220.fail"
+			success_text = "exploration.220.success"
+			has_country_flag = entered_wormhole
+		}
+	}
+}
+
+exploration_focus_325 = {
+	base = exploration_focus_300
+
+	name = "exploration.325.name"
+	desc = "exploration.325.desc"
+	hint = "exploration.325.hint"
+	lore = "exploration.325.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_lithoid_devouring_swarm = no
+		is_nomadic = no
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "exploration.325.fail"
+			success_text = "exploration.325.success"
+			check_variable = {
+				which = "focus_terraformed_worlds"
+				value >= @focus_goal_terraformed_worlds
+			}
+		}
+	}
+}
+
+exploration_focus_425 = {
+	base = exploration_focus_400
+
+	name = "exploration.425.name"
+	desc = "exploration.425.desc"
+	hint = "exploration.425.hint"
+	lore = "exploration.425.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		is_nomadic = yes
+		has_technology = tech_arkship_construction
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "exploration.425.fail"
+			success_text = "exploration.425.success"
+			has_country_flag = arkship_built_science_arkship
+		}
+	}
+
+	on_success = {
+		create_focus_completed_message = { CATEGORY = EXPLORATION }
+		add_focus_progress = { category = exploration amount = 100 }
+		set_country_flag = exploration_focus_425_completed
+	}
+}
+
+exploration_focus_600 = {
+	base = exploration_focus_200
+	category = exploration
+	tier = 2
+	background = "GFX_focus_card_background_exploration_tier_2"
+
+	name = "exploration.600.name"
+	desc = "exploration.600.desc"
+	hint = "exploration.600.hint"
+	lore = "exploration.600.lore"
+
+	possible = {
+		NOT = { has_country_flag = adastra_locked }
+		has_space_monster_dlc = yes
+	}
+
+	condition_for_achievement = {
+		custom_tooltip = {
+			fail_text = "exploration.600.fail"
+			success_text = "exploration.600.success"
+			has_country_flag = encountered_leviathan
+		}
+	}
+}

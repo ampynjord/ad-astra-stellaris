@@ -1,0 +1,3 @@
+# (Fichier neutralisé : les événements vanilla ne peuvent pas être surchargés.
+#  La reconstruction d'avant-poste est désormais évitée via le type de pays
+#  adastra_grounded — voir common/country_types.)

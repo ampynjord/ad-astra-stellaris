@@ -1,0 +1,44 @@
+### Ad Astra - sprites réutilisant les icônes d'âges pré-PRL vanilla
+
+spriteTypes = {
+	spriteType = {
+		name = "GFX_adastra_age_stone"
+		textureFile = "gfx/interface/icons/diplomacy/preftl_ages/preftl_stone_age.dds"
+	}
+	spriteType = {
+		name = "GFX_adastra_age_bronze"
+		textureFile = "gfx/interface/icons/diplomacy/preftl_ages/preftl_bronze_age.dds"
+	}
+	spriteType = {
+		name = "GFX_adastra_age_iron"
+		textureFile = "gfx/interface/icons/diplomacy/preftl_ages/preftl_iron_age.dds"
+	}
+	spriteType = {
+		name = "GFX_adastra_age_medieval"
+		textureFile = "gfx/interface/icons/diplomacy/preftl_ages/preftl_medieval_age.dds"
+	}
+	spriteType = {
+		name = "GFX_adastra_age_renaissance"
+		textureFile = "gfx/interface/icons/diplomacy/preftl_ages/preftl_renaissance_age.dds"
+	}
+	spriteType = {
+		name = "GFX_adastra_age_steam"
+		textureFile = "gfx/interface/icons/diplomacy/preftl_ages/preftl_steam_age.dds"
+	}
+	spriteType = {
+		name = "GFX_adastra_age_industrial"
+		textureFile = "gfx/interface/icons/diplomacy/preftl_ages/preftl_industrial_age.dds"
+	}
+	spriteType = {
+		name = "GFX_adastra_age_machine"
+		textureFile = "gfx/interface/icons/diplomacy/preftl_ages/preftl_machine_age.dds"
+	}
+	spriteType = {
+		name = "GFX_adastra_age_atomic"
+		textureFile = "gfx/interface/icons/diplomacy/preftl_ages/preftl_atomic_age.dds"
+	}
+	spriteType = {
+		name = "GFX_adastra_age_space"
+		textureFile = "gfx/interface/icons/diplomacy/preftl_ages/preftl_early_space_age.dds"
+	}
+}
