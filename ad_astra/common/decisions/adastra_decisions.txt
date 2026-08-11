@@ -174,3 +174,124 @@ decision_adastra_navy = {
 		weight = 0
 	}
 }
+
+# 1.1 : Campagnes d'exploitation - collecter plus, au prix d'un compromis.
+# Chaque levier arrive a l'epoque qui l'a vu naitre. Modificateurs temporaires (10 ans), non cumulables.
+
+decision_adastra_campaign_harvest = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_resources
+
+	enactment_time = 60
+
+	resources = {
+		category = decisions
+		cost = { unity = 20 }
+	}
+
+	potential = {
+		is_capital = yes
+		owner = { has_country_flag = adastra_locked }
+	}
+
+	allow = {
+		NOT = { has_modifier = adastra_campaign_harvest }
+	}
+
+	effect = {
+		add_modifier = { modifier = adastra_campaign_harvest days = 3600 }
+	}
+
+	ai_weight = { weight = 0 }
+}
+
+decision_adastra_campaign_mining = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_resources
+
+	enactment_time = 60
+
+	resources = {
+		category = decisions
+		cost = { unity = 20 }
+	}
+
+	potential = {
+		is_capital = yes
+		owner = { has_country_flag = adastra_locked }
+	}
+
+	allow = {
+		NOT = { has_modifier = adastra_campaign_mining }
+	}
+
+	effect = {
+		add_modifier = { modifier = adastra_campaign_mining days = 3600 }
+	}
+
+	ai_weight = { weight = 0 }
+}
+
+decision_adastra_campaign_fuel = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_resources
+
+	enactment_time = 60
+
+	resources = {
+		category = decisions
+		cost = { unity = 20 }
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = adastra_locked
+			has_country_flag = adastra_unlock_steam
+		}
+	}
+
+	allow = {
+		NOT = { has_modifier = adastra_campaign_fuel }
+	}
+
+	effect = {
+		add_modifier = { modifier = adastra_campaign_fuel days = 3600 }
+	}
+
+	ai_weight = { weight = 0 }
+}
+
+decision_adastra_campaign_industry = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_resources
+
+	enactment_time = 60
+
+	resources = {
+		category = decisions
+		cost = { unity = 20 }
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = adastra_locked
+			has_country_flag = adastra_unlock_industrial
+		}
+	}
+
+	allow = {
+		NOT = { has_modifier = adastra_campaign_industry }
+	}
+
+	effect = {
+		add_modifier = { modifier = adastra_campaign_industry days = 3600 }
+	}
+
+	ai_weight = { weight = 0 }
+}

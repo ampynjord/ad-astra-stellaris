@@ -14,7 +14,6 @@ country_event = {
 	desc = "adastra.1.desc"
 	picture = GFX_evt_metropolis
 	is_triggered_only = yes
-	major = yes
 
 	trigger = {
 		has_origin = origin_adastra
@@ -254,6 +253,7 @@ country_event = {
 		# Fin d'initialisation (différée pour couvrir les on_first_enter)
 		country_event = { id = adastra.3 days = 10 }
 		country_event = { id = adastra.4 }
+		country_event = { id = adastra.5 }
 		country_event = { id = adastra.7 }
 	}
 }
@@ -280,7 +280,6 @@ country_event = {
 	desc = "adastra.4.desc"
 	picture = GFX_evt_alien_city
 	is_triggered_only = yes
-	major = yes
 
 	option = {
 		name = "adastra.4.a"
@@ -370,6 +369,40 @@ country_event = {
 }
 
 ############################
+# adastra.5 : Le rythme de l'ascension (1.1 - vitesse configurable, défaut = comportement 1.0)
+############################
+country_event = {
+	id = adastra.5
+	title = "adastra.5.name"
+	desc = "adastra.5.desc"
+	picture = GFX_evt_society_research
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.5.a"
+		custom_tooltip = "adastra.5.a.tooltip"
+	}
+
+	option = {
+		name = "adastra.5.b"
+		custom_tooltip = "adastra.5.b.tooltip"
+		hidden_effect = { set_country_flag = adastra_speed_fast add_modifier = { modifier = adastra_pace_fast } }
+	}
+
+	option = {
+		name = "adastra.5.c"
+		custom_tooltip = "adastra.5.c.tooltip"
+		hidden_effect = { set_country_flag = adastra_speed_slow add_modifier = { modifier = adastra_pace_slow } }
+	}
+
+	option = {
+		name = "adastra.5.d"
+		custom_tooltip = "adastra.5.d.tooltip"
+		hidden_effect = { set_country_flag = adastra_speed_veryslow add_modifier = { modifier = adastra_pace_veryslow } }
+	}
+}
+
+############################
 # adastra.7 : Le rythme de la galaxie (choix du joueur)
 ############################
 country_event = {
@@ -439,7 +472,6 @@ country_event = {
 	desc = "adastra.16.desc"
 	picture = GFX_evt_physics_research
 	is_triggered_only = yes
-	major = yes
 
 	option = {
 		name = "adastra.16.a"
@@ -539,7 +571,6 @@ country_event = {
 	desc = "adastra.80.desc"
 	picture = GFX_evt_satellite_in_orbit
 	is_triggered_only = yes
-	major = yes
 
 	immediate = {
 		set_country_flag = adastra_program_started
@@ -561,7 +592,6 @@ country_event = {
 	desc = "adastra.81.desc"
 	picture = GFX_evt_space_station
 	is_triggered_only = yes
-	major = yes
 
 	immediate = {
 		set_country_flag = adastra_stage_orbital
@@ -582,7 +612,6 @@ country_event = {
 	desc = "adastra.82.desc"
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-	major = yes
 
 	immediate = {
 		set_country_flag = adastra_stage_hyper
@@ -725,16 +754,76 @@ country_event = {
 	immediate = {
 		remove_country_flag = adastra_locked
 		set_country_flag = adastra_completed
+		remove_modifier = adastra_pace_fast
+		remove_modifier = adastra_pace_slow
+		remove_modifier = adastra_pace_veryslow
+
+		# 1.1 : le changement de type de pays remet les réserves à zéro (bug signalé en bêta).
+		# On photographie les stocks avant la bascule, on les restitue juste après.
+		export_resource_stockpile_to_variable = { resource = energy variable = adastra_st_energy }
+		export_resource_stockpile_to_variable = { resource = minerals variable = adastra_st_minerals }
+		export_resource_stockpile_to_variable = { resource = food variable = adastra_st_food }
+		export_resource_stockpile_to_variable = { resource = consumer_goods variable = adastra_st_cg }
+		export_resource_stockpile_to_variable = { resource = alloys variable = adastra_st_alloys }
+		export_resource_stockpile_to_variable = { resource = influence variable = adastra_st_influence }
+		export_resource_stockpile_to_variable = { resource = unity variable = adastra_st_unity }
+		export_resource_stockpile_to_variable = { resource = volatile_motes variable = adastra_st_motes }
+		export_resource_stockpile_to_variable = { resource = exotic_gases variable = adastra_st_gases }
+		export_resource_stockpile_to_variable = { resource = rare_crystals variable = adastra_st_crystals }
+
 		# Redevenir un empire spatial normal
 		set_country_type = default
 
-		# Réveiller la galaxie si elle était en attente
+		add_resource = { energy = 1 mult = adastra_st_energy }
+		add_resource = { minerals = 1 mult = adastra_st_minerals }
+		add_resource = { food = 1 mult = adastra_st_food }
+		add_resource = { consumer_goods = 1 mult = adastra_st_cg }
+		add_resource = { alloys = 1 mult = adastra_st_alloys }
+		add_resource = { influence = 1 mult = adastra_st_influence }
+		add_resource = { unity = 1 mult = adastra_st_unity }
+		add_resource = { volatile_motes = 1 mult = adastra_st_motes }
+		add_resource = { exotic_gases = 1 mult = adastra_st_gases }
+		add_resource = { rare_crystals = 1 mult = adastra_st_crystals }
+
+		clear_variable = adastra_st_energy
+		clear_variable = adastra_st_minerals
+		clear_variable = adastra_st_food
+		clear_variable = adastra_st_cg
+		clear_variable = adastra_st_alloys
+		clear_variable = adastra_st_influence
+		clear_variable = adastra_st_unity
+		clear_variable = adastra_st_motes
+		clear_variable = adastra_st_gases
+		clear_variable = adastra_st_crystals
+
+		# Réveiller la galaxie si elle était en attente (même protection des stocks)
 		if = {
 			limit = { has_country_flag = adastra_dormant_active }
 			remove_country_flag = adastra_dormant_active
 			every_country = {
 				limit = { is_country_type = adastra_dormant }
+				export_resource_stockpile_to_variable = { resource = energy variable = adastra_st_energy }
+				export_resource_stockpile_to_variable = { resource = minerals variable = adastra_st_minerals }
+				export_resource_stockpile_to_variable = { resource = food variable = adastra_st_food }
+				export_resource_stockpile_to_variable = { resource = consumer_goods variable = adastra_st_cg }
+				export_resource_stockpile_to_variable = { resource = alloys variable = adastra_st_alloys }
+				export_resource_stockpile_to_variable = { resource = influence variable = adastra_st_influence }
+				export_resource_stockpile_to_variable = { resource = unity variable = adastra_st_unity }
 				set_country_type = default
+				add_resource = { energy = 1 mult = adastra_st_energy }
+				add_resource = { minerals = 1 mult = adastra_st_minerals }
+				add_resource = { food = 1 mult = adastra_st_food }
+				add_resource = { consumer_goods = 1 mult = adastra_st_cg }
+				add_resource = { alloys = 1 mult = adastra_st_alloys }
+				add_resource = { influence = 1 mult = adastra_st_influence }
+				add_resource = { unity = 1 mult = adastra_st_unity }
+				clear_variable = adastra_st_energy
+				clear_variable = adastra_st_minerals
+				clear_variable = adastra_st_food
+				clear_variable = adastra_st_cg
+				clear_variable = adastra_st_alloys
+				clear_variable = adastra_st_influence
+				clear_variable = adastra_st_unity
 			}
 		}
 
@@ -799,7 +888,6 @@ country_event = {
 	desc = "adastra.20.desc"
 	picture = GFX_evt_ship_in_orbit
 	is_triggered_only = yes
-	major = yes
 
 	immediate = {
 		event_target:adastra_home_system = {
@@ -857,7 +945,6 @@ country_event = {
 	desc = "adastra.25.desc"
 	picture = GFX_evt_observation
 	is_triggered_only = yes
-	major = yes
 
 	option = {
 		name = "adastra.25.a"
@@ -923,7 +1010,6 @@ country_event = {
 	desc = "adastra.26.desc"
 	picture = GFX_evt_ship_in_orbit
 	is_triggered_only = yes
-	major = yes
 
 	immediate = {
 		country_event = { id = adastra.28 }
@@ -954,7 +1040,6 @@ country_event = {
 	desc = "adastra.27.desc"
 	picture = GFX_evt_federation_fleet
 	is_triggered_only = yes
-	major = yes
 
 	immediate = {
 		country_event = { id = adastra.28 }

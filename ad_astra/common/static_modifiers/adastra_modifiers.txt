@@ -61,3 +61,37 @@ adastra_dormant_galaxy = {
 	country_starbase_influence_cost_mult = 10
 	country_claim_influence_cost_mult = 10
 }
+
+# 1.1 : Campagnes d'exploitation (temporaires, avec compromis)
+adastra_campaign_harvest = {
+	planet_jobs_food_produces_mult = 0.40
+	logistic_growth_mult = -0.15
+}
+
+adastra_campaign_mining = {
+	planet_jobs_minerals_produces_mult = 0.40
+	pop_happiness = -0.15
+	planet_stability_add = -5
+}
+
+adastra_campaign_fuel = {
+	planet_jobs_energy_produces_mult = 0.40
+	logistic_growth_mult = -0.10
+	pop_happiness = -0.10
+}
+
+adastra_campaign_industry = {
+	planet_jobs_consumer_goods_produces_mult = 0.40
+	pop_happiness = -0.15
+	planet_stability_add = -5
+}
+
+# 1.1 : Badges de rythme d'ascension (informatifs - visibles dans les modificateurs de l'empire)
+adastra_pace_fast = {
+}
+
+adastra_pace_slow = {
+}
+
+adastra_pace_veryslow = {
+}
