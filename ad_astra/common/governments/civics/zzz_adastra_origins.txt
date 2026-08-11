@@ -16,8 +16,10 @@ origin_adastra = {
 	# aura son contenu dédié plus tard, jouer l'origine en gestalt aujourd'hui casserait la partie.
 	possible = {
 		authority = {
-			NOT = { value = auth_hive_mind }
-			NOT = { value = auth_machine_intelligence }
+			NOR = {
+				value = auth_hive_mind
+				value = auth_machine_intelligence
+			}
 		}
 	}
 
