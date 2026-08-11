@@ -72,5 +72,5 @@ Research the **Hyperspace Drive**: the situation completes, your ships are refit
 
 ## Crédits
 
-Créé par ampynjord, développé avec Claude (Anthropic). / Created by ampynjord, developed with Claude (Anthropic).
+Créé par ampynjord. / Created by ampynjord.
 Licence : MIT.
