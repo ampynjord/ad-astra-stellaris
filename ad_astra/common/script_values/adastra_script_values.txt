@@ -1,0 +1,3 @@
+# Ad Astra 1.1 - (reserve pour usage futur)
+# La restitution des stocks a l'emergence passe par add_resource { X = 1 mult = <variable> },
+# le pattern officiel du moteur (cf. events/000_how_to_use_variables_in_script.txt vanilla).

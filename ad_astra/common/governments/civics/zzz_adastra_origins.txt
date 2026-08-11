@@ -12,7 +12,13 @@ origin_adastra = {
 		always = yes
 	}
 
+	# 1.1 : réservée aux empires réguliers - le confinement gestalt (ruche/machine)
+	# aura son contenu dédié plus tard, jouer l'origine en gestalt aujourd'hui casserait la partie.
 	possible = {
+		authority = {
+			NOT = { value = auth_hive_mind }
+			NOT = { value = auth_machine_intelligence }
+		}
 	}
 
 	flags = { adastra_origin }
