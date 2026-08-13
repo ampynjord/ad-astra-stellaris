@@ -121,13 +121,19 @@ Pas de date : la 1.2 sort quand une partie complète tient le coup.
 
 Le détail complet est dans le [CHANGELOG](CHANGELOG.md). / *Full detail in the [CHANGELOG](CHANGELOG.md).*
 
+### Après / After
+
+Coloniser davantage de son propre monde natal · traditions d'époque · nations rivales sur votre planète natale, avec leurs guerres et leur unification · et, dans un mod séparé, une galaxie où *tous* les empires commencent pré-PRL.
+
 ---
 
 ## Rapports de bug / Bug reports
 
-Ouvrez une [issue](https://github.com/ampynjord/ad-astra-stellaris/issues) ou laissez un commentaire sur le Workshop. Un rapport utile contient : votre âge de départ, votre rythme, la date en jeu, et le contenu de `Documents/Paradox Interactive/Stellaris/logs/error.log`.
+[Ouvrez une issue](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose) : les formulaires demandent d'eux-mêmes l'âge de départ, le rythme, la date en jeu et `error.log`. Ce sont les quatre choses sans lesquelles un rapport n'est pas exploitable.
 
-*Open an [issue](https://github.com/ampynjord/ad-astra-stellaris/issues) or leave a Workshop comment. A useful report has: your starting age, your pace, the in-game date, and the contents of `Documents/Paradox Interactive/Stellaris/logs/error.log`.*
+Les **idées** ont leur propre formulaire. Elles comptent autant que les bugs : la 1.2 entière est née de commentaires de joueurs.
+
+*[Open an issue](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose): the forms ask for the starting age, the pace, the in-game date and `error.log` on their own. Those are the four things without which a report cannot be acted on. **Ideas** have their own form — they matter as much as bugs: the whole of 1.2 came from player comments.*
 
 ---
 
