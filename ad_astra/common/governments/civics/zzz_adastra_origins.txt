@@ -14,6 +14,10 @@ origin_adastra = {
 
 	# 1.1 : réservée aux empires réguliers - le confinement gestalt (ruche/machine)
 	# aura son contenu dédié plus tard, jouer l'origine en gestalt aujourd'hui casserait la partie.
+	# 1.1.1 : NOR et non NOT { OR }. La forme empilee n'est pas supportee par le
+	# moteur : elle rendait la condition toujours fausse, et l'origine
+	# disparaissait de la liste pour tout le monde. NOR est la forme qu'utilise
+	# le jeu de base.
 	possible = {
 		authority = {
 			NOR = {
