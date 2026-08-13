@@ -1,4 +1,4 @@
-version="1.0.0"
+version="1.1.1"
 tags={
 	"Gameplay"
 	"Events"
@@ -6,4 +6,5 @@ tags={
 }
 name="Ad Astra"
 supported_version="v4.4.*"
-path="C:/Program Files (x86)/Steam/steamapps/common/Stellaris/adastra_mod_data"
+picture="thumbnail.png"
+path="mod/ad_astra"
