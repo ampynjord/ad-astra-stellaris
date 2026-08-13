@@ -121,10 +121,6 @@ Pas de date : la 1.2 sort quand une partie complète tient le coup.
 
 Le détail complet est dans le [CHANGELOG](CHANGELOG.md). / *Full detail in the [CHANGELOG](CHANGELOG.md).*
 
-### Après / After
-
-Coloniser davantage de son propre monde natal · traditions d'époque · nations rivales sur votre planète natale, avec leurs guerres et leur unification · et, dans un mod séparé, une galaxie où *tous* les empires commencent pré-PRL.
-
 ---
 
 ## Rapports de bug / Bug reports
