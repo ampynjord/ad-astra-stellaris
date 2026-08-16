@@ -1,5 +1,15 @@
-# Ad Astra 1.1 - Overrides generes : techs de tier 1 et 2,
-# gatees a l'Age spatial pour l'origine Ad Astra (les autres empires ne sont pas affectes).
+# Ad Astra - Overrides generes : techs de tier 1 et 2.
+#
+# 16/08 - LES DEUX PALIERS NE SONT PLUS TRAITES PAREIL. Retour de cooldude808 :
+# « in early space age I researched things I should not have i.e. terraforming,
+# battleships ». Diagnostic : le palier 1 s'ouvrait a l'Age spatial, six technos
+# suffisaient a ouvrir le palier 2, six de plus le palier 3 - et le palier 3
+# n'est surcharge par personne. La terraformation y est.
+#
+# Desormais : le palier 1 s'ouvre a l'Age spatial, le palier 2 attend
+# L'EMERGENCE. Comme le palier 3 exige six technos de palier 2 deja cherchees,
+# il ne s'ouvre jamais pendant le confinement. Le verrou se ferme tout seul,
+# sans avoir a enumerer les centaines de technos de palier 3 et au-dela.
 # Genere par tools/gen_tier1_overrides.py - NE PAS EDITER A LA MAIN.
 
 # source vanilla : 00_ancient_relics_tech.txt
@@ -43,7 +53,7 @@ tech_arcane_deciphering = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -96,7 +106,7 @@ tech_archeology_lab_ancrel = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_ancrel = yes
 	}
@@ -115,7 +125,7 @@ tech_archaeostudies = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_ancrel = yes
 	}
@@ -180,7 +190,7 @@ tech_rift_sphere = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_astral_planes_dlc = yes
 	}
@@ -204,7 +214,7 @@ tech_astral_harvesting = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_astral_planes_dlc = yes
 	}
@@ -283,7 +293,10 @@ tech_mauler_build_speed = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -320,7 +333,10 @@ tech_mauler_growth_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -385,7 +401,10 @@ tech_mauler_growth_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -444,7 +463,10 @@ tech_weaver_build_speed = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -481,7 +503,7 @@ tech_weaver_growth_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -544,7 +566,7 @@ tech_weaver_growth_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -603,7 +625,10 @@ tech_weaver_bio_healing_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -639,7 +664,7 @@ tech_weaver_bio_healing_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -678,7 +703,7 @@ tech_weaver_bio_evasion_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -717,7 +742,10 @@ tech_weaver_bio_fire_rate_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -753,7 +781,7 @@ tech_weaver_bio_fire_rate_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -792,7 +820,10 @@ tech_weaver_bio_confuser_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -828,7 +859,7 @@ tech_weaver_bio_confuser_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -867,7 +898,7 @@ tech_weaver_bio_anti_evasion_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -906,7 +937,10 @@ tech_weaver_bio_anti_fire_rate_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -942,7 +976,7 @@ tech_weaver_bio_anti_fire_rate_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = yes
 	}
@@ -988,7 +1022,7 @@ tech_storm_manipulation = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_cosmic_storms_dlc = yes
 	}
@@ -1040,7 +1074,10 @@ tech_industrial_storm_protection = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		has_cosmic_storms_dlc = yes
 	}
@@ -1117,7 +1154,7 @@ tech_advanced_industrial_storm_protection = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_cosmic_storms_dlc = yes
 		is_wilderness_empire = no
@@ -1190,7 +1227,10 @@ tech_storm_prediction_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		has_cosmic_storms_dlc = yes
 	}
@@ -1246,7 +1286,10 @@ tech_ship_hull_storm_breaker_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		has_cosmic_storms_dlc = yes
 	}
@@ -1304,7 +1347,7 @@ tech_ship_hull_storm_breaker_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_cosmic_storms_dlc = yes
 	}
@@ -1362,7 +1405,10 @@ tech_ship_storm_weapons_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		has_cosmic_storms_dlc = yes
 	}
@@ -1419,7 +1465,7 @@ tech_ship_storm_weapons_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_cosmic_storms_dlc = yes
 	}
@@ -1477,7 +1523,10 @@ tech_gargantuan_evolution = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -1498,7 +1547,7 @@ tech_repeatable_lcluster_clue = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_country_flag = encountered_first_lgate
 		NOT = { has_country_flag = completed_lcluster_chain }
@@ -1560,7 +1609,7 @@ tech_experimental_subspace_navigation = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -1580,7 +1629,7 @@ tech_destroyers = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = no
 	}
@@ -1645,7 +1694,10 @@ tech_corvette_build_speed = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = no
 	}
@@ -1694,7 +1746,10 @@ tech_corvette_hull_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = no
 	}
@@ -1742,7 +1797,7 @@ tech_corvette_hull_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = no
 	}
@@ -1802,7 +1857,7 @@ tech_destroyer_build_speed = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = no
 	}
@@ -1850,7 +1905,7 @@ tech_destroyer_hull_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = no
 	}
@@ -1900,7 +1955,7 @@ tech_starbase_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -2004,7 +2059,7 @@ tech_modular_engineering = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2052,7 +2107,15 @@ tech_strike_craft_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
+		}
+		# 1.3 : et seulement si on peut construire des vaisseaux.
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			adastra_gameplay_vaisseaux = yes
 		}
 	}
 }
@@ -2101,7 +2164,7 @@ tech_strike_craft_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2150,7 +2213,10 @@ tech_ship_armor_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2199,7 +2265,7 @@ tech_ship_armor_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2226,7 +2292,7 @@ tech_crystal_armor_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2252,7 +2318,7 @@ tech_armor_hardeners_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2312,7 +2378,7 @@ tech_thrusters_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2346,7 +2412,7 @@ tech_defense_platform_hull_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2391,7 +2457,10 @@ tech_powered_exoskeletons = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2432,7 +2501,10 @@ tech_space_mining_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2473,7 +2545,10 @@ tech_space_mining_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2514,7 +2589,7 @@ tech_space_mining_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2555,7 +2630,7 @@ tech_space_mining_4 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2817,7 +2892,7 @@ tech_advanced_metallurgy_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -2877,7 +2952,10 @@ tech_engineering_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -2929,7 +3007,7 @@ tech_engineering_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -2989,7 +3067,10 @@ tech_robotic_workers = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		NOR = {
 			has_ethic = "ethic_gestalt_consciousness"
@@ -3058,7 +3139,7 @@ tech_droid_workers = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		NOR = {
 			has_ethic = "ethic_gestalt_consciousness"
@@ -3131,7 +3212,7 @@ tech_integrated_cybernetics = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			AND = {
@@ -3200,7 +3281,15 @@ tech_afterburners_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
+		}
+		# 1.3 : et seulement si on peut construire des vaisseaux.
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			adastra_gameplay_vaisseaux = yes
 		}
 	}
 }
@@ -3244,7 +3333,7 @@ tech_assembly_pattern = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -3261,7 +3350,7 @@ tech_housing_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -3347,7 +3436,10 @@ tech_mass_drivers_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -3415,7 +3507,7 @@ tech_mass_drivers_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -3489,7 +3581,7 @@ tech_autocannons_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -3539,7 +3631,10 @@ tech_missiles_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = no
 	}
@@ -3590,7 +3685,7 @@ tech_missiles_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_bio_ships = no
 	}
@@ -3659,7 +3754,7 @@ tech_swarmer_missiles_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -3678,7 +3773,10 @@ tech_torpedoes_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			country_uses_bio_ships = no
@@ -3734,7 +3832,7 @@ tech_pyroclastic_resonation = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_shroud_dlc = yes
 	}
@@ -3752,7 +3850,7 @@ tech_alloy_fossilization = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_shroud_dlc = yes
 	}
@@ -3770,7 +3868,7 @@ tech_orbital_maneuvers = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_shroud_dlc = yes
 	}
@@ -3792,7 +3890,7 @@ tech_cryovault = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_shroud_dlc = yes
 		is_nomadic = no
@@ -3811,7 +3909,10 @@ tech_living_test_subjects = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		has_shroud_dlc = yes
 	}
@@ -3836,7 +3937,7 @@ tech_cloaking_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -3899,7 +4000,7 @@ tech_detection_array = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -3943,7 +4044,7 @@ tech_assisted_detection = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -3987,7 +4088,7 @@ tech_unusual_senses = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4017,7 +4118,7 @@ tech_new_numbers = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4042,7 +4143,7 @@ tech_trinary_computing = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4068,7 +4169,7 @@ tech_atmospheric_orbital_mechanics = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4108,7 +4209,7 @@ tech_predatory_tactics = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4153,7 +4254,7 @@ tech_satisfying_insults = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4191,7 +4292,7 @@ tech_compact_living = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4222,7 +4323,7 @@ tech_alien_topography = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4268,7 +4369,7 @@ tech_xeno_aesthetics = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4300,7 +4401,7 @@ tech_lost_building_methods = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4326,7 +4427,7 @@ tech_supreme_alloy = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4351,7 +4452,7 @@ tech_ordered_retreat = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4376,7 +4477,7 @@ tech_temple_of_transportation = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_first_contact_dlc = yes
 	}
@@ -4399,7 +4500,7 @@ tech_galactic_archivism = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_grand_archive_dlc = yes
 	}
@@ -4448,7 +4549,7 @@ tech_gravity_wells = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_grand_archive_dlc = yes
 		OR = {
@@ -4490,7 +4591,7 @@ tech_gravity_snare_capacity_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_grand_archive_dlc = yes
 	}
@@ -4512,7 +4613,7 @@ tech_alien_cloning = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_grand_archive_dlc = yes
 		OR = {
@@ -4568,7 +4669,7 @@ tech_improved_incubators = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_grand_archive_dlc = yes
 	}
@@ -4638,7 +4739,10 @@ tech_boarding_cables = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		has_grand_archive_dlc = yes
 	}
@@ -4657,7 +4761,7 @@ tech_controlled_mutations = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			is_beastmasters_empire = yes
@@ -4708,7 +4812,7 @@ tech_thrusters_bio_integration = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -4732,7 +4836,7 @@ tech_hyper_drive_bio_integration = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -4756,7 +4860,7 @@ tech_sensors_bio_integration = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -4780,7 +4884,7 @@ tech_combat_computers_bio_integration = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -4801,7 +4905,7 @@ tech_orbital_arc_furnace = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
         has_machine_age_dlc = yes
     }
@@ -4868,7 +4972,7 @@ tech_dyson_swarm = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
         has_machine_age_dlc = yes
     }
@@ -4942,7 +5046,10 @@ tech_orbital_trash_dispersal = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -4960,7 +5067,7 @@ tech_waystation_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = yes
 	}
@@ -5053,7 +5160,7 @@ tech_planetary_engineering = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = yes
 	}
@@ -5104,7 +5211,7 @@ tech_dyson_gun = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
         has_nomads_dlc = yes
         is_nomadic = no
@@ -5164,7 +5271,7 @@ tech_hyper_relays = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		} has_overlord_dlc = yes }
 
 	feature_flags = { hyper_relay_construction }
@@ -5281,7 +5388,10 @@ tech_basic_science_lab_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -5332,7 +5442,7 @@ tech_curator_lab = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -5385,7 +5495,7 @@ tech_archeology_lab = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_ancrel = no
 	}
@@ -5427,7 +5537,10 @@ tech_space_science_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -5468,7 +5581,10 @@ tech_space_science_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -5509,7 +5625,7 @@ tech_space_science_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -5550,7 +5666,7 @@ tech_space_science_4 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -5568,7 +5684,10 @@ tech_physics_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -5620,7 +5739,7 @@ tech_physics_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -5706,7 +5825,10 @@ tech_administrative_ai = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -5724,7 +5846,10 @@ tech_cryostasis_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -5795,7 +5920,7 @@ tech_self_aware_logic = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -5870,7 +5995,10 @@ tech_automated_exploration = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -5926,7 +6054,15 @@ tech_combat_computers_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
+		}
+		# 1.3 : et seulement si on peut construire des vaisseaux.
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			adastra_gameplay_vaisseaux = yes
 		}
 	}
 }
@@ -5954,7 +6090,10 @@ tech_auxiliary_fire_control = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -5976,7 +6115,7 @@ tech_consumer_good_refinement_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		country_uses_consumer_goods = yes
 	}
@@ -6028,7 +6167,10 @@ tech_encryption_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6070,7 +6212,7 @@ tech_encryption_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6112,7 +6254,10 @@ tech_decryption_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6154,7 +6299,7 @@ tech_decryption_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6217,7 +6362,10 @@ tech_fusion_power = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6278,7 +6426,7 @@ tech_cold_fusion_power = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6305,7 +6453,10 @@ tech_reactor_boosters_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6332,7 +6483,10 @@ tech_reactor_boosters_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6382,7 +6536,10 @@ tech_shields_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6429,7 +6586,7 @@ tech_shields_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6455,7 +6612,7 @@ tech_shield_rechargers_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6481,7 +6638,7 @@ tech_shield_hardeners_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6593,7 +6750,7 @@ tech_sensors_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6683,7 +6840,7 @@ tech_power_plant_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6866,7 +7023,7 @@ tech_hyper_drive_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -6884,7 +7041,7 @@ tech_ftl_inhibitor = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -6969,7 +7126,10 @@ tech_lasers_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -7036,7 +7196,7 @@ tech_lasers_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -7110,7 +7270,7 @@ tech_plasma_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -7178,7 +7338,7 @@ tech_disruptors_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -7225,7 +7385,7 @@ tech_pd_tracking_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -7266,7 +7426,7 @@ tech_mining_drone_weapon_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -7296,7 +7456,7 @@ tech_space_cloud_weapon_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -7313,7 +7473,7 @@ tech_psionic_suppression = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_shroud_dlc = yes
 		has_encountered_psionic_auras = yes
@@ -7398,7 +7558,10 @@ tech_space_trading = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_regular_empire = yes
 	}
@@ -7711,7 +7874,10 @@ tech_food_processing_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -7729,7 +7895,10 @@ tech_society_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -7784,7 +7953,7 @@ tech_society_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -7842,7 +8011,10 @@ tech_alien_life_studies = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_regular_empire = yes
 	}
@@ -7950,7 +8122,7 @@ tech_colonization_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -7979,7 +8151,7 @@ tech_colonization_3 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -7997,7 +8169,10 @@ tech_frontier_health = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_regular_empire = yes
 		is_individual_machine = no
@@ -8033,7 +8208,7 @@ tech_frontier_hospital = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_gestalt = no
 		is_individual_machine = no
@@ -8072,7 +8247,7 @@ tech_mountain_range = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -8144,7 +8319,7 @@ tech_volcano = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -8224,7 +8399,7 @@ tech_dangerous_wildlife = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -8294,7 +8469,10 @@ tech_dense_jungle = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -8363,7 +8541,10 @@ tech_quicksand_basin = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -8432,7 +8613,10 @@ tech_noxious_swamp = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -8501,7 +8685,10 @@ tech_massive_glacier = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -8570,7 +8757,10 @@ tech_toxic_kelp = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -8639,7 +8829,10 @@ tech_deep_sinkhole = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -8713,7 +8906,7 @@ tech_terrestrial_sculpting = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_nomadic = no
 	}
@@ -8824,7 +9017,7 @@ tech_volcanic_forge = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_world_forger_empire = yes
 	}
@@ -8862,7 +9055,7 @@ tech_volcanic_terraforming = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_infernals = yes
 	}
@@ -9023,7 +9216,7 @@ tech_vitality_boosters = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			is_machine_empire = no
@@ -9085,7 +9278,7 @@ tech_epigenetic_triggers = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
@@ -9196,7 +9389,7 @@ tech_cloning = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			is_machine_empire = no
@@ -9258,7 +9451,7 @@ tech_gene_banks = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			is_machine_empire = no
@@ -9335,7 +9528,15 @@ tech_doctrine_fleet_size_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
+		}
+		# 1.3 : et seulement si on peut construire des vaisseaux.
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			adastra_gameplay_vaisseaux = yes
 		}
 	}
 }
@@ -9373,7 +9574,7 @@ tech_doctrine_fleet_size_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9406,7 +9607,7 @@ tech_interstellar_fleet_traditions = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9443,7 +9644,15 @@ tech_doctrine_navy_size_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
+		}
+		# 1.3 : et seulement si on peut construire des vaisseaux.
+		OR = {
+			NOT = { has_origin = origin_adastra }
+			adastra_gameplay_vaisseaux = yes
 		}
 	}
 }
@@ -9481,7 +9690,7 @@ tech_doctrine_navy_size_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9531,7 +9740,10 @@ tech_ground_defense_planning = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9584,7 +9796,7 @@ tech_global_defense_grid = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9632,7 +9844,7 @@ tech_galactic_ambitions = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9690,7 +9902,7 @@ tech_interstellar_campaigns = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9750,7 +9962,10 @@ tech_planetary_unification = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9796,7 +10011,7 @@ tech_colonial_centralization = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9860,7 +10075,7 @@ tech_planetary_infrastructure_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9885,7 +10100,7 @@ tech_subdermal_stimulation = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		NOR = {
 			has_ethic = ethic_gestalt_consciousness
@@ -9963,7 +10178,10 @@ tech_adaptive_bureaucracy = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -9981,7 +10199,7 @@ tech_effective_bureaucracy = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_gestalt = no
 	}
@@ -10058,7 +10276,7 @@ tech_colonial_bureaucracy = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -10076,7 +10294,7 @@ tech_living_state = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
@@ -10127,7 +10345,7 @@ tech_autonomous_agents = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		has_ethic = ethic_gestalt_consciousness
 	}
@@ -10176,7 +10394,10 @@ tech_neural_implants = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_regular_empire = yes
 		allows_slavery = yes
@@ -10247,7 +10468,7 @@ tech_artificial_moral_codes = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
@@ -10279,7 +10500,7 @@ tech_unity_of_purpose = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_gestalt = yes
 	}
@@ -10307,7 +10528,10 @@ tech_hyper_entertainment_forum = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_gestalt = no
 	}
@@ -10342,7 +10566,10 @@ tech_cultural_heritage = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -10424,7 +10651,7 @@ tech_heritage_site = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -10442,7 +10669,7 @@ tech_holographic_rituals = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			is_spiritualist = yes
@@ -10483,7 +10710,7 @@ tech_hive_cluster = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -10509,7 +10736,7 @@ tech_wilderness_cluster = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -10528,7 +10755,7 @@ tech_penal_colonies = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_gestalt = no
 		is_nomadic = no
@@ -10575,7 +10802,7 @@ tech_resort_colonies = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_gestalt = no
 		is_nomadic = no
@@ -10607,7 +10834,7 @@ tech_slave_colonies = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_gestalt = no
 		is_nomadic = no
@@ -10654,7 +10881,10 @@ tech_federation_code = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			# The tech can be given at the start of the game
@@ -10733,7 +10963,7 @@ tech_xeno_diplomacy = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_regular_empire = yes
 	}
@@ -10813,7 +11043,7 @@ tech_capital_productivity_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -10832,7 +11062,10 @@ tech_xeno_linguistics = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		has_paragon_dlc = yes
 		is_regular_empire = yes
@@ -10873,7 +11106,7 @@ tech_node_reformatting_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_machine_empire = yes
 	}
@@ -10948,7 +11181,7 @@ tech_node_culling_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_hive_empire = yes
 	}
@@ -11051,7 +11284,10 @@ tech_bio_reactor = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -11092,7 +11328,7 @@ tech_bio_reactor_2 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		is_wilderness_empire = no
 	}
@@ -11142,7 +11378,7 @@ tech_amoeba_strike_craft_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -11170,7 +11406,10 @@ tech_space_whale_weapon_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -11191,7 +11430,7 @@ tech_enhanced_cryosleep_sedatives = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -11224,7 +11463,7 @@ tech_mine_betharian = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -11289,7 +11528,7 @@ tech_mine_volatile_motes = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -11341,7 +11580,7 @@ tech_volatile_motes = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -11407,7 +11646,7 @@ tech_mine_exotic_gases = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -11458,7 +11697,7 @@ tech_exotic_gases = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -11527,7 +11766,7 @@ tech_mine_rare_crystals = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -11579,7 +11818,7 @@ tech_rare_crystals = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 	}
 }
@@ -11597,7 +11836,7 @@ tech_nanite_transmutation = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		host_has_dlc = "Distant Stars Story Pack"
 	}
@@ -11653,7 +11892,10 @@ tech_robomodding_m = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			is_machine_empire = yes
@@ -11692,7 +11934,10 @@ tech_robomodding = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
+		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
+		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
+			has_country_flag = adastra_completed
 		}
 		NOR = {
 			has_ethic = "ethic_gestalt_consciousness"
@@ -11748,7 +11993,7 @@ tech_robomodding_points_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		NOT = {
 			has_ethic = "ethic_gestalt_consciousness"
@@ -11802,7 +12047,7 @@ tech_adaptive_combat_algorithms = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			is_machine_empire = yes
@@ -11836,7 +12081,7 @@ tech_micro_replicators = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_space = yes
+			has_country_flag = adastra_completed
 		}
 		OR = {
 			is_machine_empire = yes

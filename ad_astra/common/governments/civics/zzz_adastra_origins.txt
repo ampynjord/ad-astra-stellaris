@@ -18,6 +18,20 @@ origin_adastra = {
 
 	# 1.1 : réservée aux empires réguliers - le confinement gestalt (ruche/machine)
 	# aura son contenu dédié plus tard, jouer l'origine en gestalt aujourd'hui casserait la partie.
+	#
+	# 1.2.1 : et pas davantage aux nomades. Signalé par Aldran sur le Workshop.
+	# Ce n'est pas qu'une incohérence de fiction - une capitale mobile est
+	# l'exact contraire d'un monde dont on ne peut pas sortir. C'est une partie
+	# morte : le potential_country vanilla de constructor et de colonizer porte
+	# is_nomadic = no au premier niveau, hors du OR que le mod élargit. Un empire
+	# nomade n'a donc jamais ces deux tailles de vaisseau, quoi que fasse notre
+	# clause. Le Programme de base stellaire lui livrerait les plans du Bâtisseur
+	# et de l'Arche pour des coques qui ne peuvent pas exister, et le Programme
+	# de colonisation ne produirait rien.
+	#
+	# La forme est celle du jeu de base : six origines vanilla (Géante rouge,
+	# Aube cosmique, Forgé par le Voile, Porteurs de fin, Prédateurs évolutifs,
+	# Citadelle étoilée) barrent les nomades exactement comme ça.
 	possible = {
 		authority = {
 			NOR = {
@@ -25,6 +39,7 @@ origin_adastra = {
 				value = auth_machine_intelligence
 			}
 		}
+		is_nomadic = no
 	}
 
 	flags = { adastra_origin }

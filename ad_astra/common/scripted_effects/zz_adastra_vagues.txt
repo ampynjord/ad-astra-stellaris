@@ -1,0 +1,476 @@
+# Ad Astra 1.3 - ouverture des technologies par vagues.
+# FICHIER GENERE PAR tools/gen_age_techs.py - NE PAS EDITER A LA MAIN.
+#
+# Les vingt-cinq technologies d'un age s'ouvrent cinq par cinq, a 0, 20,
+# 40, 60 et 80 % de l'etape. La vague d'une techno est deduite de sa date :
+# a l'interieur d'un age, elles arrivent donc dans l'ordre historique.
+
+adastra_maj_vagues = {
+	# --- stone ---
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_stone
+			NOT = { has_country_flag = adastra_reached_bronze }
+		}
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 2
+				}
+			}
+			set_country_flag = adastra_vague_2
+		}
+		else = { remove_country_flag = adastra_vague_2 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 5
+				}
+			}
+			set_country_flag = adastra_vague_3
+		}
+		else = { remove_country_flag = adastra_vague_3 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 7
+				}
+			}
+			set_country_flag = adastra_vague_4
+		}
+		else = { remove_country_flag = adastra_vague_4 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 10
+				}
+			}
+			set_country_flag = adastra_vague_5
+		}
+		else = { remove_country_flag = adastra_vague_5 }
+	}
+	# --- bronze ---
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_bronze
+			NOT = { has_country_flag = adastra_reached_iron }
+		}
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 14
+				}
+			}
+			set_country_flag = adastra_vague_2
+		}
+		else = { remove_country_flag = adastra_vague_2 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 16
+				}
+			}
+			set_country_flag = adastra_vague_3
+		}
+		else = { remove_country_flag = adastra_vague_3 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 18
+				}
+			}
+			set_country_flag = adastra_vague_4
+		}
+		else = { remove_country_flag = adastra_vague_4 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 20
+				}
+			}
+			set_country_flag = adastra_vague_5
+		}
+		else = { remove_country_flag = adastra_vague_5 }
+	}
+	# --- iron ---
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_iron
+			NOT = { has_country_flag = adastra_reached_medieval }
+		}
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 24
+				}
+			}
+			set_country_flag = adastra_vague_2
+		}
+		else = { remove_country_flag = adastra_vague_2 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 26
+				}
+			}
+			set_country_flag = adastra_vague_3
+		}
+		else = { remove_country_flag = adastra_vague_3 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 27
+				}
+			}
+			set_country_flag = adastra_vague_4
+		}
+		else = { remove_country_flag = adastra_vague_4 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 29
+				}
+			}
+			set_country_flag = adastra_vague_5
+		}
+		else = { remove_country_flag = adastra_vague_5 }
+	}
+	# --- medieval ---
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_medieval
+			NOT = { has_country_flag = adastra_reached_renaissance }
+		}
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 33
+				}
+			}
+			set_country_flag = adastra_vague_2
+		}
+		else = { remove_country_flag = adastra_vague_2 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 34
+				}
+			}
+			set_country_flag = adastra_vague_3
+		}
+		else = { remove_country_flag = adastra_vague_3 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 36
+				}
+			}
+			set_country_flag = adastra_vague_4
+		}
+		else = { remove_country_flag = adastra_vague_4 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 37
+				}
+			}
+			set_country_flag = adastra_vague_5
+		}
+		else = { remove_country_flag = adastra_vague_5 }
+	}
+	# --- renaissance ---
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_renaissance
+			NOT = { has_country_flag = adastra_reached_steam }
+		}
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 41
+				}
+			}
+			set_country_flag = adastra_vague_2
+		}
+		else = { remove_country_flag = adastra_vague_2 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 42
+				}
+			}
+			set_country_flag = adastra_vague_3
+		}
+		else = { remove_country_flag = adastra_vague_3 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 44
+				}
+			}
+			set_country_flag = adastra_vague_4
+		}
+		else = { remove_country_flag = adastra_vague_4 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 45
+				}
+			}
+			set_country_flag = adastra_vague_5
+		}
+		else = { remove_country_flag = adastra_vague_5 }
+	}
+	# --- steam ---
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_steam
+			NOT = { has_country_flag = adastra_reached_industrial }
+		}
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 49
+				}
+			}
+			set_country_flag = adastra_vague_2
+		}
+		else = { remove_country_flag = adastra_vague_2 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 50
+				}
+			}
+			set_country_flag = adastra_vague_3
+		}
+		else = { remove_country_flag = adastra_vague_3 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 52
+				}
+			}
+			set_country_flag = adastra_vague_4
+		}
+		else = { remove_country_flag = adastra_vague_4 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 53
+				}
+			}
+			set_country_flag = adastra_vague_5
+		}
+		else = { remove_country_flag = adastra_vague_5 }
+	}
+	# --- industrial ---
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_industrial
+			NOT = { has_country_flag = adastra_reached_machine }
+		}
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 57
+				}
+			}
+			set_country_flag = adastra_vague_2
+		}
+		else = { remove_country_flag = adastra_vague_2 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 59
+				}
+			}
+			set_country_flag = adastra_vague_3
+		}
+		else = { remove_country_flag = adastra_vague_3 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 60
+				}
+			}
+			set_country_flag = adastra_vague_4
+		}
+		else = { remove_country_flag = adastra_vague_4 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 62
+				}
+			}
+			set_country_flag = adastra_vague_5
+		}
+		else = { remove_country_flag = adastra_vague_5 }
+	}
+	# --- machine ---
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_machine
+			NOT = { has_country_flag = adastra_reached_atomic }
+		}
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 66
+				}
+			}
+			set_country_flag = adastra_vague_2
+		}
+		else = { remove_country_flag = adastra_vague_2 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 68
+				}
+			}
+			set_country_flag = adastra_vague_3
+		}
+		else = { remove_country_flag = adastra_vague_3 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 70
+				}
+			}
+			set_country_flag = adastra_vague_4
+		}
+		else = { remove_country_flag = adastra_vague_4 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 72
+				}
+			}
+			set_country_flag = adastra_vague_5
+		}
+		else = { remove_country_flag = adastra_vague_5 }
+	}
+	# --- atomic ---
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_atomic
+			NOT = { has_country_flag = adastra_reached_space }
+		}
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 76
+				}
+			}
+			set_country_flag = adastra_vague_2
+		}
+		else = { remove_country_flag = adastra_vague_2 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 79
+				}
+			}
+			set_country_flag = adastra_vague_3
+		}
+		else = { remove_country_flag = adastra_vague_3 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 81
+				}
+			}
+			set_country_flag = adastra_vague_4
+		}
+		else = { remove_country_flag = adastra_vague_4 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 84
+				}
+			}
+			set_country_flag = adastra_vague_5
+		}
+		else = { remove_country_flag = adastra_vague_5 }
+	}
+	# --- space ---
+	if = {
+		limit = { has_country_flag = adastra_reached_space }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 89
+				}
+			}
+			set_country_flag = adastra_vague_2
+		}
+		else = { remove_country_flag = adastra_vague_2 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 92
+				}
+			}
+			set_country_flag = adastra_vague_3
+		}
+		else = { remove_country_flag = adastra_vague_3 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 94
+				}
+			}
+			set_country_flag = adastra_vague_4
+		}
+		else = { remove_country_flag = adastra_vague_4 }
+		if = {
+			limit = {
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 97
+				}
+			}
+			set_country_flag = adastra_vague_5
+		}
+		else = { remove_country_flag = adastra_vague_5 }
+	}
+}

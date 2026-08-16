@@ -72,3 +72,91 @@ is_low_tech_start = {
 		}
 	}
 }
+
+# 1.3 - Les technologies fondatrices du jeu de base.
+#
+# A l'Age spatial, elles ne sont plus offertes : elles se cherchent, au meme
+# titre que les technologies d'epoque. Le Programme d'hyperpropulsion ne
+# s'ouvre que lorsque les seize sont trouvees - c'est ce qui donne une raison
+# de toutes les prendre au lieu de courir droit vers la sortie.
+adastra_fondatrices_toutes = {
+	has_technology = tech_space_exploration
+	has_technology = tech_thrusters_1
+	has_technology = tech_space_construction
+	has_technology = tech_corvettes
+	has_technology = tech_mass_drivers_1
+	has_technology = tech_ship_armor_1
+	has_technology = tech_shields_1
+	has_technology = tech_starbase_1
+	has_technology = tech_starbase_2
+	has_technology = tech_space_defense_station_1
+	has_technology = tech_solar_panel_network
+	has_technology = tech_colonization_1
+	has_technology = tech_interplanetary_commerce
+	has_technology = tech_hydroponics
+	has_technology = tech_holo_entertainment
+	has_technology = tech_reactor_boosters_1
+}
+
+# ============================================================================
+# 1.3 - LE JEU AVANT LA TECHNOLOGIE
+#
+# Demande d'ampynjord, 16/08 : a l'Age spatial, une technologie du jeu de base
+# ne doit etre cherchable que si ce qu'elle sert est effectivement jouable.
+# Chercher l'amelioration des corvettes quand on ne peut construire aucun
+# vaisseau, c'est de la recherche morte - le joueur depense son budget dans une
+# carte qui ne changera rien avant des dizaines d'annees.
+#
+# Chaque groupe de fondatrices porte donc la condition du jeu qu'il ouvre.
+
+# Ce qui ouvre le Programme d'exploration : la phase d'exploration de la
+# situation. Retour de test du 16/08 : « celle-la doit spawn quand j'ai atteint
+# la phase d'exploration spatiale, c'est la tech necessaire pour debloquer la
+# decision ». Avant cette phase, l'Age spatial a ses vingt-cinq technologies
+# d'epoque - il y a de quoi chercher.
+adastra_gameplay_orbite = {
+	has_country_flag = adastra_unlock_space
+	has_country_flag = adastra_stage_explore
+}
+
+# Le vaisseau de construction et les stations : c'est la phase de la base
+# stellaire qui les ouvre, puisque c'est sa decision qu'ils servent.
+adastra_gameplay_chantier = {
+	has_country_flag = adastra_unlock_space
+	has_country_flag = adastra_stage_orbital
+}
+
+# Les vaisseaux : il faut pouvoir en faire. Deux chemins - le chantier orbital
+# une fois la base stellaire batie, ou le Programme de flotte militaire, qui
+# livre des corvettes sans chantier. L'etape orbitale ouvre les deux.
+adastra_gameplay_vaisseaux = {
+	has_country_flag = adastra_unlock_space
+	OR = {
+		has_country_flag = adastra_stage_orbital
+		has_country_flag = adastra_phase2_done
+	}
+}
+
+# La base stellaire et ses modules : il faut l'avoir batie, pas seulement
+# pouvoir la commander. Ameliorer un port stellaire qu'on n'a pas n'a pas de
+# sens, et l'evenement « Le ciel est deja pris » rend ce cas tout a fait reel.
+adastra_gameplay_base = {
+	has_country_flag = adastra_unlock_space
+	has_country_flag = adastra_phase2_done
+}
+
+# Coloniser : le Programme de colonisation s'ouvre a l'etape orbitale.
+adastra_gameplay_colonie = {
+	has_country_flag = adastra_unlock_space
+	has_country_flag = adastra_stage_orbital
+}
+
+# Ce qui se joue entierement au sol. Ouvert a la phase d'exploration et non a
+# l'entree dans l'Age spatial : l'age a deja ses vingt-cinq technologies
+# d'epoque pour occuper le joueur, alors que la phase d'exploration n'en avait
+# que deux. Retour de test du 16/08 : « faudrait pas que j'aie rien pendant
+# longtemps, c'est frustrant ».
+adastra_gameplay_sol = {
+	has_country_flag = adastra_unlock_space
+	has_country_flag = adastra_stage_explore
+}
