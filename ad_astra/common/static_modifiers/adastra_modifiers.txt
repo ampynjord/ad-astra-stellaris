@@ -297,3 +297,4 @@ adastra_court_and_retinue = {
 adastra_young_administration = {
 	leaders_upkeep_mult = -0.6
 }
+

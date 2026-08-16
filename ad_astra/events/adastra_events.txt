@@ -721,6 +721,67 @@ country_event = {
 }
 
 ############################
+# adastra.90 : les vagues de technologies (caché)
+############################
+# Chaque mois, on recalcule quelles vagues de l'âge courant sont ouvertes.
+# Recalcul plutôt que pose définitive : changer d'âge remet la série à zéro
+# sans qu'on ait à y penser, et une sauvegarde reprise se remet d'aplomb seule.
+country_event = {
+	id = adastra.90
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	immediate = {
+		adastra_maj_vagues = yes
+	}
+}
+
+############################
+# adastra.91 : prospection par présence (caché)
+############################
+# Le blocage remonté par Curious : un empire revendique le système natal, et le
+# vaisseau scientifique se voit refuser la prospection — « you can't survey
+# someone else's system ». Vérifié le 16/08 contre les fichiers du jeu : il
+# n'existe aucune règle `can_survey_planet` à élargir, le refus est dans le
+# moteur.
+#
+# Alors on ne demande plus la permission. Un vaisseau scientifique Ad Astra
+# posé dans un système en révèle UN corps par mois, par effet. Lentement, sans
+# ordre à donner, et sans que personne puisse l'interdire — ce qui décrit mieux
+# ce que fait une civilisation pré-PRL qu'un ordre de prospection instantané.
+#
+# Et le vaisseau redevient indispensable : c'est ce que le Programme de
+# satellites lui avait volé.
+country_event = {
+	id = adastra.91
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+		any_owned_ship = { is_ship_size = science }
+	}
+
+	immediate = {
+		every_owned_ship = {
+			limit = { is_ship_size = science }
+			solar_system = {
+				random_system_planet = {
+					limit = { NOT = { is_surveyed = { who = root status = yes } } }
+					set_surveyed = { surveyed = yes surveyor = root }
+				}
+			}
+		}
+	}
+}
+
+############################
 # adastra.11 : Ressources non inventées (caché)
 ############################
 # Une ressource n'existe pas avant la technologie qui l'invente. La production
@@ -1116,6 +1177,11 @@ country_event = {
 		custom_tooltip = "adastra.89.a.tooltip"
 	}
 }
+
+# 1.3 : l'evenement adastra.84 (Le reseau de satellites) a ete retire avec la
+# decision qu'il servait. Il cartographiait le systeme natal par effet,
+# gratuitement : c'est desormais le travail du vaisseau scientifique, qui
+# prospecte par presence (adastra.91).
 
 ############################
 # adastra.10 : Répartiteur - Hyperpropulsion recherchée (caché)
@@ -2072,36 +2138,22 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_space } }
 			set_country_flag = adastra_reached_space
-			give_technology = { tech = tech_holo_entertainment message = no }
-			give_technology = { tech = tech_space_exploration message = no }
-			give_technology = { tech = tech_thrusters_1 message = no }
-			give_technology = { tech = tech_solar_panel_network message = no }
-			give_technology = { tech = tech_space_construction message = no }
-			give_technology = { tech = tech_space_defense_station_1 message = no }
-			give_technology = { tech = tech_ship_armor_1 message = no }
-			give_technology = { tech = tech_shields_1 message = no }
-			give_technology = { tech = tech_reactor_boosters_1 message = no }
-			give_technology = { tech = tech_corvettes message = no }
-			give_technology = { tech = tech_starbase_1 message = no }
-			give_technology = { tech = tech_starbase_2 message = no }
-			give_technology = { tech = tech_colonization_1 message = no }
-			give_technology = { tech = tech_interplanetary_commerce message = no }
-			give_technology = { tech = tech_mass_drivers_1 message = no }
-			give_technology = { tech = tech_hydroponics message = no }
-			# Les seize technos ci-dessous sont le paquet du jeu de base que
-			# l'Age spatial apporte : propulseurs, senseurs, reacteurs,
-			# corvettes, bases stellaires. Sans elles, AUCUN de nos vaisseaux
-			# sous-luminiques ne peut etre cree - leurs composants n'existent
-			# pas. C'est la cause du « programme d'exploration termine mais
-			# pas de vaisseau scientifique » du 15/08 : les seize octrois
-			# etaient refuses en silence parce que les deux drapeaux qui
-			# ouvrent leur potential etaient poses APRES.
+			# 1.3 : LES SEIZE NE SONT PLUS OFFERTES.
+			#
+			# Jusqu'ici l'entree dans l'Age spatial livrait d'un coup les
+			# corvettes, les bases stellaires, les propulseurs et le reste. Ca
+			# vidait le seul age ou le joueur construit quelque chose : il
+			# recevait ses outils avant d'avoir rien cherche.
+			#
+			# Elles deviennent des TECHNOLOGIES FONDATRICES, a chercher comme
+			# les autres. On ne pose donc plus que les deux drapeaux qui
+			# ouvrent leur potential ; c'est la recherche qui fait le reste, et
+			# le verrou de la situation nomme celles qui manquent.
 			set_country_flag = adastra_unlock_space
 			set_country_flag = adastra_vanilla_gift_space
-			# une techno dont un prerequis manque : Conversion d'energie
-			# orbitale exige Ports stellaires, et Defenses spatiales exige
-			# Construction de bases stellaires. Dans l'ancien ordre ces deux-la
-			# passaient AVANT ce dont elles dependent, et se faisaient refuser.
+			# La fission reste octroyee : nos quatre coques la reclament par
+			# leur reacteur, et son verrou d'Age de l'atome est deja tombe.
+			give_technology = { tech = tech_fission_power message = no }
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.59 }
