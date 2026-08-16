@@ -2,7 +2,7 @@
 
 **Origine pré-PRL pour Stellaris / Pre-FTL origin for Stellaris**
 
-[![Version](https://img.shields.io/badge/version-1.2.0%20b%C3%AAta-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.3.0-blue)](CHANGELOG.md)
 [![Stellaris](https://img.shields.io/badge/Stellaris-v4.4%20Pegasus-orange)](https://www.stellaris.com/)
 [![DLC](https://img.shields.io/badge/DLC-aucun%20requis%20%2F%20none%20required-green)](#)
 [![Langues](https://img.shields.io/badge/langues-fr%20%C2%B7%20en-lightgrey)](#)
@@ -21,6 +21,33 @@ Commencez Stellaris en **civilisation pré-PRL** confinée à son monde natal, t
 
 ---
 
+## 1.3 « Le dos technologique » / "The Technological Backbone"
+
+La 1.2 remplissait les âges. La 1.3 refait ce qui les porte.
+*1.2 filled the ages. 1.3 rebuilds what holds them up.*
+
+- **250 technologies d'époque**, vingt-cinq par âge, sur les trois domaines. Chacune porte son année réelle, et un contrôle hors-jeu refuse toute technologie dont la date sort de son âge.
+  *250 period technologies, twenty-five per age, across all three research areas. Each carries its real year, and an offline check refuses any technology whose date falls outside its age.*
+- **Elles s'ouvrent par vagues** — cinq à la fois, à mesure que l'âge avance — et **la vague est déduite de la date**. À l'intérieur d'un âge, les technologies arrivent donc dans l'ordre où l'histoire les a trouvées.
+  *They open in waves — five at a time as the age advances — and **the wave is derived from the date**. Inside an age, technologies arrive in the order history found them.*
+- **On ne quitte pas un âge tant qu'il reste quelque chose à y inventer.** La barre de l'Ascension se fige à la fin de l'étape et son infobulle nomme ce qui manque, une ligne par technologie.
+  *You do not leave an age while something is left to invent in it. The Ascent bar freezes at the end of the stage and its tooltip names what is missing, one line per technology.*
+- **Les technologies du jeu de base attendent l'émergence.** Seules celles qu'un empire normal possède dès la première seconde restent accessibles pendant le confinement — et à l'Âge spatial elles deviennent des **technologies fondatrices** à chercher, chacune ouverte seulement quand le jeu qu'elle sert l'est aussi.
+  *Base-game technologies wait for emergence. Only those a normal empire owns from the first second stay reachable during confinement — and in the Space Age they become **founding technologies** you research, each opening only when the gameplay it serves does.*
+- **Prospection par présence** : un vaisseau scientifique sous-luminique cartographie un astre par mois, **même dans un système qu'un autre empire a revendiqué**, et vos vaisseaux n'en sont plus expulsés.
+  *Survey by presence: a sublight science ship maps one body a month, **even in a system another empire has claimed**, and your ships are no longer expelled from it.*
+- **Quatre programmes spatiaux**, payés en influence et en minerais, chacun derrière sa technologie fondatrice. Les deux relançables coûtent plus cher à chaque relance.
+  *Four space programs, paid in influence and minerals, each behind its own founding technology. The two repeatable ones cost more each time.*
+- **Quinze casus belli et buts de guerre** élargis : une guerre déclarée contre un empire au sol a désormais de vrais buts applicables.
+  *Fifteen widened casus belli and war goals: a war declared on a grounded empire now has usable war goals.*
+
+Le détail complet est dans le [CHANGELOG](CHANGELOG.md). / *Full detail in the [CHANGELOG](CHANGELOG.md).*
+
+> **Cette version sort sans avoir été entièrement testée**, le cas du système natal revendiqué inclus. Si quelque chose casse, ou si une technologie apparaît alors que rien ne permet de s'en servir, [ouvrez une issue](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose).
+> *This version ships without having been fully tested, the claimed-home-system case included. If something breaks, or a technology shows up with nothing to use it for, [open an issue](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose).*
+
+---
+
 ## 🇫🇷 Guide du joueur
 
 ### Premier jour
@@ -34,20 +61,24 @@ Commencez Stellaris en **civilisation pré-PRL** confinée à son monde natal, t
 
 La situation **Au-delà des étoiles** suit votre progression d'âge en âge dans le journal de bord. Vous y choisissez une **approche** : *Continuité prudente* (stabilité, plus lent), *Marche forcée* (rapide, mécontentement), *Les yeux vers le ciel* (recherche, moins d'unité).
 
-Chaque âge n'ouvre que **les technologies que l'histoire lui attribue** : la fission à l'Âge de l'atome, l'électricité à l'Âge de la machine. Pendant le confinement, ni vaisseau ni base stellaire. Si un empire vous découvre, vous vivez **l'observation inversée** — ovnis, disparitions, signaux, débris à rétro-concevoir.
+Chaque âge ouvre **vingt-cinq technologies que l'histoire lui attribue**, par vagues de cinq, dans l'ordre des dates. La barre de progression se fige à la fin de l'étape tant qu'il en reste une à trouver — l'infobulle vous dit lesquelles. Pendant le confinement, ni vaisseau ni base stellaire. Si un empire vous découvre, vous vivez **l'observation inversée** — ovnis, disparitions, signaux, débris à rétro-concevoir.
 
 Quatre **campagnes d'exploitation** permettent de presser votre monde : Grandes récoltes, Corvée minière, Bois et charbon, Cadences forcées. Chacune donne franchement sur une ressource et manque ailleurs.
 
 ### Le programme spatial
 
-1. **Programme d'exploration** — livre un vaisseau scientifique *sous-luminique*. Prospectez chaque astre en vue système (clic droit → Prospecter ; l'étoile est déjà connue).
-2. **Programme de base stellaire** — livre votre première base et un vaisseau de construction. Bâtissez au moins une station minière ou de recherche.
-3. **Programme hyperspatial** — débloque la recherche **Hyperpropulsion**.
-4. *(Facultatif)* **Programme de flotte militaire** — des corvettes sous-luminiques, jusqu'à la percée.
+À l'Âge spatial, seize **technologies fondatrices** du jeu de base sont à rechercher — elles ne vous sont plus données. Chacune n'apparaît que lorsque le jeu qu'elle sert existe : inutile d'améliorer les corvettes tant qu'aucun vaisseau ne peut exister.
+
+1. **Programme d'exploration** — livre un vaisseau scientifique *sous-luminique* qui **prospecte par présence** : un astre par mois tant qu'il est dans le système, revendiqué ou non.
+2. **Programme de base stellaire** — livre le chantier orbital, un vaisseau de construction et les plans de la flotte.
+3. **Programme de flotte orbitale** — des corvettes sous-luminiques. Facultatif.
+4. **Programme hyperspatial** — attend que les seize fondatrices soient toutes trouvées, puis débloque la recherche **Hyperpropulsion**.
+
+Les quatre se paient en **influence et en minerais**. L'exploration et la flotte sont relançables, et coûtent plus cher à chaque relance.
 
 ### L'émergence
 
-Recherchez l'**Hyperpropulsion** : la situation s'achève, vos vaisseaux sont réarmés en versions PRL, vous redevenez un empire spatial classique, et l'**Héritage de l'Ascension** devient un bonus permanent. Si un empire occupe votre système natal, l'émergence se **négocie** : indépendance ou protectorat, selon son éthique.
+Recherchez l'**Hyperpropulsion** : la situation s'achève, **toute votre flotte** est réarmée en versions PRL — même nombre, mêmes équipages — le reste de l'arbre technologique s'ouvre, vous redevenez un empire spatial classique, et l'**Héritage de l'Ascension** devient un bonus permanent. Si un empire occupe votre système natal, l'émergence se **négocie** : indépendance ou protectorat, selon son éthique.
 
 ---
 
@@ -64,20 +95,24 @@ Recherchez l'**Hyperpropulsion** : la situation s'achève, vos vaisseaux sont r�
 
 The **Beyond the Stars** situation tracks your progress age by age in the situation log. Pick an **approach** there: *Careful Continuity* (stability, slower), *Forced March* (fast, unhappy), *Eyes on the Sky* (research, less unity).
 
-Each age only opens **the technologies history gave it**: fission in the Atomic Age, electricity in the Machine Age. While grounded, no ships and no starbase. If an empire discovers you, you live through **reverse observation** — UFOs, disappearances, signals, debris to reverse-engineer.
+Each age opens **twenty-five technologies history gave it**, in waves of five, in date order. The progress bar freezes at the end of the stage while one is still missing — the tooltip tells you which. While grounded, no ships and no starbase. If an empire discovers you, you live through **reverse observation** — UFOs, disappearances, signals, debris to reverse-engineer.
 
 Four **exploitation campaigns** let you squeeze your world: Great Harvests, Mining Levy, Wood and Coal, Forced Cadences. Each gives plainly on one resource and takes from another.
 
 ### The space program
 
-1. **Space Exploration Program** — delivers a *sublight* science ship. Survey each body in system view (right-click → Survey; the star is already known).
-2. **Starbase Program** — delivers your first starbase and a construction ship. Build at least one mining or research station.
-3. **Hyperspace Program** — unlocks the **Hyperspace Drive** research.
-4. *(Optional)* **Military Fleet Program** — sublight corvettes, available until the breakthrough.
+In the Space Age, sixteen base-game **founding technologies** must be researched — they are no longer handed to you. Each appears only when the gameplay it serves exists: no point improving corvettes while no ship can exist.
+
+1. **Space Exploration Program** — delivers a *sublight* science ship that **surveys by presence**: one body a month while it sits in the system, claimed or not.
+2. **Starbase Program** — delivers the orbital yard, a construction ship and the fleet blueprints.
+3. **Orbital Fleet Program** — sublight corvettes. Optional.
+4. **Hyperspace Program** — waits until all sixteen founding technologies are found, then unlocks the **Hyperspace Drive** research.
+
+All four are paid in **influence and minerals**. Exploration and fleet are repeatable, and cost more each time you run them.
 
 ### Emergence
 
-Research the **Hyperspace Drive**: the situation completes, your ships are refitted with FTL, you become a classic spacefaring empire, and the **Legacy of the Ascent** becomes a permanent bonus. If an empire occupies your home system, emergence is **negotiated**: independence or protectorate, depending on their ethics.
+Research the **Hyperspace Drive**: the situation completes, **your entire fleet** is refitted with FTL — same count, same crews — the rest of the technology tree opens, you become a classic spacefaring empire, and the **Legacy of the Ascent** becomes a permanent bonus. If an empire occupies your home system, emergence is **negotiated**: independence or protectorate, depending on their ethics.
 
 ---
 
@@ -91,10 +126,11 @@ Research the **Hyperspace Drive**: the situation completes, your ships are refit
 | **Nouvelle partie / New game** | Requise / Required |
 | **Succès / Achievements** | Non compatible, comme tout mod / Not compatible, like every mod |
 
-**Surcharges / Overrides** — technologies de départ et de tier 1-2 (verrouillage par `potential`), le déclencheur scripté `is_regular_empire`, et 46 cartes d'objectifs. `is_regular_empire` est le premier point de conflit à surveiller avec un autre mod.
-*Starting and tier 1-2 technologies (potential-gated), the `is_regular_empire` scripted trigger, and 46 focus cards. `is_regular_empire` is the first conflict point to watch with another mod.*
+**Surcharges / Overrides** — technologies de départ et de palier 1-2 (verrouillage par `potential`), trois tailles de vaisseaux civils, les déclencheurs scriptés `is_regular_empire` et `is_low_tech_start`, quinze casus belli et buts de guerre, et 46 cartes d'objectifs. `is_regular_empire` est le premier point de conflit à surveiller avec un autre mod.
+*Starting and tier 1-2 technologies (potential-gated), three civilian ship sizes, the `is_regular_empire` and `is_low_tech_start` scripted triggers, fifteen casus belli and war goals, and 46 focus cards. `is_regular_empire` is the first conflict point to watch with another mod.*
 
-**Compatibilité vérifiée / Verified compatibility** — **Gigastructural Engineering & More** et **ACOT** : compatibles, vérifié sur leurs fichiers plutôt que supposé. / *both compatible, checked against their files rather than guessed.*
+**Incompatibilité connue / Known incompatibility** — **Gigastructural Engineering & More** : un joueur a lancé les deux mods seuls ensemble et obtenu une colonie sans district urbain. En cours de traque. *Ethics and Civics Classic* perturbe aussi la chaîne des capitales. **ACOT** reste compatible.
+*A player ran Ad Astra and Gigastructural Engineering alone together and ended up with a colony that has no city district; being hunted down. Ethics and Civics Classic also interferes with the capital chain. ACOT remains compatible.*
 
 **Installation manuelle / Manual install** — décompressez dans `Documents/Paradox Interactive/Stellaris/mod/` de sorte que `ad_astra.mod` et le dossier `ad_astra/` soient côte à côte, puis activez dans le launcher.
 
@@ -102,23 +138,29 @@ Research the **Hyperspace Drive**: the situation completes, your ships are refit
 
 ## Feuille de route / Roadmap
 
-### 1.2 « Les Âges » — publiée le 16/08/2026 / released 2026-08-16
+### 1.3 « Le dos technologique » — publiée le 16/08/2026 / released 2026-08-16
 
-Cent technologies d'époque, onze bâtiments, sept paliers de capitale, une économie où une ressource n'existe pas avant l'invention qui la produit, des âges deux fois plus longs, la diplomatie et la guerre pendant le confinement, et l'IA qui peut jouer l'origine. Le détail complet est dans le [CHANGELOG](CHANGELOG.md).
+250 technologies d'époque ouvertes par vagues dans l'ordre historique, un Âge spatial refondu autour de seize technologies fondatrices conditionnées au jeu qu'elles servent, la prospection par présence, quatre programmes spatiaux payés en influence, et des vaisseaux qui ne sont plus expulsés de leur propre ciel.
 
-*A hundred period technologies, eleven buildings, seven capital tiers, an economy where a resource does not exist before the invention that produces it, ages twice as long, diplomacy and war during confinement, and an AI that can play the origin. Full detail in the [CHANGELOG](CHANGELOG.md).*
+*250 period technologies opening in waves in historical order, a Space Age rebuilt around sixteen founding technologies gated on the gameplay they serve, survey by presence, four space programs paid in influence, and ships that are no longer expelled from their own sky.*
 
-### 1.3 — à écrire / to be written
+### 1.2 « Les Âges » — publiée le 12/08/2026 / released 2026-08-12
 
-- **Coloniser son propre monde natal** : une planète, plusieurs nations. / **Colonizing your own homeworld**: one planet, several nations.
-- **Des nations rivales sur votre planète**, avec leurs guerres et leur unification. / **Rival nations on your planet**, with their wars and their unification.
-- **Des traditions d'époque**, puisque les galactiques sont verrouillées. / **Period traditions**, since the galactic ones are locked.
-- **L'orbite occupée** : question de conception ouverte, posée aux joueurs. Le moteur n'autorise qu'une base stellaire par système. / **The occupied orbit**: an open design question, put to players. The engine allows one starbase per system.
-- **Les autorités gestaltes** — ruche et machine. / **Gestalt authorities** — hive and machine.
+Cent technologies d'époque, onze bâtiments, sept paliers de capitale, une économie où une ressource n'existe pas avant l'invention qui la produit, des âges deux fois plus longs, la diplomatie et la guerre pendant le confinement, et l'IA qui peut jouer l'origine.
 
-### Après / After
+*A hundred period technologies, eleven buildings, seven capital tiers, an economy where a resource does not exist before the invention that produces it, ages twice as long, diplomacy and war during confinement, and an AI that can play the origin.*
 
-Dans un mod séparé plutôt que celui-ci : une galaxie où *tous* les empires commencent pré-PRL. / *In a separate mod rather than this one: a galaxy where **every** empire starts pre-FTL.*
+### 1.4 « Le monde d'en bas » — à écrire / to be written
+
+Tout ce qui se passe sur la planète avant l'espace. Rien n'est daté.
+*Everything that happens on the planet before space. Nothing is dated.*
+
+- **Le monde grandit avec vous** : trois ou quatre cases au départ, la totalité à l'âge industriel, chaque âge ouvrant une région. / ***The world grows with you***: three or four tiles at the start, all of it by the industrial age, each age opening a region.
+- **De vraies nations rivales sur votre propre planète** — des factions, avec leur part de population, leurs exigences et leur chef. / ***Real rival nations on your own planet*** — factions, with their share of your population, their demands and their leader.
+- **Des traditions d'époque**, puisque les galactiques sont verrouillées. / ***Period traditions***, since the galactic ones are locked.
+
+Deux choses qui ne seront **pas** faites : les autorités gestaltes — une ruche n'a pas d'âges, elle a des mues — et une galaxie où tous les empires commencent pré-PRL.
+*Two things that will **not** be done: gestalt authorities — a hive has no ages, it has moults — and a galaxy where every empire starts pre-FTL.*
 
 ---
 
@@ -126,9 +168,9 @@ Dans un mod séparé plutôt que celui-ci : une galaxie où *tous* les empires c
 
 [Ouvrez une issue](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose) : les formulaires demandent d'eux-mêmes l'âge de départ, le rythme, la date en jeu et `error.log`. Ce sont les quatre choses sans lesquelles un rapport n'est pas exploitable.
 
-Les **idées** ont leur propre formulaire. Elles comptent autant que les bugs : la 1.2 entière est née de commentaires de joueurs.
+Les **idées** ont leur propre formulaire. Elles comptent autant que les bugs : la 1.2 et la 1.3 sont nées entièrement de commentaires de joueurs.
 
-*[Open an issue](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose): the forms ask for the starting age, the pace, the in-game date and `error.log` on their own. Those are the four things without which a report cannot be acted on. **Ideas** have their own form — they matter as much as bugs: the whole of 1.2 came from player comments.*
+*[Open an issue](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose): the forms ask for the starting age, the pace, the in-game date and `error.log` on their own. Those are the four things without which a report cannot be acted on. **Ideas** have their own form — they matter as much as bugs: 1.2 and 1.3 both came entirely from player comments.*
 
 ---
 
