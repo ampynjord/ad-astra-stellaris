@@ -6,14 +6,19 @@ decision_adastra_explore = {
 	owned_planets_only = yes
 	icon = decision_satellite_in_orbit
 
-	enactment_time = 180
+	enactment_time = 360
 
+	# 1.3 : le prix. Les programmes coutaient de l'energie, c'est-a-dire une
+	# ressource qui n'existe pas avant l'electricite et qu'on a donc en tas a
+	# l'Age spatial. Ils sont desormais payes en INFLUENCE et en MINERAIS :
+	# monter un programme spatial est d'abord une decision politique, et
+	# l'influence est la seule ressource vraiment rare d'un empire au sol.
 	resources = {
 		category = decisions
 		cost = {
-			energy = 500
-			minerals = 300
-			alloys = 150
+			influence = 250
+			minerals = 800
+			mult = value:adastra_cout_relance_explore
 		}
 	}
 
@@ -29,11 +34,16 @@ decision_adastra_explore = {
 		is_capital = yes
 		owner = {
 			has_country_flag = adastra_stage_explore
+			has_technology = tech_space_exploration
 			NOT = { has_country_flag = adastra_completed }
 		}
 	}
 
 	effect = {
+		# 1.3 : surcout cumulatif. Un programme relance coute plus cher que
+		# le precedent - monter une seconde expedition n'a jamais ete aussi
+		# simple que la premiere, et ca empeche d'en enchainer dix.
+		hidden_effect = { owner = { change_variable = { which = adastra_relances_explore value = 1 } } }
 		custom_tooltip = decision_adastra_explore_tooltip
 		hidden_effect = {
 			owner = {
@@ -52,14 +62,14 @@ decision_adastra_starbase = {
 	owned_planets_only = yes
 	icon = decision_ship_in_orbit
 
-	enactment_time = 360
+	enactment_time = 720
 
 	resources = {
 		category = decisions
 		cost = {
-			energy = 1000
-			minerals = 800
-			alloys = 500
+			influence = 500
+			minerals = 2000
+			alloys = 400
 		}
 	}
 
@@ -109,14 +119,13 @@ decision_adastra_hyperdrive = {
 	owned_planets_only = yes
 	icon = decision_wormhole
 
-	enactment_time = 360
+	enactment_time = 900
 
 	resources = {
 		category = decisions
 		cost = {
-			energy = 1500
-			alloys = 300
-			unity = 500
+			influence = 600
+			minerals = 2500
 		}
 	}
 
@@ -124,6 +133,7 @@ decision_adastra_hyperdrive = {
 		is_capital = yes
 		owner = {
 			has_country_flag = adastra_stage_hyper
+			adastra_fondatrices_toutes = yes
 			NOT = { has_country_flag = adastra_phase3_done }
 		}
 	}
@@ -150,7 +160,7 @@ decision_adastra_navy = {
 	owned_planets_only = yes
 	icon = decision_ship_in_orbit
 
-	enactment_time = 180
+	enactment_time = 240
 
 	resources = {
 		category = decisions
@@ -172,18 +182,29 @@ decision_adastra_navy = {
 			energy = 400
 			food = 200
 			alloys = 300
+			mult = value:adastra_cout_relance_navy
 		}
 	}
 
+	# 16/08 : la garde exigeait adastra_phase2_done, c'est-a-dire que le
+	# CHANTIER ORBITAL soit bati. Un empire dont le ciel est occupe ne peut pas
+	# le batir - et perdait du meme coup la flotte militaire et la colonisation.
+	# Un programme ne doit dependre que de l'ETAPE atteinte, jamais de la
+	# reussite d'un autre programme : les vaisseaux sont livres par evenement,
+	# ils n'ont jamais eu besoin d'un chantier pour naitre.
 	potential = {
 		is_capital = yes
 		owner = {
-			has_country_flag = adastra_phase2_done
+			has_technology = tech_corvettes
 			NOT = { has_technology = tech_hyper_drive_1 }
 		}
 	}
 
 	effect = {
+		# 1.3 : surcout cumulatif. Un programme relance coute plus cher que
+		# le precedent - monter une seconde expedition n'a jamais ete aussi
+		# simple que la premiere, et ca empeche d'en enchainer dix.
+		hidden_effect = { owner = { change_variable = { which = adastra_relances_navy value = 1 } } }
 		custom_tooltip = decision_adastra_navy_tooltip
 		hidden_effect = {
 			owner = {
@@ -232,34 +253,9 @@ decision_adastra_campaign_harvest = {
 	resources = {
 		category = decisions
 		cost = {
-			trigger = {
-				owner = { NOT = { has_country_flag = adastra_reached_medieval } }
-			}
-			unity = 5
-		}
-		cost = {
-			trigger = {
-				owner = {
-					has_country_flag = adastra_reached_medieval
-					NOT = { has_country_flag = adastra_reached_industrial }
-				}
-			}
-			unity = 10
-		}
-		cost = {
-			trigger = {
-				owner = {
-					has_country_flag = adastra_reached_industrial
-					NOT = { has_country_flag = adastra_reached_space }
-				}
-			}
-			unity = 25
-		}
-		cost = {
-			trigger = {
-				owner = { has_country_flag = adastra_reached_space }
-			}
-			unity = 38
+			influence = 150
+			minerals = 600
+			alloys = 200
 		}
 	}
 
@@ -595,7 +591,7 @@ decision_adastra_colony = {
 	owned_planets_only = yes
 	icon = decision_colony_settlement
 
-	enactment_time = 240
+	enactment_time = 540
 
 	resources = {
 		category = decisions
@@ -619,10 +615,15 @@ decision_adastra_colony = {
 		}
 	}
 
+	# Meme raison que la flotte militaire : l'etape, pas le chantier.
 	potential = {
 		is_capital = yes
 		owner = {
-			has_country_flag = adastra_phase2_done
+			has_country_flag = adastra_stage_orbital
+			# 1.3 : comme les trois autres programmes, celui-ci exige sa
+			# technologie fondatrice. Livrer une Arche a un empire qui ignore
+			# le Protocole nouveaux mondes n'avait aucun sens.
+			has_technology = tech_colonization_1
 			NOT = { has_country_flag = adastra_completed }
 		}
 	}
@@ -641,3 +642,27 @@ decision_adastra_colony = {
 		weight = 0
 	}
 }
+
+# Programme de satellites - ajoute le 16/08, PREMIER de la chaine.
+#
+# DEUX RAISONS, et la premiere est un blocage remonte par Curious : un empire
+# revendique le systeme natal, et le vaisseau scientifique ne peut plus y
+# prospecter - « you can't survey someone else's system ». Deux parties sur
+# cinq. Le programme spatial s'arretait net, avant meme d'avoir commence.
+#
+# La seconde est historique. On n'a jamais eu besoin d'aller sur Mars pour
+# savoir que Mars existe : l'humanite a cartographie son systeme depuis le sol
+# et depuis l'orbite basse - lunettes, radiotelescopes, radars, puis Spoutnik -
+# un siecle avant d'en sortir. Mettre un objet en orbite precede l'envoi d'une
+# sonde, dans l'Histoire comme ici.
+#
+# La prospection se fait donc par EFFET, sans vaisseau et sans demander la
+# permission a personne. Le vaisseau scientifique garde tout son interet : il
+# 1.3 : le Programme de satellites a ete retire.
+#
+# Il repondait au blocage de prospection en cartographiant le systeme natal par
+# effet, gratuitement et sans vaisseau. C'etait efficace et c'etait faux : il
+# rendait le Programme d'exploration inutile, puisque le seul travail du
+# vaisseau scientifique etait deja fait. La prospection revient au vaisseau -
+# voir adastra.91, qui prospecte par PRESENCE : un scientifique pose dans un
+# systeme en revele un corps par mois, meme si un empire l'a revendique.

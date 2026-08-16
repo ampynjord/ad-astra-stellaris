@@ -1,3 +1,35 @@
 # Ad Astra 1.1 - (reserve pour usage futur)
 # La restitution des stocks a l'emergence passe par add_resource { X = 1 mult = <variable> },
 # le pattern officiel du moteur (cf. events/000_how_to_use_variables_in_script.txt vanilla).
+
+# 1.3 - Surcout des programmes spatiaux relancables.
+#
+# Stellaris n'a PAS de modificateur generique de cout de decision - verifie le
+# 16/08 contre les fichiers du jeu, `decision_cost_mult` n'existe pas et aurait
+# ete ignore en silence. Le jeu de base procede autrement : une valeur scriptee
+# multipliant le cout, lue directement dans le bloc `cost` (voir
+# decision_open_shroud_rift_cost_mult). On copie ce motif.
+#
+# Chaque relance ajoute 35 % au Programme d'exploration, 25 % a la flotte :
+# monter une seconde expedition n'a jamais ete aussi simple que la premiere.
+adastra_cout_relance_explore = {
+	base = 1
+	if = {
+		limit = { has_variable = adastra_relances_explore }
+		add = {
+			value = adastra_relances_explore
+			mult = 0.35
+		}
+	}
+}
+
+adastra_cout_relance_navy = {
+	base = 1
+	if = {
+		limit = { has_variable = adastra_relances_navy }
+		add = {
+			value = adastra_relances_navy
+			mult = 0.25
+		}
+	}
+}

@@ -175,6 +175,25 @@ adastra_dormant = {
 # et a l'abri des declarations de guerre.
 
 adastra_grounded = {
+	# 1.3 - LES VAISSEAUX NE SONT PLUS EXPULSES DE LEUR PROPRE CIEL.
+	#
+	# Quand un empire revendique le systeme natal, nos vaisseaux s'y retrouvent
+	# en territoire etranger : le moteur les traite en intrus, leur donne l'ordre
+	# de partir et les teleporte hors du systeme au bout du compte a rebours.
+	# Un empire confine n'a nulle part ou aller - ses vaisseaux disparaissent
+	# donc, et le programme spatial avec eux.
+	#
+	# `needs_border_access = no` est le mot-cle documente du jeu de base
+	# (common/country_types/00_country_types.txt, ligne 49) : « decides if a
+	# country needs to have explicit border access from another country to enter
+	# its borders ». Sans lui, on n'a aucun moyen de garder ses propres vaisseaux
+	# au-dessus de sa propre planete.
+	faction = {
+		needs_border_access = no
+		generate_borders = yes
+		needs_colony = yes
+		auto_delete = no
+	}
 	has_difficulty_bonuses = yes
 	counts_for_victory = no
 	pop_growth = yes
