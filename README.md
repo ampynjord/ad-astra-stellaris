@@ -2,7 +2,7 @@
 
 **Origine pré-PRL pour Stellaris / Pre-FTL origin for Stellaris**
 
-[![Version](https://img.shields.io/badge/version-1.1.1%20b%C3%AAta-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.2.0%20b%C3%AAta-blue)](CHANGELOG.md)
 [![Stellaris](https://img.shields.io/badge/Stellaris-v4.4%20Pegasus-orange)](https://www.stellaris.com/)
 [![DLC](https://img.shields.io/badge/DLC-aucun%20requis%20%2F%20none%20required-green)](#)
 [![Langues](https://img.shields.io/badge/langues-fr%20%C2%B7%20en-lightgrey)](#)
@@ -102,28 +102,23 @@ Research the **Hyperspace Drive**: the situation completes, your ships are refit
 
 ## Feuille de route / Roadmap
 
-### 1.2 « Les Âges » — écrite, en test / written, in testing
+### 1.2 « Les Âges » — publiée le 16/08/2026 / released 2026-08-16
 
-La mise à jour qui fait de chaque âge un endroit où l'on joue vraiment.
-*The update that turns every age into a place you actually play.*
+Cent technologies d'époque, onze bâtiments, sept paliers de capitale, une économie où une ressource n'existe pas avant l'invention qui la produit, des âges deux fois plus longs, la diplomatie et la guerre pendant le confinement, et l'IA qui peut jouer l'origine. Le détail complet est dans le [CHANGELOG](CHANGELOG.md).
 
-- **100 technologies d'époque**, 10 par âge, sur les trois domaines — de la Maîtrise du feu à l'Écologie planétaire. Elles arrivent *avant* celles du jeu de base au lieu de leur faire concurrence.
-- **11 bâtiments d'époque** et **sept paliers de capitale**, un par âge, du Cercle de pierres aux Ministères.
-- **Le contenu vanilla anachronique daté par âge** : bâtiments, spécialisations de district et districts.
-- **Une ressource n'existe pas avant l'invention qui la produit** : alliages avec la Métallurgie du bronze, biens de consommation avec la Machine à vapeur, énergie avec le Réseau électrique.
-- **Les âges durent deux fois plus longtemps** par défaut.
-- **La diplomatie et la guerre fonctionnent** pendant le confinement, dans les deux sens.
-- **Traditions verrouillées** avant l'émergence.
-- **L'IA peut jouer l'origine.**
+*A hundred period technologies, eleven buildings, seven capital tiers, an economy where a resource does not exist before the invention that produces it, ages twice as long, diplomacy and war during confinement, and an AI that can play the origin. Full detail in the [CHANGELOG](CHANGELOG.md).*
 
-Pas de date : la 1.2 sort quand une partie complète tient le coup.
-*No date: 1.2 ships when a full run holds up.*
+### 1.3 — à écrire / to be written
 
-Le détail complet est dans le [CHANGELOG](CHANGELOG.md). / *Full detail in the [CHANGELOG](CHANGELOG.md).*
+- **Coloniser son propre monde natal** : une planète, plusieurs nations. / **Colonizing your own homeworld**: one planet, several nations.
+- **Des nations rivales sur votre planète**, avec leurs guerres et leur unification. / **Rival nations on your planet**, with their wars and their unification.
+- **Des traditions d'époque**, puisque les galactiques sont verrouillées. / **Period traditions**, since the galactic ones are locked.
+- **L'orbite occupée** : question de conception ouverte, posée aux joueurs. Le moteur n'autorise qu'une base stellaire par système. / **The occupied orbit**: an open design question, put to players. The engine allows one starbase per system.
+- **Les autorités gestaltes** — ruche et machine. / **Gestalt authorities** — hive and machine.
 
 ### Après / After
 
-Coloniser davantage de son propre monde natal · traditions d'époque · nations rivales sur votre planète natale, avec leurs guerres et leur unification · et, dans un mod séparé, une galaxie où *tous* les empires commencent pré-PRL.
+Dans un mod séparé plutôt que celui-ci : une galaxie où *tous* les empires commencent pré-PRL. / *In a separate mod rather than this one: a galaxy where **every** empire starts pre-FTL.*
 
 ---
 

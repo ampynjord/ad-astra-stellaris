@@ -1,0 +1,3377 @@
+# Ad Astra 1.2 - Les Ages : arborescence historique (50 techs, tier 0).
+# FICHIER GENERE PAR tools/gen_age_techs.py - NE PAS EDITER A LA MAIN.
+# Source de verite : tools/age_techs_data.py
+
+
+############################################################
+# AGE : STONE (cout de base 40)
+############################################################
+
+tech_adastra_fire = {
+	cost = 70
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { particles }
+	weight = 100
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_stone
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		pop_happiness = 0.05
+		planet_stability_add = 5
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_stone"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_stone_tools = {
+	cost = 50
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_stone
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_stone"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_hunting = {
+	cost = 50
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_stone
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_stone"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_cave_art = {
+	cost = 55
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_stone
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_stone"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : Monument des ancêtres
+}
+
+tech_adastra_language = {
+	cost = 70
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_stone
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_stone"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_seasons = {
+	cost = 40
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_stone
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.03
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_stone"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_pigments = {
+	cost = 40
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { particles }
+	weight = 100
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_stone
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.04
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_stone"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_cordage = {
+	cost = 40
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_stone
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.04
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_stone"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_shelter = {
+	cost = 40
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_stone
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_housing_add = 2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_stone"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_burial = {
+	cost = 40
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_stone
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_stability_add = 3
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_stone"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+
+############################################################
+# AGE : BRONZE (cout de base 64)
+############################################################
+
+tech_adastra_agriculture = {
+	cost = 115
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_hunting" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_bronze
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_bronze"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : Grenier
+}
+
+tech_adastra_pottery = {
+	cost = 75
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+	prerequisites = { "tech_adastra_stone_tools" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_bronze
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_bronze"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_bronze = {
+	cost = 115
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+	prerequisites = { "tech_adastra_stone_tools" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_bronze
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_bronze"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : Fonderie
+}
+
+tech_adastra_writing = {
+	cost = 115
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_fire" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_bronze
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_bronze"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : Maison des tablettes
+}
+
+tech_adastra_first_city = {
+	cost = 90
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_hunting" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_bronze
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_stability_add = 5
+		planet_housing_add = 2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_bronze"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_calendar = {
+	cost = 65
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_fire" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_bronze
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.04
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_bronze"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_measures = {
+	cost = 65
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_fire" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_bronze
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_bronze"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_irrigation = {
+	cost = 65
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_stone_tools" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_bronze
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.08
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_bronze"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_priesthood = {
+	cost = 65
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_hunting" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_bronze
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_stability_add = 4
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_bronze"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_domestication = {
+	cost = 65
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_hunting" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_bronze
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.06
+		logistic_growth_mult = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_bronze"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+
+############################################################
+# AGE : IRON (cout de base 90)
+############################################################
+
+tech_adastra_iron = {
+	cost = 160
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+	prerequisites = { "tech_adastra_pottery" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_iron
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.1
+		army_damage_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_iron"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_wheel = {
+	cost = 90
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { propulsion }
+	weight = 100
+	prerequisites = { "tech_adastra_pottery" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_iron
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_iron"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_law = {
+	cost = 160
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_agriculture" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_iron
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_stability_add = 10
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_iron"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : Tribunal
+}
+
+tech_adastra_coinage = {
+	cost = 90
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_agriculture" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_iron
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_energy_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_iron"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_astronomy = {
+	cost = 110
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_writing" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_iron
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.05
+		country_unity_produces_mult = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_iron"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_geometry = {
+	cost = 90
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_writing" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_iron
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.04
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_iron"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_glass = {
+	cost = 90
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { particles }
+	weight = 100
+	prerequisites = { "tech_adastra_writing" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_iron
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_amenities_add = 4
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_iron"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_aqueduct = {
+	cost = 90
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_pottery" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_iron
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_amenities_add = 3
+		planet_stability_add = 2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_iron"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_alphabet = {
+	cost = 160
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_agriculture" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_iron
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.06
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_iron"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_standing_army = {
+	cost = 90
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { military_theory }
+	weight = 100
+	prerequisites = { "tech_adastra_agriculture" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_iron
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		army_damage_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_iron"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+
+############################################################
+# AGE : MEDIEVAL (cout de base 104)
+############################################################
+
+tech_adastra_crop_rotation = {
+	cost = 125
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_law" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_medieval
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.15
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_medieval"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_mills = {
+	cost = 145
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+	prerequisites = { "tech_adastra_iron" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_medieval
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_medieval"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : Moulin
+}
+
+tech_adastra_stone_architecture = {
+	cost = 145
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+	prerequisites = { "tech_adastra_iron" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_medieval
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_housing_add = 3
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_medieval"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : Citadelle
+}
+
+tech_adastra_scholasticism = {
+	cost = 185
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_astronomy" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_medieval
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_medieval"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : Université
+}
+
+tech_adastra_guilds = {
+	cost = 105
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_law" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_medieval
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_medieval"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_algebra = {
+	cost = 105
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_astronomy" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_medieval
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_medieval"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_optics = {
+	cost = 105
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { particles }
+	weight = 100
+	prerequisites = { "tech_adastra_astronomy" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_medieval
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.08
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_medieval"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_heavy_plough = {
+	cost = 105
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_iron" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_medieval
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.08
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_medieval"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_hospices = {
+	cost = 105
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_law" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_medieval
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		pop_happiness = 0.05
+		planet_stability_add = 3
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_medieval"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_cartography = {
+	cost = 105
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { new_worlds }
+	weight = 100
+	prerequisites = { "tech_adastra_law" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_medieval
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_society_research_produces_mult = 0.08
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_medieval"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+
+############################################################
+# AGE : RENAISSANCE (cout de base 120)
+############################################################
+
+tech_adastra_printing = {
+	cost = 215
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_scholasticism" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_renaissance
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.15
+		country_unity_produces_mult = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_renaissance"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_experimental_method = {
+	cost = 215
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_scholasticism" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_renaissance
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.15
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_renaissance"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_anatomy = {
+	cost = 145
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_crop_rotation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_renaissance
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		logistic_growth_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_renaissance"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_mechanics = {
+	cost = 145
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+	prerequisites = { "tech_adastra_mills" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_renaissance
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_renaissance"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_banking = {
+	cost = 120
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_crop_rotation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_renaissance
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_energy_produces_mult = 0.15
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_renaissance"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_chemistry = {
+	cost = 120
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { particles }
+	weight = 100
+	prerequisites = { "tech_adastra_scholasticism" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_renaissance
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.08
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_renaissance"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_metallurgy_casting = {
+	cost = 120
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+	prerequisites = { "tech_adastra_mills" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_renaissance
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		army_damage_mult = 0.15
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_renaissance"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_clockwork = {
+	cost = 120
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+	prerequisites = { "tech_adastra_mills" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_renaissance
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_renaissance"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_double_entry = {
+	cost = 120
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_crop_rotation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_renaissance
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.04
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_renaissance"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_navigation = {
+	cost = 120
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { new_worlds }
+	weight = 100
+	prerequisites = { "tech_adastra_crop_rotation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_renaissance
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_society_research_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_renaissance"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+
+############################################################
+# AGE : STEAM (cout de base 160)
+############################################################
+
+tech_adastra_steam_engine = {
+	cost = 290
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_mechanics" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_steam
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_steam"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : Manufacture
+}
+
+tech_adastra_coal = {
+	cost = 190
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { particles }
+	weight = 100
+	prerequisites = { "tech_adastra_printing" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_steam
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_energy_produces_mult = 0.2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_steam"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_railways = {
+	cost = 160
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { propulsion }
+	weight = 100
+	prerequisites = { "tech_adastra_mechanics" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_steam
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.1
+		planet_stability_add = 5
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_steam"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_telegraph = {
+	cost = 160
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_printing" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_steam
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.1
+		country_unity_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_steam"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_sanitation = {
+	cost = 190
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_anatomy" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_steam
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		logistic_growth_mult = 0.15
+		pop_happiness = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_steam"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_gas_lighting = {
+	cost = 160
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { particles }
+	weight = 100
+	prerequisites = { "tech_adastra_printing" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_steam
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.04
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_steam"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_electromagnetism = {
+	cost = 160
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { field_manipulation }
+	weight = 100
+	prerequisites = { "tech_adastra_printing" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_steam
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_steam"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_machine_tools = {
+	cost = 160
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_mechanics" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_steam
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_alloys_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_steam"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_census = {
+	cost = 160
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_anatomy" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_steam
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.04
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_steam"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_anesthesia = {
+	cost = 160
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_anatomy" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_steam
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		pop_happiness = 0.05
+		logistic_growth_mult = 0.06
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_steam"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+
+############################################################
+# AGE : INDUSTRIAL (cout de base 210)
+############################################################
+
+tech_adastra_assembly_line = {
+	cost = 380
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_steam_engine" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_industrial
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_industrial"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_bessemer = {
+	cost = 210
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_steam_engine" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_industrial
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_alloys_produces_mult = 0.2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_industrial"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_thermodynamics = {
+	cost = 250
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { field_manipulation }
+	weight = 100
+	prerequisites = { "tech_adastra_coal" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_industrial
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.1
+		planet_jobs_energy_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_industrial"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_fertilizers = {
+	cost = 250
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_sanitation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_industrial
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_industrial"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_labour_law = {
+	cost = 210
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_sanitation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_industrial
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		pop_happiness = 0.1
+		planet_stability_add = 5
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_industrial"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_photography = {
+	cost = 210
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_coal" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_industrial
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.06
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_industrial"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_periodic_table = {
+	cost = 380
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { particles }
+	weight = 100
+	prerequisites = { "tech_adastra_coal" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_industrial
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.06
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_industrial"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_refrigeration = {
+	cost = 210
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_steam_engine" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_industrial
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_industrial"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_germ_theory = {
+	cost = 380
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_sanitation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_industrial
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		logistic_growth_mult = 0.08
+		pop_happiness = 0.04
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_industrial"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_universal_suffrage = {
+	cost = 210
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_sanitation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_industrial
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_stability_add = 6
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_industrial"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+
+############################################################
+# AGE : MACHINE (cout de base 290)
+############################################################
+
+tech_adastra_electricity = {
+	cost = 520
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { field_manipulation }
+	weight = 100
+	prerequisites = { "tech_adastra_thermodynamics" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_energy_produces_mult = 0.25
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_machine"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_radio = {
+	cost = 405
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_thermodynamics" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_machine"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : Station de radiodiffusion
+}
+
+tech_adastra_aviation = {
+	cost = 350
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { propulsion }
+	weight = 100
+	prerequisites = { "tech_adastra_assembly_line" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.1
+		army_damage_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_machine"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_antibiotics = {
+	cost = 350
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_fertilizers" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		logistic_growth_mult = 0.2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_machine"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_mass_education = {
+	cost = 405
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_fertilizers" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_machine"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+	# Debloque le batiment d'epoque : École publique
+}
+
+tech_adastra_quantum_theory = {
+	cost = 290
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { field_manipulation }
+	weight = 100
+	prerequisites = { "tech_adastra_thermodynamics" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.12
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_machine"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_haber = {
+	cost = 290
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_assembly_line" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.12
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_machine"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_plastics = {
+	cost = 290
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { materials }
+	weight = 100
+	prerequisites = { "tech_adastra_assembly_line" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.12
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_machine"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_social_insurance = {
+	cost = 290
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_fertilizers" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		pop_happiness = 0.06
+		planet_stability_add = 4
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_machine"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_epidemiology = {
+	cost = 290
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_fertilizers" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		logistic_growth_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_machine"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+
+############################################################
+# AGE : ATOMIC (cout de base 440)
+############################################################
+
+tech_adastra_fission = {
+	cost = 790
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { particles }
+	weight = 100
+	prerequisites = { "tech_adastra_electricity" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_atomic
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_energy_produces_mult = 0.25
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_atomic"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_electronics = {
+	cost = 440
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_electricity" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_atomic
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_atomic"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_petrochemistry = {
+	cost = 530
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_aviation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_atomic
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_atomic"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_vaccination = {
+	cost = 530
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_antibiotics" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_atomic
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		logistic_growth_mult = 0.25
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_atomic"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_television = {
+	cost = 440
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_antibiotics" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_atomic
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.15
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_atomic"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_radio_astronomy = {
+	cost = 440
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_electricity" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_atomic
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.15
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_atomic"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_jet_engine = {
+	cost = 440
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { propulsion }
+	weight = 100
+	prerequisites = { "tech_adastra_aviation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_atomic
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		army_damage_mult = 0.2
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_atomic"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_containers = {
+	cost = 440
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_aviation" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_atomic
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_atomic"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_green_revolution = {
+	cost = 440
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_antibiotics" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_atomic
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_food_produces_mult = 0.15
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_atomic"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_human_rights = {
+	cost = 440
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_antibiotics" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_atomic
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_stability_add = 8
+		pop_happiness = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_atomic"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+
+############################################################
+# AGE : SPACE (cout de base 600)
+############################################################
+
+tech_adastra_computing = {
+	cost = 1080
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { computing }
+	weight = 100
+	prerequisites = { "tech_adastra_fission" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.25
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_space"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_rocketry = {
+	cost = 1080
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { propulsion }
+	weight = 100
+	prerequisites = { "tech_adastra_petrochemistry" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_alloys_produces_mult = 0.15
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_space"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_remote_sensing = {
+	cost = 600
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { field_manipulation }
+	weight = 100
+	prerequisites = { "tech_adastra_fission" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_space"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_genetics = {
+	cost = 720
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { biology }
+	weight = 100
+	prerequisites = { "tech_adastra_vaccination" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		logistic_growth_mult = 0.2
+		planet_jobs_food_produces_mult = 0.1
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_space"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_cooperation = {
+	cost = 600
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_vaccination" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.2
+		planet_stability_add = 5
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_space"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_nuclear_medicine = {
+	cost = 600
+	area = physics
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { particles }
+	weight = 100
+	prerequisites = { "tech_adastra_fission" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		logistic_growth_mult = 0.1
+		pop_happiness = 0.04
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_space"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_satellites = {
+	cost = 600
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { voidcraft }
+	weight = 100
+	prerequisites = { "tech_adastra_petrochemistry" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.08
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_space"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_microprocessor = {
+	cost = 600
+	area = engineering
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { industry }
+	weight = 100
+	prerequisites = { "tech_adastra_petrochemistry" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.06
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_space"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_networks = {
+	cost = 600
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { statecraft }
+	weight = 100
+	prerequisites = { "tech_adastra_vaccination" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.1
+		all_technology_research_speed = 0.05
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_space"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}
+
+tech_adastra_ecology = {
+	cost = 600
+	area = society
+	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
+	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
+	# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.
+	tier = 0
+	category = { new_worlds }
+	weight = 100
+	prerequisites = { "tech_adastra_vaccination" }
+
+	# Visible uniquement pour Ad Astra, a partir de son age,
+	# et retiree du tirage une fois l'Ascension achevee.
+	potential = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	modifier = {
+		planet_stability_add = 6
+		planet_amenities_add = 4
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_space"
+			desc = "adastra_tech_marque_desc"
+		}
+	}
+
+	ai_weight = { factor = 5 }
+}

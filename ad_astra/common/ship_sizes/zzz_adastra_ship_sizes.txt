@@ -1,0 +1,503 @@
+# Ad Astra 1.2 - tailles de vaisseaux civils, elargies a un empire confine.
+# FICHIER GENERE PAR tools/gen_ship_size_overrides.py - NE PAS EDITER A LA MAIN.
+#
+# science, constructor et colonizer exigent l'une des cinq technologies de
+# voyage supraluminique dans leur potential_country. Sans elle la TAILLE
+# n'existe pas pour l'empire, et aucun design - si valide soit-il - ne peut
+# etre propose au chantier. La corvette n'a pas cette clause : c'est pour ca
+# qu'elle etait la seule a s'afficher.
+#
+# La condition est ELARGIE, jamais remplacee. Apres l'emergence, l'empire a
+# l'hyperpropulsion et la clause du jeu de base suffit ; la notre s'efface.
+
+
+### constructor
+constructor = {
+	max_speed = @speed_fast
+	acceleration = 0.3
+	rotation_speed = 0.2
+	max_hitpoints = @construction_hp
+	modifier = {
+		ship_evasion_add = @construction_evasion
+	}
+	size_multiplier = 1
+	map_counter_icon = ship_counter_4
+	icon = ship_size_constructor
+	fleet_slot_size = 1
+	section_slots = { "mid" = { locator = "part1" } }
+	num_target_locators = 0
+	is_space_station = no
+	base_buildtime = @construction_build_time
+
+	combat_disengage_chance = 1.0
+
+	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
+	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
+#	prerequisites = { "tech_space_construction" }	# Commented out to hide from the technology card
+	is_civilian = yes
+	is_designable = no
+	components_add_to_cost = no
+	class = shipclass_constructor
+	construction_type = { starbase_shipyard starbase_beastport }
+	required_component_set = "power_core"
+	required_component_set = "ftl_components"
+	required_component_set = "thruster_components"
+	required_component_set = "sensor_components"
+	valid_target_aggressive_stance = no
+	auto_upgrade = yes
+
+	construction_capabilities = {
+		starbase
+		mining_station
+		research_station
+		observation_station
+		automated_construction
+		megastructure
+	}
+
+	resources = {
+		category = ships
+		cost = {
+			trigger = {
+				from = {
+					country_uses_bio_ships = no
+				}
+			}
+			alloys = @construction_ship_cost
+		}
+		cost = {
+			trigger = {
+				from = {
+					country_uses_bio_ships = yes
+				}
+			}
+			alloys = @construction_ship_cost
+			mult = 0.5
+		}
+		cost = {
+			trigger = {
+				from = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = @construction_ship_cost
+			mult = @halved_alloy_to_food_cost_ratio
+		}
+
+		upkeep = {
+			energy = @construction_upkeep_energy
+			alloys = @construction_upkeep_alloys
+		}
+	}
+
+	potential_country = {
+		is_nomadic = no
+		OR = {
+			has_technology = tech_hyper_drive_1
+			has_technology = tech_hyper_drive_2
+			has_technology = tech_hyper_drive_3
+			has_technology = tech_jump_drive_1
+			has_technology = tech_psi_jump_drive_1
+			# Ad Astra : une coque sous-luminique n'a pas besoin de savoir
+			# plier l'espace pour traverser son propre systeme.
+			AND = {
+				has_origin = origin_adastra
+				NOT = { has_country_flag = adastra_completed }
+			}
+		}
+	}
+
+	available_to_everyone = yes
+
+	ai_ship_data = {
+		min = value:desired_constructors_min
+		system_mult = 0.15
+		max = value:desired_constructors_max
+	}
+}
+
+### colonizer
+colonizer = {
+	max_speed = @speed_very_slow
+	acceleration = 0.3
+	rotation_speed = 0.2
+	max_hitpoints = @colony_hp
+	modifier = {
+		ship_evasion_add = @colony_evasion
+	}
+	size_multiplier = 20
+	map_counter_icon = ship_counter_16
+	icon = ship_size_colonizer
+	fleet_slot_size = 1
+	section_slots = { "mid" = { locator = "part1" } }
+	num_target_locators = 0
+	is_space_station = no
+	base_buildtime = @colony_build_time
+
+	combat_disengage_chance = 0.5
+
+	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
+	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
+	prerequisites = { "tech_colonization_1" }
+	is_civilian = yes
+	is_designable = no
+	components_add_to_cost = no
+	class = shipclass_colonizer
+	construction_type = { starbase_shipyard starbase_beastport }
+	required_component_set = "power_core"
+	required_component_set = "ftl_components"
+	required_component_set = "thruster_components"
+	required_component_set = "sensor_components"
+	valid_target_aggressive_stance = no
+	auto_upgrade = yes
+
+	resources = {
+		category = colonies
+		# Alloys
+		# 200 normally
+		cost = {
+			trigger = {
+				from = {
+					is_virtual_empire = no
+					country_uses_bio_ships = no
+				}
+			}
+			alloys = @colony_cost_base
+		}
+		# 100 if you're a virtual empire
+		cost = {
+			trigger = {
+				from = {
+					is_virtual_empire = yes
+					country_uses_bio_ships = no
+				}
+			}
+			alloys = @colony_cost_low
+		}
+		# Halved if you use biological ships
+		cost = {
+			trigger = {
+				from = {
+					is_virtual_empire = no
+					country_uses_bio_ships = yes
+				}
+			}
+			alloys = @colony_cost_base
+			mult = 0.5
+		}
+		cost = {
+			trigger = {
+				from = {
+					is_virtual_empire = yes
+					country_uses_bio_ships = yes
+				}
+			}
+			alloys = @colony_cost_low
+			mult = 0.5
+		}
+
+		# Consumer goods for non-gestalt empires
+		# 200 normally
+		cost = {
+			trigger = {
+				from = {
+					is_gestalt = no
+					is_virtual_empire = no
+				}
+			}
+			consumer_goods = @colony_cost_base
+		}
+		# 100 if you're a virtual empire
+		cost = {
+			trigger = {
+				from = {
+					is_gestalt = no
+					is_virtual_empire = yes
+				}
+			}
+			consumer_goods = @colony_cost_low
+		}
+		# Food for organics
+		# 200 normally
+		cost = {
+			trigger = {
+				from = {
+					is_lithoid_empire = no
+					is_infernal_empire = no
+					is_robot_empire = no
+					is_hive_empire = no
+					NOT = {
+						has_origin = origin_synthetic_fertility
+					}
+				}
+			}
+			food = @colony_cost_base
+		}
+		# 500 if you're a hive mind
+		cost = {
+			trigger = {
+				from = {
+					is_lithoid_empire = no
+					is_infernal_empire = no
+					is_robot_empire = no
+					is_hive_empire = yes
+				}
+			}
+			food = @colony_cost_high
+		}
+
+		# Additional food to replace alloys if you use biological ships
+		cost = {
+			trigger = {
+				from = {
+					is_virtual_empire = no
+					country_uses_bio_ships = yes
+				}
+			}
+			food = @colony_cost_base
+			mult = @halved_alloy_to_food_cost_ratio
+		}
+		cost = {
+			trigger = {
+				from = {
+					is_virtual_empire = yes
+					country_uses_bio_ships = yes
+				}
+			}
+			food = @colony_cost_low
+			mult = @halved_alloy_to_food_cost_ratio
+		}
+
+		# Minerals for lithoids
+		# 200 normally
+		cost = {
+			trigger = {
+				from = {
+					is_lithoid_empire = yes
+					is_robot_empire = no
+					is_hive_empire = no
+					NOT = {
+						has_origin = origin_synthetic_fertility
+					}
+				}
+			}
+			minerals = @colony_cost_base
+		}
+		# 500 if you're a hive mind
+		cost = {
+			trigger = {
+				from = {
+					is_lithoid_empire = yes
+					is_robot_empire = no
+					is_hive_empire = yes
+				}
+			}
+			minerals = @colony_cost_high
+		}
+		# Energy for machines
+		# 200 normally
+		cost = {
+			trigger = {
+				from = {
+					is_robot_empire = yes
+					is_gestalt = no
+					is_virtual_empire = no
+				}
+			}
+			energy = @colony_cost_base
+		}
+		# 200 for synth fert
+		cost = {
+			trigger = {
+				from = {
+					has_origin = origin_synthetic_fertility
+				}
+			}
+			energy = @colony_cost_base
+		}
+		# 400 if you're a virtual empire
+		cost = {
+			trigger = {
+				from = {
+					is_robot_empire = yes
+					is_gestalt = no
+					is_virtual_empire = yes
+				}
+			}
+			energy = @colony_cost_mid
+		}
+		# 500 if you're a machine intelligence
+		cost = {
+			trigger = {
+				from = {
+					is_robot_empire = yes
+					is_gestalt = yes
+					is_virtual_empire = no
+				}
+			}
+			energy = @colony_cost_high
+		}
+		# 700 if you're a virtual empire
+		cost = {
+			trigger = {
+				from = {
+					is_robot_empire = yes
+					is_gestalt = yes
+					is_virtual_empire = yes
+				}
+			}
+			energy = @colony_cost_very_high
+		}
+
+		# Alloys for Infernals
+		# 100 normally
+		cost = {
+			trigger = {
+				from = {
+					is_infernal_empire = yes
+				}
+			}
+			alloys = @colony_cost_low
+		}
+		# 400 Energy for Hives, replacing CG
+		cost = {
+			trigger = {
+				from = {
+					is_infernal_empire = yes
+					is_hive_empire = yes
+				}
+			}
+			energy = @colony_cost_mid
+		}
+
+		upkeep = {
+			energy = @colony_upkeep_energy
+			alloys = @colony_upkeep_alloys
+		}
+	}
+
+	available_to_everyone = yes
+
+	potential_country = {
+		is_nomadic = no
+		is_guided_sapience_empire = no
+		is_wilderness_empire = no
+		OR = {
+			has_technology = tech_hyper_drive_1
+			has_technology = tech_hyper_drive_2
+			has_technology = tech_hyper_drive_3
+			has_technology = tech_jump_drive_1
+			has_technology = tech_psi_jump_drive_1
+			# Ad Astra : une coque sous-luminique n'a pas besoin de savoir
+			# plier l'espace pour traverser son propre systeme.
+			AND = {
+				has_origin = origin_adastra
+				NOT = { has_country_flag = adastra_completed }
+			}
+		}
+	}
+
+	ai_ship_data = {
+		min = value:desired_colonizers
+	}
+}
+
+### science
+science = {
+	max_speed = @speed_very_fast
+	acceleration = 0.3
+	rotation_speed = 0.2
+	max_hitpoints = @science_hp
+	modifier = {
+		ship_evasion_add = @science_evasion
+	}
+	ship_modifier = {
+		ship_hyperlane_range_add = 1
+	}
+	size_multiplier = 1
+	map_counter_icon = ship_counter_4
+	icon = ship_size_science
+	fleet_slot_size = 1
+	section_slots = { "mid" = { locator = "part1" } }
+	num_target_locators = 0
+	is_space_station = no
+	base_buildtime = @science_build_time
+
+	combat_disengage_chance = 2.0
+
+	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
+	enable_3dview_in_ship_browser = yes #if yes, ship design will have a 3d view in the ship browser
+	is_designable = no
+	components_add_to_cost = no
+	prerequisites = { "tech_space_exploration" }
+	is_civilian = yes
+	class = shipclass_science_ship
+	construction_type = { starbase_shipyard starbase_beastport }
+	required_component_set = "power_core"
+	required_component_set = "ftl_components"
+	required_component_set = "thruster_components"
+	required_component_set = "sensor_components"
+	required_component_set = "science_cloaking_components"
+	valid_target_aggressive_stance = no
+	auto_upgrade = yes
+
+	resources = {
+		category = ships
+		cost = {
+			trigger = {
+				from = {
+					country_uses_bio_ships = no
+				}
+			}
+			alloys = @science_ship_cost
+		}
+		cost = {
+			trigger = {
+				from = {
+					country_uses_bio_ships = yes
+				}
+			}
+			alloys = @science_ship_cost
+			mult = 0.5
+		}
+		cost = {
+			trigger = {
+				from = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = @science_ship_cost
+			mult = @halved_alloy_to_food_cost_ratio
+		}
+		upkeep = {
+			energy = @science_upkeep_energy
+			alloys = @science_upkeep_alloys
+		}
+	}
+
+	potential_country = {
+		is_mercenary = no
+		NOT = { is_country_type = mindwarden_enclave }
+		OR = {
+			has_technology = tech_hyper_drive_1
+			has_technology = tech_hyper_drive_2
+			has_technology = tech_hyper_drive_3
+			has_technology = tech_jump_drive_1
+			has_technology = tech_psi_jump_drive_1
+			# Ad Astra : une coque sous-luminique n'a pas besoin de savoir
+			# plier l'espace pour traverser son propre systeme.
+			AND = {
+				has_origin = origin_adastra
+				NOT = { has_country_flag = adastra_completed }
+			}
+		}
+	}
+
+	available_to_everyone = yes
+
+	ai_ship_data = {
+		min = value:desired_science_ships
+		system_mult = value:desired_science_ships_system_mult
+		max = value:max_science_ships
+	}
+}

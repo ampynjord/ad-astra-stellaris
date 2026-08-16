@@ -16,3 +16,59 @@ is_regular_empire = {
 	}
 	NOT = { has_ethic = ethic_gestalt_consciousness	}
 }
+
+# 1.2 - qui paie l'entretien de ses districts en energie.
+#
+# Vrai pour TOUS les empires de la galaxie, sauf un empire Ad Astra qui n'a pas
+# encore l'electricite : celui-la paie en minerais (voir la surcharge des
+# districts). Ecrit de facon a ce que le cas normal soit la premiere condition,
+# donc evalue en premier.
+adastra_pays_energy_upkeep = {
+	OR = {
+		NOT = { has_origin = origin_adastra }
+		adastra_has_energy = yes
+	}
+}
+
+# 1.2 - surcharge du declencheur scripte vanilla is_low_tech_start
+# (copie exacte 4.4.6 + notre origine pendant le confinement).
+#
+# TROUVE LE 15/08 EN AUDITANT LES TECHNOS ANACHRONIQUES. Le jeu de base a deja
+# la notion exacte dont ce mod a besoin : « cet empire commence sans technique ».
+# Elle couvre les primitifs, Chaines brisees, Revanche et les Explorateurs
+# enthousiastes. Ad Astra n'y figurait pas, alors que c'est le cas d'ecole.
+#
+# Ce que la surcharge repare, verifie ligne par ligne dans les fichiers du jeu :
+#
+#   - events/game_start.txt (lignes 1154, 1307, 1534) : le vaisseau scientifique,
+#     le vaisseau de construction et la flotte de depart ne sont crees que si
+#     is_low_tech_start = no. Ils n'existeront donc plus DU TOUT, au lieu d'etre
+#     crees puis effaces par adastra.8. error.log en portait la trace a chaque
+#     partie - trois « invalid design for create_ship effect » et un
+#     « Failed to create starbase », consequences de designs que nous avions
+#     retires.
+#
+#   - common/technology/00_biogenesis_tech.txt : Mauleurs, Tisseurs et leurs
+#     deux ameliorations portent « starting_potential = { is_low_tech_start = no
+#     # So low tech starts don't start with it } ». Un empire Ad Astra a
+#     vaisseaux vivants commencait donc l'Age de pierre avec la technologie des
+#     Mauleurs. Le commentaire de Paradox dit mot pour mot ce qu'on veut.
+#
+#   - common/pop_jobs/09_first_contact_jobs.txt : les emplois rudimentaires
+#     (bureaucrate, pretre, artisan primitifs) exigent is_low_tech_start = yes.
+#     Ils deviennent disponibles - ils restent conditionnes a leur batiment.
+#
+# La condition tombe A L'EMERGENCE : un empire qui a perce n'est plus un depart
+# sans technique, et rien ne doit lui rester de ce statut.
+is_low_tech_start = {
+	OR = {
+		is_primitive = yes
+		has_origin = origin_broken_shackles
+		has_origin = origin_payback
+		is_eager_explorer_empire = yes
+		AND = {
+			has_origin = origin_adastra
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+}

@@ -1,0 +1,705 @@
+# Ad Astra 1.2 - batiments d'epoque.
+# FICHIER GENERE PAR tools/gen_age_buildings.py - NE PAS EDITER A LA MAIN.
+# Source de verite : tools/age_buildings_data.py
+#
+# potential ne teste que l'origine : un batiment dont le potential devient
+# faux est desactive par le moteur. Les batiments deja eleves doivent
+# survivre a l'emergence, c'est donc allow qui ferme la construction.
+
+
+# --- Monument des ancêtres (stone) ---
+
+building_adastra_cave = {
+	can_build = yes
+	base_buildtime = 240
+	category = unity
+	icon = "building_autochthon_monument"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+		unity
+	}
+
+	prerequisites = { "tech_adastra_cave_art" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 40 }
+		upkeep = {
+			energy = 1
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 1
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/unity_jobs_add
+		AMOUNT = @building_static_jobs_low_3
+	}
+
+	planet_modifier = {
+		planet_stability_add = 3
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+
+# --- Grenier (bronze) ---
+
+building_adastra_granary = {
+	can_build = yes
+	base_buildtime = 300
+	category = resource
+	icon = "building_primitive_farm"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+		farming
+	}
+
+	prerequisites = { "tech_adastra_agriculture" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 60 }
+		upkeep = {
+			energy = 1
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 1
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/farmers_add
+		AMOUNT = @building_static_jobs_low_3
+	}
+
+	planet_modifier = {
+		planet_stability_add = 3
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+
+# --- Fonderie (bronze) ---
+
+building_adastra_foundry = {
+	can_build = yes
+	base_buildtime = 300
+	category = manufacturing
+	icon = "building_primitive_mine"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+		mining
+	}
+
+	prerequisites = { "tech_adastra_bronze" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 60 }
+		upkeep = {
+			energy = 1
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 1
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/miners_add
+		AMOUNT = @building_static_jobs_low_3
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+
+# --- Maison des tablettes (bronze) ---
+
+building_adastra_tablet_house = {
+	can_build = yes
+	base_buildtime = 300
+	category = research
+	icon = "building_primitive_research"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+		research
+	}
+
+	prerequisites = { "tech_adastra_writing" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 60 }
+		upkeep = {
+			energy = 1
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 1
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = @building_static_jobs_low_3
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+
+# --- Tribunal (iron) ---
+
+building_adastra_courthouse = {
+	can_build = yes
+	base_buildtime = 330
+	category = government
+	icon = "building_low_tech_admin_hub"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+	}
+
+	prerequisites = { "tech_adastra_law" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 80 }
+		upkeep = {
+			energy = 2
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 2
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = @building_static_jobs_3
+	}
+
+	planet_modifier = {
+		planet_stability_add = 8
+		planet_crime_add = -10
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+
+# --- Moulin (medieval) ---
+
+building_adastra_mill = {
+	can_build = yes
+	base_buildtime = 360
+	category = resource
+	icon = "building_food_processing_facility"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+		farming
+	}
+
+	prerequisites = { "tech_adastra_mills" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 110 }
+		upkeep = {
+			energy = 2
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 2
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/farmers_add
+		AMOUNT = @building_static_jobs_3
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+
+# --- Citadelle (medieval) ---
+
+building_adastra_citadel = {
+	can_build = yes
+	base_buildtime = 360
+	category = government
+	icon = "building_stone_palace"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+		fortress
+	}
+
+	prerequisites = { "tech_adastra_stone_architecture" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 110 }
+		upkeep = {
+			energy = 2
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 2
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/soldiers_add
+		AMOUNT = @building_static_jobs_3
+	}
+
+	planet_modifier = {
+		planet_housing_add = 5
+		planet_stability_add = 5
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+
+# --- Université (medieval) ---
+
+building_adastra_university = {
+	can_build = yes
+	base_buildtime = 360
+	category = research
+	icon = "building_primitive_labs"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+		research
+	}
+
+	prerequisites = { "tech_adastra_scholasticism" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 110 }
+		upkeep = {
+			energy = 2
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 2
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = @building_static_jobs_3
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+
+# --- Manufacture (steam) ---
+
+building_adastra_manufactory = {
+	can_build = yes
+	base_buildtime = 420
+	category = manufacturing
+	icon = "building_primitive_factory"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+		industrial
+		factory
+	}
+
+	prerequisites = { "tech_adastra_steam_engine" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 150 }
+		upkeep = {
+			energy = 3
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 2
+			food = 2
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/factory_add
+		AMOUNT = @building_static_jobs_low
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+
+# --- Station de radiodiffusion (machine) ---
+
+building_adastra_radio = {
+	can_build = yes
+	base_buildtime = 480
+	category = unity
+	icon = "building_pre_ftl_radio_telescope"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+		unity
+		entertainment
+	}
+
+	prerequisites = { "tech_adastra_radio" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 200 }
+		upkeep = {
+			energy = 3
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 3
+			food = 2
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/entertainers_add
+		AMOUNT = @building_static_jobs_low
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 5
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+
+# --- École publique (machine) ---
+
+building_adastra_school = {
+	can_build = yes
+	base_buildtime = 480
+	category = research
+	icon = "building_state_academy"
+
+	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
+	building_sets = {
+		government
+		research
+	}
+
+	prerequisites = { "tech_adastra_mass_education" }
+
+	# Un seul par planete. ATTENTION : ne JAMAIS mettre cette limite
+	# dans potential - un batiment dont le potential devient faux est
+	# detruit par le moteur, donc il se construisait puis disparaissait
+	# aussitot. planet_limit est le champ prevu pour ca (249 usages
+	# dans le jeu de base).
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	# Construction reservee au confinement ; l'existant survit a l'emergence.
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 200 }
+		upkeep = {
+			energy = 3
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 3
+			food = 2
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# La production vient d'emplois, pas d'un pourcentage : le Grenier
+	# emploie des fermiers. Script du jeu de base, qui gere deja les
+	# variantes gestalt et empire dechu.
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = @building_static_jobs_low
+	}
+
+	planet_modifier = {
+		logistic_growth_mult = 0.1
+	}
+
+	ai_weight = { weight = 5 }
+}

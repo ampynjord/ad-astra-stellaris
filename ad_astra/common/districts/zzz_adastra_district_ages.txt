@@ -1,0 +1,676 @@
+# Ad Astra 1.2 - technologie requise par district.
+# FICHIER GENERE PAR tools/gen_district_age_overrides.py - NE PAS EDITER A LA MAIN.
+# Source de verite : tools/vanilla_district_age_map.py
+#
+# Un district cree ses emplois tout seul, sans batiment ni zone. C'est le
+# troisieme etage du systeme de 4.4, et celui qui nous avait echappe :
+# la planete de depart portait deux districts generateurs, donc de
+# l'electricite a l'Age de pierre.
+
+
+### district_city : entretien d'epoque
+district_city = {
+	base_buildtime = 480
+
+	exempt_from_ai_planet_specialization = yes
+	default_starting_district = yes
+	overlay_icon = GFX_district_government
+
+	zone_slots = {
+		slot_city_government
+		slot_city_01
+		slot_city_02
+	}
+
+	show_on_uncolonized = {
+		exists = from
+		from = {
+			is_regular_empire = yes
+		}
+		OR = {
+			uses_district_set = standard
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			uses_district_set = shattered_ring_world
+			uses_district_set = volcanic_world
+		}
+		is_special_colony_type = no
+	}
+
+	potential = {
+		OR = {
+			NOT = { exists = owner } #this condition is needed for galaxy generation
+			AND = {
+				exists = owner
+				owner = {
+					OR = {
+						is_regular_empire = yes
+						AND = {
+							is_country_type = primitive
+							is_hive_empire = no
+						}
+						is_country_type = mechanocalibrator
+					}
+				}
+			}
+		}
+		NOT = { has_deposit = d_crashed_slaver_ship }
+		OR = {
+			uses_district_set = district_resort
+			uses_district_set = standard
+			uses_district_set = hive_world
+			uses_district_set = machine_world
+			uses_district_set = shattered_ring_world
+			uses_district_set = volcanic_world
+		}
+		is_special_colony_type = no
+
+		NAND = {
+			is_capital = yes
+			owner = {
+				has_menace_perk = menp_behemoth_mind_meld
+			}
+		}
+	}
+
+	allow = {
+		hidden_trigger = { is_special_colony_type = no }
+		custom_tooltip = {
+			fail_text = arcology_project_construction_fail_tt
+			NOT = { has_carrier_flag = arcology_project_construction }
+		}
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_crashed_slaver_ship
+		district_arcology_housing
+		district_rw_city
+		district_nexus
+		district_hive
+		district_prison
+		district_craglands
+		district_mindlink
+		district_crashed_slaver_ship
+		district_resort
+		district_slave
+		district_ark_city
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = 500
+			trigger = {
+				NOT = { has_modifier = wooden_planet }
+			}
+		}
+		cost = {
+			food = 500
+			trigger = {
+				has_modifier = wooden_planet
+			}
+		}
+		upkeep = {
+			energy = 2
+			trigger = {
+				NOT = { has_modifier = wooden_planet }
+				owner = { adastra_pays_energy_upkeep = yes }
+			}
+		}
+		upkeep = {
+			# Ad Astra : avant l'electricite, on entretient ses carrieres
+			# et ses champs avec du materiau et du travail, pas avec du
+			# courant.
+			minerals = 2
+			food = 1
+			trigger = {
+				NOT = { has_modifier = wooden_planet }
+				owner = { NOT = { adastra_pays_energy_upkeep = yes } }
+			}
+		}
+		upkeep = {
+			food = 2
+			trigger = {
+				has_modifier = wooden_planet
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 1000
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		modifier = {
+			planet_housing_add = -200
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_prosperity_public_works }
+		}
+		modifier = {
+			planet_housing_add = 100
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_1
+			}
+		}
+		modifier = {
+			planet_housing_add = 100
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_2
+				NOT = { has_valid_civic = civic_agrarian_idyll }
+			}
+		}
+		modifier = {
+			planet_housing_add = 200
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_tankbound_empire = yes
+			}
+		}
+		modifier = {
+			job_production_overseer_add = 100
+		}
+	}
+
+	inline_script = {
+		script = districts/district_triggered_name_urban
+	}
+
+	inline_script = {
+		script = districts/district_triggered_flavor_desc_urban
+	}
+
+	inline_script = {
+		script = districts/ai_urban_district_extra_weighting
+	}
+}
+
+### district_generator -> tech_adastra_electricity
+district_generator = {
+	shared_capacity_modifier = district_generator
+	expansion_planner = yes
+	base_buildtime = 240
+	overlay_icon = GFX_district_energy
+	is_uncapped = {
+		is_generator_district_uncapped = yes
+	}
+
+	min_for_deposits_on_planet = 3
+	max_for_deposits_on_planet = 15
+
+	zone_slots = {
+		slot_energy
+	}
+
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = standard
+			uses_district_set = shattered_ring_world
+		}
+		exists = from
+		from = { is_wilderness_empire = no }
+		NOT = { has_modifier = resort_colony }
+	}
+
+	potential = {
+		# Ad Astra : Un district generateur produit de l'energie, et l'energie c'est l'electricite : rien avant le Reseau electrique
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_technology = tech_adastra_electricity
+				}
+			}
+		}
+
+		OR = {
+			uses_district_set = standard
+			uses_district_set = shattered_ring_world
+		}
+		OR = {
+			NOT = { exists = owner }
+			AND = {
+				exists = owner
+				owner = { is_wilderness_empire = no }
+			}
+		}
+		NOT = { has_modifier = resort_colony }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = arcology_project_construction_fail_tt
+			NOT = { has_carrier_flag = arcology_project_construction }
+		}
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_photosynthesis_fields
+		district_geothermal
+		district_nexus_1
+		district_hive_1
+		district_ark_generator
+	}
+
+	resources = {
+		category = planet_districts_generator
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	inline_script = {
+		script = jobs/technicians_add
+		AMOUNT = @base_rural_district_jobs
+	}
+
+	planet_modifier = {
+		planet_housing_add = 200
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		modifier = {
+			planet_housing_add = 300
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 100
+		}
+	}
+
+	inline_script = {
+		script = districts/district_triggered_name_generator
+	}
+
+	inline_script = {
+		script = districts/district_triggered_flavor_desc_generator
+	}
+
+	prerequisites = {
+		tech_power_plant_1
+	}
+
+	show_tech_unlock_if = {
+		is_nomadic = no
+		is_wilderness_empire = no
+	}
+
+	ai_weight_coefficient = 0.75
+}
+
+### district_mining : entretien d'epoque
+district_mining = {
+	shared_capacity_modifier = district_mining
+	expansion_planner = yes
+	base_buildtime = 240
+	overlay_icon = GFX_district_minerals
+	is_uncapped = {
+		is_mining_district_uncapped = yes
+	}
+	min_for_deposits_on_planet = 1
+	max_for_deposits_on_planet = 15
+
+	zone_slots = {
+		slot_minerals
+	}
+
+	desc = {
+		trigger = {
+			NOT = { uses_district_set = shattered_ring_world }
+		}
+		text = district_mining_desc
+	}
+
+	desc = {
+		trigger = {
+			uses_district_set = shattered_ring_world
+		}
+		text = district_srw_mining_desc
+	}
+
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = standard
+			uses_district_set = shattered_ring_world
+		}
+		exists = from
+		from = { is_wilderness_empire = no }
+		NOT = { has_modifier = resort_colony }
+	}
+
+	potential = {
+		OR = {
+			uses_district_set = standard
+			uses_district_set = shattered_ring_world
+		}
+		OR = {
+			NOT = { exists = owner }
+			AND = {
+				exists = owner
+				owner = { is_wilderness_empire = no }
+			}
+		}
+		NOT = { has_modifier = resort_colony }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = arcology_project_construction_fail_tt
+			NOT = { has_carrier_flag = arcology_project_construction }
+		}
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_hollow_mountains
+		district_nexus_2
+		district_hive_2
+		district_melting
+		district_ark_military
+		district_ark_forever_cruise
+	}
+
+	resources = {
+		category = planet_districts_mining
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 1
+			trigger = {
+				owner = { adastra_pays_energy_upkeep = yes }
+			}
+		}
+		upkeep = {
+			# Ad Astra : avant l'electricite, on entretient ses carrieres
+			# et ses champs avec du materiau et du travail, pas avec du
+			# courant.
+			minerals = 1
+			food = 1
+			trigger = {
+				owner = { NOT = { adastra_pays_energy_upkeep = yes } }
+			}
+		}
+	}
+
+	inline_script = {
+		script = jobs/miners_add
+		AMOUNT = @base_rural_district_jobs
+	}
+
+	planet_modifier = {
+		planet_housing_add = 200
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		planet_housing_add = 300
+	}
+
+	triggered_planet_modifier = {
+		planet_housing_add = 1
+		mult = modifier:mining_district_housing_add
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_housing_add = 100
+	}
+
+	inline_script = {
+		script = districts/district_triggered_name_mining
+	}
+
+	inline_script = {
+		script = districts/district_triggered_flavor_desc_mining
+	}
+
+	prerequisites = {
+		tech_mechanized_mining
+	}
+
+	show_tech_unlock_if = {
+		is_nomadic = no
+		is_wilderness_empire = no
+	}
+
+	ai_weight_coefficient = 0.75
+}
+
+### district_farming : entretien d'epoque
+district_farming = {
+	shared_capacity_modifier = district_farming
+	expansion_planner = yes
+	base_buildtime = 240
+	overlay_icon = GFX_district_food
+	is_uncapped = {
+		is_farming_district_uncapped = yes
+	}
+
+	min_for_deposits_on_planet = 3
+	max_for_deposits_on_planet = 15
+
+	zone_slots = {
+		slot_food
+	}
+
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = standard
+			uses_district_set = shattered_ring_world
+		}
+		exists = from
+		from = { is_wilderness_empire = no }
+		NOT = { has_modifier = resort_colony }
+	}
+
+	potential = {
+		OR = {
+			uses_district_set = standard
+			uses_district_set = shattered_ring_world
+		}
+		NOT = {
+			AND = {
+				exists = owner
+				owner = {
+					is_ai = yes
+					country_uses_food = no
+				}
+			}
+		}
+		OR = {
+			NOT = { exists = owner }
+			AND = {
+				exists = owner
+				owner = { is_wilderness_empire = no }
+			}
+		}
+		NOT = { has_modifier = resort_colony }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = arcology_project_construction_fail_tt
+			NOT = { has_carrier_flag = arcology_project_construction }
+		}
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_orchard_forests
+		district_nexus_3
+		district_hive_3
+		district_ark_basic
+	}
+
+	resources = {
+		category = planet_districts_farming
+		cost = {
+			minerals = 300
+			trigger = {
+				NOT = { has_modifier = wooden_planet }
+			}
+		}
+		cost = {
+			food = 300
+			trigger = {
+				has_modifier = wooden_planet
+			}
+		}
+		# Anglers Civic cost effect
+		cost = {
+			trigger = {
+				AND = {
+					exists = owner
+					owner = { is_anglers_empire = yes }
+					planet = { has_climate = wet }
+				}
+			}
+			minerals = -50
+		}
+		upkeep = {
+			energy = 1
+			trigger = {
+				owner = { adastra_pays_energy_upkeep = yes }
+			}
+		}
+		upkeep = {
+			# Ad Astra : avant l'electricite, on entretient ses carrieres
+			# et ses champs avec du materiau et du travail, pas avec du
+			# courant.
+			minerals = 1
+			trigger = {
+				owner = { NOT = { adastra_pays_energy_upkeep = yes } }
+			}
+		}
+	}
+
+	inline_script = {
+		script = jobs/farmers_add
+		AMOUNT = @base_rural_district_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_wilderness_empire = no }
+		}
+		modifier = {
+			planet_housing_add = 200
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		modifier = {
+			planet_housing_add = 400
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_housing_agrarian_idyll
+				has_valid_civic = civic_agrarian_idyll
+			}
+		}
+		modifier = {
+			planet_housing_add = 200
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 100
+		}
+	}
+
+	inline_script = {
+		script = districts/district_triggered_name_farming
+	}
+
+	inline_script = {
+		script = districts/district_triggered_flavor_desc_farming
+	}
+
+	prerequisites = {
+		tech_industrial_farming
+	}
+
+	show_tech_unlock_if = {
+		is_nomadic = no
+		is_wilderness_empire = no
+	}
+
+	destroy_trigger = {
+		exists = owner
+		AND = {
+			owner = { is_ai = yes }
+			owner = { country_uses_food = no }
+		}
+	}
+
+	ai_weight_coefficient = 0.75
+}
