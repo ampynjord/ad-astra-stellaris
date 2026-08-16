@@ -54,6 +54,36 @@ adastra_heritage_4 = {
 	leader_lifespan_add = 10
 }
 
+# 1.2 : Heritage AUDACIEUX - galaxie vivante (IA actives). Jouer sans endormir
+# la galaxie, c'est risquer d'etre raye de la carte avant d'avoir decolle ;
+# la recompense est doublee. Suggestion argroww, echo de la meme idee cote
+# risque/recompense.
+adastra_heritage_1_bold = {
+	all_technology_research_speed = 0.06
+	country_unity_produces_mult = 0.06
+}
+
+adastra_heritage_2_bold = {
+	all_technology_research_speed = 0.10
+	country_unity_produces_mult = 0.10
+	planet_stability_add = 4
+}
+
+adastra_heritage_3_bold = {
+	all_technology_research_speed = 0.16
+	country_unity_produces_mult = 0.16
+	planet_stability_add = 6
+	pop_happiness = 0.10
+}
+
+adastra_heritage_4_bold = {
+	all_technology_research_speed = 0.20
+	country_unity_produces_mult = 0.24
+	planet_stability_add = 10
+	pop_happiness = 0.10
+	leader_lifespan_add = 20
+}
+
 # Galaxie assoupie : appliqué aux IA si le joueur choisit une galaxie en attente
 adastra_dormant_galaxy = {
 	all_technology_research_speed = -0.90
@@ -63,26 +93,33 @@ adastra_dormant_galaxy = {
 }
 
 # 1.1 : Campagnes d'exploitation (temporaires, avec compromis)
+# 1.2 : les campagnes ne creent plus de richesse, elles la deplacent.
+# Mobiliser un peuple sur une tache, c'est le retirer d'une autre : chaque
+# campagne donne un gain franc sur une ressource et un manque reel ailleurs.
 adastra_campaign_harvest = {
 	planet_jobs_food_produces_mult = 0.40
-	logistic_growth_mult = -0.15
+	planet_jobs_minerals_produces_mult = -0.25
+	planet_jobs_consumer_goods_produces_mult = -0.25
+	logistic_growth_mult = -0.10
 }
-
 adastra_campaign_mining = {
 	planet_jobs_minerals_produces_mult = 0.40
-	pop_happiness = -0.15
+	planet_jobs_food_produces_mult = -0.25
+	planet_jobs_energy_produces_mult = -0.15
+	pop_happiness = -0.10
 	planet_stability_add = -5
 }
-
 adastra_campaign_fuel = {
 	planet_jobs_energy_produces_mult = 0.40
-	logistic_growth_mult = -0.10
+	planet_jobs_minerals_produces_mult = -0.25
+	planet_jobs_food_produces_mult = -0.15
 	pop_happiness = -0.10
 }
-
 adastra_campaign_industry = {
 	planet_jobs_consumer_goods_produces_mult = 0.40
-	pop_happiness = -0.15
+	planet_jobs_food_produces_mult = -0.25
+	planet_jobs_energy_produces_mult = -0.15
+	pop_happiness = -0.10
 	planet_stability_add = -5
 }
 
@@ -94,4 +131,169 @@ adastra_pace_slow = {
 }
 
 adastra_pace_veryslow = {
+}
+
+# ------------------------------------------------------------------------
+# 1.2 : les ressources qui n'existent pas encore ne se consomment pas non plus.
+#
+# Poses et retires par adastra.11 (pulsation mensuelle) en fonction des technos,
+# pas des ages : c'est l'invention qui cree la ressource, pas le calendrier.
+# Sans ca, l'empire paierait une facture d'electricite mille ans avant d'avoir
+# l'electricite, et un deficit permanent bloquerait toute la partie.
+
+# Tant que le Reseau electrique n'est pas connu : aucun entretien energetique.
+# Remplace la reduction par age qui figurait dans la situation - une reduction
+# de 70 % laissait 30 % d'une facture qu'on ne pouvait pas payer.
+# Note : planet_districts_energy_upkeep_mult figurait ici et n'avait AUCUN effet
+# sur l'entretien des districts, verifie en jeu le 13/08 (district agricole 0,30,
+# minier 0,20, urbains 0,60 toujours factures). L'entretien des districts est
+# desormais traite la ou il ne peut pas etre ignore, dans la definition du
+# district elle-meme - voir common/districts/zzz_adastra_district_ages.txt.
+# Ce modificateur ne couvre plus que les BATIMENTS, ou il fonctionne.
+#
+# 15/08 - CORRECTION. Il portait planet_structures_upkeep_mult, qui vise TOUTES
+# les ressources et pas seulement l'energie. Consequence vue en jeu : le
+# Monument des ancetres, dont l'entretien bascule en minerais faute
+# d'electricite, se faisait raboter ces minerais de 90 % - « Base 1.00,
+# Un monde sans courant -100 % » affichait 0,10 minerai. Les batiments
+# d'epoque etaient donc quasiment gratuits, et l'infobulle annoncait une
+# coupure de courant sur une facture en cailloux.
+#
+# Le jeu de base expose une variante par ressource : planet_structures_
+# energy_upkeep_mult. C'est celle qu'il fallait. Elle ne touche que l'energie,
+# donc l'entretien de substitution en minerais est paye plein pot.
+#
+# Le plafond du moteur a -90 % s'applique toujours : un batiment VANILLA
+# construit avant l'electricite paiera 10 % de sa facture energetique. Nos
+# batiments d'epoque, eux, sont a zero exact parce que leur definition ne
+# comporte aucune ligne « energy » tant que l'electricite manque.
+adastra_pre_electric = {
+	planet_structures_energy_upkeep_mult = -1
+}
+
+# Tant que la Machine a vapeur n'est pas connue : personne n'achete de biens
+# manufactures, parce que personne n'en fabrique. La Manufacture, debloquee par
+# cette meme techno, est le premier atelier qui produit en serie.
+#
+# 15/08 - EMPILEMENT DES PLAFONDS. Chaque multiplicateur d'entretien est
+# plafonne a -90 % separement. Deux lignes ne suffisaient donc pas : il restait
+# 10 % d'une facture en biens de consommation qui ne devraient pas exister, et
+# le pansement du country_type (production forfaitaire) la couvrait en
+# sur-corrigeant - la barre affichait « 89 (+1) » a l'age de pierre.
+#
+# Le pari, verifiable en jeu : les plafonds s'appliquent a chaque
+# multiplicateur AVANT multiplication, pas a leur somme. En cumulant le
+# multiplicateur global des emplois avec celui de CHAQUE categorie d'emploi,
+# le residu passe de 10 % a 1 %, soit 0,00 a l'affichage. Si le moteur les
+# additionne au contraire (-4300 % ramene a -90 %), rien ne change et le
+# pansement du country_type devra revenir.
+#
+# La liste vient de la localisation du jeu de base, puis a ete TAILLEE d'apres
+# error.log : dix-huit de ces noms existent en localisation mais pas comme
+# modificateurs, et le moteur ecrivait « Invalid modifier » pour chacun a
+# chaque lancement. Il ne rejetait que la ligne fautive, pas le bloc, mais un
+# journal d'erreurs propre est ce qui rend les rapports de bug exploitables.
+#
+# 15/08, deuxieme passe. L'empilement a marche pour les EMPLOIS : leur ligne
+# est tombee a zero. Il reste 0,12 par mois, et l'infobulle du jeu designe le
+# coupable sans ambiguite - « Pops : 0.12 ». Ce residu ne vient pas d'un emploi
+# mais du NIVEAU DE VIE, qui pose un entretien forfaitaire par categorie de pop
+# (pop_category_*_consumer_goods_upkeep_add). Un forfaitaire ne se supprime pas
+# avec un pourcentage : -90 % de 0,25 fait toujours 0,025, et multiplie par
+# cinq cents pops, ca draine.
+#
+# On l'annule donc a la source, avec le meme forfaitaire en negatif. Les
+# valeurs sont celles de « Conditions de vie normales », le niveau de vie par
+# defaut : dirigeants 1,0 - specialistes 0,5 - ouvriers 0,25 - civils 0,25.
+#
+# A VERIFIER EN JEU : si les biens de consommation passent POSITIF, c'est que
+# le moteur applique le pourcentage avant le forfaitaire. Dans ce cas il faut
+# retirer les deux lignes planet_pops_*_mult ci-dessous et garder seulement
+# l'annulation forfaitaire.
+adastra_pre_manufacture = {
+	pop_category_rulers_consumer_goods_upkeep_add = -1
+	pop_category_specialists_consumer_goods_upkeep_add = -0.5
+	pop_category_workers_consumer_goods_upkeep_add = -0.25
+	pop_category_civilians_consumer_goods_upkeep_add = -0.25
+	planet_pops_consumer_goods_upkeep_mult = -1
+	planet_pops_organics_consumer_goods_upkeep_mult = -1
+	planet_pops_enslaved_consumer_goods_upkeep_mult = -1
+	planet_jobs_consumer_goods_upkeep_mult = -1
+	planet_artisans_consumer_goods_upkeep_mult = -1
+	planet_augmentors_consumer_goods_upkeep_mult = -1
+	planet_automated_jobs_consumer_goods_upkeep_mult = -1
+	planet_biologists_consumer_goods_upkeep_mult = -1
+	planet_bureaucrats_consumer_goods_upkeep_mult = -1
+	planet_chemists_consumer_goods_upkeep_mult = -1
+	planet_cruise_passengers_consumer_goods_upkeep_mult = -1
+	planet_doctors_consumer_goods_upkeep_mult = -1
+	planet_enforcers_consumer_goods_upkeep_mult = -1
+	planet_engineers_consumer_goods_upkeep_mult = -1
+	planet_entertainers_consumer_goods_upkeep_mult = -1
+	planet_knights_consumer_goods_upkeep_mult = -1
+	planet_metallurgists_consumer_goods_upkeep_mult = -1
+	planet_physicists_consumer_goods_upkeep_mult = -1
+	planet_pop_assemblers_consumer_goods_upkeep_mult = -1
+	planet_refiners_consumer_goods_upkeep_mult = -1
+	planet_researchers_consumer_goods_upkeep_mult = -1
+	planet_soldiers_consumer_goods_upkeep_mult = -1
+	planet_telepaths_consumer_goods_upkeep_mult = -1
+	planet_traders_consumer_goods_upkeep_mult = -1
+	planet_translucers_consumer_goods_upkeep_mult = -1
+}
+
+# LE CONSEIL DES ANCIENS
+#
+# Pose le 15/08 apres relevé en jeu : a l'Age de pierre, l'unite etait en
+# DEFICIT PERMANENT. Production 3,00 par mois, consommation 3,60, toute
+# imputee a la ligne « Personnalites » - l'entretien des dirigeants. La reserve
+# de depart fondait a vue d'oeil et rien, dans une civilisation confinee, ne
+# pouvait la reconstituer : ni traditions, ni edits, ni batiments d'unite avant
+# plusieurs ages.
+#
+# Le jeu de base facture ses dirigeants en unite parce qu'il les suppose
+# encadres par une administration. Une chefferie n'a pas d'administration : le
+# chef vit parmi les siens, le conseil se tient autour d'un feu, et cela ne
+# coute a la communaute que le temps qu'on y passe. L'entretien tombe donc au
+# quart tant que dure le confinement.
+#
+# Retire a l'emergence, comme les deux autres : voir adastra.15.
+# 15/08, correction le soir meme : la premiere version portait
+# « mod_leaders_upkeep_mult ». Le prefixe mod_ appartient a la LOCALISATION et
+# au nom du fichier d'icone, jamais au modificateur lui-meme. Le moteur ignorait
+# donc la ligne en silence - d'ou le « ? » a la place de l'icone, seul indice
+# visible, et une unite toujours en deficit. Le vrai nom est leaders_upkeep_mult,
+# celui qu'emploie deja chaque etape de la situation.
+#
+# L'etape d'age applique -0,70 de son cote. Les deux s'additionnent et butent
+# sur le plafond du moteur a -0,90 : les dirigeants coutent un dixieme.
+#
+# 15/08, deuxieme correction. Un seul modificateur pour dix ages, toujours a la
+# meme valeur : « il est la tout le temps et a la meme valeur ». Reproche juste,
+# et pire que ca - les etapes de la situation reduisent DEJA l'entretien des
+# dirigeants, de -0,70 a l'age de pierre a zero a l'age spatial. Un -0,70 fixe
+# par-dessus poussait le total au plafond du moteur (-0,90) a tous les ages
+# jusqu'a la vapeur : la degressivite prevue par les etapes ne se voyait nulle
+# part.
+#
+# Trois paliers maintenant, qui se remplacent l'un l'autre et portent chacun le
+# nom de ce qu'ils decrivent. Total obtenu, etape comprise :
+#
+#   pierre -0,90 · bronze -0,90 · fer -0,85     Le conseil des anciens
+#   medieval -0,90 · renaissance -0,80 · vapeur -0,70   La cour et ses obliges
+#   industriel -0,85 · machine -0,75 · atome -0,70 · spatial -0,60
+#                                               Une administration naissante
+#
+# La courbe descend sans jamais lacher : l'unite reste positive parce que la
+# production de base, elle, monte d'age en age.
+adastra_council_of_elders = {
+	leaders_upkeep_mult = -0.25
+}
+
+adastra_court_and_retinue = {
+	leaders_upkeep_mult = -0.4
+}
+
+adastra_young_administration = {
+	leaders_upkeep_mult = -0.6
 }

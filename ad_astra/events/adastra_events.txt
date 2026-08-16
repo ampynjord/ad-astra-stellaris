@@ -21,7 +21,37 @@ country_event = {
 
 	immediate = {
 		set_country_flag = adastra_locked
+
+		# 1.2 : set_country_type vide les reserves - c'est le meme effet de bord
+		# du moteur que celui corrige a l'emergence en 1.1, mais il frappait
+		# aussi au tout premier jour. Resultat : l'empire demarrait a zero
+		# partout, et la reduction de depart par age juste en dessous ne
+		# s'appliquait a rien. On photographie avant, on restitue apres.
+		export_resource_stockpile_to_variable = { resource = energy variable = adastra_st_energy }
+		export_resource_stockpile_to_variable = { resource = minerals variable = adastra_st_minerals }
+		export_resource_stockpile_to_variable = { resource = food variable = adastra_st_food }
+		export_resource_stockpile_to_variable = { resource = consumer_goods variable = adastra_st_cg }
+		export_resource_stockpile_to_variable = { resource = alloys variable = adastra_st_alloys }
+		export_resource_stockpile_to_variable = { resource = influence variable = adastra_st_influence }
+		export_resource_stockpile_to_variable = { resource = unity variable = adastra_st_unity }
+
 		set_country_type = adastra_grounded
+
+		add_resource = { energy = 1 mult = adastra_st_energy }
+		add_resource = { minerals = 1 mult = adastra_st_minerals }
+		add_resource = { food = 1 mult = adastra_st_food }
+		add_resource = { consumer_goods = 1 mult = adastra_st_cg }
+		add_resource = { alloys = 1 mult = adastra_st_alloys }
+		add_resource = { influence = 1 mult = adastra_st_influence }
+		add_resource = { unity = 1 mult = adastra_st_unity }
+		clear_variable = adastra_st_energy
+		clear_variable = adastra_st_minerals
+		clear_variable = adastra_st_food
+		clear_variable = adastra_st_cg
+		clear_variable = adastra_st_alloys
+		clear_variable = adastra_st_influence
+		clear_variable = adastra_st_unity
+
 		set_tutorial_level = 0
 		every_owned_starbase = {
 			fleet = {
@@ -40,55 +70,71 @@ country_event = {
 		}
 	}
 
+	# 1.2 : l'IA peut prendre l'origine, elle doit donc choisir un age.
+	# La courbe d'ai_chance monte fortement vers les ages tardifs (1 pour l'Age
+	# de pierre, 20 pour l'Age spatial). Un empire IA a l'Age de pierre reste
+	# inerte deux siecles : c'est un beau decor pour un joueur qui le decouvre,
+	# mais une galaxie qui en compte plusieurs perd ses grandes puissances.
+	# Le joueur, lui, garde les dix ages a poids egal.
 	option = {
 		name = "adastra.1.a"
 		custom_tooltip = "adastra.1.a.tooltip"
 		hidden_effect = { set_country_flag = adastra_choice_stone country_event = { id = adastra.2 } }
+		ai_chance = { factor = 1 }
 	}
 	option = {
 		name = "adastra.1.b"
 		custom_tooltip = "adastra.1.b.tooltip"
 		hidden_effect = { set_country_flag = adastra_choice_bronze country_event = { id = adastra.2 } }
+		ai_chance = { factor = 1 }
 	}
 	option = {
 		name = "adastra.1.c"
 		custom_tooltip = "adastra.1.c.tooltip"
 		hidden_effect = { set_country_flag = adastra_choice_iron country_event = { id = adastra.2 } }
+		ai_chance = { factor = 2 }
 	}
 	option = {
 		name = "adastra.1.d"
 		custom_tooltip = "adastra.1.d.tooltip"
 		hidden_effect = { set_country_flag = adastra_choice_medieval country_event = { id = adastra.2 } }
+		ai_chance = { factor = 3 }
 	}
 	option = {
 		name = "adastra.1.e"
 		custom_tooltip = "adastra.1.e.tooltip"
 		hidden_effect = { set_country_flag = adastra_choice_renaissance country_event = { id = adastra.2 } }
+		ai_chance = { factor = 4 }
 	}
 	option = {
 		name = "adastra.1.f"
 		custom_tooltip = "adastra.1.f.tooltip"
 		hidden_effect = { set_country_flag = adastra_choice_steam country_event = { id = adastra.2 } }
+		ai_chance = { factor = 6 }
 	}
 	option = {
 		name = "adastra.1.g"
 		custom_tooltip = "adastra.1.g.tooltip"
 		hidden_effect = { set_country_flag = adastra_choice_industrial country_event = { id = adastra.2 } }
+		ai_chance = { factor = 8 }
 	}
 	option = {
 		name = "adastra.1.h"
 		custom_tooltip = "adastra.1.h.tooltip"
 		hidden_effect = { set_country_flag = adastra_choice_machine country_event = { id = adastra.2 } }
+		ai_chance = { factor = 12 }
 	}
 	option = {
 		name = "adastra.1.i"
 		custom_tooltip = "adastra.1.i.tooltip"
 		hidden_effect = { set_country_flag = adastra_choice_atomic country_event = { id = adastra.2 } }
+		ai_chance = { factor = 16 }
 	}
 	option = {
 		name = "adastra.1.j"
 		custom_tooltip = "adastra.1.j.tooltip"
 		hidden_effect = { set_country_flag = adastra_choice_space country_event = { id = adastra.2 } }
+		ai_chance = { factor = 20 }
 	}
 }
 
@@ -116,26 +162,31 @@ country_event = {
 			}
 		}
 
-		# Départ réduit : population initiale selon l'âge choisi
+		# Départ réduit : population initiale selon l'âge choisi.
+		# 1.2 : les taux ont ete releves. Une civilisation de l'age de pierre
+		# gardait 12 pops - assez pour consommer 35 biens par mois qu'elle ne
+		# pouvait pas produire. Moins de monde, c'est moins de bouches ET moins
+		# de bras : la consommation et la production baissent ensemble, sans
+		# qu'on ait a inventer de la ressource.
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_stone has_country_flag = adastra_choice_bronze has_country_flag = adastra_choice_iron } }
-			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.75 } }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.90 } }
 		}
 		else_if = {
 			limit = { OR = { has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance } }
-			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.65 } }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.82 } }
 		}
 		else_if = {
 			limit = { has_country_flag = adastra_choice_steam }
-			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.50 } }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.68 } }
 		}
 		else_if = {
 			limit = { has_country_flag = adastra_choice_industrial }
-			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.40 } }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.52 } }
 		}
 		else_if = {
 			limit = { has_country_flag = adastra_choice_machine }
-			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.25 } }
+			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.32 } }
 		}
 		else_if = {
 			limit = { has_country_flag = adastra_choice_atomic }
@@ -145,42 +196,226 @@ country_event = {
 			every_owned_pop_group = { kill_pop_group = { pop_group = this percentage = 0.05 } }
 		}
 
-		# Débloquer les âges déjà traversés (flags + technologies)
+		# 1.2 : la capitale demarre specialisee et meublee comme un empire
+		# spatial - district « Archives » et « Industrie mixte », Holotheatres,
+		# Zones commerciales. On remet la planete a son epoque : les
+		# specialisations se rouvriront a l'age de la techno correspondante.
+		capital_scope = {
+			remove_zone = { district = district_city zone = zone_research_unity }
+			remove_zone = { district = district_city zone = zone_industrial }
+			remove_building = building_holo_theatres
+			remove_building = building_commercial_zone
+
+			# 1.2 : les DISTRICTS aussi. Un district cree ses emplois tout seul,
+			# sans batiment ni zone - c'est le troisieme etage du systeme de 4.4,
+			# et celui qui nous avait echappe. La planete de depart portait deux
+			# districts generateurs : +11,50 energie par mois a l'Age de pierre,
+			# releve en jeu le 13/08. On les retire tant que le Reseau electrique
+			# n'est pas connu ; les mines et les fermes restent, une carriere et
+			# un champ n'ont pas d'epoque.
+			if = {
+				limit = {
+					owner = { NOT = { adastra_has_energy = yes } }
+				}
+				# Boucle plutot qu'un nombre fixe d'appels : le nombre de
+				# districts poses au demarrage depend de la taille de la planete
+				# et de ses gisements. On retire tant qu'il en reste.
+				while = {
+					limit = { num_districts = { type = district_generator value > 0 } }
+					remove_district = district_generator
+				}
+			}
+
+			# Capitale d'epoque : on echange l'Administration planetaire contre la
+			# notre, definie dans common/buildings/zzz_adastra_capital.txt. Elle porte deja
+			# upgrades = { building_capital }, donc le joueur retrouvera la moderne
+			# des qu'il aura la techno, placee a l'Age de la machine.
+			# 1.2 : sept paliers de capitale, un par age. On pose celui de
+			# l'age de depart ; le joueur ameliorera les suivants au fur et a
+			# mesure, jusqu'a l'Administration planetaire du jeu de base.
+			# A partir de l'Age de la machine, l'Administration planetaire de
+			# depart est deja a l'heure : on n'y touche pas.
+			if = {
+				limit = {
+					owner = {
+						NOR = {
+							has_country_flag = adastra_choice_machine
+							has_country_flag = adastra_choice_atomic
+							has_country_flag = adastra_choice_space
+						}
+					}
+				}
+				remove_building = building_capital
+				if = {
+					limit = { owner = { has_country_flag = adastra_choice_stone } }
+					add_building = {
+						district = district_city
+						zone = zone_default
+						building = building_adastra_seat
+					}
+				}
+				else_if = {
+					limit = { owner = { has_country_flag = adastra_choice_bronze } }
+					add_building = {
+						district = district_city
+						zone = zone_default
+						building = building_adastra_seat_bronze
+					}
+				}
+				else_if = {
+					limit = { owner = { has_country_flag = adastra_choice_iron } }
+					add_building = {
+						district = district_city
+						zone = zone_default
+						building = building_adastra_seat_iron
+					}
+				}
+				else_if = {
+					limit = { owner = { has_country_flag = adastra_choice_medieval } }
+					add_building = {
+						district = district_city
+						zone = zone_default
+						building = building_adastra_seat_medieval
+					}
+				}
+				else_if = {
+					limit = { owner = { has_country_flag = adastra_choice_renaissance } }
+					add_building = {
+						district = district_city
+						zone = zone_default
+						building = building_adastra_seat_renaissance
+					}
+				}
+				else_if = {
+					limit = { owner = { has_country_flag = adastra_choice_steam } }
+					add_building = {
+						district = district_city
+						zone = zone_default
+						building = building_adastra_seat_steam
+					}
+				}
+				else = {
+					add_building = {
+						district = district_city
+						zone = zone_default
+						building = building_adastra_seat_industrial
+					}
+				}
+			}
+			validate_and_repair_planet_buildings_and_districts = yes
+		}
+
+		# Débloquer les âges déjà traversés : drapeaux ET technologies.
+		#
+		# 1.2 (13/08) : les technologies manquaient. Un empire qui commençait à
+		# l'Âge de la machine repartait d'un arbre vide - pas de feu, pas
+		# d'écriture, pas de métallurgie - donc pas d'alliages, pas de biens de
+		# consommation, et les verrous du jeu de base fermés pour toute la
+		# partie. Chaque âge antérieur offre désormais ses dix technologies.
+		# L'âge de départ lui-même n'est pas offert : c'est celui qu'on joue.
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_bronze has_country_flag = adastra_choice_iron has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			# country_event ne s'execute pas sur place : il met l'evenement en
+			# file. Les drapeaux poses par adastra.4x arrivaient donc APRES
+			# l'octroi, et chaque techno vanilla de l'age etait refusee -
+			# « give_technology: Attempting to give invalid technology », vu
+			# dans error.log le 15/08. On les pose ici, en clair.
+			set_country_flag = adastra_reached_stone
 			country_event = { id = adastra.40 }
+			adastra_grant_age_stone = yes
 		}
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_iron has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			# country_event ne s'execute pas sur place : il met l'evenement en
+			# file. Les drapeaux poses par adastra.4x arrivaient donc APRES
+			# l'octroi, et chaque techno vanilla de l'age etait refusee -
+			# « give_technology: Attempting to give invalid technology », vu
+			# dans error.log le 15/08. On les pose ici, en clair.
+			set_country_flag = adastra_reached_bronze
 			country_event = { id = adastra.41 }
+			adastra_grant_age_bronze = yes
 		}
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			# country_event ne s'execute pas sur place : il met l'evenement en
+			# file. Les drapeaux poses par adastra.4x arrivaient donc APRES
+			# l'octroi, et chaque techno vanilla de l'age etait refusee -
+			# « give_technology: Attempting to give invalid technology », vu
+			# dans error.log le 15/08. On les pose ici, en clair.
+			set_country_flag = adastra_reached_iron
 			country_event = { id = adastra.42 }
+			adastra_grant_age_iron = yes
 		}
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			# country_event ne s'execute pas sur place : il met l'evenement en
+			# file. Les drapeaux poses par adastra.4x arrivaient donc APRES
+			# l'octroi, et chaque techno vanilla de l'age etait refusee -
+			# « give_technology: Attempting to give invalid technology », vu
+			# dans error.log le 15/08. On les pose ici, en clair.
+			set_country_flag = adastra_reached_medieval
 			country_event = { id = adastra.43 }
+			adastra_grant_age_medieval = yes
 		}
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			# country_event ne s'execute pas sur place : il met l'evenement en
+			# file. Les drapeaux poses par adastra.4x arrivaient donc APRES
+			# l'octroi, et chaque techno vanilla de l'age etait refusee -
+			# « give_technology: Attempting to give invalid technology », vu
+			# dans error.log le 15/08. On les pose ici, en clair.
+			set_country_flag = adastra_reached_renaissance
+			set_country_flag = adastra_unlock_renaissance
 			country_event = { id = adastra.44 }
+			adastra_grant_age_renaissance = yes
 		}
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			# country_event ne s'execute pas sur place : il met l'evenement en
+			# file. Les drapeaux poses par adastra.4x arrivaient donc APRES
+			# l'octroi, et chaque techno vanilla de l'age etait refusee -
+			# « give_technology: Attempting to give invalid technology », vu
+			# dans error.log le 15/08. On les pose ici, en clair.
+			set_country_flag = adastra_reached_steam
+			set_country_flag = adastra_unlock_steam
 			country_event = { id = adastra.45 }
+			adastra_grant_age_steam = yes
 		}
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			# country_event ne s'execute pas sur place : il met l'evenement en
+			# file. Les drapeaux poses par adastra.4x arrivaient donc APRES
+			# l'octroi, et chaque techno vanilla de l'age etait refusee -
+			# « give_technology: Attempting to give invalid technology », vu
+			# dans error.log le 15/08. On les pose ici, en clair.
+			set_country_flag = adastra_reached_industrial
+			set_country_flag = adastra_unlock_industrial
 			country_event = { id = adastra.46 }
+			adastra_grant_age_industrial = yes
 		}
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
+			# country_event ne s'execute pas sur place : il met l'evenement en
+			# file. Les drapeaux poses par adastra.4x arrivaient donc APRES
+			# l'octroi, et chaque techno vanilla de l'age etait refusee -
+			# « give_technology: Attempting to give invalid technology », vu
+			# dans error.log le 15/08. On les pose ici, en clair.
+			set_country_flag = adastra_reached_machine
+			set_country_flag = adastra_unlock_machine
 			country_event = { id = adastra.47 }
+			adastra_grant_age_machine = yes
 		}
 		if = {
 			limit = { has_country_flag = adastra_choice_space }
+			# country_event ne s'execute pas sur place : il met l'evenement en
+			# file. Les drapeaux poses par adastra.4x arrivaient donc APRES
+			# l'octroi, et chaque techno vanilla de l'age etait refusee -
+			# « give_technology: Attempting to give invalid technology », vu
+			# dans error.log le 15/08. On les pose ici, en clair.
+			set_country_flag = adastra_reached_atomic
+			set_country_flag = adastra_unlock_atomic
 			country_event = { id = adastra.48 }
+			adastra_grant_age_atomic = yes
 		}
 
 		# L'âge de départ lui-même
@@ -214,19 +449,26 @@ country_event = {
 					surveyed = no
 					surveyor = root
 				}
+				# 1.2 : le monde natal est traite ici, dans la meme boucle. Le bloc
+				# separe « capital_scope = { set_surveyed } » qui existait avant
+				# n'a jamais fonctionne : capital_scope rend une portee colony, et
+				# set_surveyed n'accepte que planet / ship / galactic_object /
+				# astral_rift. Le moteur le rejetait a chaque partie.
 				every_system_planet = {
-					limit = { NOT = { is_same_value = root.capital_scope } }
-					set_surveyed = {
-						surveyed = no
-						surveyor = root
+					if = {
+						limit = { is_same_value = root.capital_scope }
+						set_surveyed = {
+							surveyed = yes
+							surveyor = root
+						}
+					}
+					else = {
+						set_surveyed = {
+							surveyed = no
+							surveyor = root
+						}
 					}
 				}
-			}
-		}
-		capital_scope = {
-			set_surveyed = {
-				surveyed = yes
-				surveyor = root
 			}
 		}
 
@@ -247,6 +489,29 @@ country_event = {
 			add_resource = { alloys = -50 }
 		}
 
+		# Une ressource qu'on ne sait pas encore produire ne doit pas non plus
+		# figurer en réserve. Les retraits ci-dessus laissaient 20 énergie et
+		# 20 biens de consommation à l'Âge de pierre — deux lignes visibles
+		# dans la barre du haut pour des ressources qui ne sont pas censées
+		# exister, et que rien ne pouvait ni dépenser ni reconstituer.
+		#
+		# Les mêmes déclencheurs que la production servent ici : quel que soit
+		# l'âge de départ, la ressource de l'âge en cours n'est jamais acquise
+		# (seules les technos des âges DÉJÀ TRAVERSÉS sont offertes), donc un
+		# départ à l'Âge de la machine part bien de zéro énergie.
+		if = {
+			limit = { NOT = { adastra_has_energy = yes } }
+			set_resource = { resource = energy value = 0 }
+		}
+		if = {
+			limit = { NOT = { adastra_has_alloys = yes } }
+			set_resource = { resource = alloys value = 0 }
+		}
+		if = {
+			limit = { NOT = { adastra_has_consumer_goods = yes } }
+			set_resource = { resource = consumer_goods value = 0 }
+		}
+
 		# Nettoyage différé : la base stellaire de départ est créée par le jeu APRÈS cet événement
 		country_event = { id = adastra.8 days = 4 }
 
@@ -254,6 +519,7 @@ country_event = {
 		country_event = { id = adastra.3 days = 10 }
 		country_event = { id = adastra.4 }
 		country_event = { id = adastra.5 }
+		country_event = { id = adastra.11 }
 		country_event = { id = adastra.7 }
 	}
 }
@@ -280,6 +546,11 @@ country_event = {
 	desc = "adastra.4.desc"
 	picture = GFX_evt_alien_city
 	is_triggered_only = yes
+
+	trigger = {
+		# 1.2 : Bienvenue : popup d'ambiance, sans effet mecanique.
+		is_ai = no
+	}
 
 	option = {
 		name = "adastra.4.a"
@@ -378,6 +649,11 @@ country_event = {
 	picture = GFX_evt_society_research
 	is_triggered_only = yes
 
+	trigger = {
+		# 1.2 : Rythme de l'ascension : sans reponse, l'IA garde le rythme normal (option a).
+		is_ai = no
+	}
+
 	option = {
 		name = "adastra.5.a"
 		custom_tooltip = "adastra.5.a.tooltip"
@@ -412,6 +688,13 @@ country_event = {
 	picture = GFX_evt_star_chart
 	is_triggered_only = yes
 
+	trigger = {
+		# 1.2 : Rythme de la galaxie : SURTOUT PAS pour l'IA. L'option b endort tous
+		# les autres empires IA de la partie - c'est un reglage de partie, il
+		# n'appartient qu'au joueur.
+		is_ai = no
+	}
+
 	option = {
 		name = "adastra.7.a"
 		custom_tooltip = "adastra.7.a.tooltip"
@@ -426,10 +709,411 @@ country_event = {
 				limit = {
 					NOT = { is_same_value = root }
 					is_ai = yes
+					# 1.2 : une autre civilisation Ad Astra n'est pas un empire
+					# stellaire a endormir, c'est une egale. L'endormir la
+					# sortirait de adastra_grounded et casserait son ascension.
+					NOT = { has_origin = origin_adastra }
 				}
 				set_country_type = adastra_dormant
 			}
 		}
+	}
+}
+
+############################
+# adastra.11 : Ressources non inventées (caché)
+############################
+# Une ressource n'existe pas avant la technologie qui l'invente. La production
+# de base est verrouillée dans le type de pays (common/country_types) ; ici on
+# s'occupe de l'autre moitié, la consommation : on ne paie pas une facture
+# d'électricité avant d'avoir l'électricité.
+#
+# Vérifié chaque mois plutôt qu'au moment de la recherche : c'est deux triggers
+# par empire Ad Astra et par mois, et ça rattrape n'importe quel chemin - octroi
+# par événement, sauvegarde reprise, techno donnée par la console.
+country_event = {
+	id = adastra.11
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+	}
+
+	immediate = {
+		# --- Énergie : le Réseau électrique ---
+		if = {
+			limit = {
+				NOT = { adastra_has_energy = yes }
+				NOT = { has_modifier = adastra_pre_electric }
+			}
+			add_modifier = { modifier = adastra_pre_electric days = -1 }
+		}
+		else_if = {
+			limit = {
+				adastra_has_energy = yes
+				has_modifier = adastra_pre_electric
+			}
+			remove_modifier = adastra_pre_electric
+		}
+
+		# --- Le commerce ne se change pas en énergie ---
+		# Le jeu de base convertit la moitié de la valeur commerciale en crédits
+		# énergétiques, quelle que soit la politique commerciale choisie. Une
+		# civilisation de l'Âge de pierre fabriquait donc 0,46 énergie par mois
+		# par le seul fait de troquer (relevé en jeu le 13/08).
+		#
+		# set_trade_conversions est un effet de PAYS : on le pose sur notre
+		# empire seulement, aucun fichier du jeu de base n'est touché et aucun
+		# autre empire de la galaxie n'est affecté. « trade = 1 » veut dire que
+		# la totalité de la valeur commerciale reste du commerce.
+		#
+		# Repose chaque mois : si le joueur change de politique commerciale, le
+		# jeu de base réécrit la conversion, et cette passe la corrige.
+		if = {
+			limit = { NOT = { adastra_has_energy = yes } }
+			set_trade_conversions = { trade = 1 }
+		}
+		else_if = {
+			limit = {
+				adastra_has_energy = yes
+				NOT = { has_country_flag = adastra_trade_restored }
+			}
+			set_country_flag = adastra_trade_restored
+			# Rétablissement, une seule fois, à l'arrivée de l'électricité.
+			# On rend exactement la conversion de la politique commerciale
+			# choisie, et pas la conversion par défaut : un joueur qui a pris
+			# Avantages sociaux ou Rites de commerce pendant le confinement
+			# doit la retrouver telle quelle. Les valeurs sont celles du jeu de
+			# base ; chaque option porte un drapeau de politique, sauf celle par
+			# défaut, qui est donc le cas « sinon ».
+			if = {
+				limit = { has_policy_flag = trade_conversion_consumer_goods }
+				set_trade_conversions = {
+					trade = 0.5
+					consumer_goods = 0.25
+				}
+			}
+			else_if = {
+				limit = { has_policy_flag = trade_conversion_unity }
+				set_trade_conversions = {
+					trade = 0.50
+					unity = 0.125
+				}
+			}
+			else_if = {
+				limit = { has_policy_flag = trade_conversion_trade_league }
+				set_trade_conversions = {
+					trade = 0.50
+					energy = 0.15
+					consumer_goods = 0.15
+					unity = 0.075
+				}
+			}
+			else_if = {
+				limit = { has_policy_flag = trade_conversion_holy_covenant }
+				set_trade_conversions = {
+					trade = 0.50
+					unity = 0.1875
+				}
+			}
+			else_if = {
+				limit = { has_policy_flag = trade_conversion_mutual_aid }
+				set_trade_conversions = {
+					trade = 0.25
+					energy = 0.20
+				}
+			}
+			else = {
+				set_trade_conversions = {
+					trade = 0.5
+					energy = 0.5
+				}
+			}
+		}
+
+		# --- Filet de sécurité : aucun district générateur sans électricité ---
+		# La garde posée sur le district empêche d'en construire, mais elle ne
+		# garantit pas que le moteur détruise ceux qui existaient déjà. Cette
+		# passe mensuelle le fait, et rattrape aussi une planète prise à
+		# l'ennemi ou colonisée par un autre chemin.
+		if = {
+			limit = { NOT = { adastra_has_energy = yes } }
+			every_owned_planet = {
+				limit = { num_districts = { type = district_generator value > 0 } }
+				while = {
+					limit = { num_districts = { type = district_generator value > 0 } }
+					remove_district = district_generator
+				}
+			}
+		}
+
+		# --- Biens de consommation : la Machine à vapeur et sa Manufacture ---
+		if = {
+			limit = {
+				NOT = { adastra_has_consumer_goods = yes }
+				NOT = { has_modifier = adastra_pre_manufacture }
+			}
+			add_modifier = { modifier = adastra_pre_manufacture days = -1 }
+		}
+		else_if = {
+			limit = {
+				adastra_has_consumer_goods = yes
+				has_modifier = adastra_pre_manufacture
+			}
+			remove_modifier = adastra_pre_manufacture
+		}
+
+		# --- Le siege du pouvoir coute de plus en plus cher ---
+		#
+		# Un seul modificateur immuable pendant dix ages, c'etait le reproche
+		# du 15/08 : « il est la tout le temps et a la meme valeur ». Il y en a
+		# trois maintenant, qui se remplacent l'un l'autre et portent chacun le
+		# nom de ce qu'ils decrivent. La reduction faiblit d'un palier a
+		# l'autre : gouverner une chefferie ne coute rien, gouverner un Etat
+		# industriel coute cher.
+		#
+		# Les etapes de la situation reduisent DEJA l'entretien des dirigeants,
+		# de -0,70 a l'age de pierre a zero a l'age spatial. Les deux
+		# s'additionnent avant le plafond du moteur a -0,90. Total obtenu :
+		# -0,90 au depart, -0,60 a la veille de l'emergence.
+		if = {
+			limit = { NOT = { has_country_flag = adastra_reached_medieval } }
+			if = {
+				limit = { NOT = { has_modifier = adastra_council_of_elders } }
+				remove_modifier = adastra_court_and_retinue
+				remove_modifier = adastra_young_administration
+				add_modifier = { modifier = adastra_council_of_elders days = -1 }
+			}
+		}
+		else_if = {
+			limit = { NOT = { has_country_flag = adastra_reached_industrial } }
+			if = {
+				limit = { NOT = { has_modifier = adastra_court_and_retinue } }
+				remove_modifier = adastra_council_of_elders
+				remove_modifier = adastra_young_administration
+				add_modifier = { modifier = adastra_court_and_retinue days = -1 }
+			}
+		}
+		else = {
+			if = {
+				limit = { NOT = { has_modifier = adastra_young_administration } }
+				remove_modifier = adastra_council_of_elders
+				remove_modifier = adastra_court_and_retinue
+				add_modifier = { modifier = adastra_young_administration days = -1 }
+			}
+		}
+
+		# --- Dire au joueur POURQUOI la marche s'est arretee ---
+		#
+		# Le 15/08, une partie a ete signalee comme cassee : « aucune decision
+		# du programme spatial n'est disponible ». La sauvegarde disait autre
+		# chose - progression 99,057, gain mensuel 0,00011, et une seule techno
+		# manquante sur les dix de l'age spatial, le Microprocesseur. Le verrou
+		# faisait exactement son travail, en silence. Un joueur qui ne survole
+		# pas la barre conclut que le mod est casse, et ecrit un rapport de bug
+		# qui n'en est pas un.
+		#
+		# Une notification par age, une seule fois, au moment ou la barre se
+		# fige.
+		if = {
+			limit = {
+				NOT = { has_country_flag = adastra_verrou_vu_stone }
+				NOT = { adastra_age_stone_all = yes }
+				NOT = { has_country_flag = adastra_reached_bronze }
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 11
+				}
+			}
+			set_country_flag = adastra_verrou_vu_stone
+			country_event = { id = adastra.12 }
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = adastra_verrou_vu_bronze }
+				NOT = { adastra_age_bronze_all = yes }
+				NOT = { has_country_flag = adastra_reached_iron }
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 21
+				}
+			}
+			set_country_flag = adastra_verrou_vu_bronze
+			country_event = { id = adastra.12 }
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = adastra_verrou_vu_iron }
+				NOT = { adastra_age_iron_all = yes }
+				NOT = { has_country_flag = adastra_reached_medieval }
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 30
+				}
+			}
+			set_country_flag = adastra_verrou_vu_iron
+			country_event = { id = adastra.12 }
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = adastra_verrou_vu_medieval }
+				NOT = { adastra_age_medieval_all = yes }
+				NOT = { has_country_flag = adastra_reached_renaissance }
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 38
+				}
+			}
+			set_country_flag = adastra_verrou_vu_medieval
+			country_event = { id = adastra.12 }
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = adastra_verrou_vu_renaissance }
+				NOT = { adastra_age_renaissance_all = yes }
+				NOT = { has_country_flag = adastra_reached_steam }
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 46
+				}
+			}
+			set_country_flag = adastra_verrou_vu_renaissance
+			country_event = { id = adastra.12 }
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = adastra_verrou_vu_steam }
+				NOT = { adastra_age_steam_all = yes }
+				NOT = { has_country_flag = adastra_reached_industrial }
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 54
+				}
+			}
+			set_country_flag = adastra_verrou_vu_steam
+			country_event = { id = adastra.12 }
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = adastra_verrou_vu_industrial }
+				NOT = { adastra_age_industrial_all = yes }
+				NOT = { has_country_flag = adastra_reached_machine }
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 63
+				}
+			}
+			set_country_flag = adastra_verrou_vu_industrial
+			country_event = { id = adastra.12 }
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = adastra_verrou_vu_machine }
+				NOT = { adastra_age_machine_all = yes }
+				NOT = { has_country_flag = adastra_reached_atomic }
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 73
+				}
+			}
+			set_country_flag = adastra_verrou_vu_machine
+			country_event = { id = adastra.12 }
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = adastra_verrou_vu_atomic }
+				NOT = { adastra_age_atomic_all = yes }
+				NOT = { has_country_flag = adastra_reached_space }
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 85
+				}
+			}
+			set_country_flag = adastra_verrou_vu_atomic
+			country_event = { id = adastra.12 }
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = adastra_verrou_vu_space }
+				NOT = { adastra_age_space_all = yes }
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					situation_progress >= 99
+				}
+			}
+			set_country_flag = adastra_verrou_vu_space
+			country_event = { id = adastra.12 }
+		}
+	}
+}
+
+############################
+# adastra.12 : La marche s'arrete (notification)
+############################
+# Tire une seule fois par age, par adastra.11, quand la barre de la situation
+# atteint la fin de son etape sans que les dix technos de l'age soient toutes
+# decouvertes. Sans ca, le joueur voit une barre immobile et rien d'autre.
+country_event = {
+	id = adastra.12
+	title = "adastra.12.name"
+	desc = "adastra.12.desc"
+	picture = GFX_evt_physics_research
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.12.a"
+	}
+}
+
+############################
+# adastra.88 : Livraison du vaisseau de colonisation (cache)
+############################
+# colonizer_species = owner_main_species : sans cette ligne le vaisseau naitrait
+# sans peuple a bord et ne pourrait fonder aucune colonie. Formule du jeu de
+# base, relevee dans events/infernals_1_events.txt.
+country_event = {
+	id = adastra.88
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		capital_scope = { save_event_target_as = adastra_capital_p }
+		create_ship_design = { design = "NAME_Adastra_Colonizer" }
+		create_fleet = {
+			name = "adastra_fleet_colony"
+			effect = {
+				set_owner = root
+				create_ship = {
+					name = random
+					design = "NAME_Adastra_Colonizer"
+					colonizer_species = owner_main_species
+					upgradable = no
+				}
+				set_location = {
+					target = event_target:adastra_capital_p
+					distance = 10
+					angle = random
+				}
+			}
+		}
+	}
+}
+
+############################
+# adastra.89 : Le ciel est deja pris
+############################
+country_event = {
+	id = adastra.89
+	title = "adastra.89.name"
+	desc = "adastra.89.desc"
+	picture = GFX_evt_ship_in_orbit
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.89.a"
+		custom_tooltip = "adastra.89.a.tooltip"
 	}
 }
 
@@ -645,6 +1329,17 @@ country_event = {
 				}
 			}
 		}
+		# 1.2 : le design entre dans la liste de l'empire, il devient donc
+		# CONSTRUCTIBLE au chantier de la base stellaire.
+		#
+		# Retour de Sithiya (Workshop, 14/08) : « a shroud event killed my
+		# pre-ftl science ship. and we cant make any more to recover it. or
+		# pre-ftl constructors either ». Les programmes livraient un exemplaire
+		# unique, sans jamais donner le plan : un vaisseau perdu l'etait pour
+		# toute la partie, et il n'existe aucun moyen de le remplacer puisque
+		# l'auto-conception echoue sans hyperpropulsion.
+		create_ship_design = { design = "NAME_Adastra_Science" }
+
 		create_fleet = {
 			name = "adastra_fleet_science"
 			effect = {
@@ -672,38 +1367,69 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		set_country_flag = adastra_phase2_done
+		# Les PLANS sont a nous quoi qu'il arrive : ils sortent de nos bureaux
+		# d'etudes, pas de l'orbite. Meme si le chantier ne peut pas etre bati,
+		# le programme n'aura pas ete inutile.
+		create_ship_design = { design = "NAME_Adastra_Science" }
+		create_ship_design = { design = "NAME_Adastra_Constructor" }
+		create_ship_design = { design = "NAME_Adastra_Colonizer" }
+		create_ship_design = { design = "NAME_Adastra_Corvette" }
+
 		capital_scope = {
 			save_event_target_as = adastra_capital_p
-			solar_system = {
-				if = {
-					limit = { NOT = { exists = starbase } }
-					create_starbase = {
-						owner = root
-						size = starbase_starport
-						module = shipyard
-						module = solar_panel_network
-						building = crew_quarters
+			solar_system = { save_event_target_as = adastra_home_sys }
+		}
+
+		# 16/08 : la garde precedente exigeait en plus que le systeme n'ait pas
+		# de proprietaire etranger. Elle bloquait le cas NORMAL - un empire
+		# confine n'a pas de base stellaire, et le moteur attribue quand meme le
+		# systeme a qui y possede une planete. Le programme livrait alors un
+		# vaisseau de construction et aucun chantier, et ce vaisseau ne pouvait
+		# rien batir « hors de nos frontieres ». Retour du 16/08.
+		#
+		# On revient a la seule condition qui compte, et qui ne peut rien
+		# ecraser : y a-t-il DEJA une base stellaire dans ce systeme ?
+		if = {
+			limit = {
+				event_target:adastra_home_sys = { NOT = { exists = starbase } }
+			}
+			event_target:adastra_home_sys = {
+				create_starbase = {
+					owner = root
+					size = starbase_starport
+					module = shipyard
+					module = solar_panel_network
+					building = crew_quarters
+				}
+			}
+			set_country_flag = adastra_phase2_done
+			create_fleet = {
+				name = "adastra_fleet_constructor"
+				effect = {
+					set_owner = root
+					create_ship = {
+						name = random
+						design = "NAME_Adastra_Constructor"
+					}
+					set_location = {
+						target = event_target:adastra_capital_p
+						distance = 10
+						angle = random
 					}
 				}
 			}
 		}
-		create_fleet = {
-			name = "adastra_fleet_constructor"
-			effect = {
-				set_owner = root
-				create_ship = {
-					name = random
-					design = "NAME_Adastra_Constructor"
-				}
-				set_location = {
-					target = event_target:adastra_capital_p
-					distance = 10
-					angle = random
-				}
-			}
+
+		# Le ciel est deja pris. La decision exige une orbite libre, mais le
+		# programme dure 360 jours : un empire peut s'y installer entre-temps.
+		# On ne lui construit pas un chantier par-dessus et on ne le lui prend
+		# pas. Le drapeau de phase 2 n'est PAS pose : la decision reste
+		# disponible pour le jour ou l'orbite se libere.
+		else = {
+			country_event = { id = adastra.89 }
 		}
 	}
+
 }
 
 ############################
@@ -716,6 +1442,7 @@ country_event = {
 
 	immediate = {
 		set_country_flag = adastra_navy_built
+		create_ship_design = { design = "NAME_Adastra_Corvette" }
 		capital_scope = { save_event_target_as = adastra_capital_p }
 		create_fleet = {
 			name = "adastra_fleet_navy"
@@ -723,15 +1450,15 @@ country_event = {
 				set_owner = root
 				create_ship = {
 					name = random
-					random_existing_design = corvette
+					design = "NAME_Adastra_Corvette"
 				}
 				create_ship = {
 					name = random
-					random_existing_design = corvette
+					design = "NAME_Adastra_Corvette"
 				}
 				create_ship = {
 					name = random
-					random_existing_design = corvette
+					design = "NAME_Adastra_Corvette"
 				}
 				set_location = {
 					target = event_target:adastra_capital_p
@@ -757,6 +1484,49 @@ country_event = {
 		remove_modifier = adastra_pace_fast
 		remove_modifier = adastra_pace_slow
 		remove_modifier = adastra_pace_veryslow
+
+		# 1.2 : les modificateurs de « ressource pas encore inventee » sont posés
+		# et retirés par adastra.11, dont le trigger exige adastra_locked. Ce
+		# drapeau vient de tomber deux lignes plus haut : adastra.11 ne
+		# repassera JAMAIS. Un empire qui émerge sans avoir cherché le Réseau
+		# électrique ou la Machine à vapeur les garderait à vie - entretien
+		# gratuit et biens de consommation gratuits pour le restant de la partie.
+		# On les retire donc ici, explicitement.
+		remove_modifier = adastra_pre_electric
+		remove_modifier = adastra_pre_manufacture
+		remove_modifier = adastra_council_of_elders
+		remove_modifier = adastra_court_and_retinue
+		remove_modifier = adastra_young_administration
+
+		# Même raison pour la conversion du commerce : coupée pendant le
+		# confinement, elle doit être rendue, et adastra.11 ne le fera plus.
+		if = {
+			limit = { NOT = { has_country_flag = adastra_trade_restored } }
+			set_country_flag = adastra_trade_restored
+			if = {
+				limit = { has_policy_flag = trade_conversion_consumer_goods }
+				set_trade_conversions = { trade = 0.5  consumer_goods = 0.25 }
+			}
+			else_if = {
+				limit = { has_policy_flag = trade_conversion_unity }
+				set_trade_conversions = { trade = 0.50  unity = 0.125 }
+			}
+			else_if = {
+				limit = { has_policy_flag = trade_conversion_trade_league }
+				set_trade_conversions = { trade = 0.50  energy = 0.15  consumer_goods = 0.15  unity = 0.075 }
+			}
+			else_if = {
+				limit = { has_policy_flag = trade_conversion_holy_covenant }
+				set_trade_conversions = { trade = 0.50  unity = 0.1875 }
+			}
+			else_if = {
+				limit = { has_policy_flag = trade_conversion_mutual_aid }
+				set_trade_conversions = { trade = 0.25  energy = 0.20 }
+			}
+			else = {
+				set_trade_conversions = { trade = 0.5  energy = 0.5 }
+			}
+		}
 
 		# 1.1 : le changement de type de pays remet les réserves à zéro (bug signalé en bêta).
 		# On photographie les stocks avant la bascule, on les restitue juste après.
@@ -796,6 +1566,13 @@ country_event = {
 		clear_variable = adastra_st_gases
 		clear_variable = adastra_st_crystals
 
+		# 1.2 : on memorise le choix AVANT de reveiller la galaxie, sinon le
+		# drapeau a disparu quand l'Heritage est attribue plus bas.
+		if = {
+			limit = { has_country_flag = adastra_dormant_active }
+			set_country_flag = adastra_slept_galaxy
+		}
+
 		# Réveiller la galaxie si elle était en attente (même protection des stocks)
 		if = {
 			limit = { has_country_flag = adastra_dormant_active }
@@ -827,21 +1604,47 @@ country_event = {
 			}
 		}
 
-		# Héritage de l'Ascension : récompense permanente selon l'âge de départ
+		# Héritage de l'Ascension : récompense permanente selon l'âge de départ.
+		# 1.2 : doublée si la galaxie est restée vivante pendant l'ascension -
+		# le chemin risqué paie davantage que le chemin sûr.
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_stone has_country_flag = adastra_choice_bronze has_country_flag = adastra_choice_iron } }
-			add_modifier = { modifier = adastra_heritage_4 }
+			if = {
+				limit = { has_country_flag = adastra_slept_galaxy }
+				add_modifier = { modifier = adastra_heritage_4 }
+			}
+			else = {
+				add_modifier = { modifier = adastra_heritage_4_bold }
+			}
 		}
 		else_if = {
 			limit = { OR = { has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam } }
-			add_modifier = { modifier = adastra_heritage_3 }
+			if = {
+				limit = { has_country_flag = adastra_slept_galaxy }
+				add_modifier = { modifier = adastra_heritage_3 }
+			}
+			else = {
+				add_modifier = { modifier = adastra_heritage_3_bold }
+			}
 		}
 		else_if = {
 			limit = { OR = { has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine } }
-			add_modifier = { modifier = adastra_heritage_2 }
+			if = {
+				limit = { has_country_flag = adastra_slept_galaxy }
+				add_modifier = { modifier = adastra_heritage_2 }
+			}
+			else = {
+				add_modifier = { modifier = adastra_heritage_2_bold }
+			}
 		}
 		else = {
-			add_modifier = { modifier = adastra_heritage_1 }
+			if = {
+				limit = { has_country_flag = adastra_slept_galaxy }
+				add_modifier = { modifier = adastra_heritage_1 }
+			}
+			else = {
+				add_modifier = { modifier = adastra_heritage_1_bold }
+			}
 		}
 
 		save_event_target_as = adastra_country
@@ -1062,59 +1865,49 @@ country_event = {
 }
 
 ############################
-# adastra.28 : Flottille inaugurale (caché)
-# Remplace les vaisseaux civils sous-luminiques (non améliorables) par des versions FTL.
+# adastra.28 : La flotte prend l'hyperpropulsion (cache)
 ############################
+# 16/08 - REECRIT. L'ancienne version supprimait TOUS les vaisseaux civils puis
+# en recreait exactement un de chaque. Un joueur qui avait relance le programme
+# d'exploration trois fois perdait deux vaisseaux scientifiques a l'emergence.
+# Les colonisateurs n'etaient pas traites du tout, et les corvettes restaient
+# sous-luminiques a vie - clouees dans leur systeme natal alors que l'empire
+# venait de percer.
+#
+# set_ship_design change le plan d'un vaisseau SUR PLACE : meme flotte, meme
+# position, meme commandant, meme nombre. C'est l'effet du jeu de base
+# (events/biogenesis_crisis_events.txt), et c'est exactement ce qu'il faut ici -
+# la percee ne cree pas une flotte neuve, elle equipe celle qu'on a.
 country_event = {
 	id = adastra.28
 	hide_window = yes
 	is_triggered_only = yes
 
 	immediate = {
-		# Retirer les vaisseaux civils sous-luminiques du programme
-		every_owned_fleet = {
-			limit = {
-				OR = {
-					is_ship_size = science
-					is_ship_size = constructor
-				}
-			}
-			delete_fleet = {
-				target = this
-				kill_leader = no
-			}
+		# L'evenement est tire SUR le pays qui emerge : pas besoin de cible.
+		every_owned_ship = {
+			limit = { is_ship_size = science }
+			set_ship_design = { design = NAME_Adastra_Science_FTL }
+		}
+		every_owned_ship = {
+			limit = { is_ship_size = constructor }
+			set_ship_design = { design = NAME_Adastra_Constructor_FTL }
+		}
+		every_owned_ship = {
+			limit = { is_ship_size = colonizer }
+			set_ship_design = { design = NAME_Adastra_Colonizer_FTL }
+		}
+		every_owned_ship = {
+			limit = { is_ship_size = corvette }
+			set_ship_design = { design = NAME_Adastra_Corvette_FTL }
 		}
 
-		create_fleet = {
-			name = "adastra_fleet_science"
-			effect = {
-				set_owner = event_target:adastra_country
-				create_ship = {
-					name = random
-					design = "NAME_Adastra_Science_FTL"
-				}
-				set_location = {
-					target = event_target:adastra_capital
-					distance = 12
-					angle = random
-				}
-			}
-		}
-		create_fleet = {
-			name = "adastra_fleet_constructor"
-			effect = {
-				set_owner = event_target:adastra_country
-				create_ship = {
-					name = random
-					design = "NAME_Adastra_Constructor_FTL"
-				}
-				set_location = {
-					target = event_target:adastra_capital
-					distance = 12
-					angle = random
-				}
-			}
-		}
+		# Les plans hyperspatiaux entrent dans la liste : ce qui a ete
+		# perdu pendant le confinement se reconstruit maintenant.
+		create_ship_design = { design = "NAME_Adastra_Science_FTL" }
+		create_ship_design = { design = "NAME_Adastra_Constructor_FTL" }
+		create_ship_design = { design = "NAME_Adastra_Colonizer_FTL" }
+		create_ship_design = { design = "NAME_Adastra_Corvette_FTL" }
 	}
 }
 
@@ -1195,7 +1988,6 @@ country_event = {
 			limit = { NOT = { has_country_flag = adastra_reached_renaissance } }
 			set_country_flag = adastra_reached_renaissance
 			set_country_flag = adastra_unlock_renaissance
-			give_technology = { tech = tech_basic_science_lab_1 message = no }
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.54 }
@@ -1213,7 +2005,6 @@ country_event = {
 			limit = { NOT = { has_country_flag = adastra_reached_steam } }
 			set_country_flag = adastra_reached_steam
 			set_country_flag = adastra_unlock_steam
-			give_technology = { tech = tech_basic_industry message = no }
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.55 }
@@ -1231,9 +2022,6 @@ country_event = {
 			limit = { NOT = { has_country_flag = adastra_reached_industrial } }
 			set_country_flag = adastra_reached_industrial
 			set_country_flag = adastra_unlock_industrial
-			give_technology = { tech = tech_mechanized_mining message = no }
-			give_technology = { tech = tech_industrial_farming message = no }
-			give_technology = { tech = tech_assault_armies message = no }
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.56 }
@@ -1251,9 +2039,6 @@ country_event = {
 			limit = { NOT = { has_country_flag = adastra_reached_machine } }
 			set_country_flag = adastra_reached_machine
 			set_country_flag = adastra_unlock_machine
-			give_technology = { tech = tech_power_plant_1 message = no }
-			give_technology = { tech = tech_planetary_government message = no }
-			give_technology = { tech = tech_basic_health message = no }
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.57 }
@@ -1271,13 +2056,6 @@ country_event = {
 			limit = { NOT = { has_country_flag = adastra_reached_atomic } }
 			set_country_flag = adastra_reached_atomic
 			set_country_flag = adastra_unlock_atomic
-			give_technology = { tech = tech_fission_power message = no }
-			give_technology = { tech = tech_planetary_defenses message = no }
-			give_technology = { tech = tech_missiles_1 message = no }
-			give_technology = { tech = tech_flak_batteries_1 message = no }
-			give_technology = { tech = tech_pd_tracking_1 message = no }
-			give_technology = { tech = tech_lasers_1 message = no }
-			give_technology = { tech = tech_holo_entertainment message = no }
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.58 }
@@ -1294,7 +2072,7 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_space } }
 			set_country_flag = adastra_reached_space
-			set_country_flag = adastra_unlock_space
+			give_technology = { tech = tech_holo_entertainment message = no }
 			give_technology = { tech = tech_space_exploration message = no }
 			give_technology = { tech = tech_thrusters_1 message = no }
 			give_technology = { tech = tech_solar_panel_network message = no }
@@ -1310,6 +2088,20 @@ country_event = {
 			give_technology = { tech = tech_interplanetary_commerce message = no }
 			give_technology = { tech = tech_mass_drivers_1 message = no }
 			give_technology = { tech = tech_hydroponics message = no }
+			# Les seize technos ci-dessous sont le paquet du jeu de base que
+			# l'Age spatial apporte : propulseurs, senseurs, reacteurs,
+			# corvettes, bases stellaires. Sans elles, AUCUN de nos vaisseaux
+			# sous-luminiques ne peut etre cree - leurs composants n'existent
+			# pas. C'est la cause du « programme d'exploration termine mais
+			# pas de vaisseau scientifique » du 15/08 : les seize octrois
+			# etaient refuses en silence parce que les deux drapeaux qui
+			# ouvrent leur potential etaient poses APRES.
+			set_country_flag = adastra_unlock_space
+			set_country_flag = adastra_vanilla_gift_space
+			# une techno dont un prerequis manque : Conversion d'energie
+			# orbitale exige Ports stellaires, et Defenses spatiales exige
+			# Construction de bases stellaires. Dans l'ancien ordre ces deux-la
+			# passaient AVANT ce dont elles dependent, et se faisaient refuser.
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.59 }
