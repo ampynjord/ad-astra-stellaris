@@ -17,11 +17,19 @@ decision_adastra_explore = {
 		}
 	}
 
+	# REPETABLE, depuis le 16/08. La decision se fermait apres son premier
+	# succes : un vaisseau scientifique perdu - accident du Voile, empire
+	# hostile, mauvaise manoeuvre - l'etait pour toute la partie tant que le
+	# chantier orbital n'existait pas, c'est-a-dire pendant toute la phase 1.
+	# C'etait le cul-de-sac signale par Sithiya sur le Workshop. On peut
+	# desormais relancer le programme autant de fois qu'on en paie le prix ;
+	# la porte se ferme a l'emergence, quand les vaisseaux du jeu de base
+	# prennent le relais.
 	potential = {
 		is_capital = yes
 		owner = {
 			has_country_flag = adastra_stage_explore
-			NOT = { has_country_flag = adastra_phase1_done }
+			NOT = { has_country_flag = adastra_completed }
 		}
 	}
 
@@ -146,9 +154,23 @@ decision_adastra_navy = {
 
 	resources = {
 		category = decisions
+		# 1.2 : un empire a bio-vaisseaux ne taille pas ses corvettes dans la
+		# roche, il les fait pousser. Le cout en minerais devient un cout en
+		# nourriture (retour Sithiya : « des vaisseaux vivants faits de cailloux »).
 		cost = {
+			trigger = {
+				owner = { country_uses_bio_ships = no }
+			}
 			energy = 400
 			minerals = 200
+			alloys = 300
+		}
+		cost = {
+			trigger = {
+				owner = { country_uses_bio_ships = yes }
+			}
+			energy = 400
+			food = 200
 			alloys = 300
 		}
 	}
@@ -170,8 +192,20 @@ decision_adastra_navy = {
 		}
 	}
 
+	# 1.2 : facultatif pour le joueur, indispensable pour l'IA. Depuis que la
+	# guerre est possible dans les deux sens, un empire IA confine sans la
+	# moindre corvette est une proie gratuite. Elle le prend des qu'elle en a
+	# les moyens, avec priorite absolue si elle est deja en guerre.
 	ai_weight = {
-		weight = 0
+		weight = 60
+		modifier = {
+			factor = 3
+			owner = { is_at_war = yes }
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = alloys value < 1 } }
+		}
 	}
 }
 
@@ -185,9 +219,48 @@ decision_adastra_campaign_harvest = {
 
 	enactment_time = 60
 
+	# 1.2 : le prix suit l'age - 5 avant le Medieval, 10 ensuite, 25 a partir de
+	# l'Industriel, 38 a l'Age spatial. Les 20 unite fixes de la 1.1
+	# representaient 17 mois de revenu a l'Age de pierre : la campagne etait
+	# inaccessible la ou elle aurait ete la plus utile.
+	#
+	# 1.2 (correctif 13/08) : ecrit d'abord avec des blocs « modifier » dans
+	# resources, que le moteur refuse - « Unexpected token: modifier » a chaque
+	# chargement, et le prix restait bloque a 5 pour toute la partie. La seule
+	# forme acceptee est une suite de blocs cost mutuellement exclusifs, comme
+	# le fait deja le programme de flotte pour les bio-vaisseaux.
 	resources = {
 		category = decisions
-		cost = { unity = 20 }
+		cost = {
+			trigger = {
+				owner = { NOT = { has_country_flag = adastra_reached_medieval } }
+			}
+			unity = 5
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_country_flag = adastra_reached_medieval
+					NOT = { has_country_flag = adastra_reached_industrial }
+				}
+			}
+			unity = 10
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_country_flag = adastra_reached_industrial
+					NOT = { has_country_flag = adastra_reached_space }
+				}
+			}
+			unity = 25
+		}
+		cost = {
+			trigger = {
+				owner = { has_country_flag = adastra_reached_space }
+			}
+			unity = 38
+		}
 	}
 
 	potential = {
@@ -196,6 +269,11 @@ decision_adastra_campaign_harvest = {
 	}
 
 	allow = {
+		# 1.2 : une seule campagne a la fois - c'est un arbitrage,
+		# pas un cumul de bonus.
+		NOT = { has_modifier = adastra_campaign_mining }
+		NOT = { has_modifier = adastra_campaign_fuel }
+		NOT = { has_modifier = adastra_campaign_industry }
 		NOT = { has_modifier = adastra_campaign_harvest }
 	}
 
@@ -203,7 +281,25 @@ decision_adastra_campaign_harvest = {
 		add_modifier = { modifier = adastra_campaign_harvest days = 3600 }
 	}
 
-	ai_weight = { weight = 0 }
+	# 1.2 : l'IA peut prendre l'origine, elle doit donc savoir arbitrer entre
+	# les quatre campagnes. Chacune est un echange : +40%% sur une ressource,
+	# -25%% sur une autre. On ne l'active donc que si la ressource visee est
+	# reellement en tension, et jamais si celle qui paie l'est deja.
+	ai_weight = {
+		weight = 0
+		modifier = {
+			add = 50
+			owner = { has_monthly_income = { resource = food value < 3 } }
+		}
+		modifier = {
+			add = 50
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = minerals value < 2 } }
+		}
+	}
 }
 
 decision_adastra_campaign_mining = {
@@ -213,9 +309,48 @@ decision_adastra_campaign_mining = {
 
 	enactment_time = 60
 
+	# 1.2 : le prix suit l'age - 5 avant le Medieval, 10 ensuite, 25 a partir de
+	# l'Industriel, 38 a l'Age spatial. Les 20 unite fixes de la 1.1
+	# representaient 17 mois de revenu a l'Age de pierre : la campagne etait
+	# inaccessible la ou elle aurait ete la plus utile.
+	#
+	# 1.2 (correctif 13/08) : ecrit d'abord avec des blocs « modifier » dans
+	# resources, que le moteur refuse - « Unexpected token: modifier » a chaque
+	# chargement, et le prix restait bloque a 5 pour toute la partie. La seule
+	# forme acceptee est une suite de blocs cost mutuellement exclusifs, comme
+	# le fait deja le programme de flotte pour les bio-vaisseaux.
 	resources = {
 		category = decisions
-		cost = { unity = 20 }
+		cost = {
+			trigger = {
+				owner = { NOT = { has_country_flag = adastra_reached_medieval } }
+			}
+			unity = 5
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_country_flag = adastra_reached_medieval
+					NOT = { has_country_flag = adastra_reached_industrial }
+				}
+			}
+			unity = 10
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_country_flag = adastra_reached_industrial
+					NOT = { has_country_flag = adastra_reached_space }
+				}
+			}
+			unity = 25
+		}
+		cost = {
+			trigger = {
+				owner = { has_country_flag = adastra_reached_space }
+			}
+			unity = 38
+		}
 	}
 
 	potential = {
@@ -224,6 +359,11 @@ decision_adastra_campaign_mining = {
 	}
 
 	allow = {
+		# 1.2 : une seule campagne a la fois - c'est un arbitrage,
+		# pas un cumul de bonus.
+		NOT = { has_modifier = adastra_campaign_harvest }
+		NOT = { has_modifier = adastra_campaign_fuel }
+		NOT = { has_modifier = adastra_campaign_industry }
 		NOT = { has_modifier = adastra_campaign_mining }
 	}
 
@@ -231,7 +371,25 @@ decision_adastra_campaign_mining = {
 		add_modifier = { modifier = adastra_campaign_mining days = 3600 }
 	}
 
-	ai_weight = { weight = 0 }
+	# 1.2 : l'IA peut prendre l'origine, elle doit donc savoir arbitrer entre
+	# les quatre campagnes. Chacune est un echange : +40%% sur une ressource,
+	# -25%% sur une autre. On ne l'active donc que si la ressource visee est
+	# reellement en tension, et jamais si celle qui paie l'est deja.
+	ai_weight = {
+		weight = 0
+		modifier = {
+			add = 50
+			owner = { has_monthly_income = { resource = minerals value < 3 } }
+		}
+		modifier = {
+			add = 50
+			owner = { has_monthly_income = { resource = minerals value < 0 } }
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = food value < 2 } }
+		}
+	}
 }
 
 decision_adastra_campaign_fuel = {
@@ -241,9 +399,48 @@ decision_adastra_campaign_fuel = {
 
 	enactment_time = 60
 
+	# 1.2 : le prix suit l'age - 5 avant le Medieval, 10 ensuite, 25 a partir de
+	# l'Industriel, 38 a l'Age spatial. Les 20 unite fixes de la 1.1
+	# representaient 17 mois de revenu a l'Age de pierre : la campagne etait
+	# inaccessible la ou elle aurait ete la plus utile.
+	#
+	# 1.2 (correctif 13/08) : ecrit d'abord avec des blocs « modifier » dans
+	# resources, que le moteur refuse - « Unexpected token: modifier » a chaque
+	# chargement, et le prix restait bloque a 5 pour toute la partie. La seule
+	# forme acceptee est une suite de blocs cost mutuellement exclusifs, comme
+	# le fait deja le programme de flotte pour les bio-vaisseaux.
 	resources = {
 		category = decisions
-		cost = { unity = 20 }
+		cost = {
+			trigger = {
+				owner = { NOT = { has_country_flag = adastra_reached_medieval } }
+			}
+			unity = 5
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_country_flag = adastra_reached_medieval
+					NOT = { has_country_flag = adastra_reached_industrial }
+				}
+			}
+			unity = 10
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_country_flag = adastra_reached_industrial
+					NOT = { has_country_flag = adastra_reached_space }
+				}
+			}
+			unity = 25
+		}
+		cost = {
+			trigger = {
+				owner = { has_country_flag = adastra_reached_space }
+			}
+			unity = 38
+		}
 	}
 
 	potential = {
@@ -255,6 +452,11 @@ decision_adastra_campaign_fuel = {
 	}
 
 	allow = {
+		# 1.2 : une seule campagne a la fois - c'est un arbitrage,
+		# pas un cumul de bonus.
+		NOT = { has_modifier = adastra_campaign_harvest }
+		NOT = { has_modifier = adastra_campaign_mining }
+		NOT = { has_modifier = adastra_campaign_industry }
 		NOT = { has_modifier = adastra_campaign_fuel }
 	}
 
@@ -262,7 +464,25 @@ decision_adastra_campaign_fuel = {
 		add_modifier = { modifier = adastra_campaign_fuel days = 3600 }
 	}
 
-	ai_weight = { weight = 0 }
+	# 1.2 : l'IA peut prendre l'origine, elle doit donc savoir arbitrer entre
+	# les quatre campagnes. Chacune est un echange : +40%% sur une ressource,
+	# -25%% sur une autre. On ne l'active donc que si la ressource visee est
+	# reellement en tension, et jamais si celle qui paie l'est deja.
+	ai_weight = {
+		weight = 0
+		modifier = {
+			add = 50
+			owner = { has_monthly_income = { resource = energy value < 3 } }
+		}
+		modifier = {
+			add = 50
+			owner = { has_monthly_income = { resource = energy value < 0 } }
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = minerals value < 2 } }
+		}
+	}
 }
 
 decision_adastra_campaign_industry = {
@@ -272,9 +492,48 @@ decision_adastra_campaign_industry = {
 
 	enactment_time = 60
 
+	# 1.2 : le prix suit l'age - 5 avant le Medieval, 10 ensuite, 25 a partir de
+	# l'Industriel, 38 a l'Age spatial. Les 20 unite fixes de la 1.1
+	# representaient 17 mois de revenu a l'Age de pierre : la campagne etait
+	# inaccessible la ou elle aurait ete la plus utile.
+	#
+	# 1.2 (correctif 13/08) : ecrit d'abord avec des blocs « modifier » dans
+	# resources, que le moteur refuse - « Unexpected token: modifier » a chaque
+	# chargement, et le prix restait bloque a 5 pour toute la partie. La seule
+	# forme acceptee est une suite de blocs cost mutuellement exclusifs, comme
+	# le fait deja le programme de flotte pour les bio-vaisseaux.
 	resources = {
 		category = decisions
-		cost = { unity = 20 }
+		cost = {
+			trigger = {
+				owner = { NOT = { has_country_flag = adastra_reached_medieval } }
+			}
+			unity = 5
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_country_flag = adastra_reached_medieval
+					NOT = { has_country_flag = adastra_reached_industrial }
+				}
+			}
+			unity = 10
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_country_flag = adastra_reached_industrial
+					NOT = { has_country_flag = adastra_reached_space }
+				}
+			}
+			unity = 25
+		}
+		cost = {
+			trigger = {
+				owner = { has_country_flag = adastra_reached_space }
+			}
+			unity = 38
+		}
 	}
 
 	potential = {
@@ -286,6 +545,11 @@ decision_adastra_campaign_industry = {
 	}
 
 	allow = {
+		# 1.2 : une seule campagne a la fois - c'est un arbitrage,
+		# pas un cumul de bonus.
+		NOT = { has_modifier = adastra_campaign_harvest }
+		NOT = { has_modifier = adastra_campaign_mining }
+		NOT = { has_modifier = adastra_campaign_fuel }
 		NOT = { has_modifier = adastra_campaign_industry }
 	}
 
@@ -293,5 +557,87 @@ decision_adastra_campaign_industry = {
 		add_modifier = { modifier = adastra_campaign_industry days = 3600 }
 	}
 
-	ai_weight = { weight = 0 }
+	# 1.2 : l'IA peut prendre l'origine, elle doit donc savoir arbitrer entre
+	# les quatre campagnes. Chacune est un echange : +40%% sur une ressource,
+	# -25%% sur une autre. On ne l'active donc que si la ressource visee est
+	# reellement en tension, et jamais si celle qui paie l'est deja.
+	ai_weight = {
+		weight = 0
+		modifier = {
+			add = 50
+			owner = { has_monthly_income = { resource = consumer_goods value < 3 } }
+		}
+		modifier = {
+			add = 50
+			owner = { has_monthly_income = { resource = consumer_goods value < 0 } }
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = food value < 2 } }
+		}
+	}
+}
+
+# Programme de colonisation (relancable) - ajoute le 16/08.
+#
+# L'Arche etait livree en PLAN par le programme de base stellaire, et rien de
+# plus. Un plan de colonisateur ne se construit pas au chantier : dans le jeu
+# de base, un vaisseau de colonisation nait du bouton « Coloniser » pose sur
+# une cible. Un joueur qui batissait un habitat du vide au-dessus de son monde
+# n'avait donc aucun moyen evident d'aller le peupler, et le plan restait une
+# ligne morte dans sa liste de designs.
+#
+# On en fait un programme, comme les trois autres : il livre un vaisseau, de
+# l'espece principale, pret a partir. Relancable, parce qu'un monde natal peut
+# avoir plus d'une cible - une seconde planete habitable dans le systeme, ou
+# autant d'habitats du vide qu'on sait en batir.
+decision_adastra_colony = {
+	owned_planets_only = yes
+	icon = decision_colony_settlement
+
+	enactment_time = 240
+
+	resources = {
+		category = decisions
+		# Meme partage que la flotte militaire : un empire a vaisseaux vivants
+		# ne taille pas sa coque dans la roche, il la fait pousser.
+		cost = {
+			trigger = {
+				owner = { country_uses_bio_ships = no }
+			}
+			energy = 500
+			minerals = 400
+			alloys = 200
+		}
+		cost = {
+			trigger = {
+				owner = { country_uses_bio_ships = yes }
+			}
+			energy = 500
+			food = 400
+			alloys = 200
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = adastra_phase2_done
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_adastra_colony_tooltip
+		hidden_effect = {
+			owner = {
+				country_event = { id = adastra.88 }
+			}
+		}
+	}
+
+	# L'IA ne s'en sert que si elle a quelque chose a peupler.
+	ai_weight = {
+		weight = 0
+	}
 }

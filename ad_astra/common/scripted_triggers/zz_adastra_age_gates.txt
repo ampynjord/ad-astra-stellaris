@@ -1,0 +1,421 @@
+# Ad Astra 1.2 - verrous d'age.
+# GENERE PAR tools/gen_age_techs.py - NE PAS EDITER A LA MAIN.
+#
+# adastra_age_<age>_done      : 6 des 10 technos de l'age sont terminees.
+#   Un seuil, pas la totalite : un age propose 10 technos pour un budget
+#   de recherche d'environ 8, donc exiger les 10 verrouillerait le vanilla
+#   de l'age pour un joueur qui a simplement fait d'autres choix.
+# adastra_vanilla_open_<age>  : garde utilisee par les overrides de techs
+#   vanilla. Le vanilla d'un age ne s'ouvre qu'apres ses techs custom :
+#   les techs custom PRECEDENT le vanilla, elles ne le concurrencent pas.
+#   Le OR sur adastra_completed est un filet de securite : apres l'emergence
+#   les techs d'age quittent le tirage, le vanilla ne doit jamais rester
+#   verrouille a cause d'un age laisse inacheve.
+
+# stone : 6 technos sur 10 suffisent.
+adastra_age_stone_done = {
+	calc_true_if = {
+		amount >= 6
+		has_technology = tech_adastra_fire
+		has_technology = tech_adastra_stone_tools
+		has_technology = tech_adastra_hunting
+		has_technology = tech_adastra_cave_art
+		has_technology = tech_adastra_language
+		has_technology = tech_adastra_seasons
+		has_technology = tech_adastra_pigments
+		has_technology = tech_adastra_cordage
+		has_technology = tech_adastra_shelter
+		has_technology = tech_adastra_burial
+	}
+}
+
+# bronze : 6 technos sur 10 suffisent.
+adastra_age_bronze_done = {
+	calc_true_if = {
+		amount >= 6
+		has_technology = tech_adastra_agriculture
+		has_technology = tech_adastra_pottery
+		has_technology = tech_adastra_bronze
+		has_technology = tech_adastra_writing
+		has_technology = tech_adastra_first_city
+		has_technology = tech_adastra_calendar
+		has_technology = tech_adastra_measures
+		has_technology = tech_adastra_irrigation
+		has_technology = tech_adastra_priesthood
+		has_technology = tech_adastra_domestication
+	}
+}
+
+# iron : 6 technos sur 10 suffisent.
+adastra_age_iron_done = {
+	calc_true_if = {
+		amount >= 6
+		has_technology = tech_adastra_iron
+		has_technology = tech_adastra_wheel
+		has_technology = tech_adastra_law
+		has_technology = tech_adastra_coinage
+		has_technology = tech_adastra_astronomy
+		has_technology = tech_adastra_geometry
+		has_technology = tech_adastra_glass
+		has_technology = tech_adastra_aqueduct
+		has_technology = tech_adastra_alphabet
+		has_technology = tech_adastra_standing_army
+	}
+}
+
+# medieval : 6 technos sur 10 suffisent.
+adastra_age_medieval_done = {
+	calc_true_if = {
+		amount >= 6
+		has_technology = tech_adastra_crop_rotation
+		has_technology = tech_adastra_mills
+		has_technology = tech_adastra_stone_architecture
+		has_technology = tech_adastra_scholasticism
+		has_technology = tech_adastra_guilds
+		has_technology = tech_adastra_algebra
+		has_technology = tech_adastra_optics
+		has_technology = tech_adastra_heavy_plough
+		has_technology = tech_adastra_hospices
+		has_technology = tech_adastra_cartography
+	}
+}
+
+# renaissance : 6 technos sur 10 suffisent.
+adastra_age_renaissance_done = {
+	calc_true_if = {
+		amount >= 6
+		has_technology = tech_adastra_printing
+		has_technology = tech_adastra_experimental_method
+		has_technology = tech_adastra_anatomy
+		has_technology = tech_adastra_mechanics
+		has_technology = tech_adastra_banking
+		has_technology = tech_adastra_chemistry
+		has_technology = tech_adastra_metallurgy_casting
+		has_technology = tech_adastra_clockwork
+		has_technology = tech_adastra_double_entry
+		has_technology = tech_adastra_navigation
+	}
+}
+
+# steam : 6 technos sur 10 suffisent.
+adastra_age_steam_done = {
+	calc_true_if = {
+		amount >= 6
+		has_technology = tech_adastra_steam_engine
+		has_technology = tech_adastra_coal
+		has_technology = tech_adastra_railways
+		has_technology = tech_adastra_telegraph
+		has_technology = tech_adastra_sanitation
+		has_technology = tech_adastra_gas_lighting
+		has_technology = tech_adastra_electromagnetism
+		has_technology = tech_adastra_machine_tools
+		has_technology = tech_adastra_census
+		has_technology = tech_adastra_anesthesia
+	}
+}
+
+# industrial : 6 technos sur 10 suffisent.
+adastra_age_industrial_done = {
+	calc_true_if = {
+		amount >= 6
+		has_technology = tech_adastra_assembly_line
+		has_technology = tech_adastra_bessemer
+		has_technology = tech_adastra_thermodynamics
+		has_technology = tech_adastra_fertilizers
+		has_technology = tech_adastra_labour_law
+		has_technology = tech_adastra_photography
+		has_technology = tech_adastra_periodic_table
+		has_technology = tech_adastra_refrigeration
+		has_technology = tech_adastra_germ_theory
+		has_technology = tech_adastra_universal_suffrage
+	}
+}
+
+# machine : 6 technos sur 10 suffisent.
+adastra_age_machine_done = {
+	calc_true_if = {
+		amount >= 6
+		has_technology = tech_adastra_electricity
+		has_technology = tech_adastra_radio
+		has_technology = tech_adastra_aviation
+		has_technology = tech_adastra_antibiotics
+		has_technology = tech_adastra_mass_education
+		has_technology = tech_adastra_quantum_theory
+		has_technology = tech_adastra_haber
+		has_technology = tech_adastra_plastics
+		has_technology = tech_adastra_social_insurance
+		has_technology = tech_adastra_epidemiology
+	}
+}
+
+# atomic : 6 technos sur 10 suffisent.
+adastra_age_atomic_done = {
+	calc_true_if = {
+		amount >= 6
+		has_technology = tech_adastra_fission
+		has_technology = tech_adastra_electronics
+		has_technology = tech_adastra_petrochemistry
+		has_technology = tech_adastra_vaccination
+		has_technology = tech_adastra_television
+		has_technology = tech_adastra_radio_astronomy
+		has_technology = tech_adastra_jet_engine
+		has_technology = tech_adastra_containers
+		has_technology = tech_adastra_green_revolution
+		has_technology = tech_adastra_human_rights
+	}
+}
+
+# space : 6 technos sur 10 suffisent.
+adastra_age_space_done = {
+	calc_true_if = {
+		amount >= 6
+		has_technology = tech_adastra_computing
+		has_technology = tech_adastra_rocketry
+		has_technology = tech_adastra_remote_sensing
+		has_technology = tech_adastra_genetics
+		has_technology = tech_adastra_cooperation
+		has_technology = tech_adastra_nuclear_medicine
+		has_technology = tech_adastra_satellites
+		has_technology = tech_adastra_microprocessor
+		has_technology = tech_adastra_networks
+		has_technology = tech_adastra_ecology
+	}
+}
+
+
+# adastra_age_<age>_all : les 10 technos de l'age, sans exception.
+#
+# Distinct de _done, qui n'en demande que six. Les deux ne servent pas a
+# la meme chose : _done ouvre le vanilla de l'age (un joueur qui a fait
+# d'autres choix ne doit pas perdre le contenu du jeu de base), tandis que
+# _all commande le PASSAGE a l'age suivant. On ne quitte pas un age tant
+# qu'il reste quelque chose a y inventer : la barre de la situation atteint
+# la fin de l'etape et s'y arrete, en attendant la derniere decouverte.
+
+adastra_age_stone_all = {
+	has_technology = tech_adastra_fire
+	has_technology = tech_adastra_stone_tools
+	has_technology = tech_adastra_hunting
+	has_technology = tech_adastra_cave_art
+	has_technology = tech_adastra_language
+	has_technology = tech_adastra_seasons
+	has_technology = tech_adastra_pigments
+	has_technology = tech_adastra_cordage
+	has_technology = tech_adastra_shelter
+	has_technology = tech_adastra_burial
+}
+
+adastra_age_bronze_all = {
+	has_technology = tech_adastra_agriculture
+	has_technology = tech_adastra_pottery
+	has_technology = tech_adastra_bronze
+	has_technology = tech_adastra_writing
+	has_technology = tech_adastra_first_city
+	has_technology = tech_adastra_calendar
+	has_technology = tech_adastra_measures
+	has_technology = tech_adastra_irrigation
+	has_technology = tech_adastra_priesthood
+	has_technology = tech_adastra_domestication
+}
+
+adastra_age_iron_all = {
+	has_technology = tech_adastra_iron
+	has_technology = tech_adastra_wheel
+	has_technology = tech_adastra_law
+	has_technology = tech_adastra_coinage
+	has_technology = tech_adastra_astronomy
+	has_technology = tech_adastra_geometry
+	has_technology = tech_adastra_glass
+	has_technology = tech_adastra_aqueduct
+	has_technology = tech_adastra_alphabet
+	has_technology = tech_adastra_standing_army
+}
+
+adastra_age_medieval_all = {
+	has_technology = tech_adastra_crop_rotation
+	has_technology = tech_adastra_mills
+	has_technology = tech_adastra_stone_architecture
+	has_technology = tech_adastra_scholasticism
+	has_technology = tech_adastra_guilds
+	has_technology = tech_adastra_algebra
+	has_technology = tech_adastra_optics
+	has_technology = tech_adastra_heavy_plough
+	has_technology = tech_adastra_hospices
+	has_technology = tech_adastra_cartography
+}
+
+adastra_age_renaissance_all = {
+	has_technology = tech_adastra_printing
+	has_technology = tech_adastra_experimental_method
+	has_technology = tech_adastra_anatomy
+	has_technology = tech_adastra_mechanics
+	has_technology = tech_adastra_banking
+	has_technology = tech_adastra_chemistry
+	has_technology = tech_adastra_metallurgy_casting
+	has_technology = tech_adastra_clockwork
+	has_technology = tech_adastra_double_entry
+	has_technology = tech_adastra_navigation
+}
+
+adastra_age_steam_all = {
+	has_technology = tech_adastra_steam_engine
+	has_technology = tech_adastra_coal
+	has_technology = tech_adastra_railways
+	has_technology = tech_adastra_telegraph
+	has_technology = tech_adastra_sanitation
+	has_technology = tech_adastra_gas_lighting
+	has_technology = tech_adastra_electromagnetism
+	has_technology = tech_adastra_machine_tools
+	has_technology = tech_adastra_census
+	has_technology = tech_adastra_anesthesia
+}
+
+adastra_age_industrial_all = {
+	has_technology = tech_adastra_assembly_line
+	has_technology = tech_adastra_bessemer
+	has_technology = tech_adastra_thermodynamics
+	has_technology = tech_adastra_fertilizers
+	has_technology = tech_adastra_labour_law
+	has_technology = tech_adastra_photography
+	has_technology = tech_adastra_periodic_table
+	has_technology = tech_adastra_refrigeration
+	has_technology = tech_adastra_germ_theory
+	has_technology = tech_adastra_universal_suffrage
+}
+
+adastra_age_machine_all = {
+	has_technology = tech_adastra_electricity
+	has_technology = tech_adastra_radio
+	has_technology = tech_adastra_aviation
+	has_technology = tech_adastra_antibiotics
+	has_technology = tech_adastra_mass_education
+	has_technology = tech_adastra_quantum_theory
+	has_technology = tech_adastra_haber
+	has_technology = tech_adastra_plastics
+	has_technology = tech_adastra_social_insurance
+	has_technology = tech_adastra_epidemiology
+}
+
+adastra_age_atomic_all = {
+	has_technology = tech_adastra_fission
+	has_technology = tech_adastra_electronics
+	has_technology = tech_adastra_petrochemistry
+	has_technology = tech_adastra_vaccination
+	has_technology = tech_adastra_television
+	has_technology = tech_adastra_radio_astronomy
+	has_technology = tech_adastra_jet_engine
+	has_technology = tech_adastra_containers
+	has_technology = tech_adastra_green_revolution
+	has_technology = tech_adastra_human_rights
+}
+
+adastra_age_space_all = {
+	has_technology = tech_adastra_computing
+	has_technology = tech_adastra_rocketry
+	has_technology = tech_adastra_remote_sensing
+	has_technology = tech_adastra_genetics
+	has_technology = tech_adastra_cooperation
+	has_technology = tech_adastra_nuclear_medicine
+	has_technology = tech_adastra_satellites
+	has_technology = tech_adastra_microprocessor
+	has_technology = tech_adastra_networks
+	has_technology = tech_adastra_ecology
+}
+
+adastra_vanilla_open_renaissance = {
+	OR = {
+		has_country_flag = adastra_completed
+		has_country_flag = adastra_vanilla_gift_renaissance
+		AND = {
+			has_country_flag = adastra_unlock_renaissance
+			adastra_age_renaissance_done = yes
+		}
+	}
+}
+
+adastra_vanilla_open_steam = {
+	OR = {
+		has_country_flag = adastra_completed
+		has_country_flag = adastra_vanilla_gift_steam
+		AND = {
+			has_country_flag = adastra_unlock_steam
+			adastra_age_steam_done = yes
+		}
+	}
+}
+
+adastra_vanilla_open_industrial = {
+	OR = {
+		has_country_flag = adastra_completed
+		has_country_flag = adastra_vanilla_gift_industrial
+		AND = {
+			has_country_flag = adastra_unlock_industrial
+			adastra_age_industrial_done = yes
+		}
+	}
+}
+
+adastra_vanilla_open_machine = {
+	OR = {
+		has_country_flag = adastra_completed
+		has_country_flag = adastra_vanilla_gift_machine
+		AND = {
+			has_country_flag = adastra_unlock_machine
+			adastra_age_machine_done = yes
+		}
+	}
+}
+
+adastra_vanilla_open_atomic = {
+	OR = {
+		has_country_flag = adastra_completed
+		has_country_flag = adastra_vanilla_gift_atomic
+		AND = {
+			has_country_flag = adastra_unlock_atomic
+			adastra_age_atomic_done = yes
+		}
+	}
+}
+
+adastra_vanilla_open_space = {
+	OR = {
+		has_country_flag = adastra_completed
+		has_country_flag = adastra_vanilla_gift_space
+		AND = {
+			has_country_flag = adastra_unlock_space
+			adastra_age_space_done = yes
+		}
+	}
+}
+
+
+# --- Ressources -------------------------------------------------------
+# Une ressource n'existe pas avant l'invention qui la produit.
+#
+# La condition est la TECHNOLOGIE seule. C'est suffisant depuis que les ages
+# deja traverses offrent leurs technologies au demarrage (adastra.2 appelle
+# adastra_grant_age_<age> pour chaque age anterieur) : un empire qui commence
+# a l'Age de l'atome connait deja le Reseau electrique, il ne l'a pas
+# recherche mais il l'a. Un empire qui commence a l'Age de la machine, lui,
+# doit encore l'inventer - c'est justement l'age ou il l'invente.
+
+adastra_has_alloys = {
+	OR = {
+		has_country_flag = adastra_completed
+		has_technology = tech_adastra_bronze
+	}
+}
+
+adastra_has_consumer_goods = {
+	OR = {
+		has_country_flag = adastra_completed
+		has_technology = tech_adastra_steam_engine
+	}
+}
+
+adastra_has_energy = {
+	OR = {
+		has_country_flag = adastra_completed
+		has_technology = tech_adastra_electricity
+	}
+}

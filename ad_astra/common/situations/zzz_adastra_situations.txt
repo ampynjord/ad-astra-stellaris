@@ -45,7 +45,9 @@ situation_adastra_ascension = {
 				leaders_upkeep_mult = -0.7
 				planet_pops_upkeep_mult = -0.8
 				planet_jobs_upkeep_mult = -0.7
-				planet_structures_upkeep_mult = -0.7
+				# 1.2 : l'entretien energetique et les biens de consommation ne
+				# sont plus geres ici mais par techno - voir adastra_pre_electric
+				# et adastra_pre_manufacture, poses par adastra.11.
 				all_technology_research_speed = -0.90
 				planet_jobs_produces_mult = -0.70
 				country_unity_produces_mult = -0.80
@@ -64,7 +66,9 @@ situation_adastra_ascension = {
 				leaders_upkeep_mult = -0.65
 				planet_pops_upkeep_mult = -0.75
 				planet_jobs_upkeep_mult = -0.65
-				planet_structures_upkeep_mult = -0.65
+				# 1.2 : l'entretien energetique et les biens de consommation ne
+				# sont plus geres ici mais par techno - voir adastra_pre_electric
+				# et adastra_pre_manufacture, poses par adastra.11.
 				all_technology_research_speed = -0.85
 				planet_jobs_produces_mult = -0.65
 				country_unity_produces_mult = -0.75
@@ -83,7 +87,9 @@ situation_adastra_ascension = {
 				leaders_upkeep_mult = -0.6
 				planet_pops_upkeep_mult = -0.7
 				planet_jobs_upkeep_mult = -0.6
-				planet_structures_upkeep_mult = -0.6
+				# 1.2 : l'entretien energetique et les biens de consommation ne
+				# sont plus geres ici mais par techno - voir adastra_pre_electric
+				# et adastra_pre_manufacture, poses par adastra.11.
 				all_technology_research_speed = -0.80
 				planet_jobs_produces_mult = -0.60
 				country_unity_produces_mult = -0.70
@@ -102,7 +108,9 @@ situation_adastra_ascension = {
 				leaders_upkeep_mult = -0.5
 				planet_pops_upkeep_mult = -0.6
 				planet_jobs_upkeep_mult = -0.5
-				planet_structures_upkeep_mult = -0.5
+				# 1.2 : l'entretien energetique et les biens de consommation ne
+				# sont plus geres ici mais par techno - voir adastra_pre_electric
+				# et adastra_pre_manufacture, poses par adastra.11.
 				all_technology_research_speed = -0.75
 				planet_jobs_produces_mult = -0.55
 				country_unity_produces_mult = -0.65
@@ -121,7 +129,9 @@ situation_adastra_ascension = {
 				leaders_upkeep_mult = -0.4
 				planet_pops_upkeep_mult = -0.5
 				planet_jobs_upkeep_mult = -0.4
-				planet_structures_upkeep_mult = -0.4
+				# 1.2 : l'entretien energetique et les biens de consommation ne
+				# sont plus geres ici mais par techno - voir adastra_pre_electric
+				# et adastra_pre_manufacture, poses par adastra.11.
 				all_technology_research_speed = -0.70
 				planet_jobs_produces_mult = -0.50
 				country_unity_produces_mult = -0.55
@@ -140,7 +150,9 @@ situation_adastra_ascension = {
 				leaders_upkeep_mult = -0.3
 				planet_pops_upkeep_mult = -0.4
 				planet_jobs_upkeep_mult = -0.3
-				planet_structures_upkeep_mult = -0.3
+				# 1.2 : l'entretien energetique et les biens de consommation ne
+				# sont plus geres ici mais par techno - voir adastra_pre_electric
+				# et adastra_pre_manufacture, poses par adastra.11.
 				all_technology_research_speed = -0.60
 				planet_jobs_produces_mult = -0.45
 				country_unity_produces_mult = -0.45
@@ -159,7 +171,9 @@ situation_adastra_ascension = {
 				leaders_upkeep_mult = -0.25
 				planet_pops_upkeep_mult = -0.3
 				planet_jobs_upkeep_mult = -0.25
-				planet_structures_upkeep_mult = -0.25
+				# 1.2 : l'entretien energetique et les biens de consommation ne
+				# sont plus geres ici mais par techno - voir adastra_pre_electric
+				# et adastra_pre_manufacture, poses par adastra.11.
 				all_technology_research_speed = -0.50
 				planet_jobs_produces_mult = -0.40
 				country_unity_produces_mult = -0.40
@@ -178,7 +192,9 @@ situation_adastra_ascension = {
 				leaders_upkeep_mult = -0.15
 				planet_pops_upkeep_mult = -0.2
 				planet_jobs_upkeep_mult = -0.15
-				planet_structures_upkeep_mult = -0.15
+				# 1.2 : l'entretien energetique et les biens de consommation ne
+				# sont plus geres ici mais par techno - voir adastra_pre_electric
+				# et adastra_pre_manufacture, poses par adastra.11.
 				all_technology_research_speed = -0.40
 				planet_jobs_produces_mult = -0.30
 				country_unity_produces_mult = -0.30
@@ -197,7 +213,9 @@ situation_adastra_ascension = {
 				leaders_upkeep_mult = -0.1
 				planet_pops_upkeep_mult = -0.1
 				planet_jobs_upkeep_mult = -0.1
-				planet_structures_upkeep_mult = -0.1
+				# 1.2 : l'entretien energetique et les biens de consommation ne
+				# sont plus geres ici mais par techno - voir adastra_pre_electric
+				# et adastra_pre_manufacture, poses par adastra.11.
 				all_technology_research_speed = -0.25
 				planet_jobs_produces_mult = -0.20
 				country_unity_produces_mult = -0.20
@@ -273,16 +291,20 @@ situation_adastra_ascension = {
 		}
 	}
 
+	# 1.2 : ages deux fois plus longs par defaut (retours convergents
+	# Lucky13crocket / argroww / Nobumon). Tous les modificateurs sont mis a
+	# l'echelle du meme facteur 0.5 : les proportions entre rythmes, approches
+	# et bonus restent celles de la 1.1, seule la duree change.
 	monthly_progress = {
-		base = 0.35
+		base = 0.06
 		modifier = {
-			add = -0.35
+			add = -0.06
 			desc = adastra_progress_program
 			owner = { has_country_flag = adastra_program_started }
 		}
 		# 1.1 : vitesse d'ascension configurable (adastra.5) - inactive pendant le programme spatial
 		modifier = {
-			add = 0.18
+			add = 0.03
 			desc = adastra_progress_speed_fast
 			owner = {
 				has_country_flag = adastra_speed_fast
@@ -290,7 +312,7 @@ situation_adastra_ascension = {
 			}
 		}
 		modifier = {
-			add = -0.18
+			add = -0.03
 			desc = adastra_progress_speed_slow
 			owner = {
 				has_country_flag = adastra_speed_slow
@@ -298,7 +320,7 @@ situation_adastra_ascension = {
 			}
 		}
 		modifier = {
-			add = -0.28
+			add = -0.045
 			desc = adastra_progress_speed_veryslow
 			owner = {
 				has_country_flag = adastra_speed_veryslow
@@ -306,44 +328,780 @@ situation_adastra_ascension = {
 			}
 		}
 		modifier = {
-			add = -0.05
+			add = -0.01
 			desc = adastra_progress_tradition
 			current_situation_approach = approach_adastra_tradition
 			owner = { NOT = { has_country_flag = adastra_program_started } }
 		}
 		modifier = {
-			add = 0.15
+			add = 0.025
 			desc = adastra_progress_forced_march
 			current_situation_approach = approach_adastra_forced_march
 			owner = { NOT = { has_country_flag = adastra_program_started } }
 		}
 		modifier = {
-			add = 0.05
+			add = 0.01
 			desc = adastra_progress_skywatchers
 			current_situation_approach = approach_adastra_skywatchers
 			owner = { NOT = { has_country_flag = adastra_program_started } }
 		}
 		modifier = {
-			add = 0.10
+			add = 0.015
 			desc = adastra_progress_unity
 			owner = {
 				NOT = { has_country_flag = adastra_program_started }
 				has_monthly_income = {
 					resource = unity
-					value >= 15
+					value >= 3
 				}
 			}
 		}
 		modifier = {
-			add = 0.10
+			add = 0.015
 			desc = adastra_progress_research
 			owner = {
 				NOT = { has_country_flag = adastra_program_started }
 				has_monthly_income = {
 					resource = physics_research
-					value >= 15
+					value >= 5
 				}
 			}
+		}
+	
+
+		# --- Le verrou de passage d'age ---
+		# On ne quitte pas un age tant qu'il reste quelque chose a y inventer.
+		# La barre monte normalement pendant toute l'etape, puis se fige a un
+		# point de la fin tant que les dix technos de l'age ne sont pas toutes
+		# terminees.
+		#
+		# UN BLOC PAR TECHNOLOGIE, et non un par age. Le 16/08 : « l'ideal
+		# serait d'indiquer dans la situation les technologies manquantes ».
+		# Le moteur affiche la ligne desc de CHAQUE modificateur qui s'applique :
+		# en declarant une entree par techno, l'infobulle de la barre devient la
+		# liste exacte de ce qui reste a trouver, et elle se raccourcit a chaque
+		# decouverte. Les multiplicateurs se composent - 0,001 puissance N reste
+		# un arret.
+		#
+		# mult = 0.001 et non 0 : le jeu de base n'ecrit JAMAIS « mult = 0 » dans
+		# un monthly_progress, et rien ne garantit qu'un zero y soit lu comme un
+		# multiplicateur plutot que comme une valeur absente. A un millieme, il
+		# faudrait douze mille ans pour gagner un point : c'est un arret, sans le
+		# risque qu'une soustraction ferait courir - une progression negative
+		# renverrait le joueur en arriere d'un age.
+		#
+		# Les etapes du programme spatial n'ont pas de verrou : elles ne sont
+		# plus commandees par la recherche mais par les decisions.
+
+		# stone
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_fire
+			current_stage = adastra_stage_stone_age
+			situation_progress >= 11
+			owner = { NOT = { has_technology = tech_adastra_fire } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_stone_tools
+			current_stage = adastra_stage_stone_age
+			situation_progress >= 11
+			owner = { NOT = { has_technology = tech_adastra_stone_tools } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_hunting
+			current_stage = adastra_stage_stone_age
+			situation_progress >= 11
+			owner = { NOT = { has_technology = tech_adastra_hunting } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_cave_art
+			current_stage = adastra_stage_stone_age
+			situation_progress >= 11
+			owner = { NOT = { has_technology = tech_adastra_cave_art } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_language
+			current_stage = adastra_stage_stone_age
+			situation_progress >= 11
+			owner = { NOT = { has_technology = tech_adastra_language } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_seasons
+			current_stage = adastra_stage_stone_age
+			situation_progress >= 11
+			owner = { NOT = { has_technology = tech_adastra_seasons } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_pigments
+			current_stage = adastra_stage_stone_age
+			situation_progress >= 11
+			owner = { NOT = { has_technology = tech_adastra_pigments } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_cordage
+			current_stage = adastra_stage_stone_age
+			situation_progress >= 11
+			owner = { NOT = { has_technology = tech_adastra_cordage } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_shelter
+			current_stage = adastra_stage_stone_age
+			situation_progress >= 11
+			owner = { NOT = { has_technology = tech_adastra_shelter } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_burial
+			current_stage = adastra_stage_stone_age
+			situation_progress >= 11
+			owner = { NOT = { has_technology = tech_adastra_burial } }
+		}
+		# bronze
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_agriculture
+			current_stage = adastra_stage_bronze_age
+			situation_progress >= 21
+			owner = { NOT = { has_technology = tech_adastra_agriculture } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_pottery
+			current_stage = adastra_stage_bronze_age
+			situation_progress >= 21
+			owner = { NOT = { has_technology = tech_adastra_pottery } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_bronze
+			current_stage = adastra_stage_bronze_age
+			situation_progress >= 21
+			owner = { NOT = { has_technology = tech_adastra_bronze } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_writing
+			current_stage = adastra_stage_bronze_age
+			situation_progress >= 21
+			owner = { NOT = { has_technology = tech_adastra_writing } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_first_city
+			current_stage = adastra_stage_bronze_age
+			situation_progress >= 21
+			owner = { NOT = { has_technology = tech_adastra_first_city } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_calendar
+			current_stage = adastra_stage_bronze_age
+			situation_progress >= 21
+			owner = { NOT = { has_technology = tech_adastra_calendar } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_measures
+			current_stage = adastra_stage_bronze_age
+			situation_progress >= 21
+			owner = { NOT = { has_technology = tech_adastra_measures } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_irrigation
+			current_stage = adastra_stage_bronze_age
+			situation_progress >= 21
+			owner = { NOT = { has_technology = tech_adastra_irrigation } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_priesthood
+			current_stage = adastra_stage_bronze_age
+			situation_progress >= 21
+			owner = { NOT = { has_technology = tech_adastra_priesthood } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_domestication
+			current_stage = adastra_stage_bronze_age
+			situation_progress >= 21
+			owner = { NOT = { has_technology = tech_adastra_domestication } }
+		}
+		# iron
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_iron
+			current_stage = adastra_stage_iron_age
+			situation_progress >= 30
+			owner = { NOT = { has_technology = tech_adastra_iron } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_wheel
+			current_stage = adastra_stage_iron_age
+			situation_progress >= 30
+			owner = { NOT = { has_technology = tech_adastra_wheel } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_law
+			current_stage = adastra_stage_iron_age
+			situation_progress >= 30
+			owner = { NOT = { has_technology = tech_adastra_law } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_coinage
+			current_stage = adastra_stage_iron_age
+			situation_progress >= 30
+			owner = { NOT = { has_technology = tech_adastra_coinage } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_astronomy
+			current_stage = adastra_stage_iron_age
+			situation_progress >= 30
+			owner = { NOT = { has_technology = tech_adastra_astronomy } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_geometry
+			current_stage = adastra_stage_iron_age
+			situation_progress >= 30
+			owner = { NOT = { has_technology = tech_adastra_geometry } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_glass
+			current_stage = adastra_stage_iron_age
+			situation_progress >= 30
+			owner = { NOT = { has_technology = tech_adastra_glass } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_aqueduct
+			current_stage = adastra_stage_iron_age
+			situation_progress >= 30
+			owner = { NOT = { has_technology = tech_adastra_aqueduct } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_alphabet
+			current_stage = adastra_stage_iron_age
+			situation_progress >= 30
+			owner = { NOT = { has_technology = tech_adastra_alphabet } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_standing_army
+			current_stage = adastra_stage_iron_age
+			situation_progress >= 30
+			owner = { NOT = { has_technology = tech_adastra_standing_army } }
+		}
+		# medieval
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_crop_rotation
+			current_stage = adastra_stage_late_medieval_age
+			situation_progress >= 38
+			owner = { NOT = { has_technology = tech_adastra_crop_rotation } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_mills
+			current_stage = adastra_stage_late_medieval_age
+			situation_progress >= 38
+			owner = { NOT = { has_technology = tech_adastra_mills } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_stone_architecture
+			current_stage = adastra_stage_late_medieval_age
+			situation_progress >= 38
+			owner = { NOT = { has_technology = tech_adastra_stone_architecture } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_scholasticism
+			current_stage = adastra_stage_late_medieval_age
+			situation_progress >= 38
+			owner = { NOT = { has_technology = tech_adastra_scholasticism } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_guilds
+			current_stage = adastra_stage_late_medieval_age
+			situation_progress >= 38
+			owner = { NOT = { has_technology = tech_adastra_guilds } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_algebra
+			current_stage = adastra_stage_late_medieval_age
+			situation_progress >= 38
+			owner = { NOT = { has_technology = tech_adastra_algebra } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_optics
+			current_stage = adastra_stage_late_medieval_age
+			situation_progress >= 38
+			owner = { NOT = { has_technology = tech_adastra_optics } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_heavy_plough
+			current_stage = adastra_stage_late_medieval_age
+			situation_progress >= 38
+			owner = { NOT = { has_technology = tech_adastra_heavy_plough } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_hospices
+			current_stage = adastra_stage_late_medieval_age
+			situation_progress >= 38
+			owner = { NOT = { has_technology = tech_adastra_hospices } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_cartography
+			current_stage = adastra_stage_late_medieval_age
+			situation_progress >= 38
+			owner = { NOT = { has_technology = tech_adastra_cartography } }
+		}
+		# renaissance
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_printing
+			current_stage = adastra_stage_renaissance_age
+			situation_progress >= 46
+			owner = { NOT = { has_technology = tech_adastra_printing } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_experimental_method
+			current_stage = adastra_stage_renaissance_age
+			situation_progress >= 46
+			owner = { NOT = { has_technology = tech_adastra_experimental_method } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_anatomy
+			current_stage = adastra_stage_renaissance_age
+			situation_progress >= 46
+			owner = { NOT = { has_technology = tech_adastra_anatomy } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_mechanics
+			current_stage = adastra_stage_renaissance_age
+			situation_progress >= 46
+			owner = { NOT = { has_technology = tech_adastra_mechanics } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_banking
+			current_stage = adastra_stage_renaissance_age
+			situation_progress >= 46
+			owner = { NOT = { has_technology = tech_adastra_banking } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_chemistry
+			current_stage = adastra_stage_renaissance_age
+			situation_progress >= 46
+			owner = { NOT = { has_technology = tech_adastra_chemistry } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_metallurgy_casting
+			current_stage = adastra_stage_renaissance_age
+			situation_progress >= 46
+			owner = { NOT = { has_technology = tech_adastra_metallurgy_casting } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_clockwork
+			current_stage = adastra_stage_renaissance_age
+			situation_progress >= 46
+			owner = { NOT = { has_technology = tech_adastra_clockwork } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_double_entry
+			current_stage = adastra_stage_renaissance_age
+			situation_progress >= 46
+			owner = { NOT = { has_technology = tech_adastra_double_entry } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_navigation
+			current_stage = adastra_stage_renaissance_age
+			situation_progress >= 46
+			owner = { NOT = { has_technology = tech_adastra_navigation } }
+		}
+		# steam
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_steam_engine
+			current_stage = adastra_stage_steam_age
+			situation_progress >= 54
+			owner = { NOT = { has_technology = tech_adastra_steam_engine } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_coal
+			current_stage = adastra_stage_steam_age
+			situation_progress >= 54
+			owner = { NOT = { has_technology = tech_adastra_coal } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_railways
+			current_stage = adastra_stage_steam_age
+			situation_progress >= 54
+			owner = { NOT = { has_technology = tech_adastra_railways } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_telegraph
+			current_stage = adastra_stage_steam_age
+			situation_progress >= 54
+			owner = { NOT = { has_technology = tech_adastra_telegraph } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_sanitation
+			current_stage = adastra_stage_steam_age
+			situation_progress >= 54
+			owner = { NOT = { has_technology = tech_adastra_sanitation } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_gas_lighting
+			current_stage = adastra_stage_steam_age
+			situation_progress >= 54
+			owner = { NOT = { has_technology = tech_adastra_gas_lighting } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_electromagnetism
+			current_stage = adastra_stage_steam_age
+			situation_progress >= 54
+			owner = { NOT = { has_technology = tech_adastra_electromagnetism } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_machine_tools
+			current_stage = adastra_stage_steam_age
+			situation_progress >= 54
+			owner = { NOT = { has_technology = tech_adastra_machine_tools } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_census
+			current_stage = adastra_stage_steam_age
+			situation_progress >= 54
+			owner = { NOT = { has_technology = tech_adastra_census } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_anesthesia
+			current_stage = adastra_stage_steam_age
+			situation_progress >= 54
+			owner = { NOT = { has_technology = tech_adastra_anesthesia } }
+		}
+		# industrial
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_assembly_line
+			current_stage = adastra_stage_industrial_age
+			situation_progress >= 63
+			owner = { NOT = { has_technology = tech_adastra_assembly_line } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_bessemer
+			current_stage = adastra_stage_industrial_age
+			situation_progress >= 63
+			owner = { NOT = { has_technology = tech_adastra_bessemer } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_thermodynamics
+			current_stage = adastra_stage_industrial_age
+			situation_progress >= 63
+			owner = { NOT = { has_technology = tech_adastra_thermodynamics } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_fertilizers
+			current_stage = adastra_stage_industrial_age
+			situation_progress >= 63
+			owner = { NOT = { has_technology = tech_adastra_fertilizers } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_labour_law
+			current_stage = adastra_stage_industrial_age
+			situation_progress >= 63
+			owner = { NOT = { has_technology = tech_adastra_labour_law } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_photography
+			current_stage = adastra_stage_industrial_age
+			situation_progress >= 63
+			owner = { NOT = { has_technology = tech_adastra_photography } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_periodic_table
+			current_stage = adastra_stage_industrial_age
+			situation_progress >= 63
+			owner = { NOT = { has_technology = tech_adastra_periodic_table } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_refrigeration
+			current_stage = adastra_stage_industrial_age
+			situation_progress >= 63
+			owner = { NOT = { has_technology = tech_adastra_refrigeration } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_germ_theory
+			current_stage = adastra_stage_industrial_age
+			situation_progress >= 63
+			owner = { NOT = { has_technology = tech_adastra_germ_theory } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_universal_suffrage
+			current_stage = adastra_stage_industrial_age
+			situation_progress >= 63
+			owner = { NOT = { has_technology = tech_adastra_universal_suffrage } }
+		}
+		# machine
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_electricity
+			current_stage = adastra_stage_machine_age
+			situation_progress >= 73
+			owner = { NOT = { has_technology = tech_adastra_electricity } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_radio
+			current_stage = adastra_stage_machine_age
+			situation_progress >= 73
+			owner = { NOT = { has_technology = tech_adastra_radio } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_aviation
+			current_stage = adastra_stage_machine_age
+			situation_progress >= 73
+			owner = { NOT = { has_technology = tech_adastra_aviation } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_antibiotics
+			current_stage = adastra_stage_machine_age
+			situation_progress >= 73
+			owner = { NOT = { has_technology = tech_adastra_antibiotics } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_mass_education
+			current_stage = adastra_stage_machine_age
+			situation_progress >= 73
+			owner = { NOT = { has_technology = tech_adastra_mass_education } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_quantum_theory
+			current_stage = adastra_stage_machine_age
+			situation_progress >= 73
+			owner = { NOT = { has_technology = tech_adastra_quantum_theory } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_haber
+			current_stage = adastra_stage_machine_age
+			situation_progress >= 73
+			owner = { NOT = { has_technology = tech_adastra_haber } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_plastics
+			current_stage = adastra_stage_machine_age
+			situation_progress >= 73
+			owner = { NOT = { has_technology = tech_adastra_plastics } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_social_insurance
+			current_stage = adastra_stage_machine_age
+			situation_progress >= 73
+			owner = { NOT = { has_technology = tech_adastra_social_insurance } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_epidemiology
+			current_stage = adastra_stage_machine_age
+			situation_progress >= 73
+			owner = { NOT = { has_technology = tech_adastra_epidemiology } }
+		}
+		# atomic
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_fission
+			current_stage = adastra_stage_atomic_age
+			situation_progress >= 85
+			owner = { NOT = { has_technology = tech_adastra_fission } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_electronics
+			current_stage = adastra_stage_atomic_age
+			situation_progress >= 85
+			owner = { NOT = { has_technology = tech_adastra_electronics } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_petrochemistry
+			current_stage = adastra_stage_atomic_age
+			situation_progress >= 85
+			owner = { NOT = { has_technology = tech_adastra_petrochemistry } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_vaccination
+			current_stage = adastra_stage_atomic_age
+			situation_progress >= 85
+			owner = { NOT = { has_technology = tech_adastra_vaccination } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_television
+			current_stage = adastra_stage_atomic_age
+			situation_progress >= 85
+			owner = { NOT = { has_technology = tech_adastra_television } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_radio_astronomy
+			current_stage = adastra_stage_atomic_age
+			situation_progress >= 85
+			owner = { NOT = { has_technology = tech_adastra_radio_astronomy } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_jet_engine
+			current_stage = adastra_stage_atomic_age
+			situation_progress >= 85
+			owner = { NOT = { has_technology = tech_adastra_jet_engine } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_containers
+			current_stage = adastra_stage_atomic_age
+			situation_progress >= 85
+			owner = { NOT = { has_technology = tech_adastra_containers } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_green_revolution
+			current_stage = adastra_stage_atomic_age
+			situation_progress >= 85
+			owner = { NOT = { has_technology = tech_adastra_green_revolution } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_human_rights
+			current_stage = adastra_stage_atomic_age
+			situation_progress >= 85
+			owner = { NOT = { has_technology = tech_adastra_human_rights } }
+		}
+		# space
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_computing
+			current_stage = adastra_stage_early_space_age
+			situation_progress >= 99
+			owner = { NOT = { has_technology = tech_adastra_computing } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_rocketry
+			current_stage = adastra_stage_early_space_age
+			situation_progress >= 99
+			owner = { NOT = { has_technology = tech_adastra_rocketry } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_remote_sensing
+			current_stage = adastra_stage_early_space_age
+			situation_progress >= 99
+			owner = { NOT = { has_technology = tech_adastra_remote_sensing } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_genetics
+			current_stage = adastra_stage_early_space_age
+			situation_progress >= 99
+			owner = { NOT = { has_technology = tech_adastra_genetics } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_cooperation
+			current_stage = adastra_stage_early_space_age
+			situation_progress >= 99
+			owner = { NOT = { has_technology = tech_adastra_cooperation } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_nuclear_medicine
+			current_stage = adastra_stage_early_space_age
+			situation_progress >= 99
+			owner = { NOT = { has_technology = tech_adastra_nuclear_medicine } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_satellites
+			current_stage = adastra_stage_early_space_age
+			situation_progress >= 99
+			owner = { NOT = { has_technology = tech_adastra_satellites } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_microprocessor
+			current_stage = adastra_stage_early_space_age
+			situation_progress >= 99
+			owner = { NOT = { has_technology = tech_adastra_microprocessor } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_networks
+			current_stage = adastra_stage_early_space_age
+			situation_progress >= 99
+			owner = { NOT = { has_technology = tech_adastra_networks } }
+		}
+		modifier = {
+			mult = 0.001
+			desc = adastra_manque_ecology
+			current_stage = adastra_stage_early_space_age
+			situation_progress >= 99
+			owner = { NOT = { has_technology = tech_adastra_ecology } }
 		}
 	}
 

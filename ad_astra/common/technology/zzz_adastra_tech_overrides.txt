@@ -5,7 +5,7 @@ tech_basic_science_lab_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_renaissance
+			adastra_vanilla_open_renaissance = yes
 		}
 	}
 	cost = @tier0cost1
@@ -33,7 +33,7 @@ tech_basic_industry = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_steam
+			adastra_vanilla_open_steam = yes
 		}
 	}
 	cost = 0
@@ -65,7 +65,7 @@ tech_mechanized_mining = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_industrial
+			adastra_vanilla_open_industrial = yes
 		}
 		is_nomadic = no
 	}
@@ -81,7 +81,7 @@ tech_industrial_farming = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_industrial
+			adastra_vanilla_open_industrial = yes
 		}
 	}
 	cost = 0
@@ -97,7 +97,7 @@ tech_assault_armies = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_industrial
+			adastra_vanilla_open_machine = yes
 		}
 	}
 	cost = @tier1cost1
@@ -113,7 +113,7 @@ tech_power_plant_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_machine
+			adastra_vanilla_open_machine = yes
 		}
 	}
 	cost = 0
@@ -129,7 +129,7 @@ tech_planetary_government = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_machine
+			adastra_vanilla_open_machine = yes
 		}
 	}
 	cost = @tier0cost1
@@ -164,7 +164,7 @@ tech_basic_health = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_machine
+			adastra_vanilla_open_machine = yes
 		}
 		is_regular_empire = yes
 		is_individual_machine = no
@@ -176,7 +176,7 @@ tech_fission_power = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_atomic
+			adastra_vanilla_open_atomic = yes
 		}
 	}
 	area = physics
@@ -217,7 +217,7 @@ tech_planetary_defenses = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_atomic
+			adastra_vanilla_open_machine = yes
 		}
 	}
 	cost = 0
@@ -257,7 +257,7 @@ tech_missiles_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_atomic
+			adastra_vanilla_open_atomic = yes
 		}
 		OR = {
 			country_uses_bio_ships = no
@@ -273,7 +273,7 @@ tech_flak_batteries_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_atomic
+			adastra_vanilla_open_machine = yes
 		}
 	}
 	area = engineering
@@ -299,7 +299,7 @@ tech_pd_tracking_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_atomic
+			adastra_vanilla_open_atomic = yes
 		}
 	}
 	area = physics
@@ -325,7 +325,7 @@ tech_lasers_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_atomic
+			adastra_vanilla_open_atomic = yes
 		}
 	}
 	tier = 0
@@ -359,7 +359,7 @@ tech_holo_entertainment = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_atomic
+			adastra_vanilla_open_space = yes
 		}
 		is_gestalt = no
 	}
@@ -372,7 +372,7 @@ tech_space_exploration = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 	}
 	cost = 0
@@ -399,7 +399,7 @@ tech_thrusters_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 	}
 	area = engineering
@@ -443,7 +443,7 @@ tech_solar_panel_network = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 		is_nomadic = no
 	}
@@ -457,7 +457,7 @@ tech_space_construction = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 	}
 	cost = 0
@@ -519,7 +519,7 @@ tech_space_defense_station_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 		is_nomadic = no
 	}
@@ -533,7 +533,7 @@ tech_ship_armor_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 	}
 	cost = @tier1cost1
@@ -560,7 +560,7 @@ tech_shields_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 	}
 	area = physics
@@ -587,7 +587,7 @@ tech_reactor_boosters_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 	}
 	area = physics
@@ -609,7 +609,7 @@ tech_corvettes = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 		country_uses_bio_ships = no
 	}
@@ -646,7 +646,7 @@ tech_starbase_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 		is_nomadic = no
 	}
@@ -676,7 +676,7 @@ tech_starbase_2 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 		is_nomadic = no
 	}
@@ -733,7 +733,7 @@ tech_colonization_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 		is_nomadic = no
 	}
@@ -755,7 +755,7 @@ tech_interplanetary_commerce = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 		is_gestalt = no
 	}
@@ -767,7 +767,7 @@ tech_mass_drivers_1 = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 	}
 	tier = 0
@@ -801,7 +801,7 @@ tech_hydroponics = {
 	potential = {
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_unlock_space
+			adastra_vanilla_open_space = yes
 		}
 		is_wilderness_empire = no
 	}

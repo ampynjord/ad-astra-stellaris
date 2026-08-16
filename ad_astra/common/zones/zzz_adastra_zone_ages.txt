@@ -1,0 +1,1139 @@
+# Ad Astra 1.2 - age des specialisations de district (zones).
+# FICHIER GENERE PAR tools/gen_zone_age_overrides.py - NE PAS EDITER A LA MAIN.
+# Source de verite : tools/vanilla_zone_age_map.py
+#
+# Le jeu de base ne gate presque pas les zones : un empire a l'Age de pierre
+# pouvait specialiser son district en Industrie lourde. Chaque zone recoit
+# ici l'age de la techno d'epoque equivalente.
+
+
+### zone_industrial -> steam
+zone_industrial = {
+	icon = GFX_district_specialization_industrial
+	base_buildtime = @zone_buildtime
+	potential = { # portee planete
+		# Ad Astra : Industrie mixte : la Machine a vapeur, premiere vraie industrie
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_steam
+				}
+			}
+		}
+ # planet scope
+		exists = owner
+		owner = {
+			country_uses_consumer_goods = yes
+		}
+	}
+
+	unlock = { # portee planete
+		# Ad Astra : Industrie mixte : la Machine a vapeur, premiere vraie industrie
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_steam
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				country_uses_consumer_goods = yes
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		industrial
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_foundry_add
+		AMOUNT = @scaling_district_2_jobs
+		AMOUNT2 = @scaling_district_2_jobs
+	}
+
+	inline_script = {
+		script = jobs/zone_factory_add
+		AMOUNT = @scaling_district_2_jobs
+		AMOUNT2 = @scaling_district_2_jobs
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	ai_resource_production = {
+		alloys = 10
+		consumer_goods = 10
+
+		trigger = {
+			has_any_industrial_zone = yes
+		}
+	}
+
+	ai_weight_coefficient = 1.1
+	ai_priority = 8
+
+	zone_sets = {
+		urban
+		habitat_urban
+	}
+
+	inline_script = {
+		script = zones/shared_city_non_urban_zone_modifiers
+	}
+
+	ai_weight_coefficient = 1.1
+}
+
+### zone_foundry -> industrial
+zone_foundry = {
+	icon = GFX_district_specialization_foundry
+	base_buildtime = @zone_buildtime
+
+	potential = { # portee planete
+		# Ad Astra : Industrie lourde : l'Acier Bessemer
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_industrial
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	unlock = { # portee planete
+		# Ad Astra : Industrie lourde : l'Acier Bessemer
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_industrial
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		foundry
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_foundry_add
+		AMOUNT = @scaling_district_1_job
+		AMOUNT2 = @scaling_district_1_job
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	ai_resource_production = {
+		alloys = 20
+
+		trigger = {
+			has_any_foundry_zone = yes
+		}
+	}
+
+	ai_weight_coefficient = 1.2
+	ai_priority = 10
+
+	zone_sets = {
+		urban
+		habitat_urban
+	}
+
+	inline_script = {
+		script = zones/shared_city_non_urban_zone_modifiers
+	}
+
+	ai_weight_coefficient = 1.2
+}
+
+### zone_factory -> industrial
+zone_factory = {
+	icon = GFX_district_specialization_factory
+	base_buildtime = @zone_buildtime
+	potential = { # portee planete
+		# Ad Astra : Industrie civile : la Chaine de montage
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_industrial
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger ={
+			exists = owner
+			owner = {
+				country_uses_consumer_goods = yes
+			}
+		}
+	}
+
+	unlock = { # portee planete
+		# Ad Astra : Industrie civile : la Chaine de montage
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_industrial
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger ={
+			exists = owner
+			owner = {
+				country_uses_consumer_goods = yes
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		factory
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_factory_add
+		AMOUNT = @scaling_district_1_job
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	ai_resource_production = {
+		consumer_goods = 15
+
+		trigger = {
+			has_any_factory_zone = yes
+		}
+	}
+
+	ai_priority = 10
+
+	zone_sets = {
+		urban
+		habitat_urban
+	}
+
+	inline_script = {
+		script = zones/shared_city_non_urban_zone_modifiers
+	}
+}
+
+### zone_research_unity -> bronze
+zone_research_unity = {
+	icon = GFX_district_specialization_bureaucrat
+	base_buildtime = @zone_buildtime
+	potential = { # portee planete
+		# Ad Astra : Archives : c'est exactement la Maison des tablettes, l'ecriture
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_bronze
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	unlock = { # portee planete
+		# Ad Astra : Archives : c'est exactement la Maison des tablettes, l'ecriture
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_bronze
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	zone_sets = {
+		urban
+		polytechnic
+	}
+
+	included_building_sets = {
+		research
+		unity
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_researchers_add
+		AMOUNT = @scaling_district_researchers_4_jobs
+		LARGE_AMOUNT = @scaling_district_researchers_2_jobs
+	}
+
+	inline_script = {
+		script = jobs/zone_unity_jobs_add
+		AMOUNT = @scaling_district_unity_4_jobs
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	inline_script = {
+		script = zones/shared_city_non_urban_zone_modifiers
+	}
+
+	triggered_desc = {
+		trigger = {
+			always = yes
+		}
+		text = zone_research_unity_triggered_desc
+	}
+
+	ai_priority = 8
+}
+
+### zone_research -> medieval
+zone_research = {
+	icon = GFX_district_specialization_research
+	base_buildtime = @zone_buildtime
+	potential = { # portee planete
+		# Ad Astra : Enclave de recherche : la Scolastique et l'Universite
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_medieval
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	unlock = { # portee planete
+		# Ad Astra : Enclave de recherche : la Scolastique et l'Universite
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_medieval
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		research
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_researchers_add
+		AMOUNT = @scaling_district_3_jobs
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	ai_resource_production = {
+		physics_research = 5
+		society_research = 5
+		engineering_research = 5
+
+		trigger = {
+			has_any_research_zone = yes
+		}
+	}
+
+	ai_weight_coefficient = 1.1
+	ai_priority = 10
+
+	zone_sets = {
+		urban
+		polytechnic
+	}
+
+	inline_script = {
+		script = zones/shared_city_non_urban_zone_modifiers
+	}
+
+	ai_weight_coefficient = 1.2
+}
+
+### zone_research_physics -> renaissance
+zone_research_physics = {
+	icon = GFX_district_specialization_physics
+	base_buildtime = @zone_buildtime
+	unlock = { # portee planete
+		# Ad Astra : Recherche specialisee : la Methode experimentale separe les disciplines
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_renaissance
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		physics
+		research
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_physicists_add
+		LARGE_AMOUNT = @scaling_district_1_job
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	potential = { # portee planete
+		# Ad Astra : Recherche specialisee : la Methode experimentale separe les disciplines
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_renaissance
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	zone_sets = {
+		urban
+		habitat_research
+		polytechnic
+	}
+
+	inline_script = {
+		script = zones/shared_research_zone_modifiers
+	}
+
+	ai_priority = 15
+
+	ai_weight_coefficient = 1.1
+}
+
+### zone_research_society -> renaissance
+zone_research_society = {
+	icon = GFX_district_specialization_society
+	base_buildtime = @zone_buildtime
+	unlock = { # portee planete
+		# Ad Astra : Recherche specialisee : idem
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_renaissance
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		society
+		research
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_biologists_add
+		LARGE_AMOUNT = @scaling_district_1_job
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	potential = { # portee planete
+		# Ad Astra : Recherche specialisee : idem
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_renaissance
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	zone_sets = {
+		urban
+		habitat_research
+		polytechnic
+	}
+
+	inline_script = {
+		script = zones/shared_research_zone_modifiers
+	}
+
+	ai_priority = 15
+
+	ai_weight_coefficient = 1.1
+}
+
+### zone_research_engineering -> renaissance
+zone_research_engineering = {
+	icon = GFX_district_specialization_engineering
+	base_buildtime = @zone_buildtime
+	unlock = { # portee planete
+		# Ad Astra : Recherche specialisee : idem
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_renaissance
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		engineering
+		research
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_engineers_add
+		LARGE_AMOUNT = @scaling_district_1_job
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	potential = { # portee planete
+		# Ad Astra : Recherche specialisee : idem
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_renaissance
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	zone_sets = {
+		urban
+		habitat_research
+		polytechnic
+	}
+
+	inline_script = {
+		script = zones/shared_research_zone_modifiers
+	}
+
+	ai_priority = 15
+
+	ai_weight_coefficient = 1.1
+}
+
+### zone_unity -> iron
+zone_unity = {
+	icon = GFX_district_specialization_unity
+	base_buildtime = @zone_buildtime
+	potential = { # portee planete
+		# Ad Astra : Site administratif : le Code de lois et le Tribunal, c'est l'age du fer
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_iron
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = { exists = owner }
+		owner = {
+			is_wilderness_empire = no
+			is_spiritualist = no
+			NOT = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		OR = {
+			owner = {
+				is_ai = no
+			}
+			AND = {
+				has_any_research_zone = no
+				has_any_industrial_zone = no
+			}
+		}
+	}
+
+	unlock = { # portee planete
+		# Ad Astra : Site administratif : le Code de lois et le Tribunal, c'est l'age du fer
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_iron
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				OR = {
+					is_wilderness_empire = no
+					NOT = { has_valid_civic = civic_machine_servitor }
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		unity
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_unity_jobs_add
+		AMOUNT = @scaling_district_1_job
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	ai_resource_production = {
+		unity = 15
+
+		trigger = {
+			has_any_unity_zone = yes
+		}
+	}
+	ai_priority = 10
+
+	zone_sets = {
+		urban
+		habitat_urban
+		polytechnic
+	}
+
+	inline_script = {
+		script = zones/shared_city_non_urban_zone_modifiers
+	}
+
+	convert_to = {
+		zone_unity_spiritualist
+		zone_unity_bio_trophy
+	}
+}
+
+### zone_unity_spiritualist -> iron
+zone_unity_spiritualist = {
+	icon = GFX_district_specialization_priest
+	base_buildtime = @zone_buildtime
+	potential = { # portee planete
+		# Ad Astra : Enclave spirituelle : meme age que l'administration
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_iron
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = { exists = owner }
+		owner = {
+			is_spiritualist = yes
+		}
+		OR = {
+			owner = {
+				is_ai = no
+			}
+			AND = {
+				has_any_research_zone = no
+				has_any_industrial_zone = no
+			}
+		}
+	}
+
+	unlock = { # portee planete
+		# Ad Astra : Enclave spirituelle : meme age que l'administration
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_iron
+				}
+			}
+		}
+ # planet scope
+		always = yes
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		unity
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_unity_jobs_add
+		AMOUNT = @scaling_district_1_job
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	ai_resource_production = {
+		unity = 15
+
+		trigger = {
+			has_any_unity_zone = yes
+		}
+	}
+	ai_priority = 10
+
+	zone_sets = {
+		urban
+		habitat_urban
+		polytechnic
+	}
+
+	inline_script = {
+		script = zones/shared_city_non_urban_zone_modifiers
+	}
+
+	convert_to = {
+		zone_unity
+		zone_unity_bio_trophy
+	}
+}
+
+### zone_fortress -> iron
+zone_fortress = {
+	icon = GFX_district_specialization_fortress
+	base_buildtime = @zone_buildtime
+	potential = { # portee planete
+		# Ad Astra : Defenses militaires : fortifications organisees
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_iron
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	unlock = { # portee planete
+		# Ad Astra : Defenses militaires : fortifications organisees
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_iron
+				}
+			}
+		}
+ # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		fortress
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_soldiers_add
+		AMOUNT = @scaling_district_1_job
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	ai_priority = 10
+
+	zone_sets = {
+		urban
+		habitat_urban
+	}
+
+	inline_script = {
+		script = zones/shared_city_non_urban_zone_modifiers
+	}
+}
+
+### zone_trade -> iron
+zone_trade = {
+	icon = GFX_district_specialization_trade
+	base_buildtime = @zone_buildtime
+	potential = { # portee planete
+		# Ad Astra : Centre du commerce : la Monnaie frappee rend le commerce possible
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_iron
+				}
+			}
+		}
+ # planet scope
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+		}
+		OR = {
+			owner = {
+				is_ai = no
+			}
+			has_any_research_zone = no
+			has_any_industrial_zone = no
+		}
+	}
+
+	unlock = { # portee planete
+		# Ad Astra : Centre du commerce : la Monnaie frappee rend le commerce possible
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_country_flag = adastra_reached_iron
+				}
+			}
+		}
+ # planet scope
+		always = yes
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	included_building_sets = {
+		urban
+		trade
+		urban_automation
+		origin
+	}
+
+	inline_script = {
+		script = jobs/zone_trader_add
+		AMOUNT = @scaling_district_1_job
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	ai_weight_coefficient = 0.5
+	ai_priority = 10
+
+	zone_sets = {
+		urban
+		habitat_urban
+		resort
+	}
+
+	inline_script = {
+		script = zones/shared_city_non_urban_zone_modifiers
+	}
+
+	ai_weight_coefficient = 0.25
+}

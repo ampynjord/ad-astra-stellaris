@@ -185,7 +185,11 @@ adastra_grounded = {
 	randomize_ethos = yes
 	shuffle_pop_ethos = yes
 	needs_survey = yes
-	diplomatic_wars = no
+	# 1.2 : la guerre redevient possible dans les deux sens. Une civilisation
+	# pre-PRL peut declarer la guerre a un empire stellaire - et surtout, elle
+	# peut en subir une. C'est le risque du chemin « galaxie vivante », celui
+	# que l'Heritage de l'Ascension recompense desormais au double.
+	diplomatic_wars = yes
 	ship_disengagement = yes
 	army_disengagement = yes
 	relations = yes
@@ -237,14 +241,26 @@ adastra_grounded = {
 
 	resources = {
 		category = country_base
+		# 1.2 : une ressource n'existe pas avant la techno qui l'invente.
+		# A l'Age de pierre on a des minerais, de la nourriture, du commerce,
+		# de l'influence, de l'unite et de la recherche - rien d'autre.
+		# Les alliages arrivent avec la Metallurgie du bronze, les biens de
+		# consommation avec la Machine a vapeur (la Manufacture est le premier
+		# atelier qui produit en serie), l'energie avec le Reseau electrique.
 		produces = {
-			energy = 20
 			physics_research = 10
 			society_research = 10
 			engineering_research = 10
 			influence = 3
 			unity = 10
+		}
+		produces = {
+			trigger = { adastra_has_alloys = yes }
 			alloys = 5
+		}
+		produces = {
+			trigger = { adastra_has_energy = yes }
+			energy = 20
 		}
 		produces = {
 			trigger = {
@@ -254,6 +270,7 @@ adastra_grounded = {
 		}
 		produces = {
 			trigger = {
+				adastra_has_consumer_goods = yes
 				OR = {
 					is_gestalt = no
 					has_valid_civic = civic_machine_servitor
@@ -261,6 +278,23 @@ adastra_grounded = {
 			}
 			consumer_goods = 15
 		}
+
+		# 1.2 - PANSEMENT RETIRE le 15/08.
+		#
+		# Il produisait 2 biens de consommation par mois tant que la Machine a
+		# vapeur manquait, pour couvrir les 10 % d'entretien que le plafond du
+		# moteur (-90 %) refusait d'annuler. En jeu, il sur-corrigeait : la barre
+		# affichait « 89 (+1) » a l'age de pierre, soit une ressource qui n'est
+		# pas censee exister, en train de s'accumuler sous les yeux du joueur.
+		#
+		# « Chacun fabrique le sien » empile desormais le multiplicateur global
+		# des emplois ET celui de chaque categorie d'emploi. Si les plafonds
+		# s'appliquent multiplicateur par multiplicateur, le residu tombe a 1 %
+		# et la compensation n'a plus lieu d'etre.
+		#
+		# A VERIFIER EN JEU : si les biens de consommation passent au rouge a
+		# l'age de pierre, c'est que le moteur additionne les multiplicateurs au
+		# lieu de les composer. Dans ce cas, retablir ce bloc a 1 (pas 2).
 		produces = {
 			trigger = {
 				OR = { #Either
@@ -327,6 +361,7 @@ adastra_grounded = {
 		produces = {
 			trigger = {
 				is_machine_empire = yes
+				adastra_has_energy = yes
 			}
 			energy = 20
 		}
@@ -340,6 +375,7 @@ adastra_grounded = {
 		}
 		produces = {
 			trigger = {
+				adastra_has_alloys = yes
 				OR = {
 					is_infernal_empire = yes
 					# Or a machine with an infernal species

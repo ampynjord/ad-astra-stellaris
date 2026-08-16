@@ -1,15 +1,43 @@
 # Ad Astra - designs de vaisseaux sous-luminiques (aucun module d'hyperpropulsion)
 # Livrés par le programme spatial ; l'empire verrouillé ne génère pas de designs automatiques.
 
+# 16/08, LA VRAIE CAUSE DU CHANTIER VIDE.
+#
+# is_special_buildable ne suffisait pas : les plans etaient bien dans la liste
+# de l'empire (verifie dans la sauvegarde) et le chantier ne proposait rien.
+#
+# Chaque taille de vaisseau du jeu de base declare
+# « required_component_set = ftl_components ». Un design dont cet emplacement
+# reste vide n'est pas un design valide : le moteur accepte de le faire naitre
+# par evenement, mais refuse de le proposer a la construction. Nos coques
+# sous-luminiques n'avaient rien dans cet emplacement, par construction.
+#
+# Le jeu de base a exactement la piece qu'il faut : EMPTY_DRIVE, « NON-FTL
+# DRIVE », sans prerequis technologique, membre du jeu ftl_components et
+# « upgrades_to = HYPER_DRIVE_1 ». C'est la cale vide qu'on met en attendant de
+# savoir plier l'espace. Elle remplit l'emplacement sans rien permettre.
+
+# 16/08 : is_special_buildable = yes.
+#
+# create_ship_design fait entrer le plan dans la liste des designs de l'empire,
+# mais un design GLOBAL n'apparait pas pour autant au chantier : le jeu ne
+# propose a la construction que les designs marques comme constructibles.
+# Sans cette ligne, le joueur voyait ses trois plans dans sa liste et la
+# section civile du chantier restait vide - releve en jeu le 16/08.
+# Champ documente dans common/global_ship_designs/000_documentation.txt,
+# employe par le jeu de base sur les vaisseaux Cybrex et les bio-plateformes.
+
 ship_design = {
 	name = "NAME_Adastra_Science"
 	ship_size = science
+	is_special_buildable = yes
 
 	section = {
 		template = "DEFAULT_SCIENCESHIP_SECTION"
 		slot = "mid"
 	}
 
+	required_component = "EMPTY_DRIVE"
 	required_component = "SHIP_THRUSTER_1"
 	required_component = "SENSOR_1"
 	required_component = "CORVETTE_FISSION_REACTOR"
@@ -18,12 +46,14 @@ ship_design = {
 ship_design = {
 	name = "NAME_Adastra_Constructor"
 	ship_size = constructor
+	is_special_buildable = yes
 
 	section = {
 		template = "DEFAULT_CONSTRUCTION_SECTION"
 		slot = "mid"
 	}
 
+	required_component = "EMPTY_DRIVE"
 	required_component = "SHIP_THRUSTER_1"
 	required_component = "SENSOR_1"
 	required_component = "CORVETTE_FISSION_REACTOR"
@@ -34,6 +64,7 @@ ship_design = {
 ship_design = {
 	name = "NAME_Adastra_Science_FTL"
 	ship_size = science
+	is_special_buildable = yes
 
 	section = {
 		template = "DEFAULT_SCIENCESHIP_SECTION"
@@ -49,6 +80,7 @@ ship_design = {
 ship_design = {
 	name = "NAME_Adastra_Constructor_FTL"
 	ship_size = constructor
+	is_special_buildable = yes
 
 	section = {
 		template = "DEFAULT_CONSTRUCTION_SECTION"
@@ -59,4 +91,143 @@ ship_design = {
 	required_component = "SENSOR_1"
 	required_component = "CORVETTE_FISSION_REACTOR"
 	required_component = "HYPER_DRIVE_1"
+}
+
+# 1.2 - vaisseau de colonisation sous-luminique.
+#
+# Retour de Sithiya (Workshop, 13/08) : « je n'ai jamais pris l'hyperpropulsion,
+# donc je ne peux pas faire de colonisateur, et meme si je construis un complexe
+# d'habitat je ne peux pas y installer de population ».
+#
+# Cause : sans HYPER_DRIVE_1, l'auto-conception du jeu n'arrive pas a produire de
+# design de colonisateur valide - le meme echec que pour les vaisseaux
+# scientifiques et de construction, deja contourne par des designs fournis. Un
+# habitat en orbite de son propre monde n'a aucun besoin d'hyperpropulsion pour
+# etre rejoint : c'est meme l'image la plus juste de l'age spatial pre-PRL.
+ship_design = {
+	name = "NAME_Adastra_Colonizer"
+	ship_size = colonizer
+	is_special_buildable = yes
+
+	section = {
+		template = "DEFAULT_COLONIZATION_SECTION"
+		slot = "mid"
+	}
+
+	required_component = "EMPTY_DRIVE"
+	required_component = "SHIP_THRUSTER_1"
+	required_component = "SENSOR_1"
+	required_component = "CORVETTE_FISSION_REACTOR"
+}
+
+# Version hyperspatiale, pour apres l'emergence.
+ship_design = {
+	name = "NAME_Adastra_Colonizer_FTL"
+	ship_size = colonizer
+	is_special_buildable = yes
+
+	section = {
+		template = "DEFAULT_COLONIZATION_SECTION"
+		slot = "mid"
+	}
+
+	required_component = "SHIP_THRUSTER_1"
+	required_component = "SENSOR_1"
+	required_component = "CORVETTE_FISSION_REACTOR"
+	required_component = "HYPER_DRIVE_1"
+}
+
+# 16/08 - LA CORVETTE SOUS-LUMINIQUE ET SA VERSION HYPERSPATIALE.
+#
+# Le programme de flotte militaire livrait ses corvettes avec
+# « random_existing_design = corvette », c'est-a-dire un plan auto-genere par
+# le jeu. Deux problemes. D'abord ce plan n'a aucun module d'hyperpropulsion,
+# puisque l'empire ne connait pas la techno - normal pendant le confinement.
+# Ensuite, et c'est le vrai defaut, il n'a pas de nom stable : impossible de
+# dire « remplace ce plan par celui-ci » a l'emergence. Les corvettes restaient
+# donc sous-luminiques a vie, clouees dans leur systeme natal, alors que
+# l'empire venait de percer.
+#
+# On fournit donc nos deux plans, comme pour les vaisseaux civils. Gabarit
+# repris de NAME_Dagger (common/global_ship_designs/event_ship_designs_general.txt),
+# la corvette de base du jeu, dont on retire l'hyperpropulsion pour la version
+# d'avant la percee.
+ship_design = {
+	name = "NAME_Adastra_Corvette"
+	ship_size = corvette
+	is_special_buildable = yes
+	section = {
+		template = "CORVETTE_MID_S3"
+		slot = "mid"
+
+		component = {
+			slot = "SMALL_GUN_01"
+			template = "SMALL_MASS_DRIVER_1"
+		}
+		component = {
+			slot = "SMALL_GUN_02"
+			template = "SMALL_MASS_DRIVER_1"
+		}
+		component = {
+			slot = "SMALL_GUN_03"
+			template = "SMALL_MASS_DRIVER_1"
+		}
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SMALL_ARMOR_1"
+		}
+		component = {
+			slot = "SMALL_UTILITY_2"
+			template = "SMALL_ARMOR_1"
+		}
+		component = {
+			slot = "SMALL_UTILITY_3"
+			template = "SMALL_SHIELD_1"
+		}
+	}
+	required_component = "EMPTY_DRIVE"
+	required_component = "SHIP_THRUSTER_1"
+	required_component = "SENSOR_1"
+	required_component = "CORVETTE_FISSION_REACTOR"
+	required_component = "COMBAT_COMPUTER_SWARM_BASIC"
+}
+
+ship_design = {
+	name = "NAME_Adastra_Corvette_FTL"
+	ship_size = corvette
+	is_special_buildable = yes
+	section = {
+		template = "CORVETTE_MID_S3"
+		slot = "mid"
+
+		component = {
+			slot = "SMALL_GUN_01"
+			template = "SMALL_MASS_DRIVER_1"
+		}
+		component = {
+			slot = "SMALL_GUN_02"
+			template = "SMALL_MASS_DRIVER_1"
+		}
+		component = {
+			slot = "SMALL_GUN_03"
+			template = "SMALL_MASS_DRIVER_1"
+		}
+		component = {
+			slot = "SMALL_UTILITY_1"
+			template = "SMALL_ARMOR_1"
+		}
+		component = {
+			slot = "SMALL_UTILITY_2"
+			template = "SMALL_ARMOR_1"
+		}
+		component = {
+			slot = "SMALL_UTILITY_3"
+			template = "SMALL_SHIELD_1"
+		}
+	}
+	required_component = "HYPER_DRIVE_1"
+	required_component = "SHIP_THRUSTER_1"
+	required_component = "SENSOR_1"
+	required_component = "CORVETTE_FISSION_REACTOR"
+	required_component = "COMBAT_COMPUTER_SWARM_BASIC"
 }

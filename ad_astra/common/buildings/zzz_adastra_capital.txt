@@ -1,0 +1,460 @@
+# Ad Astra 1.2 - la chaine des capitales d'epoque.
+# FICHIER GENERE PAR tools/gen_age_buildings.py - NE PAS EDITER A LA MAIN.
+# Source de verite : tools/age_buildings_data.py (CAPITAL_CHAIN)
+#
+# L'Administration planetaire du jeu de base donne +1000 logements, +1000
+# services et 300 emplois : un gouvernement planetaire moderne sur un monde de
+# l'age de pierre. Aucune capitale primitive du jeu n'est utilisable telle
+# quelle - elles exigent toutes un empire primitif ou l'origine Broken Shackles,
+# dont la fiction (une epave de vaisseau esclavagiste) n'a rien a voir avec la
+# notre.
+#
+# On fait donc la notre, en SEPT paliers : un par age, du cercle de pierres aux
+# ministeres. Chaque palier s'ameliore vers le suivant des que sa techno est
+# connue ; le dernier debouche sur building_capital, qui reprend ensuite sa
+# propre chaine vanilla (Centre administratif, Capitale systeme). Le siege du
+# pouvoir suit donc la civilisation d'un bout a l'autre, sans rupture.
+#
+# can_build = no partout : on ne construit jamais une capitale, on l'ameliore.
+#
+# capital_tier CROISSANT de 0 a 6. Les sept paliers portaient tous « 1 » et
+# aucun bouton d'amelioration n'apparaissait, techno acquise ou non - releve en
+# jeu le 15/08, Langage articulé cherché, Cercle de pierres inchange. Toutes
+# les chaines du jeu de base incrementent ce champ (Abri colonial 1,
+# Administration planetaire 2, Centre administratif 3, Capitale systeme 4).
+#
+# RESERVE : le dernier palier, les Ministeres, pointe vers building_capital,
+# qui est en tier 2 - soit MOINS que le tier 6 des Ministeres. Si le moteur
+# exige un tier superieur, ce dernier maillon ne s'ouvrira pas et il faudra
+# le traiter autrement (echange par evenement a la recherche du Gouvernement
+# planetaire). A verifier en jeu, mais tres loin dans une partie.
+
+
+# --- Cercle de pierres (stone) ---
+
+building_adastra_seat = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 0
+	base_buildtime = 360
+
+	category = government
+	icon = "building_low_tech_capital"
+	building_sets = { government }
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 50 }
+		upkeep = {
+			energy = 1
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 1
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# Portee planete : la garde de pays passe par owner.
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_adastra
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 200
+		planet_amenities_add = 300
+	}
+
+	inline_script = {
+		script = shroud/jobs/colonist_add
+		AMOUNT = 100
+	}
+
+	# L'amelioration suivante. Le dernier palier rend la main au
+	# jeu de base : building_capital et toute sa chaine.
+	upgrades = {
+		building_adastra_seat_bronze
+	}
+}
+
+# --- Maison commune (bronze) ---
+
+building_adastra_seat_bronze = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 1
+	base_buildtime = 360
+
+	category = government
+	icon = "building_low_tech_capital"
+	building_sets = { government }
+
+	prerequisites = { "tech_adastra_language" }
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 75 }
+		upkeep = {
+			energy = 1
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 1
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# Portee planete : la garde de pays passe par owner.
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_adastra
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 300
+		planet_amenities_add = 400
+	}
+
+	inline_script = {
+		script = shroud/jobs/colonist_add
+		AMOUNT = 100
+	}
+
+	# L'amelioration suivante. Le dernier palier rend la main au
+	# jeu de base : building_capital et toute sa chaine.
+	upgrades = {
+		building_adastra_seat_iron
+	}
+}
+
+# --- Palais (iron) ---
+
+building_adastra_seat_iron = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 2
+	base_buildtime = 360
+
+	category = government
+	icon = "building_low_tech_capital"
+	building_sets = { government }
+
+	prerequisites = { "tech_adastra_first_city" }
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 110 }
+		upkeep = {
+			energy = 2
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 2
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# Portee planete : la garde de pays passe par owner.
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_adastra
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 400
+		planet_amenities_add = 500
+	}
+
+	inline_script = {
+		script = shroud/jobs/colonist_add
+		AMOUNT = 100
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 100
+	}
+
+	# L'amelioration suivante. Le dernier palier rend la main au
+	# jeu de base : building_capital et toute sa chaine.
+	upgrades = {
+		building_adastra_seat_medieval
+	}
+}
+
+# --- Cour et chancellerie (medieval) ---
+
+building_adastra_seat_medieval = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 3
+	base_buildtime = 360
+
+	category = government
+	icon = "building_low_tech_capital"
+	building_sets = { government }
+
+	prerequisites = { "tech_adastra_law" }
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 150 }
+		upkeep = {
+			energy = 2
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 2
+			food = 1
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# Portee planete : la garde de pays passe par owner.
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_adastra
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 500
+		planet_amenities_add = 600
+	}
+
+	inline_script = {
+		script = shroud/jobs/colonist_add
+		AMOUNT = 200
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 100
+	}
+
+	# L'amelioration suivante. Le dernier palier rend la main au
+	# jeu de base : building_capital et toute sa chaine.
+	upgrades = {
+		building_adastra_seat_renaissance
+	}
+}
+
+# --- Hotel de ville (renaissance) ---
+
+building_adastra_seat_renaissance = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 4
+	base_buildtime = 360
+
+	category = government
+	icon = "building_low_tech_capital"
+	building_sets = { government }
+
+	prerequisites = { "tech_adastra_stone_architecture" }
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 200 }
+		upkeep = {
+			energy = 3
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 3
+			food = 2
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# Portee planete : la garde de pays passe par owner.
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_adastra
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 600
+		planet_amenities_add = 700
+	}
+
+	inline_script = {
+		script = shroud/jobs/colonist_add
+		AMOUNT = 200
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 200
+	}
+
+	# L'amelioration suivante. Le dernier palier rend la main au
+	# jeu de base : building_capital et toute sa chaine.
+	upgrades = {
+		building_adastra_seat_steam
+	}
+}
+
+# --- Palais du gouvernement (steam) ---
+
+building_adastra_seat_steam = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 5
+	base_buildtime = 360
+
+	category = government
+	icon = "building_low_tech_capital"
+	building_sets = { government }
+
+	prerequisites = { "tech_adastra_printing" }
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 260 }
+		upkeep = {
+			energy = 3
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 3
+			food = 2
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# Portee planete : la garde de pays passe par owner.
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_adastra
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 750
+		planet_amenities_add = 800
+	}
+
+	inline_script = {
+		script = shroud/jobs/colonist_add
+		AMOUNT = 300
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 200
+	}
+
+	# L'amelioration suivante. Le dernier palier rend la main au
+	# jeu de base : building_capital et toute sa chaine.
+	upgrades = {
+		building_adastra_seat_industrial
+	}
+}
+
+# --- Ministeres (industrial) ---
+
+building_adastra_seat_industrial = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 6
+	base_buildtime = 360
+
+	category = government
+	icon = "building_low_tech_capital"
+	building_sets = { government }
+
+	prerequisites = { "tech_adastra_steam_engine" }
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 330 }
+		upkeep = {
+			energy = 4
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 4
+			food = 2
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	# Portee planete : la garde de pays passe par owner.
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_adastra
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 900
+		planet_amenities_add = 900
+	}
+
+	inline_script = {
+		script = shroud/jobs/colonist_add
+		AMOUNT = 300
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 300
+	}
+
+	# L'amelioration suivante. Le dernier palier rend la main au
+	# jeu de base : building_capital et toute sa chaine.
+	upgrades = {
+		building_capital
+	}
+}

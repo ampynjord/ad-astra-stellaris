@@ -1,0 +1,344 @@
+# Ad Astra 1.2 - designations de capitale pour un empire confine.
+# FICHIER GENERE PAR tools/gen_colony_type_overrides.py - NE PAS EDITER A LA MAIN.
+#
+# Cinq designations de capitale exigent is_country_type = default. Un empire
+# Ad Astra est en adastra_grounded pendant tout le confinement : aucune ne lui
+# etait proposee, et comme sa seule planete est sa capitale, il n'avait acces a
+# aucune designation. Retour de Sithiya sur le Workshop.
+#
+# La condition est ELARGIE, jamais remplacee : les autres empires de la galaxie
+# ne voient aucune difference.
+
+
+### col_capital (1 condition elargie)
+col_capital = {
+	icon = GFX_colony_type_capital
+
+	potential = {
+		OR = {
+			is_capital = yes
+			can_be_nomadic_capital_trigger = yes
+		}
+		NAND = {
+			FROM? = {
+				OR = {
+					NOT = { OR = { is_country_type = default  is_country_type = adastra_grounded } }
+					is_gestalt = yes
+				}
+			}
+		}
+		carrier_is_type = planet
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_amenities_add = 1000
+		planet_housing_add = 1000
+		pop_government_ethic_attraction = 1
+		planet_resettlement_unemployed_destination_mult = 0.1
+		pop_bonus_workforce_mult = 0.10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			pop_bonus_workforce_mult = 0.025
+		}
+	}
+
+	# Generic regular-empire capital before specialized capital designations kick in. Regular empires
+	# typically open with Archives (research) and Mixed Industry (factory + foundry) on their capital,
+	# so hint those sets alongside administrative buildings.
+	ai_building_set_affinity = {
+		government = 1.5
+		research = 1.5
+		physics = 1.25
+		society = 1.25
+		engineering = 1.25
+		industrial = 1.5
+		factory = 1.25
+		foundry = 1.25
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_capital_foundry (3 conditions elargies)
+col_capital_foundry = {
+	icon = GFX_colony_type_capital_foundry
+
+	potential = {
+		OR = {
+			is_capital = yes
+			can_be_nomadic_capital_trigger = yes
+		}
+		FROM? = {
+			AND = {
+				OR = { is_country_type = default  is_country_type = adastra_grounded }
+
+				OR = {
+					is_ai = no
+					AND = {
+						years_passed > 25
+						num_owned_planets >= 5
+					}
+				}
+			}
+		}
+		carrier_is_type = planet
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_housing_add = 1000
+		planet_resettlement_unemployed_destination_mult = 0.1
+		foundry_jobs_bonus_workforce_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				OR = { is_country_type = default  is_country_type = adastra_grounded }
+				is_gestalt = no
+			}
+		}
+		planet_amenities_add = 1000
+		pop_government_ethic_attraction = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				OR = { is_country_type = default  is_country_type = adastra_grounded }
+				is_gestalt = yes
+			}
+		}
+		planet_amenities_no_happiness_add = 1000
+		planet_crime_no_happiness_add = -20
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			pop_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		foundry = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		base = 0
+	}
+}
+
+### col_capital_factory (3 conditions elargies)
+col_capital_factory = {
+	icon = GFX_colony_type_capital_factory
+
+	potential = {
+		OR = {
+			is_capital = yes
+			can_be_nomadic_capital_trigger = yes
+		}
+		FROM? = {
+			AND = {
+				OR = { is_country_type = default  is_country_type = adastra_grounded }
+				country_uses_consumer_goods = yes
+
+				OR = {
+					is_ai = no
+					AND = {
+						years_passed > 25
+						num_owned_planets >= 5
+					}
+				}
+			}
+		}
+		carrier_is_type = planet
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_housing_add = 1000
+		planet_resettlement_unemployed_destination_mult = 0.1
+		artisan_jobs_bonus_workforce_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				OR = { is_country_type = default  is_country_type = adastra_grounded }
+				is_gestalt = no
+			}
+		}
+		planet_amenities_add = 1000
+		pop_government_ethic_attraction = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				OR = { is_country_type = default  is_country_type = adastra_grounded }
+				is_gestalt = yes
+			}
+		}
+		planet_amenities_no_happiness_add = 1000
+		planet_crime_no_happiness_add = -20
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		factory = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		base = 0
+	}
+}
+
+### col_capital_trade (1 condition elargie)
+col_capital_trade = {
+	icon = GFX_colony_type_capital_trade
+
+	potential = {
+		OR = {
+			is_capital = yes
+			can_be_nomadic_capital_trigger = yes
+		}
+		FROM? = {
+			AND = {
+				OR = { is_country_type = default  is_country_type = adastra_grounded }
+				is_gestalt = no
+
+				OR = {
+					is_ai = no
+					AND = {
+						years_passed > 25
+						num_owned_planets >= 5
+					}
+				}
+			}
+		}
+		carrier_is_type = planet
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_amenities_add = 1000
+		planet_housing_add = 1000
+		pop_government_ethic_attraction = 1
+		planet_resettlement_unemployed_destination_mult = 0.1
+		trader_jobs_bonus_workforce_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			trader_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		base = 0
+	}
+}
+
+### col_capital_extraction (3 conditions elargies)
+col_capital_extraction = {
+	icon = GFX_colony_type_capital_extraction
+
+	potential = {
+		OR = {
+			is_capital = yes
+			can_be_nomadic_capital_trigger = yes
+		}
+		FROM? = {
+			AND = {
+				OR = { is_country_type = default  is_country_type = adastra_grounded }
+				OR = {
+					is_ai = no
+					AND = {
+						years_passed > 25
+						num_owned_planets >= 5
+					}
+				}
+			}
+		}
+		carrier_is_type = planet
+	}
+
+	# This capital boosts the entire worker category -- mining/farming/generator/industrial workers all benefit.
+	# Spread the affinity across the rural production sets and industrial rather than picking one.
+	ai_building_set_affinity = {
+		mining = 1.5
+		generator = 1.5
+		farming = 1.5
+		industrial = 1.5
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_housing_add = 1000
+		planet_resettlement_unemployed_destination_mult = 0.1
+		worker_and_simple_drone_cat_bonus_workforce_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				OR = { is_country_type = default  is_country_type = adastra_grounded }
+				is_gestalt = no
+			}
+		}
+		planet_amenities_add = 1000
+		pop_government_ethic_attraction = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				OR = { is_country_type = default  is_country_type = adastra_grounded }
+				is_gestalt = yes
+			}
+		}
+		planet_amenities_no_happiness_add = 1000
+		planet_crime_no_happiness_add = -20
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			worker_and_simple_drone_cat_bonus_workforce_mult = 0.05
+		}
+	}
+
+	weight_modifier = {
+		base = 0
+	}
+}
