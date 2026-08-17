@@ -65,9 +65,10 @@ jobs:
       - name: authentifier SteamCMD
         env:
           CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
         run: |
-          if [ -z "$CONFIG_VDF" ]; then
-            echo "::error::secret STEAM_CONFIG_VDF absent — voir docs/PUBLICATION.md"
+          if [ -z "$CONFIG_VDF" ] || [ -z "$STEAM_USERNAME" ]; then
+            echo "::error::secrets STEAM_CONFIG_VDF et STEAM_USERNAME requis — voir docs/PUBLICATION.md"
             exit 1
           fi
           mkdir -p "$HOME/Steam/config"
