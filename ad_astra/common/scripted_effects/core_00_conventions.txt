@@ -1,0 +1,10 @@
+# Ad Astra: Core - effets partages.
+#
+# Ce fichier ne contient que ce qui sert a PLUSIEURS mods de la collection.
+# Un effet utilise par un seul mod reste chez lui : une bibliotheque qui
+# accueille tout n'est plus une bibliotheque.
+
+# Signale aux autres mods qu'Origins est la. Appele par Origins au demarrage.
+core_declarer_origins = {
+	set_global_flag = adastra_origins_charge
+}

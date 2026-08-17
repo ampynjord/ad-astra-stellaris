@@ -1,0 +1,76 @@
+[h1]Ad Astra — Origins[/h1]
+[i]Per aspera ad astra — par les épreuves, jusqu'aux étoiles.[/i]
+
+Tous les autres commencent avec une flotte. Vous commencez avec une planète, et beaucoup de chemin.
+
+Commencez Stellaris en [b]civilisation pré-PRL[/b] confinée à son monde natal. Traversez les dix âges de l'histoire, de la maîtrise du feu au microprocesseur. Montez un programme spatial à partir de rien. Émergez dans une galaxie qui s'est partagée pendant que vous appreniez à fondre le fer.
+
+[b]Aucun DLC requis.[/b] Français et anglais, parité complète.
+
+[hr][/hr]
+[h2]Ce qu'on y fait vraiment[/h2]
+
+[b]Premier jour.[/b] Choisissez l'un des [b]dix âges de départ[/b]. Plus tôt, plus dur — jusqu'à −90 % de recherche à l'Âge de pierre — et plus l'[b]Héritage de l'Ascension[/b] final est grand. Choisissez aussi votre [b]rythme[/b] et celui de la galaxie.
+
+[b]L'ascension.[/b] Chaque âge ouvre [b]vingt-cinq technologies d'époque[/b], [b]cinq par cinq, dans l'ordre de leurs dates réelles[/b] — la sépulture avant l'alphabet, l'aqueduc avant l'horlogerie, la théorie microbienne avant le microprocesseur. La barre [b]se fige à la fin de chaque étape tant que les vingt-cinq ne sont pas trouvées[/b], et vous dit lesquelles manquent.
+
+[b]L'économie.[/b] Une ressource n'existe pas avant l'invention qui la produit. À l'Âge de pierre : minerais, nourriture, commerce, influence, unité, recherche — rien d'autre. Les alliages arrivent avec le bronze, les biens de consommation avec la vapeur, l'énergie avec le Réseau électrique. [b]Et ce qu'on ne produit pas, on ne le paie pas.[/b]
+
+[b]Le sol.[/b] Onze bâtiments d'époque et sept paliers de capitale, du Cercle de pierres aux Ministères. Quatre campagnes d'exploitation pressent votre monde, chacune donnant sur une ressource et manquant ailleurs. La diplomatie et la guerre fonctionnent au sol.
+
+[b]Le ciel.[/b] À l'Âge spatial, seize [b]technologies fondatrices[/b] sont à rechercher — elles ne vous sont pas données — chacune ne s'ouvrant que lorsque le jeu qu'elle sert existe. Puis quatre programmes payés en influence et en minerais : [b]Exploration[/b], [b]Base stellaire[/b], [b]Flotte orbitale[/b], [b]Hyperpropulsion[/b]. Le vaisseau scientifique est sous-luminique et [b]prospecte par présence[/b] : un astre par mois, même dans un système revendiqué.
+
+[b]L'émergence.[/b] Recherchez l'Hyperpropulsion. Toute votre flotte est réarmée en versions PRL — même nombre, mêmes équipages — le reste de l'arbre s'ouvre, et l'Héritage devient permanent. Si un empire occupe votre système natal, elle se [b]négocie[/b]. Et s'il vous découvre avant, vous vivez l'[b]observation inversée[/b] : ovnis, disparitions, signaux, débris à rétro-concevoir.
+
+[hr][/hr]
+[h2]Version actuelle — 1.3 « Le dos technologique »[/h2]
+
+La 1.2 remplissait les âges. La 1.3 a refait ce qui les porte.
+
+[list]
+[*][b]250 technologies d'époque[/b] au lieu de 100. Chacune porte son année réelle, et un contrôle hors ligne refuse toute technologie dont la date sort de son âge.
+[*][b]Elles s'ouvrent par vagues, et la vague est déduite de la date.[/b] L'ordre historique n'est pas une intention, c'est une propriété du système : impossible de vider un âge en avance, ni de bâtir une base stellaire avant le microprocesseur.
+[*][b]Prospection par présence[/b] — la 1.2 vous laissait incapable de prospecter un système natal revendiqué. Votre vaisseau cartographie désormais un astre par mois quoi qu'il arrive, et [b]vos vaisseaux ne sont plus expulsés de votre propre ciel[/b].
+[*][b]Quinze casus belli et buts de guerre élargis[/b] : une guerre déclarée contre un empire au sol a enfin des buts applicables.
+[*]Bonus ré-étalonnés — ils cumulaient à +635 % de production des emplois en 1.2 : pas une civilisation pré-PRL, un empire déchu sur une planète.
+[/list]
+
+[b]Je n'ai pas eu le temps de tout tester dans la 1.3[/b], le cas du système natal revendiqué inclus. Elle est sortie sur la confiance, et vos retours ont valu plus qu'une semaine de tests de ma part.
+
+[hr][/hr]
+[h2]La suite[/h2]
+
+[b]La feuille de route a changé, et je préfère le dire plutôt que renuméroter en silence.[/b] « Le monde d'en bas » était annoncé en 1.4 ; il devient la 1.5. Un ciel vide pendant neuf âges s'est révélé un trou plus grand qu'une planète plate. Rien n'est annulé.
+
+[b]1.4 « Le ciel se remplit »[/b] — le programme spatial cesse d'être entassé sur un seul âge et s'étale sur trois. Observatoires et radiotélescopes ; satellites visibles en orbite ; vol habité ; sondes profondes qui révèlent un système voisin sans le prospecter ; un premier corps atteint — une lune, un astéroïde, ce que votre système offre réellement. Des fusées qui [b]peuvent exploser au pas de tir[/b], de moins en moins souvent à mesure que la technologie progresse. Et une [b]échelle de propulsion[/b] qui remplace seize gardiens par une question : jusqu'où ma poussée me porte-t-elle ?
+
+[b]1.5 « Le monde d'en bas »[/b] — votre planète n'est pas un peuple. Des nations rivales avec leur part de population, leurs exigences et leur chef ; l'unification devient quelque chose qu'on obtient, et un monde divisé ne va pas aux étoiles. Le monde grandit avec vous, région par région. Et les âges industriels coûtent enfin quelque chose : la production abîme le monde qui la porte — nier, corriger ou transformer, et le choix s'inscrit dans votre Héritage.
+
+[b]1.6 « La frontière »[/b] — la terraformation par vraies étapes : dômes, atmosphère, eau, vie. Et des avant-postes sur les mondes qu'on ne peut pas coloniser.
+
+[b]1.7 « Le contact »[/b] — être observé, en quatre stades, jusqu'au moment où votre gouvernement sait et doit trancher : étouffer ou révéler. Et fouiller votre propre préhistoire : les âges que [i]vous[/i] avez traversés dans [i]cette[/i] partie.
+
+Deux choses que je ne ferai [b]pas[/b] ici : les autorités gestaltes — une ruche n'a pas d'âges, elle a des mues — et une galaxie où tous les empires commencent pré-PRL.
+
+[b]Rien n'est daté.[/b] Une seule personne écrit ça le soir. La 1.2 et la 1.3 sont nées de vos commentaires, et la suite aussi.
+
+[hr][/hr]
+[h2]Ce dont j'ai besoin de vous[/h2]
+
+[b]Ce qui m'est le plus utile :[/b] une technologie proposée alors que rien ne permet de s'en servir ; un moment où vous n'avez plus rien à chercher ; un blocage qui vous immobilise ; tout ce qui touche à un empire revendiquant votre système natal.
+
+[b]Cinq chiffres demandent une partie menée jusqu'à l'émergence[/b] : la réserve d'unité à la percée, l'entretien des dirigeants après un siècle, la durée réelle d'un âge, l'héritage en galaxie vivante, le comportement d'un empire IA. Ils me prennent des semaines ; vous les produisez en un week-end.
+
+[b]Discord :[/b] https://discord.gg/nKP4TfNzNX — bugs, idées, et vos parties.
+[b]GitHub :[/b] ouvrez une issue avec l'âge de départ, le rythme, la date en jeu et votre [i]error.log[/i].
+
+[hr][/hr]
+[h2]Technique[/h2]
+
+Stellaris v4.4.x. Aucun DLC requis. Nouvelle partie requise. Succès désactivés, comme avec tout mod.
+
+[b]Surcharges[/b] — technologies de départ et de palier 1-2, trois tailles de vaisseaux civils, [i]is_regular_empire[/i] et [i]is_low_tech_start[/i], quinze casus belli et buts de guerre, 46 cartes d'objectifs. [i]is_regular_empire[/i] est le point de conflit à surveiller.
+
+[b]Incompatibilité connue : Gigastructural Engineering & More[/b] — un joueur a lancé les deux seuls ensemble et obtenu une colonie sans district urbain. En cours de traque. [i]Ethics and Civics Classic[/i] perturbe la chaîne des capitales. [b]ACOT[/b] reste compatible. [i]Before the Stars[/i] entre presque certainement en conflit.
+
+https://github.com/ampynjord/ad-astra-stellaris

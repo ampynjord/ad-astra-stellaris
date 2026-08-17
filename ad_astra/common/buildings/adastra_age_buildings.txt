@@ -83,7 +83,6 @@ building_adastra_granary = {
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
 		government
-		farming
 	}
 
 	prerequisites = { "tech_adastra_agriculture" }
@@ -148,7 +147,6 @@ building_adastra_foundry = {
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
 		government
-		mining
 	}
 
 	prerequisites = { "tech_adastra_bronze" }
@@ -335,7 +333,6 @@ building_adastra_mill = {
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
 		government
-		farming
 	}
 
 	prerequisites = { "tech_adastra_mills" }

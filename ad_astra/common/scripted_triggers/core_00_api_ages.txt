@@ -1,0 +1,49 @@
+# Ad Astra: Core - l'interface des ages.
+#
+# Origins pose des drapeaux de pays ; tout le reste de la collection a besoin
+# de les LIRE sans savoir comment ils sont poses. C'est le role de ce fichier :
+# une interface stable entre Origins et les mods qui viennent apres.
+#
+# Regle : personne, en dehors d'Origins, ne lit `has_country_flag =
+# adastra_reached_*` directement. On passe par ici. Le jour ou la
+# representation change, un seul fichier bouge.
+#
+# 17/08/2026 - cree avec la 1.4. L'eclatement en collection (Core, Origins,
+# Frontier) a ete PREPARE puis REPORTE : tout reste dans Origins pour
+# l'instant. Le prefixe core_ est conserve exprès - il marque ce qui est
+# extractible. Le jour ou Core naitra vraiment, ces fichiers deménagent par un
+# git mv, sans une ligne a reecrire.
+#
+# Regle de tri, a tenir a partir d'ici :
+#   core_*    reutilisable par n'importe quel mod de la collection
+#   adastra_* propre a l'origine pre-PRL
+# Un fichier core_ n'a le droit de dependre d'aucun fichier adastra_.
+
+# Vrai si l'empire a atteint l'age demande. Les drapeaux s'accumulent : un
+# empire a l'Age du fer a aussi celui du bronze. C'est voulu, et c'est
+# exactement pourquoi il faut un point de lecture unique.
+core_age_atteint = {
+	OPTIMIZE_MEMORY
+	has_country_flag = adastra_reached_$age$
+}
+
+# Vrai pendant tout le confinement, faux des l'emergence.
+core_est_confine = {
+	OPTIMIZE_MEMORY
+	has_country_flag = adastra_grounded
+	NOT = { has_country_flag = adastra_completed }
+}
+
+# Vrai pour un empire qui a fini l'ascension. Sert a Frontier, qui propose ses
+# modules aux empires normaux comme aux anciens confines.
+core_a_emerge = {
+	OPTIMIZE_MEMORY
+	has_country_flag = adastra_completed
+}
+
+# Vrai si Origins est charge. Frontier s'en sert pour savoir s'il doit allumer
+# les modules lui-meme ou laisser Origins le faire.
+core_origins_present = {
+	OPTIMIZE_MEMORY
+	has_global_flag = adastra_origins_charge
+}

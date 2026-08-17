@@ -1,0 +1,185 @@
+# Ad Astra 1.4 - les telescopes. L'echelle de la connaissance :
+# regarder, puis envoyer, puis y aller.
+#
+# Ecrits a la main et non par gen_age_buildings.py : ce ne sont pas des
+# batiments d'epoque comme les onze autres. Ils ne marquent pas un age, ils
+# ouvrent une capacite - et ils portent le prefixe core_ parce qu'ils devront
+# servir aussi aux empires normaux le jour ou Frontier existera.
+#
+# Les trois paliers suivent leurs dates reelles :
+#   observatoire optique  Renaissance   Lunette astronomique, 1609
+#   radiotelescope        Atomique      Radioastronomie, 1951
+#   telescope spatial     Age spatial   Teledetection, 1960
+#
+# Le radiotelescope tombe a l'Age ATOMIQUE et non a celui de la machine :
+# Jansky capte en 1932, mais la radioastronomie ne devient une discipline
+# qu'apres-guerre, et c'est cette date-la que porte la technologie. La
+# contrainte historique decide du placement, pas le plan.
+#
+# Chacun survit a l'emergence : un observatoire bati au XVIIe siecle ne
+# disparait pas parce qu'on a decouvert l'hyperpropulsion.
+
+
+# ---------------------------------------------------- observatoire optique
+building_core_observatory = {
+	can_build = yes
+	base_buildtime = 360
+	category = research
+	icon = "building_physics_lab_1"
+
+	building_sets = {
+		research
+	}
+
+	prerequisites = { "tech_adastra_telescope" }
+
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 200 }
+		upkeep = {
+			energy = 2
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 2
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = @building_static_jobs_low_2
+	}
+
+	country_modifier = {
+		all_technology_research_speed = 0.03
+	}
+
+	ai_weight = { weight = 6 }
+}
+
+
+# ------------------------------------------------------------ radiotelescope
+# Celui-ci ne sert pas qu'a chercher : il ENTEND. C'est lui qui, en 1.7,
+# permettra de detecter le poste d'observation qui vous epie.
+building_core_radio_telescope = {
+	can_build = yes
+	base_buildtime = 540
+	category = research
+	icon = "building_physics_lab_2"
+
+	building_sets = {
+		research
+	}
+
+	prerequisites = { "tech_adastra_radio_astronomy" }
+
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	allow = {
+		owner = { NOT = { has_country_flag = adastra_completed } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 400 }
+		upkeep = {
+			energy = 4
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 4
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = @building_static_jobs_low_3
+	}
+
+	country_modifier = {
+		all_technology_research_speed = 0.05
+		planet_sensor_range_add = 1
+	}
+
+	ai_weight = { weight = 8 }
+}
+
+
+# ------------------------------------------------------- telescope spatial
+# Au-dessus de l'air, plus rien ne trouble l'image. C'est le premier
+# instrument qui regarde vraiment loin.
+building_core_space_telescope = {
+	can_build = yes
+	base_buildtime = 720
+	category = research
+	icon = "building_physics_lab_3"
+
+	building_sets = {
+		research
+	}
+
+	prerequisites = { "tech_adastra_remote_sensing" }
+
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	allow = {
+		owner = {
+			NOT = { has_country_flag = adastra_completed }
+			core_poussee_2 = yes
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 700 }
+		upkeep = {
+			energy = 6
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 6
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = @building_static_jobs_low_3
+	}
+
+	country_modifier = {
+		all_technology_research_speed = 0.07
+		planet_sensor_range_add = 2
+	}
+
+	ai_weight = { weight = 10 }
+}

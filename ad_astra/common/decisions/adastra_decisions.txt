@@ -34,6 +34,11 @@ decision_adastra_explore = {
 		is_capital = yes
 		owner = {
 			has_country_flag = adastra_stage_explore
+			# 1.4 : l'echelle de propulsion. Un vaisseau qui doit atteindre
+			# les autres astres du systeme demande une poussee qui dure -
+			# l'ionique de 1964. La fondatrice reste exigee, elle n'est
+			# simplement plus seule a decider.
+			core_poussee_3 = yes
 			has_technology = tech_space_exploration
 			NOT = { has_country_flag = adastra_completed }
 		}
@@ -77,6 +82,9 @@ decision_adastra_starbase = {
 		is_capital = yes
 		owner = {
 			has_country_flag = adastra_stage_orbital
+			# 1.4 : batir en orbite demande un programme mur, pas un coup
+			# d'eclat - ionique, bouclier ablatif, supraconductivite.
+			core_poussee_4 = yes
 			NOT = { has_country_flag = adastra_phase2_done }
 		}
 	}
@@ -195,6 +203,9 @@ decision_adastra_navy = {
 	potential = {
 		is_capital = yes
 		owner = {
+			# 1.4 : meme poussee que le chantier. Une coque de guerre n'est
+			# pas plus facile a mettre en orbite qu'une coque civile.
+			core_poussee_4 = yes
 			has_technology = tech_corvettes
 			NOT = { has_technology = tech_hyper_drive_1 }
 		}

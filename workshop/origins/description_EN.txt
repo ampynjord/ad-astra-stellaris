@@ -1,0 +1,77 @@
+[h1]Ad Astra — Origins[/h1]
+[i]Per aspera ad astra — through hardship, to the stars.[/i]
+
+Everyone else starts with a fleet. You start with a planet, and a very long way to go.
+
+Begin Stellaris as a [b]pre-FTL civilization[/b] confined to its homeworld. Climb all ten historical ages, from the mastery of fire to the microprocessor. Build a space program from nothing. Emerge into a galaxy that carved itself up while you were learning to smelt iron.
+
+[b]No DLC required.[/b] English and French, full parity. [i]("PRL" in the title is simply FTL in French — the mod carries both.)[/i]
+
+[hr][/hr]
+[h2]What you actually do[/h2]
+
+[b]Day one.[/b] Pick one of [b]ten starting ages[/b]. Earlier is harsher — down to −90% research in the Stone Age — and pays more at the end: the final [b]Legacy of the Ascent[/b] scales with how far down you began. Pick your [b]pace[/b] too, and the galaxy's.
+
+[b]The climb.[/b] Each age opens [b]twenty-five period technologies[/b], [b]five at a time, in the order of their real dates[/b] — burial before the alphabet, the aqueduct before clockwork, germ theory before the microprocessor. The Ascent bar [b]freezes at the end of each stage until all twenty-five are found[/b], and names what you are missing.
+
+[b]The economy.[/b] A resource does not exist before the invention that produces it. In the Stone Age you have minerals, food, trade, influence, unity and research — nothing else. Alloys arrive with bronze, consumer goods with steam, energy with the Power Grid. [b]And what you do not produce, you do not pay for.[/b]
+
+[b]The ground.[/b] Eleven period buildings and seven capital tiers, from the Ring of Stones to the Ministries. Four exploitation campaigns let you squeeze your world, each giving plainly on one resource and falling short elsewhere. Diplomacy and war work while grounded, both ways.
+
+[b]The sky.[/b] At the Space Age, sixteen base-game [b]founding technologies[/b] must be researched — they are not handed to you — each opening only when the gameplay it serves does. Then four programs paid in influence and minerals: [b]Exploration[/b], [b]Starbase[/b], [b]Orbital Fleet[/b], [b]Hyperspace[/b]. The science ship is sublight and [b]surveys by presence[/b]: one body a month, even in a system another empire has claimed.
+
+[b]Emergence.[/b] Research the Hyperdrive. Your entire fleet is refitted with FTL — same count, same crews — the rest of the tree opens, and the Legacy becomes permanent. If an empire occupies your home system, emergence is [b]negotiated[/b]. And if they find you first, you live through reverse observation: UFOs, disappearances, signals, debris to reverse-engineer.
+
+[hr][/hr]
+[h2]Current version — 1.3 "The Technological Backbone"[/h2]
+
+1.2 filled the ages. 1.3 rebuilt what holds them up.
+
+[list]
+[*][b]250 period technologies[/b] instead of 100, twenty-five per age, across all three research areas. Each carries its real year, and an offline check refuses any technology whose date falls outside its age.
+[*][b]They open in waves, and the wave is derived from the date.[/b] Historical order is not an intention here, it is a property of the system: you cannot empty an age early, nor build a starbase before the microprocessor.
+[*][b]The Space Age rebuilt[/b] around sixteen founding technologies you research, each gated on the gameplay it serves. Everything else in the tree now waits for emergence.
+[*][b]Survey by presence[/b] — 1.2 left you unable to survey a home system another empire had claimed. Your science ship now maps one body a month regardless, and [b]your ships are no longer expelled from your own sky[/b].
+[*][b]Fifteen widened casus belli and war goals[/b]: a war declared on a grounded empire finally has usable war goals.
+[*]Period technology bonuses rescaled — they stacked to +635% job output in 1.2, which is not a pre-FTL civilization, it is a fallen empire on one planet.
+[/list]
+
+[b]I did not have time to test all of 1.3[/b], the claimed-home-system case included. It shipped on trust, and the reports since have been worth more than another week of my own testing.
+
+[hr][/hr]
+[h2]What comes next[/h2]
+
+[b]The roadmap changed, and I would rather say so than quietly renumber.[/b] "The World Below" was announced as 1.4. It is now 1.5 — because a sky that stays empty for nine ages turned out to be a bigger hole than a flat planet, and it is the one I want to close first. Nothing is cancelled; the order moved.
+
+[b]1.4 "The Sky Fills"[/b] — the space program stops being crammed into one age and spreads across three. Observatories and radio telescopes; satellites you can see in orbit; crewed flight; deep probes that reveal a neighbouring system without surveying it; a first body reached — a moon, an asteroid, whatever your system actually offers. Rockets that [b]can fail on the pad[/b], less and less often as your technology improves. And a [b]propulsion ladder[/b] replacing sixteen separate gatekeepers with one question: how far does my thrust carry me?
+
+[b]1.5 "The World Below"[/b] — your planet is not one people. Rival nations with their share of your population, their demands, their leader and their successions; unification becomes something you achieve, and a divided world does not go to the stars. The world grows with you, region by region. And the industrial ages finally cost something: production damages the world that carries it, you can deny, mitigate or transform — and that choice is written into your Legacy.
+
+[b]1.6 "The Frontier"[/b] — terraforming in real stages, domes then atmosphere then water then life. Outposts on worlds you cannot colonize.
+
+[b]1.7 "Contact"[/b] — being watched, in four stages, up to the moment your government knows and has to choose: bury it or tell everyone. And excavating your own prehistory — the ages [i]you[/i] played in [i]this[/i] game.
+
+Two things I will [b]not[/b] do: gestalt authorities here — a hive has no ages, it has moults — and a galaxy where every empire starts pre-FTL. Both are different mods.
+
+[b]Nothing is dated.[/b] One person writes this in the evenings. 1.2 and 1.3 came entirely from player comments, and so will the rest.
+
+[hr][/hr]
+[h2]What I need from you[/h2]
+
+[b]The most useful thing you can send me:[/b] a technology offered when nothing lets you use it; a moment where you have nothing left to research; a dead end that stops you cold; and anything at all involving an empire claiming your home system.
+
+[b]Five numbers need a game carried through to emergence[/b]: the unity reserve at the breakthrough, leader upkeep after a century, how long an age actually lasts, the legacy in a living galaxy, and how an AI empire playing the origin behaves. They take me weeks alone; a handful of players produce them in a weekend.
+
+[b]Discord:[/b] https://discord.gg/nKP4TfNzNX — bug reports, ideas, and your runs.
+[b]GitHub:[/b] open an issue with your starting age, pace, in-game date and [i]error.log[/i].
+
+[hr][/hr]
+[h2]Technical[/h2]
+
+Stellaris v4.4.x. No DLC required. New game required. Achievements disabled, as with any mod.
+
+[b]Overrides[/b] — starting and tier 1-2 technologies, three civilian ship sizes, the [i]is_regular_empire[/i] and [i]is_low_tech_start[/i] scripted triggers, fifteen casus belli and war goals, 46 focus cards. [i]is_regular_empire[/i] is the conflict point to watch.
+
+[b]Known incompatibility: Gigastructural Engineering & More[/b] — a player ran the two alone together and got a colony with no city district. Still being hunted. [i]Ethics and Civics Classic[/i] interferes with the capital chain. [b]ACOT[/b] is fine. [i]Before the Stars[/i] almost certainly conflicts.
+
+https://github.com/ampynjord/ad-astra-stellaris
