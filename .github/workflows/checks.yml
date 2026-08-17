@@ -1,0 +1,44 @@
+# Les contrôles. Un seul fichier, appelé à l'identique par dev.yml et par
+# release.yml — c'est ce qui garantit que main teste EXACTEMENT comme dev.
+# Si tu ajoutes un contrôle, tu l'ajoutes ici et les deux chaînes le prennent.
+name: contrôles
+
+on:
+  workflow_call:
+    inputs:
+      version_attendue:
+        description: "Version que le dépôt doit annoncer, sans le v. Vide = pas de contrôle."
+        type: string
+        required: false
+        default: ""
+
+jobs:
+  verifier:
+    name: vérifier le mod
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Le contrôle de fond : 35 règles sur le contenu du mod lui-même.
+      # Historique, vagues, icônes, verrous, fuites de technologies vanilla,
+      # modificateurs inventés, identifiant Workshop.
+      - name: contenu du mod
+        run: python tools/verify_1_2.py
+
+      # Ce que le contrôle de fond ne regarde pas : la cohérence entre le
+      # dépôt et ce qu'on s'apprête à publier.
+      - name: version, changelog, descriptions
+        run: python tools/verify_release.py "${{ inputs.version_attendue }}"
+
+      # La note de changement doit exister et tenir dans les limites de Steam.
+      # On la construit ici pour la même raison qu'on compile en CI : une
+      # note qui ne se génère pas le jour de la sortie est une sortie ratée.
+      - name: note de changement
+        run: |
+          python tools/changenote.py > /tmp/changenote.txt
+          echo "$(wc -c < /tmp/changenote.txt) caractères"
+          head -c 600 /tmp/changenote.txt

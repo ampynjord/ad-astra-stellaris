@@ -298,3 +298,52 @@ adastra_young_administration = {
 	leaders_upkeep_mult = -0.6
 }
 
+
+# ------------------------------------------------------------------------
+# 1.4 - Premiers pas. Chaque objet mis dans le ciel laisse une trace au sol.
+# Les valeurs sont volontairement modestes : ce n'est pas la recompense qui
+# fait l'interet de ces decisions, c'est le fait qu'il se passe quelque chose
+# au-dessus de la tete des gens.
+
+# Le premier vol qui monte et retombe. Une nation qui sait faire ca se sait
+# capable du reste.
+core_mod_suborbital = {
+	all_technology_research_speed = 0.03
+	country_unity_produces_mult = 0.03
+}
+
+# Une fusee perdue au pas de tir. Le deuil est reel, il n'est pas eternel.
+core_mod_echec_lancement = {
+	planet_stability_add = -3
+	country_unity_produces_mult = -0.05
+}
+
+# Telecommunications, meteorologie, navigation. Le ciel devient une
+# infrastructure.
+core_mod_satellites = {
+	country_unity_produces_mult = 0.04
+	planet_jobs_food_produces_mult = 0.03
+	all_technology_research_speed = 0.03
+}
+
+# Quelqu'un est monte, et il est redescendu. Ce jour-la, tout le monde
+# regardait la meme chose.
+core_mod_vol_habite = {
+	country_unity_produces_mult = 0.08
+	planet_stability_add = 3
+}
+
+# Un drapeau plante ailleurs que chez soi.
+core_mod_premier_corps = {
+	country_unity_produces_mult = 0.10
+	planet_stability_add = 4
+	all_technology_research_speed = 0.05
+}
+
+# Le systeme natal n'offrait aucun astre a atteindre. On a construit
+# l'habitat la ou il n'y avait rien - c'est plus difficile, et ca se voit.
+core_mod_station_permanente = {
+	country_unity_produces_mult = 0.10
+	planet_stability_add = 4
+	all_technology_research_speed = 0.06
+}

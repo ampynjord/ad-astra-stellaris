@@ -26,6 +26,13 @@ tech_basic_science_lab_1 = {
 	starting_potential = {
 		is_low_tech_start = no # So Broken Shackles origin players don't start with it
 	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_renaissance"
+			desc = "adastra_tech_marque_base_desc"
+		}
+	}
 }
 
 ### adastra_unlock_steam
@@ -52,6 +59,13 @@ tech_basic_industry = {
 			is_wilderness_empire = yes
 		}
 	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_steam"
+			desc = "adastra_tech_marque_base_desc"
+		}
+	}
 }
 
 ### adastra_unlock_industrial
@@ -75,6 +89,13 @@ tech_mechanized_mining = {
 	starting_potential = {
 		is_nomadic = no
 	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_industrial"
+			desc = "adastra_tech_marque_base_desc"
+		}
+	}
 }
 
 tech_industrial_farming = {
@@ -91,6 +112,13 @@ tech_industrial_farming = {
 	start_tech = yes
 
 	# unlocks farming districts
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_industrial"
+			desc = "adastra_tech_marque_base_desc"
+		}
+	}
 }
 
 tech_assault_armies = {
@@ -106,6 +134,13 @@ tech_assault_armies = {
 	category = { voidcraft }
 	prerequisites = { "tech_planetary_defenses" }
 	start_tech = yes
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_machine"
+			desc = "adastra_tech_marque_base_desc"
+		}
+	}
 }
 
 ### adastra_unlock_machine
@@ -123,6 +158,13 @@ tech_power_plant_1 = {
 	start_tech = yes
 
 	## unlock power plant lvl 1
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_machine"
+			desc = "adastra_tech_marque_base_desc"
+		}
+	}
 }
 
 tech_planetary_government = {
@@ -152,6 +194,13 @@ tech_planetary_government = {
 	starting_potential = {
 		is_low_tech_start = no # So Broken Shackles origin players don't start with it
 	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_machine"
+			desc = "adastra_tech_marque_base_desc"
+		}
+	}
 }
 
 tech_basic_health = {
@@ -168,6 +217,13 @@ tech_basic_health = {
 		}
 		is_regular_empire = yes
 		is_individual_machine = no
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_machine"
+			desc = "adastra_tech_marque_base_desc"
+		}
 	}
 }
 
@@ -187,6 +243,10 @@ tech_fission_power = {
 	ai_update_type = all
 
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_atomic"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		hide_prereq_for_desc = component
 		custom = {
 			title = "TECH_UNLOCK_FISSION_POWER_TITLE"
@@ -245,6 +305,13 @@ tech_planetary_defenses = {
 	}
 
 	## unlock defense army, militia and basic attachments
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_machine"
+			desc = "adastra_tech_marque_base_desc"
+		}
+	}
 }
 
 tech_missiles_1 = {
@@ -265,6 +332,13 @@ tech_missiles_1 = {
 			has_tradition = tr_nanotech_4
 			has_crisis_level = crisis_level_2
 			has_technology = tech_cosmogenesis_escort
+		}
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_atomic"
+			desc = "adastra_tech_marque_base_desc"
 		}
 	}
 }
@@ -293,6 +367,13 @@ tech_flak_batteries_1 = {
 			factor = 1
 		}
 	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_machine"
+			desc = "adastra_tech_marque_base_desc"
+		}
+	}
 }
 
 tech_pd_tracking_1 = {
@@ -317,6 +398,13 @@ tech_pd_tracking_1 = {
 		}
 		weight = {
 			factor = 1
+		}
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_atomic"
+			desc = "adastra_tech_marque_base_desc"
 		}
 	}
 }
@@ -345,6 +433,13 @@ tech_lasers_1 = {
 		}
 		weight = {
 			factor = 1
+		}
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_atomic"
+			desc = "adastra_tech_marque_base_desc"
 		}
 	}
 }
@@ -376,6 +471,10 @@ tech_holo_entertainment = {
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		custom = {
 			title = "adastra_tech_marque_fondatrice"
 			desc = "adastra_tech_marque_fondatrice_desc"
@@ -409,6 +508,10 @@ tech_space_exploration = {
 	}
 
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		ship = {
 			title = "TECH_UNLOCK_SCIENCE_SHIP_CONSTRUCTION_TITLE"
 			desc = "TECH_UNLOCK_SCIENCE_SHIP_CONSTRUCTION_DESC"
@@ -447,6 +550,10 @@ tech_thrusters_1 = {
 	ai_update_type = all
 
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		hide_prereq_for_desc = component
 		custom = {
 			title = "TECH_UNLOCK_THRUSTER_1_TITLE"
@@ -511,6 +618,10 @@ tech_solar_panel_network = {
 	# distinguait a l'oeil.
 	prereqfor_desc = {
 		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
+		custom = {
 			title = "adastra_tech_marque_fondatrice"
 			desc = "adastra_tech_marque_fondatrice_desc"
 		}
@@ -536,6 +647,10 @@ tech_space_construction = {
 	start_tech = yes
 
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		custom = {
 			title = "TECH_UNLOCK_CONSTRUCTION_SHIP_CONSTRUCTION_TITLE"
 			desc = "TECH_UNLOCK_CONSTRUCTION_SHIP_CONSTRUCTION_DESC"
@@ -619,6 +734,10 @@ tech_space_defense_station_1 = {
 	# distinguait a l'oeil.
 	prereqfor_desc = {
 		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
+		custom = {
 			title = "adastra_tech_marque_fondatrice"
 			desc = "adastra_tech_marque_fondatrice_desc"
 		}
@@ -661,6 +780,10 @@ tech_ship_armor_1 = {
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		custom = {
 			title = "adastra_tech_marque_fondatrice"
 			desc = "adastra_tech_marque_fondatrice_desc"
@@ -705,6 +828,10 @@ tech_shields_1 = {
 	# distinguait a l'oeil.
 	prereqfor_desc = {
 		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
+		custom = {
 			title = "adastra_tech_marque_fondatrice"
 			desc = "adastra_tech_marque_fondatrice_desc"
 		}
@@ -737,6 +864,10 @@ tech_reactor_boosters_1 = {
 	# distinguait a l'oeil.
 	prereqfor_desc = {
 		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
+		custom = {
 			title = "adastra_tech_marque_fondatrice"
 			desc = "adastra_tech_marque_fondatrice_desc"
 		}
@@ -764,6 +895,10 @@ tech_corvettes = {
 	}
 
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		ship = {
 			title = "TECH_UNLOCK_CORVETTE_CONSTRUCTION_TITLE"
 			desc = "TECH_UNLOCK_CORVETTE_CONSTRUCTION_DESC"
@@ -817,6 +952,10 @@ tech_starbase_1 = {
 	}
 
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		ship = {
 			title = "TECH_UNLOCK_OUTPOST_CONSTRUCTION_TITLE"
 			desc = "TECH_UNLOCK_OUTPOST_CONSTRUCTION_DESC"
@@ -863,6 +1002,10 @@ tech_starbase_2 = {
 	}
 
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		ship = {
 			title = "TECH_UNLOCK_STARPORT_CONSTRUCTION_TITLE"
 			desc = "TECH_UNLOCK_STARPORT_CONSTRUCTION_DESC"
@@ -903,6 +1046,10 @@ tech_colonization_1 = {
 	start_tech = yes
 
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		ship = {
 			title = "TECH_UNLOCK_COLONY_SHIP_CONSTRUCTION_TITLE"
 			desc = "TECH_UNLOCK_COLONY_SHIP_CONSTRUCTION_DESC"
@@ -981,6 +1128,10 @@ tech_interplanetary_commerce = {
 	# distinguait a l'oeil.
 	prereqfor_desc = {
 		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
+		custom = {
 			title = "adastra_tech_marque_fondatrice"
 			desc = "adastra_tech_marque_fondatrice_desc"
 		}
@@ -1024,6 +1175,10 @@ tech_mass_drivers_1 = {
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		custom = {
 			title = "adastra_tech_marque_fondatrice"
 			desc = "adastra_tech_marque_fondatrice_desc"
@@ -1106,6 +1261,10 @@ tech_hydroponics = {
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
 	prereqfor_desc = {
+		custom = {
+			title = "adastra_tech_marque_base_space"
+			desc = "adastra_tech_marque_base_desc"
+		}
 		custom = {
 			title = "adastra_tech_marque_fondatrice"
 			desc = "adastra_tech_marque_fondatrice_desc"

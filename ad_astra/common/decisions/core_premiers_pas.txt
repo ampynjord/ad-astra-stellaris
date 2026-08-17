@@ -1,0 +1,192 @@
+# Ad Astra 1.4 - « Premiers pas » : le ciel se remplit avant qu'on y aille.
+#
+# Jusqu'a la 1.3, tout le confinement se jouait au sol, et l'Age spatial
+# portait a lui seul le programme spatial entier. Le joueur regardait une
+# fenetre de planete pendant neuf ages et demi.
+#
+# Ces quatre decisions posent des objets dans le ciel AVANT les quatre grands
+# programmes. Elles sont additives : rien de la 1.3 ne change ici.
+#
+# L'HISTOIRE DECIDE DU PLACEMENT, PAS L'ENVIE.
+# Le plan de la 1.4 annoncait des satellites a l'Age atomique. C'est faux :
+# Spoutnik est d'octobre 1957, exactement la borne de l'Age spatial. L'Age
+# atomique (1945-1957) n'a donc qu'une seule chose a offrir - la fusee-sonde
+# de 1946, qui monte et retombe. C'est peu, et c'est juste : cet age est celui
+# ou l'on apprend a quitter le sol sans savoir y rester.
+#
+#   Age atomique  fusee-sonde (1946)      -> suborbital, et les echecs
+#   Age spatial   satellite (1957)        -> ce qui monte peut rester
+#                 vol habite (1961)       -> quelqu'un est la-haut
+#                 premier corps (1969)    -> on se pose ailleurs
+#
+# L'ECHEC FAIT PARTIE DE L'HISTOIRE. Un lancement peut rater, et la
+# probabilite baisse avec les technologies du rang. Regle de conception :
+# l'echec doit etre VISIBLEMENT evitable - attendre deux technologies, ou
+# payer davantage. Un de qui punit sans prevenir est de l'arbitraire, pas du
+# drame. Le cout est en influence et en minerais, comme les grands programmes.
+
+
+# ---------------------------------------------------------------- suborbital
+# Repetable : on ne lance pas une fusee, on lance un programme de fusees. Et
+# tant que le premier vol reussi n'est pas obtenu, il FAUT pouvoir reessayer -
+# sinon un echec au premier tir bloque tout l'Age atomique.
+decision_core_suborbital = {
+	owned_planets_only = yes
+	icon = decision_satellite_in_orbit
+
+	enactment_time = 180
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 60
+			minerals = 200
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			core_est_confine = yes
+			core_poussee_1 = yes
+			NOT = { has_country_flag = core_vol_habite_fait }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_suborbital_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.100 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 80
+	}
+}
+
+
+# ----------------------------------------------------------------- satellite
+# 1957. Ce qui monte peut rester. Chaque satellite est un objet, un
+# modificateur, et un metier : telecommunications, meteorologie, navigation.
+# Repetable, parce qu'un pays n'en lance jamais un seul.
+decision_core_satellite = {
+	owned_planets_only = yes
+	icon = decision_satellite_in_orbit
+
+	enactment_time = 240
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 80
+			minerals = 300
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			core_est_confine = yes
+			core_poussee_2 = yes
+			has_technology = tech_adastra_satellites
+			has_country_flag = core_suborbital_fait
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_satellite_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.102 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 70
+	}
+}
+
+
+# --------------------------------------------------------------- vol habite
+# 1961. Quelqu'un est la-haut, et il faut le ramener. Une seule fois : le
+# premier homme dans l'espace n'arrive qu'une fois, et ce qui suit est de la
+# routine qu'on ne joue pas.
+decision_core_vol_habite = {
+	owned_planets_only = yes
+	icon = decision_satellite_in_orbit
+
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 150
+			minerals = 500
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			core_est_confine = yes
+			core_poussee_2 = yes
+			has_technology = tech_adastra_manned_flight
+			has_country_flag = core_satellite_fait
+			NOT = { has_country_flag = core_vol_habite_fait }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_vol_habite_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.104 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 60
+	}
+}
+
+
+# -------------------------------------------------------------- premier corps
+# 1969. Le drapeau plante. La cible n'est PAS nommee : le systeme natal est
+# procedural, il peut n'avoir aucune lune. L'evenement choisit ce qu'il trouve
+# - une lune, sinon un asteroide, sinon la planete la plus proche, sinon rien
+# du tout, et il raconte alors autre chose.
+decision_core_premier_corps = {
+	owned_planets_only = yes
+	icon = decision_satellite_in_orbit
+
+	enactment_time = 540
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 250
+			minerals = 800
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			core_est_confine = yes
+			core_poussee_3 = yes
+			has_technology = tech_adastra_lunar_landing
+			has_country_flag = core_vol_habite_fait
+			NOT = { has_country_flag = core_premier_corps_fait }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_premier_corps_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.106 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 50
+	}
+}

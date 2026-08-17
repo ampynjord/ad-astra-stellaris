@@ -12,24 +12,30 @@
 #
 # Chaque relance ajoute 35 % au Programme d'exploration, 25 % a la flotte :
 # monter une seconde expedition n'a jamais ete aussi simple que la premiere.
+# 1.4 (17/08) : reecrit dans la syntaxe des script_values de STELLARIS.
+# `if / limit / has_variable` sont du CK3 : le moteur repondait « unknown
+# command 'if' for MTTH/script value » (error.log de PoW, Discord) et le
+# multiplicateur restait a 1 - les relances etaient gratuites. La syntaxe
+# valide (common/script_values/00_script_values.txt du jeu de base) : une
+# suite d'operations, et `modifier = { <operation> <trigger> }` pour une
+# operation conditionnelle. Le cout d'une decision s'evalue en portee
+# planete : la variable est sur owner.
 adastra_cout_relance_explore = {
-	base = 1
-	if = {
-		limit = { has_variable = adastra_relances_explore }
-		add = {
-			value = adastra_relances_explore
-			mult = 0.35
-		}
+	base = 0
+	modifier = {
+		add = owner.adastra_relances_explore
+		owner = { is_variable_set = adastra_relances_explore }
 	}
+	mult = 0.35
+	add = 1
 }
 
 adastra_cout_relance_navy = {
-	base = 1
-	if = {
-		limit = { has_variable = adastra_relances_navy }
-		add = {
-			value = adastra_relances_navy
-			mult = 0.25
-		}
+	base = 0
+	modifier = {
+		add = owner.adastra_relances_navy
+		owner = { is_variable_set = adastra_relances_navy }
 	}
+	mult = 0.25
+	add = 1
 }

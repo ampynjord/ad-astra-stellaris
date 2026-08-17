@@ -160,3 +160,36 @@ adastra_gameplay_sol = {
 	has_country_flag = adastra_unlock_space
 	has_country_flag = adastra_stage_explore
 }
+
+
+# ============================================================================
+# 1.4 (17/08) - LE SYSTEME NATAL N'EST PAS UN TERRAIN VAGUE
+#
+# Sans base stellaire, le systeme natal n'a pas de proprietaire, et le jeu de
+# base le traite comme un systeme libre : Argroww (Discord) a vu deux fois de
+# suite une station de drones miniers apparaitre chez lui. Surcharge de la
+# regle vanilla (00_scripted_triggers.txt) : identique, plus l'exclusion du
+# drapeau adastra_home_system pose par adastra.2. Sert a la fois aux drones
+# miniers et aux drones agressifs (an4_events).
+is_valid_drone_expansion_destination_system = {
+	NOR = {
+		has_star_flag = adastra_home_system
+		is_star_class = sc_black_hole
+		has_star_flag = mining_drone_expansion_starting_system
+		has_star_flag = aggressive_drone_expansion_starting_system
+		has_star_flag = mining_drone_expansion_destination_system
+		has_star_flag = aggressive_drone_expansion_destination_system
+		has_star_flag = hostile_system
+		has_star_flag = guardian
+		has_star_flag = tiyanki_home_system
+		has_star_flag = tiyanki_graveyard_system
+		has_star_flag = amoeba_home_system
+		has_star_flag = lcluster
+		has_star_flag = sealed_system
+		has_star_flag = voidworms_system
+		has_star_flag = frenzied_voidworms_system
+	}
+	any_system_planet = {
+		can_have_mineral_deposits = yes
+	}
+}

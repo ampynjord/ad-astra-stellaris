@@ -319,3 +319,84 @@ adastra_grant_age_space = {
 	give_technology = { tech = tech_solar_panel_network message = no }
 	give_technology = { tech = tech_space_defense_station_1 message = no }
 }
+
+# --- entree dans un age : premiere vague poussee dans le vivier ---
+adastra_offre_age_stone = {
+	add_research_option = tech_adastra_fire
+	add_research_option = tech_adastra_stone_tools
+	add_research_option = tech_adastra_hunting
+	add_research_option = tech_adastra_shelter
+	add_research_option = tech_adastra_cooking
+}
+
+adastra_offre_age_bronze = {
+	add_research_option = tech_adastra_bronze
+	add_research_option = tech_adastra_writing
+	add_research_option = tech_adastra_first_city
+	add_research_option = tech_adastra_wheel
+	add_research_option = tech_adastra_sail
+}
+
+adastra_offre_age_iron = {
+	add_research_option = tech_adastra_iron
+	add_research_option = tech_adastra_astronomy
+	add_research_option = tech_adastra_alphabet
+	add_research_option = tech_adastra_cavalry
+	add_research_option = tech_adastra_trireme
+}
+
+adastra_offre_age_medieval = {
+	add_research_option = tech_adastra_crop_rotation
+	add_research_option = tech_adastra_algebra
+	add_research_option = tech_adastra_stirrup
+	add_research_option = tech_adastra_paper_mill
+	add_research_option = tech_adastra_distillation
+}
+
+adastra_offre_age_renaissance = {
+	add_research_option = tech_adastra_printing
+	add_research_option = tech_adastra_mechanics
+	add_research_option = tech_adastra_banking
+	add_research_option = tech_adastra_caravel
+	add_research_option = tech_adastra_clear_glass
+}
+
+adastra_offre_age_steam = {
+	add_research_option = tech_adastra_steam_engine
+	add_research_option = tech_adastra_coal
+	add_research_option = tech_adastra_selective_breeding
+	add_research_option = tech_adastra_canals
+	add_research_option = tech_adastra_spinning_jenny
+}
+
+adastra_offre_age_industrial = {
+	add_research_option = tech_adastra_bessemer
+	add_research_option = tech_adastra_thermodynamics
+	add_research_option = tech_adastra_germ_theory
+	add_research_option = tech_adastra_synthetic_dye
+	add_research_option = tech_adastra_spectroscopy
+}
+
+adastra_offre_age_machine = {
+	add_research_option = tech_adastra_aviation
+	add_research_option = tech_adastra_quantum_theory
+	add_research_option = tech_adastra_plastics
+	add_research_option = tech_adastra_relativity
+	add_research_option = tech_adastra_reinforced_concrete
+}
+
+adastra_offre_age_atomic = {
+	add_research_option = tech_adastra_fission
+	add_research_option = tech_adastra_electronics
+	add_research_option = tech_adastra_nuclear_medicine
+	add_research_option = tech_adastra_sounding_rocket
+	add_research_option = tech_adastra_transistor
+}
+
+adastra_offre_age_space = {
+	add_research_option = tech_adastra_rocketry
+	add_research_option = tech_adastra_remote_sensing
+	add_research_option = tech_adastra_satellites
+	add_research_option = tech_adastra_superconductivity
+	add_research_option = tech_adastra_laser
+}

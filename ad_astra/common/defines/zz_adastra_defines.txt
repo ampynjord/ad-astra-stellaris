@@ -1,0 +1,36 @@
+# Ad Astra 1.4 (17/08) - annee de depart.
+#
+# Idee reprise de « Before the Stars » (qui joue 2026 -> 2200) : le jeu de
+# base fixe l'annee de depart par une define, NGameplay.START_YEAR = 2200 (bloc NGameplay, ligne 728 de 00_defines.txt). Un mod
+# peut la surcharger ici. Aucune date absolue n'existe ni dans les scripts du
+# jeu de base (tout est en years_passed / mid_game_years) ni dans Ad Astra :
+# la date n'est qu'un compteur.
+#
+# Limites : une seule valeur pour tous les ages de depart, figee au
+# lancement - ni parametrable dans l'ecran de creation de partie (pas de
+# reglage script-able en 4.4), ni changeable par un evenement.
+#
+# Valeur a TESTER en jeu (ampynjord, 17/08) : la plus petite possible.
+# Premier essai du 17/08 : ecrit sous NGame au lieu de NGameplay, ignore
+# sans un mot dans error.log - la date restait 2200. Corrige.
+# 18/08 : l'an 1 fonctionne (teste). Essai en cours : 0, puis -1000. Si le jeu refuse de lancer
+# une partie, supprimer ce fichier ou remettre 2200.
+
+# 18/08, resultats des essais d'ampynjord : 1, 0 et -1000 fonctionnent tous
+# les trois (le moteur accepte une annee negative et l'affiche telle quelle).
+# CHOIX RETENU : 0. Une seule valeur sert les dix ages de depart, donc aucune
+# date historique ne peut convenir a tous (2026 pour la Pierre, -10000 pour
+# l'Atome ?). Zero fait de la date un simple compteur : « an 150 » = 150 ans
+# depuis le premier jour, quel que soit l'age choisi. Lisible, et neutre.
+#
+# Les curseurs de l'ecran de creation gardaient leurs plafonds du jeu de base
+# (milieu 400, fin 800, victoire 1050) : une partie ne pouvait pas depasser
+# l'an 800-1050. Releves, en proportion : milieu 2500 = fin/2, fin 5000,
+# victoire 5000 (a fond, le curseur affiche « Sans » = pas de limite). Les
+# valeurs par defaut restent celles du jeu ; c'est le joueur qui pousse.
+NGameplay = {
+	START_YEAR = 0
+	MID_GAME_START_MAX = 2500
+	END_GAME_START_MAX = 5000
+	VICTORY_YEAR_MAX = 5000
+}
