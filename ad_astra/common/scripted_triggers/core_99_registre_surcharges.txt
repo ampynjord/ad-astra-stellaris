@@ -1,0 +1,26 @@
+# Ad Astra: Core - REGISTRE DES SURCHARGES VANILLA.
+#
+# Ce fichier ne definit rien. Il tient la liste de tout ce que la collection
+# ecrase dans le jeu de base. C'est la premiere cause de conflit entre mods,
+# et jusqu'ici cette liste n'existait nulle part - elle etait dispersee dans
+# les descriptions Workshop, ou pas ecrite du tout.
+#
+# REGLE : aucune nouvelle surcharge n'est ajoutee sans une ligne ici.
+#
+# ---------------------------------------------------------------- Origins
+#   common/scripted_triggers/00_scripted_triggers.txt
+#       is_regular_empire      elargi au confinement  <- LE point de conflit
+#       is_low_tech_start      elargi au confinement
+#   common/technology/00_*.txt
+#       technologies de depart et de palier 1-2  (verrou par `potential`)
+#   common/ship_sizes/
+#       trois tailles de vaisseaux civils
+#   common/casus_belli/, common/war_goals/
+#       quinze CB et buts de guerre elargis a l'empire au sol
+#   common/country_focus/focus_cards/
+#       46 cartes d'objectifs
+#
+# ---------------------------------------------------- code core_ (a extraire)
+#   (rien - ce qui porte le prefixe core_ n'ecrase aucun fichier du jeu de
+#    base, et ne doit jamais le faire. C'est la condition pour qu'il devienne
+#    un jour une bibliotheque installable seule.)

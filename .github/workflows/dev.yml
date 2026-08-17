@@ -1,0 +1,17 @@
+# Ce qui tourne pendant le développement.
+#
+#   push sur dev            -> les contrôles
+#   pull request vers main  -> les mêmes contrôles, et main est protégée
+#                              par ce job : rouge = pas de merge possible
+name: dev
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  controles:
+    name: contrôles
+    uses: ./.github/workflows/checks.yml

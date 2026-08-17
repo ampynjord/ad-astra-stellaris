@@ -15,7 +15,7 @@
  NAME_Adastra_Science:0 "Vaisseau scientifique 'Pionnier'"
  NAME_Adastra_Constructor:0 "Vaisseau de construction 'Bâtisseur'"
  adastra_progress_program:0 "Programme spatial en cours (progression par jalons)"
- adastra_progress_verrou:0 "§RVerrou d'âge§! : les §Ydix technologies§! de cet âge doivent §Ytoutes§! être découvertes pour passer au suivant"
+ adastra_progress_verrou:0 "§RVerrou d'âge§! : les §Yvingt-cinq technologies§! de cet âge doivent §Ytoutes§! être découvertes pour passer au suivant"
  adastra_progress_epuise:0 "§GRien de plus à inventer dans cet âge§! : la marche s'accélère"
  adastra_tech_marque_stone:0 "§YÂge de pierre - technologie d'époque§!"
  adastra_tech_marque_bronze:0 "§YÂge du bronze - technologie d'époque§!"
@@ -27,7 +27,14 @@
  adastra_tech_marque_machine:0 "§YÂge de la machine - technologie d'époque§!"
  adastra_tech_marque_atomic:0 "§YÂge de l'atome - technologie d'époque§!"
  adastra_tech_marque_space:0 "§YÂge spatial - technologie d'époque§!"
- adastra_tech_marque_desc:0 "L'une des dix technologies de cet âge. §YToutes§! doivent être découvertes pour que l'Ascension reprenne sa marche."
+ adastra_tech_marque_desc:0 "L'une des vingt-cinq technologies de cet âge. §YToutes§! doivent être découvertes pour que l'Ascension reprenne sa marche."
+ adastra_tech_marque_base_renaissance:0 "§YAd Astra - Renaissance : technologie du jeu de base§!"
+ adastra_tech_marque_base_steam:0 "§YAd Astra - Âge de la vapeur : technologie du jeu de base§!"
+ adastra_tech_marque_base_industrial:0 "§YAd Astra - Âge industriel : technologie du jeu de base§!"
+ adastra_tech_marque_base_machine:0 "§YAd Astra - Âge de la machine : technologie du jeu de base§!"
+ adastra_tech_marque_base_atomic:0 "§YAd Astra - Âge de l'atome : technologie du jeu de base§!"
+ adastra_tech_marque_base_space:0 "§YAd Astra - Âge spatial : technologie du jeu de base§!"
+ adastra_tech_marque_base_desc:0 "Technologie du jeu de base rattachée à cet âge d'Ad Astra."
  adastra_progress_verrou_stone:0 "§RVerrou d'âge§! : il reste des technologies de l'Âge de pierre à découvrir"
  adastra_progress_verrou_bronze:0 "§RVerrou d'âge§! : il reste des technologies de l'Âge du bronze à découvrir"
  adastra_progress_verrou_iron:0 "§RVerrou d'âge§! : il reste des technologies de l'Âge du fer à découvrir"
@@ -202,19 +209,7 @@
  # Origine
  origin_adastra:0 "Ad Astra"
  origin_adastra_desc:0 "Per aspera ad astra - par des sentiers ardus jusqu'aux étoiles. Cette civilisation pré-PRL n'a encore jamais quitté son monde natal. Chaque âge de son histoire reste à écrire, sous un ciel qui n'est peut-être pas aussi vide qu'il en a l'air."
- origin_adastra_effects:0 "- Lance la partie §Rsans vaisseaux ni base stellaire§! : votre civilisation est confinée à son monde natal.
-- Choix de l'§Hâge de départ§! au premier jour, de l'§H$stone_age$§! aux §H$early_space_age$§! ; plus tôt, plus dur, et plus fort sera l'§HHéritage de l'Ascension§! final.
-- §H250 technologies d'époque§!, vingt-cinq par âge, de la maîtrise du feu au microprocesseur. Elles s'ouvrent §Hpar vagues§! au fil de l'âge, dans l'ordre où l'histoire les a vues naître.
-- §ROn ne quitte pas un âge tant qu'il reste quelque chose à y inventer.§! La situation §HAu-delà des étoiles§! nomme, une par une, les technologies qui vous manquent.
-- §HUne ressource n'existe pas avant l'invention qui la produit§! : ni énergie avant l'électricité, ni alliages avant le bronze. Et ce qu'on ne produit pas, on ne le paie pas.
-- À l'§H$early_space_age$§!, les technologies du jeu de base deviennent des §Htechnologies fondatrices à chercher§! : corvettes, bases stellaires, propulseurs. Quatre §Hprogrammes spatiaux§! payés en £influence£ influence et £minerals£ minéraux mènent à la recherche £physics£ §HHyperpropulsion§!.
-- §HLes technologies du jeu de base attendent l'émergence.§! Seules celles qu'un empire normal possède §Hdès la première seconde§! peuvent être cherchées pendant le confinement — plus douze exceptions qui débloquent une ressource ou un bâtiment dont un âge a besoin. Tout le reste de l'arbre s'ouvre à la percée.\n- Vivez l'observation du point de vue des observés : ovnis, disparitions, signaux venus du vide...
-
-§RPénalités :§!
-- £research£ Recherche, £pops£ production des emplois et £unity£ unité réduites selon l'âge courant.
-- Population de départ réduite selon l'âge choisi.
-- §HTraditions verrouillées§! jusqu'à l'émergence.
-- Si un empire s'installe dans votre système natal avant votre percée, votre émergence se négociera avec lui..."
+ origin_adastra_effects:0 "- Lance la partie §Rsans vaisseaux ni base stellaire§! : votre civilisation est confinée à son monde natal.\n- Choix de l'§Hâge de départ§! au premier jour, de l'§H$stone_age$§! aux §H$early_space_age$§! ; plus tôt, plus dur, et plus fort sera l'§HHéritage de l'Ascension§! final.\n- §H250 technologies d'époque§!, vingt-cinq par âge, de la maîtrise du feu au microprocesseur. Elles s'ouvrent §Hpar vagues§! au fil de l'âge, dans l'ordre où l'histoire les a vues naître.\n- §ROn ne quitte pas un âge tant qu'il reste quelque chose à y inventer.§! La situation §HAu-delà des étoiles§! nomme, une par une, les technologies qui vous manquent.\n- §HUne ressource n'existe pas avant l'invention qui la produit§! : ni énergie avant l'électricité, ni alliages avant le bronze. Et ce qu'on ne produit pas, on ne le paie pas.\n- À l'§H$early_space_age$§!, les technologies du jeu de base deviennent des §Htechnologies fondatrices à chercher§! : corvettes, bases stellaires, propulseurs. Quatre §Hprogrammes spatiaux§! payés en £influence£ influence et £minerals£ minéraux mènent à la recherche £physics£ §HHyperpropulsion§!.\n- §HLes technologies du jeu de base attendent l'émergence.§! Seules celles qu'un empire normal possède §Hdès la première seconde§! peuvent être cherchées pendant le confinement — plus douze exceptions qui débloquent une ressource ou un bâtiment dont un âge a besoin. Tout le reste de l'arbre s'ouvre à la percée.\n- Vivez l'observation du point de vue des observés : ovnis, disparitions, signaux venus du vide...\n\n§RPénalités :§!\n- £research£ Recherche, £pops£ production des emplois et £unity£ unité réduites selon l'âge courant.\n- Population de départ réduite selon l'âge choisi.\n- §HTraditions verrouillées§! jusqu'à l'émergence.\n- Si un empire s'installe dans votre système natal avant votre percée, votre émergence se négociera avec lui..."
 
  # Modificateurs
  adastra_reverse_engineering:0 "Rétro-ingénierie d'artefacts"
@@ -237,8 +232,8 @@
  # Situation : La Longue Ascension
  situation_adastra_ascension:0 "Au-delà des étoiles"
  situation_adastra_ascension_type:0 "Au-delà des étoiles"
- situation_adastra_ascension_desc:0 "Notre civilisation gravit une à une les marches qui séparent son berceau des étoiles. Chaque âge apporte ses savoirs, ses outils - et ses épreuves. Au sommet de cette ascension : les équations du voyage supraluminique.\n\n§YPour passer d'un âge au suivant, deux conditions§! : la progression ci-dessus doit atteindre la fin de l'étape, §Yet les dix technologies de l'âge doivent toutes être découvertes§!. La barre s'arrête d'elle-même tant qu'il reste quelque chose à inventer."
- situation_adastra_ascension_monthly_change_tooltip:0 "La progression augmente chaque mois. Une approche volontariste, une production d'£unity£ unité soutenue et une recherche £physics£ active l'accélèrent.\n\nElle se §Rfige§! à la fin de chaque étape tant que les §Ydix technologies de l'âge§! ne sont pas toutes découvertes."
+ situation_adastra_ascension_desc:0 "Notre civilisation gravit une à une les marches qui séparent son berceau des étoiles. Chaque âge apporte ses savoirs, ses outils - et ses épreuves. Au sommet de cette ascension : les équations du voyage supraluminique.\n\n§YPour passer d'un âge au suivant, deux conditions§! : la progression ci-dessus doit atteindre la fin de l'étape, §Yet les vingt-cinq technologies de l'âge doivent toutes être découvertes§!. La barre s'arrête d'elle-même tant qu'il reste quelque chose à inventer.\n\n§HL'ascension a trois actes.§!\n§YLe sol§! (Pierre à Fer) : survivre, s'établir, bâtir.\n§YLe monde§! (Médiéval à Industriel) : un monde qui grandit, et une production qui coûte.\n§YLe ciel§! (Machine à Spatial) : regarder, lancer, atteindre."
+ situation_adastra_ascension_monthly_change_tooltip:0 "La progression augmente chaque mois. Une approche volontariste, une production d'£unity£ unité soutenue et une recherche £physics£ active l'accélèrent.\n\nElle se §Rfige§! à la fin de chaque étape tant que les §Yvingt-cinq technologies de l'âge§! ne sont pas toutes découvertes."
  adastra_stage_stone_age:0 "$stone_age$"
  adastra_stage_stone_age_desc:0 "$stone_age_desc$"
  adastra_stage_bronze_age:0 "$bronze_age$"
@@ -679,3 +674,6 @@
  adastra_manque_base_hydroponics:0 "§RIl manque (fondatrice) :§! Cultures hydroponiques"
  adastra_manque_base_holo_entertainment:0 "§RIl manque (fondatrice) :§! Hololoisirs"
  adastra_manque_base_reactor_boosters_1:0 "§RIl manque (fondatrice) :§! Impulseurs"
+ adastra_manque_jalon_explore:0 "§RJalon :§! prospecter chaque astre du système natal"
+ adastra_manque_jalon_orbital:0 "§RJalon :§! bâtir la base stellaire, puis une première station minière ou de recherche"
+ adastra_manque_jalon_hyper:0 "§RJalon :§! rechercher l'Hyperpropulsion"

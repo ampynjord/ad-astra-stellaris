@@ -15,7 +15,7 @@
  NAME_Adastra_Science:0 "'Pioneer' Science Vessel"
  NAME_Adastra_Constructor:0 "'Builder' Construction Ship"
  adastra_progress_program:0 "Space program underway (milestone-based progress)"
- adastra_progress_verrou:0 "§RAge lock§!: §Yall ten technologies§! of this age must be researched before the next one opens"
+ adastra_progress_verrou:0 "§RAge lock§!: §Yall twenty-five technologies§! of this age must be researched before the next one opens"
  adastra_progress_epuise:0 "§GNothing left to invent in this age§!: the climb quickens"
  adastra_tech_marque_stone:0 "§YStone Age - period technology§!"
  adastra_tech_marque_bronze:0 "§YBronze Age - period technology§!"
@@ -27,7 +27,14 @@
  adastra_tech_marque_machine:0 "§YMachine Age - period technology§!"
  adastra_tech_marque_atomic:0 "§YAtomic Age - period technology§!"
  adastra_tech_marque_space:0 "§YEarly Space Age - period technology§!"
- adastra_tech_marque_desc:0 "One of this age's ten technologies. §YAll of them§! must be researched before the Ascent resumes."
+ adastra_tech_marque_desc:0 "One of this age's twenty-five technologies. §YAll of them§! must be researched before the Ascent resumes."
+ adastra_tech_marque_base_renaissance:0 "§YAd Astra - Renaissance: base-game technology§!"
+ adastra_tech_marque_base_steam:0 "§YAd Astra - Steam Age: base-game technology§!"
+ adastra_tech_marque_base_industrial:0 "§YAd Astra - Industrial Age: base-game technology§!"
+ adastra_tech_marque_base_machine:0 "§YAd Astra - Machine Age: base-game technology§!"
+ adastra_tech_marque_base_atomic:0 "§YAd Astra - Atomic Age: base-game technology§!"
+ adastra_tech_marque_base_space:0 "§YAd Astra - Space Age: base-game technology§!"
+ adastra_tech_marque_base_desc:0 "Base-game technology attached to this Ad Astra age."
  adastra_progress_verrou_stone:0 "§RAge lock§!: the Stone Age still has technologies left to research"
  adastra_progress_verrou_bronze:0 "§RAge lock§!: the Bronze Age still has technologies left to research"
  adastra_progress_verrou_iron:0 "§RAge lock§!: the Iron Age still has technologies left to research"
@@ -202,19 +209,7 @@
  # Origin
  origin_adastra:0 "Ad Astra"
  origin_adastra_desc:0 "Per aspera ad astra - through hardships to the stars. This pre-FTL civilization has never left its homeworld. Every age of its history remains to be written, under a sky that may not be as empty as it seems."
- origin_adastra_effects:0 "- Starts the game §Rwith no ships and no starbase§! : your civilization is confined to its homeworld.
-- Pick your §Hstarting age§! on day one, from the §H$stone_age$§! to the §H$early_space_age$§!; earlier is harsher, and the final §HLegacy of the Ascent§! is stronger for it.
-- §H250 period technologies§!, twenty-five per age, from the mastery of fire to the microprocessor. They open §Hin waves§! as the age advances, in the order history found them.
-- §RYou do not leave an age while something is left to invent in it.§! The §HBeyond the Stars§! situation names, one by one, the technologies you are missing.
-- §HA resource does not exist before the invention that produces it§!: no energy before electricity, no alloys before bronze. And what you do not produce, you do not pay for.
-- At the §H$early_space_age$§!, base-game technologies become §Hfounding technologies to research§!: corvettes, starbases, thrusters. Four §Hspace programs§! paid in £influence£ influence and £minerals£ minerals lead to the £physics£ §HHyperdrive§! itself.
-- §HBase-game technologies wait for emergence.§! Only those a normal empire owns §Hfrom the first second§! can be researched during confinement — plus twelve exceptions that unlock a resource or a building an age needs. The rest of the tree opens at the breakthrough.\n- Live through observation from the observed side: UFOs, disappearances, signals out of the void...
-
-§RPenalties:§!
-- £research£ Research, £pops£ job output and £unity£ unity reduced according to the current age.
-- Reduced starting population depending on the chosen age.
-- §HTraditions locked§! until emergence.
-- If an empire settles in your home system before your breakthrough, your emergence will be negotiated with them..."
+ origin_adastra_effects:0 "- Starts the game §Rwith no ships and no starbase§! : your civilization is confined to its homeworld.\n- Pick your §Hstarting age§! on day one, from the §H$stone_age$§! to the §H$early_space_age$§!; earlier is harsher, and the final §HLegacy of the Ascent§! is stronger for it.\n- §H250 period technologies§!, twenty-five per age, from the mastery of fire to the microprocessor. They open §Hin waves§! as the age advances, in the order history found them.\n- §RYou do not leave an age while something is left to invent in it.§! The §HBeyond the Stars§! situation names, one by one, the technologies you are missing.\n- §HA resource does not exist before the invention that produces it§!: no energy before electricity, no alloys before bronze. And what you do not produce, you do not pay for.\n- At the §H$early_space_age$§!, base-game technologies become §Hfounding technologies to research§!: corvettes, starbases, thrusters. Four §Hspace programs§! paid in £influence£ influence and £minerals£ minerals lead to the £physics£ §HHyperdrive§! itself.\n- §HBase-game technologies wait for emergence.§! Only those a normal empire owns §Hfrom the first second§! can be researched during confinement — plus twelve exceptions that unlock a resource or a building an age needs. The rest of the tree opens at the breakthrough.\n- Live through observation from the observed side: UFOs, disappearances, signals out of the void...\n\n§RPenalties:§!\n- £research£ Research, £pops£ job output and £unity£ unity reduced according to the current age.\n- Reduced starting population depending on the chosen age.\n- §HTraditions locked§! until emergence.\n- If an empire settles in your home system before your breakthrough, your emergence will be negotiated with them..."
 
  # Modifiers
  adastra_reverse_engineering:0 "Artifact Reverse-Engineering"
@@ -237,8 +232,8 @@
  # Situation: The Long Ascent
  situation_adastra_ascension:0 "Beyond the Stars"
  situation_adastra_ascension_type:0 "Beyond the Stars"
- situation_adastra_ascension_desc:0 "Our civilization climbs, one by one, the steps that separate its cradle from the stars. Each age brings its knowledge, its tools - and its trials. At the top of this ascent: the equations of faster-than-light travel.\n\n§YMoving from one age to the next takes two things§!: the progress above must reach the end of the stage, §Yand all ten technologies of the age must be researched§!. The bar halts by itself while anything is left to invent."
- situation_adastra_ascension_monthly_change_tooltip:0 "Progress increases every month. A determined approach, a strong £unity£ unity output and active £physics£ research all accelerate it.\n\nIt §Rfreezes§! at the end of each stage until §Yall ten technologies of the age§! have been researched."
+ situation_adastra_ascension_desc:0 "Our civilization climbs, one by one, the steps that separate its cradle from the stars. Each age brings its knowledge, its tools - and its trials. At the top of this ascent: the equations of faster-than-light travel.\n\n§YMoving from one age to the next takes two things§!: the progress above must reach the end of the stage, §Yand all twenty-five technologies of the age must be researched§!. The bar halts by itself while anything is left to invent.\n\n§HThe ascent has three acts.§!\n§YThe ground§! (Stone to Iron): survive, settle, build.\n§YThe world§! (Late Medieval to Industrial): a world that grows, and production that costs.\n§YThe sky§! (Machine to Early Space): look, launch, reach."
+ situation_adastra_ascension_monthly_change_tooltip:0 "Progress increases every month. A determined approach, a strong £unity£ unity output and active £physics£ research all accelerate it.\n\nIt §Rfreezes§! at the end of each stage until §Yall twenty-five technologies of the age§! have been researched."
  adastra_stage_stone_age:0 "$stone_age$"
  adastra_stage_stone_age_desc:0 "$stone_age_desc$"
  adastra_stage_bronze_age:0 "$bronze_age$"
@@ -679,3 +674,6 @@
  adastra_manque_base_hydroponics:0 "§RStill missing (founding tech):§! Hydroponics"
  adastra_manque_base_holo_entertainment:0 "§RStill missing (founding tech):§! Holo Entertainment"
  adastra_manque_base_reactor_boosters_1:0 "§RStill missing (founding tech):§! Reactor Boosters"
+ adastra_manque_jalon_explore:0 "§RMilestone:§! survey every body of the home system"
+ adastra_manque_jalon_orbital:0 "§RMilestone:§! build the starbase, then a first mining or research station"
+ adastra_manque_jalon_hyper:0 "§RMilestone:§! research Hyper Drive"

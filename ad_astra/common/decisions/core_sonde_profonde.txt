@@ -1,0 +1,57 @@
+# Ad Astra 1.4 - la sonde profonde.
+#
+# Une civilisation confinee ne peut pas EXPLORER, mais elle peut REGARDER, et
+# elle peut ENVOYER. C'est le barreau manquant entre le telescope et le
+# vaisseau scientifique : un objet qu'on lance vers un systeme voisin, qui met
+# des annees a l'atteindre, et qui ne revient jamais.
+#
+# Ce que la sonde donne : le systeme cible devient CONNU. Ce qu'elle ne donne
+# pas : la prospection. Les gisements restent a relever par un vaisseau
+# scientifique, apres l'emergence. Le partage est net et il est le bon - la
+# sonde dit ou aller, elle ne dit pas quoi y prendre.
+#
+# CONTRAINTE MOTEUR ASSUMEE. Le jeu ne permet pas de faire voler un objet
+# entre deux systemes sans hyperlignes. On ne simule donc pas le vol : la
+# decision dure des annees (enactment_time), et l'arrivee est un evenement.
+# Le lancement, lui, se voit - c'est le meme rite que les Premiers pas.
+#
+# A VERIFIER EN JEU : que le systeme revele soit bien lisible sur la carte
+# pour un empire confine. C'est le point d'incertitude de cette decision, et
+# il ne se leve pas depuis un editeur de texte.
+
+decision_core_sonde_profonde = {
+	owned_planets_only = yes
+	icon = decision_satellite_in_orbit
+
+	# Neuf ans. Une sonde ne se lance pas a la legere et n'arrive pas vite :
+	# les vraies ont mis douze ans a sortir de leur systeme.
+	enactment_time = 1080
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 120
+			minerals = 450
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			core_est_confine = yes
+			core_poussee_3 = yes
+			has_country_flag = core_satellite_fait
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_sonde_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.110 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 40
+	}
+}
