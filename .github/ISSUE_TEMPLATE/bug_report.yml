@@ -1,67 +1,67 @@
-name: Rapport de bug
-description: Signaler un comportement reproductible d'Ad Astra.
+name: Bug report
+description: Report a reproducible problem in Ad Astra.
 title: "[Bug] "
-labels: ["bug", "statut: informations requises"]
+labels: ["bug", "status: needs information"]
 body:
   - type: markdown
     attributes:
       value: |
-        Merci de verifier les rapports existants. Ne colle pas de token, de sauvegarde privee ou de donnees personnelles.
+        Please check existing reports first. Do not paste tokens, private saves, or personal data.
   - type: input
     id: version
     attributes:
-      label: Version d'Ad Astra et de Stellaris
+      label: Ad Astra and Stellaris version
       placeholder: "Ad Astra 1.4.0-dev, Stellaris 4.4.6"
     validations:
       required: true
   - type: dropdown
     id: start_age
     attributes:
-      label: Age de depart
+      label: Starting age
       options:
-        - Pierre
+        - Stone
         - Bronze
-        - Fer
-        - Moyen Age
+        - Iron
+        - Medieval
         - Renaissance
-        - Vapeur
-        - Industriel
+        - Steam
+        - Industrial
         - Machine
-        - Atomique
-        - Spatial
-        - Autre ou non applicable
+        - Atomic
+        - Space
+        - Other or not applicable
     validations:
       required: true
   - type: textarea
     id: observed
     attributes:
-      label: Comportement observe
-      description: Decris le resultat reel, avec la date en jeu si utile.
-      placeholder: "En l'an ..., apres ..., le jeu ..."
+      label: Observed behaviour
+      description: Describe what actually happens, including the in-game date if useful.
+      placeholder: "In year ..., after ..., the game ..."
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: Comportement attendu
+      label: Expected behaviour
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
-      label: Etapes de reproduction
-      placeholder: "1. Nouvelle partie...\n2. Choisir...\n3. ..."
+      label: Steps to reproduce
+      placeholder: "1. Start a new game...\n2. Choose...\n3. ..."
     validations:
       required: true
   - type: textarea
     id: mods
     attributes:
-      label: Autres mods et DLC actifs
-      description: Indique "partie pure" si Ad Astra est le seul mod.
+      label: Other active mods and DLC
+      description: Write "clean game" if Ad Astra is the only active mod.
     validations:
       required: true
   - type: textarea
     id: evidence
     attributes:
-      label: Journal, save ou capture
-      description: Joins les lignes pertinentes de error.log ou un lien vers la save/capture si possible.
+      label: Log, save, or screenshot
+      description: Attach relevant error.log lines or a link to the save/screenshot if possible.

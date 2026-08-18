@@ -1,24 +1,25 @@
-# Rapports Discord et issues GitHub
+# Discord reports and GitHub issues
 
-GitHub est la source de verite technique : une issue garde le diagnostic, les
-versions, les etiquettes, les decisions et le correctif. Discord reste l'espace
-de conversation et de retours de partie.
+GitHub is the technical source of truth: an issue keeps the diagnosis,
+versions, labels, decisions, and fix. Discord remains the space for community
+conversation and game feedback.
 
-Le bot propose une liaison volontaire dans un fil de forum. Il ne lit ni ne
-copie automatiquement les messages des joueurs. L'auteur remplit les champs de
-la commande `/github creer`, puis le bot publie une liaison vers l'issue. Les
-etiquettes et l'etat GitHub sont ensuite repris dans le seul message du bot.
+The bot links a Discord forum thread and an issue. Existing bug reports and
+suggestions can be imported once by staff; future reports can use `/github
+create`. The bot mirrors unlinked GitHub issues labelled `bug`, `idea`, or
+`enhancement` into the matching Discord forum. It only edits its own status or
+mirror message, never a player message.
 
-## Etiquettes de suivi
+## Tracking labels
 
-- `source: discord` : issue creee volontairement depuis un fil Discord ;
-- `statut: informations requises` : donnees insuffisantes pour enqueter ;
-- `statut: a reproduire` : diagnostic en attente d'une reproduction fiable ;
-- `statut: confirme` : comportement observe en partie ou dans les fichiers ;
-- `statut: corrige` : correctif sur `dev`, a valider avant fermeture ;
-- `compatibilite` et `equilibrage` : axes qui peuvent s'ajouter a `bug` ou
-  `idee`.
+- `source: discord`: issue created or imported from Discord;
+- `status: needs information`: insufficient detail to investigate;
+- `status: needs reproduction`: waiting for a reliable reproduction;
+- `status: confirmed`: observed in game or in the files;
+- `status: fixed`: fixed on `dev`, awaiting validation before closure;
+- `compatibility` and `balance`: optional dimensions for bugs and ideas.
 
-Une issue fermee est affichee comme fermee dans Discord. Les commentaires ne
-sont pas recopies automatiquement : ils sont souvent contextuels et risquent
-de melanger une discussion communautaire avec un diagnostic technique.
+Closing an issue is reflected in its Discord thread. Comments are not copied
+between platforms: they are often contextual and would create duplicate,
+unreadable discussions. The title, description, labels, and state remain
+synchronised through the bot’s own message.

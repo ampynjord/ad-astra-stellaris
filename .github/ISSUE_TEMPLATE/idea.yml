@@ -1,41 +1,41 @@
-name: Idee ou suggestion
-description: Proposer un contenu, un ajustement d'equilibrage ou une amelioration d'ergonomie.
-title: "[Idee] "
-labels: ["idée"]
+name: Idea or suggestion
+description: Propose content, a balance adjustment, or a usability improvement.
+title: "[Idea] "
+labels: ["idea"]
 body:
   - type: markdown
     attributes:
       value: |
-        Une suggestion est discutee avant d'etre planifiee. Une bonne idee n'est pas une promesse de calendrier.
+        Suggestions are discussed before they are planned. A good idea is not a release-date promise.
   - type: dropdown
     id: category
     attributes:
-      label: Type de suggestion
+      label: Suggestion type
       options:
-        - Contenu ou technologies
-        - Equilibrage ou rythme
-        - Interface ou ergonomie
-        - Compatibilite
-        - Documentation ou traduction
-        - Autre
+        - Content or technologies
+        - Balance or pace
+        - Interface or usability
+        - Compatibility
+        - Documentation or translation
+        - Other
     validations:
       required: true
   - type: textarea
     id: problem
     attributes:
-      label: Besoin ou probleme
-      description: Quel moment de jeu cherches-tu a ameliorer ?
+      label: Need or problem
+      description: Which part of the game would this improve?
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Proposition
-      description: Explique le comportement souhaite, pas seulement une solution technique.
+      label: Proposal
+      description: Explain the desired behaviour, not only a technical solution.
     validations:
       required: true
   - type: textarea
     id: context
     attributes:
-      label: Contexte de partie
-      description: Age, rythme, version et autres mods si cela influence la proposition.
+      label: Game context
+      description: Starting age, pace, version, and other mods if they affect the proposal.
