@@ -1,14 +1,11 @@
-# Development workflow.
-#
-#   push to dev/main        -> checks
-#   pull request to dev/main -> the same checks; main is protected by this job
+# Development validation for the maintained 1.3 hotfix line.
 name: development
 
 on:
   push:
-    branches: [dev, main]
+    branches: [main, "hotfix/**"]
   pull_request:
-    branches: [dev, main]
+    branches: [main]
 
 jobs:
   checks:
@@ -26,44 +23,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      # A trusted push to main primes the cache that tagged releases can read.
-      # It contains SteamCMD binaries only, never the Steam session directory.
-      - name: restore SteamCMD cache
-        id: steamcmd_cache
-        uses: actions/cache/restore@v6.1.0
-        with:
-          path: ~/steamcmd
-          key: steamcmd-linux-v2
-
-      - name: bootstrap SteamCMD cache
-        if: github.ref == 'refs/heads/main' && steps.steamcmd_cache.outputs.cache-hit != 'true'
-        run: |
-          sudo dpkg --add-architecture i386
-          timeout 120 sudo apt-get update -qq
-          timeout 180 sudo apt-get install -y lib32gcc-s1 ca-certificates > /dev/null
-          mkdir -p "$HOME/steamcmd"
-          timeout 120 curl --fail --silent --show-error --location \
-            --connect-timeout 20 --max-time 110 \
-            https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
-            -o /tmp/steamcmd_linux.tar.gz
-          tar -xzf /tmp/steamcmd_linux.tar.gz -C "$HOME/steamcmd"
-          timeout 180 "$HOME/steamcmd/steamcmd.sh" +quit
-
-      - name: save SteamCMD cache
-        if: github.ref == 'refs/heads/main' && steps.steamcmd_cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v6.1.0
-        with:
-          path: ~/steamcmd
-          key: ${{ steps.steamcmd_cache.outputs.cache-primary-key }}
-
-      # Build the same archive as a release without ever calling Steam.
-      - name: build archive
+      - name: build test archive
         run: python tools/ci_release.py --sortie build
 
-      - name: upload archive
+      - name: upload test archive
         uses: actions/upload-artifact@v7.0.1
         with:
-          name: ad-astra-dev-${{ github.sha }}
+          name: ad-astra-1.3-${{ github.sha }}
           path: build/ad_astra_v*.zip
           if-no-files-found: error
           retention-days: 14
