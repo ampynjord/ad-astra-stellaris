@@ -41,10 +41,10 @@ jobs:
 
       - name: verifier les secrets Steam
         env:
-          CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
+          CONFIG_VDF_GZIP: ${{ secrets.STEAM_CONFIG_VDF }}
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
         run: |
-          test -n "$CONFIG_VDF" || { echo "::error::STEAM_CONFIG_VDF manquant"; exit 1; }
+          test -n "$CONFIG_VDF_GZIP" || { echo "::error::STEAM_CONFIG_VDF manquant"; exit 1; }
           test -n "$STEAM_USERNAME" || { echo "::error::STEAM_USERNAME manquant"; exit 1; }
 
       - name: installer SteamCMD
@@ -58,10 +58,10 @@ jobs:
 
       - name: authentifier SteamCMD
         env:
-          CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
+          CONFIG_VDF_GZIP: ${{ secrets.STEAM_CONFIG_VDF }}
         run: |
           mkdir -p "$HOME/Steam/config"
-          echo "$CONFIG_VDF" | base64 -d > "$HOME/Steam/config/config.vdf"
+          echo "$CONFIG_VDF_GZIP" | base64 -d | gzip -d > "$HOME/Steam/config/config.vdf"
           chmod 600 "$HOME/Steam/config/config.vdf"
 
       - name: publier sur le Workshop
