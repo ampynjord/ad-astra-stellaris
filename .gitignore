@@ -3,5 +3,7 @@
 steamcmd/
 _to_delete/
 build/
+build-game-tests/
 build_premiere/
+artifacts/
 __pycache__/
