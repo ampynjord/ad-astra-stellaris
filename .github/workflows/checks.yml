@@ -23,6 +23,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      # Une table de donnees modifiee sans regeneration donne un mod valide,
+      # mais pas celui que le depot pretend contenir. On refuse cet ecart ici.
+      - name: sorties generees a jour
+        run: python tools/verify_generated.py
+
       # Le contrôle de fond : 35 règles sur le contenu du mod lui-même.
       # Historique, vagues, icônes, verrous, fuites de technologies vanilla,
       # modificateurs inventés, identifiant Workshop.

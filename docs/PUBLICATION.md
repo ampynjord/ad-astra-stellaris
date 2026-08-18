@@ -11,6 +11,11 @@ fois.
                                                               + publication
 ```
 
+Chaque push sur `dev` regenere et verifie les sorties internes, execute les
+controles du mod et produit une archive de test disponible pendant 14 jours.
+Cette archive n'est jamais envoyee sur Steam : seul un tag sur `main` declenche
+la publication.
+
 ---
 
 ## Le cycle normal
@@ -18,7 +23,7 @@ fois.
 ```bash
 git switch dev
 # ... tu développes, tu génères, tu testes en jeu ...
-python tools/verify_1_2.py          # les mêmes contrôles qu'en CI, en local
+python tools/build_and_sync_dev.py  # controles, archive et copie launcher
 git commit -am "..."
 git push origin dev
 ```

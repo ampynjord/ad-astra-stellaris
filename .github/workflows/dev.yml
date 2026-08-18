@@ -15,3 +15,26 @@ jobs:
   controles:
     name: contrôles
     uses: ./.github/workflows/checks.yml
+
+  archive:
+    name: archive de test
+    needs: controles
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # On fabrique la meme archive que la sortie, sans jamais appeler Steam.
+      - name: construire l'archive
+        run: python tools/ci_release.py --sortie build
+
+      - name: conserver l'archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: ad-astra-dev-${{ github.sha }}
+          path: build/ad_astra_v*.zip
+          if-no-files-found: error
+          retention-days: 14
