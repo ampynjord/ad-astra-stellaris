@@ -16,6 +16,7 @@ ROOT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parents[1] / "
 TARGET = ROOT / "common" / "technology" / "adastra_age_techs.txt"
 ENGLISH = ROOT / "localisation" / "english" / "adastra_ages_l_english.yml"
 NEXT_AGE = re.compile(r"^\s*NOT = \{ has_country_flag = (adastra_reached_[a-z]+) \}\s*$")
+INVALID_GROWTH = re.compile(r"^(\s*)pop_growth_speed\s*=\s*([0-9.]+)\s*$")
 BUILDINGS_EN = {
     "Monument des ancêtres": "Ancestral Monument",
     "Grenier": "Granary",
@@ -32,14 +33,21 @@ BUILDINGS_EN = {
 
 
 def transform(lines):
-    """Retire l'exclusion de potential et la replace par un poids nul."""
+    """Retire l'exclusion invalide et corrige les modificateurs obsoletes."""
     output = []
     in_potential = False
     potential_depth = 0
     next_age = None
     changed = 0
+    growth_fixed = 0
 
     for line in lines:
+        growth = INVALID_GROWTH.match(line)
+        if growth:
+            output.append(f"{growth.group(1)}logistic_growth_mult = {growth.group(2)}\n")
+            growth_fixed += 1
+            continue
+
         if line.strip() == "potential = {":
             in_potential = True
             potential_depth = line.count("{") - line.count("}")
@@ -74,12 +82,12 @@ def transform(lines):
 
         output.append(line)
 
-    return output, changed
+    return output, changed, growth_fixed
 
 
 def main():
     lines = TARGET.read_text(encoding="utf-8-sig").splitlines(keepends=True)
-    transformed, changed = transform(lines)
+    transformed, changed, growth_fixed = transform(lines)
     transformed = [
         line.replace(
             "# Source de verite : tools/age_techs_data.py\n",
@@ -96,6 +104,11 @@ def main():
         if changed != 225:
             raise SystemExit(f"{changed} exclusions transformees au lieu des 225 attendues.")
         print(f"{changed} exclusions de potential remplacees par weight_modifier.")
+
+    if growth_fixed not in (0, 8):
+        raise SystemExit(f"{growth_fixed} modificateurs de croissance corriges au lieu des 8 attendus.")
+    if growth_fixed:
+        print(f"{growth_fixed} modificateurs pop_growth_speed remplaces.")
 
     TARGET.write_text("".join(transformed), encoding="utf-8", newline="\n")
 
