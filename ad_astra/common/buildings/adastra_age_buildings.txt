@@ -13,7 +13,7 @@ building_adastra_cave = {
 	can_build = yes
 	base_buildtime = 240
 	category = unity
-	icon = "building_autochthon_monument"
+	icon = "building_adastra_cave"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
@@ -78,7 +78,7 @@ building_adastra_granary = {
 	can_build = yes
 	base_buildtime = 300
 	category = resource
-	icon = "building_primitive_farm"
+	icon = "building_adastra_granary"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
@@ -142,7 +142,7 @@ building_adastra_foundry = {
 	can_build = yes
 	base_buildtime = 300
 	category = manufacturing
-	icon = "building_primitive_mine"
+	icon = "building_adastra_foundry"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
@@ -202,7 +202,7 @@ building_adastra_tablet_house = {
 	can_build = yes
 	base_buildtime = 300
 	category = research
-	icon = "building_primitive_research"
+	icon = "building_adastra_tablet_house"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
@@ -263,7 +263,7 @@ building_adastra_courthouse = {
 	can_build = yes
 	base_buildtime = 330
 	category = government
-	icon = "building_low_tech_admin_hub"
+	icon = "building_adastra_courthouse"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
@@ -328,7 +328,7 @@ building_adastra_mill = {
 	can_build = yes
 	base_buildtime = 360
 	category = resource
-	icon = "building_food_processing_facility"
+	icon = "building_adastra_mill"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
@@ -388,7 +388,7 @@ building_adastra_citadel = {
 	can_build = yes
 	base_buildtime = 360
 	category = government
-	icon = "building_stone_palace"
+	icon = "building_adastra_citadel"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
@@ -454,7 +454,7 @@ building_adastra_university = {
 	can_build = yes
 	base_buildtime = 360
 	category = research
-	icon = "building_primitive_labs"
+	icon = "building_adastra_university"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
@@ -515,7 +515,7 @@ building_adastra_manufactory = {
 	can_build = yes
 	base_buildtime = 420
 	category = manufacturing
-	icon = "building_primitive_factory"
+	icon = "building_adastra_manufactory"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
@@ -577,7 +577,7 @@ building_adastra_radio = {
 	can_build = yes
 	base_buildtime = 480
 	category = unity
-	icon = "building_pre_ftl_radio_telescope"
+	icon = "building_adastra_radio"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
@@ -643,7 +643,7 @@ building_adastra_school = {
 	can_build = yes
 	base_buildtime = 480
 	category = research
-	icon = "building_state_academy"
+	icon = "building_adastra_school"
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
