@@ -1,20 +1,19 @@
-# Les contrôles. Un seul fichier, appelé à l'identique par dev.yml et par
-# release.yml — c'est ce qui garantit que main teste EXACTEMENT comme dev.
-# Si tu ajoutes un contrôle, tu l'ajoutes ici et les deux chaînes le prennent.
-name: contrôles
+# Shared checks. Both dev.yml and release.yml call this file unchanged, so
+# main is tested exactly as development is. Add any new check here.
+name: checks
 
 on:
   workflow_call:
     inputs:
-      version_attendue:
-        description: "Version que le dépôt doit annoncer, sans le v. Vide = pas de contrôle."
+      expected_version:
+        description: "Version the repository must declare, without the v. Empty disables this check."
         type: string
         required: false
         default: ""
 
 jobs:
-  verifier:
-    name: vérifier le mod
+  validate:
+    name: validate mod
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,27 +22,24 @@ jobs:
         with:
           python-version: "3.12"
 
-      # Une table de donnees modifiee sans regeneration donne un mod valide,
-      # mais pas celui que le depot pretend contenir. On refuse cet ecart ici.
-      - name: sorties generees a jour
+      # A modified data table without regeneration produces a valid mod, but
+      # not the one the repository claims to contain. Reject that mismatch.
+      - name: generated files up to date
         run: python tools/verify_generated.py
 
-      # Le contrôle de fond : 35 règles sur le contenu du mod lui-même.
-      # Historique, vagues, icônes, verrous, fuites de technologies vanilla,
-      # modificateurs inventés, identifiant Workshop.
-      - name: contenu du mod
+      # Core content checks: history, waves, icons, gates, vanilla technology
+      # leaks, invalid modifiers, and the Workshop identifier.
+      - name: mod content
         run: python tools/verify_1_2.py
 
-      # Ce que le contrôle de fond ne regarde pas : la cohérence entre le
-      # dépôt et ce qu'on s'apprête à publier.
-      - name: version, changelog, descriptions
-        run: python tools/verify_release.py "${{ inputs.version_attendue }}"
+      # Validate consistency between the repository and the planned release.
+      - name: version, changelog, and descriptions
+        run: python tools/verify_release.py "${{ inputs.expected_version }}"
 
-      # La note de changement doit exister et tenir dans les limites de Steam.
-      # On la construit ici pour la même raison qu'on compile en CI : une
-      # note qui ne se génère pas le jour de la sortie est une sortie ratée.
-      - name: note de changement
+      # Build the changelog here too: a release note that fails on release day
+      # is a failed release.
+      - name: changelog entry
         run: |
           python tools/changenote.py > /tmp/changenote.txt
-          echo "$(wc -c < /tmp/changenote.txt) caractères"
+          echo "$(wc -c < /tmp/changenote.txt) characters"
           head -c 600 /tmp/changenote.txt

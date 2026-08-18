@@ -1,36 +1,33 @@
-# La sortie. Se déclenche sur un tag v*, jamais sur un simple merge :
-# corriger une faute dans le README ne doit pas envoyer une mise à jour
-# à 954 abonnés.
+# Release workflow. It runs on v* tags only, never on an ordinary merge:
+# correcting a README typo must not push an update to subscribers.
 #
 #   git tag -a v1.3.1 -m "..." && git push origin v1.3.1
 #
-# Secrets nécessaires (Settings > Secrets and variables > Actions) :
-#   STEAM_USERNAME    ton identifiant Steam
-#   STEAM_CONFIG_VDF  le config.vdf d'un SteamCMD déjà authentifié, en base64
-#                     (voir docs/PUBLICATION.md — ne colle jamais ton mot de
-#                     passe ici, ni nulle part ailleurs)
-name: sortie
+# Required secrets (Settings > Secrets and variables > Actions):
+#   STEAM_USERNAME    Steam account name
+#   STEAM_CONFIG_VDF  base64 config.vdf from an authenticated SteamCMD session
+#                     (see docs/PUBLICATION.md; never paste a password here)
+name: release
 
 on:
   push:
     tags: ["v*"]
 
 concurrency:
-  group: sortie
+  group: release
   cancel-in-progress: false
 
 jobs:
-  # Exactement les mêmes contrôles que sur dev, plus la vérification que le
-  # tag, le descripteur et le changelog annoncent tous la même version.
-  controles:
-    name: contrôles
+  # Same checks as development, plus tag/descriptor/changelog version parity.
+  checks:
+    name: checks
     uses: ./.github/workflows/checks.yml
     with:
-      version_attendue: ${{ github.ref_name }}
+      expected_version: ${{ github.ref_name }}
 
-  publier:
-    name: publier sur le Workshop
-    needs: controles
+  publish:
+    name: publish to Workshop
+    needs: checks
     runs-on: ubuntu-latest
     environment: steam
     steps:
@@ -42,14 +39,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: préparer le contenu et les manifestes
+      - name: prepare content and manifests
         run: |
           python tools/ci_release.py --sortie "$PWD/build"
-          echo "mods publiés : $(tr '\n' ' ' < build/publies.txt)"
+          echo "published mods: $(tr '\n' ' ' < build/publies.txt)"
 
-      # SteamCMD refuse un dépôt de moins de 32 bits ; l'image Ubuntu des
-      # runners est 64 bits et il lui faut les bibliothèques i386.
-      - name: installer SteamCMD
+      # SteamCMD requires 32-bit support; Ubuntu runners are 64-bit and need
+      # the i386 libraries.
+      - name: install SteamCMD
         run: |
           sudo dpkg --add-architecture i386
           sudo apt-get update -qq
@@ -58,24 +55,22 @@ jobs:
           curl -sSL https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
             | tar -xz -C "$HOME/steamcmd"
 
-      # On ne transmet pas de mot de passe. Le config.vdf porte un jeton de
-      # session déjà validé par Steam Guard : SteamCMD s'en sert et ne demande
-      # rien. S'il expire, la sortie échoue proprement ici plutôt que de
-      # publier à moitié — regénère-le et rejoue le tag.
-      - name: authentifier SteamCMD
+      # No password is passed. config.vdf contains a Steam Guard-approved
+      # session token. If it expires, the release fails cleanly here.
+      - name: authenticate SteamCMD
         env:
           CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
         run: |
           if [ -z "$CONFIG_VDF" ] || [ -z "$STEAM_USERNAME" ]; then
-            echo "::error::secrets STEAM_CONFIG_VDF et STEAM_USERNAME requis — voir docs/PUBLICATION.md"
+            echo "::error::STEAM_CONFIG_VDF and STEAM_USERNAME are required; see docs/PUBLICATION.md"
             exit 1
           fi
           mkdir -p "$HOME/Steam/config"
           echo "$CONFIG_VDF" | base64 -d > "$HOME/Steam/config/config.vdf"
           chmod 600 "$HOME/Steam/config/config.vdf"
 
-      - name: envoyer sur le Workshop
+      - name: publish to Workshop
         env:
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
         run: |
@@ -85,46 +80,44 @@ jobs:
             attendu=$(python -c "import json,sys;print(next(m['publishedfileid'] for m in json.load(open('workshop/mods.json'))['mods'] if m['cle']=='$cle'))")
             "$HOME/steamcmd/steamcmd.sh" +login "$STEAM_USERNAME" \
               +workshop_build_item "$PWD/build/$cle/item.vdf" +quit | tee "/tmp/steam_$cle.log"
-            # SteamCMD sort en 0 même quand il refuse le dépôt. On lit la sortie.
+            # SteamCMD exits 0 even when it rejects an upload, so inspect output.
             grep -q "Success" "/tmp/steam_$cle.log" || {
-              echo "::error::$cle : SteamCMD n'a pas confirmé la publication"; exit 1; }
+              echo "::error::$cle: SteamCMD did not confirm publication"; exit 1; }
             grep -q "$attendu" "/tmp/steam_$cle.log" || {
-              echo "::error::$cle : l'identifiant publié n'est pas $attendu — un doublon a pu être créé"; exit 1; }
+              echo "::error::$cle: published identifier is not $attendu; a duplicate may have been created"; exit 1; }
             echo "::endgroup::"
           done < build/publies.txt
 
-      # La description française ne peut pas partir d'ici : le manifeste de
-      # SteamCMD n'a pas de champ de langue, il n'écrit que la description par
-      # défaut (anglaise). La page du Workshop, elle, garde bien une
-      # description par langue — c'est un geste manuel, et rare.
-      - name: rappeler les descriptions françaises qui ont bougé
+      # SteamCMD only writes the default English description. French Workshop
+      # text remains a rare, deliberate manual update.
+      - name: report changed French descriptions
         run: |
           precedent=$(git describe --tags --abbrev=0 "${{ github.ref_name }}^" 2>/dev/null || echo "")
           {
-            echo "## Publié sur le Workshop"
+            echo "## Published to Workshop"
             echo ""
             while read -r cle; do
               id=$(python -c "import json;print(next(m['publishedfileid'] for m in json.load(open('workshop/mods.json'))['mods'] if m['cle']=='$cle'))")
               echo "- **$cle** — <https://steamcommunity.com/sharedfiles/filedetails/?id=$id>"
             done < build/publies.txt
             echo ""
-            echo "### À faire à la main"
+            echo "### Manual follow-up"
             echo ""
             reste=0
             while read -r cle; do
               fr="workshop/$cle/description_FR.txt"
               if [ -z "$precedent" ] || ! git diff --quiet "$precedent" -- "$fr" 2>/dev/null; then
-                echo "- **$cle** : la description française a changé. Page du mod → menu \`≡\` → *Modifier le nom et la description* → **français** → coller \`$fr\`."
+                echo "- **$cle**: the French description changed. Mod page → \`≡\` menu → *Edit title & description* → **French** → paste \`$fr\`."
                 reste=1
               fi
             done < build/publies.txt
-            [ "$reste" = 0 ] && echo "Rien : aucune description française n'a bougé."
+            [ "$reste" = 0 ] && echo "Nothing to do: no French description changed."
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: note de changement pour la release GitHub
+      - name: generate GitHub release notes
         run: python tools/changenote.py --markdown > /tmp/notes.md
 
-      - name: créer la release GitHub
+      - name: create GitHub release
         uses: softprops/action-gh-release@v2
         with:
           body_path: /tmp/notes.md
