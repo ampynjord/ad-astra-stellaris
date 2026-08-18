@@ -1,5 +1,8 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
-  - name: Discussion générale / General discussion
+  - name: General discussion
     url: https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257
-    about: Pour parler du mod sans signaler de bug précis. / To talk about the mod without reporting a specific bug.
+    about: Use the Steam Workshop discussion area for questions and conversation that are not a reproducible bug or a concrete idea.
+  - name: Ad Astra Discord
+    url: https://discord.gg/nKP4TfNzNX
+    about: Share play reports, screenshots, ideas, and community mod stacks with the Ad Astra community.
