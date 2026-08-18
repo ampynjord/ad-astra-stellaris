@@ -181,7 +181,7 @@ def capital_block(c, nxt, tier):
     b.append("\tbase_buildtime = 360")
     b.append("")
     b.append("\tcategory = government")
-    b.append('\ticon = "building_low_tech_capital"')
+    b.append('\ticon = "%s"' % c["icon"])
     b.append("\tbuilding_sets = { government }")
     b.append("")
     if c["tech"]:

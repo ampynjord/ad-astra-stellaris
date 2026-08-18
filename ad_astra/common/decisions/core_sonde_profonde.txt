@@ -21,7 +21,7 @@
 
 decision_core_sonde_profonde = {
 	owned_planets_only = yes
-	icon = decision_satellite_in_orbit
+	icon = decision_core_sonde_profonde
 
 	# Neuf ans. Une sonde ne se lance pas a la legere et n'arrive pas vite :
 	# les vraies ont mis douze ans a sortir de leur systeme.
