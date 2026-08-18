@@ -1,0 +1,50 @@
+# Shared checks for the maintained 1.3 hotfix line. Development and tagged
+# releases invoke this same workflow, so a hotfix receives the same validation.
+name: checks
+
+on:
+  workflow_call:
+    inputs:
+      expected_version:
+        description: "Version expected from descriptor, changelog, and tag. Empty skips tag parity."
+        required: false
+        type: string
+        default: ""
+      require_main:
+        description: "Require the checked commit to be reachable from main."
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  validate:
+    name: validate mod
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: confirm release tag is on main
+        if: inputs.require_main
+        run: |
+          git fetch origin main --depth=1
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main || {
+            echo "::error::The release tag commit is not reachable from main."
+            exit 1
+          }
+
+      - name: validate 1.3 hotfix invariants
+        run: python tools/verify_1_3_1.py "${{ inputs.expected_version }}"
+
+      - name: validate version, changelog, and Workshop content
+        run: python tools/verify_release.py "${{ inputs.expected_version }}"
+
+      - name: generate changelog entry
+        run: |
+          python tools/changenote.py > /tmp/changenote.txt
+          echo "$(wc -c < /tmp/changenote.txt) characters"
