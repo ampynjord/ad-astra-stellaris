@@ -13,23 +13,21 @@
 # Chaque relance ajoute 35 % au Programme d'exploration, 25 % a la flotte :
 # monter une seconde expedition n'a jamais ete aussi simple que la premiere.
 adastra_cout_relance_explore = {
-	base = 1
-	if = {
-		limit = { has_variable = adastra_relances_explore }
-		add = {
-			value = adastra_relances_explore
-			mult = 0.35
-		}
+	base = 0
+	modifier = {
+		add = owner.adastra_relances_explore
+		owner = { is_variable_set = adastra_relances_explore }
 	}
+	mult = 0.35
+	add = 1
 }
 
 adastra_cout_relance_navy = {
-	base = 1
-	if = {
-		limit = { has_variable = adastra_relances_navy }
-		add = {
-			value = adastra_relances_navy
-			mult = 0.25
-		}
+	base = 0
+	modifier = {
+		add = owner.adastra_relances_navy
+		owner = { is_variable_set = adastra_relances_navy }
 	}
+	mult = 0.25
+	add = 1
 }
