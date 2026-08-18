@@ -229,7 +229,8 @@ def remplace_loc(chemin, langue, lignes):
     marque = "\n# --- verrou de passage d'age (genere) ---\n"
     txt = txt.split(marque)[0].rstrip("\n")
     txt += marque + "\n".join(lignes) + "\n"
-    open(chemin, "w", encoding="utf-8-sig").write(txt)
+    with open(chemin, "w", encoding="utf-8-sig", newline="\n") as sortie:
+        sortie.write(txt)
     return len(lignes)
 
 
@@ -250,7 +251,8 @@ def main():
     if k < 0:
         sys.exit("fin du bloc monthly_progress introuvable")
     nouveau = src[:j] + corps() + src[k + 1:]
-    open(SITUATION, "w", encoding="utf-8").write(nouveau)
+    with open(SITUATION, "w", encoding="utf-8", newline="\n") as sortie:
+        sortie.write(nouveau)
 
     n_tot = sum(len(TECHS[a]) for a, _b, _c, _d in AGES) + len(FONDATRICES)
     print("situation : %d blocs de verrou ecrits" % n_tot)
