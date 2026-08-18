@@ -1,5 +1,18 @@
 # Changelog — Ad Astra
 
+## 1.3.1 — 2026-08-18
+Critical hotfix for the 1.3 release.
+
+- **Age technologies no longer invalidate their own prerequisites.** Once an
+  age was reached, 1.3 removed the previous age from `potential`. Stellaris
+  then rejected every later technology granted by the mod, blocking progress
+  at Bronze and leaving advanced starts without their historical technology
+  package. Technologies now leave the research draw through a zero weight,
+  while remaining valid prerequisites for `give_technology`.
+- **Advanced starts now receive their earlier technologies before the capital
+  is prepared.** The starting capital can therefore correctly retain its
+  age-appropriate energy and consumer-goods economy.
+
 ## 1.3.0 (bêta) — 2026-08-16
 « Le dos technologique ». La 1.2 remplissait les âges ; la 1.3 refait ce qui les porte. Elle emporte aussi tous les correctifs de la 1.2.1, qui a été annulée et jamais publiée. / "The Technological Backbone". 1.2 filled the ages; 1.3 rebuilds what holds them up. It also carries every fix from 1.2.1, which was cancelled and never released.
 
