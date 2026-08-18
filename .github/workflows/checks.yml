@@ -1,19 +1,19 @@
-# Shared checks. Both development and releases call this workflow unchanged,
-# so main is tested exactly as development is. Add any new check here.
+# Shared checks for the maintained 1.3 hotfix line. Development and tagged
+# releases invoke this same workflow, so a hotfix receives the same validation.
 name: checks
 
 on:
   workflow_call:
     inputs:
       expected_version:
-        description: "Version the repository must declare, without the v. Empty disables this check."
-        type: string
+        description: "Version expected from descriptor, changelog, and tag. Empty skips tag parity."
         required: false
+        type: string
         default: ""
       require_main:
-        description: "Require the checked commit to belong to main."
-        type: boolean
+        description: "Require the checked commit to be reachable from main."
         required: false
+        type: boolean
         default: false
 
 jobs:
@@ -29,7 +29,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      # Tags made from a feature branch must never be able to publish a mod.
       - name: confirm release tag is on main
         if: inputs.require_main
         run: |
@@ -39,24 +38,13 @@ jobs:
             exit 1
           }
 
-      # A modified data table without regeneration produces a valid mod, but
-      # not the one the repository claims to contain. Reject that mismatch.
-      - name: generated files up to date
-        run: python tools/verify_generated.py
+      - name: validate 1.3 hotfix invariants
+        run: python tools/verify_1_3_1.py "${{ inputs.expected_version }}"
 
-      # Core content checks: history, waves, icons, gates, vanilla technology
-      # leaks, invalid modifiers, and the Workshop identifier.
-      - name: mod content
-        run: python tools/verify_1_2.py
-
-      # Validate consistency between the repository and the planned release.
-      - name: version, changelog, and descriptions
+      - name: validate version, changelog, and Workshop content
         run: python tools/verify_release.py "${{ inputs.expected_version }}"
 
-      # Build the changelog here too: a release note that fails on release day
-      # is a failed release.
-      - name: changelog entry
+      - name: generate changelog entry
         run: |
           python tools/changenote.py > /tmp/changenote.txt
           echo "$(wc -c < /tmp/changenote.txt) characters"
-          head -c 600 /tmp/changenote.txt

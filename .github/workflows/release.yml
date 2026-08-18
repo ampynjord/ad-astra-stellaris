@@ -1,13 +1,5 @@
-# Generic production workflow. It runs for every v* tag created from main,
-# whether the tag represents a normal release or a hotfix.
-# An ordinary merge never pushes an update to Workshop subscribers.
-#
-#   git tag -a vX.Y.Z -m "..." && git push origin vX.Y.Z
-#
-# Required secrets (Settings > Secrets and variables > Actions):
-#   STEAM_USERNAME    Steam account name
-#   STEAM_CONFIG_VDF  gzip+base64 config.vdf from an authenticated SteamCMD session
-#                     (see docs/PUBLICATION.md; never paste a password here)
+# Generic production workflow for every v* tag created from main. It handles
+# both a normal 1.3 release and any later 1.3 hotfix without a renamed copy.
 name: release
 
 on:
@@ -22,7 +14,6 @@ permissions:
   contents: write
 
 jobs:
-  # Same checks as development, plus tag/descriptor/changelog version parity.
   checks:
     name: checks
     uses: ./.github/workflows/checks.yml
@@ -49,8 +40,7 @@ jobs:
           python tools/ci_release.py --sortie "$PWD/build"
           echo "published mods: $(tr '\n' ' ' < build/publies.txt)"
 
-      # This cache holds SteamCMD binaries only. Authentication stays in
-      # $HOME/Steam/config and is deliberately excluded from the cache.
+      # Binary cache only: credentials remain out of the cache.
       - name: restore SteamCMD cache
         id: steamcmd_cache
         uses: actions/cache/restore@v6.1.0
@@ -58,8 +48,6 @@ jobs:
           path: ~/steamcmd
           key: steamcmd-linux-v2
 
-      # SteamCMD requires 32-bit support; Ubuntu runners are 64-bit and need
-      # the i386 libraries even when SteamCMD itself is restored from cache.
       - name: install SteamCMD dependencies
         run: |
           sudo dpkg --add-architecture i386
@@ -70,12 +58,12 @@ jobs:
         if: steps.steamcmd_cache.outputs.cache-hit != 'true'
         run: |
           mkdir -p "$HOME/steamcmd"
-          timeout 120 curl --fail --silent --show-error --location \
-            --connect-timeout 20 --max-time 110 \
-            https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
+          timeout 200 curl --fail --silent --show-error --location \
+            --connect-timeout 20 --max-time 180 \
+            https://media.steampowered.com/client/installer/steamcmd_linux.tar.gz \
             -o /tmp/steamcmd_linux.tar.gz
           tar -xzf /tmp/steamcmd_linux.tar.gz -C "$HOME/steamcmd"
-          timeout 180 "$HOME/steamcmd/steamcmd.sh" +quit
+          timeout 300 "$HOME/steamcmd/steamcmd.sh" +quit
 
       - name: save SteamCMD cache
         if: steps.steamcmd_cache.outputs.cache-hit != 'true'
@@ -84,16 +72,13 @@ jobs:
           path: ~/steamcmd
           key: ${{ steps.steamcmd_cache.outputs.cache-primary-key }}
 
-      # No password is passed. config.vdf contains a Steam Guard-approved
-      # session token. Both the current gzip+base64 format and the older
-      # plain base64 format are accepted to avoid breaking secret rotation.
       - name: authenticate SteamCMD
         env:
           CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
         run: |
           if [ -z "$CONFIG_VDF" ] || [ -z "$STEAM_USERNAME" ]; then
-            echo "::error::STEAM_CONFIG_VDF and STEAM_USERNAME are required; see docs/PUBLICATION.md"
+            echo "::error::STEAM_CONFIG_VDF and STEAM_USERNAME are required."
             exit 1
           fi
           mkdir -p "$HOME/Steam/config"
@@ -117,47 +102,20 @@ jobs:
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
         run: |
           set -o pipefail
-          while read -r cle; do
-            echo "::group::$cle"
-            attendu=$(python -c "import json,sys;print(next(m['publishedfileid'] for m in json.load(open('workshop/mods.json'))['mods'] if m['cle']=='$cle'))")
+          while read -r key; do
+            echo "::group::$key"
+            expected=$(python -c "import json; print(next(m['publishedfileid'] for m in json.load(open('workshop/mods.json'))['mods'] if m['cle']=='$key'))")
             timeout 300 "$HOME/steamcmd/steamcmd.sh" \
               +@NoPromptForPassword 1 +@ShutdownOnFailedCommand 1 \
               +login "$STEAM_USERNAME" \
-              +workshop_build_item "$PWD/build/$cle/item.vdf" +quit \
-              | tee "/tmp/steam_$cle.log"
-            # SteamCMD exits 0 even when it rejects an upload, so inspect output.
-            grep -q "Success" "/tmp/steam_$cle.log" || {
-              echo "::error::$cle: SteamCMD did not confirm publication"; exit 1; }
-            grep -q "$attendu" "/tmp/steam_$cle.log" || {
-              echo "::error::$cle: published identifier is not $attendu; a duplicate may have been created"; exit 1; }
+              +workshop_build_item "$PWD/build/$key/item.vdf" +quit \
+              | tee "/tmp/steam_$key.log"
+            grep -q "Success" "/tmp/steam_$key.log" || {
+              echo "::error::$key: SteamCMD did not confirm publication"; exit 1; }
+            grep -q "$expected" "/tmp/steam_$key.log" || {
+              echo "::error::$key: published identifier is not $expected"; exit 1; }
             echo "::endgroup::"
           done < build/publies.txt
-
-      # SteamCMD only writes the default English description. French Workshop
-      # text remains a rare, deliberate manual update.
-      - name: report changed French descriptions
-        run: |
-          precedent=$(git describe --tags --abbrev=0 "${{ github.ref_name }}^" 2>/dev/null || echo "")
-          {
-            echo "## Published to Workshop"
-            echo ""
-            while read -r cle; do
-              id=$(python -c "import json;print(next(m['publishedfileid'] for m in json.load(open('workshop/mods.json'))['mods'] if m['cle']=='$cle'))")
-              echo "- **$cle** — <https://steamcommunity.com/sharedfiles/filedetails/?id=$id>"
-            done < build/publies.txt
-            echo ""
-            echo "### Manual follow-up"
-            echo ""
-            reste=0
-            while read -r cle; do
-              fr="workshop/$cle/description_FR.txt"
-              if [ -z "$precedent" ] || ! git diff --quiet "$precedent" -- "$fr" 2>/dev/null; then
-                echo "- **$cle**: the French description changed. Mod page → \`≡\` menu → *Edit title & description* → **French** → paste \`$fr\`."
-                reste=1
-              fi
-            done < build/publies.txt
-            [ "$reste" = 0 ] && echo "Nothing to do: no French description changed."
-          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: generate GitHub release notes
         run: python tools/changenote.py --markdown > /tmp/notes.md

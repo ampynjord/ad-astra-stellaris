@@ -1,130 +1,50 @@
 # Changelog — Ad Astra
 
-## 1.3.0 (bêta) — 2026-08-16
-« Le dos technologique ». La 1.2 remplissait les âges ; la 1.3 refait ce qui les porte. Elle emporte aussi tous les correctifs de la 1.2.1, qui a été annulée et jamais publiée. / "The Technological Backbone". 1.2 filled the ages; 1.3 rebuilds what holds them up. It also carries every fix from 1.2.1, which was cancelled and never released.
+All notable player-facing changes are recorded here. Dates use ISO format.
 
-> **Cette version est sortie sans avoir été entièrement testée**, le cas du système natal revendiqué inclus. C'était un choix assumé : la sortir et laisser les joueurs remonter ce qui casse. / **This version shipped without having been fully tested**, the claimed-home-system case included. That was a deliberate choice: ship it and let players report what breaks.
+## 1.3.1 — 2026-08-18
 
-### Deux cent cinquante technologies d'époque / Two hundred and fifty period technologies
+### Fixed
 
-- **Cent technologies deviennent deux cent cinquante**, vingt-cinq par âge au lieu de dix, réparties sur les trois domaines de recherche. Un âge cessait d'avoir quoi que ce soit à offrir bien avant de se terminer ; il a maintenant de quoi tenir toute son étape. / **A hundred technologies become two hundred and fifty**, twenty-five per age instead of ten, spread across all three research areas.
-- **Chaque technologie porte son année réelle**, et un contrôle hors ligne refuse toute technologie dont la date sort des bornes de son âge. Douze technologies étaient dans le mauvais âge — l'informatique en particulier, qui appartient à l'Âge de l'atome et non à l'Âge spatial — et ont été déplacées. / **Every technology carries its real year**, and an offline check refuses any whose date falls outside its age's bounds. Twelve were in the wrong age — computing above all, which belongs to the Atomic Age — and were moved.
-- **Elles s'ouvrent par vagues de cinq**, à mesure que l'âge avance, et **la vague est déduite de la date**. L'ordre historique n'est donc plus une intention mais une propriété du système : à l'intérieur d'un âge, les technologies arrivent dans l'ordre où l'histoire les a trouvées. Impossible de vider un âge en avance ; impossible de bâtir une base stellaire avant le microprocesseur. / **They open in waves of five** as the age advances, and **the wave is derived from the date**. Historical order is no longer an intention but a property of the system.
-- **Les technologies d'un autre âge n'apparaissent plus dans le tirage.** Les drapeaux d'âge s'accumulent — atteindre l'Âge du fer ne retire pas celui du bronze — et le tirage proposait donc des technologies de tous les âges déjà traversés. Chaque technologie d'époque exclut désormais explicitement l'âge suivant. / **Technologies from another age no longer appear in the draw.** Age flags accumulate; each period technology now explicitly excludes the following age.
-- **Les technologies coûtent 20 % de plus.** Elles se cherchaient trop vite pour ce qu'elles représentent. / **Technologies cost 20 % more.**
+- Age technologies no longer invalidate their own prerequisites after an age is completed. This prevented Bronze and later technology from being granted or researched in 1.3.0.
+- Advanced starts now receive their prior historical technologies before the starting capital is prepared, restoring the intended energy and consumer-goods economy.
 
-### L'Âge spatial est refondu / The Space Age is rebuilt
+### Player action
 
-- **Les seize technologies du jeu de base ne sont plus données, elles se cherchent.** Elles deviennent des **technologies fondatrices**, et chacune n'apparaît que lorsque le jeu qu'elle sert existe : les améliorations de coques attendent qu'un vaisseau puisse exister, celles de bases stellaires attendent le chantier orbital, celles de colonisation attendent la colonisation. Inutile d'améliorer des corvettes qui ne peuvent pas naître. / **The sixteen base-game technologies are no longer handed to you.** They become **founding technologies**, each appearing only when the gameplay it serves exists.
-- **Le paquet de l'Âge spatial n'était en réalité pas donné du tout.** Trouvé dans l'`error.log` d'une partie du 16/08 : seize lignes *« Attempting to give invalid technology »*. Les deux drapeaux qui ouvrent le `potential` de ces technologies étaient posés **après** les seize octrois, et l'ordre des octrois ignorait les prérequis — bases stellaires données après ce qui en dépend. `give_technology` refuse en silence : rien en jeu ne le signalait. C'est la cause profonde du « programme d'exploration terminé mais pas de vaisseau scientifique », et elle était toujours vivante dans la 1.2 publiée. / **The Space Age package was not being granted at all.** Sixteen *"Attempting to give invalid technology"* lines in the error log: the flags opening these technologies' `potential` were set **after** the grants, and the grant order ignored prerequisites. `give_technology` refuses silently. This was the root cause of "exploration program complete but no science ship", still live in published 1.2.
-- **Les technologies du jeu de base qui ne sont pas de départ attendent l'émergence.** Soixante-dix d'entre elles pouvaient apparaître pendant le confinement ; elles ne se présentent plus qu'à partir de l'émergence, à douze exceptions économiques près qui n'ont besoin d'aucun vaisseau pour servir. / **Base-game technologies that are not starting technologies wait for emergence.** Seventy could appear during confinement; they now hold until emergence, with twelve economic exceptions that need no ship to be useful.
-- **On ne quitte pas un âge tant qu'il reste quelque chose à y inventer.** La barre de l'Ascension se fige à la fin de l'étape, et son infobulle nomme ce qui manque, une ligne par technologie — 266 verrous en tout, les 250 d'époque et les 16 fondatrices. / **You do not leave an age while something is left to invent in it.** The Ascent bar freezes at the end of the stage and its tooltip names what is missing — 266 locks in all.
-- **L'accélération d'un âge épuisé est retirée.** Elle n'avait plus de sens : avec vingt-cinq technologies par âge ouvertes par vagues, un âge ne s'épuise plus avant la fin de son étape. / **The exhausted-age acceleration is removed.** With twenty-five technologies per age opening in waves, an age no longer runs dry before its stage ends.
+- Start a new game after updating. Existing saves created with 1.3.0 may already be missing the technologies that the hotfix restores for new starts.
 
-### Le programme spatial / The space program
+## 1.3.0 — The Technological Backbone — 2026-08-16
 
-- **Quatre programmes, chacun derrière sa propre technologie fondatrice** : Exploration, Flotte orbitale, Base stellaire, Hyperpropulsion. Ils se paient en **influence et en minerais**, et les deux relançables coûtent plus cher à chaque relance. / **Four programs, each behind its own founding technology**, paid in influence and minerals; the two repeatable ones cost more each time.
-- **Aucun programme ne dépend plus de la réussite d'un autre**, seulement de l'étape atteinte. La flotte et la colonisation exigeaient que le chantier orbital soit bâti ; un empire dont le ciel est occupé les perdait en cascade. Les vaisseaux sont livrés par événement — ils n'ont jamais eu besoin d'un chantier pour naître. / **No program depends on another program succeeding any more**, only on the stage reached.
-- **Prospection par présence.** Le vaisseau scientifique cartographie un astre par mois tant qu'il est dans le système, **revendiqué ou non**. C'est la réponse au blocage remonté par Curious : un empire revendique le système natal et le moteur refuse la prospection — *« you can't survey someone else's system »* — dans deux parties sur cinq. Le refus est câblé dans le moteur ; la présence le contourne. / **Survey by presence.** The science ship maps one body a month while it sits in the system, **claimed or not**. The engine's refusal cannot be scripted away; presence goes around it.
-- **Vos vaisseaux ne sont plus expulsés de votre propre ciel.** `needs_border_access = no` sur le type de pays : un empire peut s'installer dans votre système natal, vos vaisseaux y restent. / **Your ships are no longer expelled from your own sky.**
+### Added
 
-### Équilibrage / Balance
+- 250 period technologies: 25 for each of the ten historical ages and across all three research fields.
+- Five chronological technology waves per age; the current wave is derived from the technologies' historical dates.
+- Research completion gating: an age waits until all of its period technologies have been discovered.
+- Sixteen base-game founding technologies for the Space Age, unlocked only when their gameplay becomes relevant.
+- Survey by presence for sublight science ships, including claimed home systems.
+- Space exploration, starbase, orbital fleet, and hyperspace programs.
+- Wider casus belli and war-goal support for grounded empires.
 
-- **Les bonus des technologies d'époque sont divisés par douze et demi.** Retour de cooldude808 : *« buffs stack from technologies so much that you basically become a one planet fallen empire »*. Personne n'avait additionné la colonne : le cumul atteignait **+635 % de production des emplois**, +185 % de recherche et **+71 points de stabilité** sur une échelle qui plafonne à 100. Les pénalités d'étape, elles, s'effacent en montant et disparaissent à l'émergence — il n'y avait aucun contrepoids à l'arrivée. Avec 250 technologies au lieu de 100, l'échelle passe à 0,08 pour que le cumul final reste au niveau visé. / **Period technology bonuses are cut to an eighth of an eighth.** The total reached **+635 % job output**, +185 % research and **+71 stability** on a scale capping at 100, with no counterweight left at emergence. With 250 technologies instead of 100 the scale drops to 0.08 so the final total stays where it should.
-- **Plus de terraformation ni de cuirassés à l'Âge spatial.** Les paliers 1 et 2 du jeu de base partageaient la même garde : six technologies de palier 1 ouvraient le palier 2, six de palier 2 ouvraient le palier 3 — que personne ne surcharge, et où se trouve la terraformation. Le palier 2 attend désormais l'émergence, ce qui ferme le palier 3 de lui-même. Six bâtiments du jeu de base (automatisation, cuves de clonage, centrales à plasma) ne sont donc plus accessibles au sol. / **No more terraforming or battleships in the Space Age.** Tier 2 now waits for emergence, which closes tier 3 on its own.
+### Changed
 
-### Guerre et diplomatie / War and diplomacy
+- Period technology bonuses were rescaled.
+- The Space Age now uses staged founding technology and program milestones rather than granting the normal starting package at once.
 
-- **Quinze casus belli et buts de guerre élargis.** Une guerre déclarée contre un empire au sol n'avait pas de but applicable : dix-sept conditions exigeaient un empire spatial classique. Elles acceptent désormais un empire confiné. / **Fifteen widened casus belli and war goals.** Seventeen conditions required a classic spacefaring empire; they now accept a grounded one.
+## 1.2.0 — The Ages — 2026-08-12
 
-### Correctifs / Fixes
+### Added
 
-- **Le type de civilisation nomade ne peut plus être combiné avec l'origine.** Signalé par Aldran. Ce n'était pas qu'une incohérence de fiction : le `potential_country` du jeu de base pour le vaisseau de construction et le colonisateur porte `is_nomadic = no` au premier niveau, hors de la condition que le mod élargit. Un empire nomade n'avait donc jamais ces deux coques — le Programme de base stellaire lui livrait les plans du Bâtisseur et de l'Arche pour des vaisseaux impossibles. Barré comme le sont les gestaltes, dans la forme exacte de six origines du jeu de base. / **The nomadic civilization type can no longer be combined with the origin.** Reported by Aldran. A nomadic empire never has construction or colony ships at all in the base game, so two programs were handing out blueprints for hulls that could not exist.
-- **Les icônes des technologies d'époque sont revues.** Cent dix-huit portaient un chiffre romain peint dans l'image — le I, II ou III d'un palier vanilla qui n'a aucun sens sur une technologie unique. Toutes remplacées par des icônes non numérotées, choisies une par une. / **Period technology icons reviewed.** A hundred and eighteen carried a roman numeral painted into the image; all replaced with unnumbered icons, hand-picked.
+- Historical ages, period buildings, capital tiers, and resource availability tied to technological development.
+- Starting-age and ascent-pace choices, grounded diplomacy and war support, and AI access to the origin.
 
-### Page et présentation / Page and presentation
+## 1.1.0 — 2026-08
 
-- **Le texte de l'origine est réécrit** : il décrivait encore le fonctionnement de la 1.1. / **The origin text is rewritten**; it still described how 1.1 worked.
-- **Les deux descriptions Workshop sont refaites entièrement**, française et anglaise. / **Both Workshop descriptions rebuilt from scratch**, French and English.
-- **Nouvelle vignette** : or sur bleu nuit, trajectoire en pointillés vers une étoile, `ORIGINS` et `PRÉ-PRL · PRE-FTL` en capitales espacées. Même direction artistique que le reste de la collection. / **New thumbnail**, in the collection's art direction.
-- **« PRL » est expliqué dans la description anglaise.** C'est l'abréviation française de « Plus Rapide que la Lumière » — FTL. Elle est transparente pour un francophone et opaque pour tout le monde d'autre ; le titre et la vignette portent les deux, sans que rien ne l'explique (merci Aldran). / **"PRL" is now explained in the English description**: it is simply FTL in French.
+### Added
 
-### Annulé / Cancelled
+- First public progression, early economy, and emergence framework.
 
-- **La 1.2.1 n'a jamais été publiée.** Elle devait être un correctif ; le chantier a débordé sur le dos technologique du mod et est devenu la 1.3. Le **Programme de satellites** qu'elle introduisait a été abandonné en route : il rendait le Programme d'exploration inutile en prospectant gratuitement le système natal. La prospection par présence règle le même problème sans court-circuiter le vaisseau scientifique. / **1.2.1 was never released.** It was meant to be a patch; the work spilled over into the mod's technological backbone and became 1.3. The **Satellite Program** it introduced was abandoned along the way — it made the Exploration Program pointless. Survey by presence solves the same problem without short-circuiting the science ship.
+## 1.0.0 — 2026-08
 
-## 1.2.0 (bêta) — 2026-08-16
-« Les Âges » : chaque âge devient un lieu où l'on joue. / "The Ages": every age becomes something you play.
+### Added
 
-### Les âges deviennent jouables / The ages become playable
-
-- **100 technologies d'époque**, 10 par âge, de la Maîtrise du feu à l'Écologie planétaire : la sépulture, l'alphabet, l'aqueduc, l'horlogerie, la théorie microbienne, la synthèse de l'ammoniac, le conteneur normalisé, le microprocesseur. Trois à quatre par domaine et par âge, avec des effets modestes mais réels. Réservées à l'origine Ad Astra, invisibles pour tout autre empire. / **100 period technologies**, 10 per age, from Mastery of Fire to Planetary Ecology: burial, the alphabet, the aqueduct, clockwork, germ theory, ammonia synthesis, the standard container, the microprocessor. Three to four per area per age, with small but real effects. Exclusive to the Ad Astra origin, invisible to every other empire.
-- **Un âge se joue maintenant de plusieurs façons.** Un âge propose dix technologies pour un budget de recherche d'environ huit : on ne peut plus tout prendre. Seule la première technologie de chaque domaine est un passage obligé vers l'âge suivant ; les autres sont un arbitrage. Et le verrou qui ouvre le jeu de base ne demande plus l'âge entier, mais six technologies sur dix. / **An age can now be played several ways.** An age offers ten technologies for a research budget of roughly eight: you can no longer take everything. Only the first technology of each area is a mandatory step toward the next age; the rest is a choice. And the gate that opens base-game technology no longer asks for the whole age, but six technologies out of ten.
-- **Les technologies d'époque précèdent le vanilla au lieu de le concurrencer** : les technologies du jeu de base d'un âge ne s'ouvrent qu'une fois les cinq technologies de cet âge terminées, et ne sont plus offertes d'office à l'entrée dans l'âge. / **Period technologies now precede vanilla instead of competing with it**: an age's base-game technologies only open once that age's five technologies are done, and are no longer handed out on entering the age.
-- **11 bâtiments d'époque** : Monument des ancêtres, Grenier, Fonderie, Maison des tablettes, Tribunal, Moulin, Citadelle, Université, Manufacture, Station de radiodiffusion, École publique. Construits pendant le confinement, ils restent debout après l'émergence. / **11 period buildings**: Ancestral Monument, Granary, Foundry, House of Tablets, Courthouse, Mill, Citadel, University, Manufactory, Broadcasting Station, Public School. Built during confinement, they remain standing after emergence.
-- **Le siège du pouvoir suit la civilisation.** Sept paliers de capitale, un par âge — Cercle de pierres, Maison commune, Palais, Cour et chancellerie, Hôtel de ville, Palais du gouvernement, Ministères — et le dernier débouche sur l'Administration planétaire du jeu de base, qui reprend ensuite sa propre chaîne. / **The seat of power follows the civilization.** Seven capital tiers, one per age — Ring of Stones, Common House, Palace, Court and Chancery, Town Hall, Government House, The Ministries — and the last one leads into the base game's Planetary Administration, which then resumes its own chain.
-
-### Une économie d'époque / A period economy
-
-- **Une ressource n'existe pas avant la technologie qui l'invente.** À l'Âge de pierre on a des minerais, de la nourriture, du commerce, de l'influence, de l'unité et de la recherche — rien d'autre. Les **alliages** arrivent avec la Métallurgie du bronze, les **biens de consommation** avec la Machine à vapeur et sa Manufacture, l'**énergie** avec le Réseau électrique. Et ce qu'on ne produit pas, on ne le consomme pas non plus : plus de facture d'électricité mille ans avant l'électricité. / **A resource does not exist before the technology that invents it.** In the Stone Age you have minerals, food, trade, influence, unity and research — nothing else. **Alloys** arrive with Bronze Metallurgy, **consumer goods** with the Steam Engine and its Manufactory, **energy** with the Power Grid. And what you do not produce, you do not consume either: no more electricity bill a thousand years before electricity.
-- **Votre commerce ne se convertit plus en énergie tant que vous êtes au sol.** Le jeu de base transforme la moitié de la valeur commerciale en crédits énergétiques, quelle que soit la politique choisie : une civilisation de l'Âge de pierre fabriquait de l'électricité en troquant. La conversion est neutralisée pour le seul empire Ad Astra — aucun autre empire de la galaxie n'est touché — et rétablie à l'arrivée du Réseau électrique. / **Your trade no longer converts into energy while you are grounded.** The base game turns half of trade value into energy credits whatever policy you pick: a Stone Age civilization was manufacturing electricity by bartering. The conversion is neutralized for the Ad Astra empire alone — no other empire in the galaxy is affected — and restored when the Power Grid arrives.
-- **Les districts générateurs sont inconstructibles avant l'électricité**, et les deux posés d'office sur le monde natal sont retirés. Un district crée ses emplois tout seul, sans bâtiment ni zone : c'est par là que +11,50 énergie par mois entraient à l'Âge de pierre. / **Generator districts cannot be built before electricity**, and the two placed on the homeworld by default are removed. A district creates its own jobs, with no building and no zone: that was how +11.50 energy per month was getting in during the Stone Age.
-- **Les technologies du jeu de base portent l'âge de leurs bâtiments.** Onze technologies sortent du verrou « tout s'ouvre à l'Âge spatial » et rejoignent l'âge du bâtiment qu'elles débloquent : purification du minerai et biens de consommation à l'âge industriel, alliages, réseau électrique et forage profond à l'âge de la machine, centrales améliorées et cultures modifiées à l'âge de l'atome. Vingt-et-un bâtiments du jeu de base ne sont plus surchargés du tout : leur technologie suffit. Moins de fichiers touchés, donc moins de conflits avec les autres mods. / **Base-game technologies now carry their buildings' age.** Eleven technologies leave the blanket "everything opens at the Space Age" lock and move to the age of the building they unlock: mineral purification and consumer goods at the industrial age, alloys, power grid and deep drilling at the machine age, improved power plants and gene crops at the atomic age. Twenty-one base-game buildings are no longer overridden at all — their technology is enough. Fewer files touched, so fewer conflicts with other mods.
-- **Technologies du jeu de base recalées sur leur date de découverte réelle** : la défense du territoire et la DCA passent de l'âge atomique à l'âge de la machine, le divertissement holographique part à l'âge spatial. / **Base-game technologies realigned with their real date of discovery**: territorial defence and flak move from the atomic age to the machine age, holographic entertainment moves to the space age.
-
-### Le rythme / Pacing
-- **Les âges durent deux fois plus longtemps** par défaut. C'était le retour le plus partagé de la 1.1 (Nobumon, argroww, Lucky13crocket : « Pierre → Spatial en trente ans de jeu »). La progression mensuelle de la situation est divisée par deux, et tous les modificateurs de rythme sont remis à l'échelle. Les quatre vitesses du premier jour restent disponibles. / **Ages last twice as long** by default — the most widely shared piece of 1.1 feedback. Monthly situation progress is halved and every pace modifier is rescaled. The four day-one speeds remain available.
-- **On ne quitte pas un âge tant qu'il reste quelque chose à y inventer.** La barre de l'Ascension monte, puis se fige à la fin de l'étape jusqu'à ce que les dix technologies de l'âge soient trouvées. L'infobulle de la situation **nomme les technologies manquantes**, une ligne par technologie : le joueur n'a jamais à deviner ce qui le retient. / **You do not leave an age while something is left to invent in it.** The Ascent bar climbs, then freezes at the end of the stage until all ten of the age's technologies are found — and the situation tooltip **names the missing ones**, one line each.
-
-### La galaxie autour de vous / The galaxy around you
-
-- **La diplomatie fonctionne pendant le confinement, dans les deux sens.** Quatorze actions diplomatiques du jeu de base testaient `is_country_type = default` en dur : un empire au sol pouvait accepter une proposition, jamais en faire une (merci Sithiya). Améliorer les relations, les dégrader et signer un accord de recherche sont désormais accessibles depuis le sol. / **Diplomacy works during confinement, both ways.** Fourteen base-game diplomatic actions hard-tested `is_country_type = default`: a grounded empire could accept a proposal but never make one. Improve relations, worsen relations and research agreements are now available from the ground.
-- **La guerre aussi.** Une civilisation au sol peut déclarer la guerre à un empire stellaire, et peut en subir une. C'est le risque assumé du chemin « galaxie vivante » — et l'Héritage de l'Ascension paie double pour l'avoir pris. / **So does war.** A grounded civilization can declare war on a spacefaring empire, and can have war declared on it. The Legacy of the Ascent pays double for taking that road.
-- **Cinq désignations de capitale et la Grande Archive rouvertes.** Même cause : `is_country_type = default` écrit en dur, dont `col_capital` sous une forme retournée en `NAND`. Comme la seule planète d'un empire confiné est sa capitale, il n'avait accès à **aucune** désignation. / **Five capital designations and the Grand Archive reopened**, same cause. Since a confined empire's only planet is its capital, it had access to **no** designation at all.
-- **L'IA peut jouer l'origine.** Jusqu'en 1.1 le poids de tirage était à zéro : l'IA aurait été paralysée, faute de personnalité valide sous le type de pays `adastra_grounded` et faute de poids sur les décisions du programme spatial. Les deux manques sont comblés. Le poids reste volontairement bas — un empire IA peut naître à l'Âge du bronze et gravir les âges à côté de vous, mais la galaxie garde ses grandes puissances. / **The AI can play the origin.** Until 1.1 the draw weight was zero, for want of a valid personality and of AI weights on the space program decisions. Both gaps are filled. The weight stays deliberately low.
-
-### Le programme spatial / The space program
-
-- **Cinq programmes, dont trois relançables** : Exploration (un vaisseau scientifique sous-luminique), Base stellaire (le chantier orbital, un vaisseau de construction et les plans de toute la flotte — une seule fois), Flotte militaire (des corvettes), Colonisation (une Arche peuplée de l'espèce principale), Hyperspatial (l'Hyperpropulsion entre dans le vivier de recherche). / **Five programs, three of them repeatable**: Exploration, Starbase (once only), Military Fleet, Colonization, Hyperspace.
-- **Les programmes livrent désormais les plans, pas seulement les vaisseaux.** Un vaisseau scientifique détruit par un événement du Vide était perdu pour toute la partie : le programme donnait un exemplaire sans jamais donner le modèle, et sans hyperpropulsion l'auto-conception ne produit rien (merci Sithiya). Les quatre coques sous-luminiques — Pionnier, Bâtisseur, Arche, Sentinelle — sont reconstructibles au chantier de la base stellaire. / **Programs now deliver the blueprints, not just the ships.** A science ship destroyed by a Void event was gone for the whole game. The four sublight hulls are now rebuildable at the starbase shipyard.
-- **Le ciel est déjà pris.** Le Programme de base stellaire dure un an, et rien n'empêche un empire de s'installer dans votre orbite pendant les travaux. Au terme du programme, un événement dédié : les plans restent acquis, la décision reste proposable, rien n'est bâti et rien n'est volé. / **The Sky Is Already Taken.** If a foreign station occupies your orbit when the Starbase Program completes, you keep the blueprints and the program stays available.
-- **Les empires à bio-vaisseaux paient le programme de flotte en nourriture.** Tailler des vaisseaux vivants dans la roche n'avait aucun sens (merci Sithiya). / **Bio-ship empires pay for the fleet program in food.**
-
-### L'émergence / Emergence
-
-- **Toute votre flotte est réarmée en versions PRL** — même nombre, mêmes équipages, mêmes positions. Scientifiques, constructeurs, colonisateurs et tous les vaisseaux militaires construits pendant le confinement traversent la percée au lieu d'être perdus. / **Your entire fleet is refitted with FTL** — same count, same crews, same positions. Nothing built during confinement is lost at the breakthrough.
-- **Les traditions sont verrouillées jusqu'à l'émergence.** Trente-trois catégories surchargées ; tout se rouvre à la percée. Une chefferie de l'Âge de pierre n'adopte pas une tradition galactique. / **Traditions are locked until emergence.** Thirty-three categories overridden; everything reopens at the breakthrough.
-- **Les bâtiments d'époque restent debout après l'émergence**, mais ne sont plus constructibles. / **Period buildings remain standing after emergence**, but can no longer be built.
-
-### Contenu anachronique du jeu de base / Anachronistic base-game content
-
-- **56 bâtiments du jeu de base recalés** sur l'âge de leur équivalent d'époque, 12 laissés de côté (gestalt), 1 disponible dès le départ. Plus besoin de les désactiver à la main (merci argroww). / **56 base-game buildings realigned** on the age of their period equivalent; 12 left aside (gestalt), 1 available from the start.
-- **Spécialisations de district, districts et zones datés par âge** au même titre que les bâtiments. / **District specializations, districts and zones dated by age** as well.
-
-## 1.1.1 (bêta) — 2026-08-12
-Deux correctifs de finition. / Two polish fixes.
-
-- **L'infobulle de l'origine s'affiche comme celle des autres origines.** La condition de sélection passe par `possible` seul, comme dans le jeu de base. / **The origin tooltip now displays like every other origin's**, using `possible` alone as the base game does.
-- **Origine barrée aux autorités gestaltes** pour de bon : `NOR` sur `auth_hive_mind` et `auth_machine_intelligence`. / **Origin properly barred to gestalt authorities.**
-
-## 1.1.0 (bêta) — 2026-08-11
-Mise à jour de consolidation : vos retours de bêta, rien d'autre. / Consolidation update: your beta feedback, nothing else.
-
-- **Correctif critique** : les réserves de ressources (énergie, alliages, influence, unité...) ne sont plus effacées à la percée supraluminique — merci Sithiya pour le rapport. S'applique aussi au réveil des IA « assoupies ». / **Critical fix**: stored resources are no longer wiped at the FTL breakthrough — thanks Sithiya for the report. Also applies to waking "slumbering" AIs.
-- **Vitesse d'ascension configurable** au premier jour : normale (défaut, identique à la 1.0), rapide (+50 %), lente (-50 %), très lente (-80 %) — le retour le plus demandé. / **Configurable ascension speed** on day one: normal (default, same as 1.0), fast (+50%), slow (-50%), very slow (-80%) — the most requested feature.
-- **Colmatage des techs anachroniques** : les technologies de tier 1 sans prérequis ne sont plus proposées avant l'Âge spatial (« des techs modernes au Moyen Âge » — merci Nobumon). Les autres empires ne sont pas affectés. / **Anachronistic tech fix**: tier-1 technologies without prerequisites are no longer offered before the Space Age ("modern techs in the Middle Ages" — thanks Nobumon). Other empires unaffected.
-- **Origine réservée aux empires réguliers** : les autorités gestaltes (ruche/machine) ne peuvent plus la sélectionner — leur contenu dédié viendra plus tard. / **Origin restricted to regular empires**: gestalt authorities (hive/machine) can no longer select it — their dedicated content will come later.
-- Parties 1.0 en cours : compatibles (les nouvelles options n'apparaissent que dans les nouvelles parties). / Ongoing 1.0 saves: compatible (new options only appear in new games).
-
-## 1.0.0 (bêta) — 2026-08-11
-Première bêta publique. / First public beta.
-
-- Origine « Ad Astra » : départ pré-PRL, choix parmi les 10 âges vanilla
-- Situation « Au-delà des étoiles » : 10 âges + 3 phases de programme spatial, 3 approches
-- 31 technologies de départ verrouillées et redistribuées selon l'histoire réelle
-- Programme spatial : exploration (vaisseau sous-luminique), base stellaire, hyperespace + flotte militaire facultative
-- Émergence : réarmement PRL, Héritage de l'Ascension, négociation si système occupé
-- Observation inversée : ovnis, disparitions, signaux, débris
-- Galaxie assoupie (IA désactivées) en option
-- 10 cartes d'objectifs dédiées, 46 cartes spatiales masquées pendant le confinement
-- Localisation FR + EN complète, icônes vanilla partout
+- Initial public release of Ad Astra — Origins.

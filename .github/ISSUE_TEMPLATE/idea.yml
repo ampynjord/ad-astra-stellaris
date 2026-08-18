@@ -1,41 +1,43 @@
-name: Idea or suggestion
-description: Propose content, a balance adjustment, or a usability improvement.
-title: "[Idea] "
+name: Idea
+description: Suggest content, balance, usability, or community improvements.
+title: "[idea] "
 labels: ["idea"]
 body:
   - type: markdown
     attributes:
       value: |
-        Suggestions are discussed before they are planned. A good idea is not a release-date promise.
-  - type: dropdown
-    id: category
-    attributes:
-      label: Suggestion type
-      options:
-        - Content or technologies
-        - Balance or pace
-        - Interface or usability
-        - Compatibility
-        - Documentation or translation
-        - Other
-    validations:
-      required: true
+        Ideas are welcome. Describe the moment in play that prompted yours and the problem it would solve; a technical solution is optional.
+
   - type: textarea
-    id: problem
+    id: idea
     attributes:
-      label: Need or problem
-      description: Which part of the game would this improve?
+      label: The idea
     validations:
       required: true
-  - type: textarea
-    id: proposal
-    attributes:
-      label: Proposal
-      description: Explain the desired behaviour, not only a technical solution.
-    validations:
-      required: true
+
   - type: textarea
     id: context
     attributes:
-      label: Game context
-      description: Starting age, pace, version, and other mods if they affect the proposal.
+      label: What led you to it?
+      description: Describe the play experience: an age that dragged, a decision nobody chose, a missing choice, or another concrete moment.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: When does it matter?
+      options:
+        - Day one
+        - Pre-industrial ages
+        - Industrial and later ages
+        - Space program
+        - Emergence and after
+        - The whole run
+        - Community or documentation
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Screenshots, related mods, examples, or a possible implementation are welcome but optional.
