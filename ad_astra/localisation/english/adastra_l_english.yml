@@ -202,19 +202,7 @@
  # Origin
  origin_adastra:0 "Ad Astra"
  origin_adastra_desc:0 "Per aspera ad astra - through hardships to the stars. This pre-FTL civilization has never left its homeworld. Every age of its history remains to be written, under a sky that may not be as empty as it seems."
- origin_adastra_effects:0 "- Starts the game §Rwith no ships and no starbase§! : your civilization is confined to its homeworld.
-- Pick your §Hstarting age§! on day one, from the §H$stone_age$§! to the §H$early_space_age$§!; earlier is harsher, and the final §HLegacy of the Ascent§! is stronger for it.
-- §H250 period technologies§!, twenty-five per age, from the mastery of fire to the microprocessor. They open §Hin waves§! as the age advances, in the order history found them.
-- §RYou do not leave an age while something is left to invent in it.§! The §HBeyond the Stars§! situation names, one by one, the technologies you are missing.
-- §HA resource does not exist before the invention that produces it§!: no energy before electricity, no alloys before bronze. And what you do not produce, you do not pay for.
-- At the §H$early_space_age$§!, base-game technologies become §Hfounding technologies to research§!: corvettes, starbases, thrusters. Four §Hspace programs§! paid in £influence£ influence and £minerals£ minerals lead to the £physics£ §HHyperdrive§! itself.
-- §HBase-game technologies wait for emergence.§! Only those a normal empire owns §Hfrom the first second§! can be researched during confinement — plus twelve exceptions that unlock a resource or a building an age needs. The rest of the tree opens at the breakthrough.\n- Live through observation from the observed side: UFOs, disappearances, signals out of the void...
-
-§RPenalties:§!
-- £research£ Research, £pops£ job output and £unity£ unity reduced according to the current age.
-- Reduced starting population depending on the chosen age.
-- §HTraditions locked§! until emergence.
-- If an empire settles in your home system before your breakthrough, your emergence will be negotiated with them..."
+origin_adastra_effects:0 "- Starts the game §Rwith no ships and no starbase§! : your civilization is confined to its homeworld.\n- Pick your §Hstarting age§! on day one, from the §H$stone_age$§! to the §H$early_space_age$§!; earlier is harsher, and the final §HLegacy of the Ascent§! is stronger for it.\n- §H250 period technologies§!, twenty-five per age, from the mastery of fire to the microprocessor. They open §Hin waves§! as the age advances, in the order history found them.\n- §RYou do not leave an age while something is left to invent in it.§! The §HBeyond the Stars§! situation names, one by one, the technologies you are missing.\n- §HA resource does not exist before the invention that produces it§!: no energy before electricity, no alloys before bronze. And what you do not produce, you do not pay for.\n- At the §H$early_space_age$§!, base-game technologies become §Hfounding technologies to research§!: corvettes, starbases, thrusters. Four §Hspace programs§! paid in £influence£ influence and £minerals£ minerals lead to the £physics£ §HHyperdrive§! itself.\n- §HBase-game technologies wait for emergence.§! Only those a normal empire owns §Hfrom the first second§! can be researched during confinement — plus twelve exceptions that unlock a resource or a building an age needs. The rest of the tree opens at the breakthrough.\n- Live through observation from the observed side: UFOs, disappearances, signals out of the void...\n\n§RPenalties:§!\n- £research£ Research, £pops£ job output and £unity£ unity reduced according to the current age.\n- Reduced starting population depending on the chosen age.\n- §HTraditions locked§! until emergence.\n- If an empire settles in your home system before your breakthrough, your emergence will be negotiated with them..."
 
  # Modifiers
  adastra_reverse_engineering:0 "Artifact Reverse-Engineering"
