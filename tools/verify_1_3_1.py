@@ -38,6 +38,8 @@ def main():
         fail("une exclusion d'age est encore dans potential")
     if techs.count("# 1.3.1 : hors tirage apres l'age") != 225:
         fail("les 225 exclusions d'age attendues ne sont pas toutes des weight_modifier")
+    if "pop_growth_speed" in techs:
+        fail("une technologie utilise encore pop_growth_speed, ignore par Stellaris 4.4")
     grants = events.index("adastra_grant_starting_ages_1_3_1 = yes")
     capital = events.index("# 1.2 : la capitale demarre specialisee")
     if grants > capital:
