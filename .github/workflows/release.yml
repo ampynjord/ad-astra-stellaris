@@ -44,16 +44,37 @@ jobs:
           python tools/ci_release.py --sortie "$PWD/build"
           echo "published mods: $(tr '\n' ' ' < build/publies.txt)"
 
+      # This cache holds SteamCMD binaries only. Authentication stays in
+      # $HOME/Steam/config and is deliberately excluded from the cache.
+      - name: restore SteamCMD cache
+        id: steamcmd_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/steamcmd
+          key: steamcmd-linux-v1
+
       # SteamCMD requires 32-bit support; Ubuntu runners are 64-bit and need
-      # the i386 libraries.
-      - name: install SteamCMD
+      # the i386 libraries even when SteamCMD itself is restored from cache.
+      - name: install SteamCMD dependencies
         run: |
           sudo dpkg --add-architecture i386
           sudo apt-get update -qq
           sudo apt-get install -y lib32gcc-s1 ca-certificates > /dev/null
+
+      - name: install SteamCMD
+        if: steps.steamcmd_cache.outputs.cache-hit != 'true'
+        run: |
           mkdir -p "$HOME/steamcmd"
           curl -sSL https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
             | tar -xz -C "$HOME/steamcmd"
+          "$HOME/steamcmd/steamcmd.sh" +quit
+
+      - name: save SteamCMD cache
+        if: steps.steamcmd_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ~/steamcmd
+          key: ${{ steps.steamcmd_cache.outputs.cache-primary-key }}
 
       # No password is passed. config.vdf contains a Steam Guard-approved
       # session token. If it expires, the release fails cleanly here.

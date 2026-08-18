@@ -1,12 +1,12 @@
 # Development workflow.
 #
-#   push to dev             -> checks
+#   push to dev/main        -> checks
 #   pull request to dev/main -> the same checks; main is protected by this job
 name: development
 
 on:
   push:
-    branches: [dev]
+    branches: [dev, main]
   pull_request:
     branches: [dev, main]
 
@@ -25,6 +25,33 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      # A trusted push to main primes the cache that tagged releases can read.
+      # It contains SteamCMD binaries only, never the Steam session directory.
+      - name: restore SteamCMD cache
+        id: steamcmd_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/steamcmd
+          key: steamcmd-linux-v1
+
+      - name: bootstrap SteamCMD cache
+        if: github.ref == 'refs/heads/main' && steps.steamcmd_cache.outputs.cache-hit != 'true'
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update -qq
+          sudo apt-get install -y lib32gcc-s1 ca-certificates > /dev/null
+          mkdir -p "$HOME/steamcmd"
+          curl -sSL https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
+            | tar -xz -C "$HOME/steamcmd"
+          "$HOME/steamcmd/steamcmd.sh" +quit
+
+      - name: save SteamCMD cache
+        if: github.ref == 'refs/heads/main' && steps.steamcmd_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ~/steamcmd
+          key: ${{ steps.steamcmd_cache.outputs.cache-primary-key }}
 
       # Build the same archive as a release without ever calling Steam.
       - name: build archive
