@@ -1,5 +1,5 @@
-# Shared checks. Both dev.yml and release.yml call this file unchanged, so
-# main is tested exactly as development is. Add any new check here.
+# Shared checks. Both development and releases call this workflow unchanged,
+# so main is tested exactly as development is. Add any new check here.
 name: checks
 
 on:
@@ -10,17 +10,34 @@ on:
         type: string
         required: false
         default: ""
+      require_main:
+        description: "Require the checked commit to belong to main."
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   validate:
     name: validate mod
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.12"
+
+      # Tags made from a feature branch must never be able to publish a mod.
+      - name: confirm release tag is on main
+        if: inputs.require_main
+        run: |
+          git fetch origin main --depth=1
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main || {
+            echo "::error::The release tag commit is not reachable from main."
+            exit 1
+          }
 
       # A modified data table without regeneration produces a valid mod, but
       # not the one the repository claims to contain. Reject that mismatch.
