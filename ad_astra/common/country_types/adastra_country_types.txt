@@ -249,7 +249,11 @@ adastra_grounded = {
 		standard_event_module = {}
 		standard_economy_module = {}
 		standard_leader_module = {}
-		standard_diplomacy_module = { contact_rule = does_first_contact_sites }
+		# 1.3.1 (18/08) : ce type n'existe pas dans les chemins de premier
+		# contact vanilla. Une rencontre multijoueur restait donc sans etape
+		# valide et relancait "Encounter in <systeme>". Pendant le confinement,
+		# le contact est immediat ; l'emergence restaure ensuite le type default.
+		standard_diplomacy_module = { contact_rule = on_action_only }
 		standard_technology_module = {}
 		standard_pop_factions_module = {}
 		standard_expansion_module = {}
