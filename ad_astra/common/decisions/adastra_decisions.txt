@@ -4,7 +4,7 @@
 # Phase 1 : programme d'exploration spatiale (vaisseau scientifique sous-luminique)
 decision_adastra_explore = {
 	owned_planets_only = yes
-	icon = decision_satellite_in_orbit
+	icon = decision_adastra_explore
 
 	enactment_time = 360
 
@@ -65,7 +65,7 @@ decision_adastra_explore = {
 # Phase 2 : programme de base stellaire (chantier orbital + vaisseau de construction)
 decision_adastra_starbase = {
 	owned_planets_only = yes
-	icon = decision_ship_in_orbit
+	icon = decision_adastra_starbase
 
 	enactment_time = 720
 
@@ -125,7 +125,7 @@ decision_adastra_starbase = {
 # Phase 3 : programme hyperspatial (débloque la recherche Hyperpropulsion)
 decision_adastra_hyperdrive = {
 	owned_planets_only = yes
-	icon = decision_wormhole
+	icon = decision_adastra_hyperdrive
 
 	enactment_time = 900
 
@@ -166,7 +166,7 @@ decision_adastra_hyperdrive = {
 # Facultatif : programme de flotte militaire (disparaît à la découverte de l'Hyperpropulsion)
 decision_adastra_navy = {
 	owned_planets_only = yes
-	icon = decision_ship_in_orbit
+	icon = decision_adastra_navy
 
 	enactment_time = 240
 
@@ -247,7 +247,7 @@ decision_adastra_navy = {
 decision_adastra_campaign_harvest = {
 	owned_planets_only = yes
 	sound = event_administrative_work
-	icon = decision_resources
+	icon = decision_adastra_campaign_harvest
 
 	enactment_time = 60
 
@@ -312,7 +312,7 @@ decision_adastra_campaign_harvest = {
 decision_adastra_campaign_mining = {
 	owned_planets_only = yes
 	sound = event_administrative_work
-	icon = decision_resources
+	icon = decision_adastra_campaign_mining
 
 	enactment_time = 60
 
@@ -402,7 +402,7 @@ decision_adastra_campaign_mining = {
 decision_adastra_campaign_fuel = {
 	owned_planets_only = yes
 	sound = event_administrative_work
-	icon = decision_resources
+	icon = decision_adastra_campaign_fuel
 
 	enactment_time = 60
 
@@ -495,7 +495,7 @@ decision_adastra_campaign_fuel = {
 decision_adastra_campaign_industry = {
 	owned_planets_only = yes
 	sound = event_administrative_work
-	icon = decision_resources
+	icon = decision_adastra_campaign_industry
 
 	enactment_time = 60
 
@@ -600,7 +600,7 @@ decision_adastra_campaign_industry = {
 # autant d'habitats du vide qu'on sait en batir.
 decision_adastra_colony = {
 	owned_planets_only = yes
-	icon = decision_colony_settlement
+	icon = decision_adastra_colony
 
 	enactment_time = 540
 
