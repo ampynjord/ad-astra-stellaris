@@ -45,31 +45,45 @@ country_event = {
 		}
 		change_variable = { which = core_tirs value = 1 }
 
-		random_list = {
-			50 = {
-				modifier = {
-					factor = 0
-					check_variable = { which = core_risque value < 15 }
-				}
-				# ECHEC. On a paye, la fusee est perdue, et le pays le sait.
-				country_event = { id = adastra.101 }
-			}
-			50 = {
-				# REUSSITE.
-				set_country_flag = core_suborbital_fait
-				add_monthly_resource_mult = {
-					resource = physics_research
-					value = 3
-					min = 30
-					max = 300
-				}
-				add_modifier = {
-					modifier = core_mod_suborbital
-					days = -1
-				}
-				country_event = { id = adastra.103 }
+		# 18/08/2026 : random_list ne lit pas une variable comme poids. Les deux
+		# entrees a 50 donnaient donc toujours 50 % d'echec, quelle que soit la
+		# recherche. On choisit le palier explicitement : l'intention de jeu est
+		# enfin la probabilite jouee, y compris les 10 % d'une quatrieme tentative.
+		if = {
+			limit = { check_variable = { which = core_risque value >= 50 } }
+			random_list = {
+				50 = { country_event = { id = adastra.101 } }
+				50 = { country_event = { id = adastra.103 } }
 			}
 		}
+		else_if = {
+			limit = { check_variable = { which = core_risque value >= 40 } }
+			random_list = {
+				40 = { country_event = { id = adastra.101 } }
+				60 = { country_event = { id = adastra.103 } }
+			}
+		}
+		else_if = {
+			limit = { check_variable = { which = core_risque value >= 30 } }
+			random_list = {
+				30 = { country_event = { id = adastra.101 } }
+				70 = { country_event = { id = adastra.103 } }
+			}
+		}
+		else_if = {
+			limit = { check_variable = { which = core_risque value >= 20 } }
+			random_list = {
+				20 = { country_event = { id = adastra.101 } }
+				80 = { country_event = { id = adastra.103 } }
+			}
+		}
+		else = {
+			random_list = {
+				10 = { country_event = { id = adastra.101 } }
+				90 = { country_event = { id = adastra.103 } }
+			}
+		}
+		clear_variable = core_risque
 	}
 }
 
@@ -100,6 +114,20 @@ country_event = {
 	desc = "adastra.103.desc"
 	picture = GFX_evt_ship_in_orbit
 	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = core_suborbital_fait
+		add_monthly_resource_mult = {
+			resource = physics_research
+			value = 3
+			min = 30
+			max = 300
+		}
+		add_modifier = {
+			modifier = core_mod_suborbital
+			days = -1
+		}
+	}
 
 	option = {
 		name = "adastra.103.a"
@@ -174,7 +202,9 @@ country_event = {
 						is_moon = yes
 						NOT = { is_same_value = event_target:core_natal }
 					}
-					save_global_event_target_as = core_cible
+					# 18/08/2026 : cible locale au pays. Une cible globale survit
+					# a un autre empire et peut faire croire a tort qu'une lune existe.
+					save_event_target_as = core_cible
 				}
 				# 2 - sinon un asteroide
 				if = {
@@ -184,7 +214,7 @@ country_event = {
 							is_asteroid = yes
 							NOT = { is_same_value = event_target:core_natal }
 						}
-						save_global_event_target_as = core_cible
+						save_event_target_as = core_cible
 					}
 				}
 				# 3 - sinon n'importe quel astre qui n'est ni l'etoile ni chez nous
@@ -195,7 +225,7 @@ country_event = {
 							is_star = no
 							NOT = { is_same_value = event_target:core_natal }
 						}
-						save_global_event_target_as = core_cible
+						save_event_target_as = core_cible
 					}
 				}
 			}
@@ -293,7 +323,9 @@ country_event = {
 					max_jumps = 4
 				}
 			}
-			save_global_event_target_as = core_sonde_cible
+			# 18/08/2026 : meme isolation que le premier corps. Si aucun systeme
+			# ne passe le filtre, une ancienne cible ne doit jamais etre reutilisee.
+			save_event_target_as = core_sonde_cible
 		}
 		if = {
 			limit = { exists = event_target:core_sonde_cible }
