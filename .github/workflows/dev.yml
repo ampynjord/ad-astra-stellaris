@@ -23,36 +23,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      # A trusted main push primes binaries for the next tagged release.
-      # The cache deliberately excludes the authenticated Steam session.
-      - name: restore SteamCMD cache
-        id: steamcmd_cache
-        uses: actions/cache/restore@v6.1.0
-        with:
-          path: ~/steamcmd
-          key: steamcmd-linux-v2
-
-      - name: bootstrap SteamCMD cache
-        if: github.ref == 'refs/heads/main' && steps.steamcmd_cache.outputs.cache-hit != 'true'
-        run: |
-          sudo dpkg --add-architecture i386
-          timeout 120 sudo apt-get update -qq
-          timeout 180 sudo apt-get install -y lib32gcc-s1 ca-certificates > /dev/null
-          mkdir -p "$HOME/steamcmd"
-          timeout 120 curl --fail --silent --show-error --location \
-            --connect-timeout 20 --max-time 110 \
-            https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
-            -o /tmp/steamcmd_linux.tar.gz
-          tar -xzf /tmp/steamcmd_linux.tar.gz -C "$HOME/steamcmd"
-          timeout 180 "$HOME/steamcmd/steamcmd.sh" +quit
-
-      - name: save SteamCMD cache
-        if: github.ref == 'refs/heads/main' && steps.steamcmd_cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v6.1.0
-        with:
-          path: ~/steamcmd
-          key: ${{ steps.steamcmd_cache.outputs.cache-primary-key }}
-
       - name: build test archive
         run: python tools/ci_release.py --sortie build
 
