@@ -12,6 +12,7 @@ TECHS = ROOT / "ad_astra" / "common" / "technology" / "adastra_age_techs.txt"
 EVENTS = ROOT / "ad_astra" / "events" / "adastra_events.txt"
 DESCRIPTOR = ROOT / "ad_astra" / "descriptor.mod"
 SCRIPT_VALUES = ROOT / "ad_astra" / "common" / "script_values" / "adastra_script_values.txt"
+COUNTRY_TYPES = ROOT / "ad_astra" / "common" / "country_types" / "adastra_country_types.txt"
 LOCALISATIONS = (
     ROOT / "ad_astra" / "localisation" / "english" / "adastra_l_english.yml",
     ROOT / "ad_astra" / "localisation" / "french" / "adastra_l_french.yml",
@@ -28,6 +29,7 @@ def main():
     events = EVENTS.read_text(encoding="utf-8-sig")
     descriptor = DESCRIPTOR.read_text(encoding="utf-8-sig")
     script_values = SCRIPT_VALUES.read_text(encoding="utf-8-sig")
+    country_types = COUNTRY_TYPES.read_text(encoding="utf-8-sig")
     if 'version="1.3.1"' not in descriptor:
         fail("le descripteur doit annoncer 1.3.1")
     if len(re.findall(r"^tech_adastra_[a-z0-9_]+ = \{", techs, re.MULTILINE)) != 250:
@@ -65,6 +67,9 @@ def main():
         for number, content in enumerate(lines[1:], start=2):
             if content and not content.startswith((" ", "#")):
                 fail(f"localisation non indentee : {localisation.name}:{number}")
+    grounded = country_types.split("adastra_grounded = {", 1)[1].split("resources =", 1)[0]
+    if "standard_diplomacy_module = { contact_rule = on_action_only }" not in grounded:
+        fail("le pays confine doit eviter les sites de premier contact bloques")
     print("0 erreur : invariants 1.3.1 valides.")
 
 
