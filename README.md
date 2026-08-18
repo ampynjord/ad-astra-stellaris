@@ -150,17 +150,33 @@ Cent technologies d'époque, onze bâtiments, sept paliers de capitale, une éco
 
 *A hundred period technologies, eleven buildings, seven capital tiers, an economy where a resource does not exist before the invention that produces it, ages twice as long, diplomacy and war during confinement, and an AI that can play the origin.*
 
-### 1.4 « Le monde d'en bas » — à écrire / to be written
+### 1.3.1 — hotfix de fiabilité / reliability hotfix
 
-Tout ce qui se passe sur la planète avant l'espace. Rien n'est daté.
-*Everything that happens on the planet before space. Nothing is dated.*
+Un correctif ciblé de la progression des âges et des départs avancés. Il ne
+porte pas de contenu 1.4. / *A focused fix for age progression and advanced
+starts. It contains no 1.4 content.*
 
-- **Le monde grandit avec vous** : trois ou quatre cases au départ, la totalité à l'âge industriel, chaque âge ouvrant une région. / ***The world grows with you***: three or four tiles at the start, all of it by the industrial age, each age opening a region.
-- **De vraies nations rivales sur votre propre planète** — des factions, avec leur part de population, leurs exigences et leur chef. / ***Real rival nations on your own planet*** — factions, with their share of your population, their demands and their leader.
-- **Des traditions d'époque**, puisque les galactiques sont verrouillées. / ***Period traditions***, since the galactic ones are locked.
+### 1.4 « Le ciel se remplit » / “The Sky Fills”
 
-Deux choses qui ne seront **pas** faites : les autorités gestaltes — une ruche n'a pas d'âges, elle a des mues — et une galaxie où tous les empires commencent pré-PRL.
-*Two things that will **not** be done: gestalt authorities — a hive has no ages, it has moults — and a galaxy where every empire starts pre-FTL.*
+Le ciel devient un espace de jeu avant l'émergence : propulsion, télescopes,
+premiers lancements, satellites, sondes profondes et premier corps atteint. /
+*The sky becomes playable before emergence: propulsion, telescopes, first
+launches, satellites, deep probes and a first reached body.*
+
+### 1.5 « Le monde d'en bas » / “The World Below”
+
+Nations rivales, unification, régions et coût de l'industrialisation. /
+*Rival nations, unification, regions and the cost of industrialisation.*
+
+### Plus loin / Later
+
+La frontière (terraformation et avant-postes), puis Contact et mémoire, restent
+des horizons de conception plutôt que des dates promises. / *The Frontier
+(terraforming and outposts), then Contact and Memory, remain design horizons
+rather than promised dates.*
+
+Voir [la feuille de route détaillée](docs/ROADMAP.md). / *See the [detailed
+roadmap](docs/ROADMAP.md).*
 
 ---
 
