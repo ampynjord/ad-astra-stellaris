@@ -1,24 +1,23 @@
-# Ce qui tourne pendant le développement.
+# Development workflow.
 #
-#   push sur dev            -> les contrôles
-#   pull request vers main  -> les mêmes contrôles, et main est protégée
-#                              par ce job : rouge = pas de merge possible
-name: dev
+#   push to dev             -> checks
+#   pull request to dev/main -> the same checks; main is protected by this job
+name: development
 
 on:
   push:
     branches: [dev]
   pull_request:
-    branches: [main]
+    branches: [dev, main]
 
 jobs:
-  controles:
-    name: contrôles
+  checks:
+    name: checks
     uses: ./.github/workflows/checks.yml
 
-  archive:
-    name: archive de test
-    needs: controles
+  test_archive:
+    name: test archive
+    needs: checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,11 +26,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      # On fabrique la meme archive que la sortie, sans jamais appeler Steam.
-      - name: construire l'archive
+      # Build the same archive as a release without ever calling Steam.
+      - name: build archive
         run: python tools/ci_release.py --sortie build
 
-      - name: conserver l'archive
+      - name: upload archive
         uses: actions/upload-artifact@v4
         with:
           name: ad-astra-dev-${{ github.sha }}
