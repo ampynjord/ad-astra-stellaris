@@ -1,5 +1,5 @@
-# Shared checks for the maintained 1.3 hotfix line. Development and tagged
-# releases invoke this same workflow, so a hotfix receives the same validation.
+# Shared checks for every line of the mod (1.3 hotfixes and 1.4 development).
+# Development and tagged releases invoke this same workflow.
 name: checks
 
 on:
@@ -38,8 +38,20 @@ jobs:
             exit 1
           }
 
-      - name: validate 1.3 hotfix invariants
-        run: python tools/verify_1_3_1.py "${{ inputs.expected_version }}"
+      # Route validation by the version the mod declares. The 1.3 hotfix line
+      # keeps its historical invariants; 1.4 and later use the generic
+      # validators (generated files in sync, then content rules).
+      - name: validate mod content
+        run: |
+          version="$(tr -d '\357\273\277' < ad_astra/descriptor.mod | sed -n 's/^version="\([^"]*\)".*/\1/p' | head -n 1)"
+          echo "descriptor version: ${version}"
+          case "${version}" in
+            1.3.*)
+              python tools/verify_1_3_1.py "${{ inputs.expected_version }}" ;;
+            *)
+              python tools/verify_generated.py
+              python tools/verify_1_2.py ;;
+          esac
 
       - name: validate version, changelog, and Workshop content
         run: python tools/verify_release.py "${{ inputs.expected_version }}"
