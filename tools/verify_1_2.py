@@ -330,6 +330,54 @@ if {f.replace("_l_french", "") for f in _ffr} != {f.replace("_l_english", "") fo
          % (sorted(_ffr), sorted(_fen)))
 print("  %d cles, parite exacte des deux cotes" % len(_fr))
 
+# --------------------------- retours visibles des Premiers pas (1.4)
+# La parite FR/EN ne suffit pas : deux dossiers peuvent oublier exactement les
+# memes cles. Le chargement du 17/08 affichait alors les evenements core_ avec
+# leur identifiant brut. Toute cle locale referencee par leurs titres, textes,
+# options ou infobulles doit exister dans les deux langues.
+print("\n== localisation des Premiers pas ==")
+_core_refs = set()
+for _rel in (os.path.join("events", "core_premiers_pas_events.txt"),
+             os.path.join("common", "decisions", "core_premiers_pas.txt"),
+             os.path.join("common", "decisions", "core_sonde_profonde.txt")):
+    _path = os.path.join(ROOT, _rel)
+    if not os.path.exists(_path):
+        err("Premiers pas : fichier absent : %s" % _rel)
+        continue
+    _body = strip_comments(open(_path, encoding="utf-8").read())
+    _core_refs |= set(re.findall(
+        r'\b(?:title|desc|name|custom_tooltip)\s*=\s*"?((?:adastra\.\d+\.|decision_core_)\w+)"?',
+        _body))
+for _lang, _loc in (("FR", _fr), ("EN", _en)):
+    _missing = sorted(_core_refs - set(_loc))
+    if _missing:
+        err("Premiers pas : %d cle(s) absente(s) en %s : %s"
+            % (len(_missing), _lang, ", ".join(_missing[:6])))
+print("  %d cle(s) visibles, FR et EN" % len(_core_refs))
+
+# -------------------------------- logique des Premiers pas (1.4)
+# Le risque de lancement est une promesse de jeu : 50, 40, 30, 20 puis 10 %.
+# Une random_list ne peut pas prendre une variable comme poids ; les cinq
+# tirages doivent donc rester explicites. Les cibles de recherche sont locales
+# au pays, jamais globales, pour ne pas survivre a un autre lancement.
+print("\n== logique des Premiers pas ==")
+_core_path = os.path.join(ROOT, "events", "core_premiers_pas_events.txt")
+_core = strip_comments(open(_core_path, encoding="utf-8").read())
+if re.search(r"save_global_event_target_as\s*=\s*core_", _core):
+    err("Premiers pas : une cible core_ est globale et peut fuir entre empires")
+for _echec, _succes in ((50, 50), (40, 60), (30, 70), (20, 80), (10, 90)):
+    _fail = "%d = { country_event = { id = adastra.101 } }" % _echec
+    _ok = "%d = { country_event = { id = adastra.103 } }" % _succes
+    if _fail not in _core or _ok not in _core:
+        err("Premiers pas : palier de lancement %d/%d absent" % (_echec, _succes))
+if "clear_variable = core_risque" not in _core:
+    err("Premiers pas : core_risque n'est pas nettoye apres le tirage")
+_m103 = re.search(r"country_event = \{\s*\n\tid = adastra\.103(.*?)\n\}",
+                  _core, re.S)
+if not _m103 or "set_country_flag = core_suborbital_fait" not in _m103.group(1):
+    err("Premiers pas : la reussite suborbitale ne pose plus son drapeau")
+print("  5 paliers de risque, cibles locales et reussite verifies")
+
 # ------------------- plans de vaisseaux reconstructibles (1.2, Sithiya)
 # Les programmes livrent un exemplaire ; sans le PLAN, un vaisseau perdu l'est
 # pour toute la partie - l'auto-conception echoue sans hyperpropulsion. Chaque
