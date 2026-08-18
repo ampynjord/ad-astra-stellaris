@@ -1,7 +1,7 @@
 name: Idee ou suggestion
 description: Proposer un contenu, un ajustement d'equilibrage ou une amelioration d'ergonomie.
 title: "[Idee] "
-labels: ["idee"]
+labels: ["idée"]
 body:
   - type: markdown
     attributes:
