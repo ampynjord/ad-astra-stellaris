@@ -1,0 +1,112 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Genere le correctif 1.3.1 des technologies d'age.
+
+La source du generateur 1.3.0 n'avait pas ete versionnee avec la sortie.
+Ce generateur conservatif maintient donc exactement ses donnees generees et
+ne transforme que l'exclusion du tirage qui cassait give_technology.
+"""
+
+from pathlib import Path
+import re
+import sys
+
+
+ROOT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parents[1] / "ad_astra"
+TARGET = ROOT / "common" / "technology" / "adastra_age_techs.txt"
+ENGLISH = ROOT / "localisation" / "english" / "adastra_ages_l_english.yml"
+NEXT_AGE = re.compile(r"^\s*NOT = \{ has_country_flag = (adastra_reached_[a-z]+) \}\s*$")
+BUILDINGS_EN = {
+    "Monument des ancêtres": "Ancestral Monument",
+    "Grenier": "Granary",
+    "Fonderie": "Foundry",
+    "Maison des tablettes": "House of Tablets",
+    "Tribunal": "Courthouse",
+    "Moulin": "Mill",
+    "Citadelle": "Citadel",
+    "Université": "University",
+    "Manufacture": "Manufactory",
+    "Station de radiodiffusion": "Broadcasting Station",
+    "École publique": "Public School",
+}
+
+
+def transform(lines):
+    """Retire l'exclusion de potential et la replace par un poids nul."""
+    output = []
+    in_potential = False
+    potential_depth = 0
+    next_age = None
+    changed = 0
+
+    for line in lines:
+        if line.strip() == "potential = {":
+            in_potential = True
+            potential_depth = line.count("{") - line.count("}")
+            next_age = None
+            output.append(line)
+            continue
+
+        if in_potential:
+            match = NEXT_AGE.match(line)
+            if match:
+                next_age = match.group(1)
+                changed += 1
+                continue
+
+            potential_depth += line.count("{") - line.count("}")
+            output.append(line)
+            if potential_depth == 0:
+                if next_age:
+                    output.extend([
+                        "\n",
+                        "\t# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.\n",
+                        "\tweight_modifier = {\n",
+                        "\t\tfactor = 1\n",
+                        "\t\tmodifier = {\n",
+                        "\t\t\tfactor = 0\n",
+                        f"\t\t\thas_country_flag = {next_age}\n",
+                        "\t\t}\n",
+                        "\t}\n",
+                    ])
+                in_potential = False
+            continue
+
+        output.append(line)
+
+    return output, changed
+
+
+def main():
+    lines = TARGET.read_text(encoding="utf-8-sig").splitlines(keepends=True)
+    transformed, changed = transform(lines)
+    transformed = [
+        line.replace(
+            "# Source de verite : tools/age_techs_data.py\n",
+            "# Source de verite : 1.3.0, correctif applique par tools/gen_age_techs.py\n",
+        )
+        for line in transformed
+    ]
+    if changed == 0:
+        existing = "".join(lines).count("# 1.3.1 : hors tirage apres l'age")
+        if existing != 225:
+            raise SystemExit("Aucune exclusion de potential a transformer : verifier la source 1.3.0.")
+        print("Les 225 weight_modifier 1.3.1 sont deja generes.")
+    else:
+        if changed != 225:
+            raise SystemExit(f"{changed} exclusions transformees au lieu des 225 attendues.")
+        print(f"{changed} exclusions de potential remplacees par weight_modifier.")
+
+    TARGET.write_text("".join(transformed), encoding="utf-8", newline="\n")
+
+    english = ENGLISH.read_text(encoding="utf-8-sig")
+    for french, english_name in BUILDINGS_EN.items():
+        english = english.replace(
+            f"Unlocks the building: {french}",
+            f"Unlocks the building: {english_name}",
+        )
+    ENGLISH.write_text(english, encoding="utf-8", newline="\n")
+
+
+if __name__ == "__main__":
+    main()
