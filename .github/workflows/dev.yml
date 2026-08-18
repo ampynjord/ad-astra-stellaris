@@ -1,15 +1,16 @@
 # Ce qui tourne pendant le développement.
 #
 #   push sur dev            -> les contrôles
-#   pull request vers main  -> les mêmes contrôles, et main est protégée
-#                              par ce job : rouge = pas de merge possible
+#   pull request vers dev/main -> les memes controles. Les branches de
+#                                 fonctionnalite sont donc verifiees avant dev,
+#                                 et main garde ses controles de protection.
 name: dev
 
 on:
   push:
     branches: [dev]
   pull_request:
-    branches: [main]
+    branches: [dev, main]
 
 jobs:
   controles:
