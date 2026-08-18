@@ -1,11 +1,12 @@
-# Release workflow. It runs on v* tags only, never on an ordinary merge:
-# correcting a README typo must not push an update to subscribers.
+# Generic production workflow. It runs for every v* tag created from main,
+# whether the tag represents a normal release or a hotfix.
+# An ordinary merge never pushes an update to Workshop subscribers.
 #
-#   git tag -a v1.3.1 -m "..." && git push origin v1.3.1
+#   git tag -a vX.Y.Z -m "..." && git push origin vX.Y.Z
 #
 # Required secrets (Settings > Secrets and variables > Actions):
 #   STEAM_USERNAME    Steam account name
-#   STEAM_CONFIG_VDF  base64 config.vdf from an authenticated SteamCMD session
+#   STEAM_CONFIG_VDF  gzip+base64 config.vdf from an authenticated SteamCMD session
 #                     (see docs/PUBLICATION.md; never paste a password here)
 name: release
 
@@ -17,6 +18,9 @@ concurrency:
   group: release
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   # Same checks as development, plus tag/descriptor/changelog version parity.
   checks:
@@ -24,6 +28,7 @@ jobs:
     uses: ./.github/workflows/checks.yml
     with:
       expected_version: ${{ github.ref_name }}
+      require_main: true
 
   publish:
     name: publish to Workshop
@@ -31,11 +36,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: steam
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.12"
 
@@ -48,36 +53,40 @@ jobs:
       # $HOME/Steam/config and is deliberately excluded from the cache.
       - name: restore SteamCMD cache
         id: steamcmd_cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6.1.0
         with:
           path: ~/steamcmd
-          key: steamcmd-linux-v1
+          key: steamcmd-linux-v2
 
       # SteamCMD requires 32-bit support; Ubuntu runners are 64-bit and need
       # the i386 libraries even when SteamCMD itself is restored from cache.
       - name: install SteamCMD dependencies
         run: |
           sudo dpkg --add-architecture i386
-          sudo apt-get update -qq
-          sudo apt-get install -y lib32gcc-s1 ca-certificates > /dev/null
+          timeout 120 sudo apt-get update -qq
+          timeout 180 sudo apt-get install -y lib32gcc-s1 ca-certificates > /dev/null
 
       - name: install SteamCMD
         if: steps.steamcmd_cache.outputs.cache-hit != 'true'
         run: |
           mkdir -p "$HOME/steamcmd"
-          curl -sSL https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
-            | tar -xz -C "$HOME/steamcmd"
-          "$HOME/steamcmd/steamcmd.sh" +quit
+          timeout 120 curl --fail --silent --show-error --location \
+            --connect-timeout 20 --max-time 110 \
+            https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
+            -o /tmp/steamcmd_linux.tar.gz
+          tar -xzf /tmp/steamcmd_linux.tar.gz -C "$HOME/steamcmd"
+          timeout 180 "$HOME/steamcmd/steamcmd.sh" +quit
 
       - name: save SteamCMD cache
         if: steps.steamcmd_cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6.1.0
         with:
           path: ~/steamcmd
           key: ${{ steps.steamcmd_cache.outputs.cache-primary-key }}
 
       # No password is passed. config.vdf contains a Steam Guard-approved
-      # session token. If it expires, the release fails cleanly here.
+      # session token. Both the current gzip+base64 format and the older
+      # plain base64 format are accepted to avoid breaking secret rotation.
       - name: authenticate SteamCMD
         env:
           CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
@@ -88,7 +97,19 @@ jobs:
             exit 1
           fi
           mkdir -p "$HOME/Steam/config"
-          echo "$CONFIG_VDF" | base64 -d > "$HOME/Steam/config/config.vdf"
+          echo "$CONFIG_VDF" | base64 -d > /tmp/config.vdf.payload || {
+            echo "::error::STEAM_CONFIG_VDF is not valid base64"
+            exit 1
+          }
+          if gzip -t /tmp/config.vdf.payload 2>/dev/null; then
+            gzip -dc /tmp/config.vdf.payload > "$HOME/Steam/config/config.vdf"
+          else
+            cp /tmp/config.vdf.payload "$HOME/Steam/config/config.vdf"
+          fi
+          test -s "$HOME/Steam/config/config.vdf" || {
+            echo "::error::STEAM_CONFIG_VDF produced an empty config.vdf"
+            exit 1
+          }
           chmod 600 "$HOME/Steam/config/config.vdf"
 
       - name: publish to Workshop
@@ -99,8 +120,11 @@ jobs:
           while read -r cle; do
             echo "::group::$cle"
             attendu=$(python -c "import json,sys;print(next(m['publishedfileid'] for m in json.load(open('workshop/mods.json'))['mods'] if m['cle']=='$cle'))")
-            "$HOME/steamcmd/steamcmd.sh" +login "$STEAM_USERNAME" \
-              +workshop_build_item "$PWD/build/$cle/item.vdf" +quit | tee "/tmp/steam_$cle.log"
+            timeout 300 "$HOME/steamcmd/steamcmd.sh" \
+              +@NoPromptForPassword 1 +@ShutdownOnFailedCommand 1 \
+              +login "$STEAM_USERNAME" \
+              +workshop_build_item "$PWD/build/$cle/item.vdf" +quit \
+              | tee "/tmp/steam_$cle.log"
             # SteamCMD exits 0 even when it rejects an upload, so inspect output.
             grep -q "Success" "/tmp/steam_$cle.log" || {
               echo "::error::$cle: SteamCMD did not confirm publication"; exit 1; }
