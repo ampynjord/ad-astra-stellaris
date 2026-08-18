@@ -21,5 +21,6 @@ mirror message, never a player message.
 
 Closing an issue is reflected in its Discord thread. Comments are not copied
 between platforms: they are often contextual and would create duplicate,
-unreadable discussions. The title, description, labels, and state remain
-synchronised through the bot’s own message.
+unreadable discussions. GitHub titles, descriptions, labels, and state are
+reflected in bot-created Discord mirrors; a Discord report creates its linked
+issue from its initial submitted content.
