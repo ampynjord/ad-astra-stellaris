@@ -1,0 +1,67 @@
+name: Rapport de bug
+description: Signaler un comportement reproductible d'Ad Astra.
+title: "[Bug] "
+labels: ["bug", "statut: informations requises"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de verifier les rapports existants. Ne colle pas de token, de sauvegarde privee ou de donnees personnelles.
+  - type: input
+    id: version
+    attributes:
+      label: Version d'Ad Astra et de Stellaris
+      placeholder: "Ad Astra 1.4.0-dev, Stellaris 4.4.6"
+    validations:
+      required: true
+  - type: dropdown
+    id: start_age
+    attributes:
+      label: Age de depart
+      options:
+        - Pierre
+        - Bronze
+        - Fer
+        - Moyen Age
+        - Renaissance
+        - Vapeur
+        - Industriel
+        - Machine
+        - Atomique
+        - Spatial
+        - Autre ou non applicable
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Comportement observe
+      description: Decris le resultat reel, avec la date en jeu si utile.
+      placeholder: "En l'an ..., apres ..., le jeu ..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportement attendu
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Etapes de reproduction
+      placeholder: "1. Nouvelle partie...\n2. Choisir...\n3. ..."
+    validations:
+      required: true
+  - type: textarea
+    id: mods
+    attributes:
+      label: Autres mods et DLC actifs
+      description: Indique "partie pure" si Ad Astra est le seul mod.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Journal, save ou capture
+      description: Joins les lignes pertinentes de error.log ou un lien vers la save/capture si possible.
