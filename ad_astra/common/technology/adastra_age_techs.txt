@@ -460,7 +460,7 @@ tech_adastra_cooking = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.005
-		pop_growth_speed = 0.002
+		logistic_growth_mult = 0.002
 	}
 
 	prereqfor_desc = {
@@ -895,7 +895,7 @@ tech_adastra_salt = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.004
-		pop_growth_speed = 0.002
+		logistic_growth_mult = 0.002
 	}
 
 	prereqfor_desc = {
@@ -2088,7 +2088,7 @@ tech_adastra_medicine = {
 	}
 
 	modifier = {
-		pop_growth_speed = 0.004
+		logistic_growth_mult = 0.004
 		planet_jobs_society_research_produces_mult = 0.003
 	}
 
@@ -2931,7 +2931,7 @@ tech_adastra_clinical_medicine = {
 	}
 
 	modifier = {
-		pop_growth_speed = 0.005
+		logistic_growth_mult = 0.005
 		pop_happiness = 0.002
 	}
 
@@ -4123,7 +4123,7 @@ tech_adastra_crop_diffusion = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.006
-		pop_growth_speed = 0.003
+		logistic_growth_mult = 0.003
 	}
 
 	prereqfor_desc = {
@@ -5141,7 +5141,7 @@ tech_adastra_new_crops = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.008
-		pop_growth_speed = 0.004
+		logistic_growth_mult = 0.004
 	}
 
 	prereqfor_desc = {
@@ -6336,7 +6336,7 @@ tech_adastra_vaccine_cowpox = {
 
 	modifier = {
 		logistic_growth_mult = 0.006
-		pop_growth_speed = 0.004
+		logistic_growth_mult = 0.004
 	}
 
 	prereqfor_desc = {
@@ -8598,7 +8598,7 @@ tech_adastra_vitamins = {
 	}
 
 	modifier = {
-		pop_growth_speed = 0.005
+		logistic_growth_mult = 0.005
 		planet_jobs_food_produces_mult = 0.003
 	}
 
