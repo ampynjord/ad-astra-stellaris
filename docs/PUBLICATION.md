@@ -69,7 +69,7 @@ s'arrête **avant** d'avoir touché à Steam.
 | Secret | Ce que c'est |
 |---|---|
 | `STEAM_USERNAME` | ton identifiant Steam, en clair |
-| `STEAM_CONFIG_VDF` | le `config.vdf` d'un SteamCMD déjà authentifié, encodé en base64 |
+| `STEAM_CONFIG_VDF` | le `config.vdf` d'un SteamCMD déjà authentifié, compressé avec gzip puis encodé en base64 |
 
 **Ton mot de passe Steam n'est jamais stocké nulle part**, ni ici, ni dans un
 secret, ni dans un fichier. Le `config.vdf` contient un jeton de session que
@@ -88,10 +88,17 @@ Il demande le mot de passe puis le code Steam Guard. Une fois connecté, il a
 écrit `config\config.vdf`. Encode-le :
 
 ```powershell
-[Convert]::ToBase64String([IO.File]::ReadAllBytes("$PWD\config\config.vdf")) | Set-Clipboard
+$bytes = [IO.File]::ReadAllBytes("$PWD\config\config.vdf")
+$stream = [IO.MemoryStream]::new()
+$gzip = [IO.Compression.GzipStream]::new($stream, [IO.Compression.CompressionMode]::Compress)
+$gzip.Write($bytes, 0, $bytes.Length)
+$gzip.Dispose()
+[Convert]::ToBase64String($stream.ToArray()) | Set-Clipboard
 ```
 
-Colle le presse-papiers dans le secret `STEAM_CONFIG_VDF`. C'est tout.
+Colle le presse-papiers dans le secret `STEAM_CONFIG_VDF`. C'est tout. La CI
+accepte egalement temporairement l'ancien format base64 simple, mais le format
+gzip est le format a conserver desormais.
 
 ### Quand ça casse
 
@@ -142,7 +149,7 @@ penser.
 *Settings → Branches → Add branch ruleset*, sur `main` :
 
 - **Require a pull request before merging** — pas de push direct sur `main`.
-- **Require status checks to pass** → coche `vérifier le mod`.
+- **Require status checks to pass** → coche `checks / validate mod`.
 - **Require branches to be up to date before merging**.
 - Laisse *Allow force pushes* décoché.
 

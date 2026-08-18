@@ -20,9 +20,9 @@ jobs:
     needs: checks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.12"
 
@@ -30,25 +30,28 @@ jobs:
       # It contains SteamCMD binaries only, never the Steam session directory.
       - name: restore SteamCMD cache
         id: steamcmd_cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6.1.0
         with:
           path: ~/steamcmd
-          key: steamcmd-linux-v1
+          key: steamcmd-linux-v2
 
       - name: bootstrap SteamCMD cache
         if: github.ref == 'refs/heads/main' && steps.steamcmd_cache.outputs.cache-hit != 'true'
         run: |
           sudo dpkg --add-architecture i386
-          sudo apt-get update -qq
-          sudo apt-get install -y lib32gcc-s1 ca-certificates > /dev/null
+          timeout 120 sudo apt-get update -qq
+          timeout 180 sudo apt-get install -y lib32gcc-s1 ca-certificates > /dev/null
           mkdir -p "$HOME/steamcmd"
-          curl -sSL https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
-            | tar -xz -C "$HOME/steamcmd"
-          "$HOME/steamcmd/steamcmd.sh" +quit
+          timeout 120 curl --fail --silent --show-error --location \
+            --connect-timeout 20 --max-time 110 \
+            https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
+            -o /tmp/steamcmd_linux.tar.gz
+          tar -xzf /tmp/steamcmd_linux.tar.gz -C "$HOME/steamcmd"
+          timeout 180 "$HOME/steamcmd/steamcmd.sh" +quit
 
       - name: save SteamCMD cache
         if: github.ref == 'refs/heads/main' && steps.steamcmd_cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6.1.0
         with:
           path: ~/steamcmd
           key: ${{ steps.steamcmd_cache.outputs.cache-primary-key }}
@@ -58,7 +61,7 @@ jobs:
         run: python tools/ci_release.py --sortie build
 
       - name: upload archive
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: ad-astra-dev-${{ github.sha }}
           path: build/ad_astra_v*.zip
