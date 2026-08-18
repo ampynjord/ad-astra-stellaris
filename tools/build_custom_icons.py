@@ -20,6 +20,11 @@ TECHNOLOGY_DESTINATION = ROOT / "ad_astra" / "gfx" / "interface" / "icons" / "te
 
 # Nom de fichier source, nom d'icone employe dans common/decisions.
 DECISIONS = {
+    "decision_core_suborbital": "suborbital.png",
+    "decision_core_satellite": "satellite.png",
+    "decision_core_vol_habite": "manned_flight.png",
+    "decision_core_premier_corps": "first_landing.png",
+    "decision_core_sonde_profonde": "deep_probe.png",
     "decision_adastra_explore": "explore.png",
     "decision_adastra_starbase": "starbase.png",
     "decision_adastra_hyperdrive": "hyperdrive.png",
@@ -51,6 +56,13 @@ def build_decision(source: Path) -> Image.Image:
 
 
 BUILDINGS = {
+    "building_adastra_seat": "seat.png",
+    "building_adastra_seat_bronze": "seat_bronze.png",
+    "building_adastra_seat_iron": "seat_iron.png",
+    "building_adastra_seat_medieval": "seat_medieval.png",
+    "building_adastra_seat_renaissance": "seat_renaissance.png",
+    "building_adastra_seat_steam": "seat_steam.png",
+    "building_adastra_seat_industrial": "seat_industrial.png",
     "building_adastra_cave": "cave.png",
     "building_adastra_granary": "granary.png",
     "building_adastra_foundry": "foundry.png",

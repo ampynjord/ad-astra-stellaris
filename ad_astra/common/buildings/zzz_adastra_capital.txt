@@ -43,7 +43,7 @@ building_adastra_seat = {
 	base_buildtime = 360
 
 	category = government
-	icon = "building_low_tech_capital"
+	icon = "building_adastra_seat"
 	building_sets = { government }
 
 	resources = {
@@ -99,7 +99,7 @@ building_adastra_seat_bronze = {
 	base_buildtime = 360
 
 	category = government
-	icon = "building_low_tech_capital"
+	icon = "building_adastra_seat_bronze"
 	building_sets = { government }
 
 	prerequisites = { "tech_adastra_language" }
@@ -157,7 +157,7 @@ building_adastra_seat_iron = {
 	base_buildtime = 360
 
 	category = government
-	icon = "building_low_tech_capital"
+	icon = "building_adastra_seat_iron"
 	building_sets = { government }
 
 	prerequisites = { "tech_adastra_first_city" }
@@ -220,7 +220,7 @@ building_adastra_seat_medieval = {
 	base_buildtime = 360
 
 	category = government
-	icon = "building_low_tech_capital"
+	icon = "building_adastra_seat_medieval"
 	building_sets = { government }
 
 	prerequisites = { "tech_adastra_law" }
@@ -283,7 +283,7 @@ building_adastra_seat_renaissance = {
 	base_buildtime = 360
 
 	category = government
-	icon = "building_low_tech_capital"
+	icon = "building_adastra_seat_renaissance"
 	building_sets = { government }
 
 	prerequisites = { "tech_adastra_stone_architecture" }
@@ -346,7 +346,7 @@ building_adastra_seat_steam = {
 	base_buildtime = 360
 
 	category = government
-	icon = "building_low_tech_capital"
+	icon = "building_adastra_seat_steam"
 	building_sets = { government }
 
 	prerequisites = { "tech_adastra_printing" }
@@ -409,7 +409,7 @@ building_adastra_seat_industrial = {
 	base_buildtime = 360
 
 	category = government
-	icon = "building_low_tech_capital"
+	icon = "building_adastra_seat_industrial"
 	building_sets = { government }
 
 	prerequisites = { "tech_adastra_steam_engine" }
