@@ -158,7 +158,7 @@ AGE_COST = {
     "machine":  (200, 3, 480),
 }
 
-ICONS = {'building_adastra_cave': 'building_autochthon_monument', 'building_adastra_granary': 'building_primitive_farm', 'building_adastra_foundry': 'building_primitive_mine', 'building_adastra_tablet_house': 'building_primitive_research', 'building_adastra_courthouse': 'building_low_tech_admin_hub', 'building_adastra_mill': 'building_food_processing_facility', 'building_adastra_citadel': 'building_stone_palace', 'building_adastra_university': 'building_primitive_labs', 'building_adastra_manufactory': 'building_primitive_factory', 'building_adastra_radio': 'building_pre_ftl_radio_telescope', 'building_adastra_school': 'building_state_academy'}
+ICONS = {'building_adastra_cave': 'building_adastra_cave', 'building_adastra_granary': 'building_adastra_granary', 'building_adastra_foundry': 'building_adastra_foundry', 'building_adastra_tablet_house': 'building_adastra_tablet_house', 'building_adastra_courthouse': 'building_adastra_courthouse', 'building_adastra_mill': 'building_adastra_mill', 'building_adastra_citadel': 'building_adastra_citadel', 'building_adastra_university': 'building_adastra_university', 'building_adastra_manufactory': 'building_adastra_manufactory', 'building_adastra_radio': 'building_adastra_radio', 'building_adastra_school': 'building_adastra_school'}
 
 
 import re as _re
