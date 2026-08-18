@@ -1,0 +1,41 @@
+name: Idee ou suggestion
+description: Proposer un contenu, un ajustement d'equilibrage ou une amelioration d'ergonomie.
+title: "[Idee] "
+labels: ["idee"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Une suggestion est discutee avant d'etre planifiee. Une bonne idee n'est pas une promesse de calendrier.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Type de suggestion
+      options:
+        - Contenu ou technologies
+        - Equilibrage ou rythme
+        - Interface ou ergonomie
+        - Compatibilite
+        - Documentation ou traduction
+        - Autre
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Besoin ou probleme
+      description: Quel moment de jeu cherches-tu a ameliorer ?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposition
+      description: Explique le comportement souhaite, pas seulement une solution technique.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexte de partie
+      description: Age, rythme, version et autres mods si cela influence la proposition.
