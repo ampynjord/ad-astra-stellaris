@@ -9,7 +9,15 @@ from pathlib import Path
 
 
 RACINE = Path(__file__).resolve().parent.parent
-ESPACE_PAR_DEFAUT = RACINE.parent
+
+
+def espace_de_travail() -> Path:
+    """Retrouve le kit Ad Astra depuis le clone principal ou un worktree."""
+    if RACINE.name == "repo":
+        return RACINE.parent
+    if RACINE.parent.name == "worktrees":
+        return RACINE.parent.parent
+    raise RuntimeError("workspace local inattendu : %s" % RACINE.parent)
 
 
 def lance(command):
@@ -45,9 +53,7 @@ def copie_miroir(source, cible):
 
 
 def main():
-    espace = ESPACE_PAR_DEFAUT.resolve()
-    if (espace / "repo").resolve() != RACINE:
-        raise RuntimeError("workspace local inattendu : %s" % espace)
+    espace = espace_de_travail().resolve()
 
     lance([sys.executable, "tools/verify_generated.py"])
     lance([sys.executable, "tools/verify_1_2.py"])
