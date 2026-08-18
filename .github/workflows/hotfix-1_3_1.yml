@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   verifier:
-    name: verifier le mod
+    name: contrôles / vérifier le mod
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
