@@ -1,0 +1,43 @@
+name: Idea
+description: Suggest content, balance, usability, or community improvements.
+title: "[idea] "
+labels: ["idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ideas are welcome. Describe the moment in play that prompted yours and the problem it would solve; a technical solution is optional.
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: What led you to it?
+      description: Describe the play experience: an age that dragged, a decision nobody chose, a missing choice, or another concrete moment.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: When does it matter?
+      options:
+        - Day one
+        - Pre-industrial ages
+        - Industrial and later ages
+        - Space program
+        - Emergence and after
+        - The whole run
+        - Community or documentation
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Screenshots, related mods, examples, or a possible implementation are welcome but optional.
