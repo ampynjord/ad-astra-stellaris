@@ -1,62 +1,70 @@
-name: Bug report / Rapport de bug
-description: Something behaves in a way it should not. / Quelque chose ne se comporte pas comme prévu.
+name: Bug report
+description: Report a reproducible problem with Ad Astra.
 title: "[bug] "
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Merci de prendre le temps. Les quatre champs marqués obligatoires sont ceux sans lesquels un rapport n'est pas exploitable — l'âge de départ et le journal d'erreurs suffisent à identifier la plupart des causes.
-
-        *Thanks for taking the time. The four required fields are the ones without which a report cannot be acted on — the starting age and the error log alone identify most causes.*
+        Thank you for helping test Ad Astra. Please search existing issues first and include the requested context; it is required to reproduce progression and compatibility problems.
 
   - type: textarea
-    id: quoi
+    id: happened
     attributes:
-      label: Ce qui s'est passé / What happened
-      description: Ce que vous avez fait, ce que vous attendiez, ce qui est arrivé à la place. / What you did, what you expected, what happened instead.
+      label: What happened?
+      description: Describe the actual result and the result you expected.
+      placeholder: "At the end of the Bronze Age, no research options appeared..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
       placeholder: |
-        J'ai construit le Grenier à l'Âge du bronze. Il s'est construit puis a disparu tout seul le mois suivant.
+        1. Start a new game with...
+        2. Select...
+        3. Advance until...
     validations:
       required: true
 
   - type: dropdown
     id: age
     attributes:
-      label: Âge de départ / Starting age
+      label: Starting age
       options:
-        - Âge de pierre / Stone Age
-        - Âge du bronze / Bronze Age
-        - Âge du fer / Iron Age
-        - Âge médiéval tardif / Late Medieval Age
+        - Stone Age
+        - Bronze Age
+        - Iron Age
+        - Late Medieval Age
         - Renaissance
-        - Âge de la vapeur / Steam Age
-        - Âge industriel / Industrial Age
-        - Âge de la machine / Machine Age
-        - Âge de l'atome / Atomic Age
-        - Débuts de l'Âge spatial / Early Space Age
-        - Je ne sais plus / I do not remember
+        - Steam Age
+        - Industrial Age
+        - Machine Age
+        - Atomic Age
+        - Early Space Age
+        - I do not remember
     validations:
       required: true
 
   - type: dropdown
-    id: rythme
+    id: pace
     attributes:
-      label: Rythme d'ascension / Ascension pace
+      label: Ascension pace
       options:
         - Normal
-        - Rapide / Fast
-        - Lent / Slow
-        - Très lent / Very slow
-        - Je ne sais plus / I do not remember
+        - Fast
+        - Slow
+        - Very slow
+        - I do not remember
     validations:
       required: true
 
   - type: input
     id: date
     attributes:
-      label: Date en jeu / In-game date
-      description: La date affichée en haut à droite au moment du problème. / The date shown top right when it happened.
+      label: In-game date
+      description: The date shown in the top-right corner when the problem occurred.
       placeholder: "2247.03.18"
     validations:
       required: true
@@ -64,9 +72,9 @@ body:
   - type: input
     id: version
     attributes:
-      label: Version du mod / Mod version
-      description: Visible dans le launcher, à côté du nom du mod. / Shown in the launcher next to the mod name.
-      placeholder: "1.1.1"
+      label: Ad Astra version
+      description: Shown by the Stellaris launcher.
+      placeholder: "1.3.1"
     validations:
       required: true
 
@@ -74,10 +82,7 @@ body:
     id: log
     attributes:
       label: error.log
-      description: |
-        `Documents/Paradox Interactive/Stellaris/logs/error.log`, après avoir reproduit le problème. Collez-le entier : les lignes « already exists » sont normales, ce sont nos surcharges.
-
-        *Paste it whole. The "already exists" lines are normal, those are our overrides.*
+      description: Paste the complete `Documents/Paradox Interactive/Stellaris/logs/error.log` after reproducing the problem. The mod's normal "already exists" override messages can stay in the log.
       render: text
     validations:
       required: true
@@ -85,14 +90,15 @@ body:
   - type: textarea
     id: mods
     attributes:
-      label: Autres mods actifs / Other active mods
-      description: Dans l'ordre du playset, si vous en avez plus d'un. / In playset order, if you have more than one.
+      label: Active mods and load order
+      description: List every active mod in playset order. Write "Ad Astra only" for a clean test.
 
   - type: checkboxes
-    id: verifications
+    id: checks
     attributes:
-      label: Avant d'envoyer / Before sending
+      label: Before submitting
       options:
-        - label: J'ai commencé une **nouvelle partie** avec cette version du mod. / I started a **new game** with this version.
+        - label: I started a new game after installing this version.
           required: true
-        - label: J'ai regardé si le problème était déjà signalé. / I checked whether this was already reported.
+        - label: I searched existing issues for this problem.
+          required: true
