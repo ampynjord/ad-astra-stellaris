@@ -57,10 +57,14 @@ def main():
         if not block or multiplier not in block.group(1):
             fail(f"surcout de relance invalide : {name}")
     for localisation in LOCALISATIONS:
-        line = next((line for line in localisation.read_text(encoding="utf-8-sig").splitlines()
-                     if line.startswith("origin_adastra_effects:0 ")), "")
+        lines = localisation.read_text(encoding="utf-8-sig").splitlines()
+        line = next((line for line in lines
+                     if line.lstrip().startswith("origin_adastra_effects:0 ")), "")
         if not line or "\\n" not in line or not line.endswith('"'):
             fail(f"localisation origin_adastra_effects invalide : {localisation.name}")
+        for number, content in enumerate(lines[1:], start=2):
+            if content and not content.startswith((" ", "#")):
+                fail(f"localisation non indentee : {localisation.name}:{number}")
     print("0 erreur : invariants 1.3.1 valides.")
 
 
