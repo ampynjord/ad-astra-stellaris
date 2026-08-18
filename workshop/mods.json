@@ -1,0 +1,37 @@
+{
+  "_lisez_moi": [
+    "Le registre des mods publiables. La CI ne publie QUE ce qui est ici, et",
+    "refuse tout mod dont publishedfileid vaut null.",
+    "",
+    "17/08/2026 : la collection (Core, Origins, Frontier) a ete preparee puis",
+    "REPORTEE - tout reste dans Origins. Le registre garde sa forme de liste",
+    "pour que l'eclatement, le jour venu, soit une entree de plus et rien",
+    "d'autre. Une seule entree aujourd'hui, c'est normal.",
+    "",
+    "Un identifiant null veut dire : ce mod n'a jamais ete publie. Sa premiere",
+    "publication se fait a la main avec tools/premiere_publication.py, parce que",
+    "c'est Steam qui attribue l'identifiant et qu'il faut le recopier ici.",
+    "",
+    "Cette prudence a une raison precise : le 16/08/2026, un manifeste regenere",
+    "sans publishedfileid a fait publier un SECOND exemplaire d'Origins sur le",
+    "Workshop, avec ses propres abonnes, qu'il a fallu supprimer a la main."
+  ],
+  "mods": [
+    {
+      "cle": "origins",
+      "nom": "Ad Astra: Origins",
+      "source": "ad_astra",
+      "lanceur": "ad_astra.mod",
+      "publishedfileid": "3781408257",
+      "titre": "Ad Astra - Origins (Pre-FTL / Pre-PRL) [BETA]",
+      "description": "workshop/origins/description_EN.txt",
+      "description_fr": "workshop/origins/description_FR.txt",
+      "apercu": "workshop/origins/thumbnail.png",
+      "tags": [
+        "Gameplay",
+        "Events",
+        "Technologies"
+      ]
+    }
+  ]
+}
