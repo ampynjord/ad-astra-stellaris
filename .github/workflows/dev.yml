@@ -1,14 +1,14 @@
 # Development workflow.
 #
 #   push to dev             -> checks
-#   pull request to main    -> the same checks; main is protected by this job
+#   pull request to dev/main -> the same checks; main is protected by this job
 name: development
 
 on:
   push:
     branches: [dev]
   pull_request:
-    branches: [main]
+    branches: [dev, main]
 
 jobs:
   checks:
