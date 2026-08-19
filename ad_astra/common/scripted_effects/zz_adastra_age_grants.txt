@@ -8,27 +8,27 @@ adastra_grant_age_stone = {
 	give_technology = { tech = tech_adastra_fire message = no }
 	give_technology = { tech = tech_adastra_stone_tools message = no }
 	give_technology = { tech = tech_adastra_hunting message = no }
-	give_technology = { tech = tech_adastra_cave_art message = no }
-	give_technology = { tech = tech_adastra_language message = no }
-	give_technology = { tech = tech_adastra_seasons message = no }
-	give_technology = { tech = tech_adastra_pigments message = no }
-	give_technology = { tech = tech_adastra_cordage message = no }
 	give_technology = { tech = tech_adastra_shelter message = no }
-	give_technology = { tech = tech_adastra_burial message = no }
 	give_technology = { tech = tech_adastra_cooking message = no }
+	give_technology = { tech = tech_adastra_language message = no }
+	give_technology = { tech = tech_adastra_pigments message = no }
+	give_technology = { tech = tech_adastra_burial message = no }
 	give_technology = { tech = tech_adastra_clan message = no }
 	give_technology = { tech = tech_adastra_hafting message = no }
+	give_technology = { tech = tech_adastra_cave_art message = no }
+	give_technology = { tech = tech_adastra_seasons message = no }
+	give_technology = { tech = tech_adastra_cordage message = no }
 	give_technology = { tech = tech_adastra_lunar_count message = no }
 	give_technology = { tech = tech_adastra_storytelling message = no }
 	give_technology = { tech = tech_adastra_grinding message = no }
 	give_technology = { tech = tech_adastra_weaving message = no }
 	give_technology = { tech = tech_adastra_bow message = no }
 	give_technology = { tech = tech_adastra_exchange message = no }
+	give_technology = { tech = tech_adastra_pottery message = no }
 	give_technology = { tech = tech_adastra_canoe message = no }
 	give_technology = { tech = tech_adastra_salt message = no }
 	give_technology = { tech = tech_adastra_village message = no }
 	give_technology = { tech = tech_adastra_agriculture message = no }
-	give_technology = { tech = tech_adastra_pottery message = no }
 	give_technology = { tech = tech_adastra_domestication message = no }
 }
 
@@ -36,15 +36,15 @@ adastra_grant_age_bronze = {
 	give_technology = { tech = tech_adastra_bronze message = no }
 	give_technology = { tech = tech_adastra_writing message = no }
 	give_technology = { tech = tech_adastra_first_city message = no }
-	give_technology = { tech = tech_adastra_calendar message = no }
-	give_technology = { tech = tech_adastra_measures message = no }
-	give_technology = { tech = tech_adastra_irrigation message = no }
-	give_technology = { tech = tech_adastra_priesthood message = no }
 	give_technology = { tech = tech_adastra_wheel message = no }
 	give_technology = { tech = tech_adastra_sail message = no }
+	give_technology = { tech = tech_adastra_irrigation message = no }
+	give_technology = { tech = tech_adastra_priesthood message = no }
 	give_technology = { tech = tech_adastra_plough message = no }
 	give_technology = { tech = tech_adastra_brewing message = no }
 	give_technology = { tech = tech_adastra_kingship message = no }
+	give_technology = { tech = tech_adastra_calendar message = no }
+	give_technology = { tech = tech_adastra_measures message = no }
 	give_technology = { tech = tech_adastra_fired_brick message = no }
 	give_technology = { tech = tech_adastra_lever message = no }
 	give_technology = { tech = tech_adastra_lost_wax message = no }
@@ -62,86 +62,86 @@ adastra_grant_age_bronze = {
 
 adastra_grant_age_iron = {
 	give_technology = { tech = tech_adastra_iron message = no }
+	give_technology = { tech = tech_adastra_astronomy message = no }
+	give_technology = { tech = tech_adastra_alphabet message = no }
+	give_technology = { tech = tech_adastra_cavalry message = no }
+	give_technology = { tech = tech_adastra_trireme message = no }
 	give_technology = { tech = tech_adastra_law message = no }
 	give_technology = { tech = tech_adastra_coinage message = no }
-	give_technology = { tech = tech_adastra_astronomy message = no }
-	give_technology = { tech = tech_adastra_geometry message = no }
-	give_technology = { tech = tech_adastra_glass message = no }
-	give_technology = { tech = tech_adastra_aqueduct message = no }
-	give_technology = { tech = tech_adastra_alphabet message = no }
-	give_technology = { tech = tech_adastra_standing_army message = no }
-	give_technology = { tech = tech_adastra_star_catalogue message = no }
 	give_technology = { tech = tech_adastra_atomism message = no }
-	give_technology = { tech = tech_adastra_water_clock message = no }
-	give_technology = { tech = tech_adastra_pulley message = no }
-	give_technology = { tech = tech_adastra_lodestone message = no }
-	give_technology = { tech = tech_adastra_cavalry message = no }
 	give_technology = { tech = tech_adastra_tax_register message = no }
 	give_technology = { tech = tech_adastra_clinical_medicine message = no }
+	give_technology = { tech = tech_adastra_geometry message = no }
+	give_technology = { tech = tech_adastra_aqueduct message = no }
 	give_technology = { tech = tech_adastra_philosophy message = no }
-	give_technology = { tech = tech_adastra_silk_road message = no }
-	give_technology = { tech = tech_adastra_trireme message = no }
 	give_technology = { tech = tech_adastra_crucible_steel message = no }
 	give_technology = { tech = tech_adastra_roman_road message = no }
+	give_technology = { tech = tech_adastra_star_catalogue message = no }
+	give_technology = { tech = tech_adastra_water_clock message = no }
+	give_technology = { tech = tech_adastra_pulley message = no }
+	give_technology = { tech = tech_adastra_silk_road message = no }
 	give_technology = { tech = tech_adastra_lighthouse message = no }
+	give_technology = { tech = tech_adastra_glass message = no }
+	give_technology = { tech = tech_adastra_standing_army message = no }
+	give_technology = { tech = tech_adastra_lodestone message = no }
 	give_technology = { tech = tech_adastra_bellows message = no }
 	give_technology = { tech = tech_adastra_concrete message = no }
 }
 
 adastra_grant_age_medieval = {
 	give_technology = { tech = tech_adastra_crop_rotation message = no }
-	give_technology = { tech = tech_adastra_mills message = no }
-	give_technology = { tech = tech_adastra_stone_architecture message = no }
-	give_technology = { tech = tech_adastra_scholasticism message = no }
-	give_technology = { tech = tech_adastra_guilds message = no }
 	give_technology = { tech = tech_adastra_algebra message = no }
-	give_technology = { tech = tech_adastra_optics message = no }
-	give_technology = { tech = tech_adastra_heavy_plough message = no }
-	give_technology = { tech = tech_adastra_hospices message = no }
-	give_technology = { tech = tech_adastra_cartography message = no }
 	give_technology = { tech = tech_adastra_stirrup message = no }
 	give_technology = { tech = tech_adastra_paper_mill message = no }
 	give_technology = { tech = tech_adastra_distillation message = no }
+	give_technology = { tech = tech_adastra_mills message = no }
+	give_technology = { tech = tech_adastra_heavy_plough message = no }
 	give_technology = { tech = tech_adastra_translation_movement message = no }
 	give_technology = { tech = tech_adastra_astrolabe message = no }
 	give_technology = { tech = tech_adastra_gunpowder message = no }
+	give_technology = { tech = tech_adastra_optics message = no }
 	give_technology = { tech = tech_adastra_horse_collar message = no }
 	give_technology = { tech = tech_adastra_trigonometry message = no }
 	give_technology = { tech = tech_adastra_crop_diffusion message = no }
 	give_technology = { tech = tech_adastra_paper_money message = no }
+	give_technology = { tech = tech_adastra_stone_architecture message = no }
 	give_technology = { tech = tech_adastra_blast_furnace message = no }
 	give_technology = { tech = tech_adastra_compass message = no }
 	give_technology = { tech = tech_adastra_caravanserai message = no }
 	give_technology = { tech = tech_adastra_stern_rudder message = no }
+	give_technology = { tech = tech_adastra_scholasticism message = no }
+	give_technology = { tech = tech_adastra_guilds message = no }
+	give_technology = { tech = tech_adastra_hospices message = no }
+	give_technology = { tech = tech_adastra_cartography message = no }
 	give_technology = { tech = tech_adastra_impetus message = no }
 }
 
 adastra_grant_age_renaissance = {
 	give_technology = { tech = tech_adastra_printing message = no }
-	give_technology = { tech = tech_adastra_experimental_method message = no }
-	give_technology = { tech = tech_adastra_anatomy message = no }
 	give_technology = { tech = tech_adastra_mechanics message = no }
 	give_technology = { tech = tech_adastra_banking message = no }
-	give_technology = { tech = tech_adastra_chemistry message = no }
+	give_technology = { tech = tech_adastra_caravel message = no }
+	give_technology = { tech = tech_adastra_clear_glass message = no }
 	give_technology = { tech = tech_adastra_metallurgy_casting message = no }
-	give_technology = { tech = tech_adastra_clockwork message = no }
 	give_technology = { tech = tech_adastra_double_entry message = no }
 	give_technology = { tech = tech_adastra_navigation message = no }
-	give_technology = { tech = tech_adastra_telescope message = no }
+	give_technology = { tech = tech_adastra_permanent_embassy message = no }
+	give_technology = { tech = tech_adastra_canal_lock message = no }
+	give_technology = { tech = tech_adastra_anatomy message = no }
 	give_technology = { tech = tech_adastra_heliocentrism message = no }
+	give_technology = { tech = tech_adastra_pike_and_shot message = no }
+	give_technology = { tech = tech_adastra_bastion_fort message = no }
+	give_technology = { tech = tech_adastra_deep_mining message = no }
+	give_technology = { tech = tech_adastra_experimental_method message = no }
+	give_technology = { tech = tech_adastra_telescope message = no }
 	give_technology = { tech = tech_adastra_magnetism message = no }
+	give_technology = { tech = tech_adastra_new_crops message = no }
+	give_technology = { tech = tech_adastra_joint_stock message = no }
+	give_technology = { tech = tech_adastra_chemistry message = no }
+	give_technology = { tech = tech_adastra_clockwork message = no }
 	give_technology = { tech = tech_adastra_vacuum_pump message = no }
 	give_technology = { tech = tech_adastra_universal_gravitation message = no }
 	give_technology = { tech = tech_adastra_microscope message = no }
-	give_technology = { tech = tech_adastra_new_crops message = no }
-	give_technology = { tech = tech_adastra_pike_and_shot message = no }
-	give_technology = { tech = tech_adastra_joint_stock message = no }
-	give_technology = { tech = tech_adastra_permanent_embassy message = no }
-	give_technology = { tech = tech_adastra_caravel message = no }
-	give_technology = { tech = tech_adastra_canal_lock message = no }
-	give_technology = { tech = tech_adastra_bastion_fort message = no }
-	give_technology = { tech = tech_adastra_deep_mining message = no }
-	give_technology = { tech = tech_adastra_clear_glass message = no }
 	# Technos du jeu de base rattachees a cet age.
 	give_technology = { tech = tech_basic_science_lab_1 message = no }
 }
@@ -149,28 +149,28 @@ adastra_grant_age_renaissance = {
 adastra_grant_age_steam = {
 	give_technology = { tech = tech_adastra_steam_engine message = no }
 	give_technology = { tech = tech_adastra_coal message = no }
-	give_technology = { tech = tech_adastra_railways message = no }
-	give_technology = { tech = tech_adastra_telegraph message = no }
-	give_technology = { tech = tech_adastra_sanitation message = no }
-	give_technology = { tech = tech_adastra_gas_lighting message = no }
-	give_technology = { tech = tech_adastra_electromagnetism message = no }
-	give_technology = { tech = tech_adastra_machine_tools message = no }
-	give_technology = { tech = tech_adastra_census message = no }
-	give_technology = { tech = tech_adastra_anesthesia message = no }
-	give_technology = { tech = tech_adastra_photography message = no }
 	give_technology = { tech = tech_adastra_selective_breeding message = no }
 	give_technology = { tech = tech_adastra_canals message = no }
 	give_technology = { tech = tech_adastra_spinning_jenny message = no }
+	give_technology = { tech = tech_adastra_census message = no }
 	give_technology = { tech = tech_adastra_political_economy message = no }
 	give_technology = { tech = tech_adastra_iron_bridge message = no }
 	give_technology = { tech = tech_adastra_balloon message = no }
 	give_technology = { tech = tech_adastra_mass_conscription message = no }
+	give_technology = { tech = tech_adastra_gas_lighting message = no }
+	give_technology = { tech = tech_adastra_machine_tools message = no }
 	give_technology = { tech = tech_adastra_vaccine_cowpox message = no }
 	give_technology = { tech = tech_adastra_scientific_expeditions message = no }
 	give_technology = { tech = tech_adastra_atomic_theory message = no }
+	give_technology = { tech = tech_adastra_railways message = no }
+	give_technology = { tech = tech_adastra_electromagnetism message = no }
 	give_technology = { tech = tech_adastra_steamship message = no }
 	give_technology = { tech = tech_adastra_fraunhofer_lines message = no }
 	give_technology = { tech = tech_adastra_difference_engine message = no }
+	give_technology = { tech = tech_adastra_telegraph message = no }
+	give_technology = { tech = tech_adastra_sanitation message = no }
+	give_technology = { tech = tech_adastra_anesthesia message = no }
+	give_technology = { tech = tech_adastra_photography message = no }
 	give_technology = { tech = tech_adastra_abolition message = no }
 	# Technos du jeu de base rattachees a cet age.
 	give_technology = { tech = tech_basic_industry message = no }
@@ -179,21 +179,21 @@ adastra_grant_age_steam = {
 adastra_grant_age_industrial = {
 	give_technology = { tech = tech_adastra_bessemer message = no }
 	give_technology = { tech = tech_adastra_thermodynamics message = no }
-	give_technology = { tech = tech_adastra_fertilizers message = no }
-	give_technology = { tech = tech_adastra_labour_law message = no }
-	give_technology = { tech = tech_adastra_periodic_table message = no }
-	give_technology = { tech = tech_adastra_refrigeration message = no }
 	give_technology = { tech = tech_adastra_germ_theory message = no }
-	give_technology = { tech = tech_adastra_universal_suffrage message = no }
-	give_technology = { tech = tech_adastra_electricity message = no }
-	give_technology = { tech = tech_adastra_social_insurance message = no }
 	give_technology = { tech = tech_adastra_synthetic_dye message = no }
 	give_technology = { tech = tech_adastra_spectroscopy message = no }
+	give_technology = { tech = tech_adastra_fertilizers message = no }
+	give_technology = { tech = tech_adastra_periodic_table message = no }
+	give_technology = { tech = tech_adastra_universal_suffrage message = no }
 	give_technology = { tech = tech_adastra_antiseptic_surgery message = no }
 	give_technology = { tech = tech_adastra_dynamite message = no }
+	give_technology = { tech = tech_adastra_labour_law message = no }
+	give_technology = { tech = tech_adastra_refrigeration message = no }
 	give_technology = { tech = tech_adastra_general_staff message = no }
 	give_technology = { tech = tech_adastra_dynamo message = no }
 	give_technology = { tech = tech_adastra_telephone message = no }
+	give_technology = { tech = tech_adastra_electricity message = no }
+	give_technology = { tech = tech_adastra_social_insurance message = no }
 	give_technology = { tech = tech_adastra_ocean_liner message = no }
 	give_technology = { tech = tech_adastra_machine_gun message = no }
 	give_technology = { tech = tech_adastra_steel_frame message = no }
@@ -208,31 +208,31 @@ adastra_grant_age_industrial = {
 }
 
 adastra_grant_age_machine = {
-	give_technology = { tech = tech_adastra_radio message = no }
 	give_technology = { tech = tech_adastra_aviation message = no }
-	give_technology = { tech = tech_adastra_antibiotics message = no }
-	give_technology = { tech = tech_adastra_mass_education message = no }
 	give_technology = { tech = tech_adastra_quantum_theory message = no }
-	give_technology = { tech = tech_adastra_haber message = no }
 	give_technology = { tech = tech_adastra_plastics message = no }
-	give_technology = { tech = tech_adastra_epidemiology message = no }
-	give_technology = { tech = tech_adastra_assembly_line message = no }
-	give_technology = { tech = tech_adastra_petrochemistry message = no }
-	give_technology = { tech = tech_adastra_jet_engine message = no }
-	give_technology = { tech = tech_adastra_television message = no }
 	give_technology = { tech = tech_adastra_relativity message = no }
+	give_technology = { tech = tech_adastra_reinforced_concrete message = no }
+	give_technology = { tech = tech_adastra_haber message = no }
+	give_technology = { tech = tech_adastra_assembly_line message = no }
 	give_technology = { tech = tech_adastra_atomic_nucleus message = no }
 	give_technology = { tech = tech_adastra_cosmic_rays message = no }
-	give_technology = { tech = tech_adastra_expanding_universe message = no }
-	give_technology = { tech = tech_adastra_radar message = no }
-	give_technology = { tech = tech_adastra_cryptanalysis message = no }
 	give_technology = { tech = tech_adastra_polar_exploration message = no }
+	give_technology = { tech = tech_adastra_mass_education message = no }
+	give_technology = { tech = tech_adastra_epidemiology message = no }
 	give_technology = { tech = tech_adastra_vitamins message = no }
 	give_technology = { tech = tech_adastra_blood_transfusion message = no }
 	give_technology = { tech = tech_adastra_propaganda message = no }
-	give_technology = { tech = tech_adastra_total_war message = no }
-	give_technology = { tech = tech_adastra_reinforced_concrete message = no }
+	give_technology = { tech = tech_adastra_radio message = no }
+	give_technology = { tech = tech_adastra_antibiotics message = no }
+	give_technology = { tech = tech_adastra_petrochemistry message = no }
+	give_technology = { tech = tech_adastra_expanding_universe message = no }
 	give_technology = { tech = tech_adastra_tractor message = no }
+	give_technology = { tech = tech_adastra_jet_engine message = no }
+	give_technology = { tech = tech_adastra_television message = no }
+	give_technology = { tech = tech_adastra_radar message = no }
+	give_technology = { tech = tech_adastra_cryptanalysis message = no }
+	give_technology = { tech = tech_adastra_total_war message = no }
 	# Technos du jeu de base rattachees a cet age.
 	give_technology = { tech = tech_basic_health message = no }
 	give_technology = { tech = tech_flak_batteries_1 message = no }
@@ -245,26 +245,26 @@ adastra_grant_age_machine = {
 adastra_grant_age_atomic = {
 	give_technology = { tech = tech_adastra_fission message = no }
 	give_technology = { tech = tech_adastra_electronics message = no }
-	give_technology = { tech = tech_adastra_vaccination message = no }
-	give_technology = { tech = tech_adastra_radio_astronomy message = no }
-	give_technology = { tech = tech_adastra_containers message = no }
-	give_technology = { tech = tech_adastra_human_rights message = no }
-	give_technology = { tech = tech_adastra_computing message = no }
-	give_technology = { tech = tech_adastra_cooperation message = no }
 	give_technology = { tech = tech_adastra_nuclear_medicine message = no }
 	give_technology = { tech = tech_adastra_sounding_rocket message = no }
 	give_technology = { tech = tech_adastra_transistor message = no }
+	give_technology = { tech = tech_adastra_human_rights message = no }
+	give_technology = { tech = tech_adastra_computing message = no }
 	give_technology = { tech = tech_adastra_decolonization message = no }
 	give_technology = { tech = tech_adastra_welfare_state message = no }
 	give_technology = { tech = tech_adastra_information_theory message = no }
+	give_technology = { tech = tech_adastra_radio_astronomy message = no }
 	give_technology = { tech = tech_adastra_deterrence message = no }
 	give_technology = { tech = tech_adastra_suburbs message = no }
 	give_technology = { tech = tech_adastra_civil_aviation message = no }
 	give_technology = { tech = tech_adastra_dna_structure message = no }
+	give_technology = { tech = tech_adastra_vaccination message = no }
 	give_technology = { tech = tech_adastra_maser message = no }
 	give_technology = { tech = tech_adastra_nuclear_submarine message = no }
 	give_technology = { tech = tech_adastra_solar_cell message = no }
 	give_technology = { tech = tech_adastra_desegregation message = no }
+	give_technology = { tech = tech_adastra_containers message = no }
+	give_technology = { tech = tech_adastra_cooperation message = no }
 	give_technology = { tech = tech_adastra_motorways message = no }
 	give_technology = { tech = tech_adastra_magnetic_storage message = no }
 	give_technology = { tech = tech_adastra_ballistic_missile message = no }
@@ -278,29 +278,29 @@ adastra_grant_age_atomic = {
 adastra_grant_age_space = {
 	give_technology = { tech = tech_adastra_rocketry message = no }
 	give_technology = { tech = tech_adastra_remote_sensing message = no }
-	give_technology = { tech = tech_adastra_genetics message = no }
 	give_technology = { tech = tech_adastra_satellites message = no }
+	give_technology = { tech = tech_adastra_superconductivity message = no }
+	give_technology = { tech = tech_adastra_laser message = no }
+	give_technology = { tech = tech_adastra_birth_control message = no }
+	give_technology = { tech = tech_adastra_hotline message = no }
+	give_technology = { tech = tech_adastra_deep_sea message = no }
+	give_technology = { tech = tech_adastra_manned_flight message = no }
+	give_technology = { tech = tech_adastra_industrial_robot message = no }
+	give_technology = { tech = tech_adastra_chaos_theory message = no }
+	give_technology = { tech = tech_adastra_quarks message = no }
+	give_technology = { tech = tech_adastra_civil_rights message = no }
+	give_technology = { tech = tech_adastra_ion_drive message = no }
+	give_technology = { tech = tech_adastra_heat_shield message = no }
+	give_technology = { tech = tech_adastra_genetics message = no }
+	give_technology = { tech = tech_adastra_green_revolution message = no }
+	give_technology = { tech = tech_adastra_plate_tectonics message = no }
+	give_technology = { tech = tech_adastra_cosmic_background message = no }
+	give_technology = { tech = tech_adastra_transplant message = no }
 	give_technology = { tech = tech_adastra_microprocessor message = no }
 	give_technology = { tech = tech_adastra_networks message = no }
 	give_technology = { tech = tech_adastra_ecology message = no }
-	give_technology = { tech = tech_adastra_green_revolution message = no }
-	give_technology = { tech = tech_adastra_superconductivity message = no }
-	give_technology = { tech = tech_adastra_laser message = no }
-	give_technology = { tech = tech_adastra_chaos_theory message = no }
-	give_technology = { tech = tech_adastra_quarks message = no }
-	give_technology = { tech = tech_adastra_plate_tectonics message = no }
-	give_technology = { tech = tech_adastra_cosmic_background message = no }
 	give_technology = { tech = tech_adastra_fiber_optics message = no }
-	give_technology = { tech = tech_adastra_birth_control message = no }
-	give_technology = { tech = tech_adastra_transplant message = no }
-	give_technology = { tech = tech_adastra_hotline message = no }
-	give_technology = { tech = tech_adastra_deep_sea message = no }
-	give_technology = { tech = tech_adastra_civil_rights message = no }
-	give_technology = { tech = tech_adastra_manned_flight message = no }
 	give_technology = { tech = tech_adastra_lunar_landing message = no }
-	give_technology = { tech = tech_adastra_ion_drive message = no }
-	give_technology = { tech = tech_adastra_heat_shield message = no }
-	give_technology = { tech = tech_adastra_industrial_robot message = no }
 	# Technos du jeu de base rattachees a cet age.
 	give_technology = { tech = tech_corvettes message = no }
 	give_technology = { tech = tech_holo_entertainment message = no }
@@ -320,7 +320,7 @@ adastra_grant_age_space = {
 	give_technology = { tech = tech_space_defense_station_1 message = no }
 }
 
-# --- entree dans un age : premiere vague poussee dans le vivier ---
+# --- entree dans un age : premier rang de l'arbre pousse dans le vivier ---
 adastra_offre_age_stone = {
 	add_research_option = tech_adastra_fire
 	add_research_option = tech_adastra_stone_tools

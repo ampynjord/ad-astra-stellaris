@@ -106,7 +106,9 @@ for r in refs:
 if bad:
     err("prerequis pointant vers une tech inexistante : %s" % ", ".join(sorted(bad)))
 first_age = AGES[0][0]
-roots = [t["key"] for t in TECHS[first_age]]
+# 1.5 : a la Pierre, seules les techs de rang 1 sont des racines ; les rangs
+# 2-5 sont chaines dans l'age comme partout ailleurs.
+roots = [t["key"] for t in TECHS[first_age] if vagues(TECHS[first_age])[t["key"]] == 1]
 n_with = len(refs)
 print("  %d techs avec prerequis, %d racines (age %s)" % (n_with, len(roots), first_age))
 if n_with + len(roots) != len(keys):
@@ -1045,36 +1047,61 @@ for _age, _f, _c, _v in AGES:
         from collections import Counter as _C
         _rep = _C(_v.values())
         if set(_rep.values()) != {5}:
-            err("age %s : vagues desequilibrees %s" % (_age, dict(_rep)))
+            err("age %s : rangs desequilibres %s" % (_age, dict(_rep)))
         else:
-            print("   %-12s 25 technos datees, 5 vagues de 5, ordre historique" % _age)
+            print("   %-12s 25 technos datees, 5 rangs de 5, ordre historique" % _age)
 print("   %d technologie(s) datee(s) sur %d" % (_dates, sum(len(TECHS[a]) for a, _b, _c2, _d in AGES)))
 
 
-# ==================================================== vagues de technologies
-# 1.3 : les drapeaux de vague s'accumulent d'un age a l'autre. Sans la clause
-# d'exclusion, les dix blocs s'executent et le dernier efface ce que le premier
-# a pose - toutes les technologies au-dela de la vague 1 disparaissent du tirage.
-print("\n== vagues de technologies ==")
-_vg = open(os.path.join(ROOT, "common", "scripted_effects", "zz_adastra_vagues.txt"),
-           encoding="utf-8").read()
-_manque_excl = []
-for _i, (_age, _flag, _c, _v) in enumerate(AGES):
-    if _i + 1 >= len(AGES):
-        continue
-    _suiv = AGES[_i + 1][1]
-    _m = re.search(r"# --- %s ---(.*?)\n\t\t\}" % _age, _vg, re.S)
-    if not _m or "NOT = { has_country_flag = %s }" % _suiv not in _m.group(1):
-        _manque_excl.append(_age)
-if _manque_excl:
-    err("effet des vagues : age(s) sans clause d'exclusion : %s" % ", ".join(_manque_excl))
-_attendu = sum(1 for _a, _b, _c2, _d in AGES for _t in TECHS[_a] if vagues(TECHS[_a])[_t["key"]] > 1)
-_pose = open(os.path.join(ROOT, "common", "technology", "adastra_age_techs.txt"),
-             encoding="utf-8").read().count("has_country_flag = adastra_vague_")
-if _pose != _attendu:
-    err("vagues : %d technologies portent un drapeau, %d attendues" % (_pose, _attendu))
-else:
-    print("   %d technologies derriere une vague, %d ages exclusifs" % (_pose, len(AGES)))
+# ============================================ l'arbre de l'age (1.5, 19/08)
+# La progression, c'est la recherche : plus de vagues ni de verrou genere.
+# L'ordre historique dans un age est tenu par les prerequis : chaque tech de
+# rang N >= 2 doit exiger une tech de rang N-1 du MEME age, et chaque tech de
+# rang 1 le pilier de l'age precedent (ou rien, a la Pierre). Une tech
+# d'epoque acquise vaut un point : le declencheur genere de chaque age doit
+# citer ses 25 technologies, et l'effet de progression doit couvrir les dix.
+print("\n== arbre des ages ==")
+_src_t = open(os.path.join(ROOT, "common", "technology", "adastra_age_techs.txt"),
+              encoding="utf-8").read()
+_blocs = dict(re.findall(r"^(tech_adastra_\w+) = \{(.*?)^\}", _src_t, re.S | re.M))
+_age_de = {t["key"]: a for a, _b, _c2, _d in AGES for t in TECHS[a]}
+_erreurs_arbre = 0
+for _a, _b, _c2, _d in AGES:
+    _rangs = vagues(TECHS[_a])
+    for _t in TECHS[_a]:
+        _bloc = _blocs.get(_t["key"], "")
+        _pre = re.search(r'prerequisites = \{([^}]*)\}', _bloc)
+        _pres = re.findall(r'"([^"]+)"', _pre.group(1)) if _pre else []
+        if "adastra_vague_" in _bloc:
+            err("%s : drapeau de vague dans le potential (1.5 : interdit)" % _t["key"]); _erreurs_arbre += 1
+        if _rangs[_t["key"]] >= 2:
+            if not (_pres and _age_de.get(_pres[0]) == _a and vagues(TECHS[_a])[_pres[0]] == _rangs[_t["key"]] - 1):
+                err("%s (rang %d) : prerequis attendu de rang %d du meme age, trouve %s"
+                    % (_t["key"], _rangs[_t["key"]], _rangs[_t["key"]] - 1, _pres)); _erreurs_arbre += 1
+        elif _pres and _age_de.get(_pres[0]) == _a:
+            err("%s (rang 1) : prerequis dans le meme age" % _t["key"]); _erreurs_arbre += 1
+if not _erreurs_arbre:
+    print("   250 technologies en arbre : rang 1 sur le pilier precedent, rangs 2-5 chaines dans l'age")
+_prog_t = open(os.path.join(ROOT, "common", "scripted_triggers", "zz_adastra_progression.txt"),
+               encoding="utf-8").read()
+_prog_e = open(os.path.join(ROOT, "common", "scripted_effects", "zz_adastra_progression.txt"),
+               encoding="utf-8").read()
+for _a, _flag, _c2, _d in AGES:
+    _m = re.search(r"adastra_tech_epoque_%s = \{(.*?)^\}" % _a, _prog_t, re.S | re.M)
+    if not _m or _m.group(1).count("last_increased_tech = ") != len(TECHS[_a]):
+        err("progression : le declencheur de %s ne cite pas ses %d technologies" % (_a, len(TECHS[_a])))
+    if "adastra_tech_epoque_%s = yes" % _a not in _prog_e:
+        err("progression : l'effet ignore l'age %s" % _a)
+if _prog_e.count("add_situation_progress = 1") < len(AGES):
+    err("progression : moins d'un point par age dans l'effet")
+_situ = open(os.path.join(ROOT, "common", "situations", "zzz_adastra_situations.txt"),
+             encoding="utf-8").read()
+_ends = [int(x) for x in re.findall(r"^\t\t\tend = (\d+)", _situ, re.M)]
+if _ends != [25 * i for i in range(1, 14)]:
+    err("situation : fins d'etape attendues 25..325 par pas de 25, trouve %s" % _ends)
+if re.search(r"monthly_progress = \{\s*base = 0\s*\}", _situ) is None:
+    err("situation : la barre ne doit plus monter au mois (monthly_progress base = 0, sans modificateur)")
+print("   13 etapes de 25 points, barre sans progression mensuelle")
 
 
 # ================================================== icones sans chiffre romain
