@@ -8,15 +8,14 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 GENERATEURS = (
     "tools/gen_age_techs.py",
-    "tools/gen_situation_progress.py",
     "tools/gen_age_buildings.py",
 )
 SORTIES = (
     "ad_astra/common/technology/adastra_age_techs.txt",
     "ad_astra/common/scripted_triggers/zz_adastra_age_gates.txt",
-    "ad_astra/common/scripted_effects/zz_adastra_vagues.txt",
+    "ad_astra/common/scripted_triggers/zz_adastra_progression.txt",
+    "ad_astra/common/scripted_effects/zz_adastra_progression.txt",
     "ad_astra/common/scripted_effects/zz_adastra_age_grants.txt",
-    "ad_astra/common/situations/zzz_adastra_situations.txt",
     "ad_astra/common/buildings/adastra_age_buildings.txt",
     "ad_astra/common/buildings/zzz_adastra_capital.txt",
     "ad_astra/localisation/french/adastra_ages_l_french.yml",

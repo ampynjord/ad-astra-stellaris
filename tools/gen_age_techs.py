@@ -13,7 +13,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from age_techs_data import vagues, seuils_vagues  # noqa: E402
+from age_techs_data import vagues  # noqa: E402
 from age_techs_data import (AGES, MAJEURES, RESOURCE_TECH,  # noqa: E402
                             TECHS, UNLOCKS)
 from vanilla_age_map import VANILLA_AGE_MAP, VANILLA_PREREQ  # noqa: E402
@@ -43,34 +43,43 @@ HEADER = ("# Ad Astra 1.2 - Les Ages : arborescence historique (50 techs, tier 0
 
 
 def prereq_map():
-    """Un seul prérequis : le PILIER de la même area à l'âge précédent.
+    """L'arbre d'un age (1.5, 19/08 - docs/design_recherche_par_arbre.md).
 
-    1.1 chaînait chaque tech à TOUTES les techs de la même area de l'âge
-    précédent. Avec 5 technos par âge c'était tenable ; à 10, cela rendrait
-    l'âge entier obligatoire pour passer au suivant, et il n'y aurait plus
-    aucun choix.
+    Les 25 techs d'un age sont rangees par date en cinq rangs de cinq
+    (fonction `vagues`, le nom est historique). Le rang 1 exige le PILIER du
+    meme domaine a l'age precedent (regle 1.2 : la premiere techno declaree
+    du domaine, la plus emblematique). Un rang N >= 2 exige UNE tech de rang
+    N-1 du meme domaine dans le meme age ; a defaut, la premiere tech de rang
+    N-1 tous domaines confondus.
 
-    Le pilier d'un âge et d'une area, c'est la première techno déclarée : la
-    plus emblématique. Elle seule est un passage obligé. Les autres sont des
-    soeurs facultatives — c'est là que se joue l'arbitrage du joueur, et c'est
-    ce qui fait qu'un âge peut se jouer de plusieurs façons.
-
-    L'ordre des âges reste garanti par ailleurs : le potential de chaque techno
-    exige déjà le drapeau adastra_reached_<age>."""
+    Le moteur ne propose une techno que si ses prerequis sont acquis : c'est
+    lui qui tient l'ordre historique, sans drapeau ni recalcul mensuel. Et
+    comme il faut les 25 pour passer l'age, aucune branche ne peut etre
+    laissee de cote."""
     anchor = {a: None for a in AREAS}
     out = {}
     for age, _flag, _cost, _vflag in AGES:
+        rangs = vagues(TECHS[age])
+        par_rang = {}
+        for t in sorted(TECHS[age], key=lambda t: (t.get("year") or 0)):
+            par_rang.setdefault(rangs[t["key"]], []).append(t)
         current = {a: None for a in AREAS}
         for t in TECHS[age]:
             a = t["area"]
-            out[t["key"]] = [anchor[a]] if anchor[a] else []
+            r = rangs[t["key"]]
+            if r == 1:
+                out[t["key"]] = [anchor[a]] if anchor[a] else []
+            else:
+                prev = par_rang.get(r - 1, [])
+                meme_domaine = [p for p in prev if p["area"] == a]
+                choix = (meme_domaine or prev)[0]
+                out[t["key"]] = [choix["key"]]
             if current[a] is None:
                 current[a] = t["key"]
         for a in AREAS:
             if current[a]:
                 anchor[a] = current[a]
     return out
-
 
 
 def poids(t, est_pilier):
@@ -171,10 +180,9 @@ def gen_techs(prereqs):
             # pas toutes a l'entree : cinq par cinq, a 0, 20, 40, 60 et 80 % de
             # l'etape. La vague est deduite de la DATE de la techno, donc a
             # l'interieur d'un age elles arrivent dans l'ordre historique.
-            v = vg[t["key"]]
-            if v > 1:
-                b.append("\t\t# vague %d : %s" % (v, t["fr"]))
-                b.append("\t\thas_country_flag = adastra_vague_%d" % v)
+            # 1.5 : plus de drapeau de vague - l'ordre dans l'age est tenu par
+            # les prerequis (arbre), voir prereq_map.
+            b.append("\t\t# rang %d dans l'arbre de l'age" % vg[t["key"]])
             b.append("\t}")
             b.append("")
             # 1.4 : L'AGE COURANT, ET LUI SEUL - version qui ne casse pas
@@ -217,47 +225,72 @@ def gen_techs(prereqs):
 
 
 
-def gen_vagues():
-    """L'effet mensuel qui ouvre les vagues d'un age.
+def gen_progression():
+    """1.5 : la progression, c'est la recherche.
 
-    Recalcule a chaque impulsion plutot que de poser un drapeau une fois pour
-    toutes : un age qui change remet la serie a zero sans qu'on ait a y penser,
-    et une partie reprise depuis une vieille sauvegarde se remet d'aplomb toute
-    seule.
-    """
-    out = ["# Ad Astra 1.3 - ouverture des technologies par vagues.",
+    Un declencheur par age (`adastra_tech_epoque_<age>` : la derniere techno
+    acquise est l'une de ses 25) et un effet `adastra_progression_recherche`
+    appele par adastra.132 sur on_tech_increased : si la techno appartient a
+    l'age courant, +1 point de situation. Vingt-cinq points font passer
+    l'etape (docs/design_recherche_par_arbre.md)."""
+    out = ["# Ad Astra 1.5 - la progression, c'est la recherche.",
            "# FICHIER GENERE PAR tools/gen_age_techs.py - NE PAS EDITER A LA MAIN.",
            "#",
-           "# Les vingt-cinq technologies d'un age s'ouvrent cinq par cinq, a 0, 20,",
-           "# 40, 60 et 80 % de l'etape. La vague d'une techno est deduite de sa date :",
-           "# a l'interieur d'un age, elles arrivent donc dans l'ordre historique.",
+           "# Une technologie d'epoque acquise vaut un point de situation si elle",
+           "# appartient a l'age courant. Vingt-cinq points font passer l'age.",
+           ""]
+    for age, flag, _c, _v in AGES:
+        out.append("adastra_tech_epoque_%s = {" % age)
+        out.append("\tOR = {")
+        for t in TECHS[age]:
+            out.append("\t\tlast_increased_tech = %s" % t["key"])
+        out.append("\t}")
+        out.append("}\n")
+    return "\n".join(out) + "\n"
+
+
+def gen_progression_effet():
+    from age_techs_data import ETAPES_SITU
+    out = ["# Ad Astra 1.5 - la progression, c'est la recherche.",
+           "# FICHIER GENERE PAR tools/gen_age_techs.py - NE PAS EDITER A LA MAIN.",
            "",
-           "adastra_maj_vagues = {"]
+           "# Recalage d'une sauvegarde d'avant la 1.5 (adastra.133, une fois) : la",
+           "# progression devient 25 x (age atteint) + technologies de l'age acquises.",
+           "adastra_recalage_progression = {"]
     for i_age, (age, flag, _c, _v) in enumerate(AGES):
-        seuils = seuils_vagues(age)
         suivant = AGES[i_age + 1][1] if i_age + 1 < len(AGES) else None
-        out.append("\t# --- %s ---" % age)
+        debut = ETAPES_SITU[age][0]
         out.append("\tif = {")
+        out.append("\t\tlimit = {")
+        out.append("\t\t\thas_country_flag = %s" % flag)
         if suivant:
-            # les drapeaux d'age s'accumulent : il faut l'age COURANT, sinon les
-            # dix blocs s'executent et le dernier efface ce que le premier pose.
-            out.append("\t\tlimit = {")
-            out.append("\t\t\thas_country_flag = %s" % flag)
             out.append("\t\t\tNOT = { has_country_flag = %s }" % suivant)
-            out.append("\t\t}")
         else:
-            out.append("\t\tlimit = { has_country_flag = %s }" % flag)
-        for i, seuil in enumerate(seuils, start=2):
-            out.append("\t\tif = {")
-            out.append("\t\t\tlimit = {")
-            out.append("\t\t\t\tany_situation = {")
-            out.append("\t\t\t\t\tis_situation_type = situation_adastra_ascension")
-            out.append("\t\t\t\t\tsituation_progress >= %d" % seuil)
-            out.append("\t\t\t\t}")
-            out.append("\t\t\t}")
-            out.append("\t\t\tset_country_flag = adastra_vague_%d" % i)
-            out.append("\t\t}")
-            out.append("\t\telse = { remove_country_flag = adastra_vague_%d }" % i)
+            out.append("\t\t\tNOT = { has_country_flag = adastra_program_started }")
+        out.append("\t\t}")
+        out.append("\t\tevery_situation = {")
+        out.append("\t\t\tlimit = { is_situation_type = situation_adastra_ascension }")
+        out.append("\t\t\tset_situation_progress = %d" % debut)
+        for t in TECHS[age]:
+            out.append("\t\t\tif = { limit = { owner = { has_technology = %s } } add_situation_progress = 1 }" % t["key"])
+        out.append("\t\t}")
+        out.append("\t}")
+    out.append("}")
+    out.append("")
+    out.append("adastra_progression_recherche = {")
+    for i_age, (age, flag, _c, _v) in enumerate(AGES):
+        suivant = AGES[i_age + 1][1] if i_age + 1 < len(AGES) else None
+        out.append("\tif = {")
+        out.append("\t\tlimit = {")
+        out.append("\t\t\thas_country_flag = %s" % flag)
+        if suivant:
+            out.append("\t\t\tNOT = { has_country_flag = %s }" % suivant)
+        out.append("\t\t\tadastra_tech_epoque_%s = yes" % age)
+        out.append("\t\t}")
+        out.append("\t\tevery_situation = {")
+        out.append("\t\t\tlimit = { is_situation_type = situation_adastra_ascension }")
+        out.append("\t\t\tadd_situation_progress = 1")
+        out.append("\t\t}")
         out.append("\t}")
     out.append("}")
     return "\n".join(out) + "\n"
@@ -415,7 +448,10 @@ def gen_grants():
            ""]
     for age, _flag, _cost, _v in AGES:
         out.append("adastra_grant_age_%s = {" % age)
-        for t in TECHS[age]:
+        # 1.5 : dans l'ordre de l'arbre (rang, puis declaration), pour qu'un
+        # prerequis soit toujours donne avant la techno qui l'exige.
+        rangs = vagues(TECHS[age])
+        for t in sorted(TECHS[age], key=lambda t: rangs[t["key"]]):
             out.append("\tgive_technology = { tech = %s message = no }" % t["key"])
         van = tri_par_dependance(
             sorted(k for k, (a, _g) in VANILLA_AGE_MAP.items() if a == age))
@@ -431,7 +467,7 @@ def gen_grants():
     # seules technos visibles sont les deux exceptions d'economie du jeu de base
     # (Ecosimulation, Fracturation geothermique). add_research_option force la
     # main : appele par adastra.4x, une fois, quand le drapeau de l'age est pose.
-    out.append("# --- entree dans un age : premiere vague poussee dans le vivier ---")
+    out.append("# --- entree dans un age : premier rang de l'arbre pousse dans le vivier ---")
     for age, _flag, _cost, _v in AGES:
         vg = vagues(TECHS[age])
         out.append("adastra_offre_age_%s = {" % age)
@@ -457,8 +493,10 @@ def main():
           gen_techs(prereqs))
     write(os.path.join(ROOT, "common", "scripted_triggers", "zz_adastra_age_gates.txt"),
           gen_gates())
-    write(os.path.join(ROOT, "common", "scripted_effects", "zz_adastra_vagues.txt"),
-          gen_vagues())
+    write(os.path.join(ROOT, "common", "scripted_triggers", "zz_adastra_progression.txt"),
+          gen_progression())
+    write(os.path.join(ROOT, "common", "scripted_effects", "zz_adastra_progression.txt"),
+          gen_progression_effet())
     write(os.path.join(ROOT, "common", "scripted_effects", "zz_adastra_age_grants.txt"),
           gen_grants())
     write(os.path.join(ROOT, "localisation", "french", "adastra_ages_l_french.yml"),

@@ -123,14 +123,20 @@ adastra_campaign_industry = {
 	planet_stability_add = -5
 }
 
-# 1.1 : Badges de rythme d'ascension (informatifs - visibles dans les modificateurs de l'empire)
+# 1.1 : badges de rythme d'ascension. 1.5 (19/08) : la progression, c'est la
+# recherche - le rythme est donc une vitesse de recherche des technologies
+# d'epoque (comme tout le reste). Rapide +50 %, lent -33 %, tres lent -50 % :
+# les memes ordres de grandeur que l'ancienne barre mensuelle.
 adastra_pace_fast = {
+	all_technology_research_speed = 0.50
 }
 
 adastra_pace_slow = {
+	all_technology_research_speed = -0.33
 }
 
 adastra_pace_veryslow = {
+	all_technology_research_speed = -0.50
 }
 
 # ------------------------------------------------------------------------

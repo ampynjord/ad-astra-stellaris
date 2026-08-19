@@ -193,3 +193,63 @@ is_valid_drone_expansion_destination_system = {
 		can_have_mineral_deposits = yes
 	}
 }
+
+
+# ============================================================================
+# 1.5 (19/08) - LES LOTS DU PROGRAMME SPATIAL
+#
+# Une etape du programme s'acheve quand son lot de fondatrices est acquis ET
+# son jalon atteint (adastra.71/72/73). Les lots reprennent les groupes de
+# gen_situation_progress.py de la 1.4 : exploration = orbite + sol ; chantier
+# = chantier + colonie + vaisseaux ; hyperespace = base stellaire.
+adastra_lot_explore_complet = {
+	has_technology = tech_space_exploration
+	has_technology = tech_thrusters_1
+	has_technology = tech_holo_entertainment
+	has_technology = tech_interplanetary_commerce
+	has_technology = tech_hydroponics
+}
+adastra_lot_orbital_complet = {
+	has_technology = tech_space_construction
+	has_technology = tech_colonization_1
+	has_technology = tech_corvettes
+	has_technology = tech_mass_drivers_1
+	has_technology = tech_ship_armor_1
+	has_technology = tech_shields_1
+	has_technology = tech_reactor_boosters_1
+}
+adastra_lot_hyper_complet = {
+	has_technology = tech_starbase_1
+	has_technology = tech_starbase_2
+	has_technology = tech_space_defense_station_1
+	has_technology = tech_solar_panel_network
+}
+# La derniere techno acquise appartient-elle au lot ? (adastra.132, points)
+adastra_lot_explore_tech = {
+	OR = {
+		last_increased_tech = tech_space_exploration
+		last_increased_tech = tech_thrusters_1
+		last_increased_tech = tech_holo_entertainment
+		last_increased_tech = tech_interplanetary_commerce
+		last_increased_tech = tech_hydroponics
+	}
+}
+adastra_lot_orbital_tech = {
+	OR = {
+		last_increased_tech = tech_space_construction
+		last_increased_tech = tech_colonization_1
+		last_increased_tech = tech_corvettes
+		last_increased_tech = tech_mass_drivers_1
+		last_increased_tech = tech_ship_armor_1
+		last_increased_tech = tech_shields_1
+		last_increased_tech = tech_reactor_boosters_1
+	}
+}
+adastra_lot_hyper_tech = {
+	OR = {
+		last_increased_tech = tech_starbase_1
+		last_increased_tech = tech_starbase_2
+		last_increased_tech = tech_space_defense_station_1
+		last_increased_tech = tech_solar_panel_network
+	}
+}

@@ -1,0 +1,469 @@
+# Ad Astra 1.5 - la progression, c'est la recherche.
+# FICHIER GENERE PAR tools/gen_age_techs.py - NE PAS EDITER A LA MAIN.
+
+# Recalage d'une sauvegarde d'avant la 1.5 (adastra.133, une fois) : la
+# progression devient 25 x (age atteint) + technologies de l'age acquises.
+adastra_recalage_progression = {
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_stone
+			NOT = { has_country_flag = adastra_reached_bronze }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 0
+			if = { limit = { owner = { has_technology = tech_adastra_fire } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_stone_tools } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_hunting } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_cave_art } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_language } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_seasons } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_pigments } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_cordage } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_shelter } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_burial } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_cooking } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_clan } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_hafting } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_lunar_count } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_storytelling } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_grinding } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_weaving } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_bow } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_exchange } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_canoe } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_salt } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_village } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_agriculture } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_pottery } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_domestication } } add_situation_progress = 1 }
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_bronze
+			NOT = { has_country_flag = adastra_reached_iron }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 25
+			if = { limit = { owner = { has_technology = tech_adastra_bronze } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_writing } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_first_city } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_calendar } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_measures } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_irrigation } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_priesthood } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_wheel } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_sail } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_plough } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_brewing } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_kingship } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_fired_brick } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_lever } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_lost_wax } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_sexagesimal } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_faience } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_shield_wall } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_empire } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_trade_colony } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_chariot } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_surveying } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_medicine } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_dyes } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_diplomacy } } add_situation_progress = 1 }
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_iron
+			NOT = { has_country_flag = adastra_reached_medieval }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 50
+			if = { limit = { owner = { has_technology = tech_adastra_iron } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_law } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_coinage } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_astronomy } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_geometry } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_glass } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_aqueduct } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_alphabet } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_standing_army } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_star_catalogue } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_atomism } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_water_clock } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_pulley } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_lodestone } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_cavalry } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_tax_register } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_clinical_medicine } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_philosophy } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_silk_road } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_trireme } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_crucible_steel } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_roman_road } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_lighthouse } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_bellows } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_concrete } } add_situation_progress = 1 }
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_medieval
+			NOT = { has_country_flag = adastra_reached_renaissance }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 75
+			if = { limit = { owner = { has_technology = tech_adastra_crop_rotation } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_mills } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_stone_architecture } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_scholasticism } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_guilds } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_algebra } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_optics } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_heavy_plough } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_hospices } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_cartography } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_stirrup } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_paper_mill } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_distillation } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_translation_movement } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_astrolabe } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_gunpowder } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_horse_collar } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_trigonometry } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_crop_diffusion } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_paper_money } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_blast_furnace } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_compass } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_caravanserai } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_stern_rudder } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_impetus } } add_situation_progress = 1 }
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_renaissance
+			NOT = { has_country_flag = adastra_reached_steam }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 100
+			if = { limit = { owner = { has_technology = tech_adastra_printing } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_experimental_method } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_anatomy } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_mechanics } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_banking } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_chemistry } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_metallurgy_casting } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_clockwork } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_double_entry } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_navigation } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_telescope } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_heliocentrism } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_magnetism } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_vacuum_pump } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_universal_gravitation } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_microscope } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_new_crops } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_pike_and_shot } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_joint_stock } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_permanent_embassy } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_caravel } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_canal_lock } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_bastion_fort } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_deep_mining } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_clear_glass } } add_situation_progress = 1 }
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_steam
+			NOT = { has_country_flag = adastra_reached_industrial }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 125
+			if = { limit = { owner = { has_technology = tech_adastra_steam_engine } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_coal } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_railways } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_telegraph } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_sanitation } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_gas_lighting } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_electromagnetism } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_machine_tools } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_census } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_anesthesia } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_photography } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_selective_breeding } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_canals } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_spinning_jenny } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_political_economy } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_iron_bridge } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_balloon } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_mass_conscription } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_vaccine_cowpox } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_scientific_expeditions } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_atomic_theory } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_steamship } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_fraunhofer_lines } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_difference_engine } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_abolition } } add_situation_progress = 1 }
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_industrial
+			NOT = { has_country_flag = adastra_reached_machine }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 150
+			if = { limit = { owner = { has_technology = tech_adastra_bessemer } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_thermodynamics } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_fertilizers } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_labour_law } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_periodic_table } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_refrigeration } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_germ_theory } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_universal_suffrage } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_electricity } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_social_insurance } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_synthetic_dye } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_spectroscopy } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_antiseptic_surgery } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_dynamite } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_general_staff } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_dynamo } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_telephone } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_ocean_liner } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_machine_gun } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_steel_frame } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_colonial_partition } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_radio_waves } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_punch_cards } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_x_rays } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_steam_turbine } } add_situation_progress = 1 }
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_machine
+			NOT = { has_country_flag = adastra_reached_atomic }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 175
+			if = { limit = { owner = { has_technology = tech_adastra_radio } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_aviation } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_antibiotics } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_mass_education } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_quantum_theory } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_haber } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_plastics } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_epidemiology } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_assembly_line } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_petrochemistry } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_jet_engine } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_television } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_relativity } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_atomic_nucleus } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_cosmic_rays } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_expanding_universe } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_radar } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_cryptanalysis } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_polar_exploration } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_vitamins } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_blood_transfusion } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_propaganda } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_total_war } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_reinforced_concrete } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_tractor } } add_situation_progress = 1 }
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_atomic
+			NOT = { has_country_flag = adastra_reached_space }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 200
+			if = { limit = { owner = { has_technology = tech_adastra_fission } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_electronics } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_vaccination } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_radio_astronomy } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_containers } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_human_rights } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_computing } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_cooperation } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_nuclear_medicine } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_sounding_rocket } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_transistor } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_decolonization } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_welfare_state } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_information_theory } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_deterrence } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_suburbs } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_civil_aviation } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_dna_structure } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_maser } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_nuclear_submarine } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_solar_cell } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_desegregation } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_motorways } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_magnetic_storage } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_ballistic_missile } } add_situation_progress = 1 }
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_space
+			NOT = { has_country_flag = adastra_program_started }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 225
+			if = { limit = { owner = { has_technology = tech_adastra_rocketry } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_remote_sensing } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_genetics } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_satellites } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_microprocessor } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_networks } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_ecology } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_green_revolution } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_superconductivity } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_laser } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_chaos_theory } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_quarks } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_plate_tectonics } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_cosmic_background } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_fiber_optics } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_birth_control } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_transplant } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_hotline } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_deep_sea } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_civil_rights } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_manned_flight } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_lunar_landing } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_ion_drive } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_heat_shield } } add_situation_progress = 1 }
+			if = { limit = { owner = { has_technology = tech_adastra_industrial_robot } } add_situation_progress = 1 }
+		}
+	}
+}
+
+adastra_progression_recherche = {
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_stone
+			NOT = { has_country_flag = adastra_reached_bronze }
+			adastra_tech_epoque_stone = yes
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			add_situation_progress = 1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_bronze
+			NOT = { has_country_flag = adastra_reached_iron }
+			adastra_tech_epoque_bronze = yes
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			add_situation_progress = 1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_iron
+			NOT = { has_country_flag = adastra_reached_medieval }
+			adastra_tech_epoque_iron = yes
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			add_situation_progress = 1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_medieval
+			NOT = { has_country_flag = adastra_reached_renaissance }
+			adastra_tech_epoque_medieval = yes
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			add_situation_progress = 1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_renaissance
+			NOT = { has_country_flag = adastra_reached_steam }
+			adastra_tech_epoque_renaissance = yes
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			add_situation_progress = 1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_steam
+			NOT = { has_country_flag = adastra_reached_industrial }
+			adastra_tech_epoque_steam = yes
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			add_situation_progress = 1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_industrial
+			NOT = { has_country_flag = adastra_reached_machine }
+			adastra_tech_epoque_industrial = yes
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			add_situation_progress = 1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_machine
+			NOT = { has_country_flag = adastra_reached_atomic }
+			adastra_tech_epoque_machine = yes
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			add_situation_progress = 1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_atomic
+			NOT = { has_country_flag = adastra_reached_space }
+			adastra_tech_epoque_atomic = yes
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			add_situation_progress = 1
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = adastra_reached_space
+			adastra_tech_epoque_space = yes
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			add_situation_progress = 1
+		}
+	}
+}

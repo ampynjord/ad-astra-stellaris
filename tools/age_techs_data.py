@@ -670,21 +670,21 @@ BORNES = {
     'space':       (1957, 1975),
 }
 
-# 1.3 - Bornes de chaque etape dans la situation, et seuils des cinq vagues.
-# Les vingt-cinq technologies d'un age s'ouvrent cinq par cinq, a 0, 20, 40, 60
-# et 80 % de l'etape. Le joueur ne peut donc plus vider un age en avance : les
-# dernieres n'existent pas encore.
+# 1.5 (19/08) - LA PROGRESSION, C'EST LA RECHERCHE.
+# Treize etapes de 25 points : dix ages, puis les trois etapes du programme
+# spatial. Une technologie d'epoque acquise vaut un point ; vingt-cinq font
+# passer l'age. Plus de barre au mois, plus de vagues, plus de verrou genere :
+# voir docs/design_recherche_par_arbre.md.
+ETAPE_POINTS = 25
 ETAPES_SITU = {
-    'stone': (0, 12), 'bronze': (12, 22), 'iron': (22, 31), 'medieval': (31, 39),
-    'renaissance': (39, 47), 'steam': (47, 55), 'industrial': (55, 64),
-    'machine': (64, 74), 'atomic': (74, 86), 'space': (86, 100),
+    'stone': (0, 25), 'bronze': (25, 50), 'iron': (50, 75), 'medieval': (75, 100),
+    'renaissance': (100, 125), 'steam': (125, 150), 'industrial': (150, 175),
+    'machine': (175, 200), 'atomic': (200, 225), 'space': (225, 250),
 }
-
-
-def seuils_vagues(age):
-    """Progression a partir de laquelle chaque vague s'ouvre (vague 2 a 5)."""
-    a, b = ETAPES_SITU[age]
-    return [int(round(a + (b - a) * f)) for f in (0.2, 0.4, 0.6, 0.8)]
+# Etapes du programme spatial, apres l'Age spatial.
+ETAPES_PROGRAMME = {
+    'program_explore': (250, 275), 'program_orbital': (275, 300), 'program_hyper': (300, 325),
+}
 
 
 TECHS_PAR_AGE = 25
@@ -692,7 +692,11 @@ TECHS_PAR_VAGUE = 5
 
 
 def vagues(liste):
-    """Rend {cle: numero de vague}, la vague etant donnee par la date."""
+    """Rend {cle: rang dans l'age (1 a 5)}, le rang etant donne par la date.
+
+    1.5 : le mot « vague » reste dans le code pour l'historique ; il ne
+    designe plus une ouverture dans le temps mais un RANG dans l'arbre de
+    l'age (rang N exige une tech de rang N-1, voir gen_age_techs.prereq_map)."""
     dates = [t for t in liste if t.get('year') is not None]
     if len(dates) < len(liste):
         return {t['key']: 1 for t in liste}   # age pas encore date

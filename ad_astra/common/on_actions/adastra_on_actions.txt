@@ -9,6 +9,7 @@ on_game_start_country = {
 on_tech_increased = {
 	events = {
 		adastra.10
+		adastra.132
 	}
 }
 
@@ -16,7 +17,10 @@ on_monthly_pulse_country = {
 	events = {
 		adastra.9
 		adastra.11
-		adastra.90
 		adastra.91
+		adastra.133
+		adastra.71
+		adastra.72
+		adastra.73
 	}
 }
