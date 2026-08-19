@@ -198,41 +198,15 @@ country_event = {
 
 		# Débloquer les âges déjà traversés : drapeaux ET technologies.
 		#
-		# 1.2 (13/08) : les technologies manquaient. Un empire qui commençait à
-		# l'Âge de la machine repartait d'un arbre vide - pas de feu, pas
-		# d'écriture, pas de métallurgie - donc pas d'alliages, pas de biens de
-		# consommation, et les verrous du jeu de base fermés pour toute la
-		# partie. Chaque âge antérieur offre désormais ses technologies.
-		# L'âge de départ lui-même n'est pas offert : c'est celui qu'on joue.
-		#
-		# 1.4 (17/08) - TROIS choses apprises en jeu ce soir, dans l'ordre :
-		#
-		#  a) give_technology refuse une techno dont le potential est faux, et
-		#     vingt des vingt-cinq technologies d'un âge exigent un drapeau
-		#     adastra_vague_2 à _5 - jamais posé pour un âge qu'on saute. On
-		#     ouvre donc les quatre vagues le temps de l'octroi, puis
-		#     adastra_maj_vagues les remet à l'état réel de l'âge de départ.
-		#
-		#  b) give_technology exige AUSSI que les PRÉREQUIS de la techno soient
-		#     valides. Or chaque techno à partir du Bronze a pour prérequis le
-		#     pilier de l'âge précédent, dont le potential contenait
-		#     « NOT adastra_reached_<âge suivant> » : dès qu'on posait le
-		#     drapeau du Bronze, la Pierre devenait invalide et TOUT le Bronze
-		#     était refusé - 215 refus mesurés, la Pierre seule passait (aucun
-		#     prérequis). Corrigé dans tools/gen_age_techs.py : l'exclusion du
-		#     tirage passe par weight_modifier, plus par le potential.
-		#
-		#  c) Ce bloc doit s'exécuter AVANT le bloc capital_scope ci-dessous :
-		#     celui-ci teste adastra_has_energy / has_consumer_goods (des
-		#     has_technology) pour décider quels districts, zones et stocks
-		#     retirer. Évalué avant l'octroi, un départ Spatial passait pour
-		#     un départ sans électricité : générateurs retirés, énergie et
-		#     biens de consommation à zéro dès 2200.01.01. C'était le vrai
-		#     « problème de consommation ».
-		set_country_flag = adastra_vague_2
-		set_country_flag = adastra_vague_3
-		set_country_flag = adastra_vague_4
-		set_country_flag = adastra_vague_5
+		# 1.2 (13/08) : les technologies manquaient. Chaque âge antérieur offre
+		# désormais ses technologies. L'âge de départ lui-même n'est pas
+		# offert : c'est celui qu'on joue.
+		# 1.4 (17/08) : give_technology exige que la techno ET ses prérequis
+		# soient valides (voir gen_age_techs.py) ; ce bloc s'exécute AVANT
+		# capital_scope, qui teste les technologies acquises pour décider quoi
+		# rebâtir. 1.5 (19/08) : plus de vagues à forcer - l'ordre dans un âge
+		# est tenu par l'arbre de prérequis, et give_technology ignore les
+		# prérequis d'ordre tant qu'ils sont valides.
 		if = {
 			limit = { OR = { has_country_flag = adastra_choice_bronze has_country_flag = adastra_choice_iron has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } }
 			# country_event ne s'execute pas sur place : il met l'evenement en
@@ -294,12 +268,6 @@ country_event = {
 			country_event = { id = adastra.48 }
 			adastra_grant_age_atomic = yes
 		}
-
-		# Referme les quatre vagues ouvertes ci-dessus et les recalcule pour
-		# l'âge réellement joué. Les technologies déjà données restent
-		# acquises : seul le potential des technologies PAS ENCORE données
-		# dépend de ces drapeaux.
-		adastra_maj_vagues = yes
 
 		# L'âge de départ lui-même
 		if = { limit = { has_country_flag = adastra_choice_stone } country_event = { id = adastra.40 } }
@@ -481,17 +449,19 @@ country_event = {
 			validate_and_repair_planet_buildings_and_districts = yes
 		}
 
-		# Lancer la situation d'ascension et se placer au bon âge
+		# Lancer la situation d'ascension et se placer au bon âge : 25 points
+		# par étape (1.5). La partie est nee en 1.5 : pas de recalage a faire.
+		set_country_flag = adastra_progression_1_5
 		start_situation = { type = situation_adastra_ascension }
-		if = { limit = { has_country_flag = adastra_choice_bronze } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 12 } }
-		else_if = { limit = { has_country_flag = adastra_choice_iron } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 22 } }
-		else_if = { limit = { has_country_flag = adastra_choice_medieval } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 31 } }
-		else_if = { limit = { has_country_flag = adastra_choice_renaissance } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 39 } }
-		else_if = { limit = { has_country_flag = adastra_choice_steam } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 47 } }
-		else_if = { limit = { has_country_flag = adastra_choice_industrial } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 55 } }
-		else_if = { limit = { has_country_flag = adastra_choice_machine } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 64 } }
-		else_if = { limit = { has_country_flag = adastra_choice_atomic } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 74 } }
-		else_if = { limit = { has_country_flag = adastra_choice_space } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 86 } }
+		if = { limit = { has_country_flag = adastra_choice_bronze } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 25 } }
+		else_if = { limit = { has_country_flag = adastra_choice_iron } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 50 } }
+		else_if = { limit = { has_country_flag = adastra_choice_medieval } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 75 } }
+		else_if = { limit = { has_country_flag = adastra_choice_renaissance } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 100 } }
+		else_if = { limit = { has_country_flag = adastra_choice_steam } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 125 } }
+		else_if = { limit = { has_country_flag = adastra_choice_industrial } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 150 } }
+		else_if = { limit = { has_country_flag = adastra_choice_machine } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 175 } }
+		else_if = { limit = { has_country_flag = adastra_choice_atomic } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 200 } }
+		else_if = { limit = { has_country_flag = adastra_choice_space } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 225 } }
 
 		# Le système natal redevient inexploré (seule la planète natale est connue)
 		capital_scope = {
@@ -780,27 +750,6 @@ country_event = {
 				set_country_type = adastra_dormant
 			}
 		}
-	}
-}
-
-############################
-# adastra.90 : les vagues de technologies (caché)
-############################
-# Chaque mois, on recalcule quelles vagues de l'âge courant sont ouvertes.
-# Recalcul plutôt que pose définitive : changer d'âge remet la série à zéro
-# sans qu'on ait à y penser, et une sauvegarde reprise se remet d'aplomb seule.
-country_event = {
-	id = adastra.90
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		has_origin = origin_adastra
-		NOT = { has_country_flag = adastra_completed }
-	}
-
-	immediate = {
-		adastra_maj_vagues = yes
 	}
 }
 
@@ -1289,10 +1238,189 @@ country_event = {
 }
 
 ############################
-# adastra.71 / adastra.72 : supprimes en 1.4 (17/08). Les etapes du programme
-# spatial montent comme un age ; leur jalon est un verrou de la situation
-# (voir tools/gen_situation_progress.py, JALONS), plus un saut de barre.
+
 ############################
+# adastra.132 : la progression, c'est la recherche (caché, on_tech_increased)
+############################
+# 1.5 (19/08). Une technologie d'époque acquise vaut un point de situation si
+# elle appartient à l'âge courant (adastra_progression_recherche, généré) ;
+# vingt-cinq font passer l'étape. Pendant le programme spatial, les
+# fondatrices du lot de l'étape valent quelques points chacune ; le jalon
+# (adastra.71/72/73) achève l'étape.
+country_event = {
+	id = adastra.132
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+		any_situation = { is_situation_type = situation_adastra_ascension }
+	}
+
+	immediate = {
+		adastra_progression_recherche = yes
+		# Exploration : 5 fondatrices, 4 points chacune (20) ; le jalon fait le reste.
+		if = {
+			limit = {
+				adastra_lot_explore_tech = yes
+				any_situation = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_explore }
+			}
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 4 }
+		}
+		# Chantier orbital : 7 fondatrices, 3 points chacune (21).
+		if = {
+			limit = {
+				adastra_lot_orbital_tech = yes
+				any_situation = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_orbital }
+			}
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 3 }
+		}
+		# Hyperespace : 4 fondatrices de base stellaire, 5 points chacune (20).
+		if = {
+			limit = {
+				adastra_lot_hyper_tech = yes
+				any_situation = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_hyperdrive }
+			}
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 5 }
+		}
+	}
+}
+
+############################
+# adastra.133 : recalage d'une sauvegarde d'avant la 1.5 (caché, mensuel, une fois)
+############################
+country_event = {
+	id = adastra.133
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+		NOT = { has_country_flag = adastra_progression_1_5 }
+		any_situation = { is_situation_type = situation_adastra_ascension }
+	}
+
+	immediate = {
+		set_country_flag = adastra_progression_1_5
+		if = {
+			limit = { has_country_flag = adastra_stage_hyper }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 300 }
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_stage_orbital }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 275 }
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_program_started }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 250 }
+		}
+		else = {
+			adastra_recalage_progression = yes
+		}
+	}
+}
+
+############################
+# adastra.71 / 72 / 73 : les jalons du programme spatial (cachés, mensuels)
+############################
+# 1.5 : chaque étape du programme s'achève quand son lot de fondatrices est
+# acquis ET son jalon atteint. Exploration : chaque astre du système natal
+# prospecté. Chantier : base stellaire bâtie et une première station (ou le
+# système occupé par un autre empire, auquel cas on passe outre).
+# Hyperespace : l'Hyperpropulsion.
+country_event = {
+	id = adastra.71
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		adastra_lot_explore_complet = yes
+		any_situation = {
+			is_situation_type = situation_adastra_ascension
+			current_stage = adastra_stage_program_explore
+		}
+		capital_scope = {
+			solar_system = {
+				NOT = {
+					any_system_planet = {
+						is_star = no
+						NOT = { is_surveyed = { who = root status = yes } }
+					}
+				}
+			}
+		}
+	}
+
+	immediate = {
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 275
+		}
+	}
+}
+
+country_event = {
+	id = adastra.72
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		adastra_lot_orbital_complet = yes
+		any_situation = {
+			is_situation_type = situation_adastra_ascension
+			current_stage = adastra_stage_program_orbital
+		}
+		OR = {
+			AND = {
+				has_country_flag = adastra_phase2_done
+				count_owned_fleet = {
+					count >= 1
+					limit = { OR = { is_ship_size = mining_station is_ship_size = research_station } }
+				}
+			}
+			capital_scope = {
+				solar_system = {
+					exists = starbase
+					starbase = { exists = owner owner = { NOT = { is_same_value = root } } }
+				}
+			}
+		}
+	}
+
+	immediate = {
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 300
+		}
+	}
+}
+
+country_event = {
+	id = adastra.73
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_technology = tech_hyper_drive_1
+		adastra_lot_hyper_complet = yes
+		any_situation = {
+			is_situation_type = situation_adastra_ascension
+			current_stage = adastra_stage_program_hyperdrive
+		}
+	}
+
+	immediate = {
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension }
+			set_situation_progress = 325
+		}
+	}
+}
 
 ############################
 # adastra.80 : Le programme d'exploration spatiale (étape atteinte)

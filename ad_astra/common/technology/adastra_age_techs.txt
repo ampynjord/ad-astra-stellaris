@@ -25,6 +25,7 @@ tech_adastra_fire = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -68,6 +69,7 @@ tech_adastra_stone_tools = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -110,6 +112,7 @@ tech_adastra_hunting = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -143,6 +146,7 @@ tech_adastra_cave_art = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
+	prerequisites = { "tech_adastra_language" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -152,8 +156,7 @@ tech_adastra_cave_art = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Peintures rupestres
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -188,6 +191,7 @@ tech_adastra_language = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
+	prerequisites = { "tech_adastra_hunting" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -197,8 +201,7 @@ tech_adastra_language = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Langage articulé
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -232,6 +235,7 @@ tech_adastra_seasons = {
 	tier = 0
 	category = { computing }
 	weight = 100
+	prerequisites = { "tech_adastra_pigments" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -241,8 +245,7 @@ tech_adastra_seasons = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Lecture des saisons
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -276,6 +279,7 @@ tech_adastra_pigments = {
 	tier = 0
 	category = { particles }
 	weight = 100
+	prerequisites = { "tech_adastra_fire" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -285,8 +289,7 @@ tech_adastra_pigments = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Terres et pigments
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -320,6 +323,7 @@ tech_adastra_cordage = {
 	tier = 0
 	category = { materials }
 	weight = 100
+	prerequisites = { "tech_adastra_hafting" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -329,8 +333,7 @@ tech_adastra_cordage = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Corde et vannerie
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -373,6 +376,7 @@ tech_adastra_shelter = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -406,6 +410,7 @@ tech_adastra_burial = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
+	prerequisites = { "tech_adastra_hunting" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -415,8 +420,7 @@ tech_adastra_burial = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Sépulture
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -459,6 +463,7 @@ tech_adastra_cooking = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -493,6 +498,7 @@ tech_adastra_clan = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
+	prerequisites = { "tech_adastra_hunting" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -502,8 +508,7 @@ tech_adastra_clan = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Clan et parente
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -537,6 +542,7 @@ tech_adastra_hafting = {
 	tier = 0
 	category = { materials }
 	weight = 100
+	prerequisites = { "tech_adastra_stone_tools" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -546,8 +552,7 @@ tech_adastra_hafting = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Pointe emmanchee
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -582,6 +587,7 @@ tech_adastra_lunar_count = {
 	tier = 0
 	category = { computing }
 	weight = 100
+	prerequisites = { "tech_adastra_pigments" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -591,8 +597,7 @@ tech_adastra_lunar_count = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Comptage lunaire
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -626,6 +631,7 @@ tech_adastra_storytelling = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
+	prerequisites = { "tech_adastra_language" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -635,8 +641,7 @@ tech_adastra_storytelling = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Recit et transmission
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -670,6 +675,7 @@ tech_adastra_grinding = {
 	tier = 0
 	category = { materials }
 	weight = 100
+	prerequisites = { "tech_adastra_cordage" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -679,8 +685,7 @@ tech_adastra_grinding = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Meule et broyage
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -714,6 +719,7 @@ tech_adastra_weaving = {
 	tier = 0
 	category = { materials }
 	weight = 100
+	prerequisites = { "tech_adastra_cordage" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -723,8 +729,7 @@ tech_adastra_weaving = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Tissage
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -759,6 +764,7 @@ tech_adastra_bow = {
 	tier = 0
 	category = { materials }
 	weight = 100
+	prerequisites = { "tech_adastra_cordage" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -768,8 +774,7 @@ tech_adastra_bow = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Propulseur et arc
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -803,6 +808,7 @@ tech_adastra_exchange = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
+	prerequisites = { "tech_adastra_cave_art" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -812,8 +818,7 @@ tech_adastra_exchange = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Echange a distance
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -848,6 +853,7 @@ tech_adastra_canoe = {
 	tier = 0
 	category = { voidcraft }
 	weight = 100
+	prerequisites = { "tech_adastra_grinding" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -857,8 +863,7 @@ tech_adastra_canoe = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Pirogue et cabotage
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -893,6 +898,7 @@ tech_adastra_salt = {
 	tier = 0
 	category = { particles }
 	weight = 100
+	prerequisites = { "tech_adastra_grinding" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -902,8 +908,7 @@ tech_adastra_salt = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Le sel et la conservation
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -938,6 +943,7 @@ tech_adastra_village = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
+	prerequisites = { "tech_adastra_exchange" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -947,8 +953,7 @@ tech_adastra_village = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Village et grenier
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -983,6 +988,7 @@ tech_adastra_agriculture = {
 	tier = 0
 	category = { biology }
 	weight = 100
+	prerequisites = { "tech_adastra_exchange" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -992,8 +998,7 @@ tech_adastra_agriculture = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Agriculture
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1028,6 +1033,7 @@ tech_adastra_pottery = {
 	tier = 0
 	category = { materials }
 	weight = 100
+	prerequisites = { "tech_adastra_cordage" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1037,8 +1043,7 @@ tech_adastra_pottery = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Poterie
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1072,6 +1077,7 @@ tech_adastra_domestication = {
 	tier = 0
 	category = { biology }
 	weight = 100
+	prerequisites = { "tech_adastra_exchange" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1081,8 +1087,7 @@ tech_adastra_domestication = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Domestication animale
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1132,6 +1137,7 @@ tech_adastra_bronze = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1176,6 +1182,7 @@ tech_adastra_writing = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1220,6 +1227,7 @@ tech_adastra_first_city = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1254,7 +1262,7 @@ tech_adastra_calendar = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_fire" }
+	prerequisites = { "tech_adastra_priesthood" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1264,8 +1272,7 @@ tech_adastra_calendar = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Calendrier lunaire
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1299,7 +1306,7 @@ tech_adastra_measures = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_fire" }
+	prerequisites = { "tech_adastra_priesthood" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1309,8 +1316,7 @@ tech_adastra_measures = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Poids et mesures
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1344,7 +1350,7 @@ tech_adastra_irrigation = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_stone_tools" }
+	prerequisites = { "tech_adastra_bronze" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1354,8 +1360,7 @@ tech_adastra_irrigation = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Irrigation
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1389,7 +1394,7 @@ tech_adastra_priesthood = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_hunting" }
+	prerequisites = { "tech_adastra_first_city" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1399,8 +1404,7 @@ tech_adastra_priesthood = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Sacerdoce
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1444,6 +1448,7 @@ tech_adastra_wheel = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1487,6 +1492,7 @@ tech_adastra_sail = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1521,7 +1527,7 @@ tech_adastra_plough = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_stone_tools" }
+	prerequisites = { "tech_adastra_bronze" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1531,8 +1537,7 @@ tech_adastra_plough = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Araire
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1566,7 +1571,7 @@ tech_adastra_brewing = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_hunting" }
+	prerequisites = { "tech_adastra_first_city" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1576,8 +1581,7 @@ tech_adastra_brewing = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Brasserie
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1612,7 +1616,7 @@ tech_adastra_kingship = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_hunting" }
+	prerequisites = { "tech_adastra_first_city" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1622,8 +1626,7 @@ tech_adastra_kingship = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Royauté
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1658,7 +1661,7 @@ tech_adastra_fired_brick = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_stone_tools" }
+	prerequisites = { "tech_adastra_plough" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1668,8 +1671,7 @@ tech_adastra_fired_brick = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Brique cuite
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1704,7 +1706,7 @@ tech_adastra_lever = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_fire" }
+	prerequisites = { "tech_adastra_priesthood" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1714,8 +1716,7 @@ tech_adastra_lever = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Levier et rampe
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1749,7 +1750,7 @@ tech_adastra_lost_wax = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_stone_tools" }
+	prerequisites = { "tech_adastra_plough" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1759,8 +1760,7 @@ tech_adastra_lost_wax = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Fonte à la cire perdue
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1794,7 +1794,7 @@ tech_adastra_sexagesimal = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_fire" }
+	prerequisites = { "tech_adastra_calendar" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1804,8 +1804,7 @@ tech_adastra_sexagesimal = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Numération sexagésimale
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1840,7 +1839,7 @@ tech_adastra_faience = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_fire" }
+	prerequisites = { "tech_adastra_calendar" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1850,8 +1849,7 @@ tech_adastra_faience = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Faïence et émail
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1886,7 +1884,7 @@ tech_adastra_shield_wall = {
 	tier = 0
 	category = { military_theory }
 	weight = 100
-	prerequisites = { "tech_adastra_hunting" }
+	prerequisites = { "tech_adastra_calendar" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1896,8 +1894,7 @@ tech_adastra_shield_wall = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Mur de boucliers
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1931,7 +1928,7 @@ tech_adastra_empire = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_hunting" }
+	prerequisites = { "tech_adastra_calendar" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1941,8 +1938,7 @@ tech_adastra_empire = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Premier empire
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -1977,7 +1973,7 @@ tech_adastra_trade_colony = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_hunting" }
+	prerequisites = { "tech_adastra_calendar" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -1987,8 +1983,7 @@ tech_adastra_trade_colony = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Comptoir marchand
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2022,7 +2017,7 @@ tech_adastra_chariot = {
 	tier = 0
 	category = { propulsion }
 	weight = 100
-	prerequisites = { "tech_adastra_stone_tools" }
+	prerequisites = { "tech_adastra_sexagesimal" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2032,8 +2027,7 @@ tech_adastra_chariot = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Char de guerre
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2067,7 +2061,7 @@ tech_adastra_surveying = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_fire" }
+	prerequisites = { "tech_adastra_sexagesimal" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2077,8 +2071,7 @@ tech_adastra_surveying = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Arpentage
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2113,7 +2106,7 @@ tech_adastra_medicine = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_hunting" }
+	prerequisites = { "tech_adastra_shield_wall" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2123,8 +2116,7 @@ tech_adastra_medicine = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Médecine et prescriptions
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2159,7 +2151,7 @@ tech_adastra_dyes = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_fire" }
+	prerequisites = { "tech_adastra_sexagesimal" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2169,8 +2161,7 @@ tech_adastra_dyes = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Teinture et pourpre
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2205,7 +2196,7 @@ tech_adastra_diplomacy = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_hunting" }
+	prerequisites = { "tech_adastra_shield_wall" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2215,8 +2206,7 @@ tech_adastra_diplomacy = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Traité et ambassade
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2266,6 +2256,7 @@ tech_adastra_iron = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2300,7 +2291,7 @@ tech_adastra_law = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_first_city" }
+	prerequisites = { "tech_adastra_alphabet" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2310,8 +2301,7 @@ tech_adastra_law = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Code de lois
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2346,7 +2336,7 @@ tech_adastra_coinage = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_first_city" }
+	prerequisites = { "tech_adastra_alphabet" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2356,8 +2346,7 @@ tech_adastra_coinage = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Monnaie frappée
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2401,6 +2390,7 @@ tech_adastra_astronomy = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2435,7 +2425,7 @@ tech_adastra_geometry = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_writing" }
+	prerequisites = { "tech_adastra_atomism" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2445,8 +2435,7 @@ tech_adastra_geometry = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Géométrie
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2480,7 +2469,7 @@ tech_adastra_glass = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_writing" }
+	prerequisites = { "tech_adastra_water_clock" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2490,8 +2479,7 @@ tech_adastra_glass = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Verre
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2525,7 +2513,7 @@ tech_adastra_aqueduct = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_bronze" }
+	prerequisites = { "tech_adastra_coinage" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2535,8 +2523,7 @@ tech_adastra_aqueduct = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Aqueduc
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2581,6 +2568,7 @@ tech_adastra_alphabet = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2614,7 +2602,7 @@ tech_adastra_standing_army = {
 	tier = 0
 	category = { military_theory }
 	weight = 100
-	prerequisites = { "tech_adastra_first_city" }
+	prerequisites = { "tech_adastra_silk_road" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2624,8 +2612,7 @@ tech_adastra_standing_army = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Armée permanente
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2659,7 +2646,7 @@ tech_adastra_star_catalogue = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_writing" }
+	prerequisites = { "tech_adastra_geometry" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2669,8 +2656,7 @@ tech_adastra_star_catalogue = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Catalogue d'étoiles
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2705,7 +2691,7 @@ tech_adastra_atomism = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_writing" }
+	prerequisites = { "tech_adastra_astronomy" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2715,8 +2701,7 @@ tech_adastra_atomism = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Atomisme
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2750,7 +2735,7 @@ tech_adastra_water_clock = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_writing" }
+	prerequisites = { "tech_adastra_geometry" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2760,8 +2745,7 @@ tech_adastra_water_clock = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Clepsydre
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2796,7 +2780,7 @@ tech_adastra_pulley = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_writing" }
+	prerequisites = { "tech_adastra_geometry" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2806,8 +2790,7 @@ tech_adastra_pulley = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Levier et poulie
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2841,7 +2824,7 @@ tech_adastra_lodestone = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_writing" }
+	prerequisites = { "tech_adastra_water_clock" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2851,8 +2834,7 @@ tech_adastra_lodestone = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Pierre d'aimant
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2896,6 +2878,7 @@ tech_adastra_cavalry = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2929,7 +2912,7 @@ tech_adastra_tax_register = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_first_city" }
+	prerequisites = { "tech_adastra_alphabet" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2939,8 +2922,7 @@ tech_adastra_tax_register = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Recensement
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -2975,7 +2957,7 @@ tech_adastra_clinical_medicine = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_first_city" }
+	prerequisites = { "tech_adastra_alphabet" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -2985,8 +2967,7 @@ tech_adastra_clinical_medicine = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Médecine d'observation
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3021,7 +3002,7 @@ tech_adastra_philosophy = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_first_city" }
+	prerequisites = { "tech_adastra_coinage" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3031,8 +3012,7 @@ tech_adastra_philosophy = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : École philosophique
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3066,7 +3046,7 @@ tech_adastra_silk_road = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_first_city" }
+	prerequisites = { "tech_adastra_philosophy" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3076,8 +3056,7 @@ tech_adastra_silk_road = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Routes caravanières
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3121,6 +3100,7 @@ tech_adastra_trireme = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3154,7 +3134,7 @@ tech_adastra_crucible_steel = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_bronze" }
+	prerequisites = { "tech_adastra_coinage" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3164,8 +3144,7 @@ tech_adastra_crucible_steel = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Acier au creuset
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3200,7 +3179,7 @@ tech_adastra_roman_road = {
 	tier = 0
 	category = { propulsion }
 	weight = 100
-	prerequisites = { "tech_adastra_bronze" }
+	prerequisites = { "tech_adastra_coinage" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3210,8 +3189,7 @@ tech_adastra_roman_road = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Voie pavée
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3246,7 +3224,7 @@ tech_adastra_lighthouse = {
 	tier = 0
 	category = { voidcraft }
 	weight = 100
-	prerequisites = { "tech_adastra_bronze" }
+	prerequisites = { "tech_adastra_crucible_steel" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3256,8 +3234,7 @@ tech_adastra_lighthouse = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Phare
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3292,7 +3269,7 @@ tech_adastra_bellows = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_bronze" }
+	prerequisites = { "tech_adastra_lighthouse" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3302,8 +3279,7 @@ tech_adastra_bellows = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Soufflet et fourneau
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3337,7 +3313,7 @@ tech_adastra_concrete = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_bronze" }
+	prerequisites = { "tech_adastra_lighthouse" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3347,8 +3323,7 @@ tech_adastra_concrete = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Béton de chaux
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3398,6 +3373,7 @@ tech_adastra_crop_rotation = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3431,7 +3407,7 @@ tech_adastra_mills = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_iron" }
+	prerequisites = { "tech_adastra_paper_mill" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3441,8 +3417,7 @@ tech_adastra_mills = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Moulin à eau et à vent
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3477,7 +3452,7 @@ tech_adastra_stone_architecture = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_iron" }
+	prerequisites = { "tech_adastra_horse_collar" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3487,8 +3462,7 @@ tech_adastra_stone_architecture = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Architecture de pierre
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3523,7 +3497,7 @@ tech_adastra_scholasticism = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_astronomy" }
+	prerequisites = { "tech_adastra_compass" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3533,8 +3507,7 @@ tech_adastra_scholasticism = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Scolastique
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3569,7 +3542,7 @@ tech_adastra_guilds = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_law" }
+	prerequisites = { "tech_adastra_caravanserai" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3579,8 +3552,7 @@ tech_adastra_guilds = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Guildes
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3624,6 +3596,7 @@ tech_adastra_algebra = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3657,7 +3630,7 @@ tech_adastra_optics = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_astronomy" }
+	prerequisites = { "tech_adastra_astrolabe" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3667,8 +3640,7 @@ tech_adastra_optics = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Optique et lentilles
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3702,7 +3674,7 @@ tech_adastra_heavy_plough = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_iron" }
+	prerequisites = { "tech_adastra_paper_mill" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3712,8 +3684,7 @@ tech_adastra_heavy_plough = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Charrue lourde
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3747,7 +3718,7 @@ tech_adastra_hospices = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_law" }
+	prerequisites = { "tech_adastra_caravanserai" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3757,8 +3728,7 @@ tech_adastra_hospices = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Hospices
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3793,7 +3763,7 @@ tech_adastra_cartography = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_law" }
+	prerequisites = { "tech_adastra_caravanserai" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3803,8 +3773,7 @@ tech_adastra_cartography = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Cartographie
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3848,6 +3817,7 @@ tech_adastra_stirrup = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3891,6 +3861,7 @@ tech_adastra_paper_mill = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3934,6 +3905,7 @@ tech_adastra_distillation = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -3967,7 +3939,7 @@ tech_adastra_translation_movement = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_law" }
+	prerequisites = { "tech_adastra_stirrup" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -3977,8 +3949,7 @@ tech_adastra_translation_movement = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Mouvement de traduction
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4013,7 +3984,7 @@ tech_adastra_astrolabe = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_astronomy" }
+	prerequisites = { "tech_adastra_distillation" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4023,8 +3994,7 @@ tech_adastra_astrolabe = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Astrolabe
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4058,7 +4028,7 @@ tech_adastra_gunpowder = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_iron" }
+	prerequisites = { "tech_adastra_paper_mill" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4068,8 +4038,7 @@ tech_adastra_gunpowder = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Poudre noire
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4103,7 +4072,7 @@ tech_adastra_horse_collar = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_iron" }
+	prerequisites = { "tech_adastra_heavy_plough" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4113,8 +4082,7 @@ tech_adastra_horse_collar = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Collier d'épaule
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4148,7 +4116,7 @@ tech_adastra_trigonometry = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_astronomy" }
+	prerequisites = { "tech_adastra_astrolabe" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4158,8 +4126,7 @@ tech_adastra_trigonometry = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Trigonométrie
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4193,7 +4160,7 @@ tech_adastra_crop_diffusion = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_law" }
+	prerequisites = { "tech_adastra_translation_movement" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4203,8 +4170,7 @@ tech_adastra_crop_diffusion = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Migration des plantes
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4239,7 +4205,7 @@ tech_adastra_paper_money = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_law" }
+	prerequisites = { "tech_adastra_translation_movement" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4249,8 +4215,7 @@ tech_adastra_paper_money = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Papier-monnaie
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4284,7 +4249,7 @@ tech_adastra_blast_furnace = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_iron" }
+	prerequisites = { "tech_adastra_horse_collar" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4294,8 +4259,7 @@ tech_adastra_blast_furnace = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Haut fourneau
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4329,7 +4293,7 @@ tech_adastra_compass = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_astronomy" }
+	prerequisites = { "tech_adastra_trigonometry" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4339,8 +4303,7 @@ tech_adastra_compass = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Boussole
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4375,7 +4338,7 @@ tech_adastra_caravanserai = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_law" }
+	prerequisites = { "tech_adastra_crop_diffusion" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4385,8 +4348,7 @@ tech_adastra_caravanserai = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Caravansérail
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4421,7 +4383,7 @@ tech_adastra_stern_rudder = {
 	tier = 0
 	category = { voidcraft }
 	weight = 100
-	prerequisites = { "tech_adastra_iron" }
+	prerequisites = { "tech_adastra_horse_collar" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4431,8 +4393,7 @@ tech_adastra_stern_rudder = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Gouvernail d'étambot
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4466,7 +4427,7 @@ tech_adastra_impetus = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_astronomy" }
+	prerequisites = { "tech_adastra_compass" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4476,8 +4437,7 @@ tech_adastra_impetus = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Théorie de l'impetus
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4526,6 +4486,7 @@ tech_adastra_printing = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4560,7 +4521,7 @@ tech_adastra_experimental_method = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_scholasticism" }
+	prerequisites = { "tech_adastra_heliocentrism" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4570,8 +4531,7 @@ tech_adastra_experimental_method = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Méthode expérimentale
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4605,7 +4565,7 @@ tech_adastra_anatomy = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_crop_rotation" }
+	prerequisites = { "tech_adastra_permanent_embassy" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4615,8 +4575,7 @@ tech_adastra_anatomy = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Anatomie
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4660,6 +4619,7 @@ tech_adastra_mechanics = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4703,6 +4663,7 @@ tech_adastra_banking = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4736,7 +4697,7 @@ tech_adastra_chemistry = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_scholasticism" }
+	prerequisites = { "tech_adastra_magnetism" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4746,8 +4707,7 @@ tech_adastra_chemistry = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Chimie des substances
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4781,7 +4741,7 @@ tech_adastra_metallurgy_casting = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_mills" }
+	prerequisites = { "tech_adastra_mechanics" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4791,8 +4751,7 @@ tech_adastra_metallurgy_casting = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Fonte et artillerie
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4826,7 +4785,7 @@ tech_adastra_clockwork = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_mills" }
+	prerequisites = { "tech_adastra_new_crops" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4836,8 +4795,7 @@ tech_adastra_clockwork = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Horlogerie
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4871,7 +4829,7 @@ tech_adastra_double_entry = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_crop_rotation" }
+	prerequisites = { "tech_adastra_banking" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4881,8 +4839,7 @@ tech_adastra_double_entry = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Comptabilité en partie double
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4916,7 +4873,7 @@ tech_adastra_navigation = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_crop_rotation" }
+	prerequisites = { "tech_adastra_banking" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4926,8 +4883,7 @@ tech_adastra_navigation = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Navigation hauturière
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -4961,7 +4917,7 @@ tech_adastra_telescope = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_scholasticism" }
+	prerequisites = { "tech_adastra_heliocentrism" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -4971,8 +4927,7 @@ tech_adastra_telescope = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Lunette astronomique
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5006,7 +4961,7 @@ tech_adastra_heliocentrism = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_scholasticism" }
+	prerequisites = { "tech_adastra_metallurgy_casting" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5016,8 +4971,7 @@ tech_adastra_heliocentrism = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Système héliocentrique
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5052,7 +5006,7 @@ tech_adastra_magnetism = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_scholasticism" }
+	prerequisites = { "tech_adastra_heliocentrism" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5062,8 +5016,7 @@ tech_adastra_magnetism = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Magnétisme terrestre
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5097,7 +5050,7 @@ tech_adastra_vacuum_pump = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_scholasticism" }
+	prerequisites = { "tech_adastra_magnetism" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5107,8 +5060,7 @@ tech_adastra_vacuum_pump = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Pompe à vide
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5143,7 +5095,7 @@ tech_adastra_universal_gravitation = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_scholasticism" }
+	prerequisites = { "tech_adastra_magnetism" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5153,8 +5105,7 @@ tech_adastra_universal_gravitation = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Gravitation universelle
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5188,7 +5139,7 @@ tech_adastra_microscope = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_crop_rotation" }
+	prerequisites = { "tech_adastra_new_crops" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5198,8 +5149,7 @@ tech_adastra_microscope = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Microscope
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5234,7 +5184,7 @@ tech_adastra_new_crops = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_crop_rotation" }
+	prerequisites = { "tech_adastra_pike_and_shot" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5244,8 +5194,7 @@ tech_adastra_new_crops = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Plantes du Nouveau Monde
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5280,7 +5229,7 @@ tech_adastra_pike_and_shot = {
 	tier = 0
 	category = { military_theory }
 	weight = 100
-	prerequisites = { "tech_adastra_crop_rotation" }
+	prerequisites = { "tech_adastra_permanent_embassy" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5290,8 +5239,7 @@ tech_adastra_pike_and_shot = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Pique et arquebuse
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5325,7 +5273,7 @@ tech_adastra_joint_stock = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_crop_rotation" }
+	prerequisites = { "tech_adastra_pike_and_shot" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5335,8 +5283,7 @@ tech_adastra_joint_stock = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Société par actions
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5371,7 +5318,7 @@ tech_adastra_permanent_embassy = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_crop_rotation" }
+	prerequisites = { "tech_adastra_banking" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5381,8 +5328,7 @@ tech_adastra_permanent_embassy = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Ambassade permanente
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5427,6 +5373,7 @@ tech_adastra_caravel = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5460,7 +5407,7 @@ tech_adastra_canal_lock = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_mills" }
+	prerequisites = { "tech_adastra_mechanics" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5470,8 +5417,7 @@ tech_adastra_canal_lock = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Écluse à sas
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5506,7 +5452,7 @@ tech_adastra_bastion_fort = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_mills" }
+	prerequisites = { "tech_adastra_metallurgy_casting" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5516,8 +5462,7 @@ tech_adastra_bastion_fort = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Fortification bastionnée
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5552,7 +5497,7 @@ tech_adastra_deep_mining = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_mills" }
+	prerequisites = { "tech_adastra_metallurgy_casting" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5562,8 +5507,7 @@ tech_adastra_deep_mining = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Mines profondes et exhaure
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5607,6 +5551,7 @@ tech_adastra_clear_glass = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5656,6 +5601,7 @@ tech_adastra_steam_engine = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5700,6 +5646,7 @@ tech_adastra_coal = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5733,7 +5680,7 @@ tech_adastra_railways = {
 	tier = 0
 	category = { propulsion }
 	weight = 100
-	prerequisites = { "tech_adastra_mechanics" }
+	prerequisites = { "tech_adastra_machine_tools" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5743,8 +5690,7 @@ tech_adastra_railways = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Chemin de fer
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5779,7 +5725,7 @@ tech_adastra_telegraph = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_printing" }
+	prerequisites = { "tech_adastra_fraunhofer_lines" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5789,8 +5735,7 @@ tech_adastra_telegraph = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Télégraphe
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5825,7 +5770,7 @@ tech_adastra_sanitation = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_anatomy" }
+	prerequisites = { "tech_adastra_steamship" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5835,8 +5780,7 @@ tech_adastra_sanitation = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Hygiène publique
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5871,7 +5815,7 @@ tech_adastra_gas_lighting = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_printing" }
+	prerequisites = { "tech_adastra_political_economy" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5881,8 +5825,7 @@ tech_adastra_gas_lighting = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Éclairage au gaz
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5916,7 +5859,7 @@ tech_adastra_electromagnetism = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_printing" }
+	prerequisites = { "tech_adastra_atomic_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5926,8 +5869,7 @@ tech_adastra_electromagnetism = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Électromagnétisme
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -5961,7 +5903,7 @@ tech_adastra_machine_tools = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_mechanics" }
+	prerequisites = { "tech_adastra_iron_bridge" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -5971,8 +5913,7 @@ tech_adastra_machine_tools = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Machines-outils
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6006,7 +5947,7 @@ tech_adastra_census = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_anatomy" }
+	prerequisites = { "tech_adastra_selective_breeding" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6016,8 +5957,7 @@ tech_adastra_census = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Recensement
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6051,7 +5991,7 @@ tech_adastra_anesthesia = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_anatomy" }
+	prerequisites = { "tech_adastra_steamship" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6061,8 +6001,7 @@ tech_adastra_anesthesia = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Anesthésie
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6097,7 +6036,7 @@ tech_adastra_photography = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_printing" }
+	prerequisites = { "tech_adastra_fraunhofer_lines" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6107,8 +6046,7 @@ tech_adastra_photography = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Photographie
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6152,6 +6090,7 @@ tech_adastra_selective_breeding = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6196,6 +6135,7 @@ tech_adastra_canals = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6240,6 +6180,7 @@ tech_adastra_spinning_jenny = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6273,7 +6214,7 @@ tech_adastra_political_economy = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_anatomy" }
+	prerequisites = { "tech_adastra_selective_breeding" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6283,8 +6224,7 @@ tech_adastra_political_economy = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Économie politique
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6319,7 +6259,7 @@ tech_adastra_iron_bridge = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_mechanics" }
+	prerequisites = { "tech_adastra_steam_engine" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6329,8 +6269,7 @@ tech_adastra_iron_bridge = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Construction en fonte
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6365,7 +6304,7 @@ tech_adastra_balloon = {
 	tier = 0
 	category = { voidcraft }
 	weight = 100
-	prerequisites = { "tech_adastra_mechanics" }
+	prerequisites = { "tech_adastra_steam_engine" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6375,8 +6314,7 @@ tech_adastra_balloon = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Ballon à air chaud
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6411,7 +6349,7 @@ tech_adastra_mass_conscription = {
 	tier = 0
 	category = { military_theory }
 	weight = 100
-	prerequisites = { "tech_adastra_anatomy" }
+	prerequisites = { "tech_adastra_selective_breeding" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6421,8 +6359,7 @@ tech_adastra_mass_conscription = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Conscription de masse
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6456,7 +6393,7 @@ tech_adastra_vaccine_cowpox = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_anatomy" }
+	prerequisites = { "tech_adastra_political_economy" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6466,8 +6403,7 @@ tech_adastra_vaccine_cowpox = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Vaccine
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6502,7 +6438,7 @@ tech_adastra_scientific_expeditions = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_anatomy" }
+	prerequisites = { "tech_adastra_political_economy" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6512,8 +6448,7 @@ tech_adastra_scientific_expeditions = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Expéditions scientifiques
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6548,7 +6483,7 @@ tech_adastra_atomic_theory = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_printing" }
+	prerequisites = { "tech_adastra_political_economy" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6558,8 +6493,7 @@ tech_adastra_atomic_theory = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Théorie atomique
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6593,7 +6527,7 @@ tech_adastra_steamship = {
 	tier = 0
 	category = { propulsion }
 	weight = 100
-	prerequisites = { "tech_adastra_mechanics" }
+	prerequisites = { "tech_adastra_machine_tools" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6603,8 +6537,7 @@ tech_adastra_steamship = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Navire à vapeur
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6639,7 +6572,7 @@ tech_adastra_fraunhofer_lines = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_printing" }
+	prerequisites = { "tech_adastra_atomic_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6649,8 +6582,7 @@ tech_adastra_fraunhofer_lines = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Raies du spectre
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6685,7 +6617,7 @@ tech_adastra_difference_engine = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_printing" }
+	prerequisites = { "tech_adastra_atomic_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6695,8 +6627,7 @@ tech_adastra_difference_engine = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Machine à différences
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6730,7 +6661,7 @@ tech_adastra_abolition = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_anatomy" }
+	prerequisites = { "tech_adastra_steamship" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6740,8 +6671,7 @@ tech_adastra_abolition = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Abolition de l'esclavage
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6791,6 +6721,7 @@ tech_adastra_bessemer = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6834,6 +6765,7 @@ tech_adastra_thermodynamics = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6868,7 +6800,7 @@ tech_adastra_fertilizers = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_sanitation" }
+	prerequisites = { "tech_adastra_germ_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6878,8 +6810,7 @@ tech_adastra_fertilizers = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Engrais chimiques
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6913,7 +6844,7 @@ tech_adastra_labour_law = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_sanitation" }
+	prerequisites = { "tech_adastra_fertilizers" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6923,8 +6854,7 @@ tech_adastra_labour_law = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Droit du travail
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -6959,7 +6889,7 @@ tech_adastra_periodic_table = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_coal" }
+	prerequisites = { "tech_adastra_thermodynamics" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -6969,8 +6899,7 @@ tech_adastra_periodic_table = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Table périodique
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7004,7 +6933,7 @@ tech_adastra_refrigeration = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_steam_engine" }
+	prerequisites = { "tech_adastra_dynamite" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7014,8 +6943,7 @@ tech_adastra_refrigeration = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Réfrigération
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7059,6 +6987,7 @@ tech_adastra_germ_theory = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7093,7 +7022,7 @@ tech_adastra_universal_suffrage = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_sanitation" }
+	prerequisites = { "tech_adastra_germ_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7103,8 +7032,7 @@ tech_adastra_universal_suffrage = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Suffrage élargi
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7138,7 +7066,7 @@ tech_adastra_electricity = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_coal" }
+	prerequisites = { "tech_adastra_telephone" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7148,8 +7076,7 @@ tech_adastra_electricity = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Réseau électrique
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7183,7 +7110,7 @@ tech_adastra_social_insurance = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_sanitation" }
+	prerequisites = { "tech_adastra_general_staff" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7193,8 +7120,7 @@ tech_adastra_social_insurance = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Assurance sociale
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7239,6 +7165,7 @@ tech_adastra_synthetic_dye = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7283,6 +7210,7 @@ tech_adastra_spectroscopy = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7317,7 +7245,7 @@ tech_adastra_antiseptic_surgery = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_sanitation" }
+	prerequisites = { "tech_adastra_germ_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7327,8 +7255,7 @@ tech_adastra_antiseptic_surgery = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Chirurgie antiseptique
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7363,7 +7290,7 @@ tech_adastra_dynamite = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_steam_engine" }
+	prerequisites = { "tech_adastra_bessemer" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7373,8 +7300,7 @@ tech_adastra_dynamite = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Dynamite
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7408,7 +7334,7 @@ tech_adastra_general_staff = {
 	tier = 0
 	category = { military_theory }
 	weight = 100
-	prerequisites = { "tech_adastra_sanitation" }
+	prerequisites = { "tech_adastra_fertilizers" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7418,8 +7344,7 @@ tech_adastra_general_staff = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : État-major général
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7454,7 +7379,7 @@ tech_adastra_dynamo = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_steam_engine" }
+	prerequisites = { "tech_adastra_dynamite" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7464,8 +7389,7 @@ tech_adastra_dynamo = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Dynamo
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7500,7 +7424,7 @@ tech_adastra_telephone = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_coal" }
+	prerequisites = { "tech_adastra_periodic_table" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7510,8 +7434,7 @@ tech_adastra_telephone = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Téléphone
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7546,7 +7469,7 @@ tech_adastra_ocean_liner = {
 	tier = 0
 	category = { voidcraft }
 	weight = 100
-	prerequisites = { "tech_adastra_steam_engine" }
+	prerequisites = { "tech_adastra_dynamo" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7556,8 +7479,7 @@ tech_adastra_ocean_liner = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Paquebot transocéanique
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7592,7 +7514,7 @@ tech_adastra_machine_gun = {
 	tier = 0
 	category = { military_theory }
 	weight = 100
-	prerequisites = { "tech_adastra_sanitation" }
+	prerequisites = { "tech_adastra_general_staff" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7602,8 +7524,7 @@ tech_adastra_machine_gun = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Arme automatique
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7637,7 +7558,7 @@ tech_adastra_steel_frame = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_steam_engine" }
+	prerequisites = { "tech_adastra_dynamo" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7647,8 +7568,7 @@ tech_adastra_steel_frame = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Ossature d'acier
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7683,7 +7603,7 @@ tech_adastra_colonial_partition = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_sanitation" }
+	prerequisites = { "tech_adastra_social_insurance" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7693,8 +7613,7 @@ tech_adastra_colonial_partition = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Partage colonial
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7729,7 +7648,7 @@ tech_adastra_radio_waves = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_coal" }
+	prerequisites = { "tech_adastra_electricity" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7739,8 +7658,7 @@ tech_adastra_radio_waves = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Ondes hertziennes
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7775,7 +7693,7 @@ tech_adastra_punch_cards = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_coal" }
+	prerequisites = { "tech_adastra_electricity" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7785,8 +7703,7 @@ tech_adastra_punch_cards = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Cartes perforées
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7821,7 +7738,7 @@ tech_adastra_x_rays = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_coal" }
+	prerequisites = { "tech_adastra_electricity" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7831,8 +7748,7 @@ tech_adastra_x_rays = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Rayons X
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7867,7 +7783,7 @@ tech_adastra_steam_turbine = {
 	tier = 0
 	category = { propulsion }
 	weight = 100
-	prerequisites = { "tech_adastra_steam_engine" }
+	prerequisites = { "tech_adastra_ocean_liner" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7877,8 +7793,7 @@ tech_adastra_steam_turbine = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Turbine à vapeur
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7918,7 +7833,7 @@ tech_adastra_radio = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_thermodynamics" }
+	prerequisites = { "tech_adastra_vitamins" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -7928,8 +7843,7 @@ tech_adastra_radio = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Radio
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -7974,6 +7888,7 @@ tech_adastra_aviation = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8008,7 +7923,7 @@ tech_adastra_antibiotics = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_fertilizers" }
+	prerequisites = { "tech_adastra_vitamins" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8018,8 +7933,7 @@ tech_adastra_antibiotics = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Antibiotiques
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8053,7 +7967,7 @@ tech_adastra_mass_education = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_fertilizers" }
+	prerequisites = { "tech_adastra_polar_exploration" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8063,8 +7977,7 @@ tech_adastra_mass_education = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Éducation de masse
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8109,6 +8022,7 @@ tech_adastra_quantum_theory = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8142,7 +8056,7 @@ tech_adastra_haber = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_bessemer" }
+	prerequisites = { "tech_adastra_aviation" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8152,8 +8066,7 @@ tech_adastra_haber = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Synthèse de l'ammoniac
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8197,6 +8110,7 @@ tech_adastra_plastics = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8230,7 +8144,7 @@ tech_adastra_epidemiology = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_fertilizers" }
+	prerequisites = { "tech_adastra_polar_exploration" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8240,8 +8154,7 @@ tech_adastra_epidemiology = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Épidémiologie
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8275,7 +8188,7 @@ tech_adastra_assembly_line = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_bessemer" }
+	prerequisites = { "tech_adastra_aviation" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8285,8 +8198,7 @@ tech_adastra_assembly_line = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Chaîne de montage
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8320,7 +8232,7 @@ tech_adastra_petrochemistry = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_bessemer" }
+	prerequisites = { "tech_adastra_vitamins" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8330,8 +8242,7 @@ tech_adastra_petrochemistry = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Pétrochimie
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8365,7 +8276,7 @@ tech_adastra_jet_engine = {
 	tier = 0
 	category = { propulsion }
 	weight = 100
-	prerequisites = { "tech_adastra_bessemer" }
+	prerequisites = { "tech_adastra_petrochemistry" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8375,8 +8286,7 @@ tech_adastra_jet_engine = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Turboréacteur
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8410,7 +8320,7 @@ tech_adastra_television = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_fertilizers" }
+	prerequisites = { "tech_adastra_antibiotics" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8420,8 +8330,7 @@ tech_adastra_television = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Télévision
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8465,6 +8374,7 @@ tech_adastra_relativity = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8498,7 +8408,7 @@ tech_adastra_atomic_nucleus = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_thermodynamics" }
+	prerequisites = { "tech_adastra_quantum_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8508,8 +8418,7 @@ tech_adastra_atomic_nucleus = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Le noyau atomique
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8543,7 +8452,7 @@ tech_adastra_cosmic_rays = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_thermodynamics" }
+	prerequisites = { "tech_adastra_quantum_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8553,8 +8462,7 @@ tech_adastra_cosmic_rays = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Rayons cosmiques
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8588,7 +8496,7 @@ tech_adastra_expanding_universe = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_thermodynamics" }
+	prerequisites = { "tech_adastra_vitamins" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8598,8 +8506,7 @@ tech_adastra_expanding_universe = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Expansion de l'univers
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8634,7 +8541,7 @@ tech_adastra_radar = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_thermodynamics" }
+	prerequisites = { "tech_adastra_radio" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8644,8 +8551,7 @@ tech_adastra_radar = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Radar
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8679,7 +8585,7 @@ tech_adastra_cryptanalysis = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_thermodynamics" }
+	prerequisites = { "tech_adastra_radio" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8689,8 +8595,7 @@ tech_adastra_cryptanalysis = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Cryptanalyse mécanique
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8725,7 +8630,7 @@ tech_adastra_polar_exploration = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_fertilizers" }
+	prerequisites = { "tech_adastra_quantum_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8735,8 +8640,7 @@ tech_adastra_polar_exploration = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Exploration polaire
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8770,7 +8674,7 @@ tech_adastra_vitamins = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_fertilizers" }
+	prerequisites = { "tech_adastra_polar_exploration" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8780,8 +8684,7 @@ tech_adastra_vitamins = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Vitamines
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8816,7 +8719,7 @@ tech_adastra_blood_transfusion = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_fertilizers" }
+	prerequisites = { "tech_adastra_polar_exploration" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8826,8 +8729,7 @@ tech_adastra_blood_transfusion = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Transfusion et banques du sang
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8861,7 +8763,7 @@ tech_adastra_propaganda = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_fertilizers" }
+	prerequisites = { "tech_adastra_polar_exploration" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8871,8 +8773,7 @@ tech_adastra_propaganda = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Propagande de masse
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8907,7 +8808,7 @@ tech_adastra_total_war = {
 	tier = 0
 	category = { military_theory }
 	weight = 100
-	prerequisites = { "tech_adastra_fertilizers" }
+	prerequisites = { "tech_adastra_antibiotics" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -8917,8 +8818,7 @@ tech_adastra_total_war = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Guerre totale
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8963,6 +8863,7 @@ tech_adastra_reinforced_concrete = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -8996,7 +8897,7 @@ tech_adastra_tractor = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_bessemer" }
+	prerequisites = { "tech_adastra_vitamins" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9006,8 +8907,7 @@ tech_adastra_tractor = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Tracteur agricole
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9056,6 +8956,7 @@ tech_adastra_fission = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9099,6 +9000,7 @@ tech_adastra_electronics = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9132,7 +9034,7 @@ tech_adastra_vaccination = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_antibiotics" }
+	prerequisites = { "tech_adastra_deterrence" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9142,8 +9044,7 @@ tech_adastra_vaccination = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Vaccination universelle
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9177,7 +9078,7 @@ tech_adastra_radio_astronomy = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_radio" }
+	prerequisites = { "tech_adastra_information_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9187,8 +9088,7 @@ tech_adastra_radio_astronomy = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Radioastronomie
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9222,7 +9122,7 @@ tech_adastra_containers = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_aviation" }
+	prerequisites = { "tech_adastra_nuclear_submarine" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9232,8 +9132,7 @@ tech_adastra_containers = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Conteneur normalisé
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9267,7 +9166,7 @@ tech_adastra_human_rights = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_antibiotics" }
+	prerequisites = { "tech_adastra_fission" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9277,8 +9176,7 @@ tech_adastra_human_rights = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Déclaration des droits
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9313,7 +9211,7 @@ tech_adastra_computing = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_radio" }
+	prerequisites = { "tech_adastra_fission" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9323,8 +9221,7 @@ tech_adastra_computing = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Informatique
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9358,7 +9255,7 @@ tech_adastra_cooperation = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_antibiotics" }
+	prerequisites = { "tech_adastra_vaccination" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9368,8 +9265,7 @@ tech_adastra_cooperation = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Coopération internationale
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9414,6 +9310,7 @@ tech_adastra_nuclear_medicine = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9458,6 +9355,7 @@ tech_adastra_sounding_rocket = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9502,6 +9400,7 @@ tech_adastra_transistor = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
+		# rang 1 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9536,7 +9435,7 @@ tech_adastra_decolonization = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_antibiotics" }
+	prerequisites = { "tech_adastra_fission" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9546,8 +9445,7 @@ tech_adastra_decolonization = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Décolonisation
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9582,7 +9480,7 @@ tech_adastra_welfare_state = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_antibiotics" }
+	prerequisites = { "tech_adastra_fission" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9592,8 +9490,7 @@ tech_adastra_welfare_state = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : État-providence
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9628,7 +9525,7 @@ tech_adastra_information_theory = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_radio" }
+	prerequisites = { "tech_adastra_fission" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9638,8 +9535,7 @@ tech_adastra_information_theory = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 2 : Théorie de l'information
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9674,7 +9570,7 @@ tech_adastra_deterrence = {
 	tier = 0
 	category = { military_theory }
 	weight = 100
-	prerequisites = { "tech_adastra_antibiotics" }
+	prerequisites = { "tech_adastra_decolonization" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9684,8 +9580,7 @@ tech_adastra_deterrence = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Dissuasion
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9720,7 +9615,7 @@ tech_adastra_suburbs = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_antibiotics" }
+	prerequisites = { "tech_adastra_decolonization" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9730,8 +9625,7 @@ tech_adastra_suburbs = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Banlieue pavillonnaire
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9766,7 +9660,7 @@ tech_adastra_civil_aviation = {
 	tier = 0
 	category = { propulsion }
 	weight = 100
-	prerequisites = { "tech_adastra_aviation" }
+	prerequisites = { "tech_adastra_decolonization" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9776,8 +9670,7 @@ tech_adastra_civil_aviation = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Aviation de ligne à réaction
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9812,7 +9705,7 @@ tech_adastra_dna_structure = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_antibiotics" }
+	prerequisites = { "tech_adastra_decolonization" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9822,8 +9715,7 @@ tech_adastra_dna_structure = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 3 : Structure de l'hérédité
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9858,7 +9750,7 @@ tech_adastra_maser = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_radio" }
+	prerequisites = { "tech_adastra_radio_astronomy" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9868,8 +9760,7 @@ tech_adastra_maser = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Émission stimulée
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9903,7 +9794,7 @@ tech_adastra_nuclear_submarine = {
 	tier = 0
 	category = { voidcraft }
 	weight = 100
-	prerequisites = { "tech_adastra_aviation" }
+	prerequisites = { "tech_adastra_civil_aviation" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9913,8 +9804,7 @@ tech_adastra_nuclear_submarine = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Sous-marin à propulsion nucléaire
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9948,7 +9838,7 @@ tech_adastra_solar_cell = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_aviation" }
+	prerequisites = { "tech_adastra_civil_aviation" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -9958,8 +9848,7 @@ tech_adastra_solar_cell = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Cellule photovoltaïque
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -9993,7 +9882,7 @@ tech_adastra_desegregation = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_antibiotics" }
+	prerequisites = { "tech_adastra_deterrence" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10003,8 +9892,7 @@ tech_adastra_desegregation = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 4 : Fin de la ségrégation
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -10039,7 +9927,7 @@ tech_adastra_motorways = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_aviation" }
+	prerequisites = { "tech_adastra_nuclear_submarine" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10049,8 +9937,7 @@ tech_adastra_motorways = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Réseau autoroutier
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -10085,7 +9972,7 @@ tech_adastra_magnetic_storage = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_aviation" }
+	prerequisites = { "tech_adastra_nuclear_submarine" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10095,8 +9982,7 @@ tech_adastra_magnetic_storage = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Mémoire magnétique
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -10131,7 +10017,7 @@ tech_adastra_ballistic_missile = {
 	tier = 0
 	category = { propulsion }
 	weight = 100
-	prerequisites = { "tech_adastra_aviation" }
+	prerequisites = { "tech_adastra_nuclear_submarine" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10141,8 +10027,7 @@ tech_adastra_ballistic_missile = {
 		NOT = { has_country_flag = adastra_completed }
 		# (l'age suivant retire la techno du tirage via
 		#  weight_modifier, pas via le potential - voir 1.4)
-		# vague 5 : Missile balistique
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	weight_modifier = {
@@ -10190,6 +10075,7 @@ tech_adastra_rocketry = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
+		# rang 1 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10223,6 +10109,7 @@ tech_adastra_remote_sensing = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
+		# rang 1 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10248,7 +10135,7 @@ tech_adastra_genetics = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_vaccination" }
+	prerequisites = { "tech_adastra_civil_rights" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10256,8 +10143,7 @@ tech_adastra_genetics = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 4 : Génétique appliquée
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10292,6 +10178,7 @@ tech_adastra_satellites = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
+		# rang 1 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10317,7 +10204,7 @@ tech_adastra_microprocessor = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_containers" }
+	prerequisites = { "tech_adastra_plate_tectonics" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10325,8 +10212,7 @@ tech_adastra_microprocessor = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 5 : Microprocesseur
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10352,7 +10238,7 @@ tech_adastra_networks = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_vaccination" }
+	prerequisites = { "tech_adastra_genetics" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10360,8 +10246,7 @@ tech_adastra_networks = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 5 : Réseaux mondiaux
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10388,7 +10273,7 @@ tech_adastra_ecology = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_vaccination" }
+	prerequisites = { "tech_adastra_genetics" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10396,8 +10281,7 @@ tech_adastra_ecology = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 5 : Écologie planétaire
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10424,7 +10308,7 @@ tech_adastra_green_revolution = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_vaccination" }
+	prerequisites = { "tech_adastra_civil_rights" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10432,8 +10316,7 @@ tech_adastra_green_revolution = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 4 : Révolution verte
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10467,6 +10350,7 @@ tech_adastra_superconductivity = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
+		# rang 1 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10501,6 +10385,7 @@ tech_adastra_laser = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
+		# rang 1 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10527,7 +10412,7 @@ tech_adastra_chaos_theory = {
 	tier = 0
 	category = { computing }
 	weight = 100
-	prerequisites = { "tech_adastra_fission" }
+	prerequisites = { "tech_adastra_birth_control" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10535,8 +10420,7 @@ tech_adastra_chaos_theory = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 3 : Théorie du chaos
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10562,7 +10446,7 @@ tech_adastra_quarks = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_fission" }
+	prerequisites = { "tech_adastra_birth_control" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10570,8 +10454,7 @@ tech_adastra_quarks = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 3 : Modèle des quarks
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10597,7 +10480,7 @@ tech_adastra_plate_tectonics = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_fission" }
+	prerequisites = { "tech_adastra_chaos_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10605,8 +10488,7 @@ tech_adastra_plate_tectonics = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 4 : Tectonique des plaques
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10633,7 +10515,7 @@ tech_adastra_cosmic_background = {
 	tier = 0
 	category = { particles }
 	weight = 100
-	prerequisites = { "tech_adastra_fission" }
+	prerequisites = { "tech_adastra_chaos_theory" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10641,8 +10523,7 @@ tech_adastra_cosmic_background = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 4 : Fond diffus cosmologique
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10669,7 +10550,7 @@ tech_adastra_fiber_optics = {
 	tier = 0
 	category = { field_manipulation }
 	weight = 100
-	prerequisites = { "tech_adastra_fission" }
+	prerequisites = { "tech_adastra_plate_tectonics" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10677,8 +10558,7 @@ tech_adastra_fiber_optics = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 5 : Fibre optique
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10705,7 +10585,7 @@ tech_adastra_birth_control = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_vaccination" }
+	prerequisites = { "tech_adastra_rocketry" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10713,8 +10593,7 @@ tech_adastra_birth_control = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 2 : Contrôle des naissances
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10741,7 +10620,7 @@ tech_adastra_transplant = {
 	tier = 0
 	category = { biology }
 	weight = 100
-	prerequisites = { "tech_adastra_vaccination" }
+	prerequisites = { "tech_adastra_civil_rights" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10749,8 +10628,7 @@ tech_adastra_transplant = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 4 : Transplantation
-		has_country_flag = adastra_vague_4
+		# rang 4 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10777,7 +10655,7 @@ tech_adastra_hotline = {
 	tier = 0
 	category = { military_theory }
 	weight = 100
-	prerequisites = { "tech_adastra_vaccination" }
+	prerequisites = { "tech_adastra_rocketry" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10785,8 +10663,7 @@ tech_adastra_hotline = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 2 : Dissuasion
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10813,7 +10690,7 @@ tech_adastra_deep_sea = {
 	tier = 0
 	category = { new_worlds }
 	weight = 100
-	prerequisites = { "tech_adastra_vaccination" }
+	prerequisites = { "tech_adastra_rocketry" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10821,8 +10698,7 @@ tech_adastra_deep_sea = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 2 : Grands fonds
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10849,7 +10725,7 @@ tech_adastra_civil_rights = {
 	tier = 0
 	category = { statecraft }
 	weight = 100
-	prerequisites = { "tech_adastra_vaccination" }
+	prerequisites = { "tech_adastra_birth_control" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10857,8 +10733,7 @@ tech_adastra_civil_rights = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 3 : Droits civiques
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10885,7 +10760,7 @@ tech_adastra_manned_flight = {
 	tier = 0
 	category = { voidcraft }
 	weight = 100
-	prerequisites = { "tech_adastra_containers" }
+	prerequisites = { "tech_adastra_rocketry" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10893,8 +10768,7 @@ tech_adastra_manned_flight = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 2 : Vol habité
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10921,7 +10795,7 @@ tech_adastra_lunar_landing = {
 	tier = 0
 	category = { voidcraft }
 	weight = 100
-	prerequisites = { "tech_adastra_containers" }
+	prerequisites = { "tech_adastra_plate_tectonics" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10929,8 +10803,7 @@ tech_adastra_lunar_landing = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 5 : Alunissage
-		has_country_flag = adastra_vague_5
+		# rang 5 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10957,7 +10830,7 @@ tech_adastra_ion_drive = {
 	tier = 0
 	category = { propulsion }
 	weight = 100
-	prerequisites = { "tech_adastra_containers" }
+	prerequisites = { "tech_adastra_manned_flight" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -10965,8 +10838,7 @@ tech_adastra_ion_drive = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 3 : Propulsion ionique
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -10993,7 +10865,7 @@ tech_adastra_heat_shield = {
 	tier = 0
 	category = { materials }
 	weight = 100
-	prerequisites = { "tech_adastra_containers" }
+	prerequisites = { "tech_adastra_manned_flight" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -11001,8 +10873,7 @@ tech_adastra_heat_shield = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 3 : Bouclier ablatif
-		has_country_flag = adastra_vague_3
+		# rang 3 dans l'arbre de l'age
 	}
 
 	modifier = {
@@ -11028,7 +10899,7 @@ tech_adastra_industrial_robot = {
 	tier = 0
 	category = { industry }
 	weight = 100
-	prerequisites = { "tech_adastra_containers" }
+	prerequisites = { "tech_adastra_rocketry" }
 
 	# Visible uniquement pour Ad Astra, a partir de son age,
 	# et retiree du tirage une fois l'Ascension achevee.
@@ -11036,8 +10907,7 @@ tech_adastra_industrial_robot = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
-		# vague 2 : Bras manipulateur
-		has_country_flag = adastra_vague_2
+		# rang 2 dans l'arbre de l'age
 	}
 
 	modifier = {
