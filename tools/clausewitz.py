@@ -9,26 +9,26 @@ def top_level_blocks(text):
     out, i, n = [], 0, len(text)
     pat = re.compile(r"^([A-Za-z_][\w.]*)\s*=\s*\{", re.M)
     while i < n:
-        m = pat.search(text, i)
-        if not m:
+        match = pat.search(text, i)
+        if not match:
             break
-        depth, j, in_comment = 0, m.end() - 1, False
+        depth, j, in_comment = 0, match.end() - 1, False
         while j < n:
-            c = text[j]
-            if c == "#":
+            char = text[j]
+            if char == "#":
                 in_comment = True
-            elif c == "\n":
+            elif char == "\n":
                 in_comment = False
             elif not in_comment:
-                if c == "{":
+                if char == "{":
                     depth += 1
-                elif c == "}":
+                elif char == "}":
                     depth -= 1
                     if depth == 0:
                         j += 1
                         break
             j += 1
-        out.append((m.group(1), m.start(), j))
+        out.append((match.group(1), match.start(), j))
         i = j
     return out
 
