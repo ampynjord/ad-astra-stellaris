@@ -723,11 +723,14 @@ else:
 # dans sa description, sinon le joueur cherche a l'aveugle.
 print("\n== annonces de deblocage ==")
 from age_techs_data import UNLOCKS  # noqa: E402
+from vanilla_zone_age_map import specialization_unlocks  # noqa: E402
 locfr = open(os.path.join(ROOT, "localisation", "french",
                           "adastra_ages_l_french.yml"), encoding="utf-8").read()
 locen = open(os.path.join(ROOT, "localisation", "english",
                           "adastra_ages_l_english.yml"), encoding="utf-8").read()
-attendus = set(UNLOCKS)
+annonces = dict(UNLOCKS)
+annonces.update(specialization_unlocks())
+attendus = set(annonces)
 for age, _f, _c, _v in AGES:
     for t in TECHS[age]:
         if t["unlocks"]:
@@ -740,9 +743,15 @@ for key in sorted(attendus):
         elif "§Y" not in m.group(1):
             err("%s : la description %s n'annonce pas ce que la techno debloque"
                 % (key, lang))
-for key in UNLOCKS:
+for key in annonces:
     if key not in {t["key"] for age, _f, _c, _v in AGES for t in TECHS[age]}:
         err("UNLOCKS decrit %s, qui n'existe pas" % key)
+for key, textes in specialization_unlocks().items():
+    for lang, src2, texte in (("french", locfr, textes[0]),
+                              ("english", locen, textes[1])):
+        m = re.search(r'^ %s_desc:0 "(.*)"$' % re.escape(key), src2, re.M)
+        if not m or texte not in m.group(1):
+            err("%s : la specialisation n'est pas annoncee en %s" % (key, lang))
 print("  %d technos annoncent un deblocage, FR et EN" % len(attendus))
 
 # ------------------------------------------------------- icones des technos

@@ -1,6 +1,24 @@
 # -*- coding: utf-8 -*-
 """Sources de verite des technologies qui ouvrent les specialisations."""
 
+# Noms affiches par le jeu de base. Cette table accompagne ZONE_AGE : elle
+# permet aux descriptions des technologies d'annoncer exactement ce que les
+# gardes des zones rendent disponible.
+SPECIALIZATION_NAMES = {
+    "zone_research_unity": ("Archives", "Archives"),
+    "zone_research": ("Enclave de recherche", "Research Enclave"),
+    "zone_research_physics": ("Spécialisation de recherche en physique", "Physics Research Specialization"),
+    "zone_research_society": ("Spécialisation de recherche sociétale", "Society Research Specialization"),
+    "zone_research_engineering": ("Spécialisation de recherche en ingénierie", "Engineering Research Specialization"),
+    "zone_unity": ("Site administratif", "Administrative Hub"),
+    "zone_unity_spiritualist": ("Enclave spirituelle", "Spiritual Enclave"),
+    "zone_fortress": ("Défenses militaires", "Military Defenses"),
+    "zone_trade": ("Centre du commerce", "Commercial Nexus"),
+    "zone_industrial": ("Industrie mixte", "Mixed Industry"),
+    "zone_factory": ("Industrie civile", "Civilian Industry"),
+    "zone_foundry": ("Industrie lourde", "Heavy Industry"),
+}
+
 # (age historique, technologie fondatrice, justification)
 ZONE_AGE = {
     "zone_urban": ("keep", None, "Expansion urbaine : une population qui grandit s'etale, a toute epoque"),
@@ -38,3 +56,22 @@ STARTING_BUILDINGS_TO_ADD = {
     "atomic": [],
     "space": [],
 }
+
+
+def specialization_unlocks():
+    """Retourne les annonces FR/EN deduites des gardes de specialisation."""
+    out = {}
+    for zone, (_age, tech, _why) in ZONE_AGE.items():
+        if not tech:
+            continue
+        fr, en = SPECIALIZATION_NAMES[zone]
+        out.setdefault(tech, [[], []])
+        out[tech][0].append(fr)
+        out[tech][1].append(en)
+    return {
+        tech: (
+            "Débloque la spécialisation de district : %s." % ", ".join(names[0]),
+            "Unlocks district specialization: %s." % ", ".join(names[1]),
+        )
+        for tech, names in out.items()
+    }
