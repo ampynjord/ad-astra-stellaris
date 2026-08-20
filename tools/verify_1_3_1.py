@@ -74,6 +74,11 @@ def main():
     capital = events.index("# 1.2 : la capitale demarre specialisee")
     if grants > capital:
         fail("les octrois d'age doivent preceder la preparation de la capitale")
+    starting_state = events.index("# 1.3.2 : un country_event ne s'execute pas dans cette pile.")
+    if not grants < starting_state < capital:
+        fail("l etat de l age choisi doit etre pose avant la capitale")
+    if "else_if = { limit = { has_country_flag = adastra_choice_bronze } country_event = { id = adastra.41 } }" in events:
+        fail("le demarrage ne doit plus mettre l age choisi en file d evenement")
     for fragment in (
         "add_zone = { district = district_city zone = zone_industrial zone_slot = 1 }",
         "building = building_factory_1",
