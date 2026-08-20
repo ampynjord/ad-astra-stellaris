@@ -488,10 +488,6 @@ country_event = {
 		# Lancer la situation d'ascension et se placer au bon âge : 25 points
 		# par étape (1.5). La partie est nee en 1.5 : pas de recalage a faire.
 		set_country_flag = adastra_progression_1_5
-		# Lancer la situation d'ascension et se placer au bon âge : 25 points
-		# par étape (1.5). La partie est nee en 1.5 : pas de recalage a faire.
-		set_country_flag = adastra_progression_1_5
-		start_situation = { type = situation_adastra_ascension }
 		start_situation = { type = situation_adastra_ascension }
 		if = { limit = { has_country_flag = adastra_choice_bronze } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 25 } }
 		else_if = { limit = { has_country_flag = adastra_choice_iron } every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 50 } }
