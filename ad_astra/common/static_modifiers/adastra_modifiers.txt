@@ -212,40 +212,22 @@ adastra_pre_electric = {
 # valeurs sont celles de « Conditions de vie normales », le niveau de vie par
 # defaut : dirigeants 1,0 - specialistes 0,5 - ouvriers 0,25 - civils 0,25.
 #
-# A VERIFIER EN JEU : si les biens de consommation passent POSITIF, c'est que
-# le moteur applique le pourcentage avant le forfaitaire. Dans ce cas il faut
-# retirer les deux lignes planet_pops_*_mult ci-dessous et garder seulement
-# l'annulation forfaitaire.
+# Les multiplicateurs ne peuvent pas annuler cette facture : Stellaris les
+# plafonne a -90 %. Les annulations sont donc forfaitaires, pour le niveau de
+# vie et pour les emplois effectivement crees avant la Machine a vapeur.
 adastra_pre_manufacture = {
 	pop_category_rulers_consumer_goods_upkeep_add = -1
 	pop_category_specialists_consumer_goods_upkeep_add = -0.5
 	pop_category_workers_consumer_goods_upkeep_add = -0.25
 	pop_category_civilians_consumer_goods_upkeep_add = -0.25
-	planet_pops_consumer_goods_upkeep_mult = -1
-	planet_pops_organics_consumer_goods_upkeep_mult = -1
-	planet_pops_enslaved_consumer_goods_upkeep_mult = -1
-	planet_jobs_consumer_goods_upkeep_mult = -1
-	planet_artisans_consumer_goods_upkeep_mult = -1
-	planet_augmentors_consumer_goods_upkeep_mult = -1
-	planet_automated_jobs_consumer_goods_upkeep_mult = -1
-	planet_biologists_consumer_goods_upkeep_mult = -1
-	planet_bureaucrats_consumer_goods_upkeep_mult = -1
-	planet_chemists_consumer_goods_upkeep_mult = -1
-	planet_cruise_passengers_consumer_goods_upkeep_mult = -1
-	planet_doctors_consumer_goods_upkeep_mult = -1
-	planet_enforcers_consumer_goods_upkeep_mult = -1
-	planet_engineers_consumer_goods_upkeep_mult = -1
-	planet_entertainers_consumer_goods_upkeep_mult = -1
-	planet_knights_consumer_goods_upkeep_mult = -1
-	planet_metallurgists_consumer_goods_upkeep_mult = -1
-	planet_physicists_consumer_goods_upkeep_mult = -1
-	planet_pop_assemblers_consumer_goods_upkeep_mult = -1
-	planet_refiners_consumer_goods_upkeep_mult = -1
-	planet_researchers_consumer_goods_upkeep_mult = -1
-	planet_soldiers_consumer_goods_upkeep_mult = -1
-	planet_telepaths_consumer_goods_upkeep_mult = -1
-	planet_traders_consumer_goods_upkeep_mult = -1
-	planet_translucers_consumer_goods_upkeep_mult = -1
+	planet_politicians_consumer_goods_upkeep_add = -3
+	planet_bureaucrats_consumer_goods_upkeep_add = -2
+	planet_entertainers_consumer_goods_upkeep_add = -1
+	planet_enforcers_consumer_goods_upkeep_add = -1
+	planet_researchers_consumer_goods_upkeep_add = -1
+	planet_physicists_consumer_goods_upkeep_add = -1.5
+	planet_biologists_consumer_goods_upkeep_add = -1.5
+	planet_engineers_consumer_goods_upkeep_add = -1.5
 }
 
 # LE CONSEIL DES ANCIENS
