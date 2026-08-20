@@ -396,10 +396,6 @@
  adastra_young_administration:0 "Une administration naissante"
  adastra_young_administration_desc:0 "Des bureaux, des registres, des traitements versés à date fixe. L'État sait enfin ce qu'il contient — et ce savoir a un coût, réglé tous les mois."
  mod_adastra_young_administration:0 "Une administration naissante"
- adastra.12.name:0 "La marche s'arrête"
- adastra.12.desc:0 "Nos savants disent la même chose depuis des saisons : nous savons faire tout ce que cet âge sait faire, sauf une chose. Et tant que cette chose nous manque, il n'y a nulle part où aller.\n\n§YLa progression de l'Ascension est figée§! jusqu'à ce que §Ytoutes les technologies de l'âge en cours§! soient découvertes. Ouvrez la recherche : celles qui manquent y sont proposées."
- adastra.12.a:0 "Alors cherchons."
-
  # 1.4 - Premiers pas : les decisions ont toujours ete jouables, mais leurs
  # retours narratifs etaient absents. Chaque cle est aussi presente en anglais.
  decision_core_suborbital_tooltip:0 "Lance une fusee-sonde. Le risque d'echec diminue avec le Bouclier ablatif, la Theorie de l'information, l'Electronique et l'experience des tentatives precedentes."
