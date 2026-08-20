@@ -915,7 +915,10 @@ if os.path.exists(_t1):
             continue
         if _tm.group(1) == "1":
             _n1 += 1
-            if "adastra_vanilla_open_" not in _b:
+            # Une techno de palier 1 doit attendre soit son age historique,
+            # soit la sortie du confinement. L'age est un trigger, la sortie
+            # un drapeau de pays : les deux formes sont des gardes valides.
+            if not re.search(r"(?:adastra_vanilla_open_\w+ = yes|has_country_flag = adastra_\w+)", _b):
                 _t1_sans_garde.append(_k)
         elif _tm.group(1) == "2":
             _n2 += 1
