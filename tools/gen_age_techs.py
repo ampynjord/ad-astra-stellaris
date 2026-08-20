@@ -410,7 +410,6 @@ def gen_gates():
     return "\n".join(out)
 
 
-
 def tri_par_dependance(techs):
     """Ordonne les technos du jeu de base pour qu'un prerequis precede toujours
     celui qui l'exige. give_technology refuse sinon - voir VANILLA_PREREQ."""
