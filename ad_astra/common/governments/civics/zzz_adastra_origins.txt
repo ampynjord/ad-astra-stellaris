@@ -34,10 +34,8 @@ origin_adastra = {
 	# Citadelle étoilée) barrent les nomades exactement comme ça.
 	possible = {
 		authority = {
-			NOR = {
-				value = auth_hive_mind
-				value = auth_machine_intelligence
-			}
+			NOT = { value = auth_hive_mind }
+			NOT = { value = auth_machine_intelligence }
 		}
 		is_nomadic = no
 	}

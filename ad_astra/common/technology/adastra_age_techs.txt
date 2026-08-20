@@ -25,14 +25,6 @@ tech_adastra_fire = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		pop_happiness = 0.004
@@ -67,14 +59,6 @@ tech_adastra_stone_tools = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.004
@@ -108,14 +92,6 @@ tech_adastra_hunting = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.004
@@ -148,17 +124,8 @@ tech_adastra_cave_art = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Peintures rupestres
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.004
@@ -192,17 +159,8 @@ tech_adastra_language = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Langage articulé
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -235,17 +193,8 @@ tech_adastra_seasons = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Lecture des saisons
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.002
@@ -278,17 +227,8 @@ tech_adastra_pigments = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Terres et pigments
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.003
@@ -321,17 +261,8 @@ tech_adastra_cordage = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Corde et vannerie
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.003
@@ -365,14 +296,6 @@ tech_adastra_shelter = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_housing_add = 0.16
@@ -405,17 +328,8 @@ tech_adastra_burial = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Sépulture
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_stability_add = 0.24
@@ -449,14 +363,6 @@ tech_adastra_cooking = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.005
@@ -490,17 +396,8 @@ tech_adastra_clan = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Clan et parente
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_stability_add = 0.32
@@ -533,17 +430,8 @@ tech_adastra_hafting = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Pointe emmanchee
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.006
@@ -577,17 +465,8 @@ tech_adastra_lunar_count = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Comptage lunaire
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.003
@@ -620,17 +499,8 @@ tech_adastra_storytelling = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Recit et transmission
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.004
@@ -663,17 +533,8 @@ tech_adastra_grinding = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Meule et broyage
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.006
@@ -706,17 +567,8 @@ tech_adastra_weaving = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Tissage
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		pop_happiness = 0.003
@@ -750,17 +602,8 @@ tech_adastra_bow = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Propulseur et arc
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.008
@@ -793,17 +636,8 @@ tech_adastra_exchange = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Echange a distance
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.008
@@ -837,17 +671,8 @@ tech_adastra_canoe = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Pirogue et cabotage
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.006
@@ -881,17 +706,8 @@ tech_adastra_salt = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Le sel et la conservation
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.004
@@ -925,17 +741,8 @@ tech_adastra_village = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Village et grenier
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_housing_add = 0.16
@@ -969,17 +776,8 @@ tech_adastra_agriculture = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Agriculture
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.008
@@ -1013,17 +811,8 @@ tech_adastra_pottery = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Poterie
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.004
@@ -1056,17 +845,8 @@ tech_adastra_domestication = {
 		has_country_flag = adastra_reached_stone
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Domestication animale
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_bronze
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.005
@@ -1107,14 +887,6 @@ tech_adastra_bronze = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.008
@@ -1150,14 +922,6 @@ tech_adastra_writing = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.008
@@ -1193,14 +957,6 @@ tech_adastra_first_city = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_stability_add = 0.4
@@ -1235,17 +991,8 @@ tech_adastra_calendar = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Calendrier lunaire
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.003
@@ -1279,17 +1026,8 @@ tech_adastra_measures = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Poids et mesures
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.004
@@ -1323,17 +1061,8 @@ tech_adastra_irrigation = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Irrigation
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.006
@@ -1367,17 +1096,8 @@ tech_adastra_priesthood = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Sacerdoce
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_stability_add = 0.32
@@ -1412,14 +1132,6 @@ tech_adastra_wheel = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.004
@@ -1454,14 +1166,6 @@ tech_adastra_sail = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.006
@@ -1496,17 +1200,8 @@ tech_adastra_plough = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Araire
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.006
@@ -1540,17 +1235,8 @@ tech_adastra_brewing = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Brasserie
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		pop_happiness = 0.004
@@ -1585,17 +1271,8 @@ tech_adastra_kingship = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Royauté
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_stability_add = 0.32
@@ -1630,17 +1307,8 @@ tech_adastra_fired_brick = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Brique cuite
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_housing_add = 0.24
@@ -1675,17 +1343,8 @@ tech_adastra_lever = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Levier et rampe
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.005
@@ -1719,17 +1378,8 @@ tech_adastra_lost_wax = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Fonte à la cire perdue
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.006
@@ -1763,17 +1413,8 @@ tech_adastra_sexagesimal = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Numération sexagésimale
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -1808,17 +1449,8 @@ tech_adastra_faience = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Faïence et émail
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.005
@@ -1853,17 +1485,8 @@ tech_adastra_shield_wall = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Mur de boucliers
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.006
@@ -1897,17 +1520,8 @@ tech_adastra_empire = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Premier empire
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.005
@@ -1942,17 +1556,8 @@ tech_adastra_trade_colony = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Comptoir marchand
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.007
@@ -1986,17 +1591,8 @@ tech_adastra_chariot = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Char de guerre
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.008
@@ -2030,17 +1626,8 @@ tech_adastra_surveying = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Arpentage
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.004
@@ -2075,17 +1662,8 @@ tech_adastra_medicine = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Médecine et prescriptions
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.004
@@ -2120,17 +1698,8 @@ tech_adastra_dyes = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Teinture et pourpre
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.006
@@ -2165,17 +1734,8 @@ tech_adastra_diplomacy = {
 		has_country_flag = adastra_reached_bronze
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Traité et ambassade
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_iron
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.004
@@ -2216,14 +1776,6 @@ tech_adastra_iron = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.008
@@ -2258,17 +1810,8 @@ tech_adastra_law = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Code de lois
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_stability_add = 0.8
@@ -2303,17 +1846,8 @@ tech_adastra_coinage = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Monnaie frappée
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.008
@@ -2348,14 +1882,6 @@ tech_adastra_astronomy = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -2390,17 +1916,8 @@ tech_adastra_geometry = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Géométrie
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.003
@@ -2434,17 +1951,8 @@ tech_adastra_glass = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Verre
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_amenities_add = 0.32
@@ -2478,17 +1986,8 @@ tech_adastra_aqueduct = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Aqueduc
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_amenities_add = 0.24
@@ -2524,14 +2023,6 @@ tech_adastra_alphabet = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.005
@@ -2565,17 +2056,8 @@ tech_adastra_standing_army = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Armée permanente
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.008
@@ -2609,17 +2091,8 @@ tech_adastra_star_catalogue = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Catalogue d'étoiles
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.005
@@ -2654,17 +2127,8 @@ tech_adastra_atomism = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Atomisme
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -2698,17 +2162,8 @@ tech_adastra_water_clock = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Clepsydre
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.003
@@ -2743,17 +2198,8 @@ tech_adastra_pulley = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Levier et poulie
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.005
@@ -2787,17 +2233,8 @@ tech_adastra_lodestone = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Pierre d'aimant
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.005
@@ -2832,14 +2269,6 @@ tech_adastra_cavalry = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.006
@@ -2873,17 +2302,8 @@ tech_adastra_tax_register = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Recensement
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_stability_add = 0.24
@@ -2918,17 +2338,8 @@ tech_adastra_clinical_medicine = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Médecine d'observation
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.005
@@ -2963,17 +2374,8 @@ tech_adastra_philosophy = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : École philosophique
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_jobs_society_research_produces_mult = 0.006
@@ -3007,17 +2409,8 @@ tech_adastra_silk_road = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Routes caravanières
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.006
@@ -3052,14 +2445,6 @@ tech_adastra_trireme = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.005
@@ -3093,17 +2478,8 @@ tech_adastra_crucible_steel = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Acier au creuset
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.006
@@ -3138,17 +2514,8 @@ tech_adastra_roman_road = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Voie pavée
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.004
@@ -3183,17 +2550,8 @@ tech_adastra_lighthouse = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Phare
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.004
@@ -3228,17 +2586,8 @@ tech_adastra_bellows = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Soufflet et fourneau
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.005
@@ -3272,17 +2621,8 @@ tech_adastra_concrete = {
 		has_country_flag = adastra_reached_iron
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Béton de chaux
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_medieval
-		}
-	}
 
 	modifier = {
 		planet_housing_add = 0.24
@@ -3323,14 +2663,6 @@ tech_adastra_crop_rotation = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.012
@@ -3364,17 +2696,8 @@ tech_adastra_mills = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Moulin à eau et à vent
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.008
@@ -3409,17 +2732,8 @@ tech_adastra_stone_architecture = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Architecture de pierre
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_housing_add = 0.24
@@ -3454,17 +2768,8 @@ tech_adastra_scholasticism = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Scolastique
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.008
@@ -3499,17 +2804,8 @@ tech_adastra_guilds = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Guildes
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.008
@@ -3544,14 +2840,6 @@ tech_adastra_algebra = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -3585,17 +2873,8 @@ tech_adastra_optics = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Optique et lentilles
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.006
@@ -3629,17 +2908,8 @@ tech_adastra_heavy_plough = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Charrue lourde
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.006
@@ -3673,17 +2943,8 @@ tech_adastra_hospices = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Hospices
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		pop_happiness = 0.004
@@ -3718,17 +2979,8 @@ tech_adastra_cartography = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Cartographie
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_society_research_produces_mult = 0.006
@@ -3763,14 +3015,6 @@ tech_adastra_stirrup = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.005
@@ -3805,14 +3049,6 @@ tech_adastra_paper_mill = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.005
@@ -3847,14 +3083,6 @@ tech_adastra_distillation = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.005
@@ -3888,17 +3116,8 @@ tech_adastra_translation_movement = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Mouvement de traduction
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -3933,17 +3152,8 @@ tech_adastra_astrolabe = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Astrolabe
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.005
@@ -3977,17 +3187,8 @@ tech_adastra_gunpowder = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Poudre noire
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.006
@@ -4021,17 +3222,8 @@ tech_adastra_horse_collar = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Collier d'épaule
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.006
@@ -4065,17 +3257,8 @@ tech_adastra_trigonometry = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Trigonométrie
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -4109,17 +3292,8 @@ tech_adastra_crop_diffusion = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Migration des plantes
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.006
@@ -4154,17 +3328,8 @@ tech_adastra_paper_money = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Papier-monnaie
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.006
@@ -4198,17 +3363,8 @@ tech_adastra_blast_furnace = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Haut fourneau
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.006
@@ -4242,17 +3398,8 @@ tech_adastra_compass = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Boussole
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.004
@@ -4287,17 +3434,8 @@ tech_adastra_caravanserai = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Caravansérail
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.004
@@ -4332,17 +3470,8 @@ tech_adastra_stern_rudder = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Gouvernail d'étambot
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.005
@@ -4376,17 +3505,8 @@ tech_adastra_impetus = {
 		has_country_flag = adastra_reached_medieval
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Théorie de l'impetus
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_renaissance
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.005
@@ -4426,14 +3546,6 @@ tech_adastra_printing = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.012
@@ -4468,17 +3580,8 @@ tech_adastra_experimental_method = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Méthode expérimentale
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.012
@@ -4512,17 +3615,8 @@ tech_adastra_anatomy = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Anatomie
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.008
@@ -4557,14 +3651,6 @@ tech_adastra_mechanics = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.008
@@ -4599,14 +3685,6 @@ tech_adastra_banking = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.012
@@ -4640,17 +3718,8 @@ tech_adastra_chemistry = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Chimie des substances
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.006
@@ -4684,17 +3753,8 @@ tech_adastra_metallurgy_casting = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Fonte et artillerie
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.012
@@ -4728,17 +3788,8 @@ tech_adastra_clockwork = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Horlogerie
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -4772,17 +3823,8 @@ tech_adastra_double_entry = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Comptabilité en partie double
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.003
@@ -4816,17 +3858,8 @@ tech_adastra_navigation = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Navigation hauturière
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_society_research_produces_mult = 0.008
@@ -4860,17 +3893,8 @@ tech_adastra_telescope = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Lunette astronomique
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.006
@@ -4904,17 +3928,8 @@ tech_adastra_heliocentrism = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Système héliocentrique
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -4949,17 +3964,8 @@ tech_adastra_magnetism = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Magnétisme terrestre
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.005
@@ -4993,17 +3999,8 @@ tech_adastra_vacuum_pump = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Pompe à vide
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.004
@@ -5038,17 +4035,8 @@ tech_adastra_universal_gravitation = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Gravitation universelle
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.008
@@ -5082,17 +4070,8 @@ tech_adastra_microscope = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Microscope
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.005
@@ -5127,17 +4106,8 @@ tech_adastra_new_crops = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Plantes du Nouveau Monde
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.008
@@ -5172,17 +4142,8 @@ tech_adastra_pike_and_shot = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Pique et arquebuse
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.008
@@ -5216,17 +4177,8 @@ tech_adastra_joint_stock = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Société par actions
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.006
@@ -5261,17 +4213,8 @@ tech_adastra_permanent_embassy = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Ambassade permanente
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.004
@@ -5307,14 +4250,6 @@ tech_adastra_caravel = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.006
@@ -5348,17 +4283,8 @@ tech_adastra_canal_lock = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Écluse à sas
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.004
@@ -5393,17 +4319,8 @@ tech_adastra_bastion_fort = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Fortification bastionnée
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_stability_add = 0.32
@@ -5438,17 +4355,8 @@ tech_adastra_deep_mining = {
 		has_country_flag = adastra_reached_renaissance
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Mines profondes et exhaure
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.008
@@ -5483,14 +4391,6 @@ tech_adastra_clear_glass = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_steam
-		}
-	}
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.005
@@ -5531,14 +4431,6 @@ tech_adastra_steam_engine = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.016
@@ -5574,14 +4466,6 @@ tech_adastra_coal = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.016
@@ -5615,17 +4499,8 @@ tech_adastra_railways = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Chemin de fer
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.008
@@ -5660,17 +4535,8 @@ tech_adastra_telegraph = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Télégraphe
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.008
@@ -5705,17 +4571,8 @@ tech_adastra_sanitation = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Hygiène publique
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.012
@@ -5750,17 +4607,8 @@ tech_adastra_gas_lighting = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Éclairage au gaz
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.003
@@ -5794,17 +4642,8 @@ tech_adastra_electromagnetism = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Électromagnétisme
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.008
@@ -5838,17 +4677,8 @@ tech_adastra_machine_tools = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Machines-outils
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.008
@@ -5882,17 +4712,8 @@ tech_adastra_census = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Recensement
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.003
@@ -5926,17 +4747,8 @@ tech_adastra_anesthesia = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Anesthésie
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		pop_happiness = 0.004
@@ -5971,17 +4783,8 @@ tech_adastra_photography = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Photographie
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.005
@@ -6016,14 +4819,6 @@ tech_adastra_selective_breeding = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.006
@@ -6059,14 +4854,6 @@ tech_adastra_canals = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.006
@@ -6102,14 +4889,6 @@ tech_adastra_spinning_jenny = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.008
@@ -6143,17 +4922,8 @@ tech_adastra_political_economy = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Économie politique
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.004
@@ -6188,17 +4958,8 @@ tech_adastra_iron_bridge = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Construction en fonte
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.005
@@ -6233,17 +4994,8 @@ tech_adastra_balloon = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Ballon à air chaud
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.003
@@ -6278,17 +5030,8 @@ tech_adastra_mass_conscription = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Conscription de masse
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.008
@@ -6322,17 +5065,8 @@ tech_adastra_vaccine_cowpox = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Vaccine
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.006
@@ -6367,17 +5101,8 @@ tech_adastra_scientific_expeditions = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Expéditions scientifiques
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_society_research_produces_mult = 0.006
@@ -6412,17 +5137,8 @@ tech_adastra_atomic_theory = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Théorie atomique
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.006
@@ -6456,17 +5172,8 @@ tech_adastra_steamship = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Navire à vapeur
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.006
@@ -6501,17 +5208,8 @@ tech_adastra_fraunhofer_lines = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Raies du spectre
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.005
@@ -6546,17 +5244,8 @@ tech_adastra_difference_engine = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Machine à différences
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.005
@@ -6590,17 +5279,8 @@ tech_adastra_abolition = {
 		has_country_flag = adastra_reached_steam
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Abolition de l'esclavage
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_industrial
-		}
-	}
 
 	modifier = {
 		pop_happiness = 0.006
@@ -6641,14 +5321,6 @@ tech_adastra_bessemer = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.016
@@ -6683,14 +5355,6 @@ tech_adastra_thermodynamics = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.008
@@ -6725,17 +5389,8 @@ tech_adastra_fertilizers = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Engrais chimiques
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.016
@@ -6769,17 +5424,8 @@ tech_adastra_labour_law = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Droit du travail
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		pop_happiness = 0.008
@@ -6814,17 +5460,8 @@ tech_adastra_periodic_table = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Table périodique
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.005
@@ -6858,17 +5495,8 @@ tech_adastra_refrigeration = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Réfrigération
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.008
@@ -6903,14 +5531,6 @@ tech_adastra_germ_theory = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.006
@@ -6945,17 +5565,8 @@ tech_adastra_universal_suffrage = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Suffrage élargi
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_stability_add = 0.48
@@ -6989,17 +5600,8 @@ tech_adastra_electricity = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Réseau électrique
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.02
@@ -7033,17 +5635,8 @@ tech_adastra_social_insurance = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Assurance sociale
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		pop_happiness = 0.005
@@ -7079,14 +5672,6 @@ tech_adastra_synthetic_dye = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.006
@@ -7122,14 +5707,6 @@ tech_adastra_spectroscopy = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -7164,17 +5741,8 @@ tech_adastra_antiseptic_surgery = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Chirurgie antiseptique
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.006
@@ -7209,17 +5777,8 @@ tech_adastra_dynamite = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Dynamite
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.007
@@ -7253,17 +5812,8 @@ tech_adastra_general_staff = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : État-major général
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.006
@@ -7298,17 +5848,8 @@ tech_adastra_dynamo = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Dynamo
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.006
@@ -7343,17 +5884,8 @@ tech_adastra_telephone = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Téléphone
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.005
@@ -7388,17 +5920,8 @@ tech_adastra_ocean_liner = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Paquebot transocéanique
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.006
@@ -7433,17 +5956,8 @@ tech_adastra_machine_gun = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Arme automatique
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.008
@@ -7477,17 +5991,8 @@ tech_adastra_steel_frame = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Ossature d'acier
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_housing_add = 0.32
@@ -7522,17 +6027,8 @@ tech_adastra_colonial_partition = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Partage colonial
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.006
@@ -7567,17 +6063,8 @@ tech_adastra_radio_waves = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Ondes hertziennes
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.005
@@ -7612,17 +6099,8 @@ tech_adastra_punch_cards = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Cartes perforées
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_society_research_produces_mult = 0.005
@@ -7657,17 +6135,8 @@ tech_adastra_x_rays = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Rayons X
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.006
@@ -7702,17 +6171,8 @@ tech_adastra_steam_turbine = {
 		has_country_flag = adastra_reached_industrial
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Turbine à vapeur
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_machine
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.005
@@ -7752,17 +6212,8 @@ tech_adastra_radio = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Radio
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.008
@@ -7798,14 +6249,6 @@ tech_adastra_aviation = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.008
@@ -7840,17 +6283,8 @@ tech_adastra_antibiotics = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Antibiotiques
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.016
@@ -7884,17 +6318,8 @@ tech_adastra_mass_education = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Éducation de masse
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.016
@@ -7930,14 +6355,6 @@ tech_adastra_quantum_theory = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.01
@@ -7971,17 +6388,8 @@ tech_adastra_haber = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Synthèse de l'ammoniac
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
@@ -8016,14 +6424,6 @@ tech_adastra_plastics = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.01
@@ -8057,17 +6457,8 @@ tech_adastra_epidemiology = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Épidémiologie
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.008
@@ -8101,17 +6492,8 @@ tech_adastra_assembly_line = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Chaîne de montage
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.016
@@ -8145,17 +6527,8 @@ tech_adastra_petrochemistry = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Pétrochimie
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.016
@@ -8189,17 +6562,8 @@ tech_adastra_jet_engine = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Turboréacteur
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.016
@@ -8233,17 +6597,8 @@ tech_adastra_television = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Télévision
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.012
@@ -8278,14 +6633,6 @@ tech_adastra_relativity = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.006
@@ -8319,17 +6666,8 @@ tech_adastra_atomic_nucleus = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Le noyau atomique
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.006
@@ -8363,17 +6701,8 @@ tech_adastra_cosmic_rays = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Rayons cosmiques
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.003
@@ -8407,17 +6736,8 @@ tech_adastra_expanding_universe = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Expansion de l'univers
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.005
@@ -8452,17 +6772,8 @@ tech_adastra_radar = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Radar
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.006
@@ -8496,17 +6807,8 @@ tech_adastra_cryptanalysis = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Cryptanalyse mécanique
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -8541,17 +6843,8 @@ tech_adastra_polar_exploration = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Exploration polaire
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.005
@@ -8585,17 +6878,8 @@ tech_adastra_vitamins = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Vitamines
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.005
@@ -8630,17 +6914,8 @@ tech_adastra_blood_transfusion = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Transfusion et banques du sang
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.005
@@ -8674,17 +6949,8 @@ tech_adastra_propaganda = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Propagande de masse
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.006
@@ -8719,17 +6985,8 @@ tech_adastra_total_war = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Guerre totale
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.006
@@ -8765,14 +7022,6 @@ tech_adastra_reinforced_concrete = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_housing_add = 0.32
@@ -8806,17 +7055,8 @@ tech_adastra_tractor = {
 		has_country_flag = adastra_reached_machine
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Tracteur agricole
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_atomic
-		}
-	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.006
@@ -8856,14 +7096,6 @@ tech_adastra_fission = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.02
@@ -8898,14 +7130,6 @@ tech_adastra_electronics = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.016
@@ -8939,17 +7163,8 @@ tech_adastra_vaccination = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Vaccination universelle
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.02
@@ -8983,17 +7198,8 @@ tech_adastra_radio_astronomy = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Radioastronomie
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.012
@@ -9027,17 +7233,8 @@ tech_adastra_containers = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Conteneur normalisé
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.004
@@ -9071,17 +7268,8 @@ tech_adastra_human_rights = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Déclaration des droits
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		planet_stability_add = 0.64
@@ -9116,17 +7304,8 @@ tech_adastra_computing = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Informatique
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.02
@@ -9160,17 +7339,8 @@ tech_adastra_cooperation = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Coopération internationale
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.016
@@ -9206,14 +7376,6 @@ tech_adastra_nuclear_medicine = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.008
@@ -9249,14 +7411,6 @@ tech_adastra_sounding_rocket = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.004
@@ -9292,14 +7446,6 @@ tech_adastra_transistor = {
 		NOT = { has_country_flag = adastra_completed }
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.005
@@ -9334,17 +7480,8 @@ tech_adastra_decolonization = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Décolonisation
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		country_unity_produces_mult = 0.005
@@ -9379,17 +7516,8 @@ tech_adastra_welfare_state = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : État-providence
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		pop_happiness = 0.004
@@ -9424,17 +7552,8 @@ tech_adastra_information_theory = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Théorie de l'information
-		has_country_flag = adastra_vague_2
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -9469,17 +7588,8 @@ tech_adastra_deterrence = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Dissuasion
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.005
@@ -9514,17 +7624,8 @@ tech_adastra_suburbs = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Banlieue pavillonnaire
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		planet_housing_add = 0.32
@@ -9559,17 +7660,8 @@ tech_adastra_civil_aviation = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Aviation de ligne à réaction
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		country_trade_attractiveness = 0.005
@@ -9604,17 +7696,8 @@ tech_adastra_dna_structure = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Structure de l'hérédité
-		has_country_flag = adastra_vague_3
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		logistic_growth_mult = 0.005
@@ -9649,17 +7732,8 @@ tech_adastra_maser = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Émission stimulée
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.005
@@ -9693,17 +7767,8 @@ tech_adastra_nuclear_submarine = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Sous-marin à propulsion nucléaire
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.005
@@ -9737,17 +7802,8 @@ tech_adastra_solar_cell = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Cellule photovoltaïque
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.006
@@ -9781,17 +7837,8 @@ tech_adastra_desegregation = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Fin de la ségrégation
-		has_country_flag = adastra_vague_4
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		pop_happiness = 0.004
@@ -9826,17 +7873,8 @@ tech_adastra_motorways = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Réseau autoroutier
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.004
@@ -9871,17 +7909,8 @@ tech_adastra_magnetic_storage = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Mémoire magnétique
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		all_technology_research_speed = 0.004
@@ -9916,17 +7945,8 @@ tech_adastra_ballistic_missile = {
 		has_country_flag = adastra_reached_atomic
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Missile balistique
-		has_country_flag = adastra_vague_5
 	}
 
-	# 1.3.1 : hors tirage apres l'age, mais toujours valide pour give_technology.
-	weight_modifier = {
-		factor = 1
-		modifier = {
-			factor = 0
-			has_country_flag = adastra_reached_space
-		}
-	}
 
 	modifier = {
 		army_damage_mult = 0.005
@@ -10032,7 +8052,6 @@ tech_adastra_genetics = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Génétique appliquée
-		has_country_flag = adastra_vague_4
 	}
 
 	modifier = {
@@ -10101,7 +8120,6 @@ tech_adastra_microprocessor = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Microprocesseur
-		has_country_flag = adastra_vague_5
 	}
 
 	modifier = {
@@ -10136,7 +8154,6 @@ tech_adastra_networks = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Réseaux mondiaux
-		has_country_flag = adastra_vague_5
 	}
 
 	modifier = {
@@ -10172,7 +8189,6 @@ tech_adastra_ecology = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Écologie planétaire
-		has_country_flag = adastra_vague_5
 	}
 
 	modifier = {
@@ -10208,7 +8224,6 @@ tech_adastra_green_revolution = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Révolution verte
-		has_country_flag = adastra_vague_4
 	}
 
 	modifier = {
@@ -10311,7 +8326,6 @@ tech_adastra_chaos_theory = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Théorie du chaos
-		has_country_flag = adastra_vague_3
 	}
 
 	modifier = {
@@ -10346,7 +8360,6 @@ tech_adastra_quarks = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Modèle des quarks
-		has_country_flag = adastra_vague_3
 	}
 
 	modifier = {
@@ -10381,7 +8394,6 @@ tech_adastra_plate_tectonics = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Tectonique des plaques
-		has_country_flag = adastra_vague_4
 	}
 
 	modifier = {
@@ -10417,7 +8429,6 @@ tech_adastra_cosmic_background = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Fond diffus cosmologique
-		has_country_flag = adastra_vague_4
 	}
 
 	modifier = {
@@ -10453,7 +8464,6 @@ tech_adastra_fiber_optics = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Fibre optique
-		has_country_flag = adastra_vague_5
 	}
 
 	modifier = {
@@ -10489,7 +8499,6 @@ tech_adastra_birth_control = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Contrôle des naissances
-		has_country_flag = adastra_vague_2
 	}
 
 	modifier = {
@@ -10525,7 +8534,6 @@ tech_adastra_transplant = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 4 : Transplantation
-		has_country_flag = adastra_vague_4
 	}
 
 	modifier = {
@@ -10561,7 +8569,6 @@ tech_adastra_hotline = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Dissuasion
-		has_country_flag = adastra_vague_2
 	}
 
 	modifier = {
@@ -10597,7 +8604,6 @@ tech_adastra_deep_sea = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Grands fonds
-		has_country_flag = adastra_vague_2
 	}
 
 	modifier = {
@@ -10633,7 +8639,6 @@ tech_adastra_civil_rights = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Droits civiques
-		has_country_flag = adastra_vague_3
 	}
 
 	modifier = {
@@ -10669,7 +8674,6 @@ tech_adastra_manned_flight = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Vol habité
-		has_country_flag = adastra_vague_2
 	}
 
 	modifier = {
@@ -10705,7 +8709,6 @@ tech_adastra_lunar_landing = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 5 : Alunissage
-		has_country_flag = adastra_vague_5
 	}
 
 	modifier = {
@@ -10741,7 +8744,6 @@ tech_adastra_ion_drive = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Propulsion ionique
-		has_country_flag = adastra_vague_3
 	}
 
 	modifier = {
@@ -10777,7 +8779,6 @@ tech_adastra_heat_shield = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 3 : Bouclier ablatif
-		has_country_flag = adastra_vague_3
 	}
 
 	modifier = {
@@ -10812,7 +8813,6 @@ tech_adastra_industrial_robot = {
 		has_country_flag = adastra_reached_space
 		NOT = { has_country_flag = adastra_completed }
 		# vague 2 : Bras manipulateur
-		has_country_flag = adastra_vague_2
 	}
 
 	modifier = {
