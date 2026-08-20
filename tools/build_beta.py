@@ -15,7 +15,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "ad_astra"
-LAUNCHER = ROOT / "ad_astra.mod"
 INSTALL = ROOT / "docs" / "BETA.md"
 BETA_NAME = "Ad Astra: Origins - Beta"
 BETA_FOLDER = "adastra_beta"
@@ -45,9 +44,6 @@ def main():
 
     descriptor = (SOURCE / "descriptor.mod").read_text(encoding="utf-8-sig")
     version = read_version(descriptor)
-    launcher = LAUNCHER.read_text(encoding="utf-8-sig")
-    if read_version(launcher) != version:
-        raise SystemExit("les descripteurs du mod et du launcher divergent")
 
     output = Path(args.sortie).resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -64,10 +60,10 @@ def main():
                                  flags=re.MULTILINE)
         (content / "descriptor.mod").write_text(beta_descriptor, encoding="utf-8")
 
-        beta_launcher = replace_field(launcher, "name", BETA_NAME)
-        beta_launcher = replace_field(beta_launcher, "path", f"mod/{BETA_FOLDER}")
+        beta_launcher = replace_field(descriptor, "name", BETA_NAME)
         beta_launcher = re.sub(r'^remote_file_id\s*=.*\n?', "", beta_launcher,
                                 flags=re.MULTILINE)
+        beta_launcher = beta_launcher.rstrip() + f'\npath="mod/{BETA_FOLDER}"\n'
         (mod_root / f"{BETA_FOLDER}.mod").write_text(beta_launcher, encoding="utf-8")
 
         with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipped:

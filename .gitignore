@@ -5,3 +5,4 @@ _to_delete/
 build/
 build_premiere/
 __pycache__/
+AGENTS.md

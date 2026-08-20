@@ -45,7 +45,7 @@ La publication est déclenchée par un tag, et seulement par un tag.
 
 ```bash
 git switch main && git pull
-# 1. la version dans ad_astra/descriptor.mod ET ad_astra.mod
+# 1. la version dans ad_astra/descriptor.mod
 # 2. la section de tête du CHANGELOG.md, qui doit porter la même version
 #    et ne PAS être marquée « en cours »
 git commit -am "1.3.1"
@@ -171,7 +171,7 @@ fuite de technologies vanilla avant l'émergence, `needs_border_access`,
 identifiant Workshop.
 
 **`tools/verify_release.py`** — la cohérence de la sortie : version identique
-dans `descriptor.mod`, `ad_astra.mod`, le `CHANGELOG` et le tag ; section de
+dans `descriptor.mod`, le `CHANGELOG` et le tag ; section de
 tête du changelog pas marquée « en cours » ; descriptions sous les 8000
 caractères de Steam et BBCode équilibré ; aperçu sous 1 Mio ; parité des clés
 de traduction FR/EN ; noms de bâtiments français restés dans les textes

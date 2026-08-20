@@ -1277,8 +1277,8 @@ else:
 # 16/08 : une substitution par regex sur workshop_item.vdf a mange la ligne
 # `publishedfileid`. SteamCMD n'a pas mis a jour le mod, il en a publie un
 # SECOND, qu'il a fallu supprimer a la main. Le vdf ne se modifie plus que par
-# tools/maj_vdf.py, qui le reconstruit en entier - et ce controle verifie que
-# l'identifiant y est.
+# tools/ci_release.py, qui le reconstruit depuis le registre - et ce controle
+# verifie que l'identifiant y est.
 print("\n== identifiant Workshop ==")
 # 1.4 : la collection a trois mods, donc trois identifiants. Ils vivent dans
 # workshop/mods.json, seul endroit ou ils soient ecrits. On verifie ici celui
