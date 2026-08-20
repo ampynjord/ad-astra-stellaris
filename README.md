@@ -2,7 +2,7 @@
 
 **A pre-FTL origin for Stellaris.**
 
-[![Version](https://img.shields.io/badge/version-1.3.1-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.3.2-blue)](CHANGELOG.md)
 [![Stellaris](https://img.shields.io/badge/Stellaris-v4.4%20Pegasus-orange)](https://www.stellaris.com/)
 [![DLC](https://img.shields.io/badge/DLC-none%20required-green)](#)
 [![Languages](https://img.shields.io/badge/in--game%20languages-English%20%C2%B7%20French-lightgrey)](#)
@@ -20,12 +20,15 @@ Steam Workshop is the stable channel. Experimental builds are GitHub
 pre-releases: install them as a separate local mod and never enable the beta
 and Workshop copies together. See [Testing the GitHub beta](docs/BETA.md).
 
-## 1.3.1 — Progression Hotfix
+## 1.3.2 — Progression and Economy Hotfix
 
-Version 1.3.1 fixes a blocking progression regression in 1.3.0.
+Version 1.3.2 completes the focused hotfix line for the blocking 1.3.0
+progression and early-economy regressions.
 
-- Age technologies remain valid prerequisites after their age has passed, so Bronze and later ages can be researched or granted correctly.
-- Advanced starts receive their complete historical technology package before their capital economy is prepared.
+- Age technologies stay researchable after an age transition, including Bronze and Renaissance.
+- Advanced starts receive their historical technologies and infrastructure immediately.
+- Pre-Steam consumer-goods upkeep no longer creates an unavoidable deficit.
+- Early buildings and district specializations unlock through their relevant historical technologies.
 - The fix is deliberately focused: it does not add 1.4 content or change the intended pace of an age.
 
 **Start a new game after updating.** Please report any remaining progression issue with the starting age, ascent pace, game date, mod version, active mods, and `error.log`.
