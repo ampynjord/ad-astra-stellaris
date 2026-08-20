@@ -38,7 +38,7 @@ jobs:
       - name: confirm release tag is on main
         if: inputs.require_main
         run: |
-          git fetch origin main --depth=1
+          git fetch origin main
           target_sha="$(git rev-parse HEAD)"
           git merge-base --is-ancestor "$target_sha" origin/main || {
             echo "::error::The release tag commit is not reachable from main."
