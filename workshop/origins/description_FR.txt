@@ -8,13 +8,15 @@ Commencez Stellaris en [b]civilisation pré-PRL[/b] confinée à son monde natal
 [b]Aucun DLC requis.[/b] Le mod est jouable en français et en anglais.
 
 [hr][/hr]
-[h2]1.3.1 — Correctif de progression[/h2]
+[h2]1.3.2 — Correctif de progression et d'economie[/h2]
 
-Cette mise à jour ciblée corrige la régression de progression bloquante de la 1.3.0.
+Cette mise à jour ciblée termine la série de correctifs des régressions de progression et d'économie de début de partie introduites en 1.3.0.
 
 [list]
-[*]Les technologies d'âge restent des prérequis valides après le passage à l'âge suivant : le Bronze et les âges ultérieurs peuvent de nouveau être recherchés ou accordés correctement.
-[*]Les départs avancés reçoivent maintenant leurs technologies historiques avant la préparation de l'économie de leur capitale.
+[*]Les technologies d'âge restent recherchables après un passage d'âge, notamment au Bronze et à la Renaissance.
+[*]Les départs avancés reçoivent immédiatement leurs technologies et infrastructures historiques.
+[*]L'entretien des biens de consommation avant la vapeur ne crée plus de déficit inévitable.
+[*]Les bâtiments précoces et les spécialisations de districts se débloquent par leurs technologies historiques correspondantes.
 [*]La mise à jour n'ajoute pas de contenu 1.4 et ne modifie pas le rythme voulu pour les âges.
 [/list]
 
