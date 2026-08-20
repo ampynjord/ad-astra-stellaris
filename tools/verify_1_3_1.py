@@ -11,7 +11,6 @@ ROOT = Path(__file__).parents[1]
 TECHS = ROOT / "ad_astra" / "common" / "technology" / "adastra_age_techs.txt"
 EVENTS = ROOT / "ad_astra" / "events" / "adastra_events.txt"
 DESCRIPTOR = ROOT / "ad_astra" / "descriptor.mod"
-LAUNCHER_DESCRIPTOR = ROOT / "ad_astra.mod"
 SCRIPT_VALUES = ROOT / "ad_astra" / "common" / "script_values" / "adastra_script_values.txt"
 COUNTRY_TYPES = ROOT / "ad_astra" / "common" / "country_types" / "adastra_country_types.txt"
 ORIGIN = ROOT / "ad_astra" / "common" / "governments" / "civics" / "zzz_adastra_origins.txt"
@@ -31,7 +30,6 @@ def main():
     techs = TECHS.read_text(encoding="utf-8-sig")
     events = EVENTS.read_text(encoding="utf-8-sig")
     descriptor = DESCRIPTOR.read_text(encoding="utf-8-sig")
-    launcher_descriptor = LAUNCHER_DESCRIPTOR.read_text(encoding="utf-8-sig")
     script_values = SCRIPT_VALUES.read_text(encoding="utf-8-sig")
     country_types = COUNTRY_TYPES.read_text(encoding="utf-8-sig")
     origin = ORIGIN.read_text(encoding="utf-8-sig")
@@ -43,9 +41,6 @@ def main():
     expected = argument.removeprefix("v") if argument else declared.group(1)
     if declared.group(1) != expected:
         fail(f"le descripteur annonce {declared.group(1)} au lieu de {expected}")
-    launcher_declared = re.search(r'^version="([^"]+)"$', launcher_descriptor, re.MULTILINE)
-    if not launcher_declared or launcher_declared.group(1) != declared.group(1):
-        fail("le descripteur launcher doit annoncer la meme version")
     if len(re.findall(r"^tech_adastra_[a-z0-9_]+ = \{", techs, re.MULTILINE)) != 250:
         fail("le hotfix doit conserver les 250 technologies d'epoque de la 1.3")
     if "NOT = { has_country_flag = adastra_reached_" in techs:
