@@ -15,6 +15,7 @@ LAUNCHER_DESCRIPTOR = ROOT / "ad_astra.mod"
 SCRIPT_VALUES = ROOT / "ad_astra" / "common" / "script_values" / "adastra_script_values.txt"
 COUNTRY_TYPES = ROOT / "ad_astra" / "common" / "country_types" / "adastra_country_types.txt"
 ORIGIN = ROOT / "ad_astra" / "common" / "governments" / "civics" / "zzz_adastra_origins.txt"
+ZONES = ROOT / "ad_astra" / "common" / "zones" / "zzz_adastra_zone_ages.txt"
 LOCALISATIONS = (
     ROOT / "ad_astra" / "localisation" / "english" / "adastra_l_english.yml",
     ROOT / "ad_astra" / "localisation" / "french" / "adastra_l_french.yml",
@@ -34,6 +35,7 @@ def main():
     script_values = SCRIPT_VALUES.read_text(encoding="utf-8-sig")
     country_types = COUNTRY_TYPES.read_text(encoding="utf-8-sig")
     origin = ORIGIN.read_text(encoding="utf-8-sig")
+    zones = ZONES.read_text(encoding="utf-8-sig")
     if 'version="1.3.2"' not in descriptor:
         fail("le descripteur doit annoncer 1.3.2")
     if 'version="1.3.2"' not in launcher_descriptor:
@@ -88,8 +90,38 @@ def main():
     ):
         if fragment not in events:
             fail(f"reconstruction economique absente : {fragment}")
+    early_archives = re.compile(
+        r"else_if = \{\s*limit = \{ owner = \{ OR = \{ has_country_flag = adastra_choice_bronze.*?"
+        r"add_zone = \{ district = district_city zone = zone_research_unity zone_slot = 2 \}",
+        re.DOTALL,
+    )
+    if early_archives.search(events):
+        fail("les depart Bronze a Renaissance ne doivent pas recevoir d Archives gratuitement")
     if re.search(r"\b(if|limit)\s*=", script_values):
         fail("script_values contient une syntaxe CK3 invalide")
+    zone_techs = {
+        "zone_research_unity": "tech_adastra_writing",
+        "zone_research": "tech_adastra_scholasticism",
+        "zone_research_physics": "tech_adastra_experimental_method",
+        "zone_research_society": "tech_adastra_experimental_method",
+        "zone_research_engineering": "tech_adastra_experimental_method",
+        "zone_unity": "tech_adastra_law",
+        "zone_unity_spiritualist": "tech_adastra_priesthood",
+        "zone_fortress": "tech_adastra_standing_army",
+        "zone_trade": "tech_adastra_coinage",
+        "zone_industrial": "tech_adastra_steam_engine",
+        "zone_factory": "tech_adastra_assembly_line",
+        "zone_foundry": "tech_adastra_bessemer",
+    }
+    if "has_country_flag = adastra_reached_" in zones:
+        fail("une specialisation depend encore directement d un age au lieu de sa technologie")
+    for zone, tech in zone_techs.items():
+        header = f"### {zone} -> {tech}"
+        if header not in zones:
+            fail(f"specialisation sans technologie fondatrice : {zone}")
+        block = re.search(rf"{re.escape(header)}\n({re.escape(zone)} = \{{.*?\n\}})", zones, re.DOTALL)
+        if not block or block.group(1).count(f"has_technology = {tech}") != 2:
+            fail(f"garde potential/unlock invalide pour : {zone}")
     for name, multiplier in (("adastra_cout_relance_explore", "mult = 0.35"),
                              ("adastra_cout_relance_navy", "mult = 0.25")):
         block = re.search(rf"{name} = \{{(.*?)^\}}", script_values, re.MULTILINE | re.DOTALL)

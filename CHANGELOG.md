@@ -9,6 +9,8 @@ All notable player-facing changes are recorded here. Dates use ISO format.
 - Period technologies remain researchable after the next age begins. This fixes the Renaissance dead end reported in 1.3.1 when a required technology belonged to a later historical wave of the previous age.
 - Period buildings now use the urban zone set present in Ad Astra cities, restoring valid construction slots for the Granary, Foundry and other age buildings.
 - Pre-Steam consumer-goods costs now use flat job upkeep reductions rather than multipliers capped by Stellaris, preventing administrative and research jobs from creating an unavoidable early deficit.
+- District specializations now require their relevant historical technology. Archives require Writing, military districts require a Standing Army, and later specializations follow the same rule.
+- Bronze through Renaissance starts no longer receive an Archives zone for free; it becomes available for the player to build after researching Writing.
 
 ### Player action
 
