@@ -10,17 +10,24 @@ Le gabarit vit dans gen_age_buildings.py, a un seul endroit : si un champ est
 refuse par le jeu, il se corrige la et se repercute sur les 11 batiments.
 """
 
-# Zones dans lesquelles chaque batiment peut etre eleve. Tous incluent
-# `government` : c'est la zone de la capitale, la seule garantie sur une
-# planete unique. Sans building_sets, le moteur refuse le batiment.
-# 1.4 (18/08) : plus de set « farming » ni « mining ». La zone par defaut du
-# district urbain (zone_default, jeu de base) inclut tout SAUF farming, mining,
-# generator... : un batiment qui porte l'un de ces sets n'y est pas constructible,
-# et n'a de place que dans la specialisation d'un district rural - que le joueur
-# n'a pas forcement. Argroww (Discord, 17/08) : « after researching the tech that
-# gives a Granary I have nowhere I can build it ». Le Grenier, le Moulin et la
-# Fonderie se batissent donc en ville, comme le Monument et la Maison des tablettes.
-SETS = {'building_adastra_cave': 'government unity', 'building_adastra_granary': 'government', 'building_adastra_foundry': 'government', 'building_adastra_tablet_house': 'government research', 'building_adastra_courthouse': 'government', 'building_adastra_mill': 'government', 'building_adastra_citadel': 'government fortress', 'building_adastra_university': 'government research', 'building_adastra_manufactory': 'government industrial factory', 'building_adastra_radio': 'government unity entertainment', 'building_adastra_school': 'government research'}
+# Zones dans lesquelles chaque batiment peut etre eleve. Les zones Ad Astra
+# n'incluent pas `government` : ce set ne vise que la capitale vanilla. Tous
+# les batiments d'epoque passent donc par `urban_automation`, present dans
+# chaque zone urbaine du mod. Sans ce set commun, une technologie debloquee
+# peut ne donner aucun emplacement de construction (Grenier, 20/08).
+SETS = {
+    'building_adastra_cave': 'urban_automation unity',
+    'building_adastra_granary': 'urban_automation',
+    'building_adastra_foundry': 'urban_automation',
+    'building_adastra_tablet_house': 'urban_automation research',
+    'building_adastra_courthouse': 'urban_automation',
+    'building_adastra_mill': 'urban_automation',
+    'building_adastra_citadel': 'urban_automation fortress',
+    'building_adastra_university': 'urban_automation research',
+    'building_adastra_manufactory': 'urban_automation industrial factory',
+    'building_adastra_radio': 'urban_automation unity entertainment',
+    'building_adastra_school': 'urban_automation research',
+}
 
 # Emploi cree par chaque batiment : la production vient de gens qui travaillent,
 # pas d'un pourcentage abstrait. Scripts d'emplois du jeu de base, qui gerent

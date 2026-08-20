@@ -272,7 +272,7 @@ VALID_SETS = {
     "government", "urban", "unity", "research", "industrial", "foundry",
     "factory", "farming", "generator", "mining", "physics", "society",
     "engineering", "trade", "fortress", "entertainment", "medical", "pre_ftl",
-    "resort", "harvest", "hydroponics", "automation", "betharian", "zoo",
+    "resort", "harvest", "hydroponics", "automation", "urban_automation", "betharian", "zoo",
     "knights", "origin", "bio_trophy", "hunting_zone", "fallen_empire",
     "cosmogenesis_world", "ark_forever_cruise_crew",
     "ark_forever_cruise_passengers",
@@ -282,6 +282,10 @@ for m in re.finditer(r"(\w+) = \{[^{}]*?building_sets = \{([^}]*)\}", bsrc, re.S
     if bad:
         err("batiment %s : building_sets inconnu(s) %s - le batiment"
             " n'apparaitra dans aucune zone" % (m.group(1), bad))
+if any("government" in b["sets"].split() for b in BUILDINGS):
+    err("batiment d'epoque dans le set government : les zones Ad Astra ne l'incluent pas")
+if any("urban_automation" not in b["sets"].split() for b in BUILDINGS):
+    err("batiment d'epoque hors du set urban_automation commun aux zones Ad Astra")
 print("  %d batiments, %d cles de loc, parite ok" % (len(bdecl), len(bfr)))
 
 
@@ -596,6 +600,20 @@ for mod, tech in (("adastra_pre_electric", "adastra_has_energy"),
         err("modificateur %s absent" % mod)
     if mod not in grants or tech not in grants:
         err("adastra.11 ne gere pas %s / %s" % (mod, tech))
+_mods_src = open(os.path.join(ROOT, "common", "static_modifiers",
+                              "adastra_modifiers.txt"), encoding="utf-8").read()
+_pre_manu = re.search(r"adastra_pre_manufacture = \{(.*?)^\}", _mods_src, re.S | re.M)
+if not _pre_manu:
+    err("adastra_pre_manufacture introuvable")
+else:
+    _pre_manu = _pre_manu.group(1)
+    if "consumer_goods_upkeep_mult" in _pre_manu:
+        err("adastra_pre_manufacture utilise un multiplicateur plafonne a -90 %")
+    for _key in ("planet_politicians_consumer_goods_upkeep_add",
+                 "planet_bureaucrats_consumer_goods_upkeep_add",
+                 "planet_entertainers_consumer_goods_upkeep_add"):
+        if _key not in _pre_manu:
+            err("adastra_pre_manufacture n'annule pas %s" % _key)
 # La conversion commerciale doit etre coupee ET rendue. Si le retablissement
 # saute, l'empire sort du confinement avec un commerce qui ne produit plus rien
 # pour le restant de la partie, et rien ne le signale.
@@ -889,7 +907,7 @@ print("\n== paliers du jeu de base ==")
 _t1 = os.path.join(ROOT, "common", "technology", "zzz_adastra_tier1_overrides.txt")
 if os.path.exists(_t1):
     _src = open(_t1, encoding="utf-8").read()
-    _fautifs, _n1, _n2 = [], 0, 0
+    _fautifs, _t1_sans_garde, _n1, _n2 = [], [], 0, 0
     for _k, _s, _e in top_level_blocks(_src):
         _b = _src[_s:_e]
         _tm = re.search(r"\btier\s*=\s*(\d+)", _b)
@@ -897,6 +915,8 @@ if os.path.exists(_t1):
             continue
         if _tm.group(1) == "1":
             _n1 += 1
+            if "adastra_vanilla_open_" not in _b:
+                _t1_sans_garde.append(_k)
         elif _tm.group(1) == "2":
             _n2 += 1
             if "has_country_flag = adastra_completed" not in _b:
@@ -918,6 +938,9 @@ if os.path.exists(_t1):
         print("   %d technos de palier 2 volontairement redatees (marge : %d "
               "avant reouverture du palier 3) : %s"
               % (len(_fautifs), 6 - len(_fautifs), ", ".join(sorted(_fautifs))))
+    if _t1_sans_garde:
+        err("technos de palier 1 sans garde d'age : %s"
+            % ", ".join(sorted(_t1_sans_garde)[:8]))
     print("   palier 1 : %d technos a l'Age spatial | palier 2 : %d a l'emergence"
           % (_n1, _n2))
 else:
