@@ -14,7 +14,11 @@ Everyone else starts with a fleet. You start with a planet, and a very long way 
 
 Ad Astra lets you begin Stellaris as a civilization confined to its homeworld. Choose one of ten historical starting ages, build your society through them, create a space program from nothing, and emerge into a galaxy that did not wait for you.
 
-[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257) · [Discord](https://discord.gg/nKP4TfNzNX) · [Bug reports and ideas](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose)
+[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257) · [GitHub beta builds](https://github.com/ampynjord/ad-astra-stellaris/releases) · [Discord](https://discord.gg/nKP4TfNzNX) · [Bug reports and ideas](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose)
+
+Steam Workshop is the stable channel. Experimental builds are GitHub
+pre-releases: install them as a separate local mod and never enable the beta
+and Workshop copies together. See [Testing the GitHub beta](docs/BETA.md).
 
 ## 1.3.1 — Progression Hotfix
 
