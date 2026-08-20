@@ -14,6 +14,7 @@ DESCRIPTOR = ROOT / "ad_astra" / "descriptor.mod"
 LAUNCHER_DESCRIPTOR = ROOT / "ad_astra.mod"
 SCRIPT_VALUES = ROOT / "ad_astra" / "common" / "script_values" / "adastra_script_values.txt"
 COUNTRY_TYPES = ROOT / "ad_astra" / "common" / "country_types" / "adastra_country_types.txt"
+ORIGIN = ROOT / "ad_astra" / "common" / "governments" / "civics" / "zzz_adastra_origins.txt"
 LOCALISATIONS = (
     ROOT / "ad_astra" / "localisation" / "english" / "adastra_l_english.yml",
     ROOT / "ad_astra" / "localisation" / "french" / "adastra_l_french.yml",
@@ -32,6 +33,7 @@ def main():
     launcher_descriptor = LAUNCHER_DESCRIPTOR.read_text(encoding="utf-8-sig")
     script_values = SCRIPT_VALUES.read_text(encoding="utf-8-sig")
     country_types = COUNTRY_TYPES.read_text(encoding="utf-8-sig")
+    origin = ORIGIN.read_text(encoding="utf-8-sig")
     if 'version="1.3.2"' not in descriptor:
         fail("le descripteur doit annoncer 1.3.2")
     if 'version="1.3.2"' not in launcher_descriptor:
@@ -46,6 +48,11 @@ def main():
         fail("un weight_modifier 1.3.1 retire encore les technologies precedentes du tirage")
     if "pop_growth_speed" in techs:
         fail("une technologie utilise encore pop_growth_speed, ignore par Stellaris 4.4")
+    if "NOR = {\n\t\t\t\tvalue = auth_hive_mind" in origin:
+        fail("l origine utilise une forme NOR d autorite non validee par les origines vanilla")
+    for authority in ("auth_hive_mind", "auth_machine_intelligence"):
+        if f"NOT = {{ value = {authority} }}" not in origin:
+            fail(f"l origine doit exclure explicitement {authority}")
     buildings = (ROOT / "ad_astra" / "common" / "buildings" /
                  "adastra_age_buildings.txt").read_text(encoding="utf-8-sig")
     if buildings.count("building_sets = {\n\t\turban\n\t}") != 11:
