@@ -9,18 +9,20 @@ import sys
 
 ROOT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).parents[1] / "ad_astra"
 TARGET = ROOT / "common" / "buildings" / "adastra_age_buildings.txt"
-GOVERNMENT_SET = re.compile(r"(building_sets = \{\s*\t\t)government\b")
+BUILDING_SETS = re.compile(
+    r"(building_adastra_[a-z_]+ = \{.*?\n\tbuilding_sets = \{)\n"
+    r"(?:\t\t[^\n]+\n)+(\t\})",
+    re.DOTALL,
+)
 
 
 def main():
     source = TARGET.read_text(encoding="utf-8-sig")
-    fixed, count = GOVERNMENT_SET.subn(r"\1urban_automation", source)
-    if count not in (0, 11):
-        raise SystemExit(f"{count} sets government remplaces au lieu de 11 attendus.")
-    if "building_sets = {\n\t\tgovernment" in fixed:
-        raise SystemExit("un batiment d'epoque conserve le set government")
-    if fixed.count("urban_automation") != 11:
-        raise SystemExit("les onze batiments d'epoque doivent viser les zones urbaines")
+    fixed, count = BUILDING_SETS.subn(r"\1\n\t\turban\n\2", source)
+    if count != 11:
+        raise SystemExit(f"{count} ensembles remplaces au lieu de 11 attendus.")
+    if fixed.count("building_sets = {\n\t\turban\n\t}") != 11:
+        raise SystemExit("les onze batiments d'epoque doivent viser le set urban")
     TARGET.write_text(fixed, encoding="utf-8", newline="\n")
     print("11 sets de batiments d'epoque diriges vers les zones urbaines.")
 

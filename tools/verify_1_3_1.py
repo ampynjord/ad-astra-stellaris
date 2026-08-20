@@ -48,10 +48,10 @@ def main():
         fail("une technologie utilise encore pop_growth_speed, ignore par Stellaris 4.4")
     buildings = (ROOT / "ad_astra" / "common" / "buildings" /
                  "adastra_age_buildings.txt").read_text(encoding="utf-8-sig")
-    if "building_sets = {\n\t\tgovernment" in buildings:
-        fail("un batiment d'epoque cible encore le set government absent des zones Ad Astra")
-    if buildings.count("urban_automation") != 11:
-        fail("les onze batiments d'epoque doivent etre accessibles dans les zones urbaines")
+    if buildings.count("building_sets = {\n\t\turban\n\t}") != 11:
+        fail("les onze batiments d'epoque doivent viser le set urban des zones de ville")
+    if re.search(r"building_sets = \{\n\t\t(?:urban_automation|farming|mining|research|unity|industrial|factory|fortress|entertainment)", buildings):
+        fail("un batiment d'epoque vise un set exclu par les zones urbaines de base")
     modifiers = (ROOT / "ad_astra" / "common" / "static_modifiers" /
                  "adastra_modifiers.txt").read_text(encoding="utf-8-sig")
     pre_manu = re.search(r"adastra_pre_manufacture = \{(.*?)^\}", modifiers,
