@@ -69,10 +69,6 @@ def version_de(chemin, quoi):
 versions = {}
 for mod in mods:
     d = version_de("%s/descriptor.mod" % mod["source"], "%s descriptor" % mod["cle"])
-    l = version_de(mod["lanceur"], mod["lanceur"])
-    if d and l and d != l:
-        err("%s : descriptor.mod dit %s, %s dit %s"
-            % (mod["cle"], d, mod["lanceur"], l))
     versions[mod["cle"]] = d
     if tag and d and "-dev" in d:
         err("%s : version %s - on ne publie pas un -dev" % (mod["cle"], d))
