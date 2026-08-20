@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Controles specifiques au hotfix 1.3.1."""
+"""Controles specifiques aux hotfixes 1.3.x."""
 
 from pathlib import Path
 import re
@@ -11,6 +11,7 @@ ROOT = Path(__file__).parents[1]
 TECHS = ROOT / "ad_astra" / "common" / "technology" / "adastra_age_techs.txt"
 EVENTS = ROOT / "ad_astra" / "events" / "adastra_events.txt"
 DESCRIPTOR = ROOT / "ad_astra" / "descriptor.mod"
+LAUNCHER_DESCRIPTOR = ROOT / "ad_astra.mod"
 SCRIPT_VALUES = ROOT / "ad_astra" / "common" / "script_values" / "adastra_script_values.txt"
 COUNTRY_TYPES = ROOT / "ad_astra" / "common" / "country_types" / "adastra_country_types.txt"
 LOCALISATIONS = (
@@ -28,18 +29,40 @@ def main():
     techs = TECHS.read_text(encoding="utf-8-sig")
     events = EVENTS.read_text(encoding="utf-8-sig")
     descriptor = DESCRIPTOR.read_text(encoding="utf-8-sig")
+    launcher_descriptor = LAUNCHER_DESCRIPTOR.read_text(encoding="utf-8-sig")
     script_values = SCRIPT_VALUES.read_text(encoding="utf-8-sig")
     country_types = COUNTRY_TYPES.read_text(encoding="utf-8-sig")
-    if 'version="1.3.1"' not in descriptor:
-        fail("le descripteur doit annoncer 1.3.1")
+    if 'version="1.3.2"' not in descriptor:
+        fail("le descripteur doit annoncer 1.3.2")
+    if 'version="1.3.2"' not in launcher_descriptor:
+        fail("le descripteur launcher doit annoncer 1.3.2")
     if len(re.findall(r"^tech_adastra_[a-z0-9_]+ = \{", techs, re.MULTILINE)) != 250:
         fail("le hotfix doit conserver les 250 technologies d'epoque de la 1.3")
     if "NOT = { has_country_flag = adastra_reached_" in techs:
         fail("une exclusion d'age est encore dans potential")
-    if techs.count("# 1.3.1 : hors tirage apres l'age") != 225:
-        fail("les 225 exclusions d'age attendues ne sont pas toutes des weight_modifier")
+    if "has_country_flag = adastra_vague_" in techs:
+        fail("une garde de vague peut encore invalider une recherche entre deux ages")
+    if "# 1.3.1 : hors tirage apres l'age" in techs:
+        fail("un weight_modifier 1.3.1 retire encore les technologies precedentes du tirage")
     if "pop_growth_speed" in techs:
         fail("une technologie utilise encore pop_growth_speed, ignore par Stellaris 4.4")
+    buildings = (ROOT / "ad_astra" / "common" / "buildings" /
+                 "adastra_age_buildings.txt").read_text(encoding="utf-8-sig")
+    if "building_sets = {\n\t\tgovernment" in buildings:
+        fail("un batiment d'epoque cible encore le set government absent des zones Ad Astra")
+    if buildings.count("urban_automation") != 11:
+        fail("les onze batiments d'epoque doivent etre accessibles dans les zones urbaines")
+    modifiers = (ROOT / "ad_astra" / "common" / "static_modifiers" /
+                 "adastra_modifiers.txt").read_text(encoding="utf-8-sig")
+    pre_manu = re.search(r"adastra_pre_manufacture = \{(.*?)^\}", modifiers,
+                         re.MULTILINE | re.DOTALL)
+    if not pre_manu or "consumer_goods_upkeep_mult" in pre_manu.group(1):
+        fail("les multiplicateurs de biens de consommation plafonnes sont encore utilises")
+    for key in ("planet_politicians_consumer_goods_upkeep_add",
+                "planet_bureaucrats_consumer_goods_upkeep_add",
+                "planet_entertainers_consumer_goods_upkeep_add"):
+        if key not in pre_manu.group(1):
+            fail(f"annulation forfaitaire manquante : {key}")
     grants = events.index("adastra_grant_starting_ages_1_3_1 = yes")
     capital = events.index("# 1.2 : la capitale demarre specialisee")
     if grants > capital:

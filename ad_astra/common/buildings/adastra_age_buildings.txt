@@ -17,7 +17,7 @@ building_adastra_cave = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 		unity
 	}
 
@@ -82,7 +82,7 @@ building_adastra_granary = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 		farming
 	}
 
@@ -147,7 +147,7 @@ building_adastra_foundry = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 		mining
 	}
 
@@ -208,7 +208,7 @@ building_adastra_tablet_house = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 		research
 	}
 
@@ -269,7 +269,7 @@ building_adastra_courthouse = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 	}
 
 	prerequisites = { "tech_adastra_law" }
@@ -334,7 +334,7 @@ building_adastra_mill = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 		farming
 	}
 
@@ -395,7 +395,7 @@ building_adastra_citadel = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 		fortress
 	}
 
@@ -461,7 +461,7 @@ building_adastra_university = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 		research
 	}
 
@@ -522,7 +522,7 @@ building_adastra_manufactory = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 		industrial
 		factory
 	}
@@ -584,7 +584,7 @@ building_adastra_radio = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 		unity
 		entertainment
 	}
@@ -650,7 +650,7 @@ building_adastra_school = {
 
 	# Obligatoire en 4.4 : determine les zones ou le batiment peut etre eleve.
 	building_sets = {
-		government
+		urban_automation
 		research
 	}
 

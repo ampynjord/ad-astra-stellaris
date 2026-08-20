@@ -2,6 +2,18 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## 1.3.2 — 2026-08-20
+
+### Fixed
+
+- Period technologies remain researchable after the next age begins. This fixes the Renaissance dead end reported in 1.3.1 when a required technology belonged to a later historical wave of the previous age.
+- Period buildings now use the urban zone set present in Ad Astra cities, restoring valid construction slots for the Granary, Foundry and other age buildings.
+- Pre-Steam consumer-goods costs now use flat job upkeep reductions rather than multipliers capped by Stellaris, preventing administrative and research jobs from creating an unavoidable early deficit.
+
+### Player action
+
+- Start a new game after updating. Existing 1.3.1 saves may retain an invalid research deck or previously missing building slots.
+
 ## 1.3.1 — 2026-08-18
 
 ### Fixed
