@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Controles specifiques aux hotfixes 1.3.x."""
+"""Controles des invariants de la ligne de hotfix 1.3.x."""
 
 from pathlib import Path
 import re
@@ -36,10 +36,16 @@ def main():
     country_types = COUNTRY_TYPES.read_text(encoding="utf-8-sig")
     origin = ORIGIN.read_text(encoding="utf-8-sig")
     zones = ZONES.read_text(encoding="utf-8-sig")
-    if 'version="1.3.2"' not in descriptor:
-        fail("le descripteur doit annoncer 1.3.2")
-    if 'version="1.3.2"' not in launcher_descriptor:
-        fail("le descripteur launcher doit annoncer 1.3.2")
+    declared = re.search(r'^version="([^"]+)"$', descriptor, re.MULTILINE)
+    if not declared:
+        fail("le descripteur doit annoncer une version")
+    argument = sys.argv[1] if len(sys.argv) > 1 else ""
+    expected = argument.removeprefix("v") if argument else declared.group(1)
+    if declared.group(1) != expected:
+        fail(f"le descripteur annonce {declared.group(1)} au lieu de {expected}")
+    launcher_declared = re.search(r'^version="([^"]+)"$', launcher_descriptor, re.MULTILINE)
+    if not launcher_declared or launcher_declared.group(1) != declared.group(1):
+        fail("le descripteur launcher doit annoncer la meme version")
     if len(re.findall(r"^tech_adastra_[a-z0-9_]+ = \{", techs, re.MULTILINE)) != 250:
         fail("le hotfix doit conserver les 250 technologies d'epoque de la 1.3")
     if "NOT = { has_country_flag = adastra_reached_" in techs:

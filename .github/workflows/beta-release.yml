@@ -1,0 +1,75 @@
+# Manual GitHub-only channel for experimental local builds.
+# It deliberately has no Steam environment, credentials, or Workshop upload.
+name: beta release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Beta-only release tag, for example beta-1.4.0-beta.1"
+        required: true
+        type: string
+      title:
+        description: "Visible GitHub release title"
+        required: true
+        type: string
+
+concurrency:
+  group: beta-release-${{ inputs.tag }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  checks:
+    name: checks
+    uses: ./.github/workflows/checks.yml
+
+  publish:
+    name: publish GitHub beta
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.12"
+
+      - name: validate beta tag
+        env:
+          BETA_TAG: ${{ inputs.tag }}
+        run: |
+          case "$BETA_TAG" in
+            beta-*) ;;
+            *) echo "::error::Beta tags must start with beta-."; exit 1 ;;
+          esac
+
+      - name: build local beta archive
+        run: python tools/build_beta.py --sortie beta
+
+      - name: prepare release notes
+        run: |
+          {
+            echo "# Experimental build"
+            echo
+            echo "Install this as a local mod and disable the Steam Workshop copy."
+            echo "See INSTALL_BETA.md inside the archive before launching Stellaris."
+            echo
+            python tools/changenote.py --markdown
+          } > /tmp/beta-notes.md
+
+      - name: create GitHub pre-release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag }}
+          target_commitish: ${{ github.sha }}
+          name: ${{ inputs.title }}
+          body_path: /tmp/beta-notes.md
+          prerelease: true
+          make_latest: false
+          files: beta/*.zip
+          fail_on_unmatched_files: true
