@@ -281,6 +281,46 @@ country_event = {
 		else_if = { limit = { has_country_flag = adastra_choice_atomic } country_event = { id = adastra.48 } }
 		else = { country_event = { id = adastra.49 } }
 
+		# 1.3.2 : un country_event ne s'execute pas dans cette pile. Poser l'etat
+		# de l'age choisi ici empeche le moteur de retirer ses zones et ses
+		# batiments au premier pulse mensuel. Les evenements 40-49 restent pour
+		# les passages reels pendant la partie, pas pour le demarrage.
+		if = { limit = { has_country_flag = adastra_choice_stone } set_country_flag = adastra_reached_stone }
+		else_if = { limit = { has_country_flag = adastra_choice_bronze } set_country_flag = adastra_reached_bronze }
+		else_if = { limit = { has_country_flag = adastra_choice_iron } set_country_flag = adastra_reached_iron }
+		else_if = { limit = { has_country_flag = adastra_choice_medieval } set_country_flag = adastra_reached_medieval }
+		else_if = {
+			limit = { has_country_flag = adastra_choice_renaissance }
+			set_country_flag = adastra_reached_renaissance
+			set_country_flag = adastra_unlock_renaissance
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_choice_steam }
+			set_country_flag = adastra_reached_steam
+			set_country_flag = adastra_unlock_steam
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_choice_industrial }
+			set_country_flag = adastra_reached_industrial
+			set_country_flag = adastra_unlock_industrial
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_choice_machine }
+			set_country_flag = adastra_reached_machine
+			set_country_flag = adastra_unlock_machine
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_choice_atomic }
+			set_country_flag = adastra_reached_atomic
+			set_country_flag = adastra_unlock_atomic
+		}
+		else = {
+			set_country_flag = adastra_reached_space
+			set_country_flag = adastra_unlock_space
+			set_country_flag = adastra_vanilla_gift_space
+			give_technology = { tech = tech_fission_power message = no }
+		}
+
 		# 1.2 : la capitale demarre specialisee et meublee comme un empire
 		# spatial - district « Archives » et « Industrie mixte », Holotheatres,
 		# Zones commerciales. On remet la planete a son epoque : les
@@ -331,10 +371,6 @@ country_event = {
 				limit = { owner = { OR = { has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } } }
 				add_zone = { district = district_city zone = zone_research_unity zone_slot = 2 }
 				add_building = { district = district_city zone = zone_research_unity building = building_research_lab_1 }
-			}
-			else_if = {
-				limit = { owner = { OR = { has_country_flag = adastra_choice_bronze has_country_flag = adastra_choice_iron has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance } } }
-				add_zone = { district = district_city zone = zone_research_unity zone_slot = 2 }
 			}
 			if = {
 				limit = { owner = { adastra_has_energy = yes } }
