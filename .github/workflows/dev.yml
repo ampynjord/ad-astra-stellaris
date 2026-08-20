@@ -26,10 +26,20 @@ jobs:
       - name: build test archive
         run: python tools/ci_release.py --sortie build
 
+      - name: prepare artifact name
+        id: artifact_name
+        env:
+          SOURCE_REF: ${{ github.head_ref || github.ref_name }}
+        run: |
+          safe_ref="$(printf '%s' "$SOURCE_REF" | tr -cs 'A-Za-z0-9._-' '-')"
+          safe_ref="${safe_ref#-}"
+          safe_ref="${safe_ref%-}"
+          echo "value=ad-astra-${safe_ref}-${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+
       - name: upload test archive
         uses: actions/upload-artifact@v7.0.1
         with:
-          name: ad-astra-${{ github.ref_name }}-${{ github.sha }}
+          name: ${{ steps.artifact_name.outputs.value }}
           path: build/ad_astra_v*.zip
           if-no-files-found: error
           retention-days: 14
