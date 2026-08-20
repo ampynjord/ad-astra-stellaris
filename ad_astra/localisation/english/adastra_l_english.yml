@@ -396,10 +396,6 @@
  adastra_young_administration:0 "A Young Administration"
  adastra_young_administration_desc:0 "Offices, registers, salaries paid on a fixed date. The state finally knows what it contains — and that knowledge has a price, settled every month."
  mod_adastra_young_administration:0 "A Young Administration"
- adastra.12.name:0 "The Climb Halts"
- adastra.12.desc:0 "Our scholars have said the same thing for seasons: we can do everything this age knows how to do, except one thing. And until we have it, there is nowhere to go.\n\n§YAscension progress is frozen§! until §Yevery technology of the current age§! has been researched. Open the research screen: the missing ones are on offer there."
- adastra.12.a:0 "Then let us find it."
-
  # 1.4 - First Steps: these decisions were playable, but their narrative
  # feedback was missing. Every key is also present in French.
  decision_core_suborbital_tooltip:0 "Launches a sounding rocket. Failure risk falls with Ablative Shielding, Information Theory, Electronics, and experience from previous attempts."

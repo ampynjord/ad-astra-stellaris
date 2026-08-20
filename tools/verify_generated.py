@@ -22,8 +22,6 @@ SORTIES = (
     "ad_astra/localisation/english/adastra_ages_l_english.yml",
     "ad_astra/localisation/french/adastra_buildings_l_french.yml",
     "ad_astra/localisation/english/adastra_buildings_l_english.yml",
-    "ad_astra/localisation/french/adastra_l_french.yml",
-    "ad_astra/localisation/english/adastra_l_english.yml",
 )
 
 

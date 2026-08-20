@@ -1136,6 +1136,12 @@ if _ends != [25 * i for i in range(1, 14)]:
     err("situation : fins d'etape attendues 25..325 par pas de 25, trouve %s" % _ends)
 if re.search(r"monthly_progress = \{\s*base = 0\s*\}", _situ) is None:
     err("situation : la barre ne doit plus monter au mois (monthly_progress base = 0, sans modificateur)")
+_events_recherche = open(os.path.join(ROOT, "events", "adastra_events.txt"), encoding="utf-8").read()
+_loc_recherche = "\n".join(open(os.path.join(ROOT, "localisation", _lang, "adastra_l_%s.yml" % _lang), encoding="utf-8").read()
+                           for _lang in ("french", "english"))
+for _obsolete in ("adastra.12", "adastra_verrou_vu_"):
+    if _obsolete in _events_recherche or _obsolete in _loc_recherche:
+        err("progression : ancien avertissement de verrou encore present (%s)" % _obsolete)
 print("   13 etapes de 25 points, barre sans progression mensuelle")
 
 
