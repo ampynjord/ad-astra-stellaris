@@ -1,25 +1,23 @@
-# Ad Astra 1.2 - age des specialisations de district (zones).
+# Ad Astra 1.4 - technologies des specialisations de district (zones).
 # FICHIER GENERE PAR tools/gen_zone_age_overrides.py - NE PAS EDITER A LA MAIN.
 # Source de verite : tools/vanilla_zone_age_map.py
 #
-# Le jeu de base ne gate presque pas les zones : un empire a l'Age de pierre
-# pouvait specialiser son district en Industrie lourde. Chaque zone recoit
-# ici l'age de la techno d'epoque equivalente.
+# Chaque specialisation depend de sa technologie fondatrice, pas seulement d'un age.
 
 
-### zone_industrial -> steam
+### zone_industrial -> tech_adastra_steam_engine
 zone_industrial = {
 	icon = GFX_district_specialization_industrial
 	base_buildtime = @zone_buildtime
 	potential = { # portee planete
-		# Ad Astra : Industrie mixte : la Machine a vapeur, premiere vraie industrie
+		# Ad Astra : Industrie mixte : la machine a vapeur permet la premiere industrie moderne
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_steam
+					has_technology = tech_adastra_steam_engine
 				}
 			}
 		}
@@ -31,14 +29,14 @@ zone_industrial = {
 	}
 
 	unlock = { # portee planete
-		# Ad Astra : Industrie mixte : la Machine a vapeur, premiere vraie industrie
+		# Ad Astra : Industrie mixte : la machine a vapeur permet la premiere industrie moderne
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_steam
+					has_technology = tech_adastra_steam_engine
 				}
 			}
 		}
@@ -108,20 +106,20 @@ zone_industrial = {
 	ai_weight_coefficient = 1.1
 }
 
-### zone_foundry -> industrial
+### zone_foundry -> tech_adastra_bessemer
 zone_foundry = {
 	icon = GFX_district_specialization_foundry
 	base_buildtime = @zone_buildtime
 
 	potential = { # portee planete
-		# Ad Astra : Industrie lourde : l'Acier Bessemer
+		# Ad Astra : Industrie lourde : l'acier Bessemer permet la production lourde specialisee
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_industrial
+					has_technology = tech_adastra_bessemer
 				}
 			}
 		}
@@ -135,14 +133,14 @@ zone_foundry = {
 	}
 
 	unlock = { # portee planete
-		# Ad Astra : Industrie lourde : l'Acier Bessemer
+		# Ad Astra : Industrie lourde : l'acier Bessemer permet la production lourde specialisee
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_industrial
+					has_technology = tech_adastra_bessemer
 				}
 			}
 		}
@@ -205,19 +203,19 @@ zone_foundry = {
 	ai_weight_coefficient = 1.2
 }
 
-### zone_factory -> industrial
+### zone_factory -> tech_adastra_assembly_line
 zone_factory = {
 	icon = GFX_district_specialization_factory
 	base_buildtime = @zone_buildtime
 	potential = { # portee planete
-		# Ad Astra : Industrie civile : la Chaine de montage
+		# Ad Astra : Industrie civile : la chaine de montage permet la production specialisee
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_industrial
+					has_technology = tech_adastra_assembly_line
 				}
 			}
 		}
@@ -231,14 +229,14 @@ zone_factory = {
 	}
 
 	unlock = { # portee planete
-		# Ad Astra : Industrie civile : la Chaine de montage
+		# Ad Astra : Industrie civile : la chaine de montage permet la production specialisee
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_industrial
+					has_technology = tech_adastra_assembly_line
 				}
 			}
 		}
@@ -297,19 +295,19 @@ zone_factory = {
 	}
 }
 
-### zone_research_unity -> bronze
+### zone_research_unity -> tech_adastra_writing
 zone_research_unity = {
 	icon = GFX_district_specialization_bureaucrat
 	base_buildtime = @zone_buildtime
 	potential = { # portee planete
-		# Ad Astra : Archives : c'est exactement la Maison des tablettes, l'ecriture
+		# Ad Astra : Archives : l'ecriture permet de conserver et d'organiser le savoir
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_bronze
+					has_technology = tech_adastra_writing
 				}
 			}
 		}
@@ -323,14 +321,14 @@ zone_research_unity = {
 	}
 
 	unlock = { # portee planete
-		# Ad Astra : Archives : c'est exactement la Maison des tablettes, l'ecriture
+		# Ad Astra : Archives : l'ecriture permet de conserver et d'organiser le savoir
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_bronze
+					has_technology = tech_adastra_writing
 				}
 			}
 		}
@@ -394,19 +392,19 @@ zone_research_unity = {
 	ai_priority = 8
 }
 
-### zone_research -> medieval
+### zone_research -> tech_adastra_scholasticism
 zone_research = {
 	icon = GFX_district_specialization_research
 	base_buildtime = @zone_buildtime
 	potential = { # portee planete
-		# Ad Astra : Enclave de recherche : la Scolastique et l'Universite
+		# Ad Astra : Enclave de recherche : l'etude organisee commence avec la scolastique
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_medieval
+					has_technology = tech_adastra_scholasticism
 				}
 			}
 		}
@@ -420,14 +418,14 @@ zone_research = {
 	}
 
 	unlock = { # portee planete
-		# Ad Astra : Enclave de recherche : la Scolastique et l'Universite
+		# Ad Astra : Enclave de recherche : l'etude organisee commence avec la scolastique
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_medieval
+					has_technology = tech_adastra_scholasticism
 				}
 			}
 		}
@@ -491,19 +489,19 @@ zone_research = {
 	ai_weight_coefficient = 1.2
 }
 
-### zone_research_physics -> renaissance
+### zone_research_physics -> tech_adastra_experimental_method
 zone_research_physics = {
 	icon = GFX_district_specialization_physics
 	base_buildtime = @zone_buildtime
 	unlock = { # portee planete
-		# Ad Astra : Recherche specialisee : la Methode experimentale separe les disciplines
+		# Ad Astra : Recherche specialisee : la methode experimentale separe les disciplines
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_renaissance
+					has_technology = tech_adastra_experimental_method
 				}
 			}
 		}
@@ -544,14 +542,14 @@ zone_research_physics = {
 	}
 
 	potential = { # portee planete
-		# Ad Astra : Recherche specialisee : la Methode experimentale separe les disciplines
+		# Ad Astra : Recherche specialisee : la methode experimentale separe les disciplines
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_renaissance
+					has_technology = tech_adastra_experimental_method
 				}
 			}
 		}
@@ -579,19 +577,19 @@ zone_research_physics = {
 	ai_weight_coefficient = 1.1
 }
 
-### zone_research_society -> renaissance
+### zone_research_society -> tech_adastra_experimental_method
 zone_research_society = {
 	icon = GFX_district_specialization_society
 	base_buildtime = @zone_buildtime
 	unlock = { # portee planete
-		# Ad Astra : Recherche specialisee : idem
+		# Ad Astra : Recherche specialisee : la methode experimentale separe les disciplines
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_renaissance
+					has_technology = tech_adastra_experimental_method
 				}
 			}
 		}
@@ -632,14 +630,14 @@ zone_research_society = {
 	}
 
 	potential = { # portee planete
-		# Ad Astra : Recherche specialisee : idem
+		# Ad Astra : Recherche specialisee : la methode experimentale separe les disciplines
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_renaissance
+					has_technology = tech_adastra_experimental_method
 				}
 			}
 		}
@@ -667,19 +665,19 @@ zone_research_society = {
 	ai_weight_coefficient = 1.1
 }
 
-### zone_research_engineering -> renaissance
+### zone_research_engineering -> tech_adastra_experimental_method
 zone_research_engineering = {
 	icon = GFX_district_specialization_engineering
 	base_buildtime = @zone_buildtime
 	unlock = { # portee planete
-		# Ad Astra : Recherche specialisee : idem
+		# Ad Astra : Recherche specialisee : la methode experimentale separe les disciplines
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_renaissance
+					has_technology = tech_adastra_experimental_method
 				}
 			}
 		}
@@ -720,14 +718,14 @@ zone_research_engineering = {
 	}
 
 	potential = { # portee planete
-		# Ad Astra : Recherche specialisee : idem
+		# Ad Astra : Recherche specialisee : la methode experimentale separe les disciplines
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_renaissance
+					has_technology = tech_adastra_experimental_method
 				}
 			}
 		}
@@ -755,19 +753,19 @@ zone_research_engineering = {
 	ai_weight_coefficient = 1.1
 }
 
-### zone_unity -> iron
+### zone_unity -> tech_adastra_law
 zone_unity = {
 	icon = GFX_district_specialization_unity
 	base_buildtime = @zone_buildtime
 	potential = { # portee planete
-		# Ad Astra : Site administratif : le Code de lois et le Tribunal, c'est l'age du fer
+		# Ad Astra : Site administratif : le Code de lois rend possible une administration specialisee
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_iron
+					has_technology = tech_adastra_law
 				}
 			}
 		}
@@ -792,14 +790,14 @@ zone_unity = {
 	}
 
 	unlock = { # portee planete
-		# Ad Astra : Site administratif : le Code de lois et le Tribunal, c'est l'age du fer
+		# Ad Astra : Site administratif : le Code de lois rend possible une administration specialisee
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_iron
+					has_technology = tech_adastra_law
 				}
 			}
 		}
@@ -866,19 +864,19 @@ zone_unity = {
 	}
 }
 
-### zone_unity_spiritualist -> iron
+### zone_unity_spiritualist -> tech_adastra_priesthood
 zone_unity_spiritualist = {
 	icon = GFX_district_specialization_priest
 	base_buildtime = @zone_buildtime
 	potential = { # portee planete
-		# Ad Astra : Enclave spirituelle : meme age que l'administration
+		# Ad Astra : Enclave spirituelle : le sacerdoce organise son administration
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_iron
+					has_technology = tech_adastra_priesthood
 				}
 			}
 		}
@@ -899,14 +897,14 @@ zone_unity_spiritualist = {
 	}
 
 	unlock = { # portee planete
-		# Ad Astra : Enclave spirituelle : meme age que l'administration
+		# Ad Astra : Enclave spirituelle : le sacerdoce organise son administration
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_iron
+					has_technology = tech_adastra_priesthood
 				}
 			}
 		}
@@ -965,19 +963,19 @@ zone_unity_spiritualist = {
 	}
 }
 
-### zone_fortress -> iron
+### zone_fortress -> tech_adastra_standing_army
 zone_fortress = {
 	icon = GFX_district_specialization_fortress
 	base_buildtime = @zone_buildtime
 	potential = { # portee planete
-		# Ad Astra : Defenses militaires : fortifications organisees
+		# Ad Astra : Defenses militaires : une armee permanente organise la defense
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_iron
+					has_technology = tech_adastra_standing_army
 				}
 			}
 		}
@@ -991,14 +989,14 @@ zone_fortress = {
 	}
 
 	unlock = { # portee planete
-		# Ad Astra : Defenses militaires : fortifications organisees
+		# Ad Astra : Defenses militaires : une armee permanente organise la defense
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_iron
+					has_technology = tech_adastra_standing_army
 				}
 			}
 		}
@@ -1049,19 +1047,19 @@ zone_fortress = {
 	}
 }
 
-### zone_trade -> iron
+### zone_trade -> tech_adastra_coinage
 zone_trade = {
 	icon = GFX_district_specialization_trade
 	base_buildtime = @zone_buildtime
 	potential = { # portee planete
-		# Ad Astra : Centre du commerce : la Monnaie frappee rend le commerce possible
+		# Ad Astra : Centre du commerce : la monnaie frappee rend le commerce specialise possible
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_iron
+					has_technology = tech_adastra_coinage
 				}
 			}
 		}
@@ -1080,14 +1078,14 @@ zone_trade = {
 	}
 
 	unlock = { # portee planete
-		# Ad Astra : Centre du commerce : la Monnaie frappee rend le commerce possible
+		# Ad Astra : Centre du commerce : la monnaie frappee rend le commerce specialise possible
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_iron
+					has_technology = tech_adastra_coinage
 				}
 			}
 		}
