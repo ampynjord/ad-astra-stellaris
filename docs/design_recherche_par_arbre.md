@@ -61,10 +61,10 @@ La frontière vanilla / Ad Astra (paliers, exceptions d'économie, fondatrices)
 reste une affaire de surcharges. Le vivier lent du moteur reste poussé à
 l'entrée d'un âge.
 
-## Interface à terminer
+## Interface
 
 Quand une technologie Ad Astra rend une spécialisation de district disponible,
-sa description doit l'annoncer explicitement, comme les technologies vanilla.
-La liste doit être générée depuis la même table source que les gardes de zones,
-afin qu'une spécialisation ne puisse jamais être déverrouillée sans être
-annoncée au joueur.
+sa description l'annonce explicitement, comme les technologies vanilla. La
+liste est générée depuis la même table source que les gardes de zones, afin
+qu'une spécialisation ne puisse jamais être déverrouillée sans être annoncée
+au joueur.
