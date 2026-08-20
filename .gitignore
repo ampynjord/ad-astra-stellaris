@@ -2,3 +2,6 @@
 *.zip
 steamcmd/
 _to_delete/
+build/
+build_premiere/
+__pycache__/
