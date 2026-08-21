@@ -158,6 +158,19 @@ def gen_techs(prereqs):
             b.append("\tpotential = {")
             b.append("\t\thas_origin = origin_adastra")
             b.append("\t\thas_country_flag = %s" % flag)
+            # 21/08/2026 : l'Age spatial est un programme par etapes. Sans
+            # cette garde, les cinq rangs peuvent se vider d'un coup des que leurs
+            # prerequis sont satisfaits, ce qui donne l'impression de recherches
+            # instantanees et court-circuite les gestes joues en vue systeme.
+            if age == "space":
+                stage = {
+                    1: "adastra_stage_astronomy",
+                    2: "adastra_stage_explore",
+                    3: "adastra_stage_constructor",
+                    4: "adastra_stage_outpost",
+                    5: "adastra_stage_orbital",
+                }[vg[t["key"]]]
+                b.append("\t\thas_country_flag = %s" % stage)
             b.append("\t\tNOT = { has_country_flag = adastra_completed }")
             # 1.3 : L'AGE COURANT, ET LUI SEUL.
             #
