@@ -17,11 +17,19 @@ from age_techs_data import vagues  # noqa: E402
 from age_techs_data import (AGES, MAJEURES, RESOURCE_TECH,  # noqa: E402
                             TECHS, UNLOCKS)
 from vanilla_age_map import VANILLA_AGE_MAP, VANILLA_PREREQ  # noqa: E402
+from vanilla_zone_age_map import specialization_unlocks  # noqa: E402
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "ad_astra")
 
 AREAS = ("physics", "society", "engineering")
+ANNONCES = dict(UNLOCKS)
+for _tech, _textes in specialization_unlocks().items():
+    if _tech in ANNONCES:
+        ANNONCES[_tech] = tuple(
+            "%s %s" % (ANNONCES[_tech][i], _textes[i]) for i in range(2))
+    else:
+        ANNONCES[_tech] = _textes
 
 # Noms anglais des batiments d'epoque cites dans les descriptions.
 BATIMENTS_EN = {
@@ -150,6 +158,19 @@ def gen_techs(prereqs):
             b.append("\tpotential = {")
             b.append("\t\thas_origin = origin_adastra")
             b.append("\t\thas_country_flag = %s" % flag)
+            # 21/08/2026 : l'Age spatial est un programme par etapes. Sans
+            # cette garde, les cinq rangs peuvent se vider d'un coup des que leurs
+            # prerequis sont satisfaits, ce qui donne l'impression de recherches
+            # instantanees et court-circuite les gestes joues en vue systeme.
+            if age == "space":
+                stage = {
+                    1: "adastra_stage_astronomy",
+                    2: "adastra_stage_explore",
+                    3: "adastra_stage_constructor",
+                    4: "adastra_stage_outpost",
+                    5: "adastra_stage_orbital",
+                }[vg[t["key"]]]
+                b.append("\t\thas_country_flag = %s" % stage)
             b.append("\t\tNOT = { has_country_flag = adastra_completed }")
             # 1.3 : L'AGE COURANT, ET LUI SEUL.
             #
@@ -319,8 +340,8 @@ def gen_loc(lang):
                 nom = t["unlocks"] if fr else BATIMENTS_EN.get(t["unlocks"], t["unlocks"])
                 extra.append(("Débloque le bâtiment : %s." if fr
                               else "Unlocks the building: %s.") % nom)
-            if t["key"] in UNLOCKS:
-                extra.append(UNLOCKS[t["key"]][idx])
+            if t["key"] in ANNONCES:
+                extra.append(ANNONCES[t["key"]][idx])
             if extra:
                 desc += "\\n\\n§Y" + " ".join(extra) + "§!"
             out.append(' %s:0 "%s"' % (t["key"], t[key_name]))

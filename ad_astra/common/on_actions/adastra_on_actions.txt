@@ -22,5 +22,9 @@ on_monthly_pulse_country = {
 		adastra.71
 		adastra.72
 		adastra.73
+		adastra.74
+		adastra.75
+		adastra.76
+		adastra.92
 	}
 }

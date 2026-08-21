@@ -28,9 +28,10 @@ n'affichera que ce que le moteur applique déjà.
 
 ## Les règles
 
-1. **Treize étapes de 25 points** : dix âges puis les trois étapes du programme
-   (Exploration 250→275, Chantier 275→300, Hyperespace 300→325). Un départ à
-   l'âge N commence à 25·N.
+1. **Quinze étapes de 25 points** : les dix âges, dont l'Âge spatial est la
+   phase d'astronomie (225→250), puis cinq jalons : Exploration 250→275,
+   Construction 275→300, Avant-poste 300→325, Infrastructure orbitale
+   325→350 et Hyperespace 350→375. Un départ à l'âge N commence à 25·N.
 2. **Une technologie d'époque acquise = +1 point** dans la situation, si elle
    appartient à l'âge courant (`on_tech_increased` → `adastra.132`). Vingt-cinq
    technologies font passer l'âge. Le verrou « toutes les techs » est inhérent.
@@ -40,10 +41,12 @@ n'affichera que ce que le moteur applique déjà.
    le même âge (à défaut, du rang N-1 tous domaines). Le moteur ne propose
    qu'une tech dont les prérequis sont acquis : l'ordre historique est tenu
    sans drapeau.
-4. **Programme spatial** : chaque fondatrice du lot de l'étape ajoute
-   `24 // N` points ; le jalon (système prospecté / base + station /
-   Hyperpropulsion) porte l'étape à sa fin, à condition que le lot soit
-   complet (`adastra.71/72/10`).
+4. **Programme spatial** : les cinq rangs des technologies d'époque sont
+   ouverts un jalon à la fois. Les fondatrices vanilla et la recherche font
+   progresser l'étape ; son geste concret l'achève : premier satellite,
+   système prospecté, constructeur livré, avant-poste bâti, station orbitale,
+   puis Hyperpropulsion. La base stellaire n'est jamais créée par événement :
+   le joueur la bâtit avec son constructeur.
 5. **Rythme** : les coûts par âge et les pénalités de recherche par étape.
    Les quatre rythmes (`adastra_pace_*`) deviennent des modificateurs de
    vitesse de recherche (rapide +50 %, lent -33 %, très lent -50 %) ; les
@@ -61,10 +64,10 @@ La frontière vanilla / Ad Astra (paliers, exceptions d'économie, fondatrices)
 reste une affaire de surcharges. Le vivier lent du moteur reste poussé à
 l'entrée d'un âge.
 
-## Interface à terminer
+## Interface
 
 Quand une technologie Ad Astra rend une spécialisation de district disponible,
-sa description doit l'annoncer explicitement, comme les technologies vanilla.
-La liste doit être générée depuis la même table source que les gardes de zones,
-afin qu'une spécialisation ne puisse jamais être déverrouillée sans être
-annoncée au joueur.
+sa description l'annonce explicitement, comme les technologies vanilla. La
+liste est générée depuis la même table source que les gardes de zones, afin
+qu'une spécialisation ne puisse jamais être déverrouillée sans être annoncée
+au joueur.
