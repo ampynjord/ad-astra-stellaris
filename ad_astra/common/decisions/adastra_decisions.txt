@@ -62,8 +62,10 @@ decision_adastra_explore = {
 	}
 }
 
-# Phase 2 : programme de base stellaire (chantier orbital + vaisseau de construction)
-decision_adastra_starbase = {
+# Phase 2 : programme de construction orbitale (vaisseau de construction).
+# La base stellaire reste un acte du joueur dans la vue systeme : le programme
+# ne doit jamais la creer gratuitement ni contourner son cout vanilla.
+decision_adastra_constructor = {
 	owned_planets_only = yes
 	icon = decision_adastra_starbase
 
@@ -81,35 +83,16 @@ decision_adastra_starbase = {
 	potential = {
 		is_capital = yes
 		owner = {
-			has_country_flag = adastra_stage_orbital
+			has_country_flag = adastra_stage_constructor
 			# 1.4 : batir en orbite demande un programme mur, pas un coup
 			# d'eclat - ionique, bouclier ablatif, supraconductivite.
 			core_poussee_4 = yes
-			NOT = { has_country_flag = adastra_phase2_done }
-		}
-	}
-
-	allow = {
-		custom_tooltip = {
-			fail_text = "decision_adastra_starbase_fail"
-			solar_system = {
-				NOT = {
-					AND = {
-						exists = starbase
-						starbase = {
-							exists = owner
-							owner = {
-								NOT = { is_same_value = prevprevprev.owner }
-							}
-						}
-					}
-				}
-			}
+			NOT = { has_country_flag = adastra_constructor_ready }
 		}
 	}
 
 	effect = {
-		custom_tooltip = decision_adastra_starbase_tooltip
+		custom_tooltip = decision_adastra_constructor_tooltip
 		hidden_effect = {
 			owner = {
 				country_event = { id = adastra.86 }

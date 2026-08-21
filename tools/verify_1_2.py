@@ -609,8 +609,9 @@ else:
     _pre_manu = _pre_manu.group(1)
     if "consumer_goods_upkeep_mult" in _pre_manu:
         err("adastra_pre_manufacture utilise un multiplicateur plafonne a -90 %")
-    for _key in ("planet_politicians_consumer_goods_upkeep_add",
-                 "planet_bureaucrats_consumer_goods_upkeep_add",
+    if "planet_politicians_consumer_goods_upkeep_add" in _pre_manu:
+        err("adastra_pre_manufacture utilise un modificateur politicien invalide")
+    for _key in ("planet_bureaucrats_consumer_goods_upkeep_add",
                  "planet_entertainers_consumer_goods_upkeep_add"):
         if _key not in _pre_manu:
             err("adastra_pre_manufacture n'annule pas %s" % _key)
@@ -723,11 +724,14 @@ else:
 # dans sa description, sinon le joueur cherche a l'aveugle.
 print("\n== annonces de deblocage ==")
 from age_techs_data import UNLOCKS  # noqa: E402
+from vanilla_zone_age_map import specialization_unlocks  # noqa: E402
 locfr = open(os.path.join(ROOT, "localisation", "french",
                           "adastra_ages_l_french.yml"), encoding="utf-8").read()
 locen = open(os.path.join(ROOT, "localisation", "english",
                           "adastra_ages_l_english.yml"), encoding="utf-8").read()
-attendus = set(UNLOCKS)
+annonces = dict(UNLOCKS)
+annonces.update(specialization_unlocks())
+attendus = set(annonces)
 for age, _f, _c, _v in AGES:
     for t in TECHS[age]:
         if t["unlocks"]:
@@ -740,9 +744,15 @@ for key in sorted(attendus):
         elif "§Y" not in m.group(1):
             err("%s : la description %s n'annonce pas ce que la techno debloque"
                 % (key, lang))
-for key in UNLOCKS:
+for key in annonces:
     if key not in {t["key"] for age, _f, _c, _v in AGES for t in TECHS[age]}:
         err("UNLOCKS decrit %s, qui n'existe pas" % key)
+for key, textes in specialization_unlocks().items():
+    for lang, src2, texte in (("french", locfr, textes[0]),
+                              ("english", locen, textes[1])):
+        m = re.search(r'^ %s_desc:0 "(.*)"$' % re.escape(key), src2, re.M)
+        if not m or texte not in m.group(1):
+            err("%s : la specialisation n'est pas annoncee en %s" % (key, lang))
 print("  %d technos annoncent un deblocage, FR et EN" % len(attendus))
 
 # ------------------------------------------------------- icones des technos
@@ -1123,11 +1133,17 @@ if _prog_e.count("add_situation_progress = 1") < len(AGES):
 _situ = open(os.path.join(ROOT, "common", "situations", "zzz_adastra_situations.txt"),
              encoding="utf-8").read()
 _ends = [int(x) for x in re.findall(r"^\t\t\tend = (\d+)", _situ, re.M)]
-if _ends != [25 * i for i in range(1, 14)]:
-    err("situation : fins d'etape attendues 25..325 par pas de 25, trouve %s" % _ends)
+if _ends != [25 * i for i in range(1, 16)]:
+	err("situation : fins d'etape attendues 25..375 par pas de 25, trouve %s" % _ends)
 if re.search(r"monthly_progress = \{\s*base = 0\s*\}", _situ) is None:
     err("situation : la barre ne doit plus monter au mois (monthly_progress base = 0, sans modificateur)")
-print("   13 etapes de 25 points, barre sans progression mensuelle")
+_events_recherche = open(os.path.join(ROOT, "events", "adastra_events.txt"), encoding="utf-8").read()
+_loc_recherche = "\n".join(open(os.path.join(ROOT, "localisation", _lang, "adastra_l_%s.yml" % _lang), encoding="utf-8").read()
+                           for _lang in ("french", "english"))
+for _obsolete in ("adastra.12", "adastra_verrou_vu_"):
+    if _obsolete in _events_recherche or _obsolete in _loc_recherche:
+        err("progression : ancien avertissement de verrou encore present (%s)" % _obsolete)
+print("   15 etapes de 25 points, barre sans progression mensuelle")
 
 
 # ================================================== icones sans chiffre romain
