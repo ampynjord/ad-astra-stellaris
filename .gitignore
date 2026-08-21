@@ -7,3 +7,4 @@ build-game-tests/
 build_premiere/
 artifacts/
 __pycache__/
+docs/ROADMAP.md
