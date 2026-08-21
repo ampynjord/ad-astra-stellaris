@@ -32,7 +32,7 @@
 # sinon un echec au premier tir bloque tout l'Age atomique.
 decision_core_suborbital = {
 	owned_planets_only = yes
-	icon = decision_satellite_in_orbit
+	icon = decision_core_suborbital
 
 	enactment_time = 180
 
@@ -72,7 +72,7 @@ decision_core_suborbital = {
 # Repetable, parce qu'un pays n'en lance jamais un seul.
 decision_core_satellite = {
 	owned_planets_only = yes
-	icon = decision_satellite_in_orbit
+	icon = decision_core_satellite
 
 	enactment_time = 240
 
@@ -113,7 +113,7 @@ decision_core_satellite = {
 # routine qu'on ne joue pas.
 decision_core_vol_habite = {
 	owned_planets_only = yes
-	icon = decision_satellite_in_orbit
+	icon = decision_core_vol_habite
 
 	enactment_time = 360
 
@@ -156,7 +156,7 @@ decision_core_vol_habite = {
 # du tout, et il raconte alors autre chose.
 decision_core_premier_corps = {
 	owned_planets_only = yes
-	icon = decision_satellite_in_orbit
+	icon = decision_core_premier_corps
 
 	enactment_time = 540
 
