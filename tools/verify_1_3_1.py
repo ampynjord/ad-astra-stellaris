@@ -68,8 +68,9 @@ def main():
                          re.MULTILINE | re.DOTALL)
     if not pre_manu or "consumer_goods_upkeep_mult" in pre_manu.group(1):
         fail("les multiplicateurs de biens de consommation plafonnes sont encore utilises")
-    for key in ("planet_politicians_consumer_goods_upkeep_add",
-                "planet_bureaucrats_consumer_goods_upkeep_add",
+    if "planet_politicians_consumer_goods_upkeep_add" in pre_manu.group(1):
+        fail("adastra_pre_manufacture utilise un modificateur politicien invalide")
+    for key in ("planet_bureaucrats_consumer_goods_upkeep_add",
                 "planet_entertainers_consumer_goods_upkeep_add"):
         if key not in pre_manu.group(1):
             fail(f"annulation forfaitaire manquante : {key}")
