@@ -242,7 +242,7 @@ situation_adastra_ascension = {
 				owner = { country_event = { id = adastra.80 } }
 			}
 		}
-		adastra_stage_program_orbital = {
+		adastra_stage_program_constructor = {
 			icon = GFX_situation_stage_2
 			icon_background = GFX_situation_stage_frame_blue
 			end = 300
@@ -250,12 +250,28 @@ situation_adastra_ascension = {
 				owner = { country_event = { id = adastra.81 } }
 			}
 		}
-		adastra_stage_program_hyperdrive = {
-			icon = GFX_situation_stage_3
+		adastra_stage_program_outpost = {
+			icon = GFX_situation_stage_2
 			icon_background = GFX_situation_stage_frame_blue
 			end = 325
 			on_first_enter = {
 				owner = { country_event = { id = adastra.82 } }
+			}
+		}
+		adastra_stage_program_orbital = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_blue
+			end = 350
+			on_first_enter = {
+				owner = { country_event = { id = adastra.83 } }
+			}
+		}
+		adastra_stage_program_hyperdrive = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_blue
+			end = 375
+			on_first_enter = {
+				owner = { country_event = { id = adastra.84 } }
 			}
 		}
 	}
