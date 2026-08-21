@@ -220,7 +220,8 @@ adastra_pre_manufacture = {
 	pop_category_specialists_consumer_goods_upkeep_add = -0.5
 	pop_category_workers_consumer_goods_upkeep_add = -0.25
 	pop_category_civilians_consumer_goods_upkeep_add = -0.25
-	planet_politicians_consumer_goods_upkeep_add = -3
+	# 21/08/2026 : ce modificateur n'existe pas en 4.4. Les dirigeants sont
+	# deja couverts par pop_category_rulers_consumer_goods_upkeep_add.
 	planet_bureaucrats_consumer_goods_upkeep_add = -2
 	planet_entertainers_consumer_goods_upkeep_add = -1
 	planet_enforcers_consumer_goods_upkeep_add = -1
