@@ -14,22 +14,26 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from age_techs_data import vagues  # noqa: E402
-from age_techs_data import (AGES, MAJEURES, RESOURCE_TECH,  # noqa: E402
-                            TECHS, UNLOCKS)
+from age_techs_data import (AGES, GAMEPLAY_ANNOUNCEMENTS, MAJEURES,  # noqa: E402
+                            RESOURCE_TECH, TECHS, UNLOCKS)
 from vanilla_age_map import VANILLA_AGE_MAP, VANILLA_PREREQ  # noqa: E402
 from vanilla_zone_age_map import specialization_unlocks  # noqa: E402
+from vanilla_zone_slot_age_map import city_zone_slot_unlocks  # noqa: E402
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "ad_astra")
 
 AREAS = ("physics", "society", "engineering")
-ANNONCES = dict(UNLOCKS)
-for _tech, _textes in specialization_unlocks().items():
-    if _tech in ANNONCES:
-        ANNONCES[_tech] = tuple(
-            "%s %s" % (ANNONCES[_tech][i], _textes[i]) for i in range(2))
-    else:
-        ANNONCES[_tech] = _textes
+ANNONCES = {}
+for _source in (UNLOCKS, GAMEPLAY_ANNOUNCEMENTS, specialization_unlocks(),
+                city_zone_slot_unlocks()):
+    for _tech, _textes in _source.items():
+        if _tech in ANNONCES:
+            ANNONCES[_tech] = tuple(
+                "%s %s" % (ANNONCES[_tech][i], _textes[i])
+                for i in range(2))
+        else:
+            ANNONCES[_tech] = _textes
 
 # Noms anglais des batiments d'epoque cites dans les descriptions.
 BATIMENTS_EN = {

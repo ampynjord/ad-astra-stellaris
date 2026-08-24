@@ -340,6 +340,50 @@ UNLOCKS = {
 }
 
 
+# 1.4 - capacites et programmes rendus jouables par les technologies.
+# Ces annonces ne changent pas le cout : elles decrivent un verrou de gameplay
+# existant, sans transformer la lecture d'une information en changement
+# d'equilibrage.
+GAMEPLAY_ANNOUNCEMENTS = {
+    "tech_adastra_astronomy": (
+        "Révèle progressivement les étoiles des systèmes voisins après l'entrée dans l'ère spatiale.",
+        "Gradually reveals the stars of neighbouring systems after entering the Space Age."),
+    "tech_adastra_telescope": (
+        "Débloque le bâtiment Observatoire astronomique.",
+        "Unlocks the Astronomical Observatory building."),
+    "tech_adastra_radio_astronomy": (
+        "Débloque le bâtiment Radiotélescope.",
+        "Unlocks the Radio Telescope building."),
+    "tech_adastra_remote_sensing": (
+        "Débloque le bâtiment Télescope spatial.",
+        "Unlocks the Space Telescope building."),
+    "tech_adastra_sounding_rocket": (
+        "Débloque la décision Lancement suborbital.",
+        "Unlocks the Suborbital Launch decision."),
+    "tech_adastra_satellites": (
+        "Débloque la décision Premier satellite lorsque la propulsion orbitale est acquise.",
+        "Unlocks the First Satellite decision once orbital propulsion is available."),
+    "tech_adastra_manned_flight": (
+        "Débloque la décision Vol habité lorsque la propulsion orbitale est acquise.",
+        "Unlocks the Crewed Flight decision once orbital propulsion is available."),
+    "tech_adastra_lunar_landing": (
+        "Débloque la décision Premier atterrissage lorsque la propulsion interplanétaire est acquise.",
+        "Unlocks the First Landing decision once interplanetary propulsion is available."),
+    "tech_adastra_ion_drive": (
+        "Débloque la décision Sonde profonde lorsque le premier satellite est lancé.",
+        "Unlocks the Deep Probe decision once the first satellite has been launched."),
+    "tech_adastra_heat_shield": (
+        "Réduit de 10 points le risque d'échec d'un lancement suborbital.",
+        "Reduces the failure risk of a suborbital launch by 10 points."),
+    "tech_adastra_information_theory": (
+        "Réduit de 10 points le risque d'échec d'un lancement suborbital.",
+        "Reduces the failure risk of a suborbital launch by 10 points."),
+    "tech_adastra_electronics": (
+        "Réduit de 10 points le risque d'échec d'un lancement suborbital.",
+        "Reduces the failure risk of a suborbital launch by 10 points."),
+}
+
+
 # 1.2 - toutes les technos d'un age ne se valent pas.
 #
 # Le cout d'une techno est le cout de base de son age multiplie par son poids.
