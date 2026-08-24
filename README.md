@@ -2,7 +2,7 @@
 
 **A pre-FTL origin for Stellaris.**
 
-[![Version](https://img.shields.io/badge/version-1.3.2-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.4.0--beta.1-orange)](CHANGELOG.md)
 [![Stellaris](https://img.shields.io/badge/Stellaris-v4.4%20Pegasus-orange)](https://www.stellaris.com/)
 [![DLC](https://img.shields.io/badge/DLC-none%20required-green)](#)
 [![Languages](https://img.shields.io/badge/in--game%20languages-English%20%C2%B7%20French-lightgrey)](#)
@@ -74,13 +74,21 @@ Known incompatibilities under investigation: **Gigastructural Engineering & More
 
 ## Roadmap
 
-The roadmap is direction, not a release calendar.
+The roadmap is direction, not a release calendar. A version is released only
+after its targeted in-game tests pass.
 
-- **1.4 — The Sky Fills:** observatories, radio telescopes, satellites, crewed flight, deep probes, first landings, launch risks, and a clearer propulsion ladder.
-- **1.5 — The World Below:** a planet that grows by region, rival nations and unification, period traditions, and industrial choices that leave a mark on the Legacy.
-- **Later:** staged terraforming and frontier outposts, then observation, contact, and a playable archaeology of the history created in each run.
+- **1.4 — Galileo:** research-led historical progression, astronomy, the full
+  path from first launch to a player-built starbase, and an art pass for custom
+  content. The game keeps Stellaris' vanilla start and end dates.
+- **1.4.x:** a more legible and useful home system, including astronomical
+  discovery, light outposts and optional generation-ship experiments.
+- **1.5 — Nations:** simulated rival nations, unification and the political
+  cost of developing the homeworld.
+- **Later:** Regolith (outposts and staged terraforming), then Emergence
+  (observation, contact and the consequences of reaching the galaxy).
 
-Gestalt authorities and a galaxy where every empire starts pre-FTL are outside the scope of Origins; they would be separate projects.
+Gestalt authorities and a galaxy where every empire starts pre-FTL remain
+separate-project territory.
 
 ## Contributing
 

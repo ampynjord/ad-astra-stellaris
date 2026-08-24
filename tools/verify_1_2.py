@@ -114,6 +114,17 @@ print("  %d techs avec prerequis, %d racines (age %s)" % (n_with, len(roots), fi
 if n_with + len(roots) != len(keys):
     err("certaines techs hors age initial n'ont pas de prerequis")
 
+# La progression est portee par les recherches et leurs prerequis, jamais par
+# une vague qui injecte des options dans le vivier. Une telle injection rend
+# les technologies instantanees des qu'un age est atteint.
+_grants = open(os.path.join(ROOT, "common", "scripted_effects",
+                      "zz_adastra_age_grants.txt"), encoding="utf-8").read()
+_events = open(os.path.join(ROOT, "events", "adastra_events.txt"), encoding="utf-8").read()
+if "adastra_offre_age_" in _grants:
+    err("les effets generes contiennent encore des vagues de recherche")
+if "id = adastra.130" in _events or "adastra_offre_age_" in _events:
+    err("adastra_events reinjecte encore des technologies d'age")
+
 # ------------------------------------------------------------- localisation
 print("\n== localisation ==")
 
@@ -464,6 +475,114 @@ for _m in MODS_A_LOCALISER:
 print("  %d modificateurs, nom + description + infobulle, FR et EN"
       % len(MODS_A_LOCALISER))
 
+# Les trois telescopes sont ecrits a la main, hors du generateur des
+# batiments d'epoque. Leur absence de localisation rendait les cles brutes
+# visibles dans le menu de construction et salissait error.log.
+print("\n== localisation des telescopes ==")
+TELESCOPES_A_LOCALISER = ["building_core_observatory",
+                          "building_core_radio_telescope",
+                          "building_core_space_telescope"]
+for _building in TELESCOPES_A_LOCALISER:
+    for _key in (_building, _building + "_desc"):
+        for _lang, _src in (("FR", _lfr), ("EN", _len)):
+            if not re.search(r'^ %s:0 "..' % re.escape(_key), _src, re.M):
+                err("telescope %s : cle %s absente ou vide en %s"
+                    % (_building, _key, _lang))
+            if len(re.findall(r'^ %s:0 ' % re.escape(_key), _src, re.M)) != 1:
+                err("telescope %s : cle %s dupliquee en %s"
+                    % (_building, _key, _lang))
+print("  3 telescopes, nom + description, FR et EN")
+
+# ---------------- compatibilite civiques / infrastructures de depart (1.4)
+# Les ethiques et les traits ordinaires ne posent pas de batiment. Le moteur
+# vanilla peut en revanche ajouter une structure de depart selon un civisme ou
+# un contenu DLC apres on_game_start. La sortie generee doit couvrir toutes les
+# structures datees, etre appelee aux deux passes et rendre une reforme gratuite
+# a l'emergence.
+print("\n== compatibilite de depart ==")
+from vanilla_building_age_map import (  # noqa: E402
+    CIVIC_BUILDING_UNLOCKS,
+    STARTUP_BUILDING_AGE,
+)
+from vanilla_zone_age_map import ZONE_BUILDING_SLOTS  # noqa: E402
+_compat_path = os.path.join(ROOT, "common", "scripted_effects",
+                            "zz_adastra_start_compatibility.txt")
+if not os.path.exists(_compat_path):
+    err("effet de compatibilite de depart absent")
+else:
+    _compat = open(_compat_path, encoding="utf-8").read()
+    for _building, _age in STARTUP_BUILDING_AGE.items():
+        if "remove_building = %s" % _building not in _compat:
+            err("compatibilite : %s n'est pas neutralise au depart" % _building)
+    if "building_communal_housing" in _compat:
+        err("compatibilite : le logement communautaire ne doit pas etre retire")
+    for _civic, _data in CIVIC_BUILDING_UNLOCKS.items():
+        _building = _data["building"]
+        if "owner = { has_civic = %s }" % _civic not in _compat:
+            err("compatibilite : civisme %s absent de la restitution" % _civic)
+        if "owner = { has_country_flag = adastra_reached_%s }" % _data["age"] not in _compat:
+            err("compatibilite : age de restitution de %s absent" % _building)
+        for _trigger in _data["triggers"]:
+            if "owner = { %s = yes }" % _trigger not in _compat:
+                err("compatibilite : entretien de %s absent (%s)" % (_building, _trigger))
+        if "free_building_slots > 0" not in _compat:
+            err("compatibilite : restitution sans emplacement libre")
+        if "NOT = { has_building = %s }" % _building not in _compat:
+            err("compatibilite : restitution de %s non protegee" % _building)
+        if "add_building = %s" % _building not in _compat:
+            err("compatibilite : %s n'est pas rendu quand son economie le permet" % _building)
+    print("  %d infrastructures datees, logement communautaire preserve"
+          % len(STARTUP_BUILDING_AGE))
+if grants.count("adastra_cleanup_start_infrastructure = yes") < 2:
+    err("compatibilite : nettoyage absent de l'initialisation ou du jour 4")
+_i = grants.find("\n\tid = adastra.15\n")
+_j = grants.find("\ncountry_event = {", _i)
+_emergence = grants[_i:_j if _j > 0 else len(grants)]
+if "set_country_flag = free_government_reform" not in _emergence:
+    err("emergence : reforme gouvernementale gratuite absente")
+if "country_event = { id = adastra.29 days = 1 }" not in _emergence:
+    err("emergence : notification de reforme absente")
+if _emergence.count("set_country_flag = free_government_reform") != 1:
+    err("emergence : la reforme gratuite doit etre accordee une seule fois")
+if "capital_scope = { adastra_grant_civic_infrastructure = yes }" not in _emergence:
+    err("emergence : restitution des batiments civiques absente")
+if grants.count("capital_scope = { adastra_grant_civic_infrastructure = yes }") < 3:
+    err("compatibilite : restitution absente du depart, de la recherche ou de l'emergence")
+_on_actions = open(os.path.join(ROOT, "common", "on_actions", "adastra_on_actions.txt"),
+                   encoding="utf-8").read()
+if "adastra.134" not in _on_actions:
+    err("compatibilite : reprise mensuelle des infrastructures civiques absente")
+_wait_event = re.search(r"\n\s*id = adastra\.134\b(.*?)(?=\ncountry_event = \{|\Z)", grants, re.S)
+if not _wait_event or "capital_scope = { free_building_slots > 0 }" not in _wait_event.group(1):
+    err("compatibilite : reprise civique sans garde d'emplacement libre")
+for _lang in ("french", "english"):
+    _loc = open(os.path.join(ROOT, "localisation", _lang,
+                             "adastra_l_%s.yml" % ("french" if _lang == "french" else "english")),
+                encoding="utf-8-sig").read()
+    for _key in ("adastra.29.name", "adastra.29.desc", "adastra.29.a", "adastra.29.a.tooltip"):
+        if not re.search(r'^ %s:0 "[^"]+' % re.escape(_key), _loc, re.M):
+            err("reforme : localisation %s absente ou vide en %s" % (_key, _lang))
+print("  civismes et traits ordinaires conserves ; reforme unique a l'emergence")
+
+# ----------------------- capacite des zones et emplacements (1.4)
+# Les emplacements sont produits par les zones depuis Stellaris 4.4. Chaque
+# zone datee doit donc porter la capacite graduelle definie dans la table, y
+# compris la zone urbaine de base. Une faction ne peut pas retirer ces slots.
+print("\n== capacite de construction progressive ==")
+_zones_path = os.path.join(ROOT, "common", "zones", "zzz_adastra_zone_ages.txt")
+if not os.path.exists(_zones_path):
+    err("capacite : surcharges de zones absentes")
+else:
+    _zones = open(_zones_path, encoding="utf-8").read()
+    for _zone, _slots in ZONE_BUILDING_SLOTS.items():
+        _match = re.search(r"^%s\s*=\s*\{(.*?)(?=^### |\Z)" % re.escape(_zone),
+                           _zones, re.M | re.S)
+        if not _match:
+            err("capacite : zone %s absente" % _zone)
+        elif "zone_building_slots_add = %d" % _slots not in _match.group(1):
+            err("capacite : %s doit offrir %d emplacement(s)" % (_zone, _slots))
+    print("  %d zones, de 1 a 2 emplacements selon le developpement" % len(ZONE_BUILDING_SLOTS))
+
 # --------------------------------- cycle de vie des modificateurs (1.2)
 # Tout modificateur permanent pose par le mod doit avoir un chemin de retrait.
 # Le piege est adastra.11 : son trigger exige adastra_locked, drapeau retire a
@@ -615,6 +734,14 @@ else:
                  "planet_entertainers_consumer_goods_upkeep_add"):
         if _key not in _pre_manu:
             err("adastra_pre_manufacture n'annule pas %s" % _key)
+_event_11 = re.search(r"\n\s*id = adastra\.11\n(.*?)(?=\ncountry_event = \{|\Z)",
+                      grants, re.S)
+if not _event_11 or not re.search(r"NOT = \{ adastra_has_consumer_goods = yes \}.*?"
+                                  r"set_resource = \{ resource = consumer_goods value = 0 \}",
+                                  _event_11.group(1), re.S):
+    err("les biens de consommation peuvent encore s'accumuler avant la Manufacture")
+if "add_building = { district = district_city zone = zone_default building = building_adastra_radio }" in grants:
+    err("la radio est encore posee dans une zone incompatible au demarrage")
 # La conversion commerciale doit etre coupee ET rendue. Si le retablissement
 # saute, l'empire sort du confinement avec un commerce qui ne produit plus rien
 # pour le restant de la partie, et rien ne le signale.
@@ -760,9 +887,13 @@ print("  %d technos annoncent un deblocage, FR et EN" % len(attendus))
 # gfx/interface/icons/technologies/<cle>.dds. Une icone manquante ne produit
 # aucune erreur dans le journal, la techno s'affiche juste avec un carre vide.
 print("\n== icones des technos d'age ==")
-from age_techs_data import ICONS  # noqa: E402
+from age_techs_data import TECHS  # noqa: E402
 icon_dir = os.path.join(ROOT, "gfx", "interface", "icons", "technologies")
-attendus = {"tech_adastra_%s.dds" % suf for suf in ICONS}
+attendus = {
+    "%s.dds" % tech["key"]
+    for technologies in TECHS.values()
+    for tech in technologies
+}
 if not os.path.isdir(icon_dir):
     err("dossier d'icones absent : %s" % icon_dir)
 else:
@@ -775,20 +906,15 @@ else:
     if orphelines:
         warn("%d icone(s) orpheline(s) (techno supprimee ?) : %s"
              % (len(orphelines), ", ".join(orphelines[:8])))
-    from collections import Counter as _CI
-    _dup = {k: n for k, n in _CI(ICONS.values()).items() if n > 1}
-    # 1.3 : le partage est desormais assume. A 250 technologies, le vivier
-    # d'icones vanilla utilisables est epuise ; partager une image entre deux
-    # technologies proches vaut mieux que d'aller chercher un chiffre romain
-    # (qui renvoie a un palier inexistant) ou une relique precurseur (qui n'a
-    # rien a faire sur un moulin a eau). On alerte seulement au-dela de trois.
-    _trop = {k: n for k, n in _dup.items() if n > 5}
-    if _trop:
-        warn("icone(s) portee(s) par plus de trois technologies : %s"
-             % ", ".join("tech_%s x%d" % (k, n) for k, n in sorted(_trop.items())))
     if not manquantes and not orphelines:
-        print("   %d icones, aucune manquante ; %d partagees entre technologies proches"
-              % (len(attendus), sum(n - 1 for n in _dup.values())))
+        print("   %d icones originales, aucune manquante" % len(attendus))
+
+tech_source = open(os.path.join(ROOT, "common", "technology", "adastra_age_techs.txt"),
+                   encoding="utf-8").read()
+for technology in (tech for technologies in TECHS.values() for tech in technologies):
+    expected_icon = "\ticon = %s" % technology["key"]
+    if expected_icon not in tech_source:
+        err("%s ne pointe pas vers son icone personnalisee" % technology["key"])
         
 # ------------------------------------------------- chaine des capitales
 # Le siege du pouvoir doit aller d'un bout a l'autre sans trou : chaque palier

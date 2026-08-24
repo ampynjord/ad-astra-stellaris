@@ -338,16 +338,7 @@ country_event = {
 			# remove_zone ne servent plus qu'aux vieilles sauvegardes.
 			remove_zone = { district = district_city zone = zone_research_unity }
 			remove_zone = { district = district_city zone = zone_industrial }
-			remove_building = building_holo_theatres
-			remove_building = building_commercial_zone
-			# A la place, pour ceux qui connaissent la Radio (age de la Machine
-			# acquis, donc Atomique et Spatial) : la Station de radiodiffusion,
-			# notre batiment d'epoque de divertissement.
-			if = {
-				limit = { owner = { OR = { has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } } }
-				add_building = { district = district_city zone = zone_default building = building_adastra_radio }
-			}
-
+			adastra_cleanup_start_infrastructure = yes
 			# 1.4 (18/08) : REMETTRE ce que le moteur a retire au chargement.
 			# Les zones Industrie mixte / Archives et le district generateur
 			# portent un potential d'age (zzz_adastra_zone_ages.txt,
@@ -485,6 +476,10 @@ country_event = {
 			}
 			validate_and_repair_planet_buildings_and_districts = yes
 		}
+		# Les departs tardifs recoivent deja les technologies des ages passes.
+		# La restitution doit donc aussi etre tentee ici, sans attendre la
+		# prochaine recherche.
+		capital_scope = { adastra_grant_civic_infrastructure = yes }
 
 		# Lancer la situation d'ascension et se placer au bon âge : 25 points
 		# par étape (1.5). La partie est nee en 1.5 : pas de recalage a faire.
@@ -704,6 +699,9 @@ country_event = {
 		}
 		# La vision de la station a pu révéler le système : on le rend à l'inconnu
 		capital_scope = {
+			# Les scripts vanilla peuvent poser des batiments apres le premier
+			# nettoyage. La table generee les date sans devoir lister les civismes.
+			adastra_cleanup_start_infrastructure = yes
 			solar_system = {
 				# 1.4 (17/08) : le systeme natal n'a plus de base stellaire, donc
 				# plus de proprietaire aux yeux du jeu de base - les drones
@@ -1025,6 +1023,10 @@ country_event = {
 			}
 			remove_modifier = adastra_pre_manufacture
 		}
+		if = {
+			limit = { NOT = { adastra_has_consumer_goods = yes } }
+			set_resource = { resource = consumer_goods value = 0 }
+		}
 
 		# --- Le siege du pouvoir coute de plus en plus cher ---
 		#
@@ -1188,6 +1190,10 @@ country_event = {
 	}
 
 	immediate = {
+		# Un civisme peut avoir perdu son batiment de depart car son entretien
+		# etait anachronique. Des qu'une technologie est terminee, on verifie si
+		# la capitale peut enfin l'accueillir gratuitement.
+		capital_scope = { adastra_grant_civic_infrastructure = yes }
 		adastra_progression_recherche = yes
 		# Astronomie : les fondatrices apportent 5 points ; le premier satellite finit le jalon.
 		if = {
@@ -1259,6 +1265,28 @@ country_event = {
 		else = {
 			adastra_recalage_progression = yes
 		}
+	}
+}
+
+############################
+# adastra.134 : infrastructures civiques en attente (cache, mensuel)
+############################
+# Un batiment offert peut ne pas tenir dans la capitale si le joueur a deja
+# rempli tous ses emplacements. Cette passe, tres legere, le remet des qu'un
+# emplacement est libere. Elle couvre aussi l'apres-emergence, quand la
+# situation d'ascension ne declenche plus adastra.132.
+country_event = {
+	id = adastra.134
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		capital_scope = { free_building_slots > 0 }
+	}
+
+	immediate = {
+		capital_scope = { adastra_grant_civic_infrastructure = yes }
 	}
 }
 
@@ -1668,6 +1696,16 @@ country_event = {
 
 		# Redevenir un empire spatial normal
 		set_country_type = default
+		# Une civilisation devenue spatiale peut redefinir son projet politique.
+		# Le jeu retire ce drapeau apres la premiere reforme reussie.
+		set_country_flag = free_government_reform
+		if = {
+			limit = { is_ai = no }
+			country_event = { id = adastra.29 days = 1 }
+		}
+		# Les structures propres a un civisme etaient retirees avant leur epoque.
+		# Elles reviennent gratuitement si leur economie les supporte enfin.
+		capital_scope = { adastra_grant_civic_infrastructure = yes }
 
 		add_resource = { energy = 1 mult = adastra_st_energy }
 		add_resource = { minerals = 1 mult = adastra_st_minerals }
@@ -1804,6 +1842,27 @@ country_event = {
 		else = {
 			country_event = { id = adastra.20 }
 		}
+	}
+}
+
+############################
+# adastra.29 : Une nouvelle charte (reforme gratuite a l'emergence)
+############################
+country_event = {
+	id = adastra.29
+	title = "adastra.29.name"
+	desc = "adastra.29.desc"
+	picture = GFX_evt_metropolis
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+		has_country_flag = free_government_reform
+	}
+
+	option = {
+		name = "adastra.29.a"
+		custom_tooltip = "adastra.29.a.tooltip"
 	}
 }
 
@@ -2048,9 +2107,6 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_stone } }
 			set_country_flag = adastra_reached_stone
-			# 1.4 : premiere vague poussee dans le vivier - en differe, voir adastra.130
-			country_event = { id = adastra.130 days = 1 }
-			country_event = { id = adastra.130 days = 30 }
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.50 }
@@ -2067,9 +2123,6 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_bronze } }
 			set_country_flag = adastra_reached_bronze
-			# 1.4 : premiere vague poussee dans le vivier - en differe, voir adastra.130
-			country_event = { id = adastra.130 days = 1 }
-			country_event = { id = adastra.130 days = 30 }
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.51 }
@@ -2086,9 +2139,6 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_iron } }
 			set_country_flag = adastra_reached_iron
-			# 1.4 : premiere vague poussee dans le vivier - en differe, voir adastra.130
-			country_event = { id = adastra.130 days = 1 }
-			country_event = { id = adastra.130 days = 30 }
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.52 }
@@ -2105,9 +2155,6 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_medieval } }
 			set_country_flag = adastra_reached_medieval
-			# 1.4 : premiere vague poussee dans le vivier - en differe, voir adastra.130
-			country_event = { id = adastra.130 days = 1 }
-			country_event = { id = adastra.130 days = 30 }
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.53 }
@@ -2124,9 +2171,6 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_renaissance } }
 			set_country_flag = adastra_reached_renaissance
-			# 1.4 : premiere vague poussee dans le vivier - en differe, voir adastra.130
-			country_event = { id = adastra.130 days = 1 }
-			country_event = { id = adastra.130 days = 30 }
 			set_country_flag = adastra_unlock_renaissance
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
@@ -2144,9 +2188,6 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_steam } }
 			set_country_flag = adastra_reached_steam
-			# 1.4 : premiere vague poussee dans le vivier - en differe, voir adastra.130
-			country_event = { id = adastra.130 days = 1 }
-			country_event = { id = adastra.130 days = 30 }
 			set_country_flag = adastra_unlock_steam
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
@@ -2164,9 +2205,6 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_industrial } }
 			set_country_flag = adastra_reached_industrial
-			# 1.4 : premiere vague poussee dans le vivier - en differe, voir adastra.130
-			country_event = { id = adastra.130 days = 1 }
-			country_event = { id = adastra.130 days = 30 }
 			set_country_flag = adastra_unlock_industrial
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
@@ -2184,9 +2222,6 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_machine } }
 			set_country_flag = adastra_reached_machine
-			# 1.4 : premiere vague poussee dans le vivier - en differe, voir adastra.130
-			country_event = { id = adastra.130 days = 1 }
-			country_event = { id = adastra.130 days = 30 }
 			set_country_flag = adastra_unlock_machine
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
@@ -2204,9 +2239,6 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_atomic } }
 			set_country_flag = adastra_reached_atomic
-			# 1.4 : premiere vague poussee dans le vivier - en differe, voir adastra.130
-			country_event = { id = adastra.130 days = 1 }
-			country_event = { id = adastra.130 days = 30 }
 			set_country_flag = adastra_unlock_atomic
 			if = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
@@ -2224,9 +2256,6 @@ country_event = {
 		if = {
 			limit = { NOT = { has_country_flag = adastra_reached_space } }
 			set_country_flag = adastra_reached_space
-			# 1.4 : premiere vague poussee dans le vivier - en differe, voir adastra.130
-			country_event = { id = adastra.130 days = 1 }
-			country_event = { id = adastra.130 days = 30 }
 			# 1.3 : LES SEIZE NE SONT PLUS OFFERTES.
 			#
 			# Jusqu'ici l'entree dans l'Age spatial livrait d'un coup les
@@ -2247,66 +2276,6 @@ country_event = {
 				limit = { NOT = { has_country_flag = adastra_initializing } }
 				country_event = { id = adastra.59 }
 			}
-		}
-	}
-}
-
-############################
-# adastra.130 : premiere vague de l'age courant poussee dans le vivier (cache)
-#
-# 1.4 (18/08). Test B : au jour 1 d'un depart Atomique le vivier de physique
-# reste vide pendant des mois. add_research_option appele DANS adastra.4x
-# echouait - « unable to research it » dans error.log : au moment ou le
-# drapeau d'age vient d'etre pose, le moteur n'a pas encore recalcule ce que
-# l'empire peut chercher (et les technos offertes par give_technology dans le
-# meme tick ne comptent pas encore comme prerequis). On repasse donc le
-# lendemain, et une seconde fois un mois plus tard par securite ; l'effet est
-# sans consequence si l'option est deja dans le vivier.
-############################
-country_event = {
-	id = adastra.130
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		if = {
-			limit = { has_country_flag = adastra_reached_space }
-			adastra_offre_age_space = yes
-		}
-		else_if = {
-			limit = { has_country_flag = adastra_reached_atomic }
-			adastra_offre_age_atomic = yes
-		}
-		else_if = {
-			limit = { has_country_flag = adastra_reached_machine }
-			adastra_offre_age_machine = yes
-		}
-		else_if = {
-			limit = { has_country_flag = adastra_reached_industrial }
-			adastra_offre_age_industrial = yes
-		}
-		else_if = {
-			limit = { has_country_flag = adastra_reached_steam }
-			adastra_offre_age_steam = yes
-		}
-		else_if = {
-			limit = { has_country_flag = adastra_reached_renaissance }
-			adastra_offre_age_renaissance = yes
-		}
-		else_if = {
-			limit = { has_country_flag = adastra_reached_medieval }
-			adastra_offre_age_medieval = yes
-		}
-		else_if = {
-			limit = { has_country_flag = adastra_reached_iron }
-			adastra_offre_age_iron = yes
-		}
-		else_if = {
-			limit = { has_country_flag = adastra_reached_bronze }
-			adastra_offre_age_bronze = yes
-		}
-		else_if = {
-			limit = { has_country_flag = adastra_reached_stone }
-			adastra_offre_age_stone = yes
 		}
 	}
 }
