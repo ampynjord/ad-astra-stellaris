@@ -124,6 +124,14 @@ if "adastra_offre_age_" in _grants:
     err("les effets generes contiennent encore des vagues de recherche")
 if "id = adastra.130" in _events or "adastra_offre_age_" in _events:
     err("adastra_events reinjecte encore des technologies d'age")
+_capital_start = _events[_events.index("# 1.2 : la capitale demarre specialisee"):
+                         _events.index("# 1.2 : les DISTRICTS aussi.")]
+for _archive_fragment in (
+    "add_zone = { district = district_city zone = zone_research_unity",
+    "add_building = { district = district_city zone = zone_research_unity building = building_research_lab_1 }",
+):
+    if _archive_fragment in _capital_start:
+        err("depart : les Archives et leur laboratoire ne doivent pas etre offerts")
 
 # ------------------------------------------------------------- localisation
 print("\n== localisation ==")
@@ -504,7 +512,7 @@ from vanilla_building_age_map import (  # noqa: E402
     CIVIC_BUILDING_UNLOCKS,
     STARTUP_BUILDING_AGE,
 )
-from vanilla_zone_age_map import ZONE_BUILDING_SLOTS  # noqa: E402
+from vanilla_zone_age_map import ZONE_AGE, ZONE_BUILDING_SLOTS  # noqa: E402
 _compat_path = os.path.join(ROOT, "common", "scripted_effects",
                             "zz_adastra_start_compatibility.txt")
 if not os.path.exists(_compat_path):
@@ -581,7 +589,48 @@ else:
             err("capacite : zone %s absente" % _zone)
         elif "zone_building_slots_add = %d" % _slots not in _match.group(1):
             err("capacite : %s doit offrir %d emplacement(s)" % (_zone, _slots))
-    print("  %d zones, de 1 a 2 emplacements selon le developpement" % len(ZONE_BUILDING_SLOTS))
+        elif ZONE_AGE[_zone][1] and "has_technology = %s" % ZONE_AGE[_zone][1] not in _match.group(1):
+            err("capacite : %s doit etre verrouillee par %s" % (_zone, ZONE_AGE[_zone][1]))
+print("  %d zones, de 1 a 2 emplacements selon le developpement" % len(ZONE_BUILDING_SLOTS))
+
+# ----------------------- emplacements de zones urbaines (1.4)
+# Les zones urbaines sont les vrais emplacements de construction depuis 4.4.
+# Le jeu de base les laisse tous ouverts aux primitifs ; l'origine doit les
+# reveler au rythme de la Premiere cite et du Code de lois.
+print("\n== emplacements urbains progressifs ==")
+from vanilla_zone_slot_age_map import CITY_ZONE_SLOT_TECH  # noqa: E402
+_slots_path = os.path.join(ROOT, "common", "zone_slots", "zzz_adastra_zone_slot_ages.txt")
+if not os.path.exists(_slots_path):
+    err("emplacements urbains : surcharges absentes (lancer gen_zone_slot_age_overrides.py)")
+else:
+    _slots = open(_slots_path, encoding="utf-8").read()
+    _slot_names = {k for k, _s, _e in top_level_blocks(_slots)}
+    if _slot_names != set(CITY_ZONE_SLOT_TECH):
+        err("emplacements urbains desynchronises : %s" % sorted(_slot_names ^ set(CITY_ZONE_SLOT_TECH)))
+    for _slot, (_tech, _tooltip, _why) in CITY_ZONE_SLOT_TECH.items():
+        _match = re.search(r"^%s\s*=\s*\{(.*?)(?=^### |\Z)" % re.escape(_slot),
+                           _slots, re.M | re.S)
+        if not _match:
+            continue
+        if "has_technology = %s" % _tech not in _match.group(1):
+            err("emplacement urbain %s sans technologie %s" % (_slot, _tech))
+        if "fail_text = %s" % _tooltip not in _match.group(1):
+            err("emplacement urbain %s sans infobulle" % _slot)
+    for _lang in ("french", "english"):
+        _loc_path = os.path.join(ROOT, "localisation", _lang,
+                                 "adastra_l_%s.yml" % ("french" if _lang == "french" else "english"))
+        _loc = open(_loc_path, encoding="utf-8-sig").read()
+        for _tech, _tooltip, _why in CITY_ZONE_SLOT_TECH.values():
+            if not re.search(r"^ %s:0 \"[^\"]+" % re.escape(_tooltip), _loc, re.M):
+                err("emplacement urbain : infobulle %s absente en %s" % (_tooltip, _lang))
+    print("  2 emplacements : Bronze puis Fer")
+
+_capital_setup = grants[grants.index("capital_scope = {", grants.index("# 1.2 : la capitale demarre specialisee")):
+                        grants.index("# Les departs tardifs recoivent deja les technologies")]
+if "num_districts = { type = district_city value > 1 }" not in _capital_setup:
+    err("depart : les districts urbains initiaux ne sont pas reduits a un noyau")
+if "remove_building = building_capital" not in _capital_setup or "building = building_capital" not in _capital_setup:
+    err("depart : la capitale n'est pas recomposee apres la reduction urbaine")
 
 # --------------------------------- cycle de vie des modificateurs (1.2)
 # Tout modificateur permanent pose par le mod doit avoir un chemin de retrait.

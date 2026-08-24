@@ -5,11 +5,23 @@
 # Chaque specialisation depend de sa technologie fondatrice, pas seulement d'un age.
 
 
-### zone_urban -> capacite urbaine
+### zone_urban -> tech_adastra_first_city
 zone_urban = {
 	icon = GFX_district_specialization_urban
 	base_buildtime = @zone_buildtime
-	potential = { # planet scope
+	potential = { # portee planete
+		# Ad Astra : Expansion urbaine : les premieres cites concentrent population, logements et construction
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_technology = tech_adastra_first_city
+				}
+			}
+		}
+ # planet scope
 		hidden_trigger = {
 			exists = owner
 			owner = {
@@ -18,7 +30,19 @@ zone_urban = {
 		}
 	}
 
-	unlock = { # planet scope
+	unlock = { # portee planete
+		# Ad Astra : Expansion urbaine : les premieres cites concentrent population, logements et construction
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_adastra }
+					has_country_flag = adastra_completed
+					has_technology = tech_adastra_first_city
+				}
+			}
+		}
+ # planet scope
 		hidden_trigger = {
 			exists = owner
 			owner = {

@@ -339,8 +339,19 @@ country_event = {
 			remove_zone = { district = district_city zone = zone_research_unity }
 			remove_zone = { district = district_city zone = zone_industrial }
 			adastra_cleanup_start_infrastructure = yes
+			# 1.4 (24/08) : une capitale vanilla porte trois districts urbains,
+			# donc six emplacements de specialisation immediats. Une civilisation
+			# pre-industrielle commence avec son seul noyau habite ; les quartiers
+			# et leurs emplacements sont ensuite ouverts par les technologies.
+			# Retirer l'ancien batiment avant les districts garantit que le dernier
+			# district conserve est toujours remeuble juste apres.
+			remove_building = building_capital
+			while = {
+				limit = { num_districts = { type = district_city value > 1 } }
+				remove_district = district_city
+			}
 			# 1.4 (18/08) : REMETTRE ce que le moteur a retire au chargement.
-			# Les zones Industrie mixte / Archives et le district generateur
+			# La zone Industrie mixte et le district generateur
 			# portent un potential d'age (zzz_adastra_zone_ages.txt,
 			# zzz_adastra_district_ages.txt) ; a la creation de la galaxie,
 			# avant tout choix d'age, ces potentials sont faux et le moteur
@@ -350,6 +361,8 @@ country_event = {
 			# (save du 18/08). Les drapeaux d'age sont poses juste au-dessus,
 			# les potentials sont vrais : on rebatit ce que le jeu de base
 			# donne a un empire normal, a hauteur des techniques acquises.
+			# Les Archives ne sont jamais reconstruites ici : elles sont un
+			# choix du joueur, meme pour les ages de depart avances.
 			if = {
 				limit = { owner = { OR = { has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } } }
 				add_zone = { district = district_city zone = zone_industrial zone_slot = 1 }
@@ -358,11 +371,6 @@ country_event = {
 			else_if = {
 				limit = { owner = { has_country_flag = adastra_choice_steam } }
 				add_zone = { district = district_city zone = zone_industrial zone_slot = 1 }
-			}
-			if = {
-				limit = { owner = { OR = { has_country_flag = adastra_choice_steam has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } } }
-				add_zone = { district = district_city zone = zone_research_unity zone_slot = 2 }
-				add_building = { district = district_city zone = zone_research_unity building = building_research_lab_1 }
 			}
 			if = {
 				limit = { owner = { adastra_has_energy = yes } }
@@ -405,8 +413,9 @@ country_event = {
 			# 1.2 : sept paliers de capitale, un par age. On pose celui de
 			# l'age de depart ; le joueur ameliorera les suivants au fur et a
 			# mesure, jusqu'a l'Administration planetaire du jeu de base.
-			# A partir de l'Age de la machine, l'Administration planetaire de
-			# depart est deja a l'heure : on n'y touche pas.
+			# A partir de l'Age de la machine, l'Administration planetaire est deja
+			# a l'heure. Elle est cependant reposee apres la normalisation des
+			# districts urbains ci-dessus.
 			if = {
 				limit = {
 					owner = {
@@ -472,6 +481,13 @@ country_event = {
 						zone = zone_default
 						building = building_adastra_seat_industrial
 					}
+				}
+			}
+			else = {
+				add_building = {
+					district = district_city
+					zone = zone_default
+					building = building_capital
 				}
 			}
 			validate_and_repair_planet_buildings_and_districts = yes
