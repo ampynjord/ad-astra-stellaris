@@ -1,0 +1,80 @@
+# Ad Astra 1.4 - emplacements de zones urbaines progressifs.
+# FICHIER GENERE PAR tools/gen_zone_slot_age_overrides.py - NE PAS EDITER A LA MAIN.
+# Source de verite : tools/vanilla_zone_slot_age_map.py
+#
+# Le jeu de base ouvre ces deux emplacements aux primitifs. Ad Astra les
+# lie aux technologies qui rendent possible une ville specialisee.
+
+
+### slot_city_01 -> tech_adastra_first_city
+slot_city_01 = {
+	included_zone_sets = {
+		urban
+		ark_forever_cruise_city
+	}
+
+	unlock = { # planet scope
+		custom_tooltip = {
+			fail_text = d_collapsed_spire_blocks_zone
+			NOT = {
+				has_deposit = d_collapsed_spire
+			}
+		}
+
+		# Ad Astra : La Premiere cite organise le premier quartier urbain specialise
+		custom_tooltip = {
+			fail_text = adastra_zone_city_01_prereq
+			OR = {
+				NOT = { exists = owner }
+				owner = {
+					OR = {
+						NOT = { has_origin = origin_adastra }
+						has_country_flag = adastra_completed
+						has_technology = tech_adastra_first_city
+					}
+				}
+			}
+		}
+	}
+}
+
+### slot_city_02 -> tech_adastra_law
+slot_city_02 = {
+	included_zone_sets = {
+		urban
+		ark_forever_cruise_city
+	}
+
+	unlock = { # planet scope
+		custom_tooltip = {
+			fail_text = zone_city_02_prereq
+			if = {
+				limit = {
+					exists = owner
+					owner = {
+						is_primitive = yes
+					}
+				}
+				always = yes
+			}
+			else = {
+				has_upgraded_capital = yes
+			}
+		}
+
+		# Ad Astra : Le Code de lois permet une seconde institution urbaine specialisee
+		custom_tooltip = {
+			fail_text = adastra_zone_city_02_prereq
+			OR = {
+				NOT = { exists = owner }
+				owner = {
+					OR = {
+						NOT = { has_origin = origin_adastra }
+						has_country_flag = adastra_completed
+						has_technology = tech_adastra_law
+					}
+				}
+			}
+		}
+	}
+}

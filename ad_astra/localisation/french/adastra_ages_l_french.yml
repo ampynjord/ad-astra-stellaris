@@ -57,7 +57,7 @@
  tech_adastra_writing:0 "Écriture"
  tech_adastra_writing_desc:0 "Née pour compter des sacs de grain, elle finira par porter nos lois, nos poèmes et nos équations. Aucun outil n'a autant dépassé son usage.\n\n§YDébloque le bâtiment : Maison des tablettes. Débloque la spécialisation de district : Archives (1 emplacement).§!"
  tech_adastra_first_city:0 "Première cité"
- tech_adastra_first_city_desc:0 "Assez de gens au même endroit pour que certains cessent de produire leur propre nourriture. C'est là que naissent l'artisan, le prêtre et le percepteur.\n\n§YPermet d'améliorer le siège du pouvoir en Palais.§!"
+ tech_adastra_first_city_desc:0 "Assez de gens au même endroit pour que certains cessent de produire leur propre nourriture. C'est là que naissent l'artisan, le prêtre et le percepteur.\n\n§YPermet d'améliorer le siège du pouvoir en Palais. Débloque la spécialisation de district : Expansion urbaine (1 emplacement).§!"
  tech_adastra_calendar:0 "Calendrier lunaire"
  tech_adastra_calendar_desc:0 "Compter les lunes jusqu'à ce que le compte tombe juste. L'année cesse d'être une surprise annuelle."
  tech_adastra_measures:0 "Poids et mesures"

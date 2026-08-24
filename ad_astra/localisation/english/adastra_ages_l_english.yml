@@ -57,7 +57,7 @@
  tech_adastra_writing:0 "Writing"
  tech_adastra_writing_desc:0 "Born to count sacks of grain, it will end up carrying our laws, our poems and our equations. No tool has ever so outgrown its purpose.\n\n§YUnlocks the building: House of Tablets. Unlocks district specialization: Archives (1 building slot).§!"
  tech_adastra_first_city:0 "The First City"
- tech_adastra_first_city_desc:0 "Enough people in one place that some can stop growing their own food. This is where the artisan, the priest and the tax collector are born.\n\n§YAllows the seat of power to be upgraded to a Palace.§!"
+ tech_adastra_first_city_desc:0 "Enough people in one place that some can stop growing their own food. This is where the artisan, the priest and the tax collector are born.\n\n§YAllows the seat of power to be upgraded to a Palace. Unlocks district specialization: Urban Expansion (1 building slot).§!"
  tech_adastra_calendar:0 "Lunar Calendar"
  tech_adastra_calendar_desc:0 "Count the moons until the count comes out right. The year stops being an annual surprise."
  tech_adastra_measures:0 "Weights and Measures"

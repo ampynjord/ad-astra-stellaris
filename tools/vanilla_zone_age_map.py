@@ -5,6 +5,7 @@
 # permet aux descriptions des technologies d'annoncer exactement ce que les
 # gardes des zones rendent disponible.
 SPECIALIZATION_NAMES = {
+    "zone_urban": ("Expansion urbaine", "Urban Expansion"),
     "zone_research_unity": ("Archives", "Archives"),
     "zone_research": ("Enclave de recherche", "Research Enclave"),
     "zone_research_physics": ("Spécialisation de recherche en physique", "Physics Research Specialization"),
@@ -21,7 +22,7 @@ SPECIALIZATION_NAMES = {
 
 # (age historique, technologie fondatrice, justification)
 ZONE_AGE = {
-    "zone_urban": ("keep", None, "Expansion urbaine : une population qui grandit s'etale, a toute epoque"),
+    "zone_urban": ("bronze", "tech_adastra_first_city", "Expansion urbaine : les premieres cites concentrent population, logements et construction"),
     "zone_research_unity": ("bronze", "tech_adastra_writing", "Archives : l'ecriture permet de conserver et d'organiser le savoir"),
     "zone_research": ("medieval", "tech_adastra_scholasticism", "Enclave de recherche : l'etude organisee commence avec la scolastique"),
     "zone_research_physics": ("renaissance", "tech_adastra_experimental_method", "Recherche specialisee : la methode experimentale separe les disciplines"),
