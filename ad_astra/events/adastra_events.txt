@@ -718,6 +718,24 @@ country_event = {
 			# Les scripts vanilla peuvent poser des batiments apres le premier
 			# nettoyage. La table generee les date sans devoir lister les civismes.
 			adastra_cleanup_start_infrastructure = yes
+			# Le moteur termine aussi les zones de depart apres le jour 1. On
+			# reapplique une derniere fois la structure historique, avant que le
+			# joueur puisse raisonnablement la modifier.
+			remove_zone = { district = district_city zone = zone_research_unity }
+			remove_zone = { district = district_city zone = zone_industrial }
+			while = {
+				limit = { num_districts = { type = district_city value > 1 } }
+				remove_district = district_city
+			}
+			if = {
+				limit = { owner = { OR = { has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } } }
+				add_zone = { district = district_city zone = zone_industrial zone_slot = 1 }
+				add_building = { district = district_city zone = zone_industrial building = building_factory_1 }
+			}
+			else_if = {
+				limit = { owner = { has_country_flag = adastra_choice_steam } }
+				add_zone = { district = district_city zone = zone_industrial zone_slot = 1 }
+			}
 			solar_system = {
 				# 1.4 (17/08) : le systeme natal n'a plus de base stellaire, donc
 				# plus de proprietaire aux yeux du jeu de base - les drones

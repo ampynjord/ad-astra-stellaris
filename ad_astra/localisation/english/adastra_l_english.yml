@@ -34,7 +34,7 @@
  adastra_tech_marque_base_machine:0 "§YMachine Age: base-game technology§!"
  adastra_tech_marque_base_atomic:0 "§YAtomic Age: base-game technology§!"
  adastra_tech_marque_base_space:0 "§YSpace Age: base-game technology§!"
- adastra_tech_marque_base_desc:0 "Base-game technology attached to this Ad Astra age."
+ adastra_tech_marque_base_desc:0 "Base-game technology attached to this age."
  adastra_progress_verrou_stone:0 "§RAge lock§!: the Stone Age still has technologies left to research"
  adastra_progress_verrou_bronze:0 "§RAge lock§!: the Bronze Age still has technologies left to research"
  adastra_progress_verrou_iron:0 "§RAge lock§!: the Iron Age still has technologies left to research"

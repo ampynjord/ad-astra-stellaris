@@ -46,21 +46,6 @@ slot_city_02 = {
 	}
 
 	unlock = { # planet scope
-		custom_tooltip = {
-			fail_text = zone_city_02_prereq
-			if = {
-				limit = {
-					exists = owner
-					owner = {
-						is_primitive = yes
-					}
-				}
-				always = yes
-			}
-			else = {
-				has_upgraded_capital = yes
-			}
-		}
 
 		# Ad Astra : Le Code de lois permet une seconde institution urbaine specialisee
 		custom_tooltip = {

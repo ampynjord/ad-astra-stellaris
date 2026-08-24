@@ -34,7 +34,7 @@
  adastra_tech_marque_base_machine:0 "§YÂge de la machine : technologie du jeu de base§!"
  adastra_tech_marque_base_atomic:0 "§YÂge de l'atome : technologie du jeu de base§!"
  adastra_tech_marque_base_space:0 "§YÂge spatial : technologie du jeu de base§!"
- adastra_tech_marque_base_desc:0 "Technologie du jeu de base rattachée à cet âge d'Ad Astra."
+ adastra_tech_marque_base_desc:0 "Technologie du jeu de base rattachée à cet âge."
  adastra_progress_verrou_stone:0 "§RVerrou d'âge§! : il reste des technologies de l'Âge de pierre à découvrir"
  adastra_progress_verrou_bronze:0 "§RVerrou d'âge§! : il reste des technologies de l'Âge du bronze à découvrir"
  adastra_progress_verrou_iron:0 "§RVerrou d'âge§! : il reste des technologies de l'Âge du fer à découvrir"
