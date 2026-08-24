@@ -11,8 +11,9 @@ stable channel.
 2. Extract it directly into your Stellaris user folder:
    `Documents/Paradox Interactive/Stellaris/`.
 3. Open the Stellaris launcher and enable **Ad Astra: Origins - Beta**.
-4. Disable the Steam Workshop version of Ad Astra. Never enable both copies in
-   the same playset.
+4. Disable the Steam Workshop version of Ad Astra. While the local beta is
+   installed, treat the Workshop copy as unusable: never enable both copies in
+   the same playset, and do not use Workshop saves with the beta.
 5. Start a new game unless that beta release explicitly says otherwise.
 6. Open `TEST_PLAN.md` from the archive and run only the assigned test cards.
 
