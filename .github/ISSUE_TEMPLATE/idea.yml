@@ -1,44 +1,73 @@
 name: Idea
-description: Suggest content, balance, usability, or community improvements.
+description: Suggest a focused gameplay, usability, balance, or community improvement.
 title: "[idea] "
 labels: ["idea", "source: github"]
 body:
   - type: markdown
     attributes:
       value: |
-        Ideas are welcome. Discord suggestion threads are linked to GitHub automatically; use one place only for the same suggestion.
-        Describe the moment in play that prompted yours and the problem it would solve; a technical solution is optional.
-
-  - type: textarea
-    id: idea
-    attributes:
-      label: The idea
-    validations:
-      required: true
-
-  - type: textarea
-    id: context
-    attributes:
-      label: What led you to it?
-      description: Describe the play experience: an age that dragged, a decision nobody chose, a missing choice, or another concrete moment.
-    validations:
-      required: true
+        Create one issue for one idea. Search existing issues first.
+        If this idea already has a linked Discord suggestion thread, add information there instead of creating a duplicate issue. Ideas guide the project; they are not release promises.
 
   - type: dropdown
-    id: stage
+    id: area
     attributes:
-      label: When does it matter?
+      label: Area
       options:
-        - Day one
-        - Pre-industrial ages
-        - Industrial and later ages
-        - Space program
-        - Emergence and after
-        - The whole run
+        - Historical ages
+        - Research and technology
+        - Economy, buildings, or districts
+        - Space program and emergence
+        - Politics, civics, ethics, or factions
+        - UI, localization, or accessibility
+        - DLC or mod compatibility
         - Community or documentation
+        - Other
+    validations:
+      required: true
 
   - type: textarea
-    id: notes
+    id: problem
     attributes:
-      label: Additional context
-      description: Screenshots, related mods, examples, or a possible implementation are welcome but optional.
+      label: Player problem or opportunity
+      description: What moment in a run prompted this? Describe the concrete friction, missing choice, or opportunity.
+    validations:
+      required: true
+
+  - type: textarea
+    id: experience
+    attributes:
+      label: Proposed player experience
+      description: Describe the outcome in one or two sentences from the player's point of view.
+    validations:
+      required: true
+
+  - type: textarea
+    id: player_flow
+    attributes:
+      label: How it would work
+      description: Explain the player-facing flow, without needing a technical implementation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: availability
+    attributes:
+      label: Availability and integration
+      description: Relevant age, technology, situation phase, civic, ethic, trait, DLC, external mod, or other prerequisite.
+    validations:
+      required: true
+
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Cost, limit, risk, or trade-off
+      description: How should this avoid being a free or mandatory bonus? Write "not applicable" if none is needed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and references
+      description: Related ideas, alternative approaches, screenshots, games, mods, or sources. Optional.
