@@ -1,12 +1,13 @@
 name: Idea
 description: Suggest content, balance, usability, or community improvements.
 title: "[idea] "
-labels: ["idea"]
+labels: ["idea", "source: github"]
 body:
   - type: markdown
     attributes:
       value: |
-        Ideas are welcome. Describe the moment in play that prompted yours and the problem it would solve; a technical solution is optional.
+        Ideas are welcome. Discord suggestion threads are linked to GitHub automatically; use one place only for the same suggestion.
+        Describe the moment in play that prompted yours and the problem it would solve; a technical solution is optional.
 
   - type: textarea
     id: idea

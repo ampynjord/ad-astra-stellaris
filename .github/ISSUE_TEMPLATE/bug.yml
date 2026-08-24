@@ -1,12 +1,13 @@
 name: Bug report
 description: Report a reproducible problem with Ad Astra.
 title: "[bug] "
-labels: ["bug"]
+labels: ["bug", "source: github", "status: needs information"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping test Ad Astra. Please search existing issues first and include the requested context; it is required to reproduce progression and compatibility problems.
+        Thank you for helping test Ad Astra. Discord report threads are linked to GitHub automatically; use one place only for the same report.
+        Please search existing issues first and include the requested context. It is required to reproduce progression and compatibility problems.
 
   - type: textarea
     id: happened
@@ -78,11 +79,17 @@ body:
     validations:
       required: true
 
+  - type: input
+    id: test_card
+    attributes:
+      label: Beta test card, if applicable
+      description: "For example: B04. Leave blank for the stable Workshop build."
+
   - type: textarea
     id: log
     attributes:
       label: error.log
-      description: Paste the complete `Documents/Paradox Interactive/Stellaris/logs/error.log` after reproducing the problem. The mod's normal "already exists" override messages can stay in the log.
+      description: Paste the relevant lines from `Documents/Paradox Interactive/Stellaris/logs/error.log` after reproducing the problem. Attach the full file when possible; do not paste tokens or personal data.
       render: text
     validations:
       required: true
