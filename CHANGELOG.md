@@ -6,8 +6,10 @@ All notable player-facing changes are recorded here. Dates use ISO format.
 
 > Experimental private beta. This build is not on Steam Workshop and requires
 > a new game. Install it as a separate local mod, never beside the Workshop
-> version. Follow `TEST_PLAN.md` from the beta archive before reporting a
-> result.
+> version. The feature scope is frozen: until release, 1.4 receives only
+> test-driven bug fixes, compatibility work, and localization or asset
+> corrections needed to resolve a defect. Follow `TEST_PLAN.md` from the beta
+> archive before reporting a result.
 
 ### Added
 
@@ -24,7 +26,7 @@ All notable player-facing changes are recorded here. Dates use ISO format.
   a player-built starbase, orbital infrastructure and Hyperdrive milestones.
 - The game uses Stellaris' vanilla start, mid-game, end-game and victory dates.
 
-### Known beta focus
+### Stabilization and test focus
 
 - The complete space-program chain, astronomical fog of war, research pacing,
   building slots, later starts, DLC/civic interactions and save migration need
