@@ -148,6 +148,7 @@ def gen_techs(prereqs):
             b.append("\t# donc nos 50 technos n'ouvrent aucun palier vanilla par accident.")
             b.append("\ttier = 0")
             b.append("\tcategory = { %s }" % t["cat"])
+            b.append("\ticon = %s" % t["icon"])
             b.append("\tweight = 100")
             p = prereqs[t["key"]]
             if p:
@@ -479,21 +480,6 @@ def gen_grants():
             out.append("\t# Technos du jeu de base rattachees a cet age.")
             for k in van:
                 out.append("\tgive_technology = { tech = %s message = no }" % k)
-        out.append("}\n")
-    # 1.4 (18/08) : a l'ENTREE dans un age, on pousse ses cinq technologies de
-    # premiere vague dans le vivier de recherche. Constat du test B : au jour 1
-    # d'un depart Atomique, le vivier de physique reste vide pendant des mois
-    # - le moteur ne retire de nouvelles options qu'au compte-gouttes - et les
-    # seules technos visibles sont les deux exceptions d'economie du jeu de base
-    # (Ecosimulation, Fracturation geothermique). add_research_option force la
-    # main : appele par adastra.4x, une fois, quand le drapeau de l'age est pose.
-    out.append("# --- entree dans un age : premier rang de l'arbre pousse dans le vivier ---")
-    for age, _flag, _cost, _v in AGES:
-        vg = vagues(TECHS[age])
-        out.append("adastra_offre_age_%s = {" % age)
-        for t in TECHS[age]:
-            if vg[t["key"]] == 1:
-                out.append("\tadd_research_option = %s" % t["key"])
         out.append("}\n")
     return "\n".join(out)
 

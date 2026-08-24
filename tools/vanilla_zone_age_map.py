@@ -39,6 +39,27 @@ ZONE_AGE = {
     "zone_unity_bio_trophy": ("na", None, "Gestalt"),
 }
 
+# Une zone avancee ouvre naturellement davantage d'emplacements. Le joueur ne
+# recoit donc pas toute la capacite de construction des le premier district
+# urbain. Cette capacite depend du developpement urbain et des technologies,
+# jamais du soutien fluctuant d'une faction : perdre un soutien ne doit pas
+# rendre un batiment deja construit illegitime.
+ZONE_BUILDING_SLOTS = {
+    "zone_urban": 1,
+    "zone_research_unity": 1,
+    "zone_research": 2,
+    "zone_research_physics": 2,
+    "zone_research_society": 2,
+    "zone_research_engineering": 2,
+    "zone_unity": 1,
+    "zone_unity_spiritualist": 1,
+    "zone_fortress": 1,
+    "zone_trade": 1,
+    "zone_industrial": 2,
+    "zone_factory": 2,
+    "zone_foundry": 2,
+}
+
 STARTING_ZONES = ["zone_research_unity", "zone_industrial"]
 STARTING_BUILDINGS_TO_REMOVE = {
     "building_holo_theatres": "Holotheatres : divertissement holographique, techno de l'Age spatial",
@@ -65,9 +86,12 @@ def specialization_unlocks():
         if not tech:
             continue
         fr, en = SPECIALIZATION_NAMES[zone]
+        slots = ZONE_BUILDING_SLOTS[zone]
+        fr_slots = "%d emplacement%s" % (slots, "" if slots == 1 else "s")
+        en_slots = "%d building slot%s" % (slots, "" if slots == 1 else "s")
         out.setdefault(tech, [[], []])
-        out[tech][0].append(fr)
-        out[tech][1].append(en)
+        out[tech][0].append("%s (%s)" % (fr, fr_slots))
+        out[tech][1].append("%s (%s)" % (en, en_slots))
     return {
         tech: (
             "Débloque la spécialisation de district : %s." % ", ".join(names[0]),

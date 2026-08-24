@@ -1,57 +1,51 @@
 [h1]Ad Astra — Origins[/h1]
 [i]Per aspera ad astra — par les épreuves, jusqu'aux étoiles.[/i]
 
-Tous les autres commencent avec une flotte. Vous commencez avec une planète, et beaucoup de chemin.
+[quote]Tous les autres commencent avec une flotte. Vous commencez avec un monde — et la première question est de savoir s'il peut regarder au-delà de son horizon.[/quote]
 
-Commencez Stellaris en [b]civilisation pré-PRL[/b] confinée à son monde natal. Choisissez un âge de départ historique, faites grandir votre société à travers dix âges, montez un programme spatial à partir de rien, puis émergez dans une galaxie qui ne vous a pas attendu.
+Ad Astra transforme Stellaris en ascension historique. Commencez comme une [b]civilisation pré-PRL[/b], choisissez à quelle époque débute votre histoire, puis bâtissez les savoirs, l'économie et les infrastructures orbitales nécessaires pour rejoindre une galaxie qui, elle, ne vous a pas attendu.
 
-[b]Aucun DLC requis.[/b] Le mod est jouable en français et en anglais.
+[b]Aucun DLC requis.[/b] Français et anglais inclus.
 
 [hr][/hr]
-[h2]1.3.2 — Correctif de progression et d'economie[/h2]
-
-Cette mise à jour ciblée termine la série de correctifs des régressions de progression et d'économie de début de partie introduites en 1.3.0.
+[h2]L'ascension[/h2]
 
 [list]
-[*]Les technologies d'âge restent recherchables après un passage d'âge, notamment au Bronze et à la Renaissance.
-[*]Les départs avancés reçoivent immédiatement leurs technologies et infrastructures historiques.
-[*]L'entretien des biens de consommation avant la vapeur ne crée plus de déficit inévitable.
-[*]Les bâtiments précoces et les spécialisations de districts se débloquent par leurs technologies historiques correspondantes.
-[*]La mise à jour n'ajoute pas de contenu 1.4 et ne modifie pas le rythme voulu pour les âges.
+[*][b]Dix âges de départ[/b], de la Pierre aux débuts de l'espace. Plus le départ est ancien, plus la marche est difficile — et plus l'[b]Héritage de l'Ascension[/b] final est fort.
+[*][b]250 technologies d'époque originales[/b] dans les trois domaines. Chaque âge est un véritable arbre de recherche : cinq rangs, des prérequis cohérents, aucune technologie injectée artificiellement dans votre vivier.
+[*][b]La recherche fait progresser l'histoire.[/b] Chaque technologie d'époque achevée fait avancer la situation d'Ascension. Les dernières découvertes d'un âge ouvrent le chapitre suivant.
+[*][b]Une économie qui apparaît avec son temps.[/b] Le bronze introduit les alliages, la vapeur les biens de consommation, l'électricité l'énergie. Capitales, bâtiments et spécialisations se débloquent par les découvertes qui les rendent possibles.
+[*][b]Une route vers les étoiles que vous construisez vous-même.[/b] Astronomie, premiers tirs, satellites, vol habité, sondes, exploration sous-luminique, vaisseaux de construction, avant-poste et infrastructure orbitale précèdent l'Hyperpropulsion.
 [/list]
 
-[b]Commencez une nouvelle partie après la mise à jour.[/b] Si la progression se bloque encore, envoyez l'âge de départ, le rythme d'ascension, la date en jeu, la liste des mods actifs et votre [i]error.log[/i].
+[hr][/hr]
+[h2]L'Âge spatial[/h2]
+
+Pas de flotte offerte, ni de saut magique entre le pas de tir et l'empire galactique.
+
+[list]
+[*]Développez les fondations de la science, de l'industrie et de la propulsion.
+[*]Lancez un [b]vaisseau scientifique sous-luminique[/b] et prospectez le système natal depuis son intérieur.
+[*]Construisez un [b]vaisseau de construction[/b], puis votre premier [b]avant-poste[/b].
+[*]Ajoutez des modules et des stations orbitales avant de préparer le programme hyperspatial.
+[*]Recherchez l'[b]Hyperpropulsion[/b] pour émerger comme empire spatial classique.
+[/list]
 
 [hr][/hr]
-[h2]Ce que vous faites[/h2]
+[h2]1.4 — Le ciel se remplit[/h2]
 
-[b]Premier jour.[/b] Choisissez l'un des [b]dix âges de départ[/b], de la Pierre aux débuts de l'espace. Commencer plus tôt est plus difficile, mais donne un [b]Héritage de l'Ascension[/b] final plus fort. Choisissez votre rythme et celui de la galaxie.
+La prochaine mise à jour majeure approfondit l'identité visuelle et mécanique de l'ascension : icônes originales de technologies, bâtiments et décisions ; observatoires et télescopes ; parcours spatial plus clair ; risques de lancement ; exploration locale ; et arbre technologique dont le rythme vient de la recherche, non de vagues scriptées.
 
-[b]L'ascension.[/b] Chaque âge contient [b]vingt-cinq technologies d'époque[/b] dans les trois domaines de recherche. Elles arrivent par cinq vagues, dans l'ordre de leurs dates historiques. L'ascension attend à la fin d'un âge que toutes les technologies restantes soient découvertes.
-
-[b]L'économie.[/b] Une ressource n'apparaît que quand votre civilisation peut l'utiliser : alliages avec le bronze, biens de consommation avec la vapeur, énergie avec l'électricité. Bâtiments et capitales d'époque font passer le monde du cercle de pierres aux ministères. Les campagnes d'exploitation offrent de vrais compromis à court terme.
-
-[b]La route vers l'espace.[/b] À l'Âge spatial, les [b]technologies fondatrices[/b] du jeu de base doivent être recherchées au lieu d'être données. Les programmes spatiaux apportent ensuite l'exploration sous-luminique, le chantier orbital, une flotte orbitale facultative et le chemin vers l'Hyperpropulsion. Le vaisseau scientifique [b]prospecte par présence[/b] : un astre par mois, même dans un système natal revendiqué.
-
-[b]L'émergence.[/b] Recherchez l'Hyperpropulsion pour achever l'ascension. Votre flotte est rééquipée pour le voyage PRL, l'arbre technologique normal s'ouvre et l'Héritage devient permanent. Si un empire occupe votre système natal, l'émergence se négocie.
+Elle est en développement actif. La branche Workshop stable reste recommandée pour une campagne normale ; les builds expérimentaux paraissent sous forme de préversions GitHub.
 
 [hr][/hr]
-[h2]Feuille de route[/h2]
+[h2]Compatibilité et support[/h2]
 
-[b]1.4 — Le ciel se remplit[/b] : observatoires, radiotélescopes, satellites, vol habité, sondes profondes, premiers atterrissages, risques de lancement et échelle de propulsion plus claire.
-
-[b]1.5 — Le monde d'en bas[/b] : une planète qui grandit par régions, nations rivales et unification, traditions d'époque et choix industriels qui marquent l'Héritage.
-
-[b]Plus tard[/b] : terraformation par étapes et avant-postes, puis observation, contact et archéologie de l'histoire propre à chaque partie. C'est une direction, pas un calendrier de sortie.
-
-[hr][/hr]
-[h2]Support et compatibilite[/h2]
-
-Stellaris v4.4.x · Aucun DLC requis · Nouvelle partie requise après les mises à jour · Succès désactivés.
+[b]Stellaris v4.4.x[/b] · Aucun DLC requis · Succès désactivés · Nouvelle partie conseillée après une mise à jour majeure.
 
 Le mod surcharge les technologies précoces, certains vaisseaux civils, des déclencheurs d'empire, plusieurs casus belli et buts de guerre, ainsi que des cartes d'objectifs. Ce sont les points de conflit les plus probables.
 
-[b]Problèmes de compatibilité connus et en cours d'analyse :[/b] Gigastructural Engineering & More peut laisser la colonie de départ sans district urbain ; Ethics and Civics Classic peut perturber la chaîne des capitales. Envoyez la liste complète de chargement pour signaler un conflit.
+[b]Compatibilités signalées :[/b] Gigastructural Engineering & More peut laisser la colonie de départ sans district urbain ; Ethics and Civics Classic peut perturber la chaîne des capitales. Pour un rapport utile, joignez l'ordre de chargement complet, l'âge de départ, la date en jeu et [i]error.log[/i].
 
 [b]Discord :[/b] https://discord.gg/nKP4TfNzNX
-[b]Issues GitHub :[/b] https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose
+[b]Issues et idées GitHub :[/b] https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose

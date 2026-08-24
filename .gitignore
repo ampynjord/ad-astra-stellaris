@@ -10,3 +10,16 @@ __pycache__/
 AGENTS.md
 docs/ROADMAP.md
 SWAP_GPT_CLAUDE.md
+
+# Decoupes reproductibles depuis les planches de technologies.
+artwork/icon_sources/technologies/*.png
+!artwork/icon_sources/technologies/fire.png
+!artwork/icon_sources/technologies/stone_tools.png
+!artwork/icon_sources/technologies/hunting.png
+!artwork/icon_sources/technologies/cave_art.png
+!artwork/icon_sources/technologies/language.png
+!artwork/icon_sources/technologies/agriculture.png
+!artwork/icon_sources/technologies/pottery.png
+!artwork/icon_sources/technologies/bronze.png
+!artwork/icon_sources/technologies/writing.png
+!artwork/icon_sources/technologies/first_city.png

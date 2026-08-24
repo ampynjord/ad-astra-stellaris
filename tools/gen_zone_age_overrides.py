@@ -12,7 +12,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from clausewitz import top_level_blocks  # noqa: E402
-from vanilla_zone_age_map import ZONE_AGE  # noqa: E402
+from vanilla_zone_age_map import ZONE_AGE, ZONE_BUILDING_SLOTS  # noqa: E402
 
 
 INLINE_DIR = None
@@ -72,6 +72,15 @@ def inject(block, tech, why):
     return block
 
 
+def set_building_slots(block, slots):
+    """Remplace la capacite vanilla d'une zone par sa capacite historique."""
+    pattern = r"(zone_building_slots_add\s*=\s*)\d+"
+    result, count = re.subn(pattern, r"\g<1>%d" % slots, block)
+    if count != 1:
+        raise ValueError("capacite d'emplacements introuvable ou dupliquee")
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("vanilla_dir")
@@ -82,6 +91,7 @@ def main():
     INLINE_DIR = args.inline
 
     todo = {name: value for name, value in ZONE_AGE.items() if value[0] not in ("na", "keep")}
+    expected = set(todo) | set(ZONE_BUILDING_SLOTS)
     output = [
         "# Ad Astra 1.4 - technologies des specialisations de district (zones).",
         "# FICHIER GENERE PAR tools/gen_zone_age_overrides.py - NE PAS EDITER A LA MAIN.",
@@ -96,13 +106,20 @@ def main():
             continue
         source = open(os.path.join(args.vanilla_dir, filename), encoding="utf-8-sig", errors="replace").read()
         for name, start, end in top_level_blocks(source):
-            if name not in todo:
+            if name not in expected:
                 continue
-            _age, tech, why = todo[name]
-            output.extend(["", "### %s -> %s" % (name, tech), inject(source[start:end], tech, why)])
+            block = source[start:end]
+            if name in todo:
+                _age, tech, why = todo[name]
+                block = inject(block, tech, why)
+                title = "%s -> %s" % (name, tech)
+            else:
+                title = "%s -> capacite urbaine" % name
+            block = set_building_slots(block, ZONE_BUILDING_SLOTS[name])
+            output.extend(["", "### %s" % title, block])
             seen.append(name)
 
-    missing = sorted(set(todo) - set(seen))
+    missing = sorted(expected - set(seen))
     with open(args.out, "w", encoding="utf-8", newline="\n") as handle:
         handle.write("\n".join(output) + "\n")
     if missing:

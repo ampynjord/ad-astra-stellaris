@@ -16,6 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "ad_astra"
 INSTALL = ROOT / "docs" / "BETA.md"
+TEST_PLAN = ROOT / "docs" / "BETA_TESTING_1_4.md"
 BETA_NAME = "Ad Astra: Origins - Beta"
 BETA_FOLDER = "adastra_beta"
 
@@ -71,11 +72,13 @@ def main():
                 if file.is_file():
                     zipped.write(file, file.relative_to(staging))
             zipped.write(INSTALL, "INSTALL_BETA.md")
+            zipped.write(TEST_PLAN, "TEST_PLAN.md")
 
     with zipfile.ZipFile(archive) as zipped:
         names = set(zipped.namelist())
         required = {
             "INSTALL_BETA.md",
+            "TEST_PLAN.md",
             f"mod/{BETA_FOLDER}.mod",
             f"mod/{BETA_FOLDER}/descriptor.mod",
         }

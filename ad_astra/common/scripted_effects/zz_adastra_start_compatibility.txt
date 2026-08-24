@@ -1,0 +1,267 @@
+# Ad Astra - compatibilite des infrastructures de depart.
+# FICHIER GENERE PAR tools/gen_start_compatibility.py - NE PAS EDITER A LA MAIN.
+# Source de verite : tools/vanilla_building_age_map.py (STARTUP_BUILDING_AGE).
+#
+# L'effet est execute sur la capitale pendant l'initialisation et au jour 4.
+# Il neutralise les structures posees par les scripts vanilla avant leur epoque,
+# quelle que soit l'ethique, le civisme ou le DLC qui les a declenchees.
+
+adastra_cleanup_start_infrastructure = {
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_completed } } }
+		remove_building = building_automation_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_automation_2
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_completed } } }
+		remove_building = building_automation_farmer_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_automation_farmer_2
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_completed } } }
+		remove_building = building_automation_miner_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_automation_miner_2
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_completed } } }
+		remove_building = building_automation_technician_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_automation_technician_2
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_clone_army_clone_vat
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_completed } } }
+		remove_building = building_clone_vats
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_completed } } }
+		remove_building = building_commercial_zone
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_steam } } }
+		remove_building = building_dread_encampment
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_machine } } }
+		remove_building = building_energy_grid
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_energy_nexus
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_steam } } }
+		remove_building = building_factory_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_industrial } } }
+		remove_building = building_factory_2
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_factory_3
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_factory_efficiency_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_factory_upkeep_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_industrial } } }
+		remove_building = building_farming_districts_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_machine } } }
+		remove_building = building_farming_districts_2
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_farming_districts_3
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_farming_districts_4
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_industrial } } }
+		remove_building = building_foundry_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_machine } } }
+		remove_building = building_foundry_2
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_foundry_3
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_foundry_efficiency_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_foundry_upkeep_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_gaiaseeders_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_gaiaseeders_2
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_gaiaseeders_3
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_gaiaseeders_4
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_gaiaseeders_pc_gaia
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_machine } } }
+		remove_building = building_generator_districts_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_generator_districts_2
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_completed } } }
+		remove_building = building_generator_districts_3
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_generator_districts_4
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_completed } } }
+		remove_building = building_holo_theatres
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_renaissance } } }
+		remove_building = building_luxury_residence
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_industrial } } }
+		remove_building = building_maintenance_depot
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_mineral_purification_hub
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_industrial } } }
+		remove_building = building_mineral_purification_plant
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_industrial } } }
+		remove_building = building_mining_districts_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_machine } } }
+		remove_building = building_mining_districts_2
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_atomic } } }
+		remove_building = building_mining_districts_3
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_mining_districts_4
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_necrophage_elevation_chamber
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_necrophage_house_of_apotheosis
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_medieval } } }
+		remove_building = building_noble_estates
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_offworld_expedition_hub
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_medieval } } }
+		remove_building = building_order_castle
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_medieval } } }
+		remove_building = building_order_keep
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_posthumous_employment_center
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_bronze } } }
+		remove_building = building_precinct_house
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_psi_corps
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_machine } } }
+		remove_building = building_ranger_lodge
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_robot_assembly_complex
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_shroud_observatory_1
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_iron } } }
+		remove_building = building_stronghold
+	}
+	if = {
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
+		remove_building = building_toxic_bath
+	}
+}
+
+# Les batiments explicitement fournis par un civisme reviennent des que leur
+# economie est capable d'assurer leur entretien. L'effet est appele sur la
+# capitale et ne remplace jamais un batiment existant.
+adastra_grant_civic_infrastructure = {
+	if = {
+		limit = {
+			owner = { has_civic = civic_reanimated_armies }
+			owner = { has_country_flag = adastra_reached_steam }
+			owner = { adastra_has_energy = yes }
+			owner = { adastra_has_consumer_goods = yes }
+			free_building_slots > 0
+			NOT = { has_building = building_dread_encampment }
+		}
+		add_building = building_dread_encampment
+	}
+}

@@ -708,7 +708,7 @@ T = lambda key, area, cat, fr, en, dfr, den, mods, unlocks=None: dict(
     key=key, area=area, cat=cat, fr=fr, en=en, dfr=dfr, den=den,
     mods=_mise_a_l_echelle(mods), unlocks=unlocks,
     year=ANNEES.get(key[len("tech_adastra_"):]),
-    icon="tech_%s" % ICONS[key[len("tech_adastra_"):]])
+    icon=key)
 
 TECHS = {
 
