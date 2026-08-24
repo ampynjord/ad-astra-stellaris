@@ -40,7 +40,7 @@ Choose an age from Stone to Early Space. Starting earlier is harder, but improve
 
 ### The ascent
 
-The **Beyond the Stars** situation tracks the journey through ten ages. Each age contains twenty-five period technologies across the three research fields. They arrive in five chronological waves, and the ascent waits at the end of an age until its remaining technologies are discovered.
+The **Beyond the Stars** situation tracks the journey through ten ages. Each age contains period technologies across the three research fields. Completing the relevant research advances the ascent; prerequisites keep discoveries in a coherent historical order.
 
 Choose an approach for the current age: careful continuity for stability, a forced march for speed at a social cost, or eyes on the sky for research at the expense of unity.
 
@@ -72,21 +72,41 @@ The mod overrides starting and early-tier technologies, selected civilian ship s
 
 Known incompatibilities under investigation: **Gigastructural Engineering & More** can leave the starting colony without a city district, and **Ethics and Civics Classic** can interfere with the capital chain. Please include a complete load order when reporting compatibility problems.
 
-## Roadmap
+## Roadmap — the Ad Astra collection
 
 The roadmap is direction, not a release calendar. A version is released only
-after its targeted in-game tests pass.
+after its targeted in-game tests pass. The current mod will remain a complete
+experience throughout 1.4. The collection restructuring begins in **1.5**;
+Origins will not be split in the middle of 1.4 development.
 
-- **1.4 — Galileo:** research-led historical progression, astronomy, the full
-  path from first launch to a player-built starbase, and an art pass for custom
-  content. The game keeps Stellaris' vanilla start and end dates.
-- **1.4.x:** a more legible and useful home system, including astronomical
-  discovery, light outposts and optional generation-ship experiments.
-- **1.5 — Nations:** simulated rival nations, unification and the political
-  cost of developing the homeworld.
-- **Later:** Regolith (outposts and staged terraforming), then Emergence
-  (observation, contact and the consequences of reaching the galaxy).
+- **Ad Astra: Origins** — the flagship of the collection and its original
+  pre-FTL, planetary origin. It covers the ten historical ages, the first
+  space program and emergence into the galaxy.
+  **1.4 “Galileo”** remains its immediate priority: research-led progression,
+  astronomy, the path from first launch to a player-built starbase, and an art
+  pass for custom content. Stellaris' vanilla start and end dates remain
+  unchanged.
+- **Ad Astra: Core** — the shared, non-playable foundation planned for **1.5**:
+  common scripts,
+  technology rules, assets and compatibility interfaces for every Ad Astra
+  module. It will be extracted only after Origins is stable enough to make the
+  shared contract dependable.
+- **Ad Astra: Ark** — a separate pre-FTL origin aboard a nomadic ark. Its
+  population, economy, movement and survival problems are fundamentally
+  different from a homeworld origin.
+- **Ad Astra: Frontier** — post-emergence frontier development: non-habitable
+  outposts and biodomes, staged terraforming, asteroid and deep-space stations,
+  and the supporting spatial mechanics.
+- **Ad Astra: Millenium** — generation and cryogenic ships that establish a
+  distant independent colony, then create a later reunion, integration or
+  independence story after emergence.
+- **Ad Astra: Nations** — the planetary macro layer: countries, factions,
+  institutions, political legitimacy, economic competition and planetary
+  warfare leading to unification.
 
+These modules will be released as separate Workshop items in an **Ad Astra
+Collection**, with Origins as its flagship and Core as an explicit shared
+requirement where needed.
 Gestalt authorities and a galaxy where every empire starts pre-FTL remain
 separate-project territory.
 
