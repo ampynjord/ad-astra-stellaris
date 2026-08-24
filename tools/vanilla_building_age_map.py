@@ -74,10 +74,14 @@ BUILDING_AGE = {
 "building_maintenance_depot":        ("industrial", "Pole logistique : chemin de fer et entreposage de masse"),
 
 # --- Gouvernement et societe ----------------------------------------------
+"building_holo_theatres":           ("space",      "Hololoisirs : technologie fondatrice de l'Age spatial"),
+"building_commercial_zone":         ("space",      "Commerce interplanetaire : technologie fondatrice de l'Age spatial"),
+"building_precinct_house":          ("bronze",    "Gardes civiques et administration urbaine : une cite organisee"),
+"building_stronghold":              ("iron",      "Fortifications permanentes et garnison professionnelle : age du fer"),
 "building_noble_estates":            ("medieval",   "Domaines nobiliaires : l'aristocratie fonciere est medievale"),
 "building_order_keep":               ("medieval",   "Donjon d'un ordre : parfaitement a sa place au Moyen Age"),
 "building_order_castle":             ("medieval",   "Chateau d'un ordre : idem"),
-"building_dread_encampment":         ("iron",       "Camp de terreur : razzia et guerre organisee, age du fer"),
+"building_dread_encampment":         ("steam",      "Camp de terreur : historiquement ancien, mais son entretien vanilla exige electricite et biens de consommation"),
 "building_ranger_lodge":             ("machine",    "Gardes forestiers : la protection de la nature nait vers 1900"),
 "building_psi_corps":                ("space",      "Corps psionique : ascension tardive"),
 "building_shroud_observatory_1":     ("space",      "Observatoire du Voile : au-dela du materiel"),
@@ -152,4 +156,49 @@ BUILDING_TECH = {
     "building_mining_districts_1": ("tech_mechanized_mining", "industrial"),
     "building_mining_districts_2": ("tech_mining_1", "machine"),
     "building_mining_districts_3": ("tech_mining_2", "atomic"),
+}
+
+# ---------------------------------------------------------------------------
+# Compatibilite du depart Ad Astra
+#
+# Le moteur ajoute une partie des batiments de depart APRES on_game_start.
+# Selon l'ethique, le civisme ou certains contenus DLC, cette passe peut aussi
+# ajouter une structure qui appartient a une epoque posterieure. La liste ne
+# nomme donc pas des civismes : elle date les structures elles-memes. Ainsi un
+# nouveau civisme vanilla qui choisit l'une de ces structures est protege sans
+# qu'il faille deviner son nom.
+#
+# Les batiments "keep" sont volontairement conserves (logement communautaire),
+# les "na" ne peuvent pas appartenir a un empire regulier et les batiments
+# "tech" sont resolus par BUILDING_TECH. La sortie est le script d'effet
+# zz_adastra_start_compatibility.txt, appele au demarrage puis au jour 4.
+STARTUP_BUILDING_AGE = {
+    key: (BUILDING_TECH[key][1] if age == "tech" else age)
+    for key, (age, _why) in BUILDING_AGE.items()
+    if age not in ("keep", "na")
+}
+
+# Ces deux structures sont des technologies fondatrices de l'Age spatial, pas
+# des acquis au premier jour de cet age. Le nettoyage de depart les retire donc
+# jusqu'a l'emergence ; des qu'elles sont recherchees, il ne repasse plus.
+STARTUP_BUILDING_AGE.update({
+    "building_holo_theatres": "ftl",
+    "building_commercial_zone": "ftl",
+})
+
+# Batiments que le jeu lie directement a un civisme. Ils ne peuvent pas rester
+# au sol avant leur epoque, mais leur absence ne doit pas penaliser le choix
+# du joueur. La restitution est automatique des que l'age, les ressources
+# d'entretien et un emplacement libre le permettent. La cle est le civisme ;
+# la valeur indique le batiment et ses conditions de compatibilite.
+#
+# Ne pas ajouter un batiment simplement thematique ici : le Commissariat, le
+# Bastion et les Hololoisirs sont des infrastructures generales, pas des dons
+# de civisme. Le Camp de terreur est le seul cas constate dans le vanilla.
+CIVIC_BUILDING_UNLOCKS = {
+    "civic_reanimated_armies": {
+        "building": "building_dread_encampment",
+        "age": "steam",
+        "triggers": ("adastra_has_energy", "adastra_has_consumer_goods"),
+    },
 }

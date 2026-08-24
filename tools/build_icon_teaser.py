@@ -67,12 +67,12 @@ def main() -> None:
               fill=(113, 166, 185, 255))
     paste_grid(canvas, decisions, (x, 300), columns=7, cell=64, size=54)
 
-    draw.text((x, 530), "18 BUILDINGS", font=label, fill=(202, 233, 241, 255))
+    draw.text((x, 530), "21 BUILDINGS", font=label, fill=(202, 233, 241, 255))
     draw.text((x, 563), "A civilization made visible on the ground.", font=small,
               fill=(113, 166, 185, 255))
     paste_grid(canvas, buildings, (x, 605), columns=6, cell=78, size=72)
 
-    draw.text((72, 864), "282 ORIGINAL ICONS", font=font(35, bold=True),
+    draw.text((72, 864), "285 ORIGINAL ICONS", font=font(35, bold=True),
               fill=(207, 244, 252, 255))
     draw.text((72, 912), "Technologies  •  Decisions  •  Buildings", font=font(26),
               fill=(89, 194, 212, 255))

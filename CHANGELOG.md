@@ -2,6 +2,34 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## 1.4.0-beta.1 — 2026-08-24
+
+> Experimental private beta. This build is not on Steam Workshop and requires
+> a new game. Install it as a separate local mod, never beside the Workshop
+> version. Follow `TEST_PLAN.md` from the beta archive before reporting a
+> result.
+
+### Added
+
+- Research-led age progression: period technologies now advance the Beyond the
+  Stars situation through a historical prerequisite tree.
+- Progressive building capacity and technology-gated district specializations.
+- Stellaris-style custom icon coverage for the period technology set, plus the
+  new observatory, radio telescope and space telescope buildings.
+- Deferred civic infrastructure and a free government reform at emergence.
+
+### Changed
+
+- The Early Space Age now leads through astronomy, exploration, construction,
+  a player-built starbase, orbital infrastructure and Hyperdrive milestones.
+- The game uses Stellaris' vanilla start, mid-game, end-game and victory dates.
+
+### Known beta focus
+
+- The complete space-program chain, astronomical fog of war, research pacing,
+  building slots, later starts, DLC/civic interactions and save migration need
+  in-game validation.
+
 ## 1.3.2 — 2026-08-20
 
 ### Fixed

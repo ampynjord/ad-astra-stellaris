@@ -5,6 +5,82 @@
 # Chaque specialisation depend de sa technologie fondatrice, pas seulement d'un age.
 
 
+### zone_urban -> capacite urbaine
+zone_urban = {
+	icon = GFX_district_specialization_urban
+	base_buildtime = @zone_buildtime
+	potential = { # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	unlock = { # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	resources = {
+		category = planet_zones
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @zone_cost
+			NOMADIC_COST_MULT = 0.5
+		}
+	}
+
+	triggered_district_planet_modifier = {
+		planet_housing_add = @zone_urban_housing_positive
+	}
+
+	max_buildings = 3
+
+	zone_sets = {
+		urban
+		habitat_urban
+	}
+
+	include = {
+		all
+	}
+
+	excluded_building_sets = {
+		generator
+		mining
+		farming
+		knights
+		betharian
+		generator_automation
+		mining_automation
+		farming_automation
+		urban_automation_arcology
+		urban_automation
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 1
+	}
+
+	triggered_desc = {
+		trigger = {
+			always = yes
+		}
+		text = zone_urban_triggered_desc
+	}
+
+	ai_priority = 2
+	ai_weight_coefficient = 0.5
+}
+
 ### zone_industrial -> tech_adastra_steam_engine
 zone_industrial = {
 	icon = GFX_district_specialization_industrial
@@ -79,7 +155,7 @@ zone_industrial = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 2
 	}
 
 	ai_resource_production = {
@@ -177,7 +253,7 @@ zone_foundry = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 2
 	}
 
 	ai_resource_production = {
@@ -272,7 +348,7 @@ zone_factory = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 2
 	}
 
 	ai_resource_production = {
@@ -375,7 +451,7 @@ zone_research_unity = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 1
 	}
 
 	inline_script = {
@@ -461,7 +537,7 @@ zone_research = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 2
 	}
 
 	ai_resource_production = {
@@ -538,7 +614,7 @@ zone_research_physics = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 2
 	}
 
 	potential = { # portee planete
@@ -626,7 +702,7 @@ zone_research_society = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 2
 	}
 
 	potential = { # portee planete
@@ -714,7 +790,7 @@ zone_research_engineering = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 2
 	}
 
 	potential = { # portee planete
@@ -836,7 +912,7 @@ zone_unity = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 1
 	}
 
 	ai_resource_production = {
@@ -935,7 +1011,7 @@ zone_unity_spiritualist = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 1
 	}
 
 	ai_resource_production = {
@@ -1032,7 +1108,7 @@ zone_fortress = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 1
 	}
 
 	ai_priority = 10
@@ -1117,7 +1193,7 @@ zone_trade = {
 	}
 
 	planet_modifier = {
-		zone_building_slots_add = 3
+		zone_building_slots_add = 1
 	}
 
 	ai_weight_coefficient = 0.5

@@ -6,6 +6,8 @@ soient reproductibles. Les cadres de decisions sont appliques ici : ils restent
 identiques, sans dupliquer un asset vanilla.
 """
 from pathlib import Path
+import subprocess
+import sys
 
 from PIL import Image, ImageDraw
 
@@ -76,6 +78,14 @@ BUILDINGS = {
     "building_adastra_school": "school.png",
 }
 
+# Les telescopes sont des batiments Ad Astra a part entiere : leurs icones ne
+# doivent pas retomber sur les laboratoires vanilla.
+CORE_BUILDINGS = {
+    "building_core_observatory": "core_observatory.png",
+    "building_core_radio_telescope": "core_radio_telescope.png",
+    "building_core_space_telescope": "core_space_telescope.png",
+}
+
 
 def build_building(source: Path) -> Image.Image:
     """Cadre un batiment transparent sans lui imposer une vue isometrique."""
@@ -98,6 +108,9 @@ def build_technology(source: Path) -> Image.Image:
 
 
 def main() -> None:
+    splitter = ROOT / "tools" / "split_technology_icon_sheets.py"
+    if splitter.is_file():
+        subprocess.run([sys.executable, str(splitter)], check=True)
     DESTINATION.mkdir(parents=True, exist_ok=True)
     for icon, filename in DECISIONS.items():
         source = SOURCE / filename
@@ -107,7 +120,7 @@ def main() -> None:
         build_decision(source).save(target, "DDS")
         print(f"ecrit : {target.relative_to(ROOT)}")
     BUILDING_DESTINATION.mkdir(parents=True, exist_ok=True)
-    for icon, filename in BUILDINGS.items():
+    for icon, filename in {**BUILDINGS, **CORE_BUILDINGS}.items():
         source = BUILDING_SOURCE / filename
         if not source.is_file():
             raise FileNotFoundError(f"Source manquante : {source}")
