@@ -899,14 +899,22 @@ else:
 # qui debloque un batiment, une ressource ou un palier de capitale doit le dire
 # dans sa description, sinon le joueur cherche a l'aveugle.
 print("\n== annonces de deblocage ==")
-from age_techs_data import UNLOCKS  # noqa: E402
+from age_techs_data import GAMEPLAY_ANNOUNCEMENTS, UNLOCKS  # noqa: E402
 from vanilla_zone_age_map import specialization_unlocks  # noqa: E402
+from vanilla_zone_slot_age_map import city_zone_slot_unlocks  # noqa: E402
 locfr = open(os.path.join(ROOT, "localisation", "french",
                           "adastra_ages_l_french.yml"), encoding="utf-8").read()
 locen = open(os.path.join(ROOT, "localisation", "english",
                           "adastra_ages_l_english.yml"), encoding="utf-8").read()
-annonces = dict(UNLOCKS)
-annonces.update(specialization_unlocks())
+annonces = {}
+for source in (UNLOCKS, GAMEPLAY_ANNOUNCEMENTS, specialization_unlocks(),
+               city_zone_slot_unlocks()):
+    for key, textes in source.items():
+        if key in annonces:
+            annonces[key] = tuple(
+                "%s %s" % (annonces[key][i], textes[i]) for i in range(2))
+        else:
+            annonces[key] = textes
 attendus = set(annonces)
 for age, _f, _c, _v in AGES:
     for t in TECHS[age]:
@@ -923,12 +931,32 @@ for key in sorted(attendus):
 for key in annonces:
     if key not in {t["key"] for age, _f, _c, _v in AGES for t in TECHS[age]}:
         err("UNLOCKS decrit %s, qui n'existe pas" % key)
-for key, textes in specialization_unlocks().items():
+for key, textes in annonces.items():
     for lang, src2, texte in (("french", locfr, textes[0]),
                               ("english", locen, textes[1])):
         m = re.search(r'^ %s_desc:0 "(.*)"$' % re.escape(key), src2, re.M)
         if not m or texte not in m.group(1):
-            err("%s : la specialisation n'est pas annoncee en %s" % (key, lang))
+            err("%s : le deblocage n'est pas annonce en %s" % (key, lang))
+
+# Les verrous de gameplay ecrits a la main ne passent pas par le champ
+# `unlocks` de la table des ages. Toute nouvelle technologie directement
+# requise par ces batiments, decisions ou evenements doit donc etre ajoutee a
+# GAMEPLAY_ANNOUNCEMENTS et apparaitre dans les deux langues.
+manual_paths = (
+    os.path.join(ROOT, "common", "buildings", "core_telescopes.txt"),
+    os.path.join(ROOT, "common", "decisions", "core_premiers_pas.txt"),
+    os.path.join(ROOT, "events", "core_premiers_pas_events.txt"),
+    os.path.join(ROOT, "events", "adastra_events.txt"),
+)
+manual_techs = set()
+for path in manual_paths:
+    with open(path, encoding="utf-8") as f:
+        manual_techs.update(re.findall(r"tech_adastra_[a-z0-9_]+", f.read()))
+missing_manual = manual_techs - set(GAMEPLAY_ANNOUNCEMENTS)
+if missing_manual:
+    err("deblocages core non annonces : %s" % ", ".join(sorted(missing_manual)))
+else:
+    print("  %d verrous core annonces explicitement" % len(manual_techs))
 print("  %d technos annoncent un deblocage, FR et EN" % len(attendus))
 
 # ------------------------------------------------------- icones des technos

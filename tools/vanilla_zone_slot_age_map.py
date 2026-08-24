@@ -22,3 +22,16 @@ CITY_ZONE_SLOT_TECH = {
         "Le Code de lois permet une seconde institution urbaine specialisee",
     ),
 }
+
+
+def city_zone_slot_unlocks():
+    """Retourne les annonces FR/EN des emplacements urbains progressifs."""
+    out = {}
+    for index, (_slot, (tech, _loc, _why)) in enumerate(
+            CITY_ZONE_SLOT_TECH.items(), start=1):
+        ordinal = "1er" if index == 1 else "%de" % index
+        out[tech] = (
+            "Débloque le %s emplacement de spécialisation urbaine." % ordinal,
+            "Unlocks urban specialization slot %d." % index,
+        )
+    return out
