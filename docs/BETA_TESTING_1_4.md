@@ -2,6 +2,8 @@
 
 This is the private-beta test contract. Steam Workshop remains on 1.3.2.
 Enable only `Ad Astra: Origins - Beta`; never enable it alongside Workshop.
+While this local beta is installed, treat the Workshop copy as unusable and do
+not load its saves with the beta.
 
 ## Rules for every card
 
