@@ -47,7 +47,25 @@ def guard(tech, fail_text, why):
     )
 
 
-def inject(block, tech, fail_text, why):
+def remove_city_02_vanilla_gate(block):
+    """Retire le verrou vanilla de centralisation du second emplacement."""
+    marker = "fail_text = zone_city_02_prereq"
+    start = block.find(marker)
+    if start < 0:
+        raise ValueError("garde vanilla du second emplacement absente")
+    opening = block.rfind("custom_tooltip", 0, start)
+    if opening < 0:
+        raise ValueError("custom_tooltip vanilla introuvable")
+    brace = block.find("{", opening)
+    closing = fin_bloc(block, brace)
+    line_start = block.rfind("\n", 0, opening) + 1
+    line_end = closing
+    if line_end < len(block) and block[line_end] == "\n":
+        line_end += 1
+    return block[:line_start] + block[line_end:]
+
+
+def inject(block, tech, fail_text, why, slot):
     """Ajoute la garde dans unlock sans ecraser les conditions vanilla."""
     match = re.search(r"^\tunlock\s*=\s*\{", block, re.M)
     if not match:
@@ -55,6 +73,12 @@ def inject(block, tech, fail_text, why):
     opening = block.index("{", match.start())
     closing = fin_bloc(block, opening) - 1
     closing_line = block.rfind("\n", 0, closing) + 1
+    if slot == "slot_city_02":
+        block = remove_city_02_vanilla_gate(block)
+        match = re.search(r"^\tunlock\s*=\s*\{", block, re.M)
+        opening = block.index("{", match.start())
+        closing = fin_bloc(block, opening) - 1
+        closing_line = block.rfind("\n", 0, closing) + 1
     return block[:closing_line] + guard(tech, fail_text, why) + block[closing_line:]
 
 
@@ -79,7 +103,7 @@ def main():
         if name not in CITY_ZONE_SLOT_TECH:
             continue
         tech, fail_text, why = CITY_ZONE_SLOT_TECH[name]
-        output += ["", "### %s -> %s" % (name, tech), inject(source[start:end], tech, fail_text, why)]
+        output += ["", "### %s -> %s" % (name, tech), inject(source[start:end], tech, fail_text, why, name)]
         seen.add(name)
 
     missing = sorted(set(CITY_ZONE_SLOT_TECH) - seen)

@@ -126,12 +126,18 @@ if "id = adastra.130" in _events or "adastra_offre_age_" in _events:
     err("adastra_events reinjecte encore des technologies d'age")
 _capital_start = _events[_events.index("# 1.2 : la capitale demarre specialisee"):
                          _events.index("# 1.2 : les DISTRICTS aussi.")]
+_day4_start = _events[_events.index("id = adastra.8"):
+                      _events.index("# adastra.9 : Garde mensuelle")]
 for _archive_fragment in (
     "add_zone = { district = district_city zone = zone_research_unity",
     "add_building = { district = district_city zone = zone_research_unity building = building_research_lab_1 }",
 ):
-    if _archive_fragment in _capital_start:
+    if _archive_fragment in _capital_start or _archive_fragment in _day4_start:
         err("depart : les Archives et leur laboratoire ne doivent pas etre offerts")
+if "remove_zone = { district = district_city zone = zone_research_unity }" not in _day4_start:
+    err("depart : les Archives ne sont pas retirees apres l'initialisation vanilla")
+if "num_districts = { type = district_city value > 1 }" not in _day4_start:
+    err("depart : les districts urbains excedentaires ne sont pas retires apres l'initialisation vanilla")
 
 # ------------------------------------------------------------- localisation
 print("\n== localisation ==")
@@ -616,6 +622,11 @@ else:
             err("emplacement urbain %s sans technologie %s" % (_slot, _tech))
         if "fail_text = %s" % _tooltip not in _match.group(1):
             err("emplacement urbain %s sans infobulle" % _slot)
+        if _slot == "slot_city_02" and (
+                "has_upgraded_capital" in _match.group(1) or
+                re.search(r"fail_text\s*=\s*zone_city_02_prereq(?:\s|$)",
+                          _match.group(1))):
+            err("second emplacement urbain : verrou vanilla de centralisation encore present")
     for _lang in ("french", "english"):
         _loc_path = os.path.join(ROOT, "localisation", _lang,
                                  "adastra_l_%s.yml" % ("french" if _lang == "french" else "english"))

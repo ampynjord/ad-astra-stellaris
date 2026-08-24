@@ -61,7 +61,6 @@ ZONE_BUILDING_SLOTS = {
     "zone_foundry": 2,
 }
 
-STARTING_ZONES = ["zone_research_unity", "zone_industrial"]
 STARTING_BUILDINGS_TO_REMOVE = {
     "building_holo_theatres": "Holotheatres : divertissement holographique, techno de l'Age spatial",
     "building_commercial_zone": "Zones commerciales : tours de bureaux et centres d'affaires",
