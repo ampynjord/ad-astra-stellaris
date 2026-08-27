@@ -24,6 +24,12 @@
 #
 # FICHIER GENERE PAR tools/gen_war_overrides.py - NE PAS EDITER A LA MAIN.
 
+# 27/08 : les variables @ sont locales a leur fichier. Le jeu de base definit
+# @protectorate_tech_threshold dans son common/war_goals/00_war_goals.txt ;
+# nos copies l'utilisaient sans l'avoir, d'ou « Variable @protectorate_tech_threshold
+# is not set » dans error.log et une comparaison de ratio sans valeur.
+@protectorate_tech_threshold = 0.4
+
 wg_plunder = {
 	casus_belli = cb_despoliation
 	total_war = no
