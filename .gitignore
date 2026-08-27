@@ -8,6 +8,7 @@ build_premiere/
 artifacts/
 __pycache__/
 AGENTS.md
+SKILLS.md
 docs/ROADMAP.md
 docs/VISION_2026-08.md
 SWAP_GPT_CLAUDE.md
