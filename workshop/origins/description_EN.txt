@@ -49,3 +49,12 @@ The mod overrides early technologies, selected civilian ships, scripted empire t
 
 [b]Discord:[/b] https://discord.gg/nKP4TfNzNX
 [b]GitHub issues and ideas:[/b] https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose
+
+[hr][/hr]
+[b]Copyright and official distribution[/b]
+
+Ad Astra is © 2026 ampynjord. Please use only the official Workshop item and
+official GitHub beta releases. Reuploads, mirrors, derivative releases, and
+reuse of Ad Astra's original code, artwork, icons, text, or assets are not
+permitted without prior written permission. Report suspected copies through
+Steam's report menu or on the official Discord.
