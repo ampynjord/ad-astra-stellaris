@@ -42,13 +42,6 @@ tech_adastra_fire = {
 		planet_stability_add = 0.4
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -84,13 +77,6 @@ tech_adastra_stone_tools = {
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -130,13 +116,6 @@ tech_adastra_hunting = {
 		planet_jobs_food_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -173,13 +152,6 @@ tech_adastra_cave_art = {
 
 	modifier = {
 		country_unity_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -221,13 +193,6 @@ tech_adastra_language = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -264,13 +229,6 @@ tech_adastra_seasons = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -311,13 +269,6 @@ tech_adastra_pigments = {
 		country_unity_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -356,13 +307,6 @@ tech_adastra_cordage = {
 		planet_jobs_minerals_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -398,13 +342,6 @@ tech_adastra_shelter = {
 
 	modifier = {
 		planet_housing_add = 0.16
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -445,13 +382,6 @@ tech_adastra_burial = {
 		planet_stability_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -490,13 +420,6 @@ tech_adastra_cooking = {
 		logistic_growth_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -533,13 +456,6 @@ tech_adastra_clan = {
 
 	modifier = {
 		planet_stability_add = 0.32
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -581,13 +497,6 @@ tech_adastra_hafting = {
 		planet_jobs_food_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -624,13 +533,6 @@ tech_adastra_lunar_count = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -671,13 +573,6 @@ tech_adastra_storytelling = {
 		country_unity_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -714,13 +609,6 @@ tech_adastra_grinding = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -762,13 +650,6 @@ tech_adastra_weaving = {
 		planet_jobs_minerals_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -805,13 +686,6 @@ tech_adastra_bow = {
 
 	modifier = {
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -853,13 +727,6 @@ tech_adastra_exchange = {
 		planet_jobs_minerals_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -897,13 +764,6 @@ tech_adastra_canoe = {
 	modifier = {
 		country_trade_attractiveness = 0.01
 		planet_jobs_food_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -945,13 +805,6 @@ tech_adastra_salt = {
 		logistic_growth_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -991,13 +844,6 @@ tech_adastra_village = {
 		planet_stability_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1034,13 +880,6 @@ tech_adastra_agriculture = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -1082,13 +921,6 @@ tech_adastra_pottery = {
 		planet_jobs_food_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1126,13 +958,6 @@ tech_adastra_domestication = {
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
 		logistic_growth_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_stone"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -1178,13 +1003,6 @@ tech_adastra_bronze = {
 		planet_jobs_minerals_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 	# Debloque le batiment d'epoque : Fonderie
 }
@@ -1222,13 +1040,6 @@ tech_adastra_writing = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -1271,13 +1082,6 @@ tech_adastra_first_city = {
 		planet_housing_add = 0.16
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1314,13 +1118,6 @@ tech_adastra_calendar = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -1361,13 +1158,6 @@ tech_adastra_measures = {
 		planet_jobs_minerals_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1404,13 +1194,6 @@ tech_adastra_irrigation = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -1451,13 +1234,6 @@ tech_adastra_priesthood = {
 		planet_stability_add = 0.32
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1494,13 +1270,6 @@ tech_adastra_wheel = {
 
 	modifier = {
 		planet_jobs_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -1542,13 +1311,6 @@ tech_adastra_sail = {
 		planet_jobs_food_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1585,13 +1347,6 @@ tech_adastra_plough = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -1633,13 +1388,6 @@ tech_adastra_brewing = {
 		planet_amenities_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1677,13 +1425,6 @@ tech_adastra_kingship = {
 	modifier = {
 		planet_stability_add = 0.32
 		country_unity_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -1725,13 +1466,6 @@ tech_adastra_fired_brick = {
 		planet_jobs_minerals_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1770,13 +1504,6 @@ tech_adastra_lever = {
 		planet_jobs_minerals_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1813,13 +1540,6 @@ tech_adastra_lost_wax = {
 
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -1861,13 +1581,6 @@ tech_adastra_sexagesimal = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1907,13 +1620,6 @@ tech_adastra_faience = {
 		country_trade_attractiveness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -1950,13 +1656,6 @@ tech_adastra_shield_wall = {
 
 	modifier = {
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -1998,13 +1697,6 @@ tech_adastra_empire = {
 		planet_stability_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2043,13 +1735,6 @@ tech_adastra_trade_colony = {
 		country_trade_attractiveness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2086,13 +1771,6 @@ tech_adastra_chariot = {
 
 	modifier = {
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -2134,13 +1812,6 @@ tech_adastra_surveying = {
 		planet_jobs_food_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2178,13 +1849,6 @@ tech_adastra_medicine = {
 	modifier = {
 		logistic_growth_mult = 0.01
 		planet_jobs_society_research_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -2226,13 +1890,6 @@ tech_adastra_dyes = {
 		country_trade_attractiveness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2270,13 +1927,6 @@ tech_adastra_diplomacy = {
 	modifier = {
 		country_trade_attractiveness = 0.01
 		country_unity_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_bronze"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -2323,13 +1973,6 @@ tech_adastra_iron = {
 		army_damage_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2366,13 +2009,6 @@ tech_adastra_law = {
 
 	modifier = {
 		planet_stability_add = 0.8
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -2414,13 +2050,6 @@ tech_adastra_coinage = {
 		planet_jobs_energy_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2458,13 +2087,6 @@ tech_adastra_astronomy = {
 	modifier = {
 		all_technology_research_speed = 0.01
 		country_unity_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -2505,13 +2127,6 @@ tech_adastra_geometry = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2548,13 +2163,6 @@ tech_adastra_glass = {
 
 	modifier = {
 		planet_amenities_add = 0.32
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -2596,13 +2204,6 @@ tech_adastra_aqueduct = {
 		planet_stability_add = 0.16
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2641,13 +2242,6 @@ tech_adastra_alphabet = {
 		country_unity_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2684,13 +2278,6 @@ tech_adastra_standing_army = {
 
 	modifier = {
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -2732,13 +2319,6 @@ tech_adastra_star_catalogue = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2775,13 +2355,6 @@ tech_adastra_atomism = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -2823,13 +2396,6 @@ tech_adastra_water_clock = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2866,13 +2432,6 @@ tech_adastra_pulley = {
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -2913,13 +2472,6 @@ tech_adastra_lodestone = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -2956,13 +2508,6 @@ tech_adastra_cavalry = {
 
 	modifier = {
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3004,13 +2549,6 @@ tech_adastra_tax_register = {
 		country_unity_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -3048,13 +2586,6 @@ tech_adastra_clinical_medicine = {
 	modifier = {
 		logistic_growth_mult = 0.01
 		pop_happiness = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3095,13 +2626,6 @@ tech_adastra_philosophy = {
 		planet_jobs_society_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -3140,13 +2664,6 @@ tech_adastra_silk_road = {
 		country_trade_attractiveness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -3183,13 +2700,6 @@ tech_adastra_trireme = {
 
 	modifier = {
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3231,13 +2741,6 @@ tech_adastra_crucible_steel = {
 		planet_jobs_alloys_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -3275,13 +2778,6 @@ tech_adastra_roman_road = {
 	modifier = {
 		planet_jobs_produces_mult = 0.01
 		planet_stability_add = 0.16
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3323,13 +2819,6 @@ tech_adastra_lighthouse = {
 		planet_amenities_add = 0.16
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -3366,13 +2855,6 @@ tech_adastra_bellows = {
 
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3412,13 +2894,6 @@ tech_adastra_concrete = {
 	modifier = {
 		planet_housing_add = 0.24
 		planet_amenities_add = 0.16
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_iron"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3464,13 +2939,6 @@ tech_adastra_crop_rotation = {
 		planet_jobs_food_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -3507,13 +2975,6 @@ tech_adastra_mills = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3555,13 +3016,6 @@ tech_adastra_stone_architecture = {
 		planet_housing_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 	# Debloque le batiment d'epoque : Citadelle
 }
@@ -3599,13 +3053,6 @@ tech_adastra_scholasticism = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3647,13 +3094,6 @@ tech_adastra_guilds = {
 		planet_jobs_consumer_goods_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -3690,13 +3130,6 @@ tech_adastra_algebra = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3737,13 +3170,6 @@ tech_adastra_optics = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -3780,13 +3206,6 @@ tech_adastra_heavy_plough = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3828,13 +3247,6 @@ tech_adastra_hospices = {
 		planet_stability_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -3871,13 +3283,6 @@ tech_adastra_cartography = {
 
 	modifier = {
 		planet_jobs_society_research_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -3918,13 +3323,6 @@ tech_adastra_stirrup = {
 		army_damage_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -3963,13 +3361,6 @@ tech_adastra_paper_mill = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4006,13 +3397,6 @@ tech_adastra_distillation = {
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -4054,13 +3438,6 @@ tech_adastra_translation_movement = {
 		planet_jobs_society_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4097,13 +3474,6 @@ tech_adastra_astrolabe = {
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -4144,13 +3514,6 @@ tech_adastra_gunpowder = {
 		army_damage_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4189,13 +3552,6 @@ tech_adastra_horse_collar = {
 		planet_jobs_food_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4232,13 +3588,6 @@ tech_adastra_trigonometry = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -4280,13 +3629,6 @@ tech_adastra_crop_diffusion = {
 		logistic_growth_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4325,13 +3667,6 @@ tech_adastra_paper_money = {
 		country_trade_attractiveness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4368,13 +3703,6 @@ tech_adastra_blast_furnace = {
 
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -4416,13 +3744,6 @@ tech_adastra_compass = {
 		country_trade_attractiveness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4460,13 +3781,6 @@ tech_adastra_caravanserai = {
 	modifier = {
 		country_trade_attractiveness = 0.01
 		planet_stability_add = 0.16
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -4507,13 +3821,6 @@ tech_adastra_stern_rudder = {
 		country_trade_attractiveness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4550,13 +3857,6 @@ tech_adastra_impetus = {
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_medieval"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -4603,13 +3903,6 @@ tech_adastra_printing = {
 		country_unity_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4646,13 +3939,6 @@ tech_adastra_experimental_method = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -4693,13 +3979,6 @@ tech_adastra_anatomy = {
 		logistic_growth_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4736,13 +4015,6 @@ tech_adastra_mechanics = {
 
 	modifier = {
 		planet_jobs_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -4783,13 +4055,6 @@ tech_adastra_banking = {
 		planet_jobs_energy_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4826,13 +4091,6 @@ tech_adastra_chemistry = {
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -4873,13 +4131,6 @@ tech_adastra_metallurgy_casting = {
 		army_damage_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -4916,13 +4167,6 @@ tech_adastra_clockwork = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -4963,13 +4207,6 @@ tech_adastra_double_entry = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5008,13 +4245,6 @@ tech_adastra_navigation = {
 		planet_jobs_society_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5051,13 +4281,6 @@ tech_adastra_telescope = {
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -5099,13 +4322,6 @@ tech_adastra_heliocentrism = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5142,13 +4358,6 @@ tech_adastra_magnetism = {
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -5190,13 +4399,6 @@ tech_adastra_vacuum_pump = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5233,13 +4435,6 @@ tech_adastra_universal_gravitation = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -5281,13 +4476,6 @@ tech_adastra_microscope = {
 		planet_jobs_society_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5327,13 +4515,6 @@ tech_adastra_new_crops = {
 		logistic_growth_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5370,13 +4551,6 @@ tech_adastra_pike_and_shot = {
 
 	modifier = {
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -5418,13 +4592,6 @@ tech_adastra_joint_stock = {
 		planet_jobs_consumer_goods_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5464,13 +4631,6 @@ tech_adastra_permanent_embassy = {
 		planet_stability_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5507,13 +4667,6 @@ tech_adastra_caravel = {
 
 	modifier = {
 		country_trade_attractiveness = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -5555,13 +4708,6 @@ tech_adastra_canal_lock = {
 		planet_jobs_minerals_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5599,13 +4745,6 @@ tech_adastra_bastion_fort = {
 	modifier = {
 		planet_stability_add = 0.32
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -5646,13 +4785,6 @@ tech_adastra_deep_mining = {
 		planet_jobs_minerals_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5690,13 +4822,6 @@ tech_adastra_clear_glass = {
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.01
 		planet_amenities_add = 0.24
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_renaissance"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -5742,13 +4867,6 @@ tech_adastra_steam_engine = {
 		planet_jobs_minerals_produces_mult = 0.02
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 	# Debloque le batiment d'epoque : Manufacture
 }
@@ -5786,13 +4904,6 @@ tech_adastra_coal = {
 
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.02
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -5834,13 +4945,6 @@ tech_adastra_railways = {
 		planet_stability_add = 0.4
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5878,13 +4982,6 @@ tech_adastra_telegraph = {
 	modifier = {
 		all_technology_research_speed = 0.01
 		country_unity_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -5926,13 +5023,6 @@ tech_adastra_sanitation = {
 		pop_happiness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -5969,13 +5059,6 @@ tech_adastra_gas_lighting = {
 
 	modifier = {
 		planet_jobs_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -6016,13 +5099,6 @@ tech_adastra_electromagnetism = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6061,13 +5137,6 @@ tech_adastra_machine_tools = {
 		planet_jobs_alloys_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6104,13 +5173,6 @@ tech_adastra_census = {
 
 	modifier = {
 		planet_jobs_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -6152,13 +5214,6 @@ tech_adastra_anesthesia = {
 		logistic_growth_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6195,13 +5250,6 @@ tech_adastra_photography = {
 
 	modifier = {
 		country_unity_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -6243,13 +5291,6 @@ tech_adastra_selective_breeding = {
 		logistic_growth_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6289,13 +5330,6 @@ tech_adastra_canals = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6332,13 +5366,6 @@ tech_adastra_spinning_jenny = {
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -6380,13 +5407,6 @@ tech_adastra_political_economy = {
 		country_trade_attractiveness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6424,13 +5444,6 @@ tech_adastra_iron_bridge = {
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.01
 		planet_jobs_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -6472,13 +5485,6 @@ tech_adastra_balloon = {
 		country_unity_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6515,13 +5521,6 @@ tech_adastra_mass_conscription = {
 
 	modifier = {
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -6563,13 +5562,6 @@ tech_adastra_vaccine_cowpox = {
 		logistic_growth_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6609,13 +5601,6 @@ tech_adastra_scientific_expeditions = {
 		country_trade_attractiveness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6652,13 +5637,6 @@ tech_adastra_atomic_theory = {
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -6700,13 +5678,6 @@ tech_adastra_steamship = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6744,13 +5715,6 @@ tech_adastra_fraunhofer_lines = {
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.01
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -6791,13 +5755,6 @@ tech_adastra_difference_engine = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6835,13 +5792,6 @@ tech_adastra_abolition = {
 	modifier = {
 		pop_happiness = 0.01
 		planet_stability_add = 0.24
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_steam"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -6887,13 +5837,6 @@ tech_adastra_bessemer = {
 		planet_jobs_alloys_produces_mult = 0.02
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6933,13 +5876,6 @@ tech_adastra_thermodynamics = {
 		planet_jobs_energy_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -6976,13 +5912,6 @@ tech_adastra_fertilizers = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.02
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -7024,13 +5953,6 @@ tech_adastra_labour_law = {
 		planet_stability_add = 0.4
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7069,13 +5991,6 @@ tech_adastra_periodic_table = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7112,13 +6027,6 @@ tech_adastra_refrigeration = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -7160,13 +6068,6 @@ tech_adastra_germ_theory = {
 		pop_happiness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7205,13 +6106,6 @@ tech_adastra_universal_suffrage = {
 		planet_stability_add = 0.48
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7248,13 +6142,6 @@ tech_adastra_electricity = {
 
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.02
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -7296,13 +6183,6 @@ tech_adastra_social_insurance = {
 		planet_stability_add = 0.32
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7340,13 +6220,6 @@ tech_adastra_synthetic_dye = {
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.01
 		country_trade_attractiveness = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -7388,13 +6261,6 @@ tech_adastra_spectroscopy = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7434,13 +6300,6 @@ tech_adastra_antiseptic_surgery = {
 		pop_happiness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7477,13 +6336,6 @@ tech_adastra_dynamite = {
 
 	modifier = {
 		planet_jobs_minerals_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -7525,13 +6377,6 @@ tech_adastra_general_staff = {
 		country_unity_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7569,13 +6414,6 @@ tech_adastra_dynamo = {
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.01
 		planet_jobs_alloys_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -7617,13 +6455,6 @@ tech_adastra_telephone = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7663,13 +6494,6 @@ tech_adastra_ocean_liner = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7706,13 +6530,6 @@ tech_adastra_machine_gun = {
 
 	modifier = {
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -7754,13 +6571,6 @@ tech_adastra_steel_frame = {
 		planet_amenities_add = 0.16
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7798,13 +6608,6 @@ tech_adastra_colonial_partition = {
 	modifier = {
 		country_trade_attractiveness = 0.01
 		planet_jobs_minerals_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -7846,13 +6649,6 @@ tech_adastra_radio_waves = {
 		country_unity_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7890,13 +6686,6 @@ tech_adastra_punch_cards = {
 	modifier = {
 		planet_jobs_society_research_produces_mult = 0.01
 		planet_jobs_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -7938,13 +6727,6 @@ tech_adastra_x_rays = {
 		logistic_growth_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -7982,13 +6764,6 @@ tech_adastra_steam_turbine = {
 	modifier = {
 		planet_jobs_produces_mult = 0.01
 		planet_jobs_alloys_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_industrial"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -8034,13 +6809,6 @@ tech_adastra_radio = {
 		country_unity_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 	# Debloque le batiment d'epoque : Station de radiodiffusion
 }
@@ -8081,13 +6849,6 @@ tech_adastra_aviation = {
 		army_damage_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8126,13 +6887,6 @@ tech_adastra_antibiotics = {
 		logistic_growth_mult = 0.02
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8169,13 +6923,6 @@ tech_adastra_mass_education = {
 
 	modifier = {
 		all_technology_research_speed = 0.02
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -8217,13 +6964,6 @@ tech_adastra_quantum_theory = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8260,13 +7000,6 @@ tech_adastra_haber = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -8307,13 +7040,6 @@ tech_adastra_plastics = {
 		planet_jobs_consumer_goods_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8350,13 +7076,6 @@ tech_adastra_epidemiology = {
 
 	modifier = {
 		logistic_growth_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -8397,13 +7116,6 @@ tech_adastra_assembly_line = {
 		planet_jobs_consumer_goods_produces_mult = 0.02
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8440,13 +7152,6 @@ tech_adastra_petrochemistry = {
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.02
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -8487,13 +7192,6 @@ tech_adastra_jet_engine = {
 		army_damage_mult = 0.02
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8530,13 +7228,6 @@ tech_adastra_television = {
 
 	modifier = {
 		country_unity_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -8577,13 +7268,6 @@ tech_adastra_relativity = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8622,13 +7306,6 @@ tech_adastra_atomic_nucleus = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8665,13 +7342,6 @@ tech_adastra_cosmic_rays = {
 
 	modifier = {
 		all_technology_research_speed = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -8713,13 +7383,6 @@ tech_adastra_expanding_universe = {
 		country_unity_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8756,13 +7419,6 @@ tech_adastra_radar = {
 
 	modifier = {
 		army_damage_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -8804,13 +7460,6 @@ tech_adastra_cryptanalysis = {
 		army_damage_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8847,13 +7496,6 @@ tech_adastra_polar_exploration = {
 
 	modifier = {
 		country_unity_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -8895,13 +7537,6 @@ tech_adastra_vitamins = {
 		planet_jobs_food_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -8938,13 +7573,6 @@ tech_adastra_blood_transfusion = {
 
 	modifier = {
 		logistic_growth_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -8986,13 +7614,6 @@ tech_adastra_propaganda = {
 		planet_stability_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9030,13 +7651,6 @@ tech_adastra_total_war = {
 	modifier = {
 		army_damage_mult = 0.01
 		planet_jobs_alloys_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -9077,13 +7691,6 @@ tech_adastra_reinforced_concrete = {
 		planet_housing_add = 0.32
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9120,13 +7727,6 @@ tech_adastra_tractor = {
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_machine"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -9172,13 +7772,6 @@ tech_adastra_fission = {
 		planet_jobs_energy_produces_mult = 0.02
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9215,13 +7808,6 @@ tech_adastra_electronics = {
 
 	modifier = {
 		all_technology_research_speed = 0.02
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -9262,13 +7848,6 @@ tech_adastra_vaccination = {
 		logistic_growth_mult = 0.02
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9307,13 +7886,6 @@ tech_adastra_radio_astronomy = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9350,13 +7922,6 @@ tech_adastra_containers = {
 
 	modifier = {
 		planet_jobs_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -9398,13 +7963,6 @@ tech_adastra_human_rights = {
 		pop_happiness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9441,13 +7999,6 @@ tech_adastra_computing = {
 
 	modifier = {
 		all_technology_research_speed = 0.02
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -9489,13 +8040,6 @@ tech_adastra_cooperation = {
 		planet_stability_add = 0.4
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9533,13 +8077,6 @@ tech_adastra_nuclear_medicine = {
 	modifier = {
 		logistic_growth_mult = 0.01
 		pop_happiness = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -9581,13 +8118,6 @@ tech_adastra_sounding_rocket = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9625,13 +8155,6 @@ tech_adastra_transistor = {
 	modifier = {
 		all_technology_research_speed = 0.01
 		planet_jobs_consumer_goods_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -9673,13 +8196,6 @@ tech_adastra_decolonization = {
 		planet_stability_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9717,13 +8233,6 @@ tech_adastra_welfare_state = {
 	modifier = {
 		pop_happiness = 0.01
 		planet_amenities_add = 0.24
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -9765,13 +8274,6 @@ tech_adastra_information_theory = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9809,13 +8311,6 @@ tech_adastra_deterrence = {
 	modifier = {
 		army_damage_mult = 0.01
 		planet_stability_add = 0.16
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -9857,13 +8352,6 @@ tech_adastra_suburbs = {
 		pop_happiness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9901,13 +8389,6 @@ tech_adastra_civil_aviation = {
 	modifier = {
 		country_trade_attractiveness = 0.01
 		planet_jobs_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -9949,13 +8430,6 @@ tech_adastra_dna_structure = {
 		planet_jobs_society_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -9992,13 +8466,6 @@ tech_adastra_maser = {
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -10039,13 +8506,6 @@ tech_adastra_nuclear_submarine = {
 		army_damage_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -10082,13 +8542,6 @@ tech_adastra_solar_cell = {
 
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -10130,13 +8583,6 @@ tech_adastra_desegregation = {
 		planet_stability_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -10174,13 +8620,6 @@ tech_adastra_motorways = {
 	modifier = {
 		planet_jobs_produces_mult = 0.01
 		country_trade_attractiveness = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }
@@ -10222,13 +8661,6 @@ tech_adastra_magnetic_storage = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -10268,13 +8700,6 @@ tech_adastra_ballistic_missile = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_atomic"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
@@ -10284,7 +8709,7 @@ tech_adastra_ballistic_missile = {
 ############################################################
 
 tech_adastra_rocketry = {
-	cost = 1295
+	cost = 970
 	area = engineering
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10300,7 +8725,6 @@ tech_adastra_rocketry = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_astronomy
 		NOT = { has_country_flag = adastra_completed }
 		# rang 1 dans l'arbre de l'age
 	}
@@ -10309,18 +8733,11 @@ tech_adastra_rocketry = {
 		planet_jobs_alloys_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_remote_sensing = {
-	cost = 865
+	cost = 650
 	area = physics
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10336,7 +8753,6 @@ tech_adastra_remote_sensing = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_astronomy
 		NOT = { has_country_flag = adastra_completed }
 		# rang 1 dans l'arbre de l'age
 	}
@@ -10345,18 +8761,11 @@ tech_adastra_remote_sensing = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_genetics = {
-	cost = 865
+	cost = 650
 	area = society
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10372,9 +8781,17 @@ tech_adastra_genetics = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_outpost
 		NOT = { has_country_flag = adastra_completed }
 		# rang 4 dans l'arbre de l'age
+	}
+
+	# phase : entre au tirage avec le telescope requis
+	weight_modifier = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { any_owned_planet = { has_building = building_core_space_telescope } }
+		}
 	}
 
 	modifier = {
@@ -10382,18 +8799,11 @@ tech_adastra_genetics = {
 		planet_jobs_food_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_satellites = {
-	cost = 720
+	cost = 540
 	area = engineering
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10409,7 +8819,6 @@ tech_adastra_satellites = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_astronomy
 		NOT = { has_country_flag = adastra_completed }
 		# rang 1 dans l'arbre de l'age
 	}
@@ -10418,18 +8827,11 @@ tech_adastra_satellites = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_microprocessor = {
-	cost = 720
+	cost = 540
 	area = engineering
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10445,27 +8847,28 @@ tech_adastra_microprocessor = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_orbital
 		NOT = { has_country_flag = adastra_completed }
 		# rang 5 dans l'arbre de l'age
+	}
+
+	# phase : entre au tirage avec le telescope requis
+	weight_modifier = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { any_owned_planet = { has_building = building_core_space_telescope } }
+		}
 	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_networks = {
-	cost = 720
+	cost = 540
 	area = society
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10481,9 +8884,17 @@ tech_adastra_networks = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_orbital
 		NOT = { has_country_flag = adastra_completed }
 		# rang 5 dans l'arbre de l'age
+	}
+
+	# phase : entre au tirage avec le telescope requis
+	weight_modifier = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { any_owned_planet = { has_building = building_core_space_telescope } }
+		}
 	}
 
 	modifier = {
@@ -10491,18 +8902,11 @@ tech_adastra_networks = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_ecology = {
-	cost = 720
+	cost = 540
 	area = society
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10518,9 +8922,17 @@ tech_adastra_ecology = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_orbital
 		NOT = { has_country_flag = adastra_completed }
 		# rang 5 dans l'arbre de l'age
+	}
+
+	# phase : entre au tirage avec le telescope requis
+	weight_modifier = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { any_owned_planet = { has_building = building_core_space_telescope } }
+		}
 	}
 
 	modifier = {
@@ -10528,18 +8940,11 @@ tech_adastra_ecology = {
 		planet_amenities_add = 0.32
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_green_revolution = {
-	cost = 720
+	cost = 540
 	area = society
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10555,27 +8960,28 @@ tech_adastra_green_revolution = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_outpost
 		NOT = { has_country_flag = adastra_completed }
 		# rang 4 dans l'arbre de l'age
+	}
+
+	# phase : entre au tirage avec le telescope requis
+	weight_modifier = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { any_owned_planet = { has_building = building_core_space_telescope } }
+		}
 	}
 
 	modifier = {
 		planet_jobs_food_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_superconductivity = {
-	cost = 720
+	cost = 540
 	area = physics
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10591,7 +8997,6 @@ tech_adastra_superconductivity = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_astronomy
 		NOT = { has_country_flag = adastra_completed }
 		# rang 1 dans l'arbre de l'age
 	}
@@ -10601,18 +9006,11 @@ tech_adastra_superconductivity = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_laser = {
-	cost = 720
+	cost = 540
 	area = physics
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10628,7 +9026,6 @@ tech_adastra_laser = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_astronomy
 		NOT = { has_country_flag = adastra_completed }
 		# rang 1 dans l'arbre de l'age
 	}
@@ -10638,18 +9035,11 @@ tech_adastra_laser = {
 		planet_jobs_alloys_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_chaos_theory = {
-	cost = 720
+	cost = 540
 	area = physics
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10665,7 +9055,6 @@ tech_adastra_chaos_theory = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_constructor
 		NOT = { has_country_flag = adastra_completed }
 		# rang 3 dans l'arbre de l'age
 	}
@@ -10674,18 +9063,11 @@ tech_adastra_chaos_theory = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_quarks = {
-	cost = 720
+	cost = 540
 	area = physics
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10701,27 +9083,28 @@ tech_adastra_quarks = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_constructor
 		NOT = { has_country_flag = adastra_completed }
 		# rang 3 dans l'arbre de l'age
+	}
+
+	# phase : entre au tirage avec le telescope requis
+	weight_modifier = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { OR = { any_owned_planet = { has_building = building_core_radio_telescope } any_owned_planet = { has_building = building_core_space_telescope } } }
+		}
 	}
 
 	modifier = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_plate_tectonics = {
-	cost = 720
+	cost = 540
 	area = physics
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10737,7 +9120,6 @@ tech_adastra_plate_tectonics = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_outpost
 		NOT = { has_country_flag = adastra_completed }
 		# rang 4 dans l'arbre de l'age
 	}
@@ -10747,18 +9129,11 @@ tech_adastra_plate_tectonics = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_cosmic_background = {
-	cost = 720
+	cost = 540
 	area = physics
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10774,9 +9149,17 @@ tech_adastra_cosmic_background = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_outpost
 		NOT = { has_country_flag = adastra_completed }
 		# rang 4 dans l'arbre de l'age
+	}
+
+	# phase : entre au tirage avec le telescope requis
+	weight_modifier = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { any_owned_planet = { has_building = building_core_space_telescope } }
+		}
 	}
 
 	modifier = {
@@ -10784,18 +9167,11 @@ tech_adastra_cosmic_background = {
 		planet_jobs_physics_research_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_fiber_optics = {
-	cost = 720
+	cost = 540
 	area = physics
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10811,9 +9187,17 @@ tech_adastra_fiber_optics = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_orbital
 		NOT = { has_country_flag = adastra_completed }
 		# rang 5 dans l'arbre de l'age
+	}
+
+	# phase : entre au tirage avec le telescope requis
+	weight_modifier = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { any_owned_planet = { has_building = building_core_space_telescope } }
+		}
 	}
 
 	modifier = {
@@ -10821,18 +9205,11 @@ tech_adastra_fiber_optics = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_birth_control = {
-	cost = 720
+	cost = 540
 	area = society
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10848,7 +9225,6 @@ tech_adastra_birth_control = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_explore
 		NOT = { has_country_flag = adastra_completed }
 		# rang 2 dans l'arbre de l'age
 	}
@@ -10858,18 +9234,11 @@ tech_adastra_birth_control = {
 		planet_jobs_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_transplant = {
-	cost = 720
+	cost = 540
 	area = society
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10885,9 +9254,17 @@ tech_adastra_transplant = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_outpost
 		NOT = { has_country_flag = adastra_completed }
 		# rang 4 dans l'arbre de l'age
+	}
+
+	# phase : entre au tirage avec le telescope requis
+	weight_modifier = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { any_owned_planet = { has_building = building_core_space_telescope } }
+		}
 	}
 
 	modifier = {
@@ -10895,18 +9272,11 @@ tech_adastra_transplant = {
 		pop_happiness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_hotline = {
-	cost = 720
+	cost = 540
 	area = society
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10922,7 +9292,6 @@ tech_adastra_hotline = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_explore
 		NOT = { has_country_flag = adastra_completed }
 		# rang 2 dans l'arbre de l'age
 	}
@@ -10932,18 +9301,11 @@ tech_adastra_hotline = {
 		planet_stability_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_deep_sea = {
-	cost = 720
+	cost = 540
 	area = society
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10959,7 +9321,6 @@ tech_adastra_deep_sea = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_explore
 		NOT = { has_country_flag = adastra_completed }
 		# rang 2 dans l'arbre de l'age
 	}
@@ -10969,18 +9330,11 @@ tech_adastra_deep_sea = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_civil_rights = {
-	cost = 720
+	cost = 540
 	area = society
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -10996,9 +9350,17 @@ tech_adastra_civil_rights = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_constructor
 		NOT = { has_country_flag = adastra_completed }
 		# rang 3 dans l'arbre de l'age
+	}
+
+	# phase : entre au tirage avec le telescope requis
+	weight_modifier = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { OR = { any_owned_planet = { has_building = building_core_radio_telescope } any_owned_planet = { has_building = building_core_space_telescope } } }
+		}
 	}
 
 	modifier = {
@@ -11006,18 +9368,11 @@ tech_adastra_civil_rights = {
 		pop_happiness = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_manned_flight = {
-	cost = 720
+	cost = 540
 	area = engineering
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -11033,7 +9388,6 @@ tech_adastra_manned_flight = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_explore
 		NOT = { has_country_flag = adastra_completed }
 		# rang 2 dans l'arbre de l'age
 	}
@@ -11043,18 +9397,11 @@ tech_adastra_manned_flight = {
 		planet_stability_add = 0.24
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_lunar_landing = {
-	cost = 720
+	cost = 540
 	area = engineering
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -11070,7 +9417,6 @@ tech_adastra_lunar_landing = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_orbital
 		NOT = { has_country_flag = adastra_completed }
 		# rang 5 dans l'arbre de l'age
 	}
@@ -11080,18 +9426,11 @@ tech_adastra_lunar_landing = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_ion_drive = {
-	cost = 720
+	cost = 540
 	area = engineering
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -11107,7 +9446,6 @@ tech_adastra_ion_drive = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_constructor
 		NOT = { has_country_flag = adastra_completed }
 		# rang 3 dans l'arbre de l'age
 	}
@@ -11117,18 +9455,11 @@ tech_adastra_ion_drive = {
 		all_technology_research_speed = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_heat_shield = {
-	cost = 720
+	cost = 540
 	area = engineering
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -11144,7 +9475,6 @@ tech_adastra_heat_shield = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_constructor
 		NOT = { has_country_flag = adastra_completed }
 		# rang 3 dans l'arbre de l'age
 	}
@@ -11153,18 +9483,11 @@ tech_adastra_heat_shield = {
 		planet_jobs_alloys_produces_mult = 0.01
 	}
 
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
-	}
-
 	ai_weight = { factor = 5 }
 }
 
 tech_adastra_industrial_robot = {
-	cost = 720
+	cost = 540
 	area = engineering
 	# tier 0 : verifie en jeu, ces technos entrent bien dans le tirage.
 	# Le tier 0 ne compte pas pour le deverrouillage des tiers suivants,
@@ -11180,7 +9503,6 @@ tech_adastra_industrial_robot = {
 	potential = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_reached_space
-		has_country_flag = adastra_stage_explore
 		NOT = { has_country_flag = adastra_completed }
 		# rang 2 dans l'arbre de l'age
 	}
@@ -11188,13 +9510,6 @@ tech_adastra_industrial_robot = {
 	modifier = {
 		planet_jobs_alloys_produces_mult = 0.01
 		planet_jobs_consumer_goods_produces_mult = 0.01
-	}
-
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_space"
-			desc = "adastra_tech_marque_desc"
-		}
 	}
 
 	ai_weight = { factor = 5 }

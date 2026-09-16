@@ -1,0 +1,92 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_evt_adastra_age_atomic"
+		texturefile = "gfx/event_pictures/adastra_age_atomic.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_age_bronze"
+		texturefile = "gfx/event_pictures/adastra_age_bronze.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_age_industrial"
+		texturefile = "gfx/event_pictures/adastra_age_industrial.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_age_iron"
+		texturefile = "gfx/event_pictures/adastra_age_iron.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_age_machine"
+		texturefile = "gfx/event_pictures/adastra_age_machine.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_age_medieval"
+		texturefile = "gfx/event_pictures/adastra_age_medieval.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_age_renaissance"
+		texturefile = "gfx/event_pictures/adastra_age_renaissance.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_age_space"
+		texturefile = "gfx/event_pictures/adastra_age_space.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_age_steam"
+		texturefile = "gfx/event_pictures/adastra_age_steam.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_age_stone"
+		texturefile = "gfx/event_pictures/adastra_age_stone.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_galaxy_pace"
+		texturefile = "gfx/event_pictures/adastra_galaxy_pace.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_origins"
+		texturefile = "gfx/event_pictures/adastra_origins.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_pace"
+		texturefile = "gfx/event_pictures/adastra_pace.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_situation"
+		texturefile = "gfx/event_pictures/adastra_situation.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_adastra_welcome"
+		texturefile = "gfx/event_pictures/adastra_welcome.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+}

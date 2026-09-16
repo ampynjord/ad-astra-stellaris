@@ -345,18 +345,28 @@ UNLOCKS = {
 # existant, sans transformer la lecture d'une information en changement
 # d'equilibrage.
 GAMEPLAY_ANNOUNCEMENTS = {
+    "tech_adastra_electricity": (
+        "Le réseau électrique se déploie : la production d'énergie commence "
+        "aussitôt, et l'entretien des bâtiments bascule vers l'énergie dès "
+        "qu'un district générateur existe, ou au plus tard après deux ans.",
+        "The electrical grid rolls out: energy production starts at once, and "
+        "building upkeep switches to energy as soon as a generator district "
+        "exists, or after two years at the latest.",
+    ),
     "tech_adastra_astronomy": (
-        "Révèle progressivement les étoiles des systèmes voisins après l'entrée dans l'ère spatiale.",
-        "Gradually reveals the stars of neighbouring systems after entering the Space Age."),
+        "Débloque la décision Observation astronomique dans l'ère spatiale lorsqu'un télescope est construit.",
+        "Unlocks the Astronomical Observation decision in the Space Age once a telescope has been built."),
     "tech_adastra_telescope": (
-        "Débloque le bâtiment Observatoire astronomique.",
-        "Unlocks the Astronomical Observatory building."),
+        "Débloque le bâtiment Observatoire astronomique, requis pour l'Observation astronomique.",
+        "Unlocks the Astronomical Observatory building, required for Astronomical Observation."),
     "tech_adastra_radio_astronomy": (
         "Débloque le bâtiment Radiotélescope.",
         "Unlocks the Radio Telescope building."),
     "tech_adastra_remote_sensing": (
-        "Débloque le bâtiment Télescope spatial.",
-        "Unlocks the Space Telescope building."),
+        "Débloque le bâtiment Télescope spatial. Autorise la prospection "
+        "des corps du système natal même quand un autre empire le revendique.",
+        "Unlocks the Space Telescope building. Allows surveying the bodies "
+        "of the home system even when another empire has claimed it."),
     "tech_adastra_sounding_rocket": (
         "Débloque la décision Lancement suborbital.",
         "Unlocks the Suborbital Launch decision."),
@@ -725,9 +735,12 @@ ETAPES_SITU = {
     'renaissance': (100, 125), 'steam': (125, 150), 'industrial': (150, 175),
     'machine': (175, 200), 'atomic': (200, 225), 'space': (225, 250),
 }
-# Etapes du programme spatial, apres l'Age spatial.
+# Etapes spatiales apres l'Age spatial. La fusee vient apres les vingt-cinq
+# technologies de l'age : on termine sa preparation avant de la lancer.
 ETAPES_PROGRAMME = {
-    'program_explore': (250, 275), 'program_orbital': (275, 300), 'program_hyper': (300, 325),
+    'first_launch': (250, 275), 'program_explore': (275, 300),
+    'program_constructor': (300, 325), 'program_outpost': (325, 350),
+    'program_orbital': (350, 375), 'program_hyper': (375, 400),
 }
 
 

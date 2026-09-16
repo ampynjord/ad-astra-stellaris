@@ -139,8 +139,8 @@ def main():
             if content and not content.startswith((" ", "#")):
                 fail(f"localisation non indentee : {localisation.name}:{number}")
     grounded = country_types.split("adastra_grounded = {", 1)[1].split("resources =", 1)[0]
-    if "standard_diplomacy_module = { contact_rule = on_action_only }" not in grounded:
-        fail("le pays confine doit eviter les sites de premier contact bloques")
+    if "standard_diplomacy_module = { contact_rule = does_first_contact_sites }" not in grounded:
+        fail("le pays confine doit conserver les sites de premier contact vanilla")
     print("0 erreur : invariants 1.3.1 valides.")
 
 

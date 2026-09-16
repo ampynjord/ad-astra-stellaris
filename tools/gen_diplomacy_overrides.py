@@ -34,6 +34,21 @@ ACTIONS = {
     "action_form_research_agreement": "accord de recherche : echanger du savoir sans quitter sa planete",
 }
 
+# 1.4 (30/08) - actions qu'un empire stellaire fait A un pre-PRL. Le vanilla
+# les reserve a `is_country_type = primitive` (cote receveur) : on elargit au
+# type confine, PARTOUT dans le bloc de l'action (le test receveur apparait
+# dans potential, proposable et on_accept). L'illumination technologique
+# devient donc possible ENVERS nous - c'est un axe voulu du design Contact
+# (inspirations d'ampynjord : Falling Skies, The Expanse).
+ACTIONS_VERS_NOUS = {
+    "action_open_technological_enlightenment":
+        "illumination technologique : un empire nous enseigne",
+    "action_stop_open_technological_enlightenment":
+        "fin de l'illumination technologique",
+}
+OLD_RECU = "is_country_type = primitive"
+NEW_RECU = "OR = { is_country_type = primitive is_country_type = adastra_grounded }"
+
 OLD = "is_country_type = default"
 NEW = "OR = { is_country_type = default is_country_type = adastra_grounded }"
 
@@ -74,6 +89,16 @@ def main():
            ""]
     done, total = [], 0
     for name, s, e in top_level_blocks(src):
+        if name in ACTIONS_VERS_NOUS:
+            block = src[s:e]
+            n = block.count(OLD_RECU)
+            block = block.replace(OLD_RECU, NEW_RECU)
+            out.append("")
+            out.append("### %s - %s" % (name, ACTIONS_VERS_NOUS[name]))
+            out.append(block)
+            done.append((name, n))
+            total += n
+            continue
         if name not in ACTIONS:
             continue
         block, n = widen_potential(src[s:e])
@@ -85,7 +110,7 @@ def main():
         done.append((name, n))
         total += n
 
-    missing = sorted(set(ACTIONS) - {d[0] for d in done})
+    missing = sorted((set(ACTIONS) | set(ACTIONS_VERS_NOUS)) - {d[0] for d in done})
     with open(args.out, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(out) + "\n")
     for name, n in done:

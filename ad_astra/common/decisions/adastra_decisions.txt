@@ -87,7 +87,13 @@ decision_adastra_constructor = {
 			# 1.4 : batir en orbite demande un programme mur, pas un coup
 			# d'eclat - ionique, bouclier ablatif, supraconductivite.
 			core_poussee_4 = yes
-			NOT = { has_country_flag = adastra_constructor_ready }
+			# 31/08 - retour ampynjord (save 2244.04.29) : Batisseur detruit,
+			# decision disparue, partie bloquee. Le programme redevient
+			# disponible tant qu'AUCUN vaisseau de construction n'est en vie.
+			OR = {
+				NOT = { has_country_flag = adastra_constructor_ready }
+				NOT = { any_owned_ship = { is_ship_size = constructor } }
+			}
 		}
 	}
 
@@ -110,13 +116,17 @@ decision_adastra_hyperdrive = {
 	owned_planets_only = yes
 	icon = decision_adastra_hyperdrive
 
-	enactment_time = 900
+	# ESSAI 2026-08-30 - demande d'ampynjord : le dernier geste de
+	# l'ascension doit peser. Douze ans de programme, et un cout qui engage
+	# toute l'economie de l'age spatial, alliages compris.
+	enactment_time = 1800
 
 	resources = {
 		category = decisions
 		cost = {
-			influence = 600
-			minerals = 2500
+			influence = 1000
+			minerals = 6000
+			alloys = 500
 		}
 	}
 
@@ -135,6 +145,10 @@ decision_adastra_hyperdrive = {
 			owner = {
 				set_country_flag = adastra_phase3_done
 				set_country_flag = adastra_unlock_ftl
+				every_situation = {
+					limit = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_hyperdrive }
+					add_situation_progress = 10
+				}
 				add_research_option = tech_hyper_drive_1
 				country_event = { id = adastra.16 }
 			}
@@ -254,6 +268,9 @@ decision_adastra_campaign_harvest = {
 	}
 
 	potential = {
+		# Systeme remplace en 1.4 : conserve seulement pour que les anciennes
+		# sauvegardes puissent expirer leur modificateur sans erreur.
+		always = no
 		is_capital = yes
 		owner = { has_country_flag = adastra_locked }
 	}
@@ -315,7 +332,7 @@ decision_adastra_campaign_mining = {
 			trigger = {
 				owner = { NOT = { has_country_flag = adastra_reached_medieval } }
 			}
-			unity = 5
+			unity = 25
 		}
 		cost = {
 			trigger = {
@@ -324,7 +341,7 @@ decision_adastra_campaign_mining = {
 					NOT = { has_country_flag = adastra_reached_industrial }
 				}
 			}
-			unity = 10
+			unity = 60
 		}
 		cost = {
 			trigger = {
@@ -333,17 +350,18 @@ decision_adastra_campaign_mining = {
 					NOT = { has_country_flag = adastra_reached_space }
 				}
 			}
-			unity = 25
+			unity = 140
 		}
 		cost = {
 			trigger = {
 				owner = { has_country_flag = adastra_reached_space }
 			}
-			unity = 38
+			unity = 280
 		}
 	}
 
 	potential = {
+		always = no
 		is_capital = yes
 		owner = { has_country_flag = adastra_locked }
 	}
@@ -434,6 +452,7 @@ decision_adastra_campaign_fuel = {
 	}
 
 	potential = {
+		always = no
 		is_capital = yes
 		owner = {
 			has_country_flag = adastra_locked
@@ -527,6 +546,7 @@ decision_adastra_campaign_industry = {
 	}
 
 	potential = {
+		always = no
 		is_capital = yes
 		owner = {
 			has_country_flag = adastra_locked
@@ -566,6 +586,95 @@ decision_adastra_campaign_industry = {
 			owner = { has_monthly_income = { resource = food value < 2 } }
 		}
 	}
+}
+
+# 1.4 : un seul programme national, dont les choix changent avec l'age.
+# Les anciens boutons de campagne sont conserves ci-dessus, invisibles, pour
+# les sauvegardes qui portent encore leurs modificateurs temporaires.
+decision_adastra_national_programme = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_adastra_national_programme
+
+	# Choisir une orientation est immediat : ce n'est pas un chantier.
+	enactment_time = 0
+
+	resources = {
+		category = decisions
+		cost = {
+			trigger = { owner = { NOT = { has_country_flag = adastra_reached_medieval } } }
+			unity = 25
+		}
+		cost = {
+			trigger = { owner = { has_country_flag = adastra_reached_medieval NOT = { has_country_flag = adastra_reached_industrial } } }
+			unity = 60
+		}
+		cost = {
+			trigger = { owner = { has_country_flag = adastra_reached_industrial NOT = { has_country_flag = adastra_reached_space } } }
+			unity = 140
+		}
+		cost = {
+			trigger = { owner = { has_country_flag = adastra_reached_space } }
+			unity = 280
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = { has_country_flag = adastra_locked }
+	}
+
+	allow = {
+		owner = {
+			# Une orientation dure cinq ans. Les quatre anciens modificateurs sont
+			# aussi bloques afin de ne pas superposer une ancienne sauvegarde.
+			NOT = { OR = {
+			has_modifier = adastra_campaign_harvest
+			has_modifier = adastra_campaign_mining
+			has_modifier = adastra_campaign_fuel
+			has_modifier = adastra_campaign_industry
+			has_modifier = adastra_programme_stone_stores
+			has_modifier = adastra_programme_stone_craft
+			has_modifier = adastra_programme_stone_clans
+			has_modifier = adastra_programme_bronze_granaries
+			has_modifier = adastra_programme_bronze_foundries
+			has_modifier = adastra_programme_bronze_trade
+			has_modifier = adastra_programme_iron_cadastre
+			has_modifier = adastra_programme_iron_civic_works
+			has_modifier = adastra_programme_iron_markets
+			has_modifier = adastra_programme_medieval_guilds
+			has_modifier = adastra_programme_medieval_estates
+			has_modifier = adastra_programme_medieval_royal_works
+			has_modifier = adastra_programme_renaissance_trade
+			has_modifier = adastra_programme_renaissance_workshops
+			has_modifier = adastra_programme_renaissance_patronage
+			has_modifier = adastra_programme_steam_rail
+			has_modifier = adastra_programme_steam_mechanisation
+			has_modifier = adastra_programme_steam_reform
+			has_modifier = adastra_programme_industrial_mass_production
+			has_modifier = adastra_programme_industrial_public_education
+			has_modifier = adastra_programme_industrial_extraction
+			has_modifier = adastra_programme_machine_electrification
+			has_modifier = adastra_programme_machine_consumption
+			has_modifier = adastra_programme_machine_public_health
+			has_modifier = adastra_programme_atomic_reconstruction
+			has_modifier = adastra_programme_atomic_civil_science
+			has_modifier = adastra_programme_atomic_strategic_industry
+			has_modifier = adastra_programme_space_logistics
+			has_modifier = adastra_programme_space_research
+			has_modifier = adastra_programme_space_social_investment
+			} }
+		}
+	}
+
+	effect = {
+		# 31/08 - uniformisation des textes : l'infobulle enonce le contrat
+		# exact (duree, exclusivite, echelle de cout par age).
+		custom_tooltip = decision_adastra_national_programme_tooltip
+		hidden_effect = { owner = { country_event = { id = adastra.140 } } }
+	}
+
+	ai_weight = { weight = 0 }
 }
 
 # Programme de colonisation (relancable) - ajoute le 16/08.
@@ -612,6 +721,19 @@ decision_adastra_colony = {
 	# Meme raison que la flotte militaire : l'etape, pas le chantier.
 	potential = {
 		is_capital = yes
+		# 31/08 - les decisions sont aussi evaluees sur les colonies-vaisseaux
+		# (nomades) : sans cette garde, « Invalid context switch [solar_system]
+		# from ship » a chaque evaluation (error.log, partie 14).
+		exists = solar_system
+		# ESSAI 2026-08-30 - le programme n'apparait que s'il a une cible :
+		# un monde du systeme natal theoriquement colonisable et sans
+		# proprietaire. Sans cible, la decision n'a pas de sens.
+		solar_system = {
+			any_system_planet = {
+				is_colonizable = yes
+				NOT = { exists = owner }
+			}
+		}
 		owner = {
 			has_country_flag = adastra_stage_orbital
 			# 1.3 : comme les trois autres programmes, celui-ci exige sa
@@ -657,6 +779,84 @@ decision_adastra_colony = {
 # Il repondait au blocage de prospection en cartographiant le systeme natal par
 # effet, gratuitement et sans vaisseau. C'etait efficace et c'etait faux : il
 # rendait le Programme d'exploration inutile, puisque le seul travail du
-# vaisseau scientifique etait deja fait. La prospection revient au vaisseau -
-# voir adastra.91, qui prospecte par PRESENCE : un scientifique pose dans un
-# systeme en revele un corps par mois, meme si un empire l'a revendique.
+# vaisseau scientifique etait deja fait. La prospection revient au vaisseau,
+# sur ORDRE ; en systeme revendique le droit est rendu par la Teledetection
+# (TECH_TO_SURVEY_OWNED). Le filet par presence adastra.91 est supprime (31/08).
+
+# 30/08 - COHABITATION : RECLAMER NOTRE CIEL.
+# Quand un empire etranger possede la base stellaire du systeme natal a
+# l'etape Avant-poste, le programme de construction n'a pas d'objet : le
+# moteur n'autorise qu'une base par systeme. Cette decision ouvre la
+# negociation - miroir joueur de preftl.180, ou c'est l'occupant qui decide.
+# L'issue depend de son ethique et de son opinion (adastra.180). En cas de
+# refus, cinq ans avant de pouvoir revenir a la table.
+# 31/08 (3e passe) - LA DECISION EST DE RETOUR, et c'est definitif : les
+# actions diplomatiques sont une liste CODEE EN DUR du moteur
+# (« Diplomatic action is missing token », error.log partie 14) - impossible
+# d'en creer. Le bouton unique voulu par ampynjord vit donc ici, et l'issue
+# reste celle de son design : le routeur adastra.180 tranche par l'ETHIQUE
+# de l'occupant, sans hasard - refus + revendication (xenophobe/militariste),
+# cession gratuite (pacifiste/xenophile), tributarite (autoritaire), ou
+# 1500 energie + 500 alliages (megacorp/materialiste/egalitaire).
+# Prerequis : l'occupant s'est declare (adastra.174) - on ne negocie pas
+# avec quelqu'un qui ne nous a jamais adresse la parole.
+decision_adastra_reclamer_ciel = {
+	owned_planets_only = yes
+	icon = decision_adastra_constructor
+
+	enactment_time = 30
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 100
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		exists = solar_system
+		owner = {
+			core_est_confine = yes
+			# 31/08 (retour ampynjord) : negocier avant le Programme de
+			# chantier orbital est un piege - la garde adastra.9 demonte
+			# toute base tant que le programme spatial n'a pas commence, et
+			# une base recue trop tot etait detruite « par la securite ».
+			# La reclamation s'ouvre a l'etape du chantier, quand posseder
+			# une base est legitime.
+			has_country_flag = adastra_stage_constructor
+		}
+		solar_system = {
+			exists = starbase
+			starbase = {
+				exists = owner
+				NOT = { owner = { is_same_value = root.owner } }
+				owner = { is_country_type = default }
+			}
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = adastra_decision_reclamer_comms
+			solar_system = {
+				starbase = {
+					owner = { has_communications = root.owner }
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = adastra_action_negociation_recente
+			owner = { NOT = { has_country_flag = adastra_negociation_recente } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_adastra_reclamer_ciel_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.180 } }
+		}
+	}
+
+	ai_weight = { weight = 60 }
+}

@@ -62,7 +62,7 @@ def main() -> None:
     paste_grid(canvas, techs, (72, 300), columns=25, cell=50, size=42)
 
     x = 1360
-    draw.text((x, 225), "14 DECISIONS", font=label, fill=(202, 233, 241, 255))
+    draw.text((x, 225), "15 DECISIONS", font=label, fill=(202, 233, 241, 255))
     draw.text((x, 258), "Programs that turn a world upward.", font=small,
               fill=(113, 166, 185, 255))
     paste_grid(canvas, decisions, (x, 300), columns=7, cell=64, size=54)
@@ -72,7 +72,7 @@ def main() -> None:
               fill=(113, 166, 185, 255))
     paste_grid(canvas, buildings, (x, 605), columns=6, cell=78, size=72)
 
-    draw.text((72, 864), "285 ORIGINAL ICONS", font=font(35, bold=True),
+    draw.text((72, 864), "286 ORIGINAL ICONS", font=font(35, bold=True),
               fill=(207, 244, 252, 255))
     draw.text((72, 912), "Technologies  •  Decisions  •  Buildings", font=font(26),
               fill=(89, 194, 212, 255))

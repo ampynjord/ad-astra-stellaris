@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Construit Ad Astra et pose exactement l'archive dans le mod local."""
+import argparse
 import shutil
 import subprocess
 import sys
@@ -53,10 +54,20 @@ def copie_miroir(source, cible):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--generated-ok", action="store_true",
+        help="autorise le deploiement local apres une regeneration non versionnee",
+    )
+    args = parser.parse_args()
     espace = espace_de_travail().resolve()
 
-    lance([sys.executable, "tools/verify_generated.py"])
+    if not args.generated_ok:
+        lance([sys.executable, "tools/verify_generated.py"])
+    else:
+        print("verification Git des sorties generees ignoree pour le deploiement local")
     lance([sys.executable, "tools/verify_1_2.py"])
+    lance([sys.executable, "tools/verify_scenarios.py"])
     lance([sys.executable, "tools/verify_release.py"])
     lance([sys.executable, "tools/ci_release.py", "--sortie", "build"])
 

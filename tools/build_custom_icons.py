@@ -31,10 +31,7 @@ DECISIONS = {
     "decision_adastra_starbase": "starbase.png",
     "decision_adastra_hyperdrive": "hyperdrive.png",
     "decision_adastra_navy": "navy.png",
-    "decision_adastra_campaign_harvest": "campaign_harvest.png",
-    "decision_adastra_campaign_mining": "campaign_mining.png",
-    "decision_adastra_campaign_fuel": "campaign_fuel.png",
-    "decision_adastra_campaign_industry": "campaign_industry.png",
+    "decision_adastra_national_programme": "national_programme.png",
     "decision_adastra_colony": "colony.png",
 }
 

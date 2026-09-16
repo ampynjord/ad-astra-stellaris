@@ -17,12 +17,19 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from vanilla_tech_age_map import GATED_AGES, TECH_AGE  # noqa: E402
+from vanilla_age_map import AGE_UNLOCK_COST, VANILLA_AGE_MAP  # noqa: E402
 
 ROOT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "ad_astra")
 
 FILES = ["zzz_adastra_tech_overrides.txt", "zzz_adastra_tier1_overrides.txt"]
-ANY_GATE = re.compile(r"adastra_vanilla_open_(%s) = yes" % "|".join(GATED_AGES))
+# Quelques cartes avaient ete temporairement reportees a l'emergence. Une
+# entree de TECH_AGE reste la source de verite : elle doit pouvoir les ramener
+# a l'age historique voulu sans editer l'override genere.
+ANY_GATE = re.compile(
+    r"adastra_vanilla_open_(%s) = yes|has_country_flag = adastra_completed"
+    % "|".join(GATED_AGES)
+)
 
 
 def block_span(src, key):
@@ -51,7 +58,12 @@ def main():
         path = os.path.join(ROOT, "common", "technology", name)
         src = open(path, encoding="utf-8").read()
         changed = False
-        for tech, (age, _why) in TECH_AGE.items():
+        # 30/08 : les deux tables de datation recoivent le meme traitement -
+        # garde d'age ET cout au bareme de l'age d'accueil.
+        _toutes = dict(TECH_AGE)
+        for _k, _v in VANILLA_AGE_MAP.items():
+            _toutes.setdefault(_k, (_v[0], ""))
+        for tech, (age, _why) in _toutes.items():
             span = block_span(src, tech)
             if not span:
                 continue
@@ -61,6 +73,16 @@ def main():
                 missing.append((tech, name, "aucune garde d'age dans le bloc"))
                 continue
             new = ANY_GATE.sub("adastra_vanilla_open_%s = yes" % age, block)
+            if age in AGE_UNLOCK_COST:
+                new = re.sub(r"cost = @?[A-Za-z0-9_]+",
+                             "cost = %d" % AGE_UNLOCK_COST[age], new, count=1)
+            if tech == "tech_food_processing_1" and age == "space":
+                new = re.sub(
+                    r"\n\t\t# 1\.3 : ce n'est pas une technologie de depart\..*?Elle attend l'emergence\.",
+                    "",
+                    new,
+                    flags=re.S,
+                )
             if new == block:
                 unchanged.append((tech, age))
             else:

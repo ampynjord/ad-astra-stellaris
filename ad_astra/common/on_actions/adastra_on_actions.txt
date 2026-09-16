@@ -17,7 +17,6 @@ on_monthly_pulse_country = {
 	events = {
 		adastra.9
 		adastra.11
-		adastra.91
 		adastra.133
 		adastra.134
 		adastra.71
@@ -26,6 +25,5 @@ on_monthly_pulse_country = {
 		adastra.74
 		adastra.75
 		adastra.76
-		adastra.92
 	}
 }

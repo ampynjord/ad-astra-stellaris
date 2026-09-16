@@ -1,20 +1,1045 @@
-# Ad Astra 1.2 - designations de capitale pour un empire confine.
+# Ad Astra - designations de colonie : elargissement et verrou.
 # FICHIER GENERE PAR tools/gen_colony_type_overrides.py - NE PAS EDITER A LA MAIN.
 #
-# Cinq designations de capitale exigent is_country_type = default. Un empire
-# Ad Astra est en adastra_grounded pendant tout le confinement : aucune ne lui
-# etait proposee, et comme sa seule planete est sa capitale, il n'avait acces a
-# aucune designation. Retour de Sithiya sur le Workshop.
+# 1. Les cinq designations de capitale sont ELARGIES a adastra_grounded
+#    (retour Sithiya) - condition elargie, jamais remplacee.
+# 2. Toute designation vanilla est VERROUILLEE tant que l'empire est
+#    confine (drapeau adastra_locked) : avant l'emergence seule la
+#    designation d'epoque col_pre_ftl_* s'applique (retour ampynjord,
+#    31/08). A l'emergence le drapeau tombe, le nuancier revient.
 #
-# La condition est ELARGIE, jamais remplacee : les autres empires de la galaxie
-# ne voient aucune difference.
+# Les col_pre_ftl_* sont surchargees ailleurs et absentes d'ici.
+
+# Variables locales recopiees du fichier vanilla :
+@stickiness = 10
+@stickiness_low = 5
+@zone_rural = 10
+@rural_max_size = 13
+@rural_over_max_size = -20
 
 
-### col_capital (1 condition elargie)
+### col_city (verrouillee avant emergence)
+col_city = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_regular_empire = yes
+			is_nomadic = no
+		}
+		NOR = {
+			uses_district_set = city_world
+			uses_district_set = ring_world
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness_low
+			has_designation = col_city
+		}
+		modifier = {
+			has_any_trade_zone = yes
+			add = @zone_rural # intended, this is not a particularly great colony designation
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_mining (verrouillee avant emergence)
+col_mining = {
+	icon = GFX_colony_type_mine
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		NOR = {
+			uses_district_set = city_world
+			uses_district_set = ring_world
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		owner_or_space_owner? = {
+			is_wilderness_empire = no
+			is_nomadic = no
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = miner_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		mining = 2.0
+		mining_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_mining
+		}
+		modifier = {
+			planet_size > @rural_max_size
+			add = @rural_over_max_size
+		}
+		modifier = {
+			has_any_mining_zone = yes
+			add = @zone_rural
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_mining
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_melting
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_free_districts
+			parameters = {
+				type = district_mining
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_free_districts
+			parameters = {
+				type = district_melting
+			}
+			mode = add
+		}
+		modifier = {
+			add = 5
+			OR = {
+				has_modifier = asteroid_belt
+				has_modifier = mineral_rich
+				has_modifier = ultra_rich
+				has_modifier = extensive_moon_system
+				has_modifier = asteroid_impacts
+				has_modifier = carbon_world
+				# Volcanic Worlds
+				has_modifier = volcanic_mineral_rich
+				has_modifier = volcanic_ultra_rich
+				has_modifier = volcanic_subterranean
+				has_modifier = volcanic_asteroid_impacts
+				has_modifier = volcanic_hollow_planet
+				has_modifier = volcanic_lavafall
+			}
+		}
+		modifier = {
+			add = -10
+			has_modifier = mineral_poor
+		}
+	}
+}
+
+### col_farming (verrouillee avant emergence)
+col_farming = {
+	icon = GFX_colony_type_farm
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { country_uses_food = yes }
+		owner_or_space_owner = {
+			is_wilderness_empire = no
+			is_nomadic = no
+		}
+		NOR = {
+			uses_district_set = city_world
+			uses_district_set = ring_world
+			uses_district_set = habitat
+			uses_district_set = machine_world
+			uses_district_set = cosmogenesis_world
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = farmer_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		farming = 2.0
+		hydroponics = 1.5
+		farming_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_farming
+		}
+		modifier = {
+			planet_size > @rural_max_size
+			add = @rural_over_max_size
+		}
+		modifier = {
+			has_any_agriculture_zone = yes
+			add = @zone_rural
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_farming
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_free_districts
+			parameters = {
+				type = district_farming
+			}
+			mode = add
+		}
+		modifier = {
+			add = 5
+			has_modifier = lush_planet
+		}
+		modifier = {
+			add = -10
+			OR = {
+				has_modifier = bleak_planet
+				has_modifier = unbalanced_ecosystem
+				has_modifier = irradiated_planet
+			}
+		}
+	}
+}
+
+### col_generator (verrouillee avant emergence)
+col_generator = {
+	icon = GFX_colony_type_generator
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_wilderness_empire = no
+			is_nomadic = no
+		}
+		NOR = {
+			uses_district_set = city_world
+			uses_district_set = ring_world
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = technician_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		generator = 2.0
+		generator_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_generator
+		}
+		modifier = {
+			planet_size > @rural_max_size
+			add = @rural_over_max_size
+		}
+		modifier = {
+			has_any_generator_zone = yes
+			add = @zone_rural
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_generator
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_geothermal # are always uncapped
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_free_districts
+			parameters = {
+				type = district_generator
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_free_districts
+			parameters = {
+				type = district_geothermal
+			}
+			mode = add
+		}
+		modifier = {
+			add = 5
+			OR = {
+				has_modifier = hazardous_weather
+				has_modifier = strong_magnetic_field
+			}
+		}
+		modifier = {
+			add = -10
+			has_modifier = energy_poor
+		}
+	}
+}
+
+### col_hive (verrouillee avant emergence)
+col_hive = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		NOR = {
+			uses_district_set = ring_world
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		owner_or_space_owner? = { is_hive_empire = yes }
+		owner_or_space_owner = {
+			is_wilderness_empire = no
+			is_nomadic = no
+		}
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_hive
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hive
+			}
+			mode = add
+			mult = 2
+		}
+	}
+}
+
+### col_nexus (verrouillee avant emergence)
+col_nexus = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		NOR = {
+			uses_district_set = machine_world
+			uses_district_set = ring_world
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		owner_or_space_owner? = {
+			is_machine_empire = yes
+			is_nomadic = no
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nexus
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_nexus
+			}
+			mode = add
+			mult = 2
+		}
+	}
+}
+
+### col_industrial (verrouillee avant emergence)
+col_industrial = {
+	icon = GFX_colony_type_industrial
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			country_uses_consumer_goods = yes
+			is_nomadic = no
+		}
+		NOR = {
+			uses_district_set = city_world
+			uses_district_set = habitat
+			uses_district_set = machine_world
+			uses_district_set = hive_world
+			uses_district_set = cosmogenesis_world
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_split
+		MODIFIER = artisan_jobs_bonus_workforce_mult
+		MODIFIER2 = foundry_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.025
+			foundry_jobs_bonus_workforce_mult = 0.025
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.025
+			foundry_jobs_bonus_workforce_mult = 0.025
+		}
+	}
+
+	ai_building_set_affinity = {
+		industrial = 2.0
+		foundry = 1.5
+		factory = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_industrial
+		}
+		modifier = {
+			OR = {
+				has_mixed_industrial_zone = yes
+				AND = {
+					has_any_foundry_zone = yes
+					has_any_factory_zone = yes
+				}
+			}
+			add = @zone_urban
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_foundry (verrouillee avant emergence)
+col_foundry = {
+	icon = GFX_colony_type_foundry
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		NOR = {
+			uses_district_set = city_world
+			uses_district_set = habitat
+			uses_district_set = machine_world
+			uses_district_set = hive_world
+			uses_district_set = cosmogenesis_world
+		}
+		owner_or_space_owner? = {
+			is_wilderness_empire = no
+			is_nomadic = no
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = foundry_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			foundry_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		foundry = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_foundry
+		}
+		modifier = {
+			has_any_foundry_zone = yes
+			has_any_factory_zone = no
+			add = @zone_urban
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_factory (verrouillee avant emergence)
+col_factory = {
+	icon = GFX_colony_type_factory
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			country_uses_consumer_goods = yes
+			is_nomadic = no
+		}
+		NOR = {
+			uses_district_set = city_world
+			uses_district_set = habitat
+			uses_district_set = machine_world
+			uses_district_set = hive_world
+			uses_district_set = cosmogenesis_world
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = artisan_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		factory = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_factory
+		}
+		modifier = {
+			has_any_foundry_zone = no
+			has_any_factory_zone = yes
+			add = @zone_urban
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_bureau (verrouillee avant emergence)
+col_bureau = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_regular_empire = yes
+			is_spiritualist = no
+			has_make_spiritualist_perk = no
+			is_nomadic = no
+		}
+		NOR = {
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = yes }
+		}
+		job_bureaucrat_add = @building_static_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = no }
+		}
+		job_coordinator_add = @building_static_jobs
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_bureau
+		}
+		inline_script = {
+			script = colony_types/shared_weights_admin
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_city
+			}
+			mode = add
+		}
+	}
+}
+
+### col_bureau_spiritualist (verrouillee avant emergence)
+col_bureau_spiritualist = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_regular_empire = yes
+			OR = {
+				is_spiritualist = yes
+				has_make_spiritualist_perk = yes
+			}
+			is_nomadic = no
+		}
+		NOR = {
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = yes }
+		}
+		job_bureaucrat_add = @building_static_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = no }
+		}
+		job_coordinator_add = @building_static_jobs
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_bureau_spiritualist
+		}
+		inline_script = {
+			script = colony_types/shared_weights_priests
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_city
+			}
+			mode = add
+		}
+	}
+}
+
+### col_bureau_hive (verrouillee avant emergence)
+col_bureau_hive = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_hive_empire = yes }
+		owner_or_space_owner = {
+			is_wilderness_empire = no
+			is_nomadic = no
+		}
+		NOR = {
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_bureau_hive
+		}
+		inline_script = {
+			script = colony_types/shared_weights_synaptic
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hive
+			}
+			mode = add
+		}
+	}
+}
+
+### col_bureau_machine (verrouillee avant emergence)
+col_bureau_machine = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_machine_empire = yes
+			NOT = { has_valid_civic = civic_machine_servitor }
+			is_nomadic = no
+		}
+		NOR = {
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_bureau_machine
+		}
+		inline_script = {
+			script = colony_types/shared_weights_network
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_nexus
+			}
+			mode = add
+		}
+	}
+}
+
+### col_trade_machine (verrouillee avant emergence)
+col_trade_machine = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = machine_world
+		exists = owner_or_space_owner
+		owner_or_space_owner = {
+			is_country_type = default
+			is_machine_empire = yes
+		}
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_trade_machine
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_nexus
+			}
+			mode = add
+			mult = 2
+		}
+	}
+}
+
+### col_research (verrouillee avant emergence)
+col_research = {
+	icon = GFX_colony_type_research
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		NOR = {
+			uses_district_set = city_world
+			uses_district_set = ring_world
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		is_special_colony_type = no
+		is_capital = no
+		owner_or_space_owner? = {
+			is_wilderness_empire = no
+			is_nomadic = no
+		}
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = researcher_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		research = 2.0
+		physics = 1.5
+		society = 1.5
+		engineering = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_research
+		}
+		inline_script = {
+			script = colony_types/shared_weights_research
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+		# Volcanic Worlds
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_polytechnic
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_free_districts
+			parameters = {
+				type = district_polytechnic
+			}
+			mode = add
+		}
+	}
+}
+
+### col_fortress (verrouillee avant emergence)
+col_fortress = {
+	icon = GFX_colony_type_fortress
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		NOR = {
+			uses_district_set = city_world
+			uses_district_set = ring_world
+			uses_district_set = habitat
+			uses_district_set = cosmogenesis_world
+		}
+		is_capital = no
+		is_special_colony_type = no
+		owner_or_space_owner? = {
+			is_wilderness_empire = no
+			is_nomadic = no
+		}
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	planet_modifier = {
+		planet_army_build_speed_mult = 0.25
+		planet_orbital_bombardment_damage = -0.10
+		army_defense_damage_mult = 0.20
+		soldier_jobs_bonus_workforce_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			soldier_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		fortress = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_fortress
+		}
+		modifier = {
+			has_any_fortress_zone = yes
+			add = @zone_urban
+		}
+		complex_trigger_modifier = {
+			trigger = num_buildings
+			parameters = {
+				type = building_stronghold
+			}
+			mode = add
+			mult = 2
+		}
+		complex_trigger_modifier = {
+			trigger = num_buildings
+			parameters = {
+				type = building_fortress
+			}
+			mode = add
+			mult = 4
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_capital (elargie et verrouillee)
 col_capital = {
 	icon = GFX_colony_type_capital
 
 	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
 		OR = {
 			is_capital = yes
 			can_be_nomadic_capital_trigger = yes
@@ -67,11 +1092,12 @@ col_capital = {
 	}
 }
 
-### col_capital_foundry (3 conditions elargies)
+### col_capital_foundry (elargie et verrouillee)
 col_capital_foundry = {
 	icon = GFX_colony_type_capital_foundry
 
 	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
 		OR = {
 			is_capital = yes
 			can_be_nomadic_capital_trigger = yes
@@ -140,11 +1166,12 @@ col_capital_foundry = {
 	}
 }
 
-### col_capital_factory (3 conditions elargies)
+### col_capital_factory (elargie et verrouillee)
 col_capital_factory = {
 	icon = GFX_colony_type_capital_factory
 
 	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
 		OR = {
 			is_capital = yes
 			can_be_nomadic_capital_trigger = yes
@@ -214,11 +1241,12 @@ col_capital_factory = {
 	}
 }
 
-### col_capital_trade (1 condition elargie)
+### col_capital_trade (elargie et verrouillee)
 col_capital_trade = {
 	icon = GFX_colony_type_capital_trade
 
 	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
 		OR = {
 			is_capital = yes
 			can_be_nomadic_capital_trigger = yes
@@ -267,11 +1295,12 @@ col_capital_trade = {
 	}
 }
 
-### col_capital_extraction (3 conditions elargies)
+### col_capital_extraction (elargie et verrouillee)
 col_capital_extraction = {
 	icon = GFX_colony_type_capital_extraction
 
 	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
 		OR = {
 			is_capital = yes
 			can_be_nomadic_capital_trigger = yes
@@ -340,5 +1369,3135 @@ col_capital_extraction = {
 
 	weight_modifier = {
 		base = 0
+	}
+}
+
+### col_capital_hive (verrouillee avant emergence)
+col_capital_hive = {
+	icon = GFX_colony_type_capital
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		OR = {
+			is_capital = yes
+			can_be_nomadic_capital_trigger = yes
+		}
+		FROM? = {
+			is_country_type = default
+			is_hive_empire = yes
+			is_wilderness_empire = no
+		}
+		carrier_is_type = planet
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_amenities_no_happiness_add = 1000
+		planet_housing_add = 1000
+		planet_crime_no_happiness_add = -20
+		pop_bonus_workforce_mult = 0.10
+		planet_resettlement_unemployed_destination_mult = 0.1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			pop_bonus_workforce_mult = 0.025
+		}
+	}
+
+	# Hives typically open with Archives (research) and Heavy Industry (foundry) on their capital,
+	# so hint those sets alongside administrative buildings.
+	ai_building_set_affinity = {
+		government = 1.5
+		research = 1.5
+		physics = 1.25
+		society = 1.25
+		engineering = 1.25
+		industrial = 1.5
+		foundry = 1.5
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_capital_machine (verrouillee avant emergence)
+col_capital_machine = {
+	icon = GFX_colony_type_capital
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		OR = {
+			is_capital = yes
+			can_be_nomadic_capital_trigger = yes
+		}
+		FROM? = {
+			is_country_type = default
+			is_machine_empire = yes
+		}
+		carrier_is_type = planet
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_amenities_no_happiness_add = 1000
+		planet_housing_add = 1000
+		planet_crime_no_happiness_add = -20
+		pop_bonus_workforce_mult = 0.10
+		planet_resettlement_unemployed_destination_mult = 0.1
+	}
+
+	# Machine empires typically open with Archives (research) and Heavy Industry (foundry) on their capital,
+	# so hint those sets alongside administrative buildings.
+	ai_building_set_affinity = {
+		government = 1.5
+		research = 1.5
+		physics = 1.25
+		society = 1.25
+		engineering = 1.25
+		industrial = 1.5
+		foundry = 1.5
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_habitat_energy (verrouillee avant emergence)
+col_habitat_energy = {
+	icon = GFX_colony_type_habitat_energy
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = habitat
+		exists = owner_or_space_owner
+		check_modifier_value = {
+			modifier = district_hab_energy_max_add
+			value > 0
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = technician_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		generator = 2.0
+		generator_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_energy
+		}
+		modifier = {
+			has_any_generator_zone = yes
+			add = @zone_rural
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_energy
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_free_districts
+			parameters = {
+				type = district_hab_energy
+			}
+			mode = add
+		}
+	}
+}
+
+### col_habitat_trade (verrouillee avant emergence)
+col_habitat_trade = {
+	icon = GFX_colony_type_habitat_trade
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = habitat
+		owner_or_space_owner? = { is_gestalt = no }
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_trade
+		}
+		complex_trigger_modifier = {
+			trigger = num_assigned_jobs
+			parameters = {
+				job = merchant
+			}
+			mode = add
+			mult = 0.02
+		}
+		complex_trigger_modifier = {
+			trigger = num_assigned_jobs
+			parameters = {
+				job = trader
+			}
+			mode = add
+			mult = 0.01
+		}
+		complex_trigger_modifier = {
+			trigger = num_assigned_jobs
+			parameters = {
+				job = numistic_priest
+			}
+			mode = add
+			mult = 0.01
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_housing
+			}
+			mode = add
+		}
+	}
+}
+
+### col_habitat_research (verrouillee avant emergence)
+col_habitat_research = {
+	icon = GFX_colony_type_habitat_research
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = habitat
+		exists = owner_or_space_owner
+		check_modifier_value = {
+			modifier = district_hab_science_max_add
+			value > 0
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = researcher_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		research = 2.0
+		physics = 1.5
+		society = 1.5
+		engineering = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_research
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_science
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_free_districts
+			parameters = {
+				type = district_hab_science
+			}
+			mode = add
+		}
+		modifier = {
+			add = 10
+			has_deposit = d_payback_habitat_research
+		}
+		inline_script = {
+			script = colony_types/shared_weights_research
+		}
+	}
+}
+
+### col_habitat_mining (verrouillee avant emergence)
+col_habitat_mining = {
+	icon = GFX_colony_type_habitat_mining
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = habitat
+		check_modifier_value = {
+			modifier = district_hab_mining_max_add
+			value > 0
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = miner_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		mining = 2.0
+		mining_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_mining
+		}
+		modifier = {
+			has_any_mining_zone = yes
+			add = @zone_rural
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_mining
+			}
+			mode = add
+		}
+		complex_trigger_modifier = {
+			trigger = num_free_districts
+			parameters = {
+				type = district_hab_mining
+			}
+			mode = add
+		}
+	}
+}
+
+### col_habitat_farming (verrouillee avant emergence)
+col_habitat_farming = {
+	icon = GFX_colony_type_habitat_farming
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = habitat
+		owner_or_space_owner? = {
+			is_gestalt = no
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = farmer_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		farming = 2.0
+		hydroponics = 1.5
+		farming_automation = 1.5
+	}
+
+	weight_modifier = {
+		base = 0
+	}
+}
+
+### col_habitat_gestalt_farming (verrouillee avant emergence)
+col_habitat_gestalt_farming = {
+	icon = GFX_colony_type_habitat_farming
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = habitat
+		owner_or_space_owner? = {
+			is_gestalt = yes
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = farmer_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		farming = 2.0
+		hydroponics = 1.5
+		farming_automation = 1.5
+	}
+
+	weight_modifier = {
+		base = 0
+	}
+}
+
+### col_habitat_fortress (verrouillee avant emergence)
+col_habitat_fortress = {
+	icon = GFX_colony_type_habitat_fortress
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = habitat
+		is_capital = no
+	}
+
+	planet_modifier = {
+		planet_army_build_speed_mult = 0.25
+		planet_orbital_bombardment_damage = -0.10
+		army_defense_damage_mult = 0.20
+		soldier_jobs_bonus_workforce_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner
+			owner_or_space_owner = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			soldier_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				has_building = building_order_keep
+				has_building = building_order_castle
+			}
+		}
+		pop_knight_bonus_workforce_mult = 0.05
+	}
+
+	ai_building_set_affinity = {
+		fortress = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_fortress
+		}
+		modifier = {
+			add = 1000
+			OR = {
+				has_building = building_order_keep
+				has_building = building_order_castle
+			}
+		}
+		modifier = {
+			has_any_fortress_zone = yes
+			add = @zone_urban
+		}
+		complex_trigger_modifier = {
+			trigger = num_buildings
+			parameters = {
+				type = building_stronghold
+			}
+			mode = add
+			mult = 3
+		}
+		complex_trigger_modifier = {
+			trigger = num_buildings
+			parameters = {
+				type = building_fortress
+			}
+			mode = add
+			mult = 6
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_housing
+			}
+			mode = add
+		}
+	}
+}
+
+### col_habitat_industrial (verrouillee avant emergence)
+col_habitat_industrial = {
+	icon = GFX_colony_type_hab_industrial
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { country_uses_consumer_goods = yes }
+		uses_district_set = habitat
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_split
+		MODIFIER = artisan_jobs_bonus_workforce_mult
+		MODIFIER2 = foundry_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.025
+			foundry_jobs_bonus_workforce_mult = 0.025
+		}
+	}
+
+	ai_building_set_affinity = {
+		industrial = 2.0
+		foundry = 1.5
+		factory = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_industrial
+		}
+		modifier = {
+			OR = {
+				has_mixed_industrial_zone = yes
+				AND = {
+					has_any_foundry_zone = yes
+					has_any_factory_zone = yes
+				}
+			}
+			add = @zone_urban
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_housing
+			}
+			mode = add
+		}
+	}
+}
+
+### col_habitat_foundry (verrouillee avant emergence)
+col_habitat_foundry = {
+	icon = GFX_colony_type_habitat_foundry
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = habitat
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = foundry_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			foundry_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		foundry = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_foundry
+		}
+		modifier = {
+			has_any_foundry_zone = yes
+			has_any_factory_zone = no
+
+			add = @zone_urban
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_housing
+			}
+			mode = add
+		}
+	}
+}
+
+### col_habitat_factory (verrouillee avant emergence)
+col_habitat_factory = {
+	icon = GFX_colony_type_habitat_factory
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = habitat
+		owner_or_space_owner? = { country_uses_consumer_goods = yes }
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = artisan_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		factory = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_factory
+		}
+		modifier = {
+			has_any_factory_zone = yes
+			has_any_foundry_zone = no
+
+			add = @zone_urban
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_housing
+			}
+			mode = add
+		}
+	}
+}
+
+### col_habitat_bureau (verrouillee avant emergence)
+col_habitat_bureau = {
+	icon = GFX_colony_type_hab_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_regular_empire = yes
+			is_spiritualist = no
+			has_make_spiritualist_perk = no
+		}
+		uses_district_set = habitat
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = yes }
+		}
+		job_bureaucrat_add = @building_static_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = no }
+		}
+		job_coordinator_add = @building_static_jobs
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_bureau
+		}
+		inline_script = {
+			script = colony_types/shared_weights_admin
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_housing
+			}
+			mode = add
+		}
+	}
+}
+
+### col_habitat_bureau_spiritualist (verrouillee avant emergence)
+col_habitat_bureau_spiritualist = {
+	icon = GFX_colony_type_hab_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_regular_empire = yes
+			OR = {
+				is_spiritualist = yes
+				has_make_spiritualist_perk = yes
+			}
+		}
+		uses_district_set = habitat
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = yes }
+		}
+		job_bureaucrat_add = @building_static_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = no }
+		}
+		job_coordinator_add = @building_static_jobs
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_bureau_spiritualist
+		}
+		inline_script = {
+			script = colony_types/shared_weights_priests
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_housing
+			}
+			mode = add
+		}
+	}
+}
+
+### col_habitat_bureau_hive (verrouillee avant emergence)
+col_habitat_bureau_hive = {
+	icon = GFX_colony_type_hab_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_hive_empire = yes }
+		uses_district_set = habitat
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_habitat_bureau_hive
+		}
+		inline_script = {
+			script = colony_types/shared_weights_synaptic
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_housing
+			}
+			mode = add
+		}
+	}
+}
+
+### col_habitat_bureau_machine (verrouillee avant emergence)
+col_habitat_bureau_machine = {
+	icon = GFX_colony_type_hab_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_machine_empire = yes }
+		uses_district_set = habitat
+		is_special_colony_type = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_bureau_machine
+		}
+		inline_script = {
+			script = colony_types/shared_weights_network
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_hab_housing
+			}
+			mode = add
+		}
+	}
+}
+
+### col_ring_research (verrouillee avant emergence)
+col_ring_research = {
+	icon = GFX_colony_type_research
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = ring_world
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = researcher_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		research = 2.0
+		physics = 1.5
+		society = 1.5
+		engineering = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_ring_research
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_rw_science
+			}
+			mode = add
+			mult = 10
+		}
+		inline_script = {
+			script = colony_types/shared_weights_research
+		}
+	}
+}
+
+### col_ring_farming (verrouillee avant emergence)
+col_ring_farming = {
+	icon = GFX_colony_type_farm
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = ring_world
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = farmer_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		farming = 2.0
+		hydroponics = 1.5
+		farming_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_ring_farming
+		}
+		modifier = {
+			has_any_agriculture_zone = yes
+			add = @zone_rural
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_rw_farming
+			}
+			mode = add
+			mult = 10
+		}
+	}
+}
+
+### col_ring_trade (verrouillee avant emergence)
+col_ring_trade = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = ring_world
+		owner_or_space_owner? = { is_gestalt = no }
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness_low
+			has_designation = col_ring_trade
+		}
+		modifier = {
+			has_any_trade_zone = yes
+			add = @zone_rural # intended, this is not a particularly great colony designation
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_rw_commercial
+			}
+			mode = add
+			mult = 10
+		}
+	}
+}
+
+### col_ring_generator (verrouillee avant emergence)
+col_ring_generator = {
+	icon = GFX_colony_type_generator
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = ring_world
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = technician_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		generator = 2.0
+		generator_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_ring_generator
+		}
+		modifier = {
+			has_any_generator_zone = yes
+			add = @zone_rural
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_rw_generator
+			}
+			mode = add
+			mult = 10
+		}
+	}
+}
+
+### col_ecu_mix (verrouillee avant emergence)
+col_ecu_mix = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = city_world
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		trade = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness_low
+			has_designation = col_ecu_mix
+		}
+		modifier = {
+			has_any_trade_zone = yes
+			add = @zone_rural # intended, this is not a particularly great colony designation
+		}
+	}
+}
+
+### col_ecu_industrial (verrouillee avant emergence)
+col_ecu_industrial = {
+	icon = GFX_colony_type_industrial
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { country_uses_consumer_goods = yes }
+		uses_district_set = city_world
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_split
+		MODIFIER = artisan_jobs_bonus_workforce_mult
+		MODIFIER2 = foundry_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.025
+			foundry_jobs_bonus_workforce_mult = 0.025
+		}
+	}
+
+	ai_building_set_affinity = {
+		industrial = 2.0
+		foundry = 1.5
+		factory = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_ecu_industrial
+		}
+
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_arcology_civilian_industry
+			}
+			mode = add
+			mult = 6
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_arcology_arms_industry
+			}
+			mode = add
+			mult = 6
+		}
+		modifier = {
+			OR = {
+				has_mixed_industrial_zone = yes
+				AND = {
+					has_any_foundry_zone = yes
+					has_any_factory_zone = yes
+				}
+			}
+			add = @zone_urban
+		}
+	}
+}
+
+### col_ecu_foundry (verrouillee avant emergence)
+col_ecu_foundry = {
+	icon = GFX_colony_type_foundry
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = city_world
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = foundry_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			foundry_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		foundry = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_ecu_foundry
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_arcology_arms_industry
+			}
+			mode = add
+			mult = 8
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_arcology_civilian_industry
+			}
+			mode = add
+			mult = -3
+		}
+		modifier = {
+			has_any_foundry_zone = yes
+			has_any_factory_zone = no
+			add = @zone_urban
+		}
+	}
+}
+
+### col_ecu_factory (verrouillee avant emergence)
+col_ecu_factory = {
+	icon = GFX_colony_type_factory
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = city_world
+		owner_or_space_owner? = { country_uses_consumer_goods = yes }
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = artisan_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		factory = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_ecu_factory
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_arcology_civilian_industry
+			}
+			mode = add
+			mult = 8
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_arcology_arms_industry
+			}
+			mode = add
+			mult = -3
+		}
+		modifier = {
+			has_any_foundry_zone = no
+			has_any_factory_zone = yes
+			add = @zone_urban
+		}
+	}
+}
+
+### col_ecu_research (verrouillee avant emergence)
+col_ecu_research = {
+	icon = GFX_colony_type_research
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = city_world
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = researcher_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		research = 2.0
+		physics = 1.5
+		society = 1.5
+		engineering = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_ecu_research
+		}
+		inline_script = {
+			script = colony_types/shared_weights_research
+		}
+	}
+}
+
+### col_mac_foundry (verrouillee avant emergence)
+col_mac_foundry = {
+	icon = GFX_colony_type_foundry
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = machine_world
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = foundry_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			foundry_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		foundry = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_mac_foundry
+		}
+		modifier = {
+			# No mixed industry designation for machine worlds, so any foundries means this one wins
+			has_any_foundry_zone = yes
+			add = @zone_urban
+		}
+	}
+}
+
+### col_mac_factory (verrouillee avant emergence)
+col_mac_factory = {
+	icon = GFX_colony_type_factory
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = machine_world
+		owner_or_space_owner? = { country_uses_consumer_goods = yes }
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = artisan_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		factory = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_mac_factory
+		}
+		modifier = {
+			has_any_foundry_zone = no
+			has_any_factory_zone = yes
+			add = @zone_urban
+		}
+	}
+}
+
+### col_hiv (verrouillee avant emergence)
+col_hiv = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = hive_world
+		is_capital = no
+		owner_or_space_owner? = { is_wilderness_empire = no }
+	}
+
+	planet_modifier = {
+		planet_district_mining_build_speed_mult = 0.25
+		planet_district_farming_build_speed_mult = 0.25
+		planet_district_generator_build_speed_mult = 0.25
+		worker_and_simple_drone_cat_bonus_workforce_mult = 0.10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			worker_and_simple_drone_cat_bonus_workforce_mult = 0.025
+		}
+	}
+
+	# Hive Worlds are primarily resource acquisition colonies -- steer toward mining/energy/food rurals.
+	ai_building_set_affinity = {
+		mining = 1.5
+		mining_automation = 1.25
+		generator = 1.5
+		generator_automation = 1.25
+		farming = 1.5
+		hydroponics = 1.25
+		farming_automation = 1.25
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness_low
+			has_designation = col_hiv
+		}
+	}
+}
+
+### col_hiv_foundry (verrouillee avant emergence)
+col_hiv_foundry = {
+	icon = GFX_colony_type_foundry
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		uses_district_set = hive_world
+		is_capital = no
+		owner_or_space_owner? = { is_wilderness_empire = no }
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = foundry_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			foundry_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		foundry = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_hiv_foundry
+		}
+		modifier = {
+			has_any_foundry_zone = yes
+			add = @zone_urban
+		}
+	}
+}
+
+### col_trophy_machine (verrouillee avant emergence)
+col_trophy_machine = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { has_valid_civic = civic_machine_servitor }
+		NOT = {
+			uses_district_set = habitat
+		}
+		is_special_colony_type = no
+		is_capital = no
+		NOT = { is_planet_class = pc_nanotech }
+	}
+
+	planet_modifier = {
+		pop_bio_trophy_bonus_workforce_mult = 0.15
+		logistic_growth_mult = 0.10
+	}
+
+	ai_building_set_affinity = {
+		bio_trophy = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_trophy_machine
+		}
+		inline_script = {
+			script = colony_types/shared_weights_trophy
+		}
+	}
+}
+
+### col_fe_capital (verrouillee avant emergence)
+col_fe_capital = {
+	icon = GFX_colony_type_capital
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = yes
+		owner_or_space_owner? = { is_fallen_empire = yes }
+	}
+
+	planet_modifier = {
+		planet_stability_add = 10
+		planet_housing_add = 1000
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_fe_colony (verrouillee avant emergence)
+col_fe_colony = {
+	icon = GFX_colony_type_normal_colony
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = no
+		owner_or_space_owner? = { is_fallen_empire = yes }
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_resort (verrouillee avant emergence)
+col_resort = {
+	icon = GFX_colony_type_resort
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		has_modifier = resort_colony
+		OR = {
+			NOT = { exists = owner }
+			owner = { has_unlocked_pleasure_worlds = no }
+		}
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = influential_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		entertainment = 2.0
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_pleasure (verrouillee avant emergence)
+col_pleasure = {
+	icon = GFX_colony_type_resort
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		has_modifier = resort_colony
+		has_shroud_dlc = yes
+		owner? = { has_unlocked_pleasure_worlds = yes }
+	}
+
+	planet_modifier = {
+		influential_jobs_bonus_workforce_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = { influential_jobs_bonus_workforce_mult = 0.05 }
+	}
+
+	ai_building_set_affinity = {
+		entertainment = 2.0
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_penal (verrouillee avant emergence)
+col_penal = {
+	icon = GFX_colony_type_penal
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		has_modifier = penal_colony
+	}
+
+	planet_modifier = {
+		worker_and_simple_drone_cat_bonus_workforce_mult = 0.15
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 200
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner
+			owner_or_space_owner = {
+				has_tradition = tr_adaptability_finish
+				NOT = {
+					has_valid_civic = civic_dystopian_society
+				}
+			}
+		}
+		worker_and_simple_drone_cat_bonus_workforce_mult = 0.05
+		job_enforcer_add = 200
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				has_tradition = tr_adaptability_finish
+				has_valid_civic = civic_dystopian_society
+			}
+		}
+		worker_and_simple_drone_cat_bonus_workforce_mult = 0.05
+		job_dystopian_enforcer_add = 200
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_infested (verrouillee avant emergence)
+col_infested = {
+	icon = GFX_colony_type_dying
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = no
+		owner? = { is_country_type = swarm }
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_contingency (verrouillee avant emergence)
+col_contingency = {
+	icon = GFX_colony_type_dying
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner? = { is_country_type = ai_empire }
+		is_capital = no
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_slave (verrouillee avant emergence)
+col_slave = {
+	icon = GFX_colony_type_workers
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		has_modifier = slave_colony
+	}
+
+	planet_modifier = {
+		worker_and_simple_drone_cat_bonus_workforce_mult = 0.10
+		army_starting_experience_add = 200
+		planet_army_build_time_mult = -0.10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = { worker_and_simple_drone_cat_bonus_workforce_mult = -0.10 }
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_cosmogenesis_world (verrouillee avant emergence)
+col_cosmogenesis_world = {
+	icon = GFX_colony_type_synaptic_lathe_colony
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_planet_class = pc_cosmogenesis_world
+	}
+
+	planet_modifier = {
+		planet_jobs_produces_mult = 0.15
+		planet_jobs_upkeep_mult = -0.05
+		pop_purge_speed = -0.05
+		pop_housing_usage_mult = -0.1
+	}
+
+	ai_building_set_affinity = {
+		cosmogenesis_world = 2.0
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_nanotech_world (verrouillee avant emergence)
+col_nanotech_world = {
+	icon = GFX_colony_type_fringe
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_planet_class = pc_nanotech
+		owner? = { has_active_tradition = tr_nanotech_3 }
+	}
+
+	planet_modifier = {
+		planet_buildings_produces_mult = 0.15
+		planet_buildings_upkeep_mult = 0.1
+		planet_farmers_food_produces_mult = -0.25	# On the off chance the player builds some hydroponics farms
+		planet_farmers_nanites_produces_mult = 0.35
+		planet_miners_minerals_produces_mult = -0.25
+		planet_miners_nanites_produces_mult = 0.35
+		planet_jobs_worker_produces_mult = 0.05
+	}
+
+	# Steer the AI toward buildings the nanotech tradition actually unlocks: nanolabs (research/physics/
+	# society/engineering sets), nanotech cauldron (industrial/foundry), and nanite transmuter
+	# (industrial/factory/foundry). Without this block the AI builds generic urban infrastructure on
+	# pc_nanotech worlds and never specializes them.
+	ai_building_set_affinity = {
+		research = 2.0
+		physics = 1.5
+		society = 1.5
+		engineering = 1.5
+		foundry = 2.0
+		industrial = 1.5
+		factory = 1.5
+	}
+
+	weight_modifier = {
+		base = 10000
+	}
+}
+
+### col_wilderness_capital (verrouillee avant emergence)
+col_wilderness_capital = {
+	icon = GFX_colony_type_capital
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_wilderness_empire = yes }
+		is_capital = yes
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_housing_add = 1000
+		planet_crime_no_happiness_add = -20
+		planet_jobs_produces_mult = 0.1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			planet_jobs_produces_mult = 0.05
+		}
+	}
+
+	# Mirrors the other capitals: Archives (research) and Heavy Industry (foundry) alongside administrative buildings.
+	ai_building_set_affinity = {
+		government = 1.5
+		research = 1.5
+		physics = 1.25
+		society = 1.25
+		engineering = 1.25
+		industrial = 1.5
+		foundry = 1.5
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+### col_wilderness_generator (verrouillee avant emergence)
+col_wilderness_generator = {
+	icon = GFX_colony_type_generator
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_special_colony_type = no
+		is_capital = no
+		owner_or_space_owner? = { is_wilderness_empire = yes }
+	}
+
+	planet_modifier = {
+		planet_district_photosynthesis_fields_build_speed_mult = 0.25
+		planet_technician_produces_mult = 0.25
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = { planet_technician_produces_mult = 0.1 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+				is_gestalt = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_greatergood_five_year_plans"
+				is_active_resolution = "resolution_greatergood_greater_than_ourselves"
+				is_active_resolution = "resolution_greatergood_balance_in_the_middle"
+				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+			}
+		}
+		modifier = {
+			planet_jobs_simple_drone_produces_mult = 0.1
+		}
+	}
+
+	ai_building_set_affinity = {
+		generator = 2.0
+		generator_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_wilderness_generator
+		}
+	}
+}
+
+### col_wilderness_mining (verrouillee avant emergence)
+col_wilderness_mining = {
+	icon = GFX_colony_type_mine
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_wilderness_empire = yes }
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	planet_modifier = {
+		planet_district_hollow_mountains_build_speed_mult = 0.25
+		planet_miners_produces_mult = 0.25
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = { planet_miners_produces_mult = 0.1 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+				is_gestalt = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_greatergood_five_year_plans"
+				is_active_resolution = "resolution_greatergood_greater_than_ourselves"
+				is_active_resolution = "resolution_greatergood_balance_in_the_middle"
+				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+			}
+		}
+		modifier = {
+			planet_jobs_simple_drone_produces_mult = 0.1
+		}
+	}
+
+	ai_building_set_affinity = {
+		mining = 2.0
+		mining_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_wilderness_mining
+		}
+	}
+}
+
+### col_wilderness_farming (verrouillee avant emergence)
+col_wilderness_farming = {
+	icon = GFX_colony_type_farm
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_wilderness_empire = yes }
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	planet_modifier = {
+		planet_district_orchard_forests_build_speed_mult = 0.25
+		planet_farmers_produces_mult = 0.25
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = { planet_farmers_produces_mult = 0.1 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+				is_gestalt = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_greatergood_five_year_plans"
+				is_active_resolution = "resolution_greatergood_greater_than_ourselves"
+				is_active_resolution = "resolution_greatergood_balance_in_the_middle"
+				is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+			}
+		}
+		modifier = {
+			planet_jobs_simple_drone_produces_mult = 0.1
+		}
+	}
+
+	ai_building_set_affinity = {
+		farming = 2.0
+		hydroponics = 1.5
+		farming_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_wilderness_farming
+		}
+	}
+}
+
+### col_wilderness_fortress (verrouillee avant emergence)
+col_wilderness_fortress = {
+	icon = GFX_colony_type_fortress
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_wilderness_empire = yes }
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	planet_modifier = {
+		planet_building_planetary_carapace_build_speed_mult = 0.25
+		planet_orbital_bombardment_damage = -0.10
+		army_defense_damage_mult = 0.20
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			planet_orbital_bombardment_damage = -0.1
+		}
+	}
+
+	ai_building_set_affinity = {
+		fortress = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_wilderness_fortress
+		}
+	}
+}
+
+### col_wilderness_tech (verrouillee avant emergence)
+col_wilderness_tech = {
+	icon = GFX_colony_type_research
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_wilderness_empire = yes }
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	planet_modifier = {
+		planet_building_brain_node_1_build_speed_mult = 0.25
+		planet_researchers_produces_mult = 0.1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			planet_researchers_produces_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		research = 2.0
+		physics = 1.5
+		society = 1.5
+		engineering = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_wilderness_tech
+		}
+	}
+}
+
+### col_wilderness_nest (verrouillee avant emergence)
+col_wilderness_nest = {
+	icon = GFX_colony_type_rural
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_wilderness_empire = yes }
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	planet_modifier = {
+		planet_district_craglands_build_speed_mult = 0.25
+		planet_jobs_trade_produces_mult = 0.10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = { planet_jobs_trade_produces_mult = 0.05 }
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_wilderness_nest
+		}
+	}
+}
+
+### col_wilderness_refinery (verrouillee avant emergence)
+col_wilderness_refinery = {
+	icon = GFX_colony_type_refinery
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_wilderness_empire = yes }
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	planet_modifier = {
+		planet_refiners_produces_mult = 0.15
+		planet_translucers_produces_mult = 0.15
+		planet_chemists_produces_mult = 0.15
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			planet_refiners_produces_mult = 0.10
+			planet_translucers_produces_mult = 0.10
+			planet_chemists_produces_mult = 0.10
+		}
+	}
+
+	ai_building_set_affinity = {
+		industrial = 2.0
+		factory = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_wilderness_refinery
+		}
+	}
+}
+
+### col_wilderness_forge (verrouillee avant emergence)
+col_wilderness_forge = {
+	icon = GFX_colony_type_foundry
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_wilderness_empire = yes }
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	planet_modifier = {
+		planet_metallurgists_produces_mult = 0.10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			planet_metallurgists_produces_mult = 0.05
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			planet_metallurgists_produces_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		industrial = 2.0
+		foundry = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_wilderness_forge
+		}
+	}
+}
+
+### col_wilderness_unification (verrouillee avant emergence)
+col_wilderness_unification = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = { is_wilderness_empire = yes }
+		is_special_colony_type = no
+		is_capital = no
+	}
+
+	planet_modifier = {
+		planet_bureaucrats_produces_mult = 0.10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			planet_bureaucrats_produces_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		unity = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_wilderness_unification
+		}
+	}
+}
+
+### col_nomad_city (verrouillee avant emergence)
+col_nomad_city = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = no
+		owner? = {
+			is_nomadic = yes
+		}
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness_low
+			has_designation = col_nomad_city
+		}
+		modifier = {
+			has_any_trade_zone = yes
+			add = @zone_rural
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_nomad_farming (verrouillee avant emergence)
+col_nomad_farming = {
+	icon = GFX_colony_type_farm
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			country_uses_food = yes
+			is_nomadic = yes
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = farmer_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		farming = 2.0
+		hydroponics = 1.5
+		farming_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_farming
+		}
+		modifier = {
+			has_any_agriculture_zone = yes
+			add = @zone_rural
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_ark_basic
+			}
+			mode = add
+		}
+	}
+}
+
+### col_nomad_generator (verrouillee avant emergence)
+col_nomad_generator = {
+	icon = GFX_colony_type_generator
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner? = {
+			is_nomadic = yes
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_rural
+		MODIFIER = technician_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		generator = 2.0
+		generator_automation = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_generator
+		}
+		modifier = {
+			has_any_generator_zone = yes
+			add = @zone_rural
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_ark_generator
+			}
+			mode = add
+		}
+	}
+}
+
+### col_nomad_hive (verrouillee avant emergence)
+col_nomad_hive = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_hive_empire = yes
+			is_nomadic = yes
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness_low
+			has_designation = col_nomad_hive
+		}
+		modifier = {
+			has_any_trade_zone = yes
+			add = @zone_rural
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_nomad_nexus (verrouillee avant emergence)
+col_nomad_nexus = {
+	icon = GFX_colony_type_urban
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_machine_empire = yes
+			is_nomadic = yes
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = trader_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness_low
+			has_designation = col_nomad_nexus
+		}
+		modifier = {
+			has_any_trade_zone = yes
+			add = @zone_rural
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_nomad_industrial (verrouillee avant emergence)
+col_nomad_industrial = {
+	icon = GFX_colony_type_industrial
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			country_uses_consumer_goods = yes
+			is_nomadic = yes
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier_split
+		MODIFIER = artisan_jobs_bonus_workforce_mult
+		MODIFIER2 = foundry_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.025
+			foundry_jobs_bonus_workforce_mult = 0.025
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.025
+			foundry_jobs_bonus_workforce_mult = 0.025
+		}
+	}
+
+	ai_building_set_affinity = {
+		industrial = 2.0
+		foundry = 1.5
+		factory = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_industrial
+		}
+		modifier = {
+			ship? = {
+				is_civilian_arkship = yes
+			}
+			owner? = {
+				country_uses_consumer_goods = yes
+			}
+			add = @stickiness
+		}
+		modifier = {
+			OR = {
+				has_mixed_industrial_zone = yes
+				AND = {
+					has_any_foundry_zone = yes
+					has_any_factory_zone = yes
+				}
+			}
+			add = @zone_urban
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_nomad_foundry (verrouillee avant emergence)
+col_nomad_foundry = {
+	icon = GFX_colony_type_foundry
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = no
+		owner? = {
+			is_nomadic = yes
+		}
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = foundry_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			foundry_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		foundry = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_foundry
+		}
+		modifier = {
+			ship? = {
+				is_civilian_arkship = yes
+			}
+			owner? = {
+				country_uses_consumer_goods = no
+			}
+			add = @stickiness
+		}
+		modifier = {
+			OR = {
+				has_zone = { zone = zone_ark_foundry }
+				has_zone = { zone = zone_ark_industrial }
+			}
+			add = @zone_urban
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_nomad_factory (verrouillee avant emergence)
+col_nomad_factory = {
+	icon = GFX_colony_type_factory
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = no
+		owner? = {
+			is_nomadic = yes
+			country_uses_consumer_goods = yes
+		}
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = artisan_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = {
+				is_galactic_community_member = yes
+			}
+			OR = {
+				is_active_resolution = "resolution_industry_environmental_ordinance_waivers"
+				is_active_resolution = "resolution_industry_project_cornucopia"
+			}
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		factory = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_factory
+		}
+		modifier = {
+			has_zone = { zone = zone_ark_industrial }
+			add = @zone_urban
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_nomad_bureau (verrouillee avant emergence)
+col_nomad_bureau = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = no
+		owner? = {
+			is_nomadic = yes
+			is_regular_empire = yes
+			is_spiritualist = no
+			NOT = { has_make_spiritualist_perk = yes }
+		}
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = yes }
+		}
+		job_bureaucrat_add = @building_static_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = no }
+		}
+		job_coordinator_add = @building_static_jobs
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_bureau
+		}
+		inline_script = {
+			script = colony_types/shared_weights_admin
+		}
+	}
+}
+
+### col_nomad_bureau_spiritualist (verrouillee avant emergence)
+col_nomad_bureau_spiritualist = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_regular_empire = yes
+			OR = {
+				is_spiritualist = yes
+				has_make_spiritualist_perk = yes
+			}
+			is_nomadic = yes
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = yes }
+		}
+		job_bureaucrat_add = @building_static_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner_or_space_owner.federation
+			owner_or_space_owner.federation = {
+				has_federation_perk = all_the_priests_1
+			}
+			owner? = { is_regular_empire = no }
+		}
+		job_coordinator_add = @building_static_jobs
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_bureau_spiritualist
+		}
+		inline_script = {
+			script = colony_types/shared_weights_priests
+		}
+	}
+}
+
+### col_nomad_bureau_machine (verrouillee avant emergence)
+col_nomad_bureau_machine = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			is_machine_empire = yes
+			NOT = { has_valid_civic = civic_machine_servitor }
+			is_nomadic = yes
+		}
+		is_capital = no
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_bureau_machine
+		}
+		inline_script = {
+			script = colony_types/shared_weights_network
+		}
+	}
+}
+
+### col_nomad_bureau_hive (verrouillee avant emergence)
+col_nomad_bureau_hive = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = no
+		owner_or_space_owner? = {
+			is_hive_empire = yes
+			is_nomadic = yes
+		}
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = bureaucrat_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		unity = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_bureau_hive
+		}
+		inline_script = {
+			script = colony_types/shared_weights_synaptic
+		}
+		complex_trigger_modifier = {
+			trigger = num_districts
+			parameters = {
+				type = district_ark_city
+			}
+			mode = add
+		}
+	}
+}
+
+### col_nomad_research (verrouillee avant emergence)
+col_nomad_research = {
+	icon = GFX_colony_type_research
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = no
+		owner? = {
+			is_nomadic = yes
+		}
+	}
+
+	inline_script = {
+		script = colony_types/colony_type_planet_modifier
+		MODIFIER = researcher_jobs_bonus_workforce_mult
+	}
+
+	ai_building_set_affinity = {
+		research = 2.0
+		physics = 1.5
+		society = 1.5
+		engineering = 1.5
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_research
+		}
+		modifier = {
+			ship? = {
+				is_science_arkship = yes
+			}
+			add = @stickiness
+		}
+		inline_script = {
+			script = colony_types/shared_weights_research
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_nomad_fortress (verrouillee avant emergence)
+col_nomad_fortress = {
+	icon = GFX_colony_type_fortress
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner? = {
+			is_nomadic = yes
+		}
+		is_capital = no
+	}
+
+	planet_modifier = {
+		planet_army_build_speed_mult = 0.25
+		ship_shield_mult = 0.05
+		ship_armor_mult = 0.05
+		soldier_jobs_bonus_workforce_mult = 0.10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		soldier_jobs_bonus_workforce_mult = 0.05
+	}
+
+	ai_building_set_affinity = {
+		fortress = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_fortress
+		}
+		modifier = {
+			ship? = {
+				is_military_arkship = yes
+			}
+			add = @stickiness
+		}
+		modifier = {
+			has_any_fortress_zone = yes
+			add = @zone_urban
+		}
+		complex_trigger_modifier = {
+			trigger = num_buildings
+			parameters = {
+				type = building_stronghold
+			}
+			mode = add
+			mult = 2
+		}
+		complex_trigger_modifier = {
+			trigger = num_buildings
+			parameters = {
+				type = building_fortress
+			}
+			mode = add
+			mult = 4
+		}
+		inline_script = {
+			script = colony_types/shared_weights_urban
+		}
+	}
+}
+
+### col_capital_nomad (verrouillee avant emergence)
+col_capital_nomad = {
+	icon = GFX_colony_type_capital
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = yes
+		carrier_is_type = ship
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_housing_add = 1000
+		planet_resettlement_unemployed_destination_mult = 0.1
+		pop_bonus_workforce_mult = 0.10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { is_gestalt = no }
+		}
+		modifier = {
+			pop_government_ethic_attraction = 1
+			planet_amenities_add = 1000
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_crime_no_happiness_add = -20
+			planet_amenities_no_happiness_add = 1000
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			pop_bonus_workforce_mult = 0.025
+		}
+	}
+
+	ai_building_set_affinity = {
+		government = 1.5
+		research = 1.5
+		physics = 1.25
+		society = 1.25
+		engineering = 1.25
+		industrial = 1.5
+		factory = 1.25
+		foundry = 1.25
+	}
+
+	weight_modifier = {
+		base = 0
+	}
+}
+
+### col_capital_nomad_foundry (verrouillee avant emergence)
+col_capital_nomad_foundry = {
+	icon = GFX_colony_type_capital_foundry
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = yes
+		carrier_is_type = ship
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_housing_add = 1000
+		planet_resettlement_unemployed_destination_mult = 0.1
+		foundry_jobs_bonus_workforce_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { is_gestalt = no }
+		}
+		modifier = {
+			pop_government_ethic_attraction = 1
+			planet_amenities_add = 1000
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_crime_no_happiness_add = -20
+			planet_amenities_no_happiness_add = 1000
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			pop_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		foundry = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		base = 0
+	}
+}
+
+### col_capital_nomad_factory (verrouillee avant emergence)
+col_capital_nomad_factory = {
+	icon = GFX_colony_type_capital_factory
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = yes
+		carrier_is_type = ship
+		owner? = {
+			country_uses_consumer_goods = yes
+		}
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_amenities_add = 1000
+		planet_housing_add = 1000
+		pop_government_ethic_attraction = 1
+		planet_resettlement_unemployed_destination_mult = 0.1
+		artisan_jobs_bonus_workforce_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			artisan_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		factory = 2.0
+		industrial = 1.5
+	}
+
+	weight_modifier = {
+		base = 0
+	}
+}
+
+### col_capital_nomad_trade (verrouillee avant emergence)
+col_capital_nomad_trade = {
+	icon = GFX_colony_type_capital_trade
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		is_capital = yes
+		carrier_is_type = ship
+		owner? = {
+			is_gestalt = no
+		}
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_amenities_add = 1000
+		planet_housing_add = 1000
+		pop_government_ethic_attraction = 1
+		planet_resettlement_unemployed_destination_mult = 0.1
+		trader_jobs_bonus_workforce_mult = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+		}
+		modifier = {
+			trader_jobs_bonus_workforce_mult = 0.05
+		}
+	}
+
+	ai_building_set_affinity = {
+		trade = 2.0
+	}
+
+	weight_modifier = {
+		base = 0
+	}
+}
+
+### col_nomad_trophy_machine (verrouillee avant emergence)
+col_nomad_trophy_machine = {
+	icon = GFX_colony_type_bureaucratic
+
+	potential = {
+		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
+		owner_or_space_owner? = {
+			has_valid_civic = civic_machine_servitor
+			is_nomadic = yes
+		}
+		is_capital = no
+	}
+
+	planet_modifier = {
+		pop_bio_trophy_bonus_workforce_mult = 0.10
+		logistic_growth_mult = 0.10
+	}
+
+	ai_building_set_affinity = {
+		bio_trophy = 2.0
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = @stickiness
+			has_designation = col_nomad_trophy_machine
+		}
+		inline_script = {
+			script = colony_types/shared_weights_trophy
+		}
 	}
 }

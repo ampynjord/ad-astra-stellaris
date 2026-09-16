@@ -6,13 +6,187 @@
 namespace = adastra
 
 ############################
+# adastra.140 : Programme national (choix d'orientation)
+############################
+# Une seule decision ouvre ce choix. Les programmes restent civils : ils
+# n'accordent ni vaisseau ni infrastructure orbitale et ne remplacent jamais
+# les etapes du programme spatial.
+country_event = {
+	id = adastra.140
+	title = "adastra.140.name"
+	desc = "adastra.140.desc"
+	picture = GFX_evt_adastra_origins
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.140.stone_stores"
+		trigger = { has_country_flag = adastra_reached_stone NOT = { has_country_flag = adastra_reached_bronze } }
+		add_modifier = { modifier = adastra_programme_stone_stores days = 1800 }
+	}
+	option = {
+		name = "adastra.140.stone_craft"
+		trigger = { has_country_flag = adastra_reached_stone NOT = { has_country_flag = adastra_reached_bronze } }
+		add_modifier = { modifier = adastra_programme_stone_craft days = 1800 }
+	}
+	option = {
+		name = "adastra.140.stone_clans"
+		trigger = { has_country_flag = adastra_reached_stone NOT = { has_country_flag = adastra_reached_bronze } }
+		add_modifier = { modifier = adastra_programme_stone_clans days = 1800 }
+	}
+
+	option = {
+		name = "adastra.140.bronze_granaries"
+		trigger = { has_country_flag = adastra_reached_bronze NOT = { has_country_flag = adastra_reached_iron } }
+		add_modifier = { modifier = adastra_programme_bronze_granaries days = 1800 }
+	}
+	option = {
+		name = "adastra.140.bronze_foundries"
+		trigger = { has_country_flag = adastra_reached_bronze NOT = { has_country_flag = adastra_reached_iron } }
+		add_modifier = { modifier = adastra_programme_bronze_foundries days = 1800 }
+	}
+	option = {
+		name = "adastra.140.bronze_trade"
+		trigger = { has_country_flag = adastra_reached_bronze NOT = { has_country_flag = adastra_reached_iron } }
+		add_modifier = { modifier = adastra_programme_bronze_trade days = 1800 }
+	}
+
+	option = {
+		name = "adastra.140.iron_cadastre"
+		trigger = { has_country_flag = adastra_reached_iron NOT = { has_country_flag = adastra_reached_medieval } }
+		add_modifier = { modifier = adastra_programme_iron_cadastre days = 1800 }
+	}
+	option = {
+		name = "adastra.140.iron_civic_works"
+		trigger = { has_country_flag = adastra_reached_iron NOT = { has_country_flag = adastra_reached_medieval } }
+		add_modifier = { modifier = adastra_programme_iron_civic_works days = 1800 }
+	}
+	option = {
+		name = "adastra.140.iron_markets"
+		trigger = { has_country_flag = adastra_reached_iron NOT = { has_country_flag = adastra_reached_medieval } }
+		add_modifier = { modifier = adastra_programme_iron_markets days = 1800 }
+	}
+
+	option = {
+		name = "adastra.140.medieval_guilds"
+		trigger = { has_country_flag = adastra_reached_medieval NOT = { has_country_flag = adastra_reached_renaissance } }
+		add_modifier = { modifier = adastra_programme_medieval_guilds days = 1800 }
+	}
+	option = {
+		name = "adastra.140.medieval_estates"
+		trigger = { has_country_flag = adastra_reached_medieval NOT = { has_country_flag = adastra_reached_renaissance } }
+		add_modifier = { modifier = adastra_programme_medieval_estates days = 1800 }
+	}
+	option = {
+		name = "adastra.140.medieval_royal_works"
+		trigger = { has_country_flag = adastra_reached_medieval NOT = { has_country_flag = adastra_reached_renaissance } }
+		add_modifier = { modifier = adastra_programme_medieval_royal_works days = 1800 }
+	}
+
+	option = {
+		name = "adastra.140.renaissance_trade"
+		trigger = { has_country_flag = adastra_reached_renaissance NOT = { has_country_flag = adastra_reached_steam } }
+		add_modifier = { modifier = adastra_programme_renaissance_trade days = 1800 }
+	}
+	option = {
+		name = "adastra.140.renaissance_workshops"
+		trigger = { has_country_flag = adastra_reached_renaissance NOT = { has_country_flag = adastra_reached_steam } }
+		add_modifier = { modifier = adastra_programme_renaissance_workshops days = 1800 }
+	}
+	option = {
+		name = "adastra.140.renaissance_patronage"
+		trigger = { has_country_flag = adastra_reached_renaissance NOT = { has_country_flag = adastra_reached_steam } }
+		add_modifier = { modifier = adastra_programme_renaissance_patronage days = 1800 }
+	}
+
+	option = {
+		name = "adastra.140.steam_rail"
+		trigger = { has_country_flag = adastra_reached_steam NOT = { has_country_flag = adastra_reached_industrial } }
+		add_modifier = { modifier = adastra_programme_steam_rail days = 1800 }
+	}
+	option = {
+		name = "adastra.140.steam_mechanisation"
+		trigger = { has_country_flag = adastra_reached_steam NOT = { has_country_flag = adastra_reached_industrial } }
+		add_modifier = { modifier = adastra_programme_steam_mechanisation days = 1800 }
+	}
+	option = {
+		name = "adastra.140.steam_reform"
+		trigger = { has_country_flag = adastra_reached_steam NOT = { has_country_flag = adastra_reached_industrial } }
+		add_modifier = { modifier = adastra_programme_steam_reform days = 1800 }
+	}
+
+	option = {
+		name = "adastra.140.industrial_mass_production"
+		trigger = { has_country_flag = adastra_reached_industrial NOT = { has_country_flag = adastra_reached_machine } }
+		add_modifier = { modifier = adastra_programme_industrial_mass_production days = 1800 }
+	}
+	option = {
+		name = "adastra.140.industrial_public_education"
+		trigger = { has_country_flag = adastra_reached_industrial NOT = { has_country_flag = adastra_reached_machine } }
+		add_modifier = { modifier = adastra_programme_industrial_public_education days = 1800 }
+	}
+	option = {
+		name = "adastra.140.industrial_extraction"
+		trigger = { has_country_flag = adastra_reached_industrial NOT = { has_country_flag = adastra_reached_machine } }
+		add_modifier = { modifier = adastra_programme_industrial_extraction days = 1800 }
+	}
+
+	option = {
+		name = "adastra.140.machine_electrification"
+		trigger = { has_country_flag = adastra_reached_machine NOT = { has_country_flag = adastra_reached_atomic } }
+		add_modifier = { modifier = adastra_programme_machine_electrification days = 1800 }
+	}
+	option = {
+		name = "adastra.140.machine_consumption"
+		trigger = { has_country_flag = adastra_reached_machine NOT = { has_country_flag = adastra_reached_atomic } }
+		add_modifier = { modifier = adastra_programme_machine_consumption days = 1800 }
+	}
+	option = {
+		name = "adastra.140.machine_public_health"
+		trigger = { has_country_flag = adastra_reached_machine NOT = { has_country_flag = adastra_reached_atomic } }
+		add_modifier = { modifier = adastra_programme_machine_public_health days = 1800 }
+	}
+
+	option = {
+		name = "adastra.140.atomic_reconstruction"
+		trigger = { has_country_flag = adastra_reached_atomic NOT = { has_country_flag = adastra_reached_space } }
+		add_modifier = { modifier = adastra_programme_atomic_reconstruction days = 1800 }
+	}
+	option = {
+		name = "adastra.140.atomic_civil_science"
+		trigger = { has_country_flag = adastra_reached_atomic NOT = { has_country_flag = adastra_reached_space } }
+		add_modifier = { modifier = adastra_programme_atomic_civil_science days = 1800 }
+	}
+	option = {
+		name = "adastra.140.atomic_strategic_industry"
+		trigger = { has_country_flag = adastra_reached_atomic NOT = { has_country_flag = adastra_reached_space } }
+		add_modifier = { modifier = adastra_programme_atomic_strategic_industry days = 1800 }
+	}
+
+	option = {
+		name = "adastra.140.space_logistics"
+		trigger = { has_country_flag = adastra_reached_space }
+		add_modifier = { modifier = adastra_programme_space_logistics days = 1800 }
+	}
+	option = {
+		name = "adastra.140.space_research"
+		trigger = { has_country_flag = adastra_reached_space }
+		add_modifier = { modifier = adastra_programme_space_research days = 1800 }
+	}
+	option = {
+		name = "adastra.140.space_social_investment"
+		trigger = { has_country_flag = adastra_reached_space }
+		add_modifier = { modifier = adastra_programme_space_social_investment days = 1800 }
+	}
+}
+
+############################
 # adastra.1 : Choix de l'âge de départ (jour 1)
 ############################
 country_event = {
 	id = adastra.1
 	title = "adastra.1.name"
 	desc = "adastra.1.desc"
-	picture = GFX_evt_metropolis
+	picture = GFX_evt_adastra_origins
 	is_triggered_only = yes
 
 	trigger = {
@@ -58,17 +232,17 @@ country_event = {
 				dismantle = yes
 			}
 		}
-		every_owned_fleet = {
-			limit = { exists = starbase }
-			dismantle = yes
-		}
-		every_owned_fleet = {
-			delete_fleet = {
-				target = this
-				kill_leader = no
-			}
+	every_owned_fleet = {
+		limit = { exists = starbase }
+		dismantle = yes
+	}
+	every_owned_fleet = {
+		delete_fleet = {
+			target = this
+			kill_leader = no
 		}
 	}
+}
 
 	# 1.2 : l'IA peut prendre l'origine, elle doit donc choisir un age.
 	# La courbe d'ai_chance monte fortement vers les ages tardifs (1 pour l'Age
@@ -318,6 +492,8 @@ country_event = {
 			set_country_flag = adastra_reached_space
 			set_country_flag = adastra_unlock_space
 			set_country_flag = adastra_vanilla_gift_space
+			# L'etape Astronomie doit etre disponible aussi apres une transition
+			# depuis l'Age atomique, pas seulement lors d'un depart spatial.
 			set_country_flag = adastra_stage_astronomy
 			give_technology = { tech = tech_fission_power message = no }
 		}
@@ -349,6 +525,26 @@ country_event = {
 			while = {
 				limit = { num_districts = { type = district_city value > 1 } }
 				remove_district = district_city
+			}
+			if = {
+				limit = { owner = { has_country_flag = adastra_choice_space } }
+				add_district = district_city
+				while = {
+					limit = { num_districts = { type = district_farming value > 2 } }
+					remove_district = district_farming
+				}
+				if = {
+					limit = { num_districts = { type = district_farming value < 2 } }
+					add_district = district_farming
+				}
+				while = {
+					limit = { num_districts = { type = district_mining value > 2 } }
+					remove_district = district_mining
+				}
+				if = {
+					limit = { num_districts = { type = district_mining value < 2 } }
+					add_district = district_mining
+				}
 			}
 			# 1.4 (18/08) : REMETTRE ce que le moteur a retire au chargement.
 			# La zone Industrie mixte et le district generateur
@@ -553,8 +749,58 @@ country_event = {
 						}
 					}
 				}
+				# 1.4 (2026-08-29 - notre propre ciel : CONNU, pas RELEVE.
+				# Le systeme natal doit figurer sur la carte - une civilisation
+				# sait ou elle habite - mais aucun de ses astres ne doit etre
+				# prospecte, pas meme son etoile. `set_visited` fait exactement
+				# ca : le systeme est marque connu, avec un intel faible, sans
+				# relever le moindre corps. L'appel est en portee pays.
+				root = { set_visited = prev }
 			}
 		}
+
+		# 30/08 (retours beta.5, Argroww) - trois complements de demarrage.
+		#
+		# 1. L'initialiseur Sol du joueur pose des blockers d'Empire moderne
+		#    (taudis tentaculaires, friche industrielle, vortex de dechets du
+		#    Pacifique). Sur un depart anterieur a l'ere industrielle, ils
+		#    n'ont aucun sens : on les retire. Ils reviendront par la
+		#    mecanique des sequelles d'epoque, au bon moment.
+		if = {
+			limit = {
+				NOR = {
+					has_country_flag = adastra_choice_industrial
+					has_country_flag = adastra_choice_machine
+					has_country_flag = adastra_choice_atomic
+					has_country_flag = adastra_choice_space
+				}
+			}
+			capital_scope = {
+				remove_deposit = d_decrepit_dwellings
+				remove_deposit = d_failing_infrastructure
+				remove_deposit = d_great_pacific_garbage_patch
+			}
+		}
+		# 2. La Communaute galactique reinvite en boucle tout pays non membre
+		#    sans le drapeau de refus (galcom.14/16), alors que la regle de
+		#    fond nous interdit d'y sieger (« not a conventional empire »).
+		#    On pose le drapeau de refus pour la duree du confinement ;
+		#    adastra.15 le retire a l'emergence.
+		set_country_flag = galcom_form_nay
+		# 3. Synchronisation immediate de l'age moteur et de la designation
+		#    d'epoque : sans cet appel, tous deux attendaient le premier
+		#    pouls mensuel et la planete restait sans designation un mois.
+		adastra_preftl_sync = yes
+		adastra_maj_designation = yes
+
+		# 12/09 - l'appel a create_sector du jour 1 est RETIRE : le moteur
+		# exige de posseder la base stellaire du systeme, et un empire
+		# confine n'en a aucune au demarrage (game.log d'argroww : « du
+		# jour 1 REFUSE »). Voir adastra.160 pour le detail du verdict.
+
+		# Le systeme natal ne doit etre reconnu par aucun autre empire au
+		# demarrage. Le jeu gere ensuite les premiers contacts normalement :
+		# aucun raccourci ne doit reveler la capitale ou les capteurs etrangers.
 
 		# Stocks de départ ramenés au niveau de l'âge choisi
 		if = {
@@ -599,6 +845,20 @@ country_event = {
 		# Nettoyage différé : la base stellaire de départ est créée par le jeu APRÈS cet événement
 		country_event = { id = adastra.8 days = 4 }
 
+		# La preparation cachee supprime volontairement les popups des evenements
+		# techniques 40-49. On restitue donc immediatement l'arrivee narrative de
+		# l'age choisi, une fois que son etat et sa situation sont en place.
+		if = { limit = { has_country_flag = adastra_choice_stone } country_event = { id = adastra.50 } }
+		else_if = { limit = { has_country_flag = adastra_choice_bronze } country_event = { id = adastra.51 } }
+		else_if = { limit = { has_country_flag = adastra_choice_iron } country_event = { id = adastra.52 } }
+		else_if = { limit = { has_country_flag = adastra_choice_medieval } country_event = { id = adastra.53 } }
+		else_if = { limit = { has_country_flag = adastra_choice_renaissance } country_event = { id = adastra.54 } }
+		else_if = { limit = { has_country_flag = adastra_choice_steam } country_event = { id = adastra.55 } }
+		else_if = { limit = { has_country_flag = adastra_choice_industrial } country_event = { id = adastra.56 } }
+		else_if = { limit = { has_country_flag = adastra_choice_machine } country_event = { id = adastra.57 } }
+		else_if = { limit = { has_country_flag = adastra_choice_atomic } country_event = { id = adastra.58 } }
+		else = { country_event = { id = adastra.59 } }
+
 		# Fin d'initialisation (différée pour couvrir les on_first_enter)
 		country_event = { id = adastra.3 days = 10 }
 		country_event = { id = adastra.4 }
@@ -609,11 +869,14 @@ country_event = {
 }
 
 ############################
-# adastra.92 : carte astronomique graduelle (cache, mensuel)
+# adastra.92 : carte astronomique graduelle (decision telescope)
 ############################
-# Le brouillard reste entier hors du systeme natal. L'astronomie ne prospecte
-# jamais les corps : elle revele seulement l'etoile d'un systeme proche, donc
-# le joueur connait sa position sans connaitre ses mondes ni ses ressources.
+# Le brouillard reste entier hors du systeme natal. Cet effet est lance par
+# la decision Observation astronomique, apres construction d'un telescope.
+# Il ne prospecte jamais les corps. Une campagne ne catalogue qu'UN systeme.
+# Les trois niveaux d'observatoire utilisent une portee euclidienne, et non
+# les hyperlignes : une cible n'a donc pas besoin d'etre reliee a une etoile
+# deja connue. Ils n'augmentent que le rayon et la precision du compte rendu.
 country_event = {
 	id = adastra.92
 	hide_window = yes
@@ -621,32 +884,151 @@ country_event = {
 	trigger = {
 		has_origin = origin_adastra
 		NOT = { has_country_flag = adastra_completed }
-		has_country_flag = adastra_reached_space
 		has_technology = tech_adastra_astronomy
 	}
 	immediate = {
+		# 31/08 - chaque campagne rencherit la suivante de 30 %
+		# (value:adastra_cout_campagne_astro sur le cout de la decision).
+		change_variable = { which = adastra_campagnes_astro value = 1 }
 		capital_scope = { solar_system = { save_event_target_as = adastra_astronomy_source } }
-		random_system = {
-			limit = {
-				NOT = { is_same_value = event_target:adastra_astronomy_source }
-				NOT = { has_star_flag = adastra_astronomy_seen }
-				distance = {
-					source = event_target:adastra_astronomy_source
-					max_jumps = 1
+		# Un seul des trois random_system ci-dessous peut etre execute par appel.
+		# Le systeme choisi est l'unique systeme revele par cette campagne.
+		if = {
+			limit = { any_owned_planet = { has_building = building_core_space_telescope } }
+			random_system = {
+				limit = {
+					NOT = { is_same_value = event_target:adastra_astronomy_source }
+					NOT = { has_star_flag = adastra_astronomy_optical_seen }
+					NOT = { has_star_flag = adastra_astronomy_radio_seen }
+					NOT = { has_star_flag = adastra_astronomy_orbital_seen }
+					distance = {
+						source = event_target:adastra_astronomy_source
+						type = euclidean
+						max_distance <= 140
+					}
 				}
+				save_event_target_as = adastra_astronomy_target
 			}
-			save_event_target_as = adastra_astronomy_target
+		}
+		else_if = {
+			limit = { any_owned_planet = { has_building = building_core_radio_telescope } }
+			random_system = {
+				limit = {
+					NOT = { is_same_value = event_target:adastra_astronomy_source }
+					NOT = { has_star_flag = adastra_astronomy_optical_seen }
+					NOT = { has_star_flag = adastra_astronomy_radio_seen }
+					distance = {
+						source = event_target:adastra_astronomy_source
+						type = euclidean
+						max_distance <= 75
+					}
+				}
+				save_event_target_as = adastra_astronomy_target
+			}
+		}
+		else = {
+			random_system = {
+				limit = {
+					NOT = { is_same_value = event_target:adastra_astronomy_source }
+					NOT = { has_star_flag = adastra_astronomy_optical_seen }
+					distance = {
+						source = event_target:adastra_astronomy_source
+						type = euclidean
+						max_distance <= 35
+					}
+				}
+				save_event_target_as = adastra_astronomy_target
+			}
 		}
 		if = {
 			limit = { exists = event_target:adastra_astronomy_target }
 			event_target:adastra_astronomy_target = {
-				set_star_flag = adastra_astronomy_seen
-				every_system_planet = {
-					limit = { is_star = yes }
-					set_surveyed = { surveyed = yes surveyor = root }
+				# 1.4 (2026-08-29 - DECOUVRIR SANS PROSPECTER.
+				#
+				# Trouve dans logs/script_documentation/effects.log :
+				#
+				#   set_visited = <systeme>
+				#     « Sets the target system as 'visited' (i.e. low system
+				#     intel on the map) »  - portee pays.
+				#   clear_uncharted_space = <systeme>
+				#     « Clears uncharted space from the galaxy map for the
+				#     scoped country, in a radius around target system »
+				#
+				# C'est exactement ce qui manquait : le systeme devient connu
+				# sur la carte, AUCUN astre n'est releve, aucun gisement
+				# revele. L'astronomie ne prospecte plus rien - elle fait ce
+				# qu'une civilisation au sol peut faire : reperer, pas visiter.
+				#
+				# Le second effet dissipe en plus l'espace inexplore autour du
+				# systeme trouve : plus le telescope porte loin, plus la carte
+				# s'ouvre autour de sa cible.
+				set_star_flag = adastra_astronomy_optical_seen
+				if = {
+					limit = { root = { any_owned_planet = { has_building = building_core_space_telescope } } }
+					set_star_flag = adastra_astronomy_orbital_seen
+					root = { country_event = { id = adastra.95 } }
+				}
+				else_if = {
+					limit = { root = { any_owned_planet = { has_building = building_core_radio_telescope } } }
+					set_star_flag = adastra_astronomy_radio_seen
+					root = { country_event = { id = adastra.94 } }
+				}
+				else = {
+					root = { country_event = { id = adastra.93 } }
 				}
 			}
+			# Portee pays : c'est root qui « visite » et qui deblaie sa carte.
+			set_visited = event_target:adastra_astronomy_target
+			clear_uncharted_space = event_target:adastra_astronomy_target
 		}
+	}
+}
+
+############################
+# adastra.93 : systeme repere par observation astronomique
+############################
+country_event = {
+	id = adastra.93
+	title = adastra.93.name
+	desc = adastra.93.desc
+	picture = GFX_evt_adastra_situation
+	is_triggered_only = yes
+
+	option = {
+		name = adastra.93.a
+		custom_tooltip = adastra.93.a.tooltip
+	}
+}
+
+############################
+# adastra.94 : signal radio identifie
+############################
+country_event = {
+	id = adastra.94
+	title = adastra.94.name
+	desc = adastra.94.desc
+	picture = GFX_evt_adastra_situation
+	is_triggered_only = yes
+
+	option = {
+		name = adastra.94.a
+		custom_tooltip = adastra.94.a.tooltip
+	}
+}
+
+############################
+# adastra.95 : cible vue depuis l'orbite
+############################
+country_event = {
+	id = adastra.95
+	title = adastra.95.name
+	desc = adastra.95.desc
+	picture = GFX_evt_adastra_situation
+	is_triggered_only = yes
+
+	option = {
+		name = adastra.95.a
+		custom_tooltip = adastra.95.a.tooltip
 	}
 }
 
@@ -670,7 +1052,7 @@ country_event = {
 	id = adastra.4
 	title = "adastra.4.name"
 	desc = "adastra.4.desc"
-	picture = GFX_evt_alien_city
+	picture = GFX_evt_adastra_welcome
 	is_triggered_only = yes
 
 	trigger = {
@@ -728,6 +1110,26 @@ country_event = {
 				remove_district = district_city
 			}
 			if = {
+				limit = { owner = { has_country_flag = adastra_choice_space } }
+				add_district = district_city
+				while = {
+					limit = { num_districts = { type = district_farming value > 2 } }
+					remove_district = district_farming
+				}
+				if = {
+					limit = { num_districts = { type = district_farming value < 2 } }
+					add_district = district_farming
+				}
+				while = {
+					limit = { num_districts = { type = district_mining value > 2 } }
+					remove_district = district_mining
+				}
+				if = {
+					limit = { num_districts = { type = district_mining value < 2 } }
+					add_district = district_mining
+				}
+			}
+			if = {
 				limit = { owner = { OR = { has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine has_country_flag = adastra_choice_atomic has_country_flag = adastra_choice_space } } }
 				add_zone = { district = district_city zone = zone_industrial zone_slot = 1 }
 				add_building = { district = district_city zone = zone_industrial building = building_factory_1 }
@@ -783,12 +1185,9 @@ country_event = {
 			limit = { exists = starbase }
 			dismantle = yes
 		}
-		every_owned_fleet = {
-			delete_fleet = {
-				target = this
-				kill_leader = no
-			}
-		}
+		# Les flottes de depart sont deja retirees par les nettoyages d
+		# initialisation. Cette garde mensuelle ne doit jamais detruire un
+		# vaisseau construit par le joueur avant le programme d exploration.
 	}
 }
 
@@ -799,7 +1198,7 @@ country_event = {
 	id = adastra.5
 	title = "adastra.5.name"
 	desc = "adastra.5.desc"
-	picture = GFX_evt_society_research
+	picture = GFX_evt_adastra_pace
 	is_triggered_only = yes
 
 	trigger = {
@@ -838,7 +1237,7 @@ country_event = {
 	id = adastra.7
 	title = "adastra.7.name"
 	desc = "adastra.7.desc"
-	picture = GFX_evt_star_chart
+	picture = GFX_evt_adastra_galaxy_pace
 	is_triggered_only = yes
 
 	trigger = {
@@ -874,44 +1273,13 @@ country_event = {
 }
 
 ############################
-# adastra.91 : prospection par présence (caché)
+# adastra.91 : SUPPRIME le 31/08 (retour ampynjord : les astres se
+# relevaient tout seuls, le vaisseau n'avait plus rien a faire).
+# La prospection par presence revelait UN corps par mois sans ordre.
+# Le droit de prospecter en systeme revendique passe desormais par la
+# Teledetection (TECH_TO_SURVEY_OWNED, zz_adastra_defines.txt) : le
+# vaisseau scientifique fait le travail, sur ordre, comme en vanilla.
 ############################
-# Le blocage remonté par Curious : un empire revendique le système natal, et le
-# vaisseau scientifique se voit refuser la prospection — « you can't survey
-# someone else's system ». Vérifié le 16/08 contre les fichiers du jeu : il
-# n'existe aucune règle `can_survey_planet` à élargir, le refus est dans le
-# moteur.
-#
-# Alors on ne demande plus la permission. Un vaisseau scientifique Ad Astra
-# posé dans un système en révèle UN corps par mois, par effet. Lentement, sans
-# ordre à donner, et sans que personne puisse l'interdire — ce qui décrit mieux
-# ce que fait une civilisation pré-PRL qu'un ordre de prospection instantané.
-#
-# Et le vaisseau redevient indispensable : c'est ce que le Programme de
-# satellites lui avait volé.
-country_event = {
-	id = adastra.91
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		has_origin = origin_adastra
-		NOT = { has_country_flag = adastra_completed }
-		any_owned_ship = { is_ship_size = science }
-	}
-
-	immediate = {
-		every_owned_ship = {
-			limit = { is_ship_size = science }
-			solar_system = {
-				random_system_planet = {
-					limit = { NOT = { is_surveyed = { who = root status = yes } } }
-					set_surveyed = { surveyed = yes surveyor = root }
-				}
-			}
-		}
-	}
-}
 
 ############################
 # adastra.11 : Ressources non inventées (caché)
@@ -949,6 +1317,29 @@ country_event = {
 				has_modifier = adastra_pre_electric
 			}
 			remove_modifier = adastra_pre_electric
+		}
+		# Civil Education offre une Academie d'Etat au demarrage vanilla.
+		# Cette structure consomme de l'energie et le multiplicateur du moteur
+		# est plafonne a -90 %, ce qui laissait 0.20 energie a l'Age de pierre.
+		# On la met donc en attente jusqu'au Reseau electrique, puis on la
+		# recree uniquement sur la capitale, comme le script vanilla de depart.
+		if = {
+			limit = { NOT = { adastra_has_energy = yes } }
+			every_owned_planet = {
+				if = {
+					limit = { has_building = building_state_academy }
+					remove_building = building_state_academy
+				}
+			}
+		}
+		else_if = {
+			limit = { has_valid_civic = civic_civil_education }
+			capital_scope = {
+				if = {
+					limit = { NOT = { has_building = building_state_academy } }
+					add_building = building_state_academy
+				}
+			}
 		}
 
 		# --- Le commerce ne se change pas en énergie ---
@@ -1146,7 +1537,7 @@ country_event = {
 	id = adastra.89
 	title = "adastra.89.name"
 	desc = "adastra.89.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	option = {
@@ -1157,8 +1548,8 @@ country_event = {
 
 # 1.3 : l'evenement adastra.84 (Le reseau de satellites) a ete retire avec la
 # decision qu'il servait. Il cartographiait le systeme natal par effet,
-# gratuitement : c'est desormais le travail du vaisseau scientifique, qui
-# prospecte par presence (adastra.91).
+# gratuitement : c'est desormais le travail du vaisseau scientifique, sur
+# ordre (droit rendu par la Teledetection, TECH_TO_SURVEY_OWNED).
 
 ############################
 # adastra.10 : Répartiteur - Hyperpropulsion recherchée (caché)
@@ -1193,7 +1584,7 @@ country_event = {
 	id = adastra.16
 	title = "adastra.16.name"
 	desc = "adastra.16.desc"
-	picture = GFX_evt_physics_research
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	option = {
@@ -1228,16 +1619,45 @@ country_event = {
 		# etait anachronique. Des qu'une technologie est terminee, on verifie si
 		# la capitale peut enfin l'accueillir gratuitement.
 		capital_scope = { adastra_grant_civic_infrastructure = yes }
-		adastra_progression_recherche = yes
-		# Astronomie : les fondatrices apportent 5 points ; le premier satellite finit le jalon.
+		# 30/08 - periode de grace du reseau electrique : deux ans entre la
+		# technologie et la bascule de l'entretien vers l'energie, sauf si un
+		# generateur est construit avant (voir adastra_pays_energy_upkeep).
 		if = {
 			limit = {
-				adastra_lot_astronomy_tech = yes
-				any_situation = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_early_space_age }
+				last_increased_tech = tech_adastra_electricity
+				NOT = { has_country_flag = adastra_grace_energie }
 			}
-			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 1 }
+			set_timed_country_flag = { flag = adastra_grace_energie days = 720 }
 		}
-		# Exploration, construction et avant-poste : leurs fondatrices ajoutent 5 points.
+		adastra_progression_recherche = yes
+		# Les commandes de test peuvent octroyer une technologie sans passer
+		# par tous les evenements de fin de recherche. Des l'Age spatial, on
+		# repart donc de l'inventaire reel : la barre ne peut plus rester a
+		# 230 alors que les vingt-cinq technologies sont deja possedees.
+		if = {
+			# 1.4 (2026-08-28 - CERCLE VICIEUX CORRIGE.
+			# Cette condition exigeait `current_stage = adastra_stage_early_space_age`,
+			# c'est-a-dire que la situation soit DEJA a l'age spatial pour qu'on
+			# accepte de la recalculer. Un depart tardif arrive a l'age spatial
+			# avec ses drapeaux mais une barre restee basse : l'etape courante
+			# n'est alors pas la bonne, la condition echoue, et le recalage - le
+			# seul mecanisme capable de reparer la barre - ne s'execute jamais.
+			# Constate en partie : 250 technologies possedees, barre a 147.
+			#
+			# Le recalage est idempotent : il recalcule tout depuis l'inventaire
+			# reel de technologies. Il n'a aucune raison d'exiger un etat de
+			# depart particulier.
+			limit = {
+				has_country_flag = adastra_reached_space
+				NOT = { has_country_flag = core_suborbital_fait }
+				any_situation = { is_situation_type = situation_adastra_ascension }
+			}
+			adastra_recalage_progression = yes
+		}
+		# Le seuil spatial est volontairement une action, pas un compteur de
+		# technologies. Le lancement suborbital ouvre le programme aussitot.
+		# Chaque etape de programme vaut vingt-cinq points. Les fondatrices
+		# apportent une part lisible ; le geste final apporte le reste.
 		if = {
 			limit = {
 				adastra_lot_explore_tech = yes
@@ -1250,15 +1670,15 @@ country_event = {
 				adastra_lot_constructor_tech = yes
 				any_situation = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_constructor }
 			}
-			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 5 }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 4 }
 		}
 		if = {
 			limit = { adastra_lot_outpost_tech = yes any_situation = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_outpost } }
-			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 5 }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 10 }
 		}
 		if = {
 			limit = { adastra_lot_orbital_tech = yes any_situation = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_orbital } }
-			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 1 }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 5 }
 		}
 	}
 }
@@ -1282,19 +1702,28 @@ country_event = {
 		set_country_flag = adastra_progression_1_5
 		if = {
 			limit = { has_country_flag = adastra_stage_hyper }
-			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 350 }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 375 }
 		}
 		else_if = {
 			limit = { has_country_flag = adastra_stage_orbital }
-			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 325 }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 350 }
 		}
 		else_if = {
 			limit = { has_country_flag = adastra_stage_constructor }
-			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 300 }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 325 }
 		}
 		else_if = {
 			limit = { has_country_flag = adastra_program_started }
-			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 250 }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 300 }
+		}
+		else_if = {
+			limit = {
+				has_country_flag = core_suborbital_fait
+				has_country_flag = core_satellite_fait
+				has_country_flag = core_vol_habite_fait
+				has_country_flag = core_sonde_profonde_fait
+			}
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 275 }
 		}
 		else = {
 			adastra_recalage_progression = yes
@@ -1327,30 +1756,68 @@ country_event = {
 ############################
 # adastra.71 / 72 / 73 : les jalons du programme spatial (cachés, mensuels)
 ############################
-# 1.5 : chaque étape du programme s'achève quand son lot de fondatrices est
-# acquis ET son jalon atteint. Exploration : chaque astre du système natal
-# prospecté. Chantier : base stellaire bâtie et une première station (ou le
-# système occupé par un autre empire, auquel cas on passe outre).
-# Hyperespace : l'Hyperpropulsion.
+# 1.5 : le seuil spatial commence par une action fondatrice : reussir le
+# premier lancement suborbital. Les etapes de programme suivantes s'achevent
+# quand leur lot de fondatrices est acquis ET leur jalon atteint. Exploration :
+# chaque astre du systeme natal prospecte. Chantier : base stellaire batie et
+# une premiere station (ou le systeme occupe par un autre empire, auquel cas
+# on passe outre). Hyperespace : l'Hyperpropulsion.
 country_event = {
 	id = adastra.71
 	hide_window = yes
 	is_triggered_only = yes
 
+	# 1.4 (2026-08-28 - le verrou circulaire etait AUSSI a l'entree.
+	# L'evenement ne se declenchait que si la situation etait deja a la bonne
+	# etape : un depart tardif dont la barre est restee basse ne l'atteignait
+	# jamais, donc le recalage qu'il contient ne pouvait pas s'executer.
+	# On ajoute une porte d'entree par le drapeau d'age, qui est fiable.
 	trigger = {
 		has_origin = origin_adastra
-		adastra_lot_astronomy_complet = yes
-		any_situation = {
-			is_situation_type = situation_adastra_ascension
-			current_stage = adastra_stage_early_space_age
+		NOT = { has_country_flag = adastra_completed }
+		OR = {
+			has_country_flag = adastra_reached_space
+			any_situation = {
+				is_situation_type = situation_adastra_ascension
+				OR = {
+					current_stage = adastra_stage_early_space_age
+					current_stage = adastra_stage_first_launch
+				}
+			}
 		}
-		has_country_flag = core_satellite_fait
+		any_situation = { is_situation_type = situation_adastra_ascension }
 	}
 
 	immediate = {
-		every_situation = {
-			limit = { is_situation_type = situation_adastra_ascension }
-			set_situation_progress = 250
+		if = {
+			# Le recalage couvre les commandes de test et les anciens on_actions
+			# qui n'auraient pas compte une technologie spatiale deja acquise.
+			# 1.4 (2026-08-28 - meme cercle vicieux que dans adastra.132.
+			limit = {
+				has_country_flag = adastra_reached_space
+				any_situation = { is_situation_type = situation_adastra_ascension }
+			}
+			adastra_recalage_progression = yes
+		}
+		else_if = {
+			limit = {
+				has_country_flag = core_suborbital_fait
+				has_country_flag = core_satellite_fait
+				has_country_flag = core_vol_habite_fait
+				has_country_flag = core_sonde_profonde_fait
+			}
+			every_situation = {
+				limit = { is_situation_type = situation_adastra_ascension }
+				set_situation_progress = 275
+			}
+		}
+		else = {
+			# Les quatre jalons restent joues : lancement, satellite, equipage
+			# puis sonde profonde. Aucun ne devient un simple raccourci.
+			every_situation = {
+				limit = { is_situation_type = situation_adastra_ascension }
+				set_situation_progress = 250
+			}
 		}
 	}
 }
@@ -1362,19 +1829,64 @@ country_event = {
 
 	trigger = {
 		has_origin = origin_adastra
-		adastra_lot_explore_complet = yes
 		any_situation = {
 			is_situation_type = situation_adastra_ascension
 			current_stage = adastra_stage_program_explore
 		}
-		has_country_flag = adastra_phase1_done
-		capital_scope = { solar_system = { NOT = { any_system_planet = { is_star = no NOT = { is_surveyed = { who = root status = yes } } } } } }
 	}
 
 	immediate = {
-		every_situation = {
-			limit = { is_situation_type = situation_adastra_ascension }
-			set_situation_progress = 275
+		# Recalage deterministe : les technologies peuvent etre acquises avant
+		# l'entree dans cette phase. La prospection reste utile, mais ne bloque
+		# jamais le programme qui ne demande que ses deux fondations et sa decision.
+		if = {
+			limit = {
+				has_country_flag = adastra_phase1_done
+				adastra_lot_explore_complet = yes
+			}
+			every_situation = {
+				limit = { is_situation_type = situation_adastra_ascension }
+				set_situation_progress = 300
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = adastra_phase1_done
+				OR = {
+					has_technology = tech_space_construction
+					has_technology = tech_colonization_1
+				}
+			}
+			every_situation = {
+				limit = { is_situation_type = situation_adastra_ascension }
+				set_situation_progress = 295
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_phase1_done }
+			every_situation = {
+				limit = { is_situation_type = situation_adastra_ascension }
+				set_situation_progress = 290
+			}
+		}
+		else_if = {
+			limit = { adastra_lot_explore_complet = yes }
+			every_situation = {
+				limit = { is_situation_type = situation_adastra_ascension }
+				set_situation_progress = 285
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_technology = tech_space_construction
+					has_technology = tech_colonization_1
+				}
+			}
+			every_situation = {
+				limit = { is_situation_type = situation_adastra_ascension }
+				set_situation_progress = 280
+			}
 		}
 	}
 }
@@ -1397,7 +1909,7 @@ country_event = {
 	immediate = {
 		every_situation = {
 			limit = { is_situation_type = situation_adastra_ascension }
-			set_situation_progress = 300
+			set_situation_progress = 325
 		}
 	}
 }
@@ -1416,7 +1928,7 @@ country_event = {
 	}
 	immediate = {
 		set_country_flag = adastra_home_outpost_built
-		every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 325 }
+		every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 15 }
 	}
 }
 
@@ -1424,14 +1936,37 @@ country_event = {
 	id = adastra.75
 	hide_window = yes
 	is_triggered_only = yes
+	# 30/08 (demande d'ampynjord) - L'INFRASTRUCTURE ORBITALE SE MERITE.
+	# L'etape n'exigeait qu'une station miniere ou de recherche. Elle exige
+	# desormais un VRAI ciel equipe : la base amelioree en port stellaire,
+	# ses deux premiers modules, son premier batiment, et une premiere
+	# plateforme de defense. Les technologies du lot orbital (base stellaire
+	# II, station defensive, panneaux solaires) debloquent tout cela.
+	# La description de la situation enumere ces exigences (les jauges de
+	# bilan ont ete retirees le 31/08 a la demande d'ampynjord).
 	trigger = {
 		has_origin = origin_adastra
 		adastra_lot_orbital_complet = yes
 		any_situation = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_orbital }
 		has_country_flag = adastra_home_outpost_built
 		count_owned_fleet = { count >= 1 limit = { OR = { is_ship_size = mining_station is_ship_size = research_station } } }
+		capital_scope = {
+			solar_system = {
+				exists = starbase
+				starbase = {
+					owner = { is_same_value = root }
+					has_starbase_size >= starbase_starport
+					count_starbase_modules = { count >= 2 }
+					# 31/08 - save 2240.10.26 : la liste fermee de batiments
+					# bloquait un port equipe d'un ordinateur de ciblage.
+					# N'importe quel batiment de base construit compte.
+					count_starbase_buildings = { include_being_constructed = no count >= 1 }
+				}
+			}
+		}
+		any_owned_ship = { is_ship_size = military_station_small }
 	}
-	immediate = { every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 350 } }
+	immediate = { every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 10 } }
 }
 
 country_event = {
@@ -1443,7 +1978,23 @@ country_event = {
 		has_technology = tech_hyper_drive_1
 		any_situation = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_hyperdrive }
 	}
-	immediate = { every_situation = { limit = { is_situation_type = situation_adastra_ascension } set_situation_progress = 375 } }
+	immediate = { every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 15 } }
+}
+
+############################
+# adastra.79 : Le compte a rebours (etape atteinte)
+############################
+country_event = {
+	id = adastra.79
+	title = "adastra.79.name"
+	desc = "adastra.79.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.79.a"
+		custom_tooltip = "adastra.79.a.tooltip"
+	}
 }
 
 ############################
@@ -1453,7 +2004,7 @@ country_event = {
 	id = adastra.80
 	title = "adastra.80.name"
 	desc = "adastra.80.desc"
-	picture = GFX_evt_satellite_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
@@ -1474,7 +2025,7 @@ country_event = {
 	id = adastra.81
 	title = "adastra.81.name"
 	desc = "adastra.81.desc"
-	picture = GFX_evt_space_station
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
@@ -1494,7 +2045,7 @@ country_event = {
 	id = adastra.82
 	title = "adastra.82.name"
 	desc = "adastra.82.desc"
-	picture = GFX_evt_wormhole
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
@@ -1511,7 +2062,7 @@ country_event = {
 	id = adastra.83
 	title = "adastra.83.name"
 	desc = "adastra.83.desc"
-	picture = GFX_evt_space_station
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 	immediate = { set_country_flag = adastra_stage_orbital }
 	option = { name = "adastra.83.a" custom_tooltip = "adastra.83.a.tooltip" }
@@ -1521,7 +2072,7 @@ country_event = {
 	id = adastra.84
 	title = "adastra.84.name"
 	desc = "adastra.84.desc"
-	picture = GFX_evt_wormhole
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 	immediate = { set_country_flag = adastra_stage_hyper }
 	option = { name = "adastra.84.a" custom_tooltip = "adastra.84.a.tooltip" }
@@ -1537,6 +2088,10 @@ country_event = {
 
 	immediate = {
 		set_country_flag = adastra_phase1_done
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_explore }
+			add_situation_progress = 15
+		}
 		capital_scope = {
 			save_event_target_as = adastra_capital_p
 			solar_system = {
@@ -1600,6 +2155,27 @@ country_event = {
 		}
 
 		set_country_flag = adastra_constructor_ready
+		# 30/08 - si le ciel est deja pris, le Batisseur sort du chantier sans
+		# ou construire : on le dit au joueur et on pointe la negociation,
+		# plutot que de le laisser decouvrir un vaisseau inutile.
+		if = {
+			limit = {
+				capital_scope = {
+					solar_system = {
+						exists = starbase
+						starbase = {
+							exists = owner
+							NOT = { owner = { is_same_value = root } }
+						}
+					}
+				}
+			}
+			country_event = { id = adastra.184 }
+		}
+		every_situation = {
+			limit = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_constructor }
+			add_situation_progress = 5
+		}
 		create_fleet = {
 			name = "adastra_fleet_constructor"
 			effect = {
@@ -1668,9 +2244,24 @@ country_event = {
 	immediate = {
 		remove_country_flag = adastra_locked
 		set_country_flag = adastra_completed
+		# 30/08 : la Communaute galactique redevient accessible - le drapeau
+		# de refus pose au confinement saute, galcom.14 pourra reinviter.
+		remove_country_flag = galcom_form_nay
+		# 1.4 (2026-08-30 - le ralentisseur de premier contact de l'essai
+		# tombe ici : son evenement d'entretien ne tourne plus apres
+		# l'emergence, il resterait sinon pour toujours.
+		remove_modifier = adastra_ciel_lointain
 		remove_modifier = adastra_pace_fast
 		remove_modifier = adastra_pace_slow
 		remove_modifier = adastra_pace_veryslow
+
+		# 31/08 - la VEILLE se leve : les sites de contact gardes en etude
+		# perpetuelle pendant le confinement reprennent la chaine vanilla.
+		# L'empire emerge peut enfin conclure ses premiers contacts.
+		every_first_contact = {
+			limit = { is_current_first_contact_stage = adastra_stage_veille }
+			set_first_contact_stage = default_stage_1
+		}
 
 		# 1.2 : les modificateurs de « ressource pas encore inventee » sont posés
 		# et retirés par adastra.11, dont le trigger exige adastra_locked. Ce
@@ -1801,48 +2392,25 @@ country_event = {
 			}
 		}
 
-		# Héritage de l'Ascension : récompense permanente selon l'âge de départ.
-		# 1.2 : doublée si la galaxie est restée vivante pendant l'ascension -
-		# le chemin risqué paie davantage que le chemin sûr.
-		if = {
-			limit = { OR = { has_country_flag = adastra_choice_stone has_country_flag = adastra_choice_bronze has_country_flag = adastra_choice_iron } }
-			if = {
-				limit = { has_country_flag = adastra_slept_galaxy }
-				add_modifier = { modifier = adastra_heritage_4 }
-			}
-			else = {
-				add_modifier = { modifier = adastra_heritage_4_bold }
-			}
+	# 1.6 : la longueur de l'ascension compte. Le bonus est graduel, puis le
+	# joueur choisit une seule specialisation. Ainsi le depart pierre reste
+	# le plus exigeant et le plus memorable, sans somme de civismes gratuits.
+	set_country_flag = adastra_heritage_pending
+	if = { limit = { has_country_flag = adastra_choice_stone } add_modifier = { modifier = adastra_heritage_depth_stone } }
+	else_if = { limit = { has_country_flag = adastra_choice_bronze } add_modifier = { modifier = adastra_heritage_depth_bronze } }
+	else_if = { limit = { has_country_flag = adastra_choice_iron } add_modifier = { modifier = adastra_heritage_depth_iron } }
+	else_if = { limit = { has_country_flag = adastra_choice_medieval } add_modifier = { modifier = adastra_heritage_depth_medieval } }
+	else_if = { limit = { has_country_flag = adastra_choice_renaissance } add_modifier = { modifier = adastra_heritage_depth_renaissance } }
+	else_if = { limit = { has_country_flag = adastra_choice_steam } add_modifier = { modifier = adastra_heritage_depth_steam } }
+	else_if = { limit = { has_country_flag = adastra_choice_industrial } add_modifier = { modifier = adastra_heritage_depth_industrial } }
+	else_if = { limit = { has_country_flag = adastra_choice_machine } add_modifier = { modifier = adastra_heritage_depth_machine } }
+	else_if = { limit = { has_country_flag = adastra_choice_atomic } add_modifier = { modifier = adastra_heritage_depth_atomic } }
+	else = { add_modifier = { modifier = adastra_heritage_depth_space } }
+	if = {
+			limit = { NOT = { has_country_flag = adastra_slept_galaxy } }
+			add_modifier = { modifier = adastra_heritage_trial }
 		}
-		else_if = {
-			limit = { OR = { has_country_flag = adastra_choice_medieval has_country_flag = adastra_choice_renaissance has_country_flag = adastra_choice_steam } }
-			if = {
-				limit = { has_country_flag = adastra_slept_galaxy }
-				add_modifier = { modifier = adastra_heritage_3 }
-			}
-			else = {
-				add_modifier = { modifier = adastra_heritage_3_bold }
-			}
-		}
-		else_if = {
-			limit = { OR = { has_country_flag = adastra_choice_industrial has_country_flag = adastra_choice_machine } }
-			if = {
-				limit = { has_country_flag = adastra_slept_galaxy }
-				add_modifier = { modifier = adastra_heritage_2 }
-			}
-			else = {
-				add_modifier = { modifier = adastra_heritage_2_bold }
-			}
-		}
-		else = {
-			if = {
-				limit = { has_country_flag = adastra_slept_galaxy }
-				add_modifier = { modifier = adastra_heritage_1 }
-			}
-			else = {
-				add_modifier = { modifier = adastra_heritage_1_bold }
-			}
-		}
+		country_event = { id = adastra.30 days = 2 }
 
 		save_event_target_as = adastra_country
 		capital_scope = {
@@ -1886,7 +2454,7 @@ country_event = {
 	id = adastra.29
 	title = "adastra.29.name"
 	desc = "adastra.29.desc"
-	picture = GFX_evt_metropolis
+	picture = GFX_evt_adastra_origins
 	is_triggered_only = yes
 
 	trigger = {
@@ -1901,13 +2469,54 @@ country_event = {
 }
 
 ############################
+# adastra.30 : le choix de l'heritage (emergence)
+############################
+country_event = {
+	id = adastra.30
+	title = "adastra.30.name"
+	desc = "adastra.30.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	trigger = { has_country_flag = adastra_heritage_pending }
+
+	immediate = { remove_country_flag = adastra_heritage_pending }
+
+	option = {
+		name = "adastra.30.a"
+		add_modifier = { modifier = adastra_heritage_scientific }
+		ai_chance = { base = 25 }
+	}
+	option = {
+		name = "adastra.30.b"
+		add_modifier = { modifier = adastra_heritage_industrial }
+		ai_chance = { base = 25 }
+	}
+	option = {
+		name = "adastra.30.c"
+		add_modifier = { modifier = adastra_heritage_civic }
+		ai_chance = { base = 25 }
+	}
+	option = {
+		name = "adastra.30.d"
+		add_modifier = { modifier = adastra_heritage_pioneer }
+		ai_chance = { base = 20 }
+	}
+	option = {
+		name = "adastra.30.e"
+		add_modifier = { modifier = adastra_heritage_orbital }
+		ai_chance = { base = 20 }
+	}
+}
+
+############################
 # adastra.20 : Les étoiles nous appartiennent (système vierge)
 ############################
 country_event = {
 	id = adastra.20
 	title = "adastra.20.name"
 	desc = "adastra.20.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
@@ -1949,7 +2558,7 @@ country_event = {
 	id = adastra.22
 	title = "adastra.22.name"
 	desc = "adastra.22.desc"
-	picture = GFX_evt_unknown_ships
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	option = {
@@ -1964,7 +2573,7 @@ country_event = {
 	id = adastra.25
 	title = "adastra.25.name"
 	desc = "adastra.25.desc"
-	picture = GFX_evt_observation
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	option = {
@@ -2029,7 +2638,7 @@ country_event = {
 	id = adastra.26
 	title = "adastra.26.name"
 	desc = "adastra.26.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
@@ -2059,7 +2668,7 @@ country_event = {
 	id = adastra.27
 	title = "adastra.27.name"
 	desc = "adastra.27.desc"
-	picture = GFX_evt_federation_fleet
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
@@ -2321,7 +2930,7 @@ country_event = {
 	id = adastra.50
 	title = "stone_age"
 	desc = "adastra.50.desc"
-	picture = GFX_evt_alien_cavemen
+	picture = GFX_evt_adastra_age_stone
 	is_triggered_only = yes
 	option = { name = "adastra.age.ok" }
 }
@@ -2330,7 +2939,7 @@ country_event = {
 	id = adastra.51
 	title = "bronze_age"
 	desc = "adastra.51.desc"
-	picture = GFX_evt_champions_forge
+	picture = GFX_evt_adastra_age_bronze
 	is_triggered_only = yes
 	option = { name = "adastra.age.ok" add_resource = { unity = 60 } }
 }
@@ -2339,7 +2948,7 @@ country_event = {
 	id = adastra.52
 	title = "iron_age"
 	desc = "adastra.52.desc"
-	picture = GFX_evt_knights
+	picture = GFX_evt_adastra_age_iron
 	is_triggered_only = yes
 	option = { name = "adastra.age.ok" add_resource = { unity = 80 } }
 }
@@ -2348,7 +2957,7 @@ country_event = {
 	id = adastra.53
 	title = "late_medieval_age"
 	desc = "adastra.53.desc"
-	picture = GFX_evt_medieval_alien_civilization
+	picture = GFX_evt_adastra_age_medieval
 	is_triggered_only = yes
 	option = { name = "adastra.age.ok" add_resource = { unity = 100 } }
 }
@@ -2357,7 +2966,7 @@ country_event = {
 	id = adastra.54
 	title = "renaissance_age"
 	desc = "adastra.54.desc"
-	picture = GFX_evt_society_research
+	picture = GFX_evt_adastra_age_renaissance
 	is_triggered_only = yes
 	option = { name = "adastra.age.ok" add_resource = { unity = 120 } }
 }
@@ -2366,7 +2975,7 @@ country_event = {
 	id = adastra.55
 	title = "steam_age"
 	desc = "adastra.55.desc"
-	picture = GFX_evt_engineering_research
+	picture = GFX_evt_adastra_age_steam
 	is_triggered_only = yes
 	option = { name = "adastra.age.ok" add_resource = { unity = 150 } }
 }
@@ -2375,7 +2984,7 @@ country_event = {
 	id = adastra.56
 	title = "industrial_age"
 	desc = "adastra.56.desc"
-	picture = GFX_evt_metropolis
+	picture = GFX_evt_adastra_age_industrial
 	is_triggered_only = yes
 	option = { name = "adastra.age.ok" add_resource = { unity = 180 } }
 }
@@ -2384,7 +2993,7 @@ country_event = {
 	id = adastra.57
 	title = "machine_age"
 	desc = "adastra.57.desc"
-	picture = GFX_evt_robot_assembly_plant
+	picture = GFX_evt_adastra_age_machine
 	is_triggered_only = yes
 	option = { name = "adastra.age.ok" add_resource = { unity = 220 } }
 }
@@ -2393,7 +3002,7 @@ country_event = {
 	id = adastra.58
 	title = "atomic_age"
 	desc = "adastra.58.desc"
-	picture = GFX_evt_nuclear_explosion
+	picture = GFX_evt_adastra_age_atomic
 	is_triggered_only = yes
 	option = { name = "adastra.age.ok" add_resource = { unity = 260 } }
 }
@@ -2402,7 +3011,7 @@ country_event = {
 	id = adastra.59
 	title = "early_space_age"
 	desc = "adastra.59.desc"
-	picture = GFX_evt_early_space_age
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 	option = { name = "adastra.age.ok" add_resource = { unity = 300 } }
 }
@@ -2414,17 +3023,38 @@ country_event = {
 	id = adastra.60
 	title = "adastra.60.name"
 	desc = "adastra.60.desc"
-	picture = GFX_evt_unknown_ships
+	picture = GFX_evt_adastra_age_space
 
 	mean_time_to_happen = { months = 90 }
 
+	# 1.4 (2026-08-29 - branche sur l'EVEIL REEL.
+	# Ces evenements se declenchaient sur `has_communications`, c'est-a-dire
+	# qu'ils evoquaient une observation sans qu'aucun observateur n'existe.
+	# Le moteur tient desormais un veritable compteur d'eveil sur nous
+	# (mecanique vanilla, active des lors que le pays est primitif) : on s'y
+	# adosse. Un OVNI apparait parce qu'il s'est passe quelque chose, plus
+	# parce qu'un empire lointain a nos coordonnees.
 	trigger = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_locked
 		NOT = { has_country_flag = adastra_seen_ufo }
-		any_playable_country = {
-			NOT = { is_same_value = root }
-			has_communications = root
+		# 1.4 (2026-08-29 - PRESENCE PHYSIQUE OBLIGATOIRE.
+		# L'eveil seul ne suffit plus : ces evenements racontent une
+		# observation, il faut donc un observateur. Une flotte etrangere
+		# dans le systeme natal, ou un poste d'observation en orbite.
+		OR = {
+			capital_scope = {
+				solar_system = {
+					any_fleet_in_system = {
+						exists = owner
+						owner = {
+							is_country_type = default
+							NOT = { is_same_value = root }
+						}
+					}
+				}
+			}
+			capital_scope = { has_observation_outpost = yes }
 		}
 	}
 
@@ -2452,7 +3082,7 @@ country_event = {
 	id = adastra.61
 	title = "adastra.61.name"
 	desc = "adastra.61.desc"
-	picture = GFX_evt_alien_abduction
+	picture = GFX_evt_adastra_age_space
 
 	mean_time_to_happen = { months = 120 }
 
@@ -2461,9 +3091,17 @@ country_event = {
 		has_country_flag = adastra_locked
 		has_country_flag = adastra_seen_ufo
 		NOT = { has_country_flag = adastra_abductions }
-		any_playable_country = {
-			NOT = { is_same_value = root }
-			has_communications = root
+		# 30/08 - les enlevements exigent un OBSERVATEUR INTRUSIF : un poste
+		# d'observation dont le proprietaire mene une ingerence active ou
+		# agressive (axe abduction/experimentations du design Contact).
+		capital_scope = {
+			has_observation_outpost = yes
+			observation_outpost_owner = {
+				OR = {
+					has_policy_flag = interference_active
+					has_policy_flag = interference_aggressive
+				}
+			}
 		}
 	}
 
@@ -2495,7 +3133,7 @@ country_event = {
 	id = adastra.62
 	title = "adastra.62.name"
 	desc = "adastra.62.desc"
-	picture = GFX_evt_mysterious_signal
+	picture = GFX_evt_adastra_age_space
 
 	mean_time_to_happen = { months = 120 }
 
@@ -2504,9 +3142,25 @@ country_event = {
 		has_country_flag = adastra_locked
 		has_country_flag = adastra_seen_ufo
 		NOT = { has_country_flag = adastra_signal_decoded }
-		any_playable_country = {
-			NOT = { is_same_value = root }
-			has_communications = root
+		# 1.4 (2026-08-29 - branche sur l'EVEIL REEL plutot que sur les
+		# communications : un observateur doit exister pour qu'on l'observe.
+		# 1.4 (2026-08-29 - PRESENCE PHYSIQUE OBLIGATOIRE.
+		# L'eveil seul ne suffit plus : ces evenements racontent une
+		# observation, il faut donc un observateur. Une flotte etrangere
+		# dans le systeme natal, ou un poste d'observation en orbite.
+		OR = {
+			capital_scope = {
+				solar_system = {
+					any_fleet_in_system = {
+						exists = owner
+						owner = {
+							is_country_type = default
+							NOT = { is_same_value = root }
+						}
+					}
+				}
+			}
+			capital_scope = { has_observation_outpost = yes }
 		}
 	}
 
@@ -2534,7 +3188,7 @@ country_event = {
 	id = adastra.63
 	title = "adastra.63.name"
 	desc = "adastra.63.desc"
-	picture = GFX_evt_debris
+	picture = GFX_evt_adastra_age_space
 
 	mean_time_to_happen = { months = 140 }
 
@@ -2543,9 +3197,25 @@ country_event = {
 		has_country_flag = adastra_locked
 		has_country_flag = adastra_seen_ufo
 		NOT = { has_country_flag = adastra_debris_found }
-		any_playable_country = {
-			NOT = { is_same_value = root }
-			has_communications = root
+		# 1.4 (2026-08-29 - branche sur l'EVEIL REEL plutot que sur les
+		# communications : un observateur doit exister pour qu'on l'observe.
+		# 1.4 (2026-08-29 - PRESENCE PHYSIQUE OBLIGATOIRE.
+		# L'eveil seul ne suffit plus : ces evenements racontent une
+		# observation, il faut donc un observateur. Une flotte etrangere
+		# dans le systeme natal, ou un poste d'observation en orbite.
+		OR = {
+			capital_scope = {
+				solar_system = {
+					any_fleet_in_system = {
+						exists = owner
+						owner = {
+							is_country_type = default
+							NOT = { is_same_value = root }
+						}
+					}
+				}
+			}
+			capital_scope = { has_observation_outpost = yes }
 		}
 	}
 
@@ -2566,3 +3236,4 @@ country_event = {
 		add_resource = { unity = 200 }
 	}
 }
+

@@ -20,6 +20,25 @@
 #   common/country_focus/focus_cards/
 #       46 cartes d'objectifs
 #
+# ------------------------------------- surcharges 1.4 (integration pre-PRL)
+#   common/scripted_triggers/zzz_adastra_preftl_triggers.txt
+#       has_met_primitives      elargi au confinement (ouvre la politique
+#                               d'ingerence des autres empires envers nous)
+#   common/colony_types/zzz_adastra_preftl_colony_types.txt
+#       col_pre_ftl_*           les 10 designations d'epoque elargies au
+#                               type adastra_grounded
+#   common/country_types/zzz_adastra_vanilla_country_types.txt
+#       default                 copie vanilla stricte + intel_effects_surveyed
+#                               (fuite d'affichage de prospection, teste 30/08)
+#   common/scripted_effects/zzz_adastra_first_contact.txt
+#       set_first_contact_starting_stage  copie vanilla + garde de perception
+#                               par age (la faune spatiale ne declenche pas de
+#                               chaine avant l'Atomique - matrice v1)
+#   common/defines/zz_adastra_defines.txt
+#       NGameplay.TECH_TO_SURVEY_OWNED  reactive un define vanilla commente :
+#                               la Teledetection rend le droit de prospecter
+#                               un systeme possede par autrui
+#
 # ---------------------------------------------------- code core_ (a extraire)
 #   (rien - ce qui porte le prefixe core_ n'ecrase aucun fichier du jeu de
 #    base, et ne doit jamais le faire. C'est la condition pour qu'il devienne

@@ -56,7 +56,7 @@ adastra_cleanup_start_infrastructure = {
 		remove_building = building_dread_encampment
 	}
 	if = {
-		limit = { owner = { NOT = { has_country_flag = adastra_reached_machine } } }
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
 		remove_building = building_energy_grid
 	}
 	if = {
@@ -172,7 +172,7 @@ adastra_cleanup_start_infrastructure = {
 		remove_building = building_mineral_purification_hub
 	}
 	if = {
-		limit = { owner = { NOT = { has_country_flag = adastra_reached_industrial } } }
+		limit = { owner = { NOT = { has_country_flag = adastra_reached_space } } }
 		remove_building = building_mineral_purification_plant
 	}
 	if = {

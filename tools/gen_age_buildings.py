@@ -163,7 +163,7 @@ CAPITAL_HEADER = """# Ad Astra 1.2 - la chaine des capitales d'epoque.
 """
 
 
-def capital_block(c, nxt, tier):
+def capital_block(c, upgrades, tier):
     b = ["%s = {" % c["key"]]
     b.append("\tcapital = yes")
     b.append("\tcan_build = no")
@@ -229,10 +229,11 @@ def capital_block(c, nxt, tier):
         b.append("\t\tAMOUNT = %d" % c["enforcers"])
         b.append("\t}")
     b.append("")
-    b.append("\t# L'amelioration suivante. Le dernier palier rend la main au")
-    b.append("\t# jeu de base : building_capital et toute sa chaine.")
+    b.append("	# Chaine lineaire : un seul successeur (exigence moteur,")
+    b.append("	# les chemins multiples declenchent une upgrades loop).")
     b.append("\tupgrades = {")
-    b.append("\t\t%s" % nxt)
+    for nxt in upgrades:
+        b.append("\t\t%s" % nxt)
     b.append("\t}")
     b.append("}")
     return "\n".join(b)
@@ -241,10 +242,11 @@ def capital_block(c, nxt, tier):
 def gen_capitals():
     parts = [CAPITAL_HEADER]
     for i, c in enumerate(CAPITAL_CHAIN):
-        nxt = (CAPITAL_CHAIN[i + 1]["key"] if i + 1 < len(CAPITAL_CHAIN)
-               else "building_capital")
+        # ESSAI 2026-08-29 - UN SEUL SUCCESSEUR PAR PALIER.
+        # Le moteur exige un graphe lineaire (upgrades loop sinon).
+        upgrades = [CAPITAL_CHAIN[i + 1]["key"]] if i + 1 < len(CAPITAL_CHAIN) else ["building_capital"]
         parts.append("\n# --- %s (%s) ---\n" % (c["fr"], c["age"]))
-        parts.append(capital_block(c, nxt, i))
+        parts.append(capital_block(c, upgrades, i))
     return "\n".join(parts) + "\n"
 
 

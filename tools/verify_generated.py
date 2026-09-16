@@ -10,6 +10,7 @@ GENERATEURS = (
     "tools/gen_age_techs.py",
     "tools/gen_age_buildings.py",
     "tools/gen_start_compatibility.py",
+    "tools/build_event_pictures.py",
 )
 SORTIES = (
     "ad_astra/common/technology/adastra_age_techs.txt",
@@ -24,6 +25,7 @@ SORTIES = (
     "ad_astra/localisation/english/adastra_ages_l_english.yml",
     "ad_astra/localisation/french/adastra_buildings_l_french.yml",
     "ad_astra/localisation/english/adastra_buildings_l_english.yml",
+    "ad_astra/interface/adastra_event_pictures.gfx",
 )
 
 

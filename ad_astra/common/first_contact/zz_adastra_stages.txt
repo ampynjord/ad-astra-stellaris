@@ -1,0 +1,38 @@
+# Ad Astra 1.4 - l'etape de VEILLE du premier contact (31/08).
+#
+# Une civilisation confinee qui repere un empire stellaire ne le « rencontre »
+# pas : elle le SURVEILLE. Son site de premier contact est route ici par la
+# surcharge de set_first_contact_starting_stage, et n'en sort jamais : a
+# chaque echeance, l'evenement d'etape (adastra.175, cache) remet le site en
+# veille. Aucune conclusion, donc aucune communication : le nom, la capitale
+# et les frontieres de l'empire restent inconnus.
+#
+# La veille se leve par adastra.15 (emergence : les sites reprennent la
+# chaine vanilla) - et les informations arrivent entre-temps par ceux qui
+# les donnent : l'occupant qui se declare (adastra.174), l'eveil maximal
+# (preftl.41), l'illumination.
+#
+# Scopes (99_README_FIRST_CONTACT) : Root = site, Root.Owner = nous,
+# From = l'empire observe.
+
+adastra_stage_veille = {
+	icon = GFX_firstcontact_icon_progress
+	picture = GFX_evt_star_chart
+
+	difficulty = 5
+
+	stage_event = {
+		summary = fcsum_adastra_veille_summary
+		event_weight = {
+			weight = 10
+		}
+		event = adastra.175
+	}
+
+	# Le moteur exige un chemin lorsque le tirage d'evenement echoue. Sans ce
+	# bloc, il journalise que la veille ne progressera jamais. Ne rien tirer
+	# preserve volontairement le contact inconnu jusqu'a l'emergence.
+	on_roll_failed = {
+		standard_first_contact_on_roll_failed = { RANDOM_EVENTS = no_events }
+	}
+}

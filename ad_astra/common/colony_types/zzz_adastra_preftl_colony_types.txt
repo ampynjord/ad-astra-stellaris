@@ -1,0 +1,125 @@
+# Ad Astra 1.4 (integration pre-PRL) - 2026-08-28
+#
+# Surcharge des 10 designations de colonie pre-PRL vanilla
+# (`common/colony_types/00_colony_types.txt`, l. 2955-3103).
+#
+# Le vanilla les reserve a `is_country_type = primitive`. On elargit au type
+# du joueur confine, sans rien changer d'autre : meme icone, meme poids.
+# Elles sont purement cosmetiques cote vanilla (aucun modificateur, aucun
+# emploi) mais elles donnent au monde natal l'ecusson de son epoque, ce qui
+# est exactement ce qu'on veut voir dans l'interface de la planete.
+#
+# La condition `has_pre_ftl_age` est satisfaite par la couche A
+# (`adastra.160`). Sans elle, aucune de ces designations n'apparaitrait.
+
+@adastra_preftl_poids = 1000
+
+col_pre_ftl_stone = {
+	icon = GFX_colony_type_pre_ftl_stone
+	potential = {
+		owner? = {
+			OR = { is_country_type = primitive  is_country_type = adastra_grounded }
+			has_pre_ftl_age = stone_age
+		}
+	}
+	weight_modifier = { base = @adastra_preftl_poids }
+}
+
+col_pre_ftl_bronze = {
+	icon = GFX_colony_type_pre_ftl_bronze
+	potential = {
+		owner? = {
+			OR = { is_country_type = primitive  is_country_type = adastra_grounded }
+			has_pre_ftl_age = bronze_age
+		}
+	}
+	weight_modifier = { base = @adastra_preftl_poids }
+}
+
+col_pre_ftl_iron = {
+	icon = GFX_colony_type_pre_ftl_iron
+	potential = {
+		owner? = {
+			OR = { is_country_type = primitive  is_country_type = adastra_grounded }
+			has_pre_ftl_age = iron_age
+		}
+	}
+	weight_modifier = { base = @adastra_preftl_poids }
+}
+
+col_pre_ftl_medieval = {
+	icon = GFX_colony_type_pre_ftl_medieval
+	potential = {
+		owner? = {
+			OR = { is_country_type = primitive  is_country_type = adastra_grounded }
+			has_pre_ftl_age = late_medieval_age
+		}
+	}
+	weight_modifier = { base = @adastra_preftl_poids }
+}
+
+col_pre_ftl_renaissance = {
+	icon = GFX_colony_type_pre_ftl_renaissance
+	potential = {
+		owner? = {
+			OR = { is_country_type = primitive  is_country_type = adastra_grounded }
+			has_pre_ftl_age = renaissance_age
+		}
+	}
+	weight_modifier = { base = @adastra_preftl_poids }
+}
+
+col_pre_ftl_steam = {
+	icon = GFX_colony_type_pre_ftl_steam
+	potential = {
+		owner? = {
+			OR = { is_country_type = primitive  is_country_type = adastra_grounded }
+			has_pre_ftl_age = steam_age
+		}
+	}
+	weight_modifier = { base = @adastra_preftl_poids }
+}
+
+col_pre_ftl_industrial = {
+	icon = GFX_colony_type_pre_ftl_industrial
+	potential = {
+		owner? = {
+			OR = { is_country_type = primitive  is_country_type = adastra_grounded }
+			has_pre_ftl_age = industrial_age
+		}
+	}
+	weight_modifier = { base = @adastra_preftl_poids }
+}
+
+col_pre_ftl_machine = {
+	icon = GFX_colony_type_pre_ftl_machine
+	potential = {
+		owner? = {
+			OR = { is_country_type = primitive  is_country_type = adastra_grounded }
+			has_pre_ftl_age = machine_age
+		}
+	}
+	weight_modifier = { base = @adastra_preftl_poids }
+}
+
+col_pre_ftl_atomic = {
+	icon = GFX_colony_type_pre_ftl_atomic
+	potential = {
+		owner? = {
+			OR = { is_country_type = primitive  is_country_type = adastra_grounded }
+			has_pre_ftl_age = atomic_age
+		}
+	}
+	weight_modifier = { base = @adastra_preftl_poids }
+}
+
+col_pre_ftl_early_space = {
+	icon = GFX_colony_type_pre_ftl_space
+	potential = {
+		owner? = {
+			OR = { is_country_type = primitive  is_country_type = adastra_grounded }
+			has_pre_ftl_age = early_space_age
+		}
+	}
+	weight_modifier = { base = @adastra_preftl_poids }
+}

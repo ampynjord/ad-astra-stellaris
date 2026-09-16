@@ -45,9 +45,9 @@ BUILDING_AGE = {
 "building_generator_districts_3":    ("tech",      "Regulation plasma : au-dela de la fission - date par sa techno (space)"),
 "building_generator_districts_4":    ("space",      "Nexus planetaire : echelle orbitale"),
 
-"building_energy_grid":              ("tech",    "Meme logique que le reseau electrique - date par sa techno (machine)"),
+"building_energy_grid":              ("tech",    "Reseau planetaire de l'Age spatial - date par sa techno (space)"),
 "building_energy_nexus":             ("tech",     "Palier superieur : fission controlee - date par sa techno (atomic)"),
-"building_mineral_purification_plant": ("tech", "Purification du minerai : procedes chimiques industriels - date par sa techno (industrial)"),
+"building_mineral_purification_plant": ("tech", "Extraction planetaire de l'Age spatial - date par sa techno (space)"),
 "building_mineral_purification_hub": ("tech",     "Palier superieur : petrochimie - date par sa techno (atomic)"),
 
 # --- Manufacture ----------------------------------------------------------
@@ -140,7 +140,7 @@ BUILDING_TECH = {
     "building_automation_miner_1": ("tech_assembly_pattern", "ftl"),
     "building_automation_technician_1": ("tech_assembly_pattern", "ftl"),
     "building_clone_vats": ("tech_cloning", "ftl"),
-    "building_energy_grid": ("tech_power_hub_1", "machine"),
+    "building_energy_grid": ("tech_power_hub_1", "space"),
     "building_energy_nexus": ("tech_power_hub_2", "atomic"),
     "building_factory_1": ("tech_basic_industry", "steam"),
     "building_factory_2": ("tech_luxuries_1", "industrial"),
@@ -152,7 +152,7 @@ BUILDING_TECH = {
     "building_generator_districts_2": ("tech_power_plant_2", "atomic"),
     "building_generator_districts_3": ("tech_power_plant_3", "ftl"),
     "building_mineral_purification_hub": ("tech_mineral_purification_2", "atomic"),
-    "building_mineral_purification_plant": ("tech_mineral_purification_1", "industrial"),
+    "building_mineral_purification_plant": ("tech_mineral_purification_1", "space"),
     "building_mining_districts_1": ("tech_mechanized_mining", "industrial"),
     "building_mining_districts_2": ("tech_mining_1", "machine"),
     "building_mining_districts_3": ("tech_mining_2", "atomic"),

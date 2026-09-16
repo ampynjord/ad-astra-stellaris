@@ -2637,7 +2637,7 @@ tech_space_mining_4 = {
 
 # source vanilla : 00_eng_tech.txt
 tech_mining_1 = {
-	cost = @tier1cost1
+	cost = 485
 	area = engineering
 	tier = 1
 	category = { industry }
@@ -2686,7 +2686,7 @@ tech_mining_1 = {
 
 # source vanilla : 00_eng_tech.txt
 tech_mining_2 = {
-	cost = @tier2cost1
+	cost = 740
 	area = engineering
 	tier = 2
 	category = { industry }
@@ -2724,7 +2724,7 @@ tech_mining_2 = {
 
 # source vanilla : 00_eng_tech.txt
 tech_mineral_purification_1 = {
-	cost = @tier1cost3
+	cost = 755
 	area = engineering
 	tier = 1
 	category = { industry }
@@ -2769,14 +2769,14 @@ tech_mineral_purification_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_industrial = yes
+			adastra_vanilla_open_space = yes
 		}
 	}
 }
 
 # source vanilla : 00_eng_tech.txt
 tech_mineral_purification_2 = {
-	cost = @tier2cost3
+	cost = 740
 	area = engineering
 	tier = 2
 	category = { industry }
@@ -2823,7 +2823,7 @@ tech_mineral_purification_2 = {
 
 # source vanilla : 00_eng_tech.txt
 tech_alloys_1 = {
-	cost = @tier1cost3
+	cost = 485
 	area = engineering
 	tier = 1
 	category = { materials }
@@ -2899,7 +2899,7 @@ tech_advanced_metallurgy_1 = {
 
 # source vanilla : 00_eng_tech.txt
 tech_luxuries_1 = {
-	cost = @tier1cost3
+	cost = 355
 	area = engineering
 	tier = 1
 	category = { materials }
@@ -6757,7 +6757,7 @@ tech_sensors_2 = {
 
 # source vanilla : 00_phys_tech.txt
 tech_power_plant_2 = {
-	cost = @tier1cost1
+	cost = 740
 	area = physics
 	tier = 1
 	category = { field_manipulation }
@@ -6847,7 +6847,7 @@ tech_power_plant_3 = {
 
 # source vanilla : 00_phys_tech.txt
 tech_power_hub_1 = {
-	cost = @tier1cost3
+	cost = 755
 	area = physics
 	tier = 1
 	category = { field_manipulation }
@@ -6896,14 +6896,14 @@ tech_power_hub_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_machine = yes
+			adastra_vanilla_open_space = yes
 		}
 	}
 }
 
 # source vanilla : 00_phys_tech.txt
 tech_power_hub_2 = {
-	cost = @tier2cost3
+	cost = 740
 	area = physics
 	tier = 2
 	category = { field_manipulation }
@@ -7581,7 +7581,7 @@ tech_space_trading = {
 
 # source vanilla : 00_soc_tech.txt
 tech_eco_simulation = {
-	cost = @tier1cost1
+	cost = 485
 	area = society
 	tier = 1
 	category = { biology }
@@ -7685,7 +7685,7 @@ tech_eco_simulation = {
 
 # source vanilla : 00_soc_tech.txt
 tech_gene_crops = {
-	cost = @tier2cost1
+	cost = 740
 	area = society
 	tier = 2
 	category = { biology }
@@ -7772,7 +7772,7 @@ tech_gene_crops = {
 
 # source vanilla : 00_soc_tech.txt
 tech_food_processing_1 = {
-	cost = @tier1cost2
+	cost = 755
 	area = society
 	tier = 1
 	category = { biology }
@@ -7874,10 +7874,7 @@ tech_food_processing_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
-		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
-		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
-			has_country_flag = adastra_completed
+			adastra_vanilla_open_space = yes
 		}
 	}
 }
@@ -9123,7 +9120,7 @@ tech_volcanic_terraforming = {
 
 # source vanilla : 00_soc_tech.txt
 tech_genome_mapping = {
-	cost = @tier1cost1
+	cost = 740
 	area = society
 	tier = 1
 	category = { biology }

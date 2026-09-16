@@ -10,23 +10,29 @@ Le gabarit vit dans gen_age_buildings.py, a un seul endroit : si un champ est
 refuse par le jeu, il se corrige la et se repercute sur les 11 batiments.
 """
 
-# Zones dans lesquelles chaque batiment peut etre eleve. Les zones Ad Astra
-# n'incluent pas `government` : ce set ne vise que la capitale vanilla. Tous
-# les batiments d'epoque passent donc par `urban_automation`, present dans
-# chaque zone urbaine du mod. Sans ce set commun, une technologie debloquee
-# peut ne donner aucun emplacement de construction (Grenier, 20/08).
+# Zones dans lesquelles chaque batiment peut etre eleve. Un batiment ne doit
+# jamais contourner la specialisation du district via `urban_automation` : ce
+# set est present dans presque toutes les zones et rendait toute construction
+# possible partout. Les batiments scientifiques vont dans les zones de
+# recherche, les civiques dans les zones d'unite, les militaires en defense,
+# et les ateliers dans leur branche industrielle.
+#
+# `adastra_food_storage` est volontairement un set propre au mod. La zone
+# urbaine generique accepte les sets non exclus, alors que les zones
+# specialisees n'acceptent que leur liste explicite : greniers et moulins se
+# placent donc dans les quartiers urbains sans envahir les autres domaines.
 SETS = {
-    'building_adastra_cave': 'urban_automation unity',
-    'building_adastra_granary': 'urban_automation',
-    'building_adastra_foundry': 'urban_automation',
-    'building_adastra_tablet_house': 'urban_automation research',
-    'building_adastra_courthouse': 'urban_automation',
-    'building_adastra_mill': 'urban_automation',
-    'building_adastra_citadel': 'urban_automation fortress',
-    'building_adastra_university': 'urban_automation research',
-    'building_adastra_manufactory': 'urban_automation industrial factory',
-    'building_adastra_radio': 'urban_automation unity entertainment',
-    'building_adastra_school': 'urban_automation research',
+    'building_adastra_cave': 'unity',
+    'building_adastra_granary': 'adastra_food_storage',
+    'building_adastra_foundry': 'industrial foundry',
+    'building_adastra_tablet_house': 'research',
+    'building_adastra_courthouse': 'unity',
+    'building_adastra_mill': 'adastra_food_storage',
+    'building_adastra_citadel': 'fortress',
+    'building_adastra_university': 'research',
+    'building_adastra_manufactory': 'industrial factory',
+    'building_adastra_radio': 'unity',
+    'building_adastra_school': 'research',
 }
 
 # Emploi cree par chaque batiment : la production vient de gens qui travaillent,
