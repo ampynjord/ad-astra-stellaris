@@ -1,73 +1,64 @@
-# Refonte de la recherche — la progression, c'est la recherche (19/08/2026)
+# Recherche et ascension
 
-Décision d'ampynjord, 19/08 : « une refonte du système technologique s'impose,
-c'est trop complexe ». Deux options posées — score par technologies, ou arbre
-technologique — retenues **ensemble** : la progression vient des technologies,
-l'ordre vient d'un arbre de prérequis. L'interface d'arbre viendra après, elle
-n'affichera que ce que le moteur applique déjà.
+La progression d'Ad Astra n'est pas mensuelle : elle est exclusivement obtenue
+par des recherches et des actes concrets. Cette regle vaut pour les parties
+nouvelles et pour les sauvegardes recalees une seule fois par `adastra.133`.
 
-## Ce qui disparaît
+## Ages historiques
 
-- La barre qui monte au mois (`monthly_progress` base 0,06 et ses modificateurs
-  de rythme, d'approche, d'unité, de recherche).
-- Les vagues (`adastra_vague_2..5`, `adastra_maj_vagues`, `adastra.90`, le
-  forçage des vagues dans `adastra.2`).
-- Le verrou de fin d'âge (266 modificateurs `mult = 0.001` générés) et ses
-  clés `adastra_manque_*`.
-- Les seuils `12/22/31/39/47/55/64/74/86/100/110/120/130`.
+Les dix ages historiques occupent les points 0 a 250 : Pierre, Bronze, Fer,
+Medieval tardif, Renaissance, Vapeur, Industriel, Machine, Atomique et Espace
+initial. Chaque age contient vingt-cinq technologies Ad Astra.
 
-## Ce qui reste
+- Une technologie de l'age courant vaut un point.
+- Le vivier applique les prerequis de rang dans chaque domaine : un rang ne
+  doit pas apparaitre avant le rang precedent requis.
+- Aucun verrou de fin d'age n'est place dans `potential`. Les technologies
+  deja disponibles restent des prerequis valides quand l'age change.
+- Les technologies vanilla sont ouvertes progressivement par les surcharges
+  generees, sans remplacer le vivier vanilla.
 
-- Les 250 technologies, leurs dates, bonus, coûts, bâtiments (`age_techs_data.py`).
-- Les drapeaux d'âge (`adastra_reached_*`, `adastra_unlock_*`), posés à
-  l'entrée d'étape par `adastra.40-49`.
-- L'octroi des âges traversés pour un départ tardif, la capitale par âge,
-  l'économie datée, les surcharges vanilla, les fondatrices par étape du
-  programme, les jalons.
-- La poussée de la première rangée dans le vivier (`adastra.130`).
+Un depart dans un age tardif commence au seuil de cet age et possede les
+technologies historiques precedentes necessaires a sa coherence economique.
 
-## Les règles
+## Programme spatial
 
-1. **Quinze étapes de 25 points** : les dix âges, dont l'Âge spatial est la
-   phase d'astronomie (225→250), puis cinq jalons : Exploration 250→275,
-   Construction 275→300, Avant-poste 300→325, Infrastructure orbitale
-   325→350 et Hyperespace 350→375. Un départ à l'âge N commence à 25·N.
-2. **Une technologie d'époque acquise = +1 point** dans la situation, si elle
-   appartient à l'âge courant (`on_tech_increased` → `adastra.132`). Vingt-cinq
-   technologies font passer l'âge. Le verrou « toutes les techs » est inhérent.
-3. **Un arbre par âge** : les techs sont rangées par date en cinq rangs de
-   cinq. Le rang 1 exige le pilier du même domaine à l'âge précédent (règle
-   existante) ; un rang N ≥ 2 exige une tech de rang N-1 du même domaine dans
-   le même âge (à défaut, du rang N-1 tous domaines). Le moteur ne propose
-   qu'une tech dont les prérequis sont acquis : l'ordre historique est tenu
-   sans drapeau.
-4. **Programme spatial** : les cinq rangs des technologies d'époque sont
-   ouverts un jalon à la fois. Les fondatrices vanilla et la recherche font
-   progresser l'étape ; son geste concret l'achève : premier satellite,
-   système prospecté, constructeur livré, avant-poste bâti, station orbitale,
-   puis Hyperpropulsion. La base stellaire n'est jamais créée par événement :
-   le joueur la bâtit avec son constructeur.
-5. **Rythme** : les coûts par âge et les pénalités de recherche par étape.
-   Les quatre rythmes (`adastra_pace_*`) deviennent des modificateurs de
-   vitesse de recherche (rapide +50 %, lent -33 %, très lent -50 %) ; les
-   approches échangent recherche contre stabilité/unité.
+Les six etapes suivantes conduisent de 250 a 400. Une etape se termine quand
+ses fondations techniques et son geste de jeu sont tous deux accomplis.
 
-## Sauvegardes
+1. **Premier lancement** (250-275) : reussir `Lancement suborbital`. Un echec
+   laisse la decision disponible ; une reussite la retire definitivement.
+2. **Exploration** (275-300) : rechercher Construction spatiale et
+   Colonisation, lancer le Programme d'exploration, puis achever le releve des
+   corps non stellaires du systeme natal avec le vaisseau scientifique livre.
+3. **Construction** (300-325) : rechercher les cinq fondations de coque,
+   armes, blindage, boucliers et reacteurs, puis lancer le programme qui livre
+   le Batisseur.
+4. **Avant-poste** (325-350) : rechercher `Starbase Construction` et utiliser
+   le Batisseur pour construire normalement la premiere base stellaire dans le
+   systeme natal. Aucun evenement ne cree gratuitement cette base.
+5. **Infrastructure orbitale** (350-375) : obtenir les technologies de base
+   stellaire et de station, puis construire une station miniere ou de recherche
+   normale.
+6. **Hyperespace** (375-400) : lancer le Programme hyperspatial puis terminer
+   Hyperpropulsion. L'emergence n'a lieu qu'a ce dernier point.
 
-Une partie 1.3/1.4 chargée en 1.5 garde ses technologies ; sa progression
-est réalignée au chargement sur `25·(âge atteint) + techs de l'âge acquises`
-(`adastra.133`, une fois). Les drapeaux de vagues sont ignorés.
+Les points intermediaires rendus par les technologies fondatrices sont
+intentionnellement visibles, mais aucun d'eux ne peut finir une etape sans son
+geste concret. Le journal de situation et les evenements d'etape doivent
+toujours nommer ce geste.
 
-## Ce que ça ne règle pas
+## Astronomie
 
-La frontière vanilla / Ad Astra (paliers, exceptions d'économie, fondatrices)
-reste une affaire de surcharges. Le vivier lent du moteur reste poussé à
-l'entrée d'un âge.
+L'astronomie est independante du programme spatial. L'observatoire se
+developpe en trois niveaux historiques : optique, radio puis spatial. Construire
+un telescope ne revele rien. Le joueur lance ensuite une Observation
+astronomique, longue et payante, qui revele uniquement l'etoile d'un systeme
+aleatoire jamais observe : portee d'un saut, trois sauts, puis cinq sauts. Elle
+ne prospecte ni planetes, ni lunes, ni ressources.
 
-## Interface
+## Maintien
 
-Quand une technologie Ad Astra rend une spécialisation de district disponible,
-sa description l'annonce explicitement, comme les technologies vanilla. La
-liste est générée depuis la même table source que les gardes de zones, afin
-qu'une spécialisation ne puisse jamais être déverrouillée sans être annoncée
-au joueur.
+`tools/gen_age_techs.py` est la source des technologies et regenere les
+fichiers d'age. Toute modification de leur ordre, cout, prererequis ou texte
+doit passer par la table source, puis par les validateurs et le build local.

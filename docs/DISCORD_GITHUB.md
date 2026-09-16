@@ -20,7 +20,7 @@ noise and feedback loops while keeping the investigation visible on both sides.
 
 - `bug` or `idea`: issue kind;
 - `source: discord` or `source: github`: original intake;
-- `release: beta`: private beta report, never the Workshop live build;
+- `release: beta`: beta build report (GitHub pre-release), never the Workshop live build;
 - `status: needs information`: context is insufficient to investigate;
 - `status: needs reproduction`: waiting for a reliable reproduction;
 - `status: confirmed`: observed in game or in source files;

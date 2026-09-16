@@ -15,7 +15,7 @@ body:
       label: Ad Astra build source
       options:
         - Steam Workshop stable release
-        - Private beta local build
+        - Beta local build (GitHub pre-release)
         - Local development build
         - I do not know
     validations:
