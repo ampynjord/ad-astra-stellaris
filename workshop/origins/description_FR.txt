@@ -7,6 +7,8 @@ Ad Astra transforme Stellaris en ascension historique. Commencez comme une [b]ci
 
 [b]Aucun DLC requis.[/b] Français et anglais inclus.
 
+[b]Bêta publique 1.4 disponible[/b] sur [url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8]GitHub[/url] — détails plus bas. Cette page Workshop garde la version stable 1.3.2.
+
 [hr][/hr]
 [h2]L'ascension[/h2]
 
@@ -32,11 +34,20 @@ Pas de flotte offerte, ni de saut magique entre le pas de tir et l'empire galact
 [/list]
 
 [hr][/hr]
-[h2]1.4 — Le ciel se remplit[/h2]
+[h2]1.4 « Galileo » — bêta publique[/h2]
 
-La prochaine mise à jour majeure approfondit l'identité visuelle et mécanique de l'ascension : icônes originales de technologies, bâtiments et décisions ; observatoires et télescopes ; parcours spatial plus clair ; risques de lancement ; exploration locale ; et arbre technologique dont le rythme vient de la recherche, non de vagues scriptées.
+La prochaine mise à jour majeure est ouverte à tous en bêta publique, publiée sur GitHub :
+[url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8][b]Ad Astra: Origins 1.4.0-beta.8[/b][/url]
 
-Elle est en développement actif. La branche Workshop stable reste recommandée pour une campagne normale ; les builds expérimentaux paraissent sous forme de préversions GitHub.
+[list]
+[*]Votre empire est une [b]vraie civilisation pré-PRL[/b] aux yeux du moteur : écusson d'époque, éveil, postes d'observation, premier contact vécu depuis le sol.
+[*]L'âge spatial est rythmé par vos [b]télescopes[/b], et l'astronomie repère de nouveaux systèmes sans les prospecter.
+[*][b]Vivre sous un ciel occupé :[/b] si un autre empire s'empare de votre système natal, reprenez-le par une négociation tranchée par son éthique — ou par la guerre.
+[*]Les empires stellaires détectés [b]restent inconnus[/b] tant que personne ne se présente.
+[*]Icônes et illustrations d'événements originales, risques de lancement et jalons spatiaux plus clairs.
+[/list]
+
+[b]Pour l'essayer :[/b] cette fiche Workshop reste sur la version stable 1.3.2 et ne reçoit jamais de bêta. Supprimez toute ancienne bêta, extrayez l'archive dans votre dossier utilisateur Stellaris, activez [i]Ad Astra: Origins - Beta[/i], désactivez cette version Workshop (jamais les deux ensemble) et lancez une nouvelle partie. Les étapes détaillées et les problèmes connus sont dans les notes de la release.
 
 [hr][/hr]
 [h2]Compatibilité et support[/h2]
