@@ -35,6 +35,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      # build_event_pictures.py, run by verify_generated.py, converts the
+      # event artwork with Pillow.
+      - name: install Pillow
+        run: python -m pip install --disable-pip-version-check "Pillow==11.3.0"
+
       - name: confirm release tag is on main
         if: inputs.require_main
         run: |
