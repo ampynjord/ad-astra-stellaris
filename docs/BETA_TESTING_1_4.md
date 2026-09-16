@@ -1,9 +1,14 @@
-# Ad Astra 1.4.0-beta.1 — Test Notebook
+# Ad Astra 1.4.0-beta.8 — Test Notebook
 
-This is the private-beta test contract. Steam Workshop remains on 1.3.2.
+This is the public-beta test contract. Steam Workshop remains on 1.3.2.
 Enable only `Ad Astra: Origins - Beta`; never enable it alongside Workshop.
 While this local beta is installed, treat the Workshop copy as unusable and do
 not load its saves with the beta.
+
+**Beta.8** carries the beta.7 content plus two fixes (first-contact watch
+stage roll failure, sector re-creation only when the home starbase is yours).
+B20 and B22 remain **known failures**: rerun them to confirm or refine the
+reports, not to discover them.
 
 ## Rules for every card
 
@@ -33,144 +38,88 @@ report unrelated vanilla warnings unless they prevent the card.
 
 ## Assignment and exit rule
 
-- B00–B05 are core cards.
-- B06–B10 are the space chain and must all pass before 1.4 can become a release candidate.
-- B11–B13 are distributed by DLC and empire configuration; no tester needs to run every combination.
+**Beta.7 focus** (the occupied-sky build): surveying is manual again (the
+invisible presence pulse is gone); star empires you detect stay unknown
+(perpetual watch stage, no communications) until someone declares itself;
+the occupant of your sky declares itself from the Atomic Age; Reclaim Our
+Sky is a capital decision whose outcome follows the occupant's ethics
+(cession, purchase, tributary status, or refusal granting a claim and a war
+path); colony designations are locked to the era crest until emergence;
+the Orbital Yard Programme returns if the Builder is lost.
+
+- B00–B05 (install, early economies, prerequisite tree, slots, approaches)
+  **passed in earlier betas and are retired**: their mechanics are unchanged
+  in beta.7. Report a regression on any of them as a bug, not as a card.
+- B06–B10 are the space chain and must all pass on beta.7 before 1.4 can
+  become a release candidate.
+- B11–B13 are distributed by DLC and empire configuration; no tester needs to
+  run every combination.
 - B14 is optional multiplayer coverage.
+- B15–B17 cover the pre-FTL rework; B19 is observational.
+- B18 (stage gauges) **is retired**: the gauge cards were removed in beta.7;
+  stage requirements now live in the situation description.
+- B20–B22 are new in beta.7: perception of star empires, the negotiation
+  of the sky, and the outliner/sector diagnostic.
 
 Short cards target 5–15 minutes. B06 is split across sessions and creates the
 natural checkpoint saves used by B07–B10.
 
-## B00 — Install, origin and calendar
-
-**Setup:** new Atomic game, no other mods.
-
-1. Confirm the launcher shows `Ad Astra: Origins - Beta 1.4.0-beta.1` and no Workshop Ad Astra entry is active.
-2. Start the game, finish the initial choices, then pause on the first day.
-3. Record the visible date and inspect the game-setup calendar sliders.
-
-**Pass:** origin selectable, initialization completes, game begins at vanilla date
-**2200.01.01**, and vanilla calendar ranges remain intact.
-
-**Fail:** missing origin, two Ad Astra copies enabled, non-vanilla date or a
-visible initialization/localisation error.
-
-## B01 — Atomic day-one economy
-
-**Setup:** new Atomic game, Accelerated History, no other mods.
-
-1. Pause on day one; record Beyond the Stars progress, energy and consumer goods.
-2. Let exactly one monthly pulse pass without building.
-3. Open Terra, resource bar, district list and construction window.
-
-**Pass:** progress begins at **200/375**; capital and districts remain after the
-pulse; no forced energy or consumer-goods collapse; displayed building slots are
-usable; Archives are not placed for free.
-
-**Fail:** a required district/building vanishes, an unavoidable deficit appears,
-slots cannot be used, or a raw localisation key is visible.
-
-## B02 — Renaissance deck and first completion
-
-**Setup:** new Renaissance game, Accelerated History, no other mods.
-
-1. Before choosing research, capture the three research decks and situation.
-2. Let one monthly pulse pass, then select one period technology.
-3. Let that technology finish naturally; inspect the deck and situation again.
-
-**Pass:** progress begins at **100/375**; a valid Renaissance card is offered;
-the technology moves to researched and adds exactly one point; it does not
-return to the deck or cause an instant chain.
-
-**Fail:** empty deck, invalid card, more than one progress point, instant custom
-research, card returning after completion, or a research error.
-
-## B03 — Stone prerequisite tree
-
-**Setup:** new Stone game, Accelerated History, no other mods.
-
-1. Inspect the offered cards in each field before choosing.
-2. Complete one Stone technology naturally.
-3. Inspect newly offered cards and their prerequisite tooltips.
-
-**Pass:** initially available cards are rank-one possibilities; the completed
-technology adds exactly one point; newly available cards name a completed Stone
-prerequisite where applicable.
-
-**Fail:** a later rank appears without its prerequisite, no valid card exists, a
-stated prerequisite is already met but the card is blocked, or the situation
-gains passive monthly progress.
-
-## B04 — Technology, specialization and slots
-
-**Setup:** new Renaissance or Steam game where Writing is already known.
-
-1. Open Terra and find the Archives specialization.
-2. Inspect its unlocking technology tooltip and its zone/building capacity.
-3. Build it only if the stated technology and an open district slot exist.
-4. Inspect any available telescope card.
-
-**Pass:** the technology names the specialization it unlocks; Archives are a
-player construction choice rather than free infrastructure; slot count matches
-the development stage; every visible custom card has name, description, cost
-and icon.
-
-**Fail:** a specialization appears early, stays unavailable after its technology,
-has the wrong number of slots, or shows a raw key such as
-`building_core_observatory`.
-
-## B05 — Situation approaches and pace
-
-**Setup:** three fresh Atomic games, one per approach.
-
-1. Select Continuity, Forced March, then Eyes on the Sky in separate games.
-2. Record the same kind of research estimate and listed modifiers in each.
-3. Let one month pass without completing research.
-
-**Pass:** approaches display their stability/happiness/unity/research trade-off;
-Forced March is faster than Continuity for comparable research; no passive
-situation progress occurs.
-
-**Fail:** approaches have identical effects, a listed modifier is absent, or the
-bar advances without technology or milestone completion.
-
-## B06 — Early Space: astronomy and satellite
+## B06 — Early Space: astronomy and first launch
 
 **Setup:** new Early Space game, Accelerated History, no other mods.
 
-1. Record the decks and situation: it must begin at **225/375**.
-2. Research the 25 Early Space period technologies naturally over several sessions, keeping the same save.
+1. Record the decks and situation: it must begin at **225/400**.
+2. Research the Early Space period technologies naturally, keeping the same
+   save. **Expect the deck to run dry twice**: the middle wave of technologies
+   only enters the draw after a **radio telescope** is built, the last wave
+   after the **space telescope**. The game must announce this rhythm at Space
+   Age entry and remind you when the deck runs dry; the situation log must
+   also state the rule. Astronomical Observation costs 100 influence +
+   500 minerals and must grow **30% dearer** with each campaign.
 3. Record every situation increase; inspect custom icons as cards appear.
-4. Build observatory, radiotelescope and space telescope when their technologies and slots allow them.
-5. Complete the satellite decision once it becomes available.
+4. Build each telescope tier when required. The construction list must only
+   offer the **highest researched tier**, and the radio telescope must upgrade
+   into the space telescope. Enact **Astronomical Observation**: its duration
+   and cost must be visible, and the result must name one newly discovered
+   system that appears on the map as known **with none of its bodies
+   surveyed**.
+5. Complete **First Suborbital Launch** once the situation instructs you to do
+   so. If it fails, retry only after recording the visible failure; if it
+   succeeds, confirm it disappears.
 
 **Pass:** every period technology adds one point, none completes instantly, and
-only completed astronomy research plus the satellite action advances the stage
-to **250/375**.
+the stage reaches **250/400** only after all 25 period technologies. A successful
+First Suborbital Launch then reaches **275/400** and opens the Exploration
+Program. The satellite is a separate, one-time historical milestone and does
+not replace this launch.
 
 **Fail:** blank or instant deck, absent telescope icon/localisation, stale
 decision target, or a milestone that skips a stated requirement.
 
-**Output:** share a natural post-satellite save named `B06-satellite-DATE`.
+**Output:** share a natural post-launch save named `B06-first-launch-DATE`.
 
 ## B07 — Exploration and sublight survey
 
-**Setup:** B06 post-satellite checkpoint.
+**Setup:** B06 post-launch checkpoint.
 
 1. Research the Exploration-stage foundations.
 2. Enact the Space Exploration Program on Terra.
 3. Confirm delivery of exactly one sublight science vessel.
-4. In **system view**, right-click and survey every non-star body in the home system. Do not use the galaxy-map survey order.
-5. Let one monthly pulse pass after the final survey.
+4. Survey the home system's bodies **by explicit order** (right-click →
+   Survey). Nothing may survey itself: no body may flip to surveyed without
+   your ship working on it (the old presence pulse is removed in beta.7).
+5. If another empire has claimed the home system, survey orders must be
+   refused until **Remote Sensing** is researched, and accepted after it.
+6. Let one monthly pulse pass after the final body is surveyed.
 
-**Pass:** decision cost/duration are visible; vessel is usable; every body can be
-surveyed from system view; stage reaches **275/375** only after research,
+**Pass:** decision cost/duration are visible; vessel is usable; every body is
+surveyed by order only; stage reaches **300/400** only after research,
 decision and full survey.
 
 **Fail:** no/duplicate vessel, impossible survey order, early stage advance, or
 stalled stage after every body is surveyed.
 
-**Output:** natural Construction checkpoint.
+**Output:** natural Construction checkpoint at 300/400.
 
 ## B08 — Construction program
 
@@ -181,13 +130,13 @@ stalled stage after every body is surveyed.
 3. Find the delivered construction ship, then let a monthly pulse pass.
 
 **Pass:** exactly one constructor arrives; it can receive normal construction
-orders; no starbase is created by the decision; stage reaches **300/375** only
+orders; no starbase is created by the decision; stage reaches **325/400** only
 after research and delivery.
 
 **Fail:** missing/duplicate constructor, automatic starbase, or premature stage
 advance.
 
-**Output:** natural Outpost checkpoint.
+**Output:** natural Outpost checkpoint at 325/400.
 
 ## B09 — Starbase before stations
 
@@ -200,12 +149,12 @@ advance.
 
 **Pass:** station construction is blocked before the player-built starbase and
 available only after it plus normal technology requirements; milestones occur
-in Outpost then Orbital order, reaching **325** then **350/375**.
+in Outpost then Orbital order, reaching **350/400** then **375/400**.
 
 **Fail:** station before starbase, constructor unable to build the starbase,
 automatic base creation, or an unreactive situation after correct infrastructure.
 
-**Output:** natural Hyperdrive checkpoint.
+**Output:** natural Hyperdrive checkpoint at 375/400.
 
 ## B10 — Hyperdrive and emergence
 
@@ -224,6 +173,93 @@ offered; pre-FTL restrictions are removed.
 
 **Fail:** early/duplicate emergence, no FTL refit, unusable home system, repeated
 reform, broken normal-tech deck, or missing Legacy.
+
+## B15 — True pre-FTL status *(new in beta.5)*
+
+**Setup:** new game, any pre-Space age, Accelerated History, several AI empires.
+
+1. Open the homeworld: its designation must carry the **era crest** of the
+   current age, and follow age transitions.
+2. From the Machine Age onward, confirm the era hardship blockers (decrepit
+   dwellings, failing infrastructure) appear once on the capital.
+3. Play until a foreign empire takes interest: an **observation post** built by
+   an AI above the homeworld is now possible and must not break the game.
+4. If an observation post exists and the pre-FTL builds a construction ship
+   later: confirm any observation post it builds on the homeworld itself is
+   dismantled with a refund event.
+
+**Pass:** the era designation is present from day one and follows every age
+transition without manual selection; no modern-era blockers exist at a
+pre-Industrial start; hardships appear once at Machine Age (no duplicates);
+foreign observation is survivable; self-observation is refused narratively.
+
+**Fail:** missing crest, repeated hardship stacking, crash or dead game state
+around observation posts.
+
+## B16 — Awareness told from the ground *(new in beta.5)*
+
+**Setup:** continue any game where at least one foreign empire is active near
+the home system.
+
+1. Observation-flavour events (lights, abductions, signals, debris) must fire
+   **only** when a foreign fleet is in the home system or an observation post
+   exists — never in an empty sky.
+2. Awareness chapter events (Commission → Schism → Answer? → We Know) must
+   fire one per awareness threshold, never repeat, and their choices must show
+   their effects on the buttons.
+3. The "A Distant Sky" modifier must be present for the whole confinement
+   (it no longer falls at High awareness) and vanish at emergence.
+
+**Pass:** no event without an observer; one chapter per threshold; slowdown
+present until emergence, then gone.
+
+**Fail:** event spam, chapters out of order, modifier surviving emergence.
+
+## B17 — Deep probe economics *(new in beta.5)*
+
+**Setup:** B06 checkpoint or any Space Age save before the probe.
+
+1. The probe requires the lunar landing **only if the home system has a
+   moon**; with no moon it opens directly after the crewed flight (galaxy
+   re-roll may be needed to test the no-moon branch; report which branch you
+   tested).
+2. Launch the probe: the event must name the body and its deposits must be
+   revealed for us.
+3. Launch it again: it must stay available while unknown bodies remain, and
+   each launch must cost **35% more** than the last.
+4. Hover the decision and every milestone confirmation button: rewards and
+   openings must be summarised on the button itself.
+
+**Pass:** correct moon branch, visible deposits, growing cost, informative
+buttons.
+
+**Fail:** probe dead-end without a moon, invisible results, flat cost.
+
+## B18 — Stage gauges *(retired in beta.7)*
+
+The gauge cards were removed at the mod author's request. Stage requirements
+are enumerated in the situation description. Report a missing or wrong
+requirement listing there as a bug, not as a card.
+
+## B19 — Occupied home system *(exploratory, new in beta.5)*
+
+**Setup:** play until a foreign empire claims the home system with a starbase.
+This card records behaviour; some outcomes are known issues, not failures.
+
+1. Confirm your surveys display as **yours** (probe results, ordered
+   surveys) even under a foreign flag, and that the occupant's own surveys
+   do **not** show as yours or grey out your survey orders.
+2. With Remote Sensing researched, confirm the survey order works on the
+   home system under a foreign flag.
+3. Record the known issue if it occurs: homeworld missing from the outliner
+   while the system is claimed. Attach the save **and**
+   `Documents/Paradox Interactive/Stellaris/logs/game.log` — the beta logs
+   an `ADASTRA DIAG` line each time it tries to recreate the sector, and
+   those lines are the evidence the fix needs.
+
+**Pass:** survey truthfulness holds; the rest is observational.
+
+**Fail (hard):** crash, or surveys attributed to the wrong empire again.
 
 ## B11 — Civic, ethic and trait configuration
 
@@ -280,9 +316,74 @@ or missing infrastructure.
 **Fail:** duplicate contact/target text, stuck event or desync. Attach host and
 guest logs and saves separately.
 
-## Beta.1 exit rule
+## B20 — The unknown stays unknown *(new in beta.7)*
 
-Any B00–B10 failure requires a new beta build. A release candidate requires all
-B00–B10 cards passing on the same version, two successful B11/B12 configurations,
-no unresolved critical log entry, and one natural B06–B10 run. B14 is strongly
-preferred but does not block a single-player beta release.
+**Setup:** new game, any age, several AI empires; play until foreign ships
+are detected near the home system.
+
+1. When a first-contact site opens toward a star empire, an era-flavoured
+   perception window must fire (omens → scholarly dispute → unidentified
+   objects → "a foreign civilization exists"), and the site must settle into
+   a **watch stage** ("our instruments keep the object under study").
+2. The site must **never conclude** and never establish communications: the
+   empire's name, borders and capital stay hidden. No hidden event spam in
+   the log.
+3. From the Atomic Age, an empire holding a starbase **or an observation
+   post** in the home system must declare itself once: communications with
+   that empire only, with the "They Declare Themselves" window.
+4. At emergence, watched sites must resume the normal vanilla first-contact
+   chain and become completable.
+
+**Pass:** no magic reveals; exactly one declaration; watch sites resume at
+emergence.
+
+**Fail:** communications from a watched site, unknown-empire intel leaking,
+window spam, or a site stuck after emergence.
+
+## B21 — Reclaim Our Sky *(new in beta.7)*
+
+**Setup:** play until a foreign empire holds a starbase in the home system;
+reach the Orbital Yard Programme stage and wait for the occupant's
+declaration.
+
+1. The **Reclaim Our Sky** decision must exist on the capital only from the
+   Orbital Yard stage onward, and only once the occupant has declared
+   itself; its tooltip must list the four ethic outcomes.
+2. Enact it and record the occupant's ethics and the outcome: free cession
+   (pacifist/xenophile), purchase at 1500 energy + 500 alloys
+   (megacorp/materialist/egalitarian), tributary status (authoritarian), or
+   refusal (xenophobe/militarist).
+3. On any cession: the starbase changes flag, the occupant's mining and
+   research stations are dismantled, its survey data is wiped (bodies become
+   surveyable again), and the homeworld should return to the outliner.
+4. On a refusal: a **claim** on the home system must appear, and declaring
+   war on the occupant must become possible.
+5. Re-enacting must be blocked for two years, with a visible reason.
+
+**Pass:** outcome matches ethics; cession delivers all three transfers; the
+claim opens the war path.
+
+**Fail:** decision visible too early, outcome mismatching ethics, a ceded
+starbase destroyed by the safety guard, or no claim on refusal.
+
+## B22 — Outliner and sector diagnostic *(observational, new in beta.7)*
+
+**Setup:** any game; check at three moments — day one, while the home system
+is claimed by another empire, and after reclaiming it.
+
+1. Note whether the homeworld appears in the outliner at each moment.
+2. After each session, copy the `ADASTRA DIAG` lines from
+   `Documents/Paradox Interactive/Stellaris/logs/game.log` into the report.
+
+**Pass:** observational — every report with its DIAG lines is a pass.
+
+**Fail (hard):** crash only.
+
+## Beta.7 exit rule
+
+Any B06–B10, B15–B17 or B20–B21 failure requires a new beta build. A release
+candidate requires all B06–B10, B15–B17 and B20–B21 cards passing on the
+same version, two successful B11/B12 configurations, no unresolved critical
+log entry, and one natural B06–B10 run. B14 is strongly preferred but does
+not block a single-player beta release; B19 and B22 record behaviour and only
+block on a crash.
