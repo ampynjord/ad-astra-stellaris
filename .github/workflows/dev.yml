@@ -3,9 +3,9 @@ name: development
 
 on:
   push:
-    branches: [main, dev, "hotfix/**"]
+    branches: [main, beta]
   pull_request:
-    branches: [main, dev]
+    branches: [main, beta]
 
 jobs:
   checks:

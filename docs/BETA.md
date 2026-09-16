@@ -42,8 +42,8 @@ allowed, redistribution and re-uploads are not.
 
 ## Maintainers
 
-Run the **beta release** GitHub Actions workflow manually on the ref to
-publish. Its tag must use the form `beta-MAJOR.MINOR.PATCH-beta.N`, for example
+Run the **beta release** GitHub Actions workflow manually on the `beta`
+branch. Its tag must use the form `beta-MAJOR.MINOR.PATCH-beta.N`, for example
 `beta-1.4.0-beta.8`, and must match the descriptor version. The `beta-` prefix
 is mandatory: `release.yml` publishes to the Workshop on any `v*` tag.
 

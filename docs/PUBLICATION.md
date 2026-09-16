@@ -1,17 +1,18 @@
 # Publier Ad Astra
 
-Trois branches d'idées : on développe en local, `dev` valide, `main` publie.
+Deux branches : `beta` porte le développement et les bêtas publiques, `main`
+publie la version stable.
 Rien ne part sur Steam sans avoir traversé exactement les mêmes contrôles deux
 fois.
 
 ```
-    local  ──push──▶  dev  ──pull request──▶  main  ──tag v*──▶  Steam
+    local  ──push──▶  beta ──pull request──▶  main  ──tag v*──▶  Steam
                       │                        │                  │
                    contrôles               contrôles          contrôles
                                                               + publication
 ```
 
-Chaque push sur `dev` regenere et verifie les sorties internes, execute les
+Chaque push sur `beta` regenere et verifie les sorties internes, execute les
 controles du mod et produit une archive de test disponible pendant 14 jours.
 Cette archive n'est jamais envoyee sur Steam : seul un tag sur `main` declenche
 la publication.
@@ -21,17 +22,17 @@ la publication.
 ## Le cycle normal
 
 ```bash
-git switch dev
+git switch beta
 # ... tu développes, tu génères, tu testes en jeu ...
 python tools/build_and_sync_dev.py  # controles, archive et copie launcher
 git commit -am "..."
-git push origin dev
+git push origin beta
 ```
 
-La CI de `dev` tourne. Si elle est verte :
+La CI de `beta` tourne. Si elle est verte :
 
 ```bash
-gh pr create --base main --head dev --fill
+gh pr create --base main --head beta --fill
 ```
 
 La pull request relance les mêmes contrôles. **`main` est protégée : tant que
@@ -161,7 +162,7 @@ fatigue. C'est précisément ce soir-là qu'on en a besoin.
 ## Ce que la CI contrôle
 
 Un seul fichier, `.github/workflows/checks.yml`, appelé à l'identique par la
-chaîne `dev` et par la chaîne de sortie. Ajouter un contrôle à un endroit
+chaîne `beta` et par la chaîne de sortie. Ajouter un contrôle à un endroit
 l'ajoute aux deux.
 
 **`tools/verify_1_2.py`** — 35 règles sur le mod lui-même : bornes historiques
