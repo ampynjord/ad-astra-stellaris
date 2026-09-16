@@ -1,14 +1,17 @@
-# Manual validation for privately distributed beta builds.
-# It deliberately has no Steam environment, credentials, Workshop upload,
-# GitHub release, or public artifact. The validated archive is shared only
-# through the Discord channel restricted to selected Beta Tester members.
-name: private beta validation
+# Manual GitHub-only channel for public beta builds.
+# It deliberately has no Steam environment, credentials, or Workshop upload.
+# Tags must start with "beta-": release.yml publishes to the Workshop on v*.
+name: beta release
 
 on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "SemVer beta version, for example v1.4.0-beta.1"
+        description: "Beta release tag, for example beta-1.4.0-beta.8"
+        required: true
+        type: string
+      title:
+        description: "Visible GitHub release title"
         required: true
         type: string
 
@@ -17,15 +20,15 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   checks:
     name: checks
     uses: ./.github/workflows/checks.yml
 
-  package:
-    name: validate private beta package
+  publish:
+    name: publish GitHub beta
     needs: checks
     runs-on: ubuntu-latest
     steps:
@@ -41,16 +44,44 @@ jobs:
         env:
           BETA_TAG: ${{ inputs.tag }}
         run: |
-          if [[ ! "$BETA_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-beta\.[1-9][0-9]*$ ]]; then
-            echo "::error::Use SemVer beta format, for example v1.4.0-beta.1."
+          if [[ ! "$BETA_TAG" =~ ^beta-[0-9]+\.[0-9]+\.[0-9]+-beta\.[1-9][0-9]*$ ]]; then
+            echo "::error::Use the form beta-MAJOR.MINOR.PATCH-beta.N, for example beta-1.4.0-beta.8."
             exit 1
           fi
-          expected_version="${BETA_TAG#v}"
+          expected_version="${BETA_TAG#beta-}"
           descriptor_version="$(tr -d '\357\273\277' < ad_astra/descriptor.mod | sed -n 's/^version="\([^"]*\)".*/\1/p' | head -n 1)"
           if [[ "$descriptor_version" != "$expected_version" ]]; then
             echo "::error::Tag $BETA_TAG does not match descriptor version $descriptor_version."
             exit 1
           fi
+          if git rev-parse -q --verify "refs/tags/$BETA_TAG" >/dev/null; then
+            echo "::error::$BETA_TAG already exists. A published beta is never replaced."
+            exit 1
+          fi
 
-      - name: build private beta archive
+      - name: build beta archive
         run: python tools/build_beta.py --sortie beta
+
+      - name: prepare release notes
+        run: |
+          {
+            echo "# Public beta build"
+            echo
+            echo "Install this as a local mod and disable the Steam Workshop copy."
+            echo "Delete any previous \`mod/adastra_beta\` folder first, then read"
+            echo "INSTALL_BETA.md inside the archive before launching Stellaris."
+            echo
+            python tools/changenote.py --markdown
+          } > /tmp/beta-notes.md
+
+      - name: create GitHub pre-release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag }}
+          target_commitish: ${{ github.sha }}
+          name: ${{ inputs.title }}
+          body_path: /tmp/beta-notes.md
+          prerelease: true
+          make_latest: false
+          files: beta/*.zip
+          fail_on_unmatched_files: true

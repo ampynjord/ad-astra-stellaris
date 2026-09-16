@@ -57,7 +57,8 @@ jobs:
               python tools/verify_1_3_1.py "${{ inputs.expected_version }}" ;;
             *)
               python tools/verify_generated.py
-              python tools/verify_1_2.py ;;
+              python tools/verify_1_2.py
+              python tools/verify_scenarios.py ;;
           esac
 
       - name: validate version, changelog, and Workshop content
