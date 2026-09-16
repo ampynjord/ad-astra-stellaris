@@ -49,3 +49,12 @@ Le mod surcharge les technologies précoces, certains vaisseaux civils, des déc
 
 [b]Discord :[/b] https://discord.gg/nKP4TfNzNX
 [b]Issues et idées GitHub :[/b] https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose
+
+[hr][/hr]
+[b]Droits d'auteur et distribution officielle[/b]
+
+Ad Astra est © 2026 ampynjord. Utilisez uniquement l'objet Workshop officiel et
+les préversions GitHub officielles. Les reuploads, miroirs, versions dérivées et
+la réutilisation du code, des illustrations, icônes, textes ou assets originaux
+d'Ad Astra sont interdits sans autorisation écrite préalable. Signalez toute
+copie suspecte via le menu de signalement Steam ou le Discord officiel.
