@@ -1,28 +1,27 @@
 # Flux de branches
 
-`main` contient uniquement les versions publiees et les correctifs qui leur
-sont destines. Toute modification y arrive par une pull request controlee.
+Le depot n'a que deux branches.
 
-`dev` est la branche d integration de la prochaine version mineure. C est la
-branche de travail de la 1.4 tant qu elle n est pas figee.
+`main` contient uniquement les versions stables publiees et les correctifs qui
+leur sont destines. C'est la branche par defaut et la page d'accueil du depot.
+Toute modification y arrive par une pull request controlee (CI verte,
+historique lineaire : fusion par *squash* ou *rebase*).
 
-Les nouvelles fonctions partent de `dev` dans `feature/<sujet>` et reviennent
-vers `dev` par pull request. Les changements de documentation et de bot qui
-sont destines a la prochaine version suivent le meme chemin.
+`beta` porte le developpement de la prochaine version et ses betas publiques.
+On y travaille directement ; chaque push relance les controles du mod et
+produit une archive de test.
 
-Une fois le contenu fige, creer `release/<version>` depuis `dev`. Cette
-branche n accepte que les corrections de sortie, la documentation et le
-packaging. Sa pull request cible `main`.
+Une beta publique est publiee depuis `beta` par le workflow manuel
+**beta release** (tag `beta-X.Y.Z-beta.N`, pre-release GitHub, jamais de
+Steam). Une beta publiee n'est jamais remplacee : un correctif devient le
+numero suivant.
 
-Un correctif d une version deja publiee part du tag correspondant dans
-`hotfix/<version>` et cible directement `main`. Il ne contient aucun travail
-de la prochaine version. Apres merge, reporter `main` dans `dev` par pull
-request afin que le correctif ne soit jamais perdu.
+Quand la version est prete, une pull request `beta` → `main` la fait entrer
+dans `main`. Le tag `v<version>` est ensuite pose sur le commit de `main` teste
+en jeu : il declenche la publication Steam et la release GitHub. Ne pas
+retagger, ne pas forcer l'historique de `main` et ne pas publier Steam hors de
+ce flux.
 
-Un tag `v<version>` est cree uniquement sur le commit de `main` qui a ete
-teste en jeu. Il declenche la publication Steam et la release GitHub. Ne pas
-retagger, ne pas force-push et ne pas publier Steam hors de ce flux.
-
-Flux actuel : `hotfix/1.3.1` vient de `v1.3.0` et cible `main`; `dev` porte la
-1.4. Apres la sortie 1.3.1, merger `main` vers `dev` avant de poursuivre la
-1.4.
+Un correctif urgent de la version stable se fait par une pull request courte
+vers `main`, puis `main` est reporte dans `beta` pour ne jamais le perdre. Les
+branches de travail temporaires sont supprimees des leur fusion.
