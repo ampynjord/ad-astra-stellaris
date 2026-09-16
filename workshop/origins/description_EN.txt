@@ -7,6 +7,8 @@ Ad Astra turns Stellaris into a historical ascent. Begin as a [b]pre-FTL civiliz
 
 [b]No DLC required.[/b] English and French included.
 
+[b]How to play:[/b] create or edit an empire and choose the [b]Ad Astra[/b] origin. Without it, the game starts normally.
+
 [b]1.4 public beta available[/b] on [url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8]GitHub[/url] — details below. This Workshop page keeps the stable 1.3.2.
 
 [hr][/hr]

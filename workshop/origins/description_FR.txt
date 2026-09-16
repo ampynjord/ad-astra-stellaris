@@ -7,6 +7,8 @@ Ad Astra transforme Stellaris en ascension historique. Commencez comme une [b]ci
 
 [b]Aucun DLC requis.[/b] Français et anglais inclus.
 
+[b]Pour jouer :[/b] créez ou modifiez un empire et choisissez l'origine [b]Ad Astra[/b]. Sans elle, la partie démarre normalement.
+
 [b]Bêta publique 1.4 disponible[/b] sur [url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8]GitHub[/url] — détails plus bas. Cette page Workshop garde la version stable 1.3.2.
 
 [hr][/hr]
