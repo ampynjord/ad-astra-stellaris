@@ -49,6 +49,38 @@ for dirpath, _d, files in os.walk(ROOT):
             print("  ok  %s" % rel)
 
 # ------------------------------------------------------------- techs / cles
+print("\n== illustration de l'origine ==")
+_origine = os.path.join(ROOT, "common", "governments", "civics", "zzz_adastra_origins.txt")
+_origine_gfx = os.path.join(ROOT, "interface", "adastra_event_pictures.gfx")
+_origine_dds = os.path.join(ROOT, "gfx", "event_pictures", "adastra_origins.dds")
+if not os.path.exists(_origine) or "picture = GFX_evt_adastra_origins" not in open(_origine, encoding="utf-8").read():
+    err("origine : illustration Ad Astra absente")
+elif not os.path.exists(_origine_gfx) or "name = \"GFX_evt_adastra_origins\"" not in open(_origine_gfx, encoding="utf-8").read():
+    err("origine : sprite de l'illustration absent")
+elif not os.path.exists(_origine_dds):
+    err("origine : illustration DDS absente")
+else:
+    print("  illustration 450x150 declaree")
+
+print("\n== illustrations des evenements ==")
+_evenements = os.path.join(ROOT, "events")
+_pics = []
+for _nom in sorted(os.listdir(_evenements)):
+    if not _nom.endswith(".txt"):
+        continue
+    _texte = open(os.path.join(_evenements, _nom), encoding="utf-8").read()
+    _pics += re.findall(r"^\s*picture\s*=\s*(GFX_evt_\w+)", _texte, re.M)
+_vanilla_pics = sorted({p for p in _pics if not p.startswith("GFX_evt_adastra_")})
+_sprites = open(_origine_gfx, encoding="utf-8").read() if os.path.exists(_origine_gfx) else ""
+_missing_pics = sorted({p for p in _pics if p not in _sprites})
+if _vanilla_pics:
+    err("evenements : illustrations vanilla restantes : %s" % ", ".join(_vanilla_pics))
+elif _missing_pics:
+    err("evenements : sprites Ad Astra manquants : %s" % ", ".join(_missing_pics))
+else:
+    print("  %d fenetre(s), toutes avec une illustration Ad Astra" % len(_pics))
+
+# ------------------------------------------------------------- techs / cles
 print("\n== techs d'age ==")
 keys = []
 for age, flag, cost, vflag in AGES:
@@ -97,6 +129,25 @@ declared = set(re.findall(r"^(tech_adastra_\w+) = \{", src, re.M))
 if declared != set(keys):
     err("desync entre la table et le fichier genere : %s"
         % (declared.symmetric_difference(set(keys))))
+
+# Le programme spatial reste volontairement sous les premiers couts vanilla.
+# Cette plage garde une progression lisible sans faire depasser nos cartes
+# par les technologies tier 1 disponibles apres l'emergence.
+_space_costs = {}
+for _tech in TECHS["space"]:
+    _match = re.search(r"^%s = \{.*?^\}" % re.escape(_tech["key"]), src, re.S | re.M)
+    if not _match:
+        continue
+    _cost = re.search(r"^\s*cost\s*=\s*(\d+)", _match.group(0), re.M)
+    if not _cost:
+        err("%s : cout absent" % _tech["key"])
+        continue
+    _space_costs[_tech["key"]] = int(_cost.group(1))
+if _space_costs and (min(_space_costs.values()) < 500 or max(_space_costs.values()) >= 1000):
+    err("les technologies spatiales doivent rester entre les premiers couts vanilla")
+elif _space_costs:
+    print("  programme spatial : couts %d-%d, alignes sur les premiers paliers vanilla"
+          % (min(_space_costs.values()), max(_space_costs.values())))
 refs = re.findall(r'prerequisites = \{ ([^}]+) \}', src)
 bad = set()
 for r in refs:
@@ -138,6 +189,17 @@ if "remove_zone = { district = district_city zone = zone_research_unity }" not i
     err("depart : les Archives ne sont pas retirees apres l'initialisation vanilla")
 if "num_districts = { type = district_city value > 1 }" not in _day4_start:
     err("depart : les districts urbains excedentaires ne sont pas retires apres l'initialisation vanilla")
+
+# La garde mensuelle pre-PRL retire les bases prematurees, mais ne doit jamais
+# supprimer les flottes que le joueur vient de construire.
+_monthly_guard = _events[_events.index("# adastra.9 : Garde mensuelle"):
+                        _events.index("# adastra.5 : Le rythme de l'ascension")]
+if "delete_fleet" in _monthly_guard:
+    err("garde pre-PRL : une flotte construite par le joueur serait detruite")
+elif "dismantle = yes" not in _monthly_guard:
+    err("garde pre-PRL : le nettoyage des bases prematurees est absent")
+else:
+    print("  garde pre-PRL : bases prematurees nettoyees, flottes preservees")
 
 # ------------------------------------------------------------- localisation
 print("\n== localisation ==")
@@ -298,6 +360,7 @@ VALID_SETS = {
     "factory", "farming", "generator", "mining", "physics", "society",
     "engineering", "trade", "fortress", "entertainment", "medical", "pre_ftl",
     "resort", "harvest", "hydroponics", "automation", "urban_automation", "betharian", "zoo",
+    "adastra_food_storage",
     "knights", "origin", "bio_trophy", "hunting_zone", "fallen_empire",
     "cosmogenesis_world", "ark_forever_cruise_crew",
     "ark_forever_cruise_passengers",
@@ -309,8 +372,27 @@ for m in re.finditer(r"(\w+) = \{[^{}]*?building_sets = \{([^}]*)\}", bsrc, re.S
             " n'apparaitra dans aucune zone" % (m.group(1), bad))
 if any("government" in b["sets"].split() for b in BUILDINGS):
     err("batiment d'epoque dans le set government : les zones Ad Astra ne l'incluent pas")
-if any("urban_automation" not in b["sets"].split() for b in BUILDINGS):
-    err("batiment d'epoque hors du set urban_automation commun aux zones Ad Astra")
+if any("urban_automation" in b["sets"].split() for b in BUILDINGS):
+    err("batiment d'epoque dans urban_automation : il contournerait les specialisations")
+EXPECTED_AGE_BUILDING_SETS = {
+    "building_adastra_cave": {"unity"},
+    "building_adastra_granary": {"adastra_food_storage"},
+    "building_adastra_foundry": {"industrial", "foundry"},
+    "building_adastra_tablet_house": {"research"},
+    "building_adastra_courthouse": {"unity"},
+    "building_adastra_mill": {"adastra_food_storage"},
+    "building_adastra_citadel": {"fortress"},
+    "building_adastra_university": {"research"},
+    "building_adastra_manufactory": {"industrial", "factory"},
+    "building_adastra_radio": {"unity"},
+    "building_adastra_school": {"research"},
+}
+for _building in BUILDINGS:
+    _got_sets = set(_building["sets"].split())
+    _want_sets = EXPECTED_AGE_BUILDING_SETS[_building["key"]]
+    if _got_sets != _want_sets:
+        err("batiment %s : ensembles %s au lieu de %s"
+            % (_building["key"], sorted(_got_sets), sorted(_want_sets)))
 print("  %d batiments, %d cles de loc, parite ok" % (len(bdecl), len(bfr)))
 
 
@@ -361,6 +443,37 @@ if {f.replace("_l_french", "") for f in _ffr} != {f.replace("_l_english", "") fo
          % (sorted(_ffr), sorted(_fen)))
 print("  %d cles, parite exacte des deux cotes" % len(_fr))
 
+# Les titres, descriptions, options et noms de flotte font reference a des
+# cles de localisation. Une cle commune absente des deux langues ne serait pas
+# detectee par la parite seule et apparaitrait brute en jeu.
+print("\n== references de texte visibles ==")
+_visible_refs = {}
+_visible_fields = r"(?:title|desc|name|custom_tooltip|tooltip|text)"
+for _base, _dirs, _files in os.walk(ROOT):
+    _rel_base = os.path.relpath(_base, ROOT)
+    if _rel_base.startswith("localisation") or _rel_base.startswith("gfx"):
+        continue
+    for _file in _files:
+        if not _file.endswith(".txt"):
+            continue
+        _path = os.path.join(_base, _file)
+        for _number, _line in enumerate(open(_path, encoding="utf-8"), 1):
+            _line = _line.split("#", 1)[0]
+            _match = re.search(r"\b%s\s*=\s*\"?([A-Za-z0-9_.]+)\"?" % _visible_fields,
+                               _line)
+            if not _match:
+                continue
+            _key = _match.group(1)
+            if _key.startswith(("adastra", "decision_core_", "origin_adastra",
+                                "tech_adastra", "building_adastra", "core_")):
+                _visible_refs.setdefault(_key, []).append("%s:%d" % (_path, _number))
+for _lang, _loc in (("FR", _fr), ("EN", _en)):
+    _missing = sorted(set(_visible_refs) - set(_loc))
+    if _missing:
+        err("%s : %d reference(s) de texte visible sans localisation : %s"
+            % (_lang, len(_missing), ", ".join(_missing[:6])))
+print("  %d reference(s) visibles, FR et EN" % len(_visible_refs))
+
 # --------------------------- retours visibles des Premiers pas (1.4)
 # La parite FR/EN ne suffit pas : deux dossiers peuvent oublier exactement les
 # memes cles. Le chargement du 17/08 affichait alors les evenements core_ avec
@@ -407,6 +520,81 @@ _m103 = re.search(r"country_event = \{\s*\n\tid = adastra\.103(.*?)\n\}",
                   _core, re.S)
 if not _m103 or "set_country_flag = core_suborbital_fait" not in _m103.group(1):
     err("Premiers pas : la reussite suborbitale ne pose plus son drapeau")
+if not _m103 or "set_situation_progress = 275" in _m103.group(1):
+	err("Premiers pas : le lancement suborbital ne doit pas ouvrir seul le programme spatial")
+_m102 = re.search(r"country_event = \{\s*\n\tid = adastra\.102(.*?)\n\}",
+                  _core, re.S)
+if not _m102 or "set_country_flag = core_satellite_fait" not in _m102.group(1):
+	err("Premiers pas : la reussite du premier satellite ne pose plus son drapeau")
+_m110 = re.search(r"country_event = \{\s*\n\tid = adastra\.110(.*?)\n\}",
+                  _core, re.S)
+if (not _m110 or "set_country_flag = core_sonde_profonde_fait" not in _m110.group(1)
+        or "set_situation_progress = 275" not in _m110.group(1)):
+	err("Premiers pas : seule la sonde profonde doit conclure les jalons orbitaux")
+_m71 = re.search(r"country_event = \{\s*\n\tid = adastra\.71(.*?)\n\}",
+                 open(os.path.join(ROOT, "events", "adastra_events.txt"), encoding="utf-8").read(), re.S)
+if (not _m71 or "core_suborbital_fait" not in _m71.group(1)
+		or "core_satellite_fait" not in _m71.group(1)
+		or "core_vol_habite_fait" not in _m71.group(1)
+		or "core_sonde_profonde_fait" not in _m71.group(1)
+        or "adastra_stage_early_space_age" not in _m71.group(1)
+        or "adastra_stage_first_launch" not in _m71.group(1)
+        or "adastra_recalage_progression = yes" not in _m71.group(1)
+        or "set_situation_progress = 275" not in _m71.group(1)):
+	err("Premiers pas : le seuil spatial ne recale pas les recherches spatiales ou le lancement")
+_m132 = re.search(r"country_event = \{\s*\n\tid = adastra\.132(.*?)\n\}",
+                  open(os.path.join(ROOT, "events", "adastra_events.txt"), encoding="utf-8").read(), re.S)
+if (not _m132 or "has_country_flag = adastra_reached_space" not in _m132.group(1)
+        or "adastra_recalage_progression = yes" not in _m132.group(1)):
+	err("Premiers pas : les commandes de recherche ne recalculent plus l Age spatial immediatement")
+_age_techs = open(os.path.join(ROOT, "common", "technology", "adastra_age_techs.txt"),
+                  encoding="utf-8").read()
+_space_techs = re.search(r"# AGE : SPACE.*", _age_techs, re.S)
+if not _space_techs or "has_country_flag = adastra_stage_" in _space_techs.group(0):
+	err("Progression spatiale : une technologie d Age spatial attend encore une etape qu elle doit elle-meme permettre d atteindre")
+# La mission de 1969 est explicitement lunaire. Sans lune dans le systeme
+# natal, elle ne doit jamais etre proposee au joueur.
+_core_decisions_path = os.path.join(ROOT, "common", "decisions", "core_premiers_pas.txt")
+_core_decisions = strip_comments(open(_core_decisions_path, encoding="utf-8").read())
+_suborbital = re.search(r"decision_core_suborbital\s*=\s*\{(.*?)\n\}", _core_decisions, re.S)
+if (not _suborbital or "adastra_stage_first_launch" not in _suborbital.group(1)
+        or "NOT = { has_country_flag = core_suborbital_fait }" not in _suborbital.group(1)):
+	err("Premiers pas : le premier lancement doit attendre son jalon et disparaitre apres une reussite")
+_satellite = re.search(r"decision_core_satellite\s*=\s*\{(.*?)(?=\n\w+\s*=\s*\{|\Z)", _core_decisions, re.S)
+if (not _satellite or "has_country_flag = core_suborbital_fait" not in _satellite.group(1)
+        or "NOT = { has_country_flag = core_satellite_fait }" not in _satellite.group(1)):
+	err("Premiers pas : le premier satellite doit suivre le lancement suborbital et rester unique")
+_crewed = re.search(r"decision_core_vol_habite\s*=\s*\{(.*?)(?=\n\w+\s*=\s*\{|\Z)", _core_decisions, re.S)
+if (not _crewed or "has_country_flag = core_satellite_fait" not in _crewed.group(1)
+        or "NOT = { has_country_flag = core_vol_habite_fait }" not in _crewed.group(1)):
+	err("Premiers pas : le vol habite doit suivre le premier satellite et rester unique")
+_deep_probe = re.search(r"decision_core_sonde_profonde\s*=\s*\{(.*?)(?=\n\w+\s*=\s*\{|\Z)",
+					open(os.path.join(ROOT, "common", "decisions", "core_sonde_profonde.txt"), encoding="utf-8").read(), re.S)
+if (not _deep_probe or "has_country_flag = core_vol_habite_fait" not in _deep_probe.group(1)
+		or "core_premier_corps_fait" not in _deep_probe.group(1)
+		or "influence = 300" not in _deep_probe.group(1)
+		or "value:adastra_cout_relance_sonde" not in _deep_probe.group(1)
+		or "minerals = 1000" not in _deep_probe.group(1)
+		or "alloys = 100" not in _deep_probe.group(1)):
+	err("Premiers pas : la sonde doit suivre l alunissage quand il est possible, et son cout croitre")
+_lunar_decision = re.search(
+    r"decision_core_premier_corps\s*=\s*\{(.*?)(?=\n\w+\s*=\s*\{|\Z)",
+    _core_decisions, re.S)
+if not _lunar_decision:
+    err("Premiers pas : la mission du premier corps est absente")
+elif "country_event = { id = adastra.106 }" not in _lunar_decision.group(1):
+    err("Premiers pas : la mission du premier corps ne delegue pas le choix de cible")
+elif ("capital_scope = {" not in _lunar_decision.group(1)
+      or "any_system_planet = { is_moon = yes }" not in _lunar_decision.group(1)):
+	err("Premiers pas : la mission du premier corps doit exiger une lune du systeme natal")
+if _lunar_decision and re.search(r"any_owned_planet\s*=\s*\{\s*limit\s*=", _lunar_decision.group(1), re.S):
+	err("Premiers pas : le filtre lunaire utilise un limit invalide dans any_owned_planet")
+if (not _m110 or "random_system =" in _m110.group(1)
+        or "random_system_planet =" not in _m110.group(1)
+        or "is_surveyed = { who = root status = yes }" not in _m110.group(1)
+        or "set_surveyed = { surveyed = yes surveyor = root }" not in _m110.group(1)
+        or "has_country_flag = core_premier_corps_fait" not in _m110.group(1)):
+	err("Premiers pas : la sonde doit reconnaitre un seul astre inconnu du systeme natal apres l alunissage")
 print("  5 paliers de risque, cibles locales et reussite verifies")
 
 # ------------------- plans de vaisseaux reconstructibles (1.2, Sithiya)
@@ -444,17 +632,35 @@ if not os.path.exists(ctpath2):
 else:
     csrc = strip_comments(open(ctpath2, encoding="utf-8").read())
     got = {k for k, _s, _e in top_level_blocks(csrc)}
-    if got != set(COLONY_TYPES):
-        err("designations desynchronisees : %s" % sorted(got ^ set(COLONY_TYPES)))
+    if not set(COLONY_TYPES) <= got:
+        err("designations elargies manquantes : %s"
+            % sorted(set(COLONY_TYPES) - got))
+    # 31/08 : le fichier verrouille desormais TOUTES les designations vanilla
+    # avant l'emergence ; les col_pre_ftl_* sont surchargees ailleurs et ne
+    # doivent pas apparaitre ici (l'ordre de chargement ecraserait leur
+    # elargissement).
+    intruses = sorted(k for k in got if k.startswith("col_pre_ftl"))
+    if intruses:
+        err("designations pre-PRL presentes dans le fichier de verrou : %s"
+            % intruses)
+    n_verrou = 0
     for k, s2, e2 in top_level_blocks(csrc):
         blk = csrc[s2:e2]
-        # chaque mention du type default doit etre accompagnee du notre
-        n_def = len(re.findall(r"is_country_type = default", blk))
-        n_nous = len(re.findall(r"is_country_type = adastra_grounded", blk))
-        if n_def != n_nous:
-            err("designation %s : %d fois « default » pour %d fois notre type -"
-                " une condition n'a pas ete elargie" % (k, n_def, n_nous))
-    print("  %d designations elargies a adastra_grounded" % len(got))
+        if "has_country_flag = adastra_locked" not in blk:
+            err("designation %s : garde de verrou absente" % k)
+        else:
+            n_verrou += 1
+        if k in COLONY_TYPES:
+            # chaque mention du type default doit etre accompagnee du notre
+            n_def = len(re.findall(r"is_country_type = default", blk))
+            n_nous = len(re.findall(
+                r"is_country_type = adastra_grounded", blk)) - 1  # la garde
+            if n_def != n_nous:
+                err("designation %s : %d fois « default » pour %d fois notre"
+                    " type - une condition n'a pas ete elargie"
+                    % (k, n_def, n_nous))
+    print("  %d designations verrouillees avant emergence, dont %d elargies"
+          % (n_verrou, len(COLONY_TYPES)))
 
 # La Grande Archive a exactement la meme garde, et le meme symptome.
 gapath = os.path.join(ROOT, "common", "megastructures",
@@ -505,7 +711,158 @@ for _building in TELESCOPES_A_LOCALISER:
             if len(re.findall(r'^ %s:0 ' % re.escape(_key), _src, re.M)) != 1:
                 err("telescope %s : cle %s dupliquee en %s"
                     % (_building, _key, _lang))
-print("  3 telescopes, nom + description, FR et EN")
+print("  3 niveaux d observatoire, nom + description, FR et EN")
+
+# Le brouillard galactique doit etre une action volontaire. Une regression
+# vers un pulse mensuel invisible rendrait a nouveau l'exploration confuse.
+print("\n== observation astronomique ==")
+_premiers_pas = open(os.path.join(ROOT, "common", "decisions",
+                                  "core_premiers_pas.txt"), encoding="utf-8").read()
+_on_actions = open(os.path.join(ROOT, "common", "on_actions",
+                                "adastra_on_actions.txt"), encoding="utf-8").read()
+_observation = re.search(
+    r"decision_core_astronomical_observation\s*=\s*\{(.*?)(?=\ndecision_|\Z)",
+    _premiers_pas, re.S)
+if not _observation:
+    err("observation astronomique : decision absente")
+else:
+    _bloc = _observation.group(1)
+    for _building in TELESCOPES_A_LOCALISER:
+        if _building not in _bloc:
+            err("observation astronomique : telescope %s non pris en compte" % _building)
+    for _needle in ("has_technology = tech_adastra_astronomy",
+                    "country_event = { id = adastra.92 }"):
+        if _needle not in _bloc:
+            err("observation astronomique : verrou ou effet absent (%s)" % _needle)
+    # 31/08 : cout releve (100 influence, 500 mineraux) et progressif
+    # (+30 % par campagne via value:adastra_cout_campagne_astro).
+    for _needle in ("enactment_time = 720", "influence = 100", "minerals = 500",
+                    "mult = value:adastra_cout_campagne_astro"):
+        if _needle not in _bloc:
+            err("observation astronomique : duree ou cout absent (%s)" % _needle)
+_astronomy_events = open(os.path.join(ROOT, "events", "adastra_events.txt"), encoding="utf-8").read()
+_astronomy_result = re.search(r"country_event = \{\s*\n\tid = adastra\.93(.*?)(?=\n\}\n)",
+                              _astronomy_events, re.S)
+_astronomy_reveal = re.search(r"country_event = \{\s*\n\tid = adastra\.92(.*?)(?=\n\}\n)",
+                              _astronomy_events, re.S)
+if not _astronomy_reveal or "country_event = { id = adastra.93 }" not in _astronomy_reveal.group(1):
+    err("observation astronomique : adastra.92 ne lance pas l'evenement de decouverte")
+if not _astronomy_result:
+    err("observation astronomique : evenement de decouverte adastra.93 absent")
+else:
+    _bloc = _astronomy_result.group(1)
+    for _needle in ("picture = GFX_evt_adastra_situation",):
+        if _needle not in _bloc:
+            err("observation astronomique : evenement de decouverte incomplet (%s)" % _needle)
+if _astronomy_reveal and "set_surveyed" in _astronomy_reveal.group(1):
+    _reveal_body = _astronomy_reveal.group(1)
+    # 1.4 (30/08) : l'astronomie DECOUVRE sans prospecter (set_visited +
+    # clear_uncharted_space). Aucun astre ne doit etre releve par elle.
+    if "set_visited" not in _reveal_body:
+        err("observation astronomique : la decouverte doit passer par set_visited")
+    if "set_surveyed" in _reveal_body:
+        err("observation astronomique : l'astronomie ne doit prospecter aucun astre")
+if _astronomy_reveal:
+    _reveal_body = _astronomy_reveal.group(1)
+    # La portee est geometrique : l'observation ne depend pas des hyperlignes
+    # deja connues. Chaque niveau choisit exactement une cible par campagne.
+    if _reveal_body.count("random_system = {") != 3:
+        err("observation astronomique : un palier doit choisir une unique cible")
+    if "max_jumps" in _reveal_body:
+        err("observation astronomique : la portee ne doit pas suivre les hyperlignes")
+    for _radius in ("max_distance <= 35", "max_distance <= 75", "max_distance <= 140"):
+        if _radius not in _reveal_body:
+            err("observation astronomique : portee euclidienne manquante (%s)" % _radius)
+    if _reveal_body.count("type = euclidean") != 3:
+        err("observation astronomique : les trois portees doivent etre euclidiennes")
+for _lang, _src in (("FR", _lfr), ("EN", _len)):
+    for _key in ("decision_core_astronomical_observation",
+                 "decision_core_astronomical_observation_desc",
+                 "decision_core_astronomical_observation_tooltip",
+                 "adastra.93.name", "adastra.93.desc", "adastra.93.a",
+                 "adastra.93.a.tooltip", "adastra.94.name", "adastra.94.desc",
+                 "adastra.94.a", "adastra.94.a.tooltip", "adastra.95.name",
+                 "adastra.95.desc", "adastra.95.a", "adastra.95.a.tooltip"):
+        if not re.search(r'^ %s:0 "..' % re.escape(_key), _src, re.M):
+            err("observation astronomique : localisation %s absente en %s" % (_key, _lang))
+    if "event_target:adastra_astronomy_target.GetName" not in _src:
+        err("observation astronomique : nom du systeme absent en %s" % _lang)
+if re.search(r"on_monthly_pulse_country\s*=\s*\{.*?adastra\.92", _on_actions, re.S):
+    err("observation astronomique : adastra.92 est encore declenche chaque mois")
+else:
+	print("  telescope, decision, localisations et absence de pulse verifies")
+
+# Les jalons spatiaux sont des premiers historiques : le satellite est unique,
+# l observation coute, et leurs bonus ne doivent pas devenir permanents.
+print("\n== jalons spatiaux ==")
+_satellite = re.search(r"decision_core_satellite\s*=\s*\{(.*?)(?=\ndecision_|\Z)",
+                       _premiers_pas, re.S)
+if not _satellite or "NOT = { has_country_flag = core_satellite_fait }" not in _satellite.group(1):
+    err("jalons spatiaux : premier satellite repetable")
+_premiers_events = open(os.path.join(ROOT, "events", "core_premiers_pas_events.txt"), encoding="utf-8").read()
+for _event, _modifier in (("adastra.103", "core_mod_suborbital"),
+                          ("adastra.102", "core_mod_satellites"),
+                          ("adastra.104", "core_mod_vol_habite"),
+                          ("adastra.108", "core_mod_premier_corps"),
+                          ("adastra.107", "core_mod_station_permanente")):
+    _match = re.search(r"country_event = \{\s*\n\tid = %s(.*?)(?=\n\}\n)" % re.escape(_event),
+                       _premiers_events, re.S)
+    if not _match or ("modifier = %s" % _modifier) not in _match.group(1) or "days = 3600" not in _match.group(1):
+        err("jalons spatiaux : bonus temporaire absent pour %s" % _event)
+    elif "add_monthly_resource_mult" in _match.group(1):
+        err("jalons spatiaux : revenu mensuel permanent encore present pour %s" % _event)
+_telescopes = open(os.path.join(ROOT, "common", "buildings", "core_telescopes.txt"), encoding="utf-8").read()
+for _source, _target in (("building_core_observatory", "building_core_radio_telescope"),
+                         ("building_core_radio_telescope", "building_core_space_telescope")):
+    _match = re.search(r"%s\s*=\s*\{(.*?)(?=\n\n\n#|\Z)" % _source, _telescopes, re.S)
+    if not _match or ("upgrades =" not in _match.group(1)) or _target not in _match.group(1):
+        err("observatoire : chaine d amelioration absente (%s -> %s)" % (_source, _target))
+# Une civilisation qui commence tard ne doit pas devoir eriger l'observatoire
+# optique puis payer deux reconstructions. Chaque palier est constructible si
+# sa technologie est deja connue ; les paliers inferieurs restent accessibles
+# comme ameliorations pour les campagnes qui les ont construits plus tot.
+for _upgrade, _tech in (("building_core_radio_telescope", "tech_adastra_radio_astronomy"),
+                        ("building_core_space_telescope", "tech_adastra_remote_sensing")):
+    _match = re.search(r"%s\s*=\s*\{(.*?)(?=\n\n\n#|\Z)" % _upgrade, _telescopes, re.S)
+    if not _match or "can_build = yes" not in _match.group(1):
+        err("observatoire : palier %s non constructible directement" % _upgrade)
+    elif _tech not in _match.group(1):
+        err("observatoire : palier %s sans prerequis %s" % (_upgrade, _tech))
+print("  cout, unicite, bonus temporaires et chaine d observatoire verifies")
+
+# Chaque etape du programme spatial vaut exactement vingt-cinq points : les
+# technologies fondatrices et le geste du joueur doivent etre visibles dans la
+# barre, sans saut opaque jusqu'au jalon suivant. Ces contrats protegent les
+# valeurs de la 1.4 et empechent de retomber sur le comportement 225 -> 250.
+print("\n== repartition de la progression spatiale ==")
+_events_programme = open(os.path.join(ROOT, "events", "adastra_events.txt"), encoding="utf-8").read()
+_decisions_programme = open(os.path.join(ROOT, "common", "decisions", "adastra_decisions.txt"), encoding="utf-8").read()
+_m132 = re.search(r"country_event = \{\s*\n\tid = adastra\.132(.*?)(?=\ncountry_event = \{|\Z)", _events_programme, re.S)
+if not _m132:
+    err("progression spatiale : evenement adastra.132 absent")
+else:
+    _body132 = _m132.group(1)
+    for _trigger, _points in (("adastra_lot_explore_tech", 5),
+                              ("adastra_lot_constructor_tech", 4),
+                              ("adastra_lot_outpost_tech", 10),
+                              ("adastra_lot_orbital_tech", 5)):
+        _section = re.search(r"if = \{\s*limit = \{.*?%s.*?\n\t\}" % re.escape(_trigger), _body132, re.S)
+        if not _section or "add_situation_progress = %d" % _points not in _section.group(0):
+            err("progression spatiale : %s ne vaut plus %d points" % (_trigger, _points))
+for _event, _points in ((74, 15), (75, 10), (76, 15), (85, 15), (86, 5)):
+    _body = re.search(r"country_event = \{\s*\n\tid = adastra\.%d(.*?)(?=\ncountry_event = \{|\Z)" % _event, _events_programme, re.S)
+    if not _body or "add_situation_progress = %d" % _points not in _body.group(1):
+        err("progression spatiale : adastra.%d ne rend plus %d points" % (_event, _points))
+_catchup72 = re.search(r"country_event = \{\s*\n\tid = adastra\.72(.*?)(?=\ncountry_event = \{|\Z)", _events_programme, re.S)
+if (not _catchup72 or "set_situation_progress = 300" not in _catchup72.group(1)
+        or "adastra_lot_explore_complet = yes" not in _catchup72.group(1)
+        or "adastra_phase1_done" not in _catchup72.group(1)
+        or "is_surveyed" in _catchup72.group(1)):
+    err("progression spatiale : adastra.72 doit recalibrer le programme sans exiger la prospection")
+_hyper = re.search(r"decision_adastra_hyperdrive\s*=\s*\{(.*?)(?=\ndecision_|\Z)", _decisions_programme, re.S)
+if not _hyper or "add_situation_progress = 10" not in _hyper.group(1):
+    err("progression spatiale : le Programme hyperspatial ne rend plus 10 points")
+print("  25 points par etape : fondations et gestes verifies")
 
 # ---------------- compatibilite civiques / infrastructures de depart (1.4)
 # Les ethiques et les traits ordinaires ne posent pas de batiment. Le moteur
@@ -649,10 +1006,13 @@ if "remove_building = building_capital" not in _capital_setup or "building = bui
 # l'emergence - un modificateur qui ne compte que sur lui reste a vie si le
 # joueur emerge sans avoir cherche la techno correspondante.
 print("\n== cycle de vie des modificateurs ==")
-PERMANENTS_VOULUS = {"adastra_heritage_1", "adastra_heritage_2", "adastra_heritage_3",
-                     "adastra_heritage_4", "adastra_heritage_1_bold",
-                     "adastra_heritage_2_bold", "adastra_heritage_3_bold",
-                     "adastra_heritage_4_bold"}
+PERMANENTS_VOULUS = {"adastra_heritage_scientific", "adastra_heritage_industrial",
+                     "adastra_heritage_civic", "adastra_heritage_pioneer",
+					 "adastra_heritage_orbital",
+                     "adastra_heritage_trial",
+                     *{"adastra_heritage_depth_%s" % age for age in (
+                         "stone", "bronze", "iron", "medieval", "renaissance",
+                         "steam", "industrial", "machine", "atomic", "space")}}
 poses = set()
 for m in re.finditer(r"add_modifier = \{ modifier = (adastra_\w+)([^}]*)\}", grants):
     if "days = " in m.group(2) and "days = -1" not in m.group(2):
@@ -672,6 +1032,30 @@ for mod in ("adastra_pre_electric", "adastra_pre_manufacture"):
             " fois adastra_locked tombe" % mod)
 if "adastra_trade_restored" not in emergence:
     err("la conversion du commerce n'est pas retablie a l'emergence")
+
+# L'heritage ne doit etre accorde qu'une fois, apres l'emergence. Il remplace
+# l'ancien empilement de bonus dependant de l'age de depart.
+heritages = ("adastra_heritage_scientific", "adastra_heritage_industrial",
+             "adastra_heritage_civic", "adastra_heritage_pioneer",
+             "adastra_heritage_orbital")
+_heritage_path = os.path.join(ROOT, "common", "static_modifiers", "adastra_modifiers.txt")
+_heritage_modifiers = open(_heritage_path, encoding="utf-8").read()
+if "country_event = { id = adastra.30 days = 2 }" not in emergence:
+    err("emergence : choix de l'heritage absent")
+for heritage in heritages:
+    if "modifier = %s" % heritage not in grants:
+        err("heritage absent de l'evenement : %s" % heritage)
+    if "%s = {" % heritage not in _heritage_modifiers:
+        err("heritage absent des modificateurs : %s" % heritage)
+for age in ("stone", "bronze", "iron", "medieval", "renaissance", "steam",
+            "industrial", "machine", "atomic", "space"):
+    profondeur = "adastra_heritage_depth_%s" % age
+    if "modifier = %s" % profondeur not in emergence:
+        err("emergence : heritage de profondeur absent : %s" % age)
+    if "%s = {" % profondeur not in _heritage_modifiers:
+        err("heritage de profondeur absent des modificateurs : %s" % age)
+if "adastra_heritage_1" in grants or "adastra_heritage_bold" in grants:
+    err("emergence : ancien heritage cumulatif encore present")
 print("  %d modificateur(s) permanent(s) pose(s), tous retires ou voulus a vie"
       % len(poses))
 
@@ -905,6 +1289,77 @@ else:
     else:
         print("  aucun modifier illegal dans un bloc resources")
 
+# Le programme national remplace les quatre campagnes lineaires de la 1.3.
+# Les anciennes decisions restent dans les sources uniquement pour les saves
+# existantes : elles doivent etre invisibles, tandis que le nouveau choix doit
+# toujours offrir ses trois orientations pour chacun des dix ages.
+print("\n== programme national ==")
+if not os.path.exists(dpath):
+    err("programme national : fichier de decisions absent")
+else:
+    _decisions = open(dpath, encoding="utf-8").read()
+    _events_path = os.path.join(ROOT, "events", "adastra_events.txt")
+    _events = open(_events_path, encoding="utf-8").read() if os.path.exists(_events_path) else ""
+    _modifiers_path = os.path.join(ROOT, "common", "static_modifiers", "adastra_modifiers.txt")
+    _modifiers = open(_modifiers_path, encoding="utf-8").read() if os.path.exists(_modifiers_path) else ""
+    _locations = {
+        "french": open(os.path.join(ROOT, "localisation", "french", "adastra_l_french.yml"), encoding="utf-8").read(),
+        "english": open(os.path.join(ROOT, "localisation", "english", "adastra_l_english.yml"), encoding="utf-8").read(),
+    }
+    _ages_programme = ("stone", "bronze", "iron", "medieval", "renaissance",
+                       "steam", "industrial", "machine", "atomic", "space")
+    _choix_programme = {
+        "stone": ("stores", "craft", "clans"),
+        "bronze": ("granaries", "foundries", "trade"),
+        "iron": ("cadastre", "civic_works", "markets"),
+        "medieval": ("guilds", "estates", "royal_works"),
+        "renaissance": ("trade", "workshops", "patronage"),
+        "steam": ("rail", "mechanisation", "reform"),
+        "industrial": ("mass_production", "public_education", "extraction"),
+        "machine": ("electrification", "consumption", "public_health"),
+        "atomic": ("reconstruction", "civil_science", "strategic_industry"),
+        "space": ("logistics", "research", "social_investment"),
+    }
+    if "decision_adastra_national_programme = {" not in _decisions:
+        err("programme national : decision principale absente")
+    if "id = adastra.140" not in _events:
+        err("programme national : evenement adastra.140 absent")
+    for _old in ("harvest", "mining", "fuel", "industry"):
+        _old_block = re.search(r"decision_adastra_campaign_%s\s*=\s*\{(.*?)(?=\ndecision_|\Z)" % _old,
+                               _decisions, re.S)
+        if not _old_block or "always = no" not in _old_block.group(1):
+            err("programme national : ancienne campagne %s encore visible" % _old)
+    _attendus = []
+    for _age in _ages_programme:
+        for _choix in _choix_programme[_age]:
+            _cle = "%s_%s" % (_age, _choix)
+            _mod = "adastra_programme_%s" % _cle
+            _loc = "adastra.140.%s" % _cle
+            _attendus.append(_mod)
+            if _loc not in _events or _mod not in _events:
+                err("programme national : choix incomplet %s" % _cle)
+            if not re.search(r"%s\s*=\s*\{.*?\}" % re.escape(_mod), _modifiers, re.S):
+                err("programme national : modificateur absent %s" % _mod)
+            for _lang, _texte in _locations.items():
+                if not re.search(r"^\s+%s(?:_desc)?\s*:" % re.escape(_loc), _texte, re.M):
+                    err("programme national : localisation %s absente en %s" % (_loc, _lang))
+                if not re.search(r"^\s+%s(?:_desc)?\s*:" % re.escape(_mod), _texte, re.M):
+                    err("programme national : localisation %s absente en %s" % (_mod, _lang))
+            if not re.search(r"(?m)^\s*add_modifier\s*=\s*\{\s*modifier\s*=\s*%s\s+days\s*=\s*1800\s*\}" % re.escape(_mod), _events):
+                err("programme national : effet visible absent pour %s" % _cle)
+    if re.search(r"hidden_effect\s*=\s*\{\s*add_modifier\s*=\s*\{\s*modifier\s*=\s*adastra_programme_", _events):
+        err("programme national : un effet de choix est encore masque")
+    _programme = re.search(r"decision_adastra_national_programme\s*=\s*\{(.*?)(?=\ndecision_|\Z)", _decisions, re.S)
+    if not _programme or not re.search(r"allow\s*=\s*\{\s*owner\s*=\s*\{\s*#.*?NOT\s*=\s*\{\s*OR\s*=\s*\{", _programme.group(1), re.S):
+        err("programme national : le verrou doit verifier les modificateurs du pays")
+    elif not all("unity = %d" % _cost in _programme.group(1) for _cost in (25, 60, 140, 280)):
+        err("programme national : couts d unite attendus 25 / 60 / 140 / 280")
+    _icons = os.path.join(ROOT, "gfx", "interface", "icons", "decisions")
+    if not os.path.exists(os.path.join(_icons, "decision_adastra_national_programme.dds")):
+        err("programme national : icone DDS absente")
+    if len(_attendus) == 30:
+        print("  30 orientations d'age, localisations et icone presentes")
+
 # ------------------------------ ce que les technos annoncent debloquer (1.2)
 # Le moteur affiche le bloc modifier d'une techno, jamais le reste. Une techno
 # qui debloque un batiment, une ressource ou un palier de capitale doit le dire
@@ -1003,6 +1458,24 @@ for technology in (tech for technologies in TECHS.values() for tech in technolog
     expected_icon = "\ticon = %s" % technology["key"]
     if expected_icon not in tech_source:
         err("%s ne pointe pas vers son icone personnalisee" % technology["key"])
+
+# Une carte qui n'apporte ni modificateur ni deblocage est une fausse
+# decision de recherche. Un ancien arrondi du generateur ecrivait
+# `modifier = {}` pour les bonus historiques inferieurs a 1 %. Le controle
+# porte sur la sortie generee : il empeche que ce defaut revienne, meme si la
+# table ou le generateur changent.
+print("\n== effets concrets des technologies d'age ==")
+_vides = []
+for _k, _s, _e in top_level_blocks(tech_source):
+    if not _k.startswith("tech_adastra_"):
+        continue
+    _bloc = tech_source[_s:_e]
+    if re.search(r"\n\tmodifier = \{\s*\n\t\}", _bloc):
+        _vides.append(_k)
+if _vides:
+    err("technologies d'age sans effet concret : %s" % ", ".join(_vides[:8]))
+else:
+    print("   250 technologies : modificateur ou deblocage concret")
         
 # ------------------------------------------------- chaine des capitales
 # Le siege du pouvoir doit aller d'un bout a l'autre sans trou : chaque palier
@@ -1015,15 +1488,19 @@ want_caps = {c["key"] for c in CAPITAL_CHAIN}
 if declared_caps != want_caps:
     err("chaine des capitales desynchronisee : %s"
         % sorted(declared_caps ^ want_caps))
+# 1.4 (29/08) : chaine LINEAIRE, un seul successeur par palier. Le moteur
+# rejette les chemins multiples (« upgrades loop », building_type.cpp:2175)
+# et casse alors toute la chaine d'amelioration.
 for i, c in enumerate(CAPITAL_CHAIN):
-    nxt = (CAPITAL_CHAIN[i + 1]["key"] if i + 1 < len(CAPITAL_CHAIN)
-           else "building_capital")
+    upgrades = ([CAPITAL_CHAIN[i + 1]["key"]] if i + 1 < len(CAPITAL_CHAIN)
+                else ["building_capital"])
     span = [(s2, e2) for k, s2, e2 in top_level_blocks(capsrc) if k == c["key"]]
     if not span:
         continue
     blk = capsrc[span[0][0]:span[0][1]]
-    if not re.search(r"upgrades = \{\s*%s\s*\}" % re.escape(nxt), blk):
-        err("capitale %s : ne s'ameliore pas vers %s" % (c["key"], nxt))
+    for nxt in upgrades:
+        if not re.search(r"upgrades = \{[^}]*\b%s\b" % re.escape(nxt), blk, re.S):
+            err("capitale %s : ne s'ameliore pas vers %s" % (c["key"], nxt))
     if c["tech"] and c["tech"] not in declared:
         err("capitale %s : prerequis %s inexistant" % (c["key"], c["tech"]))
     if "can_build = no" not in blk:
@@ -1347,8 +1824,8 @@ if _prog_e.count("add_situation_progress = 1") < len(AGES):
 _situ = open(os.path.join(ROOT, "common", "situations", "zzz_adastra_situations.txt"),
              encoding="utf-8").read()
 _ends = [int(x) for x in re.findall(r"^\t\t\tend = (\d+)", _situ, re.M)]
-if _ends != [25 * i for i in range(1, 16)]:
-	err("situation : fins d'etape attendues 25..375 par pas de 25, trouve %s" % _ends)
+if _ends != [25 * i for i in range(1, 17)]:
+	err("situation : fins d'etape attendues 25..400 par pas de 25, trouve %s" % _ends)
 if re.search(r"monthly_progress = \{\s*base = 0\s*\}", _situ) is None:
     err("situation : la barre ne doit plus monter au mois (monthly_progress base = 0, sans modificateur)")
 _events_recherche = open(os.path.join(ROOT, "events", "adastra_events.txt"), encoding="utf-8").read()
@@ -1357,7 +1834,7 @@ _loc_recherche = "\n".join(open(os.path.join(ROOT, "localisation", _lang, "adast
 for _obsolete in ("adastra.12", "adastra_verrou_vu_"):
     if _obsolete in _events_recherche or _obsolete in _loc_recherche:
         err("progression : ancien avertissement de verrou encore present (%s)" % _obsolete)
-print("   15 etapes de 25 points, barre sans progression mensuelle")
+print("   16 etapes de 25 points, barre sans progression mensuelle, recherche spatiale puis lancement")
 
 
 # ================================================== icones sans chiffre romain
@@ -1388,6 +1865,18 @@ else:
 print("\n== fondatrices conditionnees au jeu ==")
 _ov = open(os.path.join(ROOT, "common", "technology", "zzz_adastra_tech_overrides.txt"),
            encoding="utf-8").read()
+# Les technologies de depart vanilla coutent parfois zero parce que le jeu
+# normal les offre immediatement. Ad Astra les remet dans le tirage : zero
+# rendrait alors la carte terminee des son ouverture.
+_zero_start = []
+for _name, _block in re.findall(r"^(tech_\\w+) = \\{(.*?)^\\}", _ov, re.S | re.M):
+    if "start_tech = yes" in _block and re.search(r"^\\s*cost\\s*=\\s*0\\s*$", _block, re.M):
+        _zero_start.append(_name)
+if _zero_start:
+    err("technologies de depart remises au tirage avec cout zero : %s"
+        % ", ".join(_zero_start))
+else:
+    print("   aucune technologie de depart remise au tirage ne coute zero")
 _fond = ["tech_space_exploration", "tech_thrusters_1", "tech_space_construction",
          "tech_corvettes", "tech_mass_drivers_1", "tech_ship_armor_1", "tech_shields_1",
          "tech_reactor_boosters_1", "tech_starbase_1", "tech_starbase_2",
@@ -1412,7 +1901,8 @@ else:
 # Aucun des deux n'a produit la moindre ligne dans error.log.
 print("\n== modificateurs inventes ==")
 MODIFICATEURS_INVENTES = ["decision_cost_mult", "mod_leaders_upkeep_mult",
-                          "planet_structures_upkeep_mult"]
+                          "planet_structures_upkeep_mult",
+                          "planet_buildings_build_speed_mult", "trade_value_mult"]
 _fautes = []
 for _rep, _d, _fs in os.walk(os.path.join(ROOT, "common")):
     for _f in _fs:
@@ -1444,6 +1934,35 @@ if not _m or "needs_border_access = no" not in _m.group(1):
         "seront expulses du systeme natal des qu'un empire le revendique")
 else:
     print("   adastra_grounded : needs_border_access = no")
+
+
+# =============================================== premier contact pre-PRL
+# Le confinement garde le reseau diplomatique isole, mais ne doit jamais
+# supprimer une rencontre : les sites, indices et evenements vanilla doivent
+# fonctionner jusqu'a l'emergence.
+print("\n== premier contact pre-PRL ==")
+if not _m or "share_communications = no" not in _m.group(1):
+    err("adastra_grounded : le partage automatique des communications doit rester bloque")
+if not _m or "standard_diplomacy_module = { contact_rule = does_first_contact_sites }" not in _m.group(1):
+    err("adastra_grounded : les sites de premier contact vanilla doivent etre actives")
+_events = open(os.path.join(ROOT, "events", "adastra_events.txt"), encoding="utf-8").read()
+_on_actions = open(os.path.join(ROOT, "common", "on_actions", "adastra_on_actions.txt"),
+                   encoding="utf-8").read()
+if "remove_communications" in _events:
+    err("premier contact : aucun script Ad Astra ne doit supprimer les communications vanilla")
+if "adastra_foreign_observer" in _events:
+    err("premier contact : le systeme natal ne doit pas etre reconnu par les empires etrangers au demarrage")
+if re.search(r"\badastra\.135\b", _events) or re.search(r"\badastra\.135\b", _on_actions):
+    err("premier contact : le filet adastra.135 obsolete ne doit plus etre appele")
+else:
+    print("   premiers contacts vanilla actifs sans partage automatique du reseau")
+
+_veille_path = os.path.join(ROOT, "common", "first_contact", "zz_adastra_stages.txt")
+_veille = open(_veille_path, encoding="utf-8").read()
+if not re.search(r"adastra_stage_veille\s*=\s*\{.*?on_roll_failed\s*=\s*\{.*?standard_first_contact_on_roll_failed\s*=\s*\{\s*RANDOM_EVENTS\s*=\s*no_events", _veille, re.S):
+    err("premier contact : adastra_stage_veille doit definir on_roll_failed sans evenement aleatoire")
+else:
+    print("   veille de premier contact : echec de tirage gere sans revelation")
 
 
 # ============================================== jamais de vide de recherche
@@ -1485,7 +2004,8 @@ EXCEPTIONS_ECONOMIE = {
     "tech_mining_1", "tech_mining_2", "tech_mineral_purification_1",
     "tech_mineral_purification_2", "tech_alloys_1", "tech_luxuries_1",
     "tech_power_plant_2", "tech_power_hub_1", "tech_power_hub_2",
-    "tech_eco_simulation", "tech_gene_crops", "tech_genome_mapping",
+    "tech_eco_simulation", "tech_food_processing_1", "tech_gene_crops",
+    "tech_genome_mapping",
 }
 _src = ""
 for _n in ("zzz_adastra_tier1_overrides.txt", "zzz_adastra_tech_overrides.txt"):

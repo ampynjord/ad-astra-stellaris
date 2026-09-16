@@ -33,14 +33,18 @@ TECH_AGE = {
     "tech_luxuries_1": ("industrial",
         "Biens de consommation produits en serie : c'est la definition meme de "
         "la revolution industrielle. Debloque l'Industrie civile."),
-    "tech_mineral_purification_1": ("industrial",
-        "Purification du minerai : la metallurgie industrielle du XIXe siecle. "
-        "Debloque l'Usine de purification."),
+    # Les trois technologies suivantes ouvrent aussi les emplacements de
+    # specialisation de district de Stellaris. Ces specialisations donnent
+    # jusqu'a +100 emplois par district et +3 emplacements : elles ne doivent
+    # pas apparaitre dans une civilisation pre-spatiale.
 
-    # --- Age de la machine : electricite, chimie, reseaux -------------------
-    "tech_power_hub_1": ("machine",
-        "Reseau electrique : le maillage national, annees 1920-1930. Debloque "
-        "le Reseau energetique."),
+    # --- Age de l'espace : specialisation planetaire ------------------------
+    "tech_power_hub_1": ("space",
+        "Gestion energetique planetaire : les reseaux mondiaux et la conversion "
+        "a grande echelle ouvrent la specialisation Generation d'energie."),
+    "tech_mineral_purification_1": ("space",
+        "Extraction planetaire : une industrie spatiale coordonnee ouvre la "
+        "specialisation Extraction minerale."),
     "tech_alloys_1": ("machine",
         "Alliages ameliores : aciers speciaux et premiers alliages legers, "
         "l'aeronautique des annees 1930. Debloque la Fonderie 2."),
@@ -50,6 +54,9 @@ TECH_AGE = {
     "tech_eco_simulation": ("machine",
         "Simulation ecologique : agronomie scientifique et selection dirigee, "
         "les annees qui menent a la Revolution verte."),
+    "tech_food_processing_1": ("space",
+        "Production alimentaire planetaire : l'agro-industrie a grande echelle "
+        "ouvre la specialisation Focus agricole."),
 
     # --- Age de l'atome : chimie fine, genetique, automatisation ------------
     "tech_power_plant_2": ("atomic",

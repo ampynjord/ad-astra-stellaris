@@ -30,7 +30,9 @@ core_age_atteint = {
 # Vrai pendant tout le confinement, faux des l'emergence.
 core_est_confine = {
 	OPTIMIZE_MEMORY
-	has_country_flag = adastra_grounded
+	# Le confinement est represente par le type de pays. Le drapeau homonyme
+	# n'est pas pose par Origins et rendait toutes les decisions Core invisibles.
+	is_country_type = adastra_grounded
 	NOT = { has_country_flag = adastra_completed }
 }
 

@@ -1,0 +1,948 @@
+# Ad Astra 1.4 (integration pre-PRL) - 2026-08-28
+#
+# Fichier AUTONOME, a retirer d'un bloc pour revenir a la beta.4.
+# Il ne modifie aucun evenement existant : tout passe par de nouveaux
+# evenements branches sur le pouls mensuel via un fichier d'on_action
+# separe. Aucun fichier du lot de travail n'est touche.
+#
+# COUCHE A - synchronisation de l'age pre-PRL moteur.
+# Ad Astra represente ses ages par des drapeaux `adastra_reached_*` qui
+# s'accumulent. Le moteur, lui, a sa propre notion d'age pre-PRL, lue par
+# `has_pre_ftl_age` (96 usages vanilla : designations de colonie, armees
+# d'epoque, regroupements par ere). On aligne la seconde sur la premiere.
+#
+# ON N'APPELLE PAS `set_pre_ftl_age_effect` : cet effet scripte du vanilla
+# fait `capital_scope = { remove_all_buildings = yes }` a chaque montee
+# d'age, change le gouvernement en `authority = random` et demarre la
+# situation de progression vanilla. Sur un empire joueur ce serait
+# devastateur. On utilise l'effet moteur nu `set_pre_ftl_age`, qui ne fait
+# que poser la propriete.
+
+# (integre au namespace adastra, ids 160-169)
+
+# adastra.160 - aligne l'age moteur sur l'age Ad Astra (mensuel, idempotent)
+country_event = {
+	id = adastra.160
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+	}
+
+	immediate = {
+		# 30/08 : la logique vit dans adastra_preftl_effects.txt, partagee
+		# avec adastra.2 (appel immediat au demarrage) - retour beta.5 : la
+		# designation restait invisible tout le premier mois.
+		adastra_preftl_sync = yes
+		adastra_maj_designation = yes
+
+		# 12/09 - LE SECTEUR EXIGE LA BASE STELLAIRE. Le diagnostic pose le
+		# 31/08 a rendu son verdict dans le game.log d'argroww (beta.7,
+		# carte B22) : 435 tentatives, 435 refus, zero reussite, et le
+		# moteur donne sa raison dans error.log -
+		#
+		#   effect_impl_colony.cpp:113 : create_sector effect failed with
+		#   reasons: We do not own the starbase in <systeme>
+		#
+		# Un empire confine n'a pas de base stellaire : l'appel etait donc
+		# voue a l'echec a chaque mois, et ne produisait que du bruit de
+		# journal. On ne tente plus la creation que lorsqu'elle peut
+		# aboutir, c'est-a-dire quand la base du systeme natal est NOTRE :
+		# apres la cession (adastra_cession_du_ciel) ou apres l'avoir
+		# construite. La disparition de la planete du panneau lateral a
+		# donc une AUTRE cause, encore inconnue : la planete est visible au
+		# jour 1 alors qu'aucun secteur n'a jamais existe.
+		if = {
+			limit = {
+				NOT = { num_sectors >= 1 }
+				capital_scope = {
+					solar_system = {
+						exists = starbase
+						starbase = { is_owned_by = root }
+					}
+				}
+			}
+			capital_scope = { create_sector = yes }
+		}
+
+		# 30/08 - L'ILLUMINATION RECUE. Le pacte vanilla pose son drapeau
+		# sur nous ; on le traduit en effet reel : +25 % de vitesse de
+		# recherche, -10 % d'unite (apprendre d'un maitre divise). Une
+		# fenetre unique raconte le debut.
+		if = {
+			limit = {
+				has_country_flag = open_technological_enlightenment_pact
+				NOT = { has_modifier = adastra_illumination }
+			}
+			add_modifier = { modifier = adastra_illumination }
+			if = {
+				limit = { NOT = { has_country_flag = adastra_illumination_annoncee } }
+				set_country_flag = adastra_illumination_annoncee
+				country_event = { id = adastra.172 }
+			}
+		}
+		else_if = {
+			limit = {
+				has_modifier = adastra_illumination
+				NOT = { has_country_flag = open_technological_enlightenment_pact }
+			}
+			remove_modifier = adastra_illumination
+		}
+		# 1.4 (2026-08-29, revu 31/08) - tant que l'empire est confine, les
+		# chaines de premier contact (les notres comme celles qui nous
+		# visent) avancent au quart de leur vitesse : on ne « decouvre »
+		# pas un empire stellaire depuis le sol en quelques semaines.
+		# Save 2229.06.14 : la version a palier d'eveil tombait des 80
+		# d'eveil et le contact vers l'occupant s'est plie en une etape -
+		# le modificateur ne tombe plus qu'a l'emergence.
+		if = {
+			limit = {
+				has_country_flag = adastra_locked
+				NOT = { has_modifier = adastra_ciel_lointain }
+			}
+			add_modifier = { modifier = adastra_ciel_lointain }
+		}
+		else_if = {
+			limit = {
+				has_modifier = adastra_ciel_lointain
+				NOT = { has_country_flag = adastra_locked }
+			}
+			remove_modifier = adastra_ciel_lointain
+		}
+	}
+}
+
+# COUCHE B - les sequelles d'epoque du vanilla.
+#
+# A partir de l'age machine, le vanilla pose deux blocages sur le monde
+# d'une civilisation pre-PRL : logements decrepits et infrastructure
+# defaillante. Chacun retire un district maximum et coute 300 energie a
+# deblayer ; les logements decrepits *creent une population* quand on les
+# demolit. C'est une mecanique d'urbanisation deja ecrite, et ces deux
+# depots n'ont aucune garde `is_primitive` : ils fonctionnent tels quels.
+#
+# Une seule pose, definitive, a l'entree dans l'age machine.
+country_event = {
+	id = adastra.161
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+		has_country_flag = adastra_reached_machine
+		NOT = { has_country_flag = adastra_sequelles_posees }
+	}
+
+	immediate = {
+		set_country_flag = adastra_sequelles_posees
+		# 30/08 : l'initialiseur Sol du joueur pose deja ces blockers sur la
+		# Terre. Sans garde, on les DOUBLAIT a l'age machine (retour beta.5).
+		capital_scope = {
+			if = {
+				limit = { NOT = { has_deposit = d_decrepit_dwellings } }
+				add_deposit = d_decrepit_dwellings
+			}
+			if = {
+				limit = { NOT = { has_deposit = d_failing_infrastructure } }
+				add_deposit = d_failing_infrastructure
+			}
+		}
+	}
+}
+
+# (la notification generique a ete retiree le 29/08 : les chapitres d eveil assurent la
+#  notification de palier, la fenetre generique faisait doublon.)
+
+# ============================================================================
+# COUCHE D - LA CIVILISATION OBSERVEE, VUE DU SOL.
+#
+# Verifie dans le vanilla : il n'existe AUCUN evenement pre-PRL destine a la
+# civilisation elle-meme. Les ~40 evenements `observation.*` et `fircon.*`
+# sont tous rediges du point de vue de l'OBSERVATEUR - c'est lui qui recoit
+# les options et prend les decisions ; le pre-PRL n'est qu'une cible. Il n'y
+# a donc rien a reutiliser : ce contenu est a ecrire.
+#
+# Ces evenements s'adossent aux paliers d'eveil du moteur (none / low /
+# partial / high / full), qui montent reellement selon ce que les empires
+# etrangers font au-dessus de nous.
+# ============================================================================
+
+# --- palier BAS : on commence a douter -------------------------------------
+country_event = {
+	id = adastra.162
+	title = "adastra.162.name"
+	desc = "adastra.162.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		NOT = { has_country_flag = adastra_eveil_commission }
+		OR = {
+			current_awareness_level = low
+			current_awareness_level = medium
+			current_awareness_level = high
+			current_awareness_level = full
+		}
+	}
+
+	immediate = { set_country_flag = adastra_eveil_commission }
+
+	option = {
+		name = "adastra.162.a"      # commission officielle : on enquete
+		add_modifier = { modifier = adastra_elan_societe days = 1800 }
+	}
+	option = {
+		name = "adastra.162.b"      # on etouffe : stabilite contre savoir
+		capital_scope = { add_modifier = { modifier = adastra_ufo_panic days = 3600 } }
+	}
+}
+
+# --- palier PARTIEL : le ciel devient un sujet politique --------------------
+country_event = {
+	id = adastra.163
+	title = "adastra.163.name"
+	desc = "adastra.163.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		has_country_flag = adastra_eveil_commission
+		NOT = { has_country_flag = adastra_eveil_schisme } 
+		OR = {
+			current_awareness_level = medium
+			current_awareness_level = high
+			current_awareness_level = full
+		}
+	}
+
+	immediate = { set_country_flag = adastra_eveil_schisme }
+
+	option = {
+		name = "adastra.163.a"      # ferveur : ils sont un signe
+		capital_scope = { add_modifier = { modifier = adastra_sky_fervor days = 3600 } }
+	}
+	option = {
+		name = "adastra.163.b"      # methode : ils sont un phenomene
+		add_modifier = { modifier = adastra_elan_physique days = 2160 }
+	}
+}
+
+# --- palier HAUT : nous emettons ------------------------------------------
+country_event = {
+	id = adastra.164
+	title = "adastra.164.name"
+	desc = "adastra.164.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		has_country_flag = adastra_eveil_schisme
+		NOT = { has_country_flag = adastra_eveil_emission }
+		OR = {
+			current_awareness_level = high
+			current_awareness_level = full
+		}
+	}
+
+	immediate = { set_country_flag = adastra_eveil_emission }
+
+	option = {
+		name = "adastra.164.a"      # on emet : on accelere notre propre eveil
+		add_awareness = 10
+		add_modifier = { modifier = adastra_elan_unite days = 1800 }
+	}
+	option = {
+		name = "adastra.164.b"      # on se tait et on ecoute
+		add_modifier = { modifier = adastra_elan_ingenierie days = 1800 }
+	}
+}
+
+# --- palier PLEIN : la certitude ------------------------------------------
+country_event = {
+	id = adastra.165
+	title = "adastra.165.name"
+	desc = "adastra.165.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		current_awareness_level = full
+		NOT = { has_country_flag = adastra_eveil_certitude }
+	}
+
+	immediate = { set_country_flag = adastra_eveil_certitude }
+
+	option = {
+		name = "adastra.165.a"
+		capital_scope = { add_modifier = { modifier = adastra_reverse_engineering days = 7200 } }
+	}
+}
+
+# ============================================================================
+# COUCHE E - RENDRE VISIBLE LE RYTHME DE L'ASTRONOMIE.
+#
+# Le cloisonnement v2 retire du tirage les rangs 3-5 de l'age spatial tant
+# que le telescope requis n'est pas construit. Constate en partie : le
+# joueur ne construit pas de telescope, ne voit jamais les techs absentes,
+# et conclut que la progression est cassee. Une porte invisible est un bug
+# d'interface, pas un rythme. Trois fenetres une-seule-fois l'expliquent.
+# ============================================================================
+
+# --- a l'entree dans l'age spatial : la regle du jeu ------------------------
+country_event = {
+	id = adastra.166
+	title = "adastra.166.name"
+	desc = "adastra.166.desc"
+	picture = GFX_evt_adastra_age_space
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+		has_country_flag = adastra_reached_space
+		NOT = { has_country_flag = adastra_rythme_annonce }
+	}
+
+	immediate = { set_country_flag = adastra_rythme_annonce }
+
+	option = {
+		name = "adastra.166.a"
+	}
+}
+
+# --- la science plafonne sans radiotelescope --------------------------------
+country_event = {
+	id = adastra.167
+	title = "adastra.167.name"
+	desc = "adastra.167.desc"
+	picture = GFX_evt_adastra_age_space
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+		has_country_flag = adastra_reached_space
+		has_technology = tech_adastra_remote_sensing
+		NOT = { has_country_flag = adastra_rappel_radio }
+		NOT = {
+			any_owned_planet = {
+				OR = {
+					has_building = building_core_radio_telescope
+					has_building = building_core_space_telescope
+				}
+			}
+		}
+	}
+
+	immediate = { set_country_flag = adastra_rappel_radio }
+
+	option = {
+		name = "adastra.167.a"
+	}
+}
+
+# --- le dernier palier attend le telescope spatial --------------------------
+country_event = {
+	id = adastra.168
+	title = "adastra.168.name"
+	desc = "adastra.168.desc"
+	picture = GFX_evt_adastra_age_space
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+		has_technology = tech_adastra_remote_sensing
+		NOT = { has_country_flag = adastra_rappel_spatial }
+		any_owned_planet = { has_building = building_core_radio_telescope }
+		NOT = { any_owned_planet = { has_building = building_core_space_telescope } }
+	}
+
+	immediate = { set_country_flag = adastra_rappel_spatial }
+
+	option = {
+		name = "adastra.168.a"
+	}
+}
+
+# ============================================================================
+# COUCHE F - ON NE S'OBSERVE PAS SOI-MEME.
+#
+# Le vaisseau de construction (taille vanilla, capacite conservee pour les
+# autres empires) peut batir un poste d'observation pre-PRL... sur notre
+# propre monde, puisque nous sommes primitifs aux yeux du moteur. Absurde.
+# La capacite ne peut pas etre retiree par pays (ship_size global) : on
+# demonte donc le poste des sa construction quand l'observateur est le
+# proprietaire de la planete, et on rembourse les alliages.
+# ============================================================================
+# adastra.190 - relais : l'on_action vanilla arrive en portee VAISSEAU
+# (This = constructeur, From = planete). On rebascule vers le pays.
+ship_event = {
+	id = adastra.190
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		owner = { has_origin = origin_adastra }
+		from = {
+			is_capital = yes
+			exists = owner
+			owner = { is_same_value = root.owner }
+		}
+	}
+
+	immediate = {
+		owner = { country_event = { id = adastra.169 } }
+	}
+}
+
+country_event = {
+	id = adastra.169
+	title = "adastra.169.name"
+	desc = "adastra.169.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+		capital_scope = {
+			has_observation_outpost = yes
+			observation_outpost_owner = { is_same_value = root }
+		}
+	}
+
+	immediate = {
+		capital_scope = {
+			observation_outpost = { dismantle = yes }
+		}
+		add_resource = { alloys = 100 }
+	}
+
+	option = {
+		name = "adastra.169.a"
+	}
+}
+
+# ============================================================================
+# COUCHE G - PERCEPTION DE LA FAUNE SPATIALE PAR AGE (matrice v1, 30/08).
+#
+# Declenche par la surcharge de set_first_contact_starting_stage quand une
+# creature du vide croise une civilisation confinee anterieure a l'Atomique.
+# La chaine de premier contact n'a pas lieu : la civilisation PERCOIT, selon
+# son age. Un seul evenement, quatre visages - titres, textes et options
+# varient par ere. Cooldown de cinq ans (adastra_perception_faune).
+# ============================================================================
+country_event = {
+	id = adastra.170
+	title = "adastra.170.name"
+	desc = {
+		trigger = { NOT = { has_country_flag = adastra_reached_medieval } }
+		text = "adastra.170.desc.ancien"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = adastra_reached_medieval
+			NOT = { has_country_flag = adastra_reached_steam }
+		}
+		text = "adastra.170.desc.medieval"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = adastra_reached_steam
+			NOT = { has_country_flag = adastra_reached_machine }
+		}
+		text = "adastra.170.desc.victorien"
+	}
+	desc = {
+		trigger = { has_country_flag = adastra_reached_machine }
+		text = "adastra.170.desc.machine"
+	}
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	# --- ages anciens : le presage ------------------------------------------
+	option = {
+		name = "adastra.170.a"
+		trigger = { NOT = { has_country_flag = adastra_reached_medieval } }
+		capital_scope = { add_modifier = { modifier = adastra_sky_fervor days = 3600 } }
+	}
+	option = {
+		name = "adastra.170.b"
+		trigger = { NOT = { has_country_flag = adastra_reached_medieval } }
+		capital_scope = { add_modifier = { modifier = adastra_ufo_panic days = 1800 } }
+	}
+	# --- medieval / renaissance : la dispute --------------------------------
+	option = {
+		name = "adastra.170.c"
+		trigger = {
+			has_country_flag = adastra_reached_medieval
+			NOT = { has_country_flag = adastra_reached_steam }
+		}
+		add_modifier = { modifier = adastra_elan_unite days = 1080 }
+	}
+	option = {
+		name = "adastra.170.d"
+		trigger = {
+			has_country_flag = adastra_reached_medieval
+			NOT = { has_country_flag = adastra_reached_steam }
+		}
+		add_modifier = { modifier = adastra_elan_physique days = 1080 }
+	}
+	# --- vapeur / industriel : l'anomalie -----------------------------------
+	option = {
+		name = "adastra.170.e"
+		trigger = {
+			has_country_flag = adastra_reached_steam
+			NOT = { has_country_flag = adastra_reached_machine }
+		}
+		add_modifier = { modifier = adastra_elan_physique days = 1620 }
+	}
+	# --- age machine : la mefiance ------------------------------------------
+	option = {
+		name = "adastra.170.f"
+		trigger = { has_country_flag = adastra_reached_machine }
+		add_modifier = { modifier = adastra_elan_ingenierie days = 1080 }
+	}
+	option = {
+		name = "adastra.170.g"
+		trigger = { has_country_flag = adastra_reached_machine }
+		capital_scope = { add_modifier = { modifier = adastra_ufo_panic days = 1800 } }
+	}
+}
+
+# ============================================================================
+# COUCHE H - LA NEGOCIATION DU CIEL (cohabitation, 30/08 ; refontes 31/08).
+#
+# Refonte finale 31/08 (demande d'ampynjord) : UN SEUL bouton diplomatique
+# « Reclamer notre ciel » sur l'empire occupant, toujours disponible
+# (common/diplomatic_actions/adastra_actions.txt, auto-accepte). Ce n'est
+# pas un tirage : l'ETHIQUE de l'occupant tranche, deterministe.
+#
+# adastra.180 : le routeur. Sur l'ethique de l'occupant :
+#     xenophobe            -> 187 refus + une REVENDICATION sur le systeme
+#                             natal (la guerre devient la voie).
+#     pacifiste / xenophile -> 181 cession gratuite.
+#     autoritaire           -> 186 cession contre TRIBUT (devenir tributaire).
+#     megacorp / materialiste / egalitaire -> 182 cession contre ressources.
+#     militariste           -> 187 refus + revendication.
+#     sinon                 -> 182 (l'interet, valeur par defaut).
+# Chaque issue retrouve l'occupant via la base (encore a lui a cet instant).
+# Cooldown 720 jours (adastra_negociation_recente) pour eviter le spam.
+# ============================================================================
+country_event = {
+	id = adastra.180
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_timed_country_flag = { flag = adastra_negociation_recente days = 720 }
+		capital_scope = {
+			solar_system = {
+				starbase = {
+					owner = { save_event_target_as = adastra_occupant }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:adastra_occupant = { is_xenophobe = yes } }
+			country_event = { id = adastra.187 }
+		}
+		else_if = {
+			limit = {
+				event_target:adastra_occupant = {
+					OR = { is_pacifist = yes  is_xenophile = yes }
+				}
+			}
+			country_event = { id = adastra.181 }
+		}
+		else_if = {
+			limit = { event_target:adastra_occupant = { is_authoritarian = yes } }
+			country_event = { id = adastra.186 }
+		}
+		else_if = {
+			limit = {
+				event_target:adastra_occupant = {
+					OR = { is_megacorp = yes  is_materialist = yes  is_egalitarian = yes }
+				}
+			}
+			country_event = { id = adastra.182 }
+		}
+		else_if = {
+			limit = { event_target:adastra_occupant = { is_militarist = yes } }
+			country_event = { id = adastra.187 }
+		}
+		else = {
+			country_event = { id = adastra.182 }
+		}
+	}
+}
+
+country_event = {
+	id = adastra.181
+	title = "adastra.181.name"
+	desc = "adastra.181.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.181.a"
+		custom_tooltip = "adastra.181.recap"
+		hidden_effect = {
+			adastra_cession_du_ciel = yes
+			event_target:adastra_occupant = {
+				add_opinion_modifier = { modifier = opinion_ceded_starbase who = root }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = adastra.182
+	title = "adastra.182.name"
+	desc = "adastra.182.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.182.a"
+		custom_tooltip = "adastra.182.recap"
+		allow = {
+			resource_stockpile_compare = { resource = energy value >= 1500 }
+			resource_stockpile_compare = { resource = alloys value >= 500 }
+		}
+		add_resource = { energy = -1500 alloys = -500 }
+		hidden_effect = {
+			adastra_cession_du_ciel = yes
+		}
+	}
+	option = {
+		name = "adastra.182.b"
+	}
+}
+
+# --- la cession contre tribut : devenir leur tributaire -----------------------
+country_event = {
+	id = adastra.186
+	title = "adastra.186.name"
+	desc = "adastra.186.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.186.a"
+		custom_tooltip = "adastra.186.recap"
+		hidden_effect = {
+			adastra_cession_du_ciel = yes
+			set_subject_of = {
+				who = event_target:adastra_occupant
+				preset = preset_tributary
+			}
+		}
+	}
+	option = {
+		name = "adastra.186.b"
+	}
+}
+
+# --- le refus : la revendication, et la guerre comme voie ---------------------
+country_event = {
+	id = adastra.187
+	title = "adastra.187.name"
+	desc = "adastra.187.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	immediate = {
+		capital_scope = {
+			solar_system = {
+				add_claims = { who = root show_notification = yes }
+			}
+		}
+	}
+
+	option = {
+		name = "adastra.187.a"
+		custom_tooltip = "adastra.187.recap"
+	}
+}
+
+# --- l'occupant se declare (31/08) -------------------------------------------
+# Perception v3 : les informations sur un empire arrivent quand QUELQU'UN les
+# donne. Un empire qui tient le ciel du monde natal finit par se presenter -
+# des l'age atomique, quand la radio existe pour l'entendre. C'est cette
+# declaration qui ouvre les communications avec LUI (et lui seul), donc
+# l'ecran de diplomatie et le bouton « Reclamer notre ciel ».
+country_event = {
+	id = adastra.174
+	title = "adastra.174.name"
+	desc = "adastra.174.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = adastra_locked
+		has_country_flag = adastra_reached_atomic
+		# 31/08 (2e passe) - se declare aussi celui qui n'a QU'UN poste
+		# d'observation au-dessus de nous : on sait qui nous regarde.
+		OR = {
+			capital_scope = {
+				solar_system = {
+					exists = starbase
+					starbase = {
+						exists = owner
+						owner = {
+							is_country_type = default
+							NOT = { has_communications = root }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				has_observation_outpost = yes
+				observation_outpost_owner = {
+					is_country_type = default
+					NOT = { has_communications = root }
+				}
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				capital_scope = {
+					solar_system = {
+						exists = starbase
+						starbase = {
+							exists = owner
+							owner = {
+								is_country_type = default
+								NOT = { has_communications = root }
+							}
+						}
+					}
+				}
+			}
+			capital_scope = {
+				solar_system = {
+					starbase = {
+						owner = {
+							save_event_target_as = adastra_occupant
+							establish_communications_no_message = root
+						}
+					}
+				}
+			}
+		}
+		else = {
+			capital_scope = {
+				observation_outpost_owner = {
+					save_event_target_as = adastra_occupant
+					establish_communications_no_message = root
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "adastra.174.a"
+		custom_tooltip = "adastra.174.recap"
+	}
+}
+
+# --- la boucle de veille (31/08) ---------------------------------------------
+# Evenement d'etape de adastra_stage_veille : a chaque echeance, le site est
+# remis en veille. Silencieux - la fenetre de perception (173) a deja parle.
+first_contact_event = {
+	id = adastra.175
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_first_contact_stage = adastra_stage_veille
+	}
+}
+
+# --- la perception d'un empire stellaire (matrice v3, 31/08) -----------------
+# Declenche par l'interception de zzz_adastra_first_contact : un site de
+# contact vers un empire se conclut sans communications, et cette fenetre
+# raconte ce que notre age comprend. L'empire reste INCONNU.
+country_event = {
+	id = adastra.173
+	title = "adastra.173.name"
+	desc = {
+		trigger = { NOT = { has_country_flag = adastra_reached_medieval } }
+		text = "adastra.173.desc.ancien"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = adastra_reached_medieval
+			NOT = { has_country_flag = adastra_reached_machine }
+		}
+		text = "adastra.173.desc.savant"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = adastra_reached_machine
+			NOT = { has_country_flag = adastra_reached_space }
+		}
+		text = "adastra.173.desc.moderne"
+	}
+	desc = {
+		trigger = { has_country_flag = adastra_reached_space }
+		text = "adastra.173.desc.spatial"
+	}
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.173.a"
+		custom_tooltip = "adastra.173.recap"
+	}
+}
+
+# --- le Batisseur sort du chantier sous un ciel occupe ----------------------
+country_event = {
+	id = adastra.184
+	title = "adastra.184.name"
+	desc = "adastra.184.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.184.a"
+		custom_tooltip = "adastra.184.recap"
+	}
+}
+
+# ============================================================================
+# COUCHE I - LA PRESENCE INSTALLEE (matrice de perception v2, axe occupant).
+#
+# Tant qu'une base etrangere occupe le ciel du monde natal, la civilisation
+# VIT SOUS quelque chose - et ce qu'elle en fait depend de son age. Un
+# evenement periodique (MTTH 8 ans, delai de 10 ans entre deux), quatre
+# visages : le temple (anciens), l'heresie (medieval), la souverainete
+# (victorien), la resistance (machine et au-dela).
+# ============================================================================
+country_event = {
+	id = adastra.171
+	title = "adastra.171.name"
+	desc = {
+		trigger = { NOT = { has_country_flag = adastra_reached_medieval } }
+		text = "adastra.171.desc.ancien"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = adastra_reached_medieval
+			NOT = { has_country_flag = adastra_reached_steam }
+		}
+		text = "adastra.171.desc.medieval"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = adastra_reached_steam
+			NOT = { has_country_flag = adastra_reached_machine }
+		}
+		text = "adastra.171.desc.victorien"
+	}
+	desc = {
+		trigger = { has_country_flag = adastra_reached_machine }
+		text = "adastra.171.desc.machine"
+	}
+	picture = GFX_evt_adastra_age_space
+
+	mean_time_to_happen = { months = 96 }
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		NOT = { has_country_flag = adastra_perception_occupant }
+		capital_scope = {
+			solar_system = {
+				exists = starbase
+				starbase = {
+					exists = owner
+					NOT = { owner = { is_same_value = root.owner } }
+					owner = { is_country_type = default }
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_timed_country_flag = { flag = adastra_perception_occupant days = 3600 }
+	}
+
+	# --- anciens : le temple sous l'astre fixe ------------------------------
+	option = {
+		name = "adastra.171.a"
+		trigger = { NOT = { has_country_flag = adastra_reached_medieval } }
+		capital_scope = { add_modifier = { modifier = adastra_sky_fervor days = 3600 } }
+	}
+	# --- medieval : l'heresie de l'etoile ------------------------------------
+	option = {
+		name = "adastra.171.b"
+		trigger = {
+			has_country_flag = adastra_reached_medieval
+			NOT = { has_country_flag = adastra_reached_steam }
+		}
+		add_modifier = { modifier = adastra_elan_unite days = 1080 }
+	}
+	option = {
+		name = "adastra.171.c"
+		trigger = {
+			has_country_flag = adastra_reached_medieval
+			NOT = { has_country_flag = adastra_reached_steam }
+		}
+		capital_scope = { add_modifier = { modifier = adastra_ufo_panic days = 1800 } }
+	}
+	# --- victorien : la question de souverainete -----------------------------
+	option = {
+		name = "adastra.171.d"
+		trigger = {
+			has_country_flag = adastra_reached_steam
+			NOT = { has_country_flag = adastra_reached_machine }
+		}
+		add_modifier = { modifier = adastra_elan_unite days = 1620 }
+	}
+	# --- machine et au-dela : la resistance ----------------------------------
+	option = {
+		name = "adastra.171.e"
+		trigger = { has_country_flag = adastra_reached_machine }
+		add_modifier = { modifier = adastra_elan_ingenierie days = 1080 }
+	}
+	option = {
+		name = "adastra.171.f"
+		trigger = { has_country_flag = adastra_reached_machine }
+		add_modifier = { modifier = adastra_elan_unite days = 1080 }
+	}
+}
+
+# --- l'illumination commence ------------------------------------------------
+country_event = {
+	id = adastra.172
+	title = "adastra.172.name"
+	desc = "adastra.172.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.172.a"
+		custom_tooltip = "adastra.172.recap"
+	}
+}

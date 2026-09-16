@@ -23,10 +23,24 @@ is_regular_empire = {
 # encore l'electricite : celui-la paie en minerais (voir la surcharge des
 # districts). Ecrit de facon a ce que le cas normal soit la premiere condition,
 # donc evalue en premier.
+# 1.4 (30/08, decision d'ampynjord) - PERIODE DE GRACE DU RESEAU.
+# Retour beta.5 : au deblocage de l'Electricite, l'entretien de tout
+# basculait instantanement vers l'energie alors qu'aucun generateur
+# n'existait encore (le district vient d'etre debloque) : deficit immediat
+# sans issue courte. L'entretien ne passe donc a l'energie que lorsque le
+# reseau existe : premier district generateur construit, ou deux ans ecoules
+# depuis la technologie (drapeau temporise pose par adastra.132).
+# La PRODUCTION d'energie (adastra_has_energy) demarre elle des la techno.
 adastra_pays_energy_upkeep = {
 	OR = {
 		NOT = { has_origin = origin_adastra }
-		adastra_has_energy = yes
+		AND = {
+			adastra_has_energy = yes
+			OR = {
+				any_owned_planet = { has_district = district_generator }
+				NOT = { has_country_flag = adastra_grace_energie }
+			}
+		}
 	}
 }
 
@@ -153,9 +167,22 @@ adastra_gameplay_outpost = {
 }
 
 # Coloniser : le Programme de colonisation s'ouvre a l'etape orbitale.
+# ESSAI 2026-08-29 - VERROU CIRCULAIRE CORRIGE.
+#
+# `tech_colonization_1` etait gee ici par l'etape CONSTRUCTEUR (300-325).
+# Or `adastra_lot_explore_complet` exige `tech_space_construction` ET
+# `tech_colonization_1` pour faire passer l'etape EXPLORATION de 295 a 300.
+# Il fallait donc etre a l'etape constructeur pour obtenir la technologie
+# qui permet d'atteindre l'etape constructeur.
+#
+# Constate en partie : 250 technologies d'epoque, situation figee a 295,
+# `tech_space_construction` acquise, `tech_colonization_1` jamais proposee.
+#
+# On aligne sur `adastra_gameplay_chantier`, qui ouvre a l'etape EXPLORATION -
+# c'est ce que fait deja l'autre technologie du meme lot.
 adastra_gameplay_colonie = {
 	has_country_flag = adastra_unlock_space
-	has_country_flag = adastra_stage_constructor
+	has_country_flag = adastra_stage_explore
 }
 
 # Ce qui se joue entierement au sol. Ouvert a la phase d'exploration et non a
@@ -253,8 +280,6 @@ adastra_lot_explore_tech = {
 }
 adastra_lot_constructor_tech = {
 	OR = {
-		last_increased_tech = tech_space_construction
-		last_increased_tech = tech_colonization_1
 		last_increased_tech = tech_corvettes
 		last_increased_tech = tech_mass_drivers_1
 		last_increased_tech = tech_ship_armor_1
@@ -267,7 +292,6 @@ adastra_lot_outpost_tech = {
 }
 adastra_lot_orbital_tech = {
 	OR = {
-		last_increased_tech = tech_starbase_1
 		last_increased_tech = tech_starbase_2
 		last_increased_tech = tech_space_defense_station_1
 		last_increased_tech = tech_solar_panel_network

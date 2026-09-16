@@ -5,10 +5,8 @@ origin_adastra = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_default_pre_ftl.dds"
 
-	# 1.2 : l'image d'Unification durable (une metropole qui s'eleve) plutot que
-	# celle de Colonie perdue (une epave). Ad Astra ne raconte pas un naufrage :
-	# c'est une civilisation qui se construit sur son propre monde.
-	picture = GFX_evt_metropolis
+	# L'astronomie, le premier lancement et les etoiles resumment l'origine.
+	picture = GFX_evt_adastra_origins
 
 	description = "origin_adastra_effects"
 

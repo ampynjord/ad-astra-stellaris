@@ -106,32 +106,40 @@ def poids(t, est_pilier):
     return p
 
 
-def couts(base, age_techs):
+def couts(base, age_techs, multiplicateur=1.0):
     """Cout de chaque techno de l'age : base x poids, arrondi a la dizaine."""
     vus = set()
     out = {}
     for t in age_techs:
         pilier = t["area"] not in vus
         vus.add(t["area"])
-        c = base * poids(t, pilier)
+        c = base * multiplicateur * poids(t, pilier)
         out[t["key"]] = int(round(c / 5.0)) * 5
     return out
 
 
-# 1.4 (17/08) : « certaines techs ont +0 % ». Les bonus par techno etaient
-# de 0,3 a 0,8 % ; l'interface les arrondit a l'entier, donc « +0 % ». Retour
-# d'ampynjord : meme nombre de technos, mais un bonus lisible. Regle : tout
-# multiplicateur est arrondi au pour-cent, plancher 1 %. Les valeurs _add
-# (stabilite, logements, commodites) s'affichent en decimal et ne bougent pas.
-# Au passage pop_growth_speed, qui n'existe pas en 4.4 (« Invalid modifier »
-# dans error.log), devient logistic_growth_mult.
-def modificateur_lisible(k, v):
+# 1.6 (25/08) : les vingt-cinq technologies de chaque age ne doivent pas
+# devenir vingt-cinq bonus gratuits de 1 %. Le plancher introduit en 1.4
+# transformait un effet historique de 0,3 % en 1 %, puis le cumulait 250 fois.
+# Mais l'arrondi au centieme annulait les bonus inferieurs a 1 % et produisait
+# des technologies sans effet. On conserve donc trois decimales : chaque
+# technologie apporte bien son effet historique, sans gonfler son cumul.
+# Au passage pop_growth_speed, qui n'existe pas en 4.4, devient
+# logistic_growth_mult.
+def modificateur_lisible(tech, k, v):
     if k == "pop_growth_speed":
         k = "logistic_growth_mult"
     if k.endswith("_add"):
         return k, v
     signe = -1 if v < 0 else 1
-    return k, signe * max(0.01, round(abs(v) * 100) / 100.0)
+    # ESSAI 2026-08-29 - PLANCHER GENERALISE A TOUTES LES TECHNOLOGIES.
+    # Le plancher de 1 % n'etait garanti qu'aux MAJEURES : les autres
+    # pouvaient descendre a 0.004 apres mise a l'echelle, ce que l'interface
+    # affiche « +0% » - un bonus illisible, contraire a la regle du projet
+    # (« jamais un bonus sous 1 % », SKILLS.md par. 4). On arrondit au
+    # centieme et on plafonne par le bas a 0.01 pour tout le monde.
+    arrondi = max(0.01, round(abs(v) * 100) / 100.0)
+    return k, signe * arrondi
 
 
 def gen_techs(prereqs):
@@ -141,7 +149,11 @@ def gen_techs(prereqs):
         lines.append("\n" + "#" * 60)
         lines.append("# AGE : %s (cout de base %d)" % (age.upper(), cost))
         lines.append("#" * 60 + "\n")
-        cmap = couts(cost, TECHS[age])
+        # L'Age spatial doit rester sous les premiers paliers vanilla.
+        # On ne gonfle donc pas ses cartes : 540 a 970 points, assez pour
+        # etre visibles dans le temps sans depasser les technologies tier 1.
+        multiplicateur_cout = 0.75 if age == "space" else 1.0
+        cmap = couts(cost, TECHS[age], multiplicateur_cout)
         vg = vagues(TECHS[age])
         for t in TECHS[age]:
             b = ["%s = {" % t["key"]]
@@ -163,19 +175,12 @@ def gen_techs(prereqs):
             b.append("\tpotential = {")
             b.append("\t\thas_origin = origin_adastra")
             b.append("\t\thas_country_flag = %s" % flag)
-            # 21/08/2026 : l'Age spatial est un programme par etapes. Sans
-            # cette garde, les cinq rangs peuvent se vider d'un coup des que leurs
-            # prerequis sont satisfaits, ce qui donne l'impression de recherches
-            # instantanees et court-circuite les gestes joues en vue systeme.
-            if age == "space":
-                stage = {
-                    1: "adastra_stage_astronomy",
-                    2: "adastra_stage_explore",
-                    3: "adastra_stage_constructor",
-                    4: "adastra_stage_outpost",
-                    5: "adastra_stage_orbital",
-                }[vg[t["key"]]]
-                b.append("\t\thas_country_flag = %s" % stage)
+            # Les vingt-cinq technologies de l'Age spatial doivent rester
+            # accessibles avant le premier lancement. Les lier aux etapes du
+            # programme spatial creait un verrou circulaire : le lancement
+            # demandait les vingt-cinq cartes, mais vingt d'entre elles ne
+            # devenaient visibles qu'apres ce lancement. L'arbre de prerequis
+            # ordonne deja les rangs sans bloquer la situation.
             b.append("\t\tNOT = { has_country_flag = adastra_completed }")
             # 1.3 : L'AGE COURANT, ET LUI SEUL.
             #
@@ -223,10 +228,71 @@ def gen_techs(prereqs):
                 b.append("\t\t}")
                 b.append("\t}")
                 b.append("")
+            # ESSAI 2026-08-29 v2 - CLOISONNEMENT PAR LES TELESCOPES.
+            #
+            # La v1 cloisonnait sur les jalons de decision (core_*_fait) : verrou
+            # circulaire, car les jalons exigent l etape 250 qui exige les 25
+            # techs. Constate en partie : situation figee a 237. La raison de la
+            # regle du verificateur (aucune techno spatiale derriere une etape)
+            # vaut pour TOUT ce qui est en aval des etapes, jalons compris.
+            #
+            # Les TELESCOPES, eux, sont en amont : l observatoire se batit des la
+            # Renaissance, le radiotelescope des l Atomique, le spatial avec la
+            # Teledetection (exemptee). Rang 3 attend un radiotelescope (ou
+            # mieux) ; rangs 4-5 attendent le telescope spatial. L astronomie
+            # rythme l age de l astronomie.
+            #
+            # Exemption par FERMETURE : les 12 techs exigees par jalons/poussee/
+            # telescopes, PLUS tout leur arbre de prerequis dans l age, restent
+            # ouvertes - sans quoi une exemptee au rang 5 attendrait un prerequis
+            # cloisonne au rang 4. Une assertion refuse de generer si une techno
+            # cloisonnee reste dans la chaine d une exemptee.
+            else:
+                _seeds = {
+                    "tech_adastra_sounding_rocket", "tech_adastra_rocketry",
+                    "tech_adastra_ion_drive", "tech_adastra_heat_shield",
+                    "tech_adastra_superconductivity", "tech_adastra_astronomy",
+                    "tech_adastra_satellites", "tech_adastra_manned_flight",
+                    "tech_adastra_lunar_landing", "tech_adastra_telescope",
+                    "tech_adastra_radio_astronomy", "tech_adastra_remote_sensing",
+                }
+                _dans_age = {x["key"] for x in TECHS[age]}
+                _exempt = set(_seeds)
+                _pile = [s for s in _seeds if s in _dans_age]
+                while _pile:
+                    _cur = _pile.pop()
+                    for _pre in prereqs.get(_cur, []):
+                        if _pre in _dans_age and _pre not in _exempt:
+                            _exempt.add(_pre)
+                            _pile.append(_pre)
+                _gate = None
+                if t["key"] not in _exempt:
+                    _r = vg[t["key"]]
+                    if _r == 3:
+                        _gate = ("OR = { any_owned_planet = { has_building = building_core_radio_telescope } "
+                                 "any_owned_planet = { has_building = building_core_space_telescope } }")
+                    elif _r in (4, 5):
+                        _gate = "any_owned_planet = { has_building = building_core_space_telescope }"
+                # garde-fou : aucune exemptee ne doit dependre d une cloisonnee
+                for _e in _exempt:
+                    for _pre in prereqs.get(_e, []):
+                        assert _pre not in _dans_age or _pre in _exempt, (
+                            "cloisonnement circulaire : %s prerequis de %s" % (_pre, _e))
+                if _gate:
+                    b.append("	# phase : entre au tirage avec le telescope requis")
+                    b.append("	weight_modifier = {")
+                    b.append("		factor = 1")
+                    b.append("		modifier = {")
+                    b.append("			factor = 0")
+                    b.append("			NOT = { %s }" % _gate)
+                    b.append("		}")
+                    b.append("	}")
+                    b.append("")
             b.append("\tmodifier = {")
             for k, v in t["mods"].items():
-                k, v = modificateur_lisible(k, v)
-                b.append("\t\t%s = %s" % (k, ("%g" % v)))
+                k, v = modificateur_lisible(t, k, v)
+                if v:
+                    b.append("\t\t%s = %s" % (k, ("%g" % v)))
             b.append("\t}")
             b.append("")
             # Marqueur visible sur la CARTE de recherche, pas seulement dans
@@ -235,13 +301,8 @@ def gen_techs(prereqs):
             # spatial le tirage melange nos dix technos d'epoque et celles du
             # jeu de base, et rien ne les distingue a l'oeil. prereqfor_desc
             # ajoute une ligne coloree sur la carte elle-meme.
-            b.append("\tprereqfor_desc = {")
-            b.append("\t\tcustom = {")
-            b.append('\t\t\ttitle = "adastra_tech_marque_%s"' % age)
-            b.append('\t\t\tdesc = "adastra_tech_marque_desc"')
-            b.append("\t\t}")
-            b.append("\t}")
-            b.append("")
+            # ESSAI 2026-08-29 - marqueur d age retire : les technologies d epoque
+            # se fondent dans l arbre vanilla (modifier + description suffisent).
             b.append("\tai_weight = { factor = 5 }")
             if t["unlocks"]:
                 b.append("\t# Debloque le batiment d'epoque : %s" % t["unlocks"])
@@ -305,6 +366,8 @@ def gen_progression_effet():
     out.append("")
     out.append("adastra_progression_recherche = {")
     for i_age, (age, flag, _c, _v) in enumerate(AGES):
+        # Les vingt-cinq technologies spatiales achevent la preparation de
+        # l'Age spatial. Le lancement reste un jalon separe et obligatoire.
         suivant = AGES[i_age + 1][1] if i_age + 1 < len(AGES) else None
         out.append("\tif = {")
         out.append("\t\tlimit = {")

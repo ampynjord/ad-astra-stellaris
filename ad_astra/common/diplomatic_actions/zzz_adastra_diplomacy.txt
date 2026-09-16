@@ -496,3 +496,271 @@ action_form_research_agreement = {
 		}
 	}
 }
+
+### action_open_technological_enlightenment - illumination technologique : un empire nous enseigne
+action_open_technological_enlightenment = {
+	icon = "GFX_diplomacy_open_technological_enlightenment"
+	diplo_view_acceptance_icon = yes
+	AI_acceptance_base_value = -50
+	action_type = positive
+	potential = {
+		hidden_trigger = {
+			is_country_type = default
+			from = {
+				OR = { is_country_type = primitive is_country_type = adastra_grounded }
+				current_awareness_level = full
+				NOR = {
+					is_under_open_technological_enlightenment = root
+					has_country_flag = solarpunk_country
+				}
+				observation_owner_is_actor = yes
+			}
+		}
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_invaded"
+			NOT = { is_hostile = from }
+		}
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_fotd_seperatist"
+			from = { NOT = { has_country_flag =  fotd_seperatist_country@root } }
+		}
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_tech_frozen"
+			from = {
+				NOR = {
+					has_country_flag =  tech_frozen
+					capital_scope = {
+						is_planet_class = pc_habitat
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_fanatic_purifiers"
+			OR = {
+				is_same_species = from
+				NOT = { has_valid_civic = civic_fanatic_purifiers	}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_fanatic_purifiers"
+			OR = {
+				is_same_species = from
+				from = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_devouring_swarm"
+			NOT = { has_valid_civic = civic_hive_devouring_swarm	}
+		}
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_devouring_swarm"
+			from = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
+		}
+		if = {
+			limit = { from = { has_valid_civic = civic_inwards_perfection } }
+			if = {
+				limit = {
+					has_intel = {
+						who = from
+						intel = civics
+					}
+				}
+				custom_tooltip = {
+					fail_text = requires_recipient_not_inward_perfection
+					always = no
+				}
+			}
+			else = {
+				custom_tooltip = {
+					fail_text = diplo_action_no_low_intel
+					always = no
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_inward_perfection"
+			NOT = { has_valid_civic = civic_inwards_perfection }
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_machine_terminator"
+			OR = {
+				is_same_species = from
+				NOT = { has_civic = civic_machine_terminator }
+				AND = {
+					has_civic = civic_machine_terminator
+					from = {
+						OR = {
+							has_country_flag = synthetic_empire
+							is_machine_empire = yes
+							is_individual_machine = yes
+						}
+					}
+				}
+			}
+		}
+		# When actor is organic, requires target is not exterminator
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_machine_terminator"
+			OR = {
+				is_same_species = from
+				from = { NOT = { has_civic = civic_machine_terminator } }
+				AND = {
+					from = { has_civic = civic_machine_terminator }
+					OR = {
+						has_country_flag = synthetic_empire
+						is_machine_empire = yes
+						is_individual_machine = yes
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_actor_not_scorched_earth"
+			OR = {
+				is_genocidal_infernal = no
+				from = { is_infernal_empire = yes }
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_scorched_earth"
+			OR = {
+				is_infernal_empire = yes
+				from = { is_genocidal_infernal = no }
+			}
+		}
+
+		custom_tooltip = {
+			fail_text = "requires_recipient_not_machine_terminator"
+			OR = {
+				is_same_species = from
+				from = { NOT = { has_civic = civic_machine_terminator } }
+				AND = {
+					from = { has_civic = civic_machine_terminator }
+					OR = {
+						has_country_flag = synthetic_empire
+						is_machine_empire = yes
+						is_individual_machine = yes
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "ACTION_CANNOT_INTERFERE_POLICY"
+			OR = {
+				has_policy_flag = interference_subtle
+				has_policy_flag = interference_active
+			}
+		}
+		custom_tooltip = {
+			fail_text = "ACTION_CANNOT_ENLIGHTEN_POLICY"
+			has_policy_flag = enlightenment_allowed
+		}
+	}
+
+	on_accept = {
+		hidden_effect = {
+			from = {
+				set_country_flag = open_technological_enlightenment_pact
+				# set a flag necessary for the Enlightened Times achievement
+				if = {
+					limit = {
+						pre_ftl_ancient_era = yes
+					}
+					set_country_flag = started_enlightening_from_ancient_era
+				}
+				if = {
+					limit = { capital_scope = { has_observation_outpost = yes } }
+					capital_scope.observation_outpost = {
+						set_event_locked = yes
+					}
+				}
+			}
+			country_event = { # Patron Objective Counter: po_establish_diplomatic_pact
+				id = shroud.10435
+				scopes = {
+					from = from
+				}
+			}
+		}
+	}
+
+	should_ai_propose = {
+		weight = 0
+
+		modifier = {
+			add = 1
+			has_ai_personality_behaviour = uplifter
+		}
+	}
+
+	ai_acceptance = {
+		modifier = {
+			add = -100
+			capital_scope = {
+				has_modifier = culture_shock_diplomacy
+			}
+			desc = NO_DIPLOMATIC_CULTURE_SHOCK
+		}
+		modifier = {
+			add = -1000
+			capital_scope = {
+				has_modifier = pre_ftl_distrustful
+			}
+			desc = pre_ftl_distrustful
+		}
+	}
+}
+
+### action_stop_open_technological_enlightenment - fin de l'illumination technologique
+action_stop_open_technological_enlightenment = {
+	icon = "GFX_diplomacy_open_technological_enlightenment"
+	auto_accepted = yes
+	should_show_auto_accept_message_recipient = yes
+	action_type = negative
+
+	potential = {
+		hidden_trigger = {
+			is_country_type = default
+			from = {
+				OR = { is_country_type = primitive is_country_type = adastra_grounded }
+				is_under_open_technological_enlightenment = root
+				observation_owner_is_actor = yes
+			}
+		}
+	}
+
+	on_accept = {
+		hidden_effect = {
+			from = {
+				remove_country_flag = open_technological_enlightenment_pact
+				if = {
+					limit = {
+						has_country_flag = started_enlightening_from_ancient_era
+					}
+					remove_country_flag = started_enlightening_from_ancient_era
+				}
+				if = {
+					limit = { capital_scope = { has_observation_outpost = yes } }
+					if = {
+						limit = {
+							NOR = {
+								has_country_flag = preftl_societal_enlightenment_pact
+								has_country_flag = open_technological_enlightenment_pact
+								capital_scope.observation_outpost = {
+									has_modifier = preftl_action_trade_pact
+								}
+							}
+						}
+						capital_scope.observation_outpost = {
+							set_event_locked = no
+						}
+					}
+				}
+			}
+		}
+	}
+}

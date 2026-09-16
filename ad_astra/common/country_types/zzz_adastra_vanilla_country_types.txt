@@ -1,0 +1,216 @@
+# Ad Astra 1.4 (integration pre-PRL) - surcharge de test du type `default` (voir commentaire).
+
+default = {
+	# Ad Astra 1.4 (integration pre-PRL) 2026-08-29 - TEST DE LA FUITE D'AFFICHAGE.
+	#
+	# Copie STRICTE du bloc vanilla (00_country_types.txt), un seul ajout :
+	# `faction = { intel_effects_surveyed = no }`.
+	#
+	# Constate sur trois parties : quand un empire normal possede le systeme
+	# natal, tous ses astres APPARAISSENT prospectes au joueur confine, alors
+	# que les donnees de la save montrent le contraire (etoile de Sol
+	# prospectee par personne, Pluton prospectee par le joueur mais
+	# invisible). L'hypothese : l'intel sur un pays dont le type laisse
+	# `intel_effects_surveyed` a sa valeur par defaut rend ses possessions
+	# visuellement prospectees. Le type `primitive` vanilla met ce champ a
+	# `no` ; on l'applique ici au type `default` pour verifier.
+	#
+	# PORTEE DU TEST : ce reglage touche TOUS les empires normaux. S'il
+	# corrige l'affichage sans effet de bord, la decision de le garder
+	# reviendra a ampynjord ; sinon, supprimer ce fichier suffit.
+	faction = {
+		intel_effects_surveyed = no
+	}
+	# 31/08 - save 2229.06.14 : les 24 corps de Sol prospectes par l'empire
+	# occupant s'affichaient prospectes chez le joueur et grisaient son
+	# vaisseau scientifique (« le systeme se prospecte tout seul »). Le champ
+	# vanilla `share_survey_data` vaut oui par defaut : un empire partage ses
+	# releves avec quiconque a ses communications. On le coupe - chaque
+	# empire garde ses releves, le joueur confine prospecte son propre ciel.
+	share_survey_data = no
+	has_difficulty_bonuses = yes
+	counts_for_victory = yes
+	pop_growth = yes
+	playable = yes
+	has_pulse_events = yes
+	has_deficits = yes
+	piracy_risk = yes
+	randomize_ethos = yes
+	shuffle_pop_ethos = yes
+	needs_survey = yes
+	diplomatic_wars = yes
+	ship_disengagement = yes
+	army_disengagement = yes
+	relations = yes
+	observable = yes
+	can_use_invalid_technology = no
+	can_receive_envoys = yes
+	ownership_limits = default
+	do_critters_age = yes
+
+	ai = {
+		enabled = yes
+		declare_war = yes
+		min_navy_for_wars = 0.5
+		min_assault_armies_for_wars = @armies_for_declaring_war
+		colonizer = yes
+		internal_policies = yes
+		modification = yes
+		government = yes
+		traditions = yes
+		ascension_perks = yes
+		construction = yes
+		follow = yes
+		can_use_market = yes
+		modules = {
+			military_minister_module
+			foreign_minister_module
+			interior_minister_module
+			mercenary_buyer_minister_module
+			enclave_founder_minister_module
+		}
+	}
+
+	trade_routes_available = {
+		is_gestalt = no
+	}
+
+	modules = {
+		standard_event_module = {}
+		standard_economy_module = {}
+		standard_leader_module = {}
+		standard_diplomacy_module = { contact_rule = does_first_contact_sites }
+		standard_technology_module = {}
+		standard_pop_factions_module = {}
+		standard_expansion_module = {}
+		standard_species_rights_module = {}
+		standard_grand_archive_module = {}
+		standard_shroud_module = {}
+	}
+
+	resources = {
+		category = country_base
+		produces = {
+			energy = 20
+			physics_research = 10
+			society_research = 10
+			engineering_research = 10
+			influence = 3
+			unity = 10
+			alloys = 5
+		}
+		produces = {
+			trigger = {
+				is_nomadic = no
+			}
+			minerals = 20
+		}
+		produces = {
+			trigger = {
+				OR = {
+					is_gestalt = no
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+			consumer_goods = 15
+		}
+		produces = {
+			trigger = {
+				OR = { #Either
+					# You're a non-lithoid non-individual machine, regular empire or hive mind
+					AND = {
+						is_individual_machine = no
+						is_lithoid_empire = no
+						is_infernal_empire = no
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# You are a lithoid empire with a non-lithoid subspecies
+					AND = {
+						is_lithoid_empire = yes
+						has_country_flag = non_lithoid_subspecies
+					}
+					# Or a machine empire with a non-lithoid secondary species
+					AND = {
+						has_country_flag = non_lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or an individual machine with a non-lithoid species
+					AND = {
+						is_individual_machine = yes
+						has_country_flag = non_lithoid_subspecies
+					}
+					# Or have bioships
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 20
+		}
+		produces = {
+			trigger = {
+				# Either
+				OR = {
+					# You're a lithoid regular empire or hive mind
+					AND = {
+						is_lithoid_empire = yes
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# Or a machine empire with a lithoid secondary species
+					AND = {
+						has_country_flag = lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or a machine empire with no secondary species
+					AND = {
+						is_machine_empire = yes
+						NOR = {
+							has_country_flag = lithoid_subspecies
+							has_country_flag = non_lithoid_subspecies
+						}
+					}
+				}
+			}
+			minerals = 20
+		}
+		produces = {
+			trigger = {
+				is_machine_empire = yes
+			}
+			energy = 20
+		}
+		produces = {
+			trigger = {
+				is_lithoid_empire = yes
+				has_valid_civic = civic_hive_cordyceptic_drones
+			}
+			food = 10
+			minerals = -10
+		}
+		produces = {
+			trigger = {
+				OR = {
+					is_infernal_empire = yes
+					# Or a machine with an infernal species
+					AND = {
+						has_country_flag = infernal_subspecies
+						is_machine_empire = yes
+					}
+				}
+			}
+			alloys = 10
+		}
+	}
+
+	# planet scope
+	branch_office_resources = {
+		category = planet_branch_offices
+		cost = {
+			trade = 1000
+		}
+	}
+}

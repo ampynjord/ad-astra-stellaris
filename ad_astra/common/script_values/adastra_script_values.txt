@@ -39,3 +39,28 @@ adastra_cout_relance_navy = {
 	mult = 0.25
 	add = 1
 }
+
+# ESSAI 2026-08-29 - cout progressif de la sonde profonde.
+# Meme forme que `adastra_cout_relance_explore` : +35 % par sonde deja lancee.
+adastra_cout_relance_sonde = {
+	base = 0
+	modifier = {
+		add = owner.adastra_relances_sonde
+		owner = { is_variable_set = adastra_relances_sonde }
+	}
+	mult = 0.35
+	add = 1
+}
+
+# 31/08 - cout progressif des campagnes d'observation astronomique
+# (retour ampynjord : 20 influence + 150 mineraux etait trop bon marche).
+# Meme forme que la sonde : +30 % par campagne deja menee.
+adastra_cout_campagne_astro = {
+	base = 0
+	modifier = {
+		add = owner.adastra_campagnes_astro
+		owner = { is_variable_set = adastra_campagnes_astro }
+	}
+	mult = 0.30
+	add = 1
+}

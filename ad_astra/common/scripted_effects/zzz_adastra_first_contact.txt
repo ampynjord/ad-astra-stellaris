@@ -1,0 +1,233 @@
+# Ad Astra 1.4 - surcharge de l'aiguillage du premier contact.
+#
+# Copie STRICTE de set_first_contact_starting_stage (common/scripted_effects/
+# first_contact_effects.txt du jeu de base), avec UNE insertion : la garde de
+# perception par age, juste apres l'abandon vanilla des pays primitifs.
+# Toute mise a jour du jeu de base doit etre repercutee ici.
+
+set_first_contact_starting_stage = {
+	# Custom tooltips for contact with 'dummy' countries
+	if = {
+		limit = {
+			contact_country = {
+				is_country_type = dragon_dummy
+			}
+		}
+		custom_tooltip = start_dragon_communications_study
+	}
+	else_if = {
+		limit = {
+			contact_country = {
+				is_country_type = jaunting_traveler_dummy
+			}
+		}
+		custom_tooltip = start_jaunting_traveler_communications_study
+	}
+	else = {
+		custom_tooltip = start_first_contact
+	}
+	# Start proper First Contact
+	hidden_effect = {
+		owner = {
+			set_timed_country_flag = {
+				flag = recent_first_contact_process_started
+				years = 20
+			}
+		}
+		# If it's a pre-ftl country, abort
+		if = {
+			limit = {
+				root.owner = { is_country_type = primitive }
+			}
+			contact_country = {
+				establish_communications_no_message = root.owner
+			}
+		}
+		# AD ASTRA - PERCEPTION PAR AGE, v1 (faune spatiale).
+		# Une civilisation confinee anterieure a l'age atomique ne « rencontre »
+		# pas une creature du vide : elle la PERCOIT selon son age (presage,
+		# monstre celeste, anomalie...). La chaine de premier contact complete
+		# - et ses projets de recherche - est reservee aux ages qui peuvent la
+		# comprendre. Meme mecanisme d'abandon que le bloc vanilla ci-dessus.
+		if = {
+			limit = {
+				root.owner = {
+					is_country_type = adastra_grounded
+					NOT = { has_country_flag = adastra_reached_atomic }
+				}
+				contact_country = {
+					OR = {
+						is_country_type = tiyanki
+						is_country_type = amoeba
+						is_country_type = crystal
+						is_country_type = drone
+						is_country_type = cloud
+						is_country_type = vluur
+						is_country_type = voidworms
+						is_country_type = cutholoids
+					}
+				}
+			}
+			root.owner = {
+				if = {
+					limit = { NOT = { has_country_flag = adastra_perception_faune } }
+					set_timed_country_flag = { flag = adastra_perception_faune days = 1800 }
+					country_event = { id = adastra.170 }
+				}
+			}
+			contact_country = {
+				establish_communications_no_message = root.owner
+			}
+		}
+		if = {
+			# AD ASTRA - PERCEPTION PAR AGE, v3 (empires stellaires, 31/08).
+			# Retour d'ampynjord : « je prefere que ca reste un empire inconnu
+			# jusqu'a ce que cet empire ou un autre me donne ces informations ».
+			# Une civilisation confinee qui repere un empire stellaire ne
+			# recoit ni son nom, ni sa capitale, ni ses frontieres : le site
+			# de contact se conclut SANS communications (finish_first_contact)
+			# et une fenetre raconte ce que notre age comprend de la chose
+			# (adastra.173). Les informations arriveront quand quelqu'un les
+			# donnera : l'occupant qui se declare (adastra.174), l'eveil
+			# maximal (preftl.41 vanilla), l'illumination, ou l'emergence.
+			limit = {
+				root.owner = {
+					is_country_type = adastra_grounded
+					has_country_flag = adastra_locked
+				}
+				contact_country = {
+					OR = {
+						is_country_type = default
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+						is_country_type = dormant_marauders
+					}
+				}
+			}
+			root.owner = {
+				if = {
+					limit = { NOT = { has_country_flag = adastra_perception_empire } }
+					set_timed_country_flag = { flag = adastra_perception_empire days = 1800 }
+					country_event = { id = adastra.173 }
+				}
+			}
+			# 31/08 (2e passe) - PAS finish_first_contact : « finir » un
+			# contact l'accomplit, donc ETABLIT les communications (constate
+			# save 2219.08.02 : site finished + comms des 2211). On route vers
+			# l'etape de VEILLE (common/first_contact/zz_adastra_stages.txt) :
+			# le site reste ouvert « a l'etude » et ne conclut jamais - son
+			# evenement d'etape (adastra.175) le remet en veille a chaque
+			# echeance. adastra.15 rend les sites au vanilla a l'emergence.
+			set_first_contact_stage = adastra_stage_veille
+		}
+		else_if = {
+			# is this the first contact between the slavers and Payback/Broken Shackles?
+			limit = {
+				contact_country = {
+					is_country_type = default
+					has_origin = origin_slavers
+				}
+				root.owner = { has_slave_origin = yes }
+			}
+			setup_first_contact_path = { TYPE = slavers }
+		}
+		else_if = {
+			limit = {
+				contact_country = {
+					is_country_type = default
+				}
+			}
+			set_first_contact_stage = default_stage_1
+		}
+
+		else = {
+			contact_country = {
+				switch = {
+					trigger = is_country_type
+					# Enclaves
+					enclave = {
+						setup_first_contact_path = { TYPE = enclave }
+						country_event = { id = leviathans.97 days = 720 random = 360 } #they'll establish contact if you aren't quick enough
+					}
+					mindwarden_enclave = {
+						setup_first_contact_path = { TYPE = enclave }
+						country_event = { id = leviathans.97 days = 720 random = 360 } #they'll establish contact if you aren't quick enough
+					}
+					enclave_mercenary = {
+						setup_first_contact_path = { TYPE = enclave }
+						country_event = { id = leviathans.97 days = 720 random = 360 } #they'll establish contact if you aren't quick enough
+					}
+					# Space Fauna
+					tiyanki = { setup_first_contact_path = { TYPE = tiyanki } }
+					tiyanki_garrison = { setup_first_contact_path = { TYPE = tiyanki } }
+					amoeba = { setup_first_contact_path = { TYPE = amoeba } }
+					amoeba_borderless = { setup_first_contact_path = { TYPE = amoeba } }
+					amoeba_garrison = { setup_first_contact_path = { TYPE = amoeba } }
+					amoeba_faction = { setup_first_contact_path = { TYPE = amoeba } }
+					crystal = { setup_first_contact_path = { TYPE = crystals } }
+					crystal_faction = { setup_first_contact_path = { TYPE = crystals } }
+					drone = { setup_first_contact_path = { TYPE = drones } }
+					drone_faction = { setup_first_contact_path = { TYPE = drones } }
+					cloud = { setup_first_contact_path = { TYPE = void_clouds } }
+					voidworms = { setup_first_contact_path = { TYPE = voidworms } }
+					voidworms_crisis = { setup_first_contact_path = { TYPE = voidworms } }
+					voidworms_treasure_hunters = { setup_first_contact_path = { TYPE = voidworms } }
+					cutholoids = { setup_first_contact_path = { TYPE = cutholoids } }
+					exiled = {
+						if = {
+							limit = {
+								root.owner = {
+									has_origin = origin_mindwardens
+									is_same_value = event_target:mindwarden_country@prev
+								}
+							}
+							setup_first_contact_path = { TYPE = exiled }
+						}
+						else = {
+							root = { set_first_contact_stage = default_stage_1 }
+						}
+					}
+					# NPC factions
+					dormant_marauders = { setup_first_contact_path = { TYPE = marauders } }
+					pirate = { setup_first_contact_path = { TYPE = pirates } }
+					neutral_faction = { setup_first_contact_path = { TYPE = neutrals } }
+					caravaneer_fleet = {
+						setup_first_contact_path = { TYPE = caravaneers }
+						if = {
+							limit = {
+								exists = event_target:caravaneer_fleet1_country
+								is_same_value = event_target:caravaneer_fleet1_country
+							}
+							root.owner = { country_event = { id = cara.1020 days = 720 random = 360 } }
+						}
+						else_if = {
+							limit = {
+								exists = event_target:caravaneer_fleet2_country
+								is_same_value = event_target:caravaneer_fleet2_country
+							}
+							root.owner = { country_event = { id = cara.2020 days = 720 random = 360 } }
+						}
+						else_if = {
+							limit = {
+								exists = event_target:caravaneer_fleet3_country
+								is_same_value = event_target:caravaneer_fleet3_country
+							}
+							root.owner = { country_event = { id = cara.3020 days = 720 random = 360 } }
+						}
+					}
+					caravaneer_home = { setup_first_contact_path = { TYPE = caravaneers } }
+					nomad = { setup_first_contact_path = { TYPE = nomad } }
+					# Misc.
+					dragon_dummy = { setup_first_contact_path = { TYPE = origin_dragon } }
+					jaunting_traveler_dummy = { setup_first_contact_path = { TYPE = jaunting_traveler } }
+					default = { # note that this does not refer to 'default'-type countries, but is instead a function of 'switch = {}'
+						root = {
+							fire_on_action = { on_action = on_first_contact_stage_1_no_path }
+							# log_error = "No valid first contact path for encounter with [This.ContactCountry.GetName] (country type: [This.ContactCountry.GetCountryType])"
+						}
+					}
+				}
+			}
+		}
+	}
+}

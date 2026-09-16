@@ -115,3 +115,17 @@ VANILLA_PREREQ = {
     "tech_starbase_1": ["tech_space_construction"],
     "tech_starbase_2": ["tech_starbase_1"],
 }
+
+# 1.4 (30/08) - cout d'une techno vanilla datee : le bareme de son age
+# d'accueil, au poids « deblocage » des technos d'epoque (base x 1.4, arrondi
+# a 5). Retour de test beta.5 (Argroww) : les couts vanilla (500) au milieu
+# des couts d'epoque (144 a la Renaissance) faisaient passer des datations
+# volontaires pour des fuites. Applique par apply_vanilla_tech_ages.py.
+AGE_UNLOCK_COST = {
+    "renaissance": 200,   # 144 x 1.4
+    "steam": 270,         # 192 x 1.4
+    "industrial": 355,    # 252 x 1.4
+    "machine": 485,       # 348 x 1.4
+    "atomic": 740,        # 528 x 1.4
+    "space": 755,         # 540 x 1.4
+}

@@ -188,11 +188,40 @@ adastra_grounded = {
 	# country needs to have explicit border access from another country to enter
 	# its borders ». Sans lui, on n'a aucun moyen de garder ses propres vaisseaux
 	# au-dessus de sa propre planete.
+	# Ad Astra 1.4 (integration pre-PRL) 2026-08-28 - LE SEUL CHANGEMENT DE FOND DE CETTE BUILD.
+	#
+	# Le moteur ne reconnait pas un pre-PRL a son country_type mais au booleen
+	# `faction.primitive`, que lit le trigger natif `is_primitive` (506 usages
+	# vanilla, defini dans aucun fichier de script : il est en dur). La doc de
+	# Paradox (00_country_types.txt l. 44) precise que les valeurs du bloc
+	# `faction` « sont copiees sur le pays et modifiables en cours de partie ».
+	#
+	# Rien dans le vanilla ne lie ce champ a `playable` : ce sont deux champs
+	# independants. C'est l'hypothese que cette build sert a verifier, et rien
+	# d'autre - tout le reste du type est laisse strictement identique pour que
+	# le resultat soit attribuable a ce seul champ.
+	#
+	# On ne pose PAS `primitive_age` : le type primitive vanilla ne le pose pas
+	# non plus, il n'est que documente en commentaire. Champ non verifie, retire.
 	faction = {
 		needs_border_access = no
 		generate_borders = yes
 		needs_colony = yes
 		auto_delete = no
+		primitive = yes
+		# 1.4 (2026-08-28 - deuxieme champ repris du bloc `faction` du type
+		# `primitive` vanilla (00_country_types.txt l. 857-864).
+		#
+		# Il gouverne l'application des effets d'intel a la prospection. Sans
+		# lui, l'empire est primitif pour le moteur mais garde le comportement
+		# d'intel d'un empire normal - ce qui expliquait les astres qui se
+		# prospectaient seuls, les etoiles decouvertes deja prospectees et le
+		# vaisseau scientifique qui semblait prospecter instantanement.
+		#
+		# Le vanilla pose aussi `generate_borders = no`, NON repris ici : il
+		# toucherait au correctif 1.3 des vaisseaux expulses de leur propre
+		# ciel. A discuter separement.
+		intel_effects_surveyed = no
 	}
 	has_difficulty_bonuses = yes
 	counts_for_victory = no
@@ -212,6 +241,15 @@ adastra_grounded = {
 	ship_disengagement = yes
 	army_disengagement = yes
 	relations = yes
+	# Le pays confine ne transmet pas son reseau de contacts a la galaxie.
+	# Ses rencontres restent cependant des premiers contacts vanilla : elles
+	# doivent pouvoir creer leurs indices, leurs evenements et leur chaine.
+	share_communications = no
+	# 31/08 - une civilisation au sol ne figure dans le carnet d'adresses de
+	# personne : un tiers ne peut pas nous « presenter », et nos releves du
+	# ciel restent les notres.
+	can_have_their_comms_shared = no
+	share_survey_data = no
 	observable = yes
 	can_use_invalid_technology = no
 	can_receive_envoys = yes
@@ -249,11 +287,10 @@ adastra_grounded = {
 		standard_event_module = {}
 		standard_economy_module = {}
 		standard_leader_module = {}
-		# 1.3.1 (18/08) : ce type n'existe pas dans les chemins de premier
-		# contact vanilla. Une rencontre multijoueur restait donc sans etape
-		# valide et relancait "Encounter in <systeme>". Pendant le confinement,
-		# le contact est immediat ; l'emergence restaure ensuite le type default.
-		standard_diplomacy_module = { contact_rule = on_action_only }
+		# Meme regle que le type default : les rencontres avant l'emergence
+		# doivent creer les sites de premier contact vanilla, sans partage
+		# automatique de la carte ni du reseau diplomatique.
+		standard_diplomacy_module = { contact_rule = does_first_contact_sites }
 		standard_technology_module = {}
 		standard_pop_factions_module = {}
 		standard_expansion_module = {}

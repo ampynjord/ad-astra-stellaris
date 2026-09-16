@@ -92,7 +92,7 @@ country_event = {
 	id = adastra.101
 	title = "adastra.101.name"
 	desc = "adastra.101.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
@@ -104,6 +104,7 @@ country_event = {
 
 	option = {
 		name = "adastra.101.a"
+		custom_tooltip = "adastra.101.recap"
 	}
 }
 
@@ -112,25 +113,20 @@ country_event = {
 	id = adastra.103
 	title = "adastra.103.name"
 	desc = "adastra.103.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
 		set_country_flag = core_suborbital_fait
-		add_monthly_resource_mult = {
-			resource = physics_research
-			value = 3
-			min = 30
-			max = 300
-		}
 		add_modifier = {
 			modifier = core_mod_suborbital
-			days = -1
+			days = 3600
 		}
 	}
 
 	option = {
 		name = "adastra.103.a"
+		custom_tooltip = "adastra.103.recap"
 	}
 }
 
@@ -139,19 +135,20 @@ country_event = {
 	id = adastra.102
 	title = "adastra.102.name"
 	desc = "adastra.102.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
 		set_country_flag = core_satellite_fait
 		add_modifier = {
 			modifier = core_mod_satellites
-			days = -1
+			days = 3600
 		}
 	}
 
 	option = {
 		name = "adastra.102.a"
+		custom_tooltip = "adastra.102.recap"
 	}
 }
 
@@ -160,32 +157,26 @@ country_event = {
 	id = adastra.104
 	title = "adastra.104.name"
 	desc = "adastra.104.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
 		set_country_flag = core_vol_habite_fait
 		add_modifier = {
 			modifier = core_mod_vol_habite
-			days = -1
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = 3
-			min = 30
-			max = 300
+			days = 3600
 		}
 	}
 
 	option = {
 		name = "adastra.104.a"
+		custom_tooltip = "adastra.104.recap"
 	}
 }
 
 # ---------------------------------------------------- 106 : le premier corps
-# Rien n'est nomme. On cherche ce que le systeme natal contient reellement,
-# du plus evocateur au moins : une lune, puis un asteroide, puis n'importe
-# quel astre qui n'est ni l'etoile ni le monde natal.
+# La mission est lunaire. La decision verifie deja qu'une lune existe ; ici,
+# on en choisit une et on la reconnait sans prospecter ses ressources.
 country_event = {
 	id = adastra.106
 	hide_window = yes
@@ -196,7 +187,6 @@ country_event = {
 		capital_scope = {
 			save_event_target_as = core_natal
 			solar_system = {
-				# 1 - une lune
 				random_system_planet = {
 					limit = {
 						is_moon = yes
@@ -206,37 +196,17 @@ country_event = {
 					# a un autre empire et peut faire croire a tort qu'une lune existe.
 					save_event_target_as = core_cible
 				}
-				# 2 - sinon un asteroide
-				if = {
-					limit = { NOT = { exists = event_target:core_cible } }
-					random_system_planet = {
-						limit = {
-							is_asteroid = yes
-							NOT = { is_same_value = event_target:core_natal }
-						}
-						save_event_target_as = core_cible
-					}
-				}
-				# 3 - sinon n'importe quel astre qui n'est ni l'etoile ni chez nous
-				if = {
-					limit = { NOT = { exists = event_target:core_cible } }
-					random_system_planet = {
-						limit = {
-							is_star = no
-							NOT = { is_same_value = event_target:core_natal }
-						}
-						save_event_target_as = core_cible
-					}
-				}
 			}
 		}
 		if = {
 			limit = { exists = event_target:core_cible }
+			event_target:core_cible = {
+				set_surveyed = { surveyed = yes surveyor = root }
+			}
 			country_event = { id = adastra.108 }
 		}
 		else = {
-			# Un systeme natal sans autre astre. C'est rare et c'est une
-			# histoire en soi : on ne se pose nulle part, on tourne.
+			# Garde-fou pour une save ou une generation atypique.
 			country_event = { id = adastra.107 }
 		}
 	}
@@ -247,19 +217,13 @@ country_event = {
 	id = adastra.108
 	title = "adastra.108.name"
 	desc = "adastra.108.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
 		add_modifier = {
 			modifier = core_mod_premier_corps
-			days = -1
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = 6
-			min = 60
-			max = 600
+			days = 3600
 		}
 	}
 
@@ -273,19 +237,13 @@ country_event = {
 	id = adastra.107
 	title = "adastra.107.name"
 	desc = "adastra.107.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
 
 	immediate = {
 		add_modifier = {
 			modifier = core_mod_station_permanente
-			days = -1
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = 6
-			min = 60
-			max = 600
+			days = 3600
 		}
 	}
 
@@ -295,46 +253,58 @@ country_event = {
 }
 
 # ------------------------------------------------- 110 : la sonde arrive
-# On cherche un systeme voisin dont l'etoile n'est pas encore connue. Si tout
-# ce qui est a portee l'est deja, la sonde part quand meme - et rapporte de la
-# science plutot que de la carte. Une decision ne doit jamais ne rien faire.
+# La sonde est le premier objet interplanetaire autonome. Elle ne quitte pas
+# encore le systeme natal : elle reconnait un seul astre qui reste inconnu,
+# sans reveler ni ressources ni gisements.
 country_event = {
 	id = adastra.110
 	hide_window = yes
 	is_triggered_only = yes
 
 	immediate = {
-		# `random_system` parcourt la galaxie ; la limite de distance la ramene
-		# au voisinage. On evite `random_system_within_border` : un empire
-		# confine n'a de frontieres que son propre systeme, la portee serait
-		# vide. On evite aussi de viser un systeme deja visite par une sonde.
-		capital_scope = { solar_system = { save_event_target_as = core_sonde_source } }
-		random_system = {
+		# Les jalons orbitaux forment une chaine : le programme ne commence
+		# qu'apres lancement, satellite, equipage et sonde profonde.
+		set_country_flag = core_sonde_profonde_fait
+		# ESSAI 2026-08-29 - compteur de relances : chaque sonde rencherit la
+		# suivante de 35 % via `adastra_cout_relance_sonde`.
+		if = {
+			limit = { NOT = { is_variable_set = adastra_relances_sonde } }
+			set_variable = { which = adastra_relances_sonde value = 0 }
+		}
+		change_variable = { which = adastra_relances_sonde value = 1 }
+		if = {
 			limit = {
-				NOT = { is_same_value = event_target:core_sonde_source }
-				NOT = { has_star_flag = core_sonde_visitee }
-				# 1.4 (17/08) : `max_distance` n'existe pas dans le declencheur
-				# `distance` (qui ne connait que min_jumps/max_jumps, comme le
-				# reste des evenements vanilla) - le parseur rejetait la ligne
-				# ("Not a valid compare token '=' ... line : 288") et la
-				# recherche de systeme voisin echouait silencieusement.
-				distance = {
-					source = event_target:core_sonde_source
-					max_jumps = 4
+				has_country_flag = core_suborbital_fait
+				has_country_flag = core_satellite_fait
+				has_country_flag = core_vol_habite_fait
+				has_country_flag = core_premier_corps_fait
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					current_stage = adastra_stage_first_launch
 				}
 			}
-			# 18/08/2026 : meme isolation que le premier corps. Si aucun systeme
-			# ne passe le filtre, une ancienne cible ne doit jamais etre reutilisee.
-			save_event_target_as = core_sonde_cible
+			every_situation = {
+				limit = { is_situation_type = situation_adastra_ascension }
+				set_situation_progress = 275
+			}
+		}
+		capital_scope = {
+			save_event_target_as = core_natal
+			solar_system = {
+				random_system_planet = {
+					limit = {
+						is_star = no
+						NOT = { is_same_value = event_target:core_natal }
+						NOT = { is_surveyed = { who = root status = yes } }
+					}
+					save_event_target_as = core_sonde_cible
+				}
+			}
 		}
 		if = {
 			limit = { exists = event_target:core_sonde_cible }
 			event_target:core_sonde_cible = {
-				set_star_flag = core_sonde_visitee
-				every_system_planet = {
-					limit = { is_star = yes }
-					set_surveyed = { surveyed = yes surveyor = root }
-				}
+				set_surveyed = { surveyed = yes surveyor = root }
 			}
 			country_event = { id = adastra.111 }
 		}
@@ -349,20 +319,12 @@ country_event = {
 	id = adastra.111
 	title = "adastra.111.name"
 	desc = "adastra.111.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
-
-	immediate = {
-		add_monthly_resource_mult = {
-			resource = physics_research
-			value = 6
-			min = 60
-			max = 600
-		}
-	}
 
 	option = {
 		name = "adastra.111.a"
+		custom_tooltip = "adastra.111.recap"
 	}
 }
 
@@ -371,19 +333,11 @@ country_event = {
 	id = adastra.112
 	title = "adastra.112.name"
 	desc = "adastra.112.desc"
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_adastra_age_space
 	is_triggered_only = yes
-
-	immediate = {
-		add_monthly_resource_mult = {
-			resource = physics_research
-			value = 4
-			min = 40
-			max = 400
-		}
-	}
 
 	option = {
 		name = "adastra.112.a"
+		custom_tooltip = "adastra.112.recap"
 	}
 }

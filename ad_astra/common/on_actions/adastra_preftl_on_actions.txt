@@ -1,0 +1,40 @@
+# Ad Astra 1.4 (integration pre-PRL) - fichier separe, fusionne par le moteur avec les on_actions
+# du mod (les entrees s'ajoutent, elles ne remplacent pas).
+
+on_monthly_pulse_country = {
+	events = {
+		adastra.160
+		adastra.161
+		adastra.166
+		adastra.167
+		adastra.168
+		adastra.174
+	}
+}
+
+# `This` = la civilisation pre-PRL, `From` = l'empire observateur.
+# Les chapitres d'eveil ne se declenchent QU'ICI : un palier franchi, une
+# fenetre. Chacun porte son drapeau une-seule-fois et sa condition de palier,
+# donc un saut de plusieurs paliers ne fait qu'une fenetre a la fois, les
+# suivantes arrivant aux hausses suivantes.
+on_awareness_level_increase = {
+	events = {
+		adastra.162
+		adastra.163
+		adastra.164
+		adastra.165
+	}
+}
+
+# Construction d'un poste d'observation (hook vanilla). On y verifie le cas
+# absurde du poste bati par le pre-PRL sur lui-meme.
+# 31/08 - la portee de cet on_action est This = VAISSEAU constructeur,
+# From = planete (00_on_actions.txt) : le country_event adastra.169 n'etait
+# jamais declenche dans la bonne portee (retour de partie : le poste se
+# construisait et lancait la chaine d'observation sur nous-memes). On passe
+# par le relais en portee vaisseau adastra.190.
+on_building_observation_station = {
+	events = {
+		adastra.190
+	}
+}

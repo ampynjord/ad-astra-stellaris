@@ -26,6 +26,57 @@
 # drame. Le cout est en influence et en minerais, comme les grands programmes.
 
 
+# ------------------------------------------------ observation astronomique
+# Le brouillard galactique ne se leve pas tout seul a chaque pulse mensuel.
+# Le joueur construit d'abord un instrument, puis consacre une campagne a
+# l'observation. Le resultat revele une etoile voisine, jamais ses mondes ni
+# ses ressources. La decision peut etre prise depuis n'importe quelle planete
+# qui abrite un telescope.
+decision_core_astronomical_observation = {
+	owned_planets_only = yes
+	icon = decision_core_sonde_profonde
+
+	# Deux ans de campagnes, de mesures et de verifications. La construction de
+	# l'instrument ne suffit pas : la carte ne bouge qu'a l'issue de ce travail.
+	enactment_time = 720
+
+	resources = {
+		category = decisions
+		# 31/08 - retour ampynjord : trop bon marche. Cout de base releve et
+		# +30 % par campagne deja menee (variable posee par adastra.92).
+		cost = {
+			influence = 100
+			minerals = 500
+			mult = value:adastra_cout_campagne_astro
+		}
+	}
+
+	potential = {
+		owner = {
+			has_origin = origin_adastra
+			has_technology = tech_adastra_astronomy
+			NOT = { has_country_flag = adastra_completed }
+		}
+		OR = {
+			has_building = building_core_observatory
+			has_building = building_core_radio_telescope
+			has_building = building_core_space_telescope
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_astronomical_observation_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.92 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 20
+	}
+}
+
+
 # ---------------------------------------------------------------- suborbital
 # Repetable : on ne lance pas une fusee, on lance un programme de fusees. Et
 # tant que le premier vol reussi n'est pas obtenu, il FAUT pouvoir reessayer -
@@ -49,7 +100,15 @@ decision_core_suborbital = {
 		owner = {
 			core_est_confine = yes
 			core_poussee_1 = yes
-			NOT = { has_country_flag = core_vol_habite_fait }
+			# Une reussite est definitive. Sans ce garde-fou, la meme premiere
+			# fusee restait jouable jusqu'au vol habite suivant.
+			NOT = { has_country_flag = core_suborbital_fait }
+			# La recherche termine d'abord la preparation. La fusee est ensuite
+			# un jalon visible, annonce par la situation, jamais un raccourci.
+			any_situation = {
+				is_situation_type = situation_adastra_ascension
+				current_stage = adastra_stage_first_launch
+			}
 		}
 	}
 
@@ -67,9 +126,8 @@ decision_core_suborbital = {
 
 
 # ----------------------------------------------------------------- satellite
-# 1957. Ce qui monte peut rester. Chaque satellite est un objet, un
-# modificateur, et un metier : telecommunications, meteorologie, navigation.
-# Repetable, parce qu'un pays n'en lance jamais un seul.
+# 1957. Ce qui monte peut rester. Ce jalon represente le premier satellite,
+# pas une filiere orbitale abstraite a empiler indefiniment.
 decision_core_satellite = {
 	owned_planets_only = yes
 	icon = decision_core_satellite
@@ -91,6 +149,7 @@ decision_core_satellite = {
 			core_poussee_2 = yes
 			has_technology = tech_adastra_satellites
 			has_country_flag = core_suborbital_fait
+			NOT = { has_country_flag = core_satellite_fait }
 		}
 	}
 
@@ -150,10 +209,9 @@ decision_core_vol_habite = {
 
 
 # -------------------------------------------------------------- premier corps
-# 1969. Le drapeau plante. La cible n'est PAS nommee : le systeme natal est
-# procedural, il peut n'avoir aucune lune. L'evenement choisit ce qu'il trouve
-# - une lune, sinon un asteroide, sinon la planete la plus proche, sinon rien
-# du tout, et il raconte alors autre chose.
+# 1969. C'est une mission lunaire : sans lune dans le systeme natal, il n'y a
+# pas de premier alunissage a jouer. Le test passe par le pays puis sa capitale
+# afin de ne jamais demander `solar_system` depuis une portee de vaisseau.
 decision_core_premier_corps = {
 	owned_planets_only = yes
 	icon = decision_core_premier_corps
@@ -176,6 +234,11 @@ decision_core_premier_corps = {
 			has_technology = tech_adastra_lunar_landing
 			has_country_flag = core_vol_habite_fait
 			NOT = { has_country_flag = core_premier_corps_fait }
+			capital_scope = {
+				solar_system = {
+					any_system_planet = { is_moon = yes }
+				}
+			}
 		}
 	}
 

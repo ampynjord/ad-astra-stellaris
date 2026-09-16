@@ -3,7 +3,7 @@
 # Les pénalités d'âge sont les modificateurs d'étape (visibles dans le journal).
 
 situation_adastra_ascension = {
-	picture = GFX_evt_metropolis
+	picture = GFX_evt_adastra_situation
 	complete_icon = GFX_situation_outcome_positive
 	complete_icon_frame = GFX_situation_outcome_frame_blue
 	situation_log_category = empire_concerns
@@ -234,10 +234,18 @@ situation_adastra_ascension = {
 				country_unity_produces_mult = -0.10
 			}
 		}
-		adastra_stage_program_explore = {
+		adastra_stage_first_launch = {
 			icon = GFX_situation_stage_1
 			icon_background = GFX_situation_stage_frame_blue
 			end = 275
+			on_first_enter = {
+				owner = { country_event = { id = adastra.79 } }
+			}
+		}
+		adastra_stage_program_explore = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_blue
+			end = 300
 			on_first_enter = {
 				owner = { country_event = { id = adastra.80 } }
 			}
@@ -245,7 +253,7 @@ situation_adastra_ascension = {
 		adastra_stage_program_constructor = {
 			icon = GFX_situation_stage_2
 			icon_background = GFX_situation_stage_frame_blue
-			end = 300
+			end = 325
 			on_first_enter = {
 				owner = { country_event = { id = adastra.81 } }
 			}
@@ -253,7 +261,7 @@ situation_adastra_ascension = {
 		adastra_stage_program_outpost = {
 			icon = GFX_situation_stage_2
 			icon_background = GFX_situation_stage_frame_blue
-			end = 325
+			end = 350
 			on_first_enter = {
 				owner = { country_event = { id = adastra.82 } }
 			}
@@ -261,7 +269,7 @@ situation_adastra_ascension = {
 		adastra_stage_program_orbital = {
 			icon = GFX_situation_stage_2
 			icon_background = GFX_situation_stage_frame_blue
-			end = 350
+			end = 375
 			on_first_enter = {
 				owner = { country_event = { id = adastra.83 } }
 			}
@@ -269,7 +277,7 @@ situation_adastra_ascension = {
 		adastra_stage_program_hyperdrive = {
 			icon = GFX_situation_stage_3
 			icon_background = GFX_situation_stage_frame_blue
-			end = 375
+			end = 400
 			on_first_enter = {
 				owner = { country_event = { id = adastra.84 } }
 			}

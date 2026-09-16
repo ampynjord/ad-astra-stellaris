@@ -1,37 +1,43 @@
 # Ad Astra 1.4 - la sonde profonde.
 #
 # Une civilisation confinee ne peut pas EXPLORER, mais elle peut REGARDER, et
-# elle peut ENVOYER. C'est le barreau manquant entre le telescope et le
-# vaisseau scientifique : un objet qu'on lance vers un systeme voisin, qui met
-# des annees a l'atteindre, et qui ne revient jamais.
+# elle peut ENVOYER. Chaque sonde reconnait UN astre encore inconnu du systeme
+# natal, et en revele les gisements.
 #
-# Ce que la sonde donne : le systeme cible devient CONNU. Ce qu'elle ne donne
-# pas : la prospection. Les gisements restent a relever par un vaisseau
-# scientifique, apres l'emergence. Le partage est net et il est le bon - la
-# sonde dit ou aller, elle ne dit pas quoi y prendre.
+# ESSAI 2026-08-29 - TROIS CHANGEMENTS DEMANDES PAR AMPYNJORD :
 #
-# CONTRAINTE MOTEUR ASSUMEE. Le jeu ne permet pas de faire voler un objet
-# entre deux systemes sans hyperlignes. On ne simule donc pas le vol : la
-# decision dure des annees (enactment_time), et l'arrivee est un evenement.
-# Le lancement, lui, se voit - c'est le meme rite que les Premiers pas.
+# 1. REPETABLE. La sonde n'est plus unique : tant qu'il reste un astre inconnu
+#    dans le systeme natal, on peut en lancer une autre. Le drapeau
+#    `core_sonde_profonde_fait` reste pose (la chaine des jalons s'appuie
+#    dessus) mais ne ferme plus la decision.
+# 2. COUT PROGRESSIF. Chaque lancement rencherit le suivant de 35 %, sur le
+#    modele des relances du programme d'exploration
+#    (`adastra_cout_relance_explore`). Une campagne de reconnaissance complete
+#    du systeme doit couter, pas se cliquer.
+# 3. LE JALON LUNAIRE N'EST PLUS UN CUL-DE-SAC. Le premier atterrissage exige
+#    une lune dans le systeme natal ; sur un systeme procedural sans lune, la
+#    decision n'apparait jamais et bloquait definitivement la sonde, donc toute
+#    la progression. Il reste OBLIGATOIRE quand une lune existe, et devient
+#    sans objet quand il n'y en a pas.
 #
-# A VERIFIER EN JEU : que le systeme revele soit bien lisible sur la carte
-# pour un empire confine. C'est le point d'incertitude de cette decision, et
-# il ne se leve pas depuis un editeur de texte.
+# Le test de lune se fait depuis la RACINE (garantie capitale par
+# `is_capital = yes`), jamais par `capital_scope` : chez un empire nomade ce
+# dernier renvoie un vaisseau et tout `solar_system` qui suit echoue en boucle.
 
 decision_core_sonde_profonde = {
 	owned_planets_only = yes
 	icon = decision_core_sonde_profonde
 
-	# Neuf ans. Une sonde ne se lance pas a la legere et n'arrive pas vite :
-	# les vraies ont mis douze ans a sortir de leur systeme.
-	enactment_time = 1080
+	# Trois ans de conception, d'integration et de trajectoire.
+	enactment_time = 360
 
 	resources = {
 		category = decisions
 		cost = {
-			influence = 120
-			minerals = 450
+			influence = 300
+			minerals = 1000
+			alloys = 100
+			mult = value:adastra_cout_relance_sonde
 		}
 	}
 
@@ -40,7 +46,20 @@ decision_core_sonde_profonde = {
 		owner = {
 			core_est_confine = yes
 			core_poussee_3 = yes
-			has_country_flag = core_satellite_fait
+			has_country_flag = core_vol_habite_fait
+		}
+		# Le jalon lunaire, obligatoire seulement s'il est possible.
+		OR = {
+			owner = { has_country_flag = core_premier_corps_fait }
+			NOT = { solar_system = { any_system_planet = { is_moon = yes } } }
+		}
+		# Il reste quelque chose a reconnaitre.
+		solar_system = {
+			any_system_planet = {
+				is_star = no
+				NOT = { is_same_value = root }
+				NOT = { is_surveyed = { who = root.owner status = yes } }
+			}
 		}
 	}
 

@@ -79,8 +79,8 @@ building_adastra_seat = {
 		AMOUNT = 100
 	}
 
-	# L'amelioration suivante. Le dernier palier rend la main au
-	# jeu de base : building_capital et toute sa chaine.
+	# Chaine lineaire : un seul successeur (exigence moteur,
+	# les chemins multiples declenchent une upgrades loop).
 	upgrades = {
 		building_adastra_seat_bronze
 	}
@@ -137,8 +137,8 @@ building_adastra_seat_bronze = {
 		AMOUNT = 100
 	}
 
-	# L'amelioration suivante. Le dernier palier rend la main au
-	# jeu de base : building_capital et toute sa chaine.
+	# Chaine lineaire : un seul successeur (exigence moteur,
+	# les chemins multiples declenchent une upgrades loop).
 	upgrades = {
 		building_adastra_seat_iron
 	}
@@ -200,8 +200,8 @@ building_adastra_seat_iron = {
 		AMOUNT = 100
 	}
 
-	# L'amelioration suivante. Le dernier palier rend la main au
-	# jeu de base : building_capital et toute sa chaine.
+	# Chaine lineaire : un seul successeur (exigence moteur,
+	# les chemins multiples declenchent une upgrades loop).
 	upgrades = {
 		building_adastra_seat_medieval
 	}
@@ -263,8 +263,8 @@ building_adastra_seat_medieval = {
 		AMOUNT = 100
 	}
 
-	# L'amelioration suivante. Le dernier palier rend la main au
-	# jeu de base : building_capital et toute sa chaine.
+	# Chaine lineaire : un seul successeur (exigence moteur,
+	# les chemins multiples declenchent une upgrades loop).
 	upgrades = {
 		building_adastra_seat_renaissance
 	}
@@ -326,8 +326,8 @@ building_adastra_seat_renaissance = {
 		AMOUNT = 200
 	}
 
-	# L'amelioration suivante. Le dernier palier rend la main au
-	# jeu de base : building_capital et toute sa chaine.
+	# Chaine lineaire : un seul successeur (exigence moteur,
+	# les chemins multiples declenchent une upgrades loop).
 	upgrades = {
 		building_adastra_seat_steam
 	}
@@ -389,8 +389,8 @@ building_adastra_seat_steam = {
 		AMOUNT = 200
 	}
 
-	# L'amelioration suivante. Le dernier palier rend la main au
-	# jeu de base : building_capital et toute sa chaine.
+	# Chaine lineaire : un seul successeur (exigence moteur,
+	# les chemins multiples declenchent une upgrades loop).
 	upgrades = {
 		building_adastra_seat_industrial
 	}
@@ -452,8 +452,8 @@ building_adastra_seat_industrial = {
 		AMOUNT = 300
 	}
 
-	# L'amelioration suivante. Le dernier palier rend la main au
-	# jeu de base : building_capital et toute sa chaine.
+	# Chaine lineaire : un seul successeur (exigence moteur,
+	# les chemins multiples declenchent une upgrades loop).
 	upgrades = {
 		building_capital
 	}

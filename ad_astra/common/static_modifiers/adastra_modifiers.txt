@@ -23,65 +23,106 @@ adastra_stellar_dawn = {
 	country_unity_produces_mult = 0.10
 }
 
-# Héritage de l'Ascension : bonus permanent à l'émergence, selon l'âge de départ
-# Palier 1 : départ atomique/spatial
-adastra_heritage_1 = {
-	all_technology_research_speed = 0.03
-	country_unity_produces_mult = 0.03
+# 1.6 (25/08) : l'emergence donne un heritage choisi, pas l'empilement d'un
+# bonus d'age global avec les 250 inventions. Chaque voie est forte dans son
+# domaine mais n'est pas un substitut a plusieurs traditions vanilla.
+adastra_heritage_scientific = {
+	all_technology_research_speed = 0.05
+	planet_jobs_physics_research_produces_mult = 0.05
 }
 
-# Palier 2 : départ industriel/machine
-adastra_heritage_2 = {
+adastra_heritage_industrial = {
+	station_gatherers_produces_mult = 0.10
+	country_starbase_influence_cost_mult = -0.10
+}
+
+adastra_heritage_civic = {
+	country_unity_produces_mult = 0.05
+	planet_stability_add = 3
+}
+
+adastra_heritage_pioneer = {
+	planet_colony_development_speed_mult = 0.25
+	empire_size_colonies_mult = -0.10
+}
+
+adastra_heritage_orbital = {
+	ship_sensor_range_add = 1
+	station_researchers_produces_mult = 0.10
+}
+
+# Avoir laisse la galaxie vivre reste un risque reel. La recompense est une
+# reconnaissance modeste, pas le doublement de tous les bonus economiques.
+adastra_heritage_trial = {
+	planet_stability_add = 1
+	country_unity_produces_mult = 0.02
+}
+
+# La longueur de l'Ascension est une recompense horizontale : elle reste
+# utile apres l'emergence sans remplacer le choix d'heritage ni une tradition.
+adastra_heritage_depth_stone = {
 	all_technology_research_speed = 0.05
 	country_unity_produces_mult = 0.05
+	planet_jobs_produces_mult = 0.05
 	planet_stability_add = 2
 }
 
-# Palier 3 : départ médiéval/renaissance/vapeur
-adastra_heritage_3 = {
-	all_technology_research_speed = 0.08
-	country_unity_produces_mult = 0.08
-	planet_stability_add = 3
-	pop_happiness = 0.05
+adastra_heritage_depth_bronze = {
+	all_technology_research_speed = 0.04
+	country_unity_produces_mult = 0.04
+	planet_jobs_produces_mult = 0.04
+	planet_stability_add = 2
 }
 
-# Palier 4 : départ pierre/bronze/fer
-adastra_heritage_4 = {
-	all_technology_research_speed = 0.10
-	country_unity_produces_mult = 0.12
-	planet_stability_add = 5
-	pop_happiness = 0.05
-	leader_lifespan_add = 10
+adastra_heritage_depth_iron = {
+	all_technology_research_speed = 0.04
+	country_unity_produces_mult = 0.04
+	planet_jobs_produces_mult = 0.04
+	planet_stability_add = 1
 }
 
-# 1.2 : Heritage AUDACIEUX - galaxie vivante (IA actives). Jouer sans endormir
-# la galaxie, c'est risquer d'etre raye de la carte avant d'avoir decolle ;
-# la recompense est doublee. Suggestion argroww, echo de la meme idee cote
-# risque/recompense.
-adastra_heritage_1_bold = {
-	all_technology_research_speed = 0.06
-	country_unity_produces_mult = 0.06
+adastra_heritage_depth_medieval = {
+	all_technology_research_speed = 0.03
+	country_unity_produces_mult = 0.03
+	planet_jobs_produces_mult = 0.03
+	planet_stability_add = 1
 }
 
-adastra_heritage_2_bold = {
-	all_technology_research_speed = 0.10
-	country_unity_produces_mult = 0.10
-	planet_stability_add = 4
+adastra_heritage_depth_renaissance = {
+	all_technology_research_speed = 0.03
+	country_unity_produces_mult = 0.03
+	planet_jobs_produces_mult = 0.02
+	planet_stability_add = 1
 }
 
-adastra_heritage_3_bold = {
-	all_technology_research_speed = 0.16
-	country_unity_produces_mult = 0.16
-	planet_stability_add = 6
-	pop_happiness = 0.10
+adastra_heritage_depth_steam = {
+	all_technology_research_speed = 0.02
+	country_unity_produces_mult = 0.02
+	planet_jobs_produces_mult = 0.02
+	planet_stability_add = 1
 }
 
-adastra_heritage_4_bold = {
-	all_technology_research_speed = 0.20
-	country_unity_produces_mult = 0.24
-	planet_stability_add = 10
-	pop_happiness = 0.10
-	leader_lifespan_add = 20
+adastra_heritage_depth_industrial = {
+	all_technology_research_speed = 0.02
+	country_unity_produces_mult = 0.02
+	planet_jobs_produces_mult = 0.01
+}
+
+adastra_heritage_depth_machine = {
+	all_technology_research_speed = 0.02
+	country_unity_produces_mult = 0.02
+	planet_jobs_produces_mult = 0.01
+}
+
+adastra_heritage_depth_atomic = {
+	all_technology_research_speed = 0.01
+	country_unity_produces_mult = 0.01
+	planet_stability_add = 1
+}
+
+adastra_heritage_depth_space = {
+	all_technology_research_speed = 0.01
+	country_unity_produces_mult = 0.01
 }
 
 # Galaxie assoupie : appliqué aux IA si le joueur choisit une galaxie en attente
@@ -121,6 +162,141 @@ adastra_campaign_industry = {
 	planet_jobs_energy_produces_mult = -0.15
 	pop_happiness = -0.10
 	planet_stability_add = -5
+}
+
+# 1.4 : programmes nationaux. Une orientation dure cinq ans et remplace les
+# anciennes campagnes universelles. Chaque triplet raconte les tensions reelles
+# de son age, sans introduire une ressource avant son invention.
+adastra_programme_stone_stores = {
+	planet_jobs_food_produces_mult = 0.15
+	logistic_growth_mult = 0.05
+}
+adastra_programme_stone_craft = {
+	planet_jobs_minerals_produces_mult = 0.15
+	all_technology_research_speed = 0.03
+}
+adastra_programme_stone_clans = {
+	country_unity_produces_mult = 0.12
+	planet_stability_add = 1
+}
+
+adastra_programme_bronze_granaries = {
+	planet_jobs_food_produces_mult = 0.20
+	logistic_growth_mult = 0.05
+}
+adastra_programme_bronze_foundries = {
+	planet_jobs_minerals_produces_mult = 0.20
+	planet_building_build_speed_mult = 0.05
+}
+adastra_programme_bronze_trade = {
+	country_unity_produces_mult = 0.10
+	planet_amenities_mult = 0.05
+}
+
+adastra_programme_iron_cadastre = {
+	planet_jobs_food_produces_mult = 0.15
+	planet_jobs_minerals_produces_mult = 0.10
+}
+adastra_programme_iron_civic_works = {
+	planet_building_build_speed_mult = 0.10
+	planet_stability_add = 2
+}
+adastra_programme_iron_markets = {
+	country_trade_produces_mult = 0.15
+	country_unity_produces_mult = 0.05
+}
+
+adastra_programme_medieval_guilds = {
+	planet_jobs_minerals_produces_mult = 0.15
+	planet_jobs_food_produces_mult = 0.10
+}
+adastra_programme_medieval_estates = {
+	planet_jobs_food_produces_mult = 0.20
+	pop_happiness = -0.03
+}
+adastra_programme_medieval_royal_works = {
+	planet_building_build_speed_mult = 0.10
+	country_unity_produces_mult = 0.08
+}
+
+adastra_programme_renaissance_trade = {
+	country_trade_produces_mult = 0.20
+	planet_amenities_mult = 0.05
+}
+adastra_programme_renaissance_workshops = {
+	planet_jobs_consumer_goods_produces_mult = 0.15
+	planet_jobs_minerals_produces_mult = 0.10
+}
+adastra_programme_renaissance_patronage = {
+	all_technology_research_speed = 0.08
+	country_unity_produces_mult = -0.05
+}
+
+adastra_programme_steam_rail = {
+	country_trade_produces_mult = 0.15
+	planet_building_build_speed_mult = 0.10
+}
+adastra_programme_steam_mechanisation = {
+	planet_jobs_food_produces_mult = 0.20
+	planet_jobs_minerals_produces_mult = 0.10
+}
+adastra_programme_steam_reform = {
+	planet_jobs_consumer_goods_produces_mult = 0.15
+	planet_stability_add = 2
+}
+
+adastra_programme_industrial_mass_production = {
+	planet_jobs_consumer_goods_produces_mult = 0.20
+	planet_jobs_alloys_produces_mult = 0.10
+	planet_stability_add = -2
+}
+adastra_programme_industrial_public_education = {
+	all_technology_research_speed = 0.08
+	country_unity_produces_mult = 0.08
+}
+adastra_programme_industrial_extraction = {
+	planet_jobs_minerals_produces_mult = 0.20
+	planet_jobs_alloys_produces_mult = 0.10
+	pop_happiness = -0.05
+}
+
+adastra_programme_machine_electrification = {
+	planet_jobs_energy_produces_mult = 0.20
+	planet_amenities_mult = 0.10
+}
+adastra_programme_machine_consumption = {
+	planet_jobs_consumer_goods_produces_mult = 0.20
+	country_trade_produces_mult = 0.10
+}
+adastra_programme_machine_public_health = {
+	logistic_growth_mult = 0.10
+	pop_happiness = 0.05
+}
+
+adastra_programme_atomic_reconstruction = {
+	planet_building_build_speed_mult = 0.15
+	planet_stability_add = 3
+}
+adastra_programme_atomic_civil_science = {
+	all_technology_research_speed = 0.10
+	country_unity_produces_mult = 0.05
+}
+adastra_programme_atomic_strategic_industry = {
+	planet_jobs_alloys_produces_mult = 0.20
+	planet_jobs_consumer_goods_produces_mult = 0.10
+}
+
+adastra_programme_space_logistics = {
+	country_trade_produces_mult = 0.15
+	planet_jobs_energy_produces_mult = 0.15
+}
+adastra_programme_space_research = {
+	all_technology_research_speed = 0.10
+	planet_amenities_mult = 0.05
+}
+adastra_programme_space_social_investment = {
+	country_unity_produces_mult = 0.10
+	pop_happiness = 0.05
 }
 
 # 1.1 : badges de rythme d'ascension. 1.5 (19/08) : la progression, c'est la
@@ -296,7 +472,7 @@ adastra_young_administration = {
 # capable du reste.
 core_mod_suborbital = {
 	all_technology_research_speed = 0.03
-	country_unity_produces_mult = 0.03
+	ship_speed_mult = 0.03
 }
 
 # Une fusee perdue au pas de tir. Le deuil est reel, il n'est pas eternel.
@@ -309,28 +485,68 @@ core_mod_echec_lancement = {
 # infrastructure.
 core_mod_satellites = {
 	country_unity_produces_mult = 0.04
-	planet_jobs_food_produces_mult = 0.03
 	all_technology_research_speed = 0.03
+	ship_sensor_range_add = 1
 }
 
 # Quelqu'un est monte, et il est redescendu. Ce jour-la, tout le monde
 # regardait la meme chose.
 core_mod_vol_habite = {
-	country_unity_produces_mult = 0.08
-	planet_stability_add = 3
+	country_unity_produces_mult = 0.06
+	planet_stability_add = 2
 }
 
 # Un drapeau plante ailleurs que chez soi.
 core_mod_premier_corps = {
-	country_unity_produces_mult = 0.10
-	planet_stability_add = 4
-	all_technology_research_speed = 0.05
+	country_unity_produces_mult = 0.08
+	planet_stability_add = 3
+	all_technology_research_speed = 0.03
 }
 
 # Le systeme natal n'offrait aucun astre a atteindre. On a construit
 # l'habitat la ou il n'y avait rien - c'est plus difficile, et ca se voit.
 core_mod_station_permanente = {
-	country_unity_produces_mult = 0.10
-	planet_stability_add = 4
-	all_technology_research_speed = 0.06
+	country_unity_produces_mult = 0.08
+	planet_stability_add = 3
+	all_technology_research_speed = 0.03
+}
+
+# 1.4 (2026-08-29 - le premier contact d'une civilisation au sol prend du
+# temps : tant que l'eveil n'a pas atteint le palier haut, la chaine de
+# premier contact des autres empires envers nous avance au quart de sa
+# vitesse. Decouvrir un pre-PRL n'est pas decouvrir un empire : il faut
+# comprendre ce qu'on regarde. Pose et retire par adastra.160.
+# 31/08 (2e passe) - le renfort de vitesse est RETIRE a la demande
+# d'ampynjord : le probleme n'etait pas la vitesse mais la revelation
+# magique. Nos contacts vers les empires sont desormais interceptes
+# (zzz_adastra_first_contact.txt) : ils se concluent sans communications.
+# Le modificateur redevient purement thematique.
+adastra_ciel_lointain = {
+	first_contact_speed_mult = -0.75
+}
+
+# 30/08 - l'illumination technologique recue : un empire nous enseigne.
+# Pose/retire chaque mois par adastra.160 selon le drapeau de pacte vanilla
+# (open_technological_enlightenment_pact, pose par l'action sur NOUS).
+# Le vanilla accelere la situation des pre-PRL IA ; notre progression etant
+# la recherche, l'equivalent honnete est la vitesse de recherche.
+adastra_illumination = {
+	all_technology_research_speed = 0.25
+	country_unity_produces_mult = -0.10
+}
+
+# 31/08 - elans temporaires des evenements de perception et d'eveil.
+# Remplacent un usage fautif d'add_monthly_resource_mult (le parametre
+# `months` n'existe pas : l'effet est une somme forfaitaire).
+adastra_elan_societe = {
+	country_society_tech_research_speed = 0.15
+}
+adastra_elan_physique = {
+	country_physics_tech_research_speed = 0.15
+}
+adastra_elan_ingenierie = {
+	country_engineering_tech_research_speed = 0.15
+}
+adastra_elan_unite = {
+	country_unity_produces_mult = 0.15
 }
