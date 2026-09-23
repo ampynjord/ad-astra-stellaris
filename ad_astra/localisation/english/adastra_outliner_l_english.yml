@@ -2,4 +2,4 @@
  adastra.177.name:0 "Our World Leaves the Charts"
  adastra.177.desc:0 "The lights that settled in our sky now call our whole system theirs. On their charts our world has become a detail of their territory, and our own registers can no longer place it among the lands we govern."
  adastra.177.a:0 "We know where we live."
- adastra.177.recap:0 "£ship_size_science£ While another empire holds the §Ystarbase§! of our home system, our homeworld is missing from the §Youtliner§!: the game only lists planets that belong to one of our sectors.\n£ship_size_science£ The planet is still ours. Reach it with this event's §Ygo to§! button, or from the galaxy map.\n£ship_size_science£ It returns to the outliner once the starbase is ours again (§YReclaim Our Sky§!)."
+ adastra.177.recap:0 "£ship_size_science£ While another empire holds the §Ystarbase§! of our home system, our homeworld is missing from the §Youtliner§!: the game files it under that empire's sector.\n£ship_size_science£ The planet is still ours. Reach it with this event's §Ygo to§! button, or from the galaxy map.\n£ship_size_science£ It returns to the outliner once the starbase is ours again (§YReclaim Our Sky§!)."

@@ -4,14 +4,16 @@
 # common/on_actions/adastra_outliner_on_actions.txt. Il ne modifie aucun
 # evenement existant.
 #
-# Hypothese a confirmer (cartes B19/B22) : le panneau lateral range les
-# planetes par secteur, et un secteur ne couvre que les systemes dont on
-# possede la base stellaire. Un empire confine n'en a pas (adastra.1, .2 et .9
-# la demontent) : sa planete ne tient dans le panneau que par le secteur
-# capitale cree par le moteur avant ce demontage. Quand un autre empire pose
-# son avant-poste chez nous, le systeme rejoint SON secteur et notre planete
-# ne figure plus dans aucun des notres. create_sector ne peut rien tant que
-# la base n'est pas a nous (« We do not own the starbase », verdict du 12/09).
+# 23/09 - test en 4.5 (partie Sol, 2201.02.12) : l'empire confine n'a AUCUN
+# secteur (sectors vide dans la save, ADASTRA DIAG « capitale SANS secteur »)
+# et Terra reste pourtant listee, sous « Secteur frontalier ». Le panneau
+# n'exige donc pas de secteur : la premiere hypothese (planete absente faute
+# de secteur a nous) est fausse.
+#
+# Hypothese a confirmer (cartes B19/B22) : quand un autre empire pose son
+# avant-poste chez nous, le systeme rejoint SON secteur, notre planete le
+# suit et sort de notre groupe frontalier. create_sector ne peut rien tant
+# que la base n'est pas a nous (« We do not own the starbase », 12/09).
 #
 # adastra.176 ecrit dans game.log une ligne ADASTRA DIAG a chaque changement
 # d'etat (secteur de la capitale, proprietaire du systeme natal) : c'est la
@@ -86,14 +88,14 @@ country_event = {
 		}
 		clear_variable = adastra_diag_nouvel_etat
 
-		# Aide au joueur : le systeme natal est a un autre empire et la
-		# capitale n'est plus dans aucun secteur. Une fenetre par occupation ;
-		# le drapeau tombe des que le systeme n'est plus a un autre, pour
-		# qu'une nouvelle occupation previenne a nouveau.
+		# Aide au joueur : le systeme natal est a un autre empire. Pas de
+		# condition sur le secteur (23/09) : la capitale n'en a jamais, et sous
+		# occupation elle peut tomber dans celui de l'occupant. Une fenetre par
+		# occupation ; le drapeau tombe des que le systeme n'est plus a un
+		# autre, pour qu'une nouvelle occupation previenne a nouveau.
 		if = {
 			limit = {
 				capital_scope = {
-					NOT = { exists = sector }
 					solar_system = {
 						has_owner = yes
 						NOT = { is_owned_by = root }
