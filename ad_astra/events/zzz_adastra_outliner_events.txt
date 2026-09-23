@@ -1,0 +1,130 @@
+# Ad Astra 1.4 - monde natal absent du panneau lateral (2026-09-23)
+#
+# Fichier AUTONOME (ids 176-177 du namespace adastra), branche par
+# common/on_actions/adastra_outliner_on_actions.txt. Il ne modifie aucun
+# evenement existant.
+#
+# Hypothese a confirmer (cartes B19/B22) : le panneau lateral range les
+# planetes par secteur, et un secteur ne couvre que les systemes dont on
+# possede la base stellaire. Un empire confine n'en a pas (adastra.1, .2 et .9
+# la demontent) : sa planete ne tient dans le panneau que par le secteur
+# capitale cree par le moteur avant ce demontage. Quand un autre empire pose
+# son avant-poste chez nous, le systeme rejoint SON secteur et notre planete
+# ne figure plus dans aucun des notres. create_sector ne peut rien tant que
+# la base n'est pas a nous (« We do not own the starbase », verdict du 12/09).
+#
+# adastra.176 ecrit dans game.log une ligne ADASTRA DIAG a chaque changement
+# d'etat (secteur de la capitale, proprietaire du systeme natal) : c'est la
+# preuve qui manque. adastra.177 previent le joueur, une fois par occupation,
+# que sa planete a quitte le panneau, et lui donne le bouton pour y aller.
+
+# adastra.176 - diagnostic du panneau lateral (mensuel, cache)
+country_event = {
+	id = adastra.176
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		NOT = { has_country_flag = adastra_completed }
+		exists = capital_scope
+	}
+
+	immediate = {
+		# Etat = secteur (0 ou 10) + proprietaire du systeme natal
+		# (0 personne, 1 nous, 2 un autre empire).
+		set_variable = { which = adastra_diag_nouvel_etat value = 0 }
+		if = {
+			limit = { capital_scope = { exists = sector } }
+			change_variable = { which = adastra_diag_nouvel_etat value = 10 }
+		}
+		if = {
+			limit = { capital_scope = { solar_system = { is_owned_by = root } } }
+			change_variable = { which = adastra_diag_nouvel_etat value = 1 }
+		}
+		else_if = {
+			limit = { capital_scope = { solar_system = { has_owner = yes } } }
+			change_variable = { which = adastra_diag_nouvel_etat value = 2 }
+		}
+
+		# Une ligne au premier passage puis a chaque changement, jamais plus :
+		# le journal doit rester lisible sur deux siecles de confinement.
+		if = {
+			limit = {
+				OR = {
+					NOT = { has_country_flag = adastra_diag_etat_connu }
+					NOT = {
+						check_variable = { which = adastra_diag_etat value = adastra_diag_nouvel_etat }
+					}
+				}
+			}
+			set_country_flag = adastra_diag_etat_connu
+			set_variable = { which = adastra_diag_etat value = adastra_diag_nouvel_etat }
+			if = {
+				limit = { check_variable = { which = adastra_diag_etat value = 0 } }
+				log = "ADASTRA DIAG panneau [This.GetName] : capitale SANS secteur, systeme natal SANS proprietaire"
+			}
+			else_if = {
+				limit = { check_variable = { which = adastra_diag_etat value = 1 } }
+				log = "ADASTRA DIAG panneau [This.GetName] : capitale SANS secteur, systeme natal A NOUS"
+			}
+			else_if = {
+				limit = { check_variable = { which = adastra_diag_etat value = 2 } }
+				log = "ADASTRA DIAG panneau [This.GetName] : capitale SANS secteur, systeme natal A UN AUTRE EMPIRE"
+			}
+			else_if = {
+				limit = { check_variable = { which = adastra_diag_etat value = 10 } }
+				log = "ADASTRA DIAG panneau [This.GetName] : capitale DANS un secteur, systeme natal SANS proprietaire"
+			}
+			else_if = {
+				limit = { check_variable = { which = adastra_diag_etat value = 11 } }
+				log = "ADASTRA DIAG panneau [This.GetName] : capitale DANS un secteur, systeme natal A NOUS"
+			}
+			else = {
+				log = "ADASTRA DIAG panneau [This.GetName] : capitale DANS un secteur, systeme natal A UN AUTRE EMPIRE"
+			}
+		}
+		clear_variable = adastra_diag_nouvel_etat
+
+		# Aide au joueur : le systeme natal est a un autre empire et la
+		# capitale n'est plus dans aucun secteur. Une fenetre par occupation ;
+		# le drapeau tombe des que le systeme n'est plus a un autre, pour
+		# qu'une nouvelle occupation previenne a nouveau.
+		if = {
+			limit = {
+				capital_scope = {
+					NOT = { exists = sector }
+					solar_system = {
+						has_owner = yes
+						NOT = { is_owned_by = root }
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_country_flag = adastra_panneau_prevenu } }
+				set_country_flag = adastra_panneau_prevenu
+				capital_scope = { save_event_target_as = adastra_monde_natal }
+				country_event = { id = adastra.177 }
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = adastra_panneau_prevenu }
+			remove_country_flag = adastra_panneau_prevenu
+		}
+	}
+}
+
+# adastra.177 - le monde natal a quitte le panneau lateral
+country_event = {
+	id = adastra.177
+	title = "adastra.177.name"
+	desc = "adastra.177.desc"
+	picture = GFX_evt_adastra_situation
+	location = event_target:adastra_monde_natal
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.177.a"
+		custom_tooltip = "adastra.177.recap"
+	}
+}
