@@ -22,7 +22,10 @@ DEUX PROBLEMES, UN SEUL FICHIER DE SORTIE
     Une designation vanilla sans bloc potential en recoit un, reduit a la
     garde : sans cela elle resterait toujours valide.
 
-    python3 tools/gen_colony_type_overrides.py <fichier_vanilla> --out <fichier>
+    python3 tools/gen_colony_type_overrides.py <fichiers_vanilla...> --out <fichier>
+
+    Depuis la 4.5, le jeu de base repartit les designations dans six fichiers
+    (common/colony_types/0[0-5]_*.txt) : les passer tous, dans l'ordre.
 """
 import argparse
 import os
@@ -66,11 +69,12 @@ def poser_garde(nom, bloc):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("vanilla_file")
+    ap.add_argument("vanilla_files", nargs="+")
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
-    src = open(args.vanilla_file, encoding="utf-8-sig", errors="replace").read()
+    src = "\n".join(open(p, encoding="utf-8-sig", errors="replace").read()
+                    for p in args.vanilla_files)
     out = ["# Ad Astra - designations de colonie : elargissement et verrou.",
            "# FICHIER GENERE PAR tools/gen_colony_type_overrides.py - NE PAS EDITER A LA MAIN.",
            "#",
