@@ -5,5 +5,5 @@ tags={
 	"Technologies"
 }
 name="Ad Astra"
-supported_version="v4.4.*"
+supported_version="v4.5.*"
 picture="thumbnail.png"

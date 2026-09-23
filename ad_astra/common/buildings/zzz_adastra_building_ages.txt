@@ -1314,7 +1314,12 @@ building_order_keep = {
 		}
 
 		owner = { has_origin = origin_toxic_knights }
-		planet = { has_carrier_flag = toxic_knights_habitat }
+		planet = {
+			OR = {
+				has_planet_flag = toxic_knights_habitat
+				has_carrier_flag = toxic_knights_arkship
+			}
+		}
 		owner = { NOT = { has_country_flag = quest_abandoned } }
 	}
 
@@ -3655,7 +3660,7 @@ building_toxic_bath = {
 	}
 }
 
-### building_dread_encampment -> iron
+### building_dread_encampment -> steam
 building_dread_encampment = {
 	base_buildtime = @b2_time
 	planet_limit = 1
@@ -3668,14 +3673,14 @@ building_dread_encampment = {
 	}
 
 	potential = {
-		# Ad Astra : Camp de terreur : razzia et guerre organisee, age du fer
+		# Ad Astra : Camp de terreur : historiquement ancien, mais son entretien vanilla exige electricite et biens de consommation
 		OR = {
 			NOT = { exists = owner }
 			owner = {
 				OR = {
 					NOT = { has_origin = origin_adastra }
 					has_country_flag = adastra_completed
-					has_country_flag = adastra_reached_iron
+					has_country_flag = adastra_reached_steam
 				}
 			}
 		}

@@ -3,7 +3,7 @@
 default = {
 	# Ad Astra 1.4 (integration pre-PRL) 2026-08-29 - TEST DE LA FUITE D'AFFICHAGE.
 	#
-	# Copie STRICTE du bloc vanilla (00_country_types.txt), un seul ajout :
+	# Copie STRICTE du bloc vanilla 4.5 (00_country_types.txt), un seul ajout :
 	# `faction = { intel_effects_surveyed = no }`.
 	#
 	# Constate sur trois parties : quand un empire normal possede le systeme
@@ -51,7 +51,6 @@ default = {
 	ai = {
 		enabled = yes
 		declare_war = yes
-		min_navy_for_wars = 0.5
 		min_assault_armies_for_wars = @armies_for_declaring_war
 		colonizer = yes
 		internal_policies = yes
@@ -91,6 +90,9 @@ default = {
 	resources = {
 		category = country_base
 		produces = {
+			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
+			}
 			energy = 20
 			physics_research = 10
 			society_research = 10
@@ -102,11 +104,13 @@ default = {
 		produces = {
 			trigger = {
 				is_nomadic = no
+				NOT = { has_origin = origin_nomadic_purger }
 			}
 			minerals = 20
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				OR = {
 					is_gestalt = no
 					has_valid_civic = civic_machine_servitor
@@ -116,6 +120,7 @@ default = {
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				OR = { #Either
 					# You're a non-lithoid non-individual machine, regular empire or hive mind
 					AND = {
@@ -150,6 +155,7 @@ default = {
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				# Either
 				OR = {
 					# You're a lithoid regular empire or hive mind
@@ -179,12 +185,14 @@ default = {
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				is_machine_empire = yes
 			}
 			energy = 20
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				is_lithoid_empire = yes
 				has_valid_civic = civic_hive_cordyceptic_drones
 			}
@@ -193,6 +201,7 @@ default = {
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				OR = {
 					is_infernal_empire = yes
 					# Or a machine with an infernal species

@@ -202,7 +202,6 @@ tech_astral_harvesting = {
 	area = physics
 	tier = 2
 	category = { particles }
-	ai_update_type = all
 	is_rare = no
 	weight = @tier2weight1
 
@@ -211,7 +210,7 @@ tech_astral_harvesting = {
 	}
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -635,19 +634,25 @@ tech_weaver_bio_healing_1 = {
 
 	ai_weight = {
 		factor = @favored_weapon_ai_tech_factor
-        modifier = {
-            factor = 1.5
-            has_valid_ai_personality = yes
-            OR = {
-                has_ai_personality = honorbound_warriors
-                has_ai_personality = hegemonic_imperialists
-                has_ai_personality = democratic_crusaders
-                has_ai_personality = hive_mind
-                has_ai_personality = hive_mind_friend
-                has_ai_personality = benevolent_wilderness
-                has_ai_personality = rampant_wilderness
-            }
-        }
+		modifier = {
+			factor = 1.5
+			has_valid_ai_personality = yes
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = hive_mind
+				has_ai_personality = hive_mind_friend
+				has_ai_personality = benevolent_wilderness
+				has_ai_personality = rampant_wilderness
+			}
+		}
+		inline_script = {
+			script = ai/ship_role_preference_weight
+			SHIP_SIZE = weaver_stage_1
+			ROLE = buffer_role
+			OPPOSITE_ROLE = debuffer_role
+		}
 	}
 }
 
@@ -661,7 +666,7 @@ tech_weaver_bio_healing_2 = {
 	prerequisites = { "tech_weaver_bio_healing_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -674,19 +679,25 @@ tech_weaver_bio_healing_2 = {
 
 	ai_weight = {
 		factor = @favored_weapon_ai_tech_factor
-        modifier = {
-            factor = 1.5
-            has_valid_ai_personality = yes
-            OR = {
-                has_ai_personality = honorbound_warriors
-                has_ai_personality = hegemonic_imperialists
-                has_ai_personality = democratic_crusaders
-                has_ai_personality = hive_mind
-                has_ai_personality = hive_mind_friend
-                has_ai_personality = benevolent_wilderness
-                has_ai_personality = rampant_wilderness
-            }
-        }
+		modifier = {
+			factor = 1.5
+			has_valid_ai_personality = yes
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = hive_mind
+				has_ai_personality = hive_mind_friend
+				has_ai_personality = benevolent_wilderness
+				has_ai_personality = rampant_wilderness
+			}
+		}
+		inline_script = {
+			script = ai/ship_role_preference_weight
+			SHIP_SIZE = weaver_stage_1
+			ROLE = buffer_role
+			OPPOSITE_ROLE = debuffer_role
+		}
 	}
 }
 
@@ -700,7 +711,7 @@ tech_weaver_bio_evasion_2 = {
 	prerequisites = { "tech_weaver_bio_evasion_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -713,19 +724,25 @@ tech_weaver_bio_evasion_2 = {
 
 	ai_weight = {
 		factor = @favored_weapon_ai_tech_factor
-        modifier = {
-            factor = 1.5
-            has_valid_ai_personality = yes
-            OR = {
-                has_ai_personality = honorbound_warriors
-                has_ai_personality = hegemonic_imperialists
-                has_ai_personality = democratic_crusaders
-                has_ai_personality = hive_mind
-                has_ai_personality = hive_mind_friend
-                has_ai_personality = benevolent_wilderness
-                has_ai_personality = rampant_wilderness
-            }
-        }
+		modifier = {
+			factor = 1.5
+			has_valid_ai_personality = yes
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = hive_mind
+				has_ai_personality = hive_mind_friend
+				has_ai_personality = benevolent_wilderness
+				has_ai_personality = rampant_wilderness
+			}
+		}
+		inline_script = {
+			script = ai/ship_role_preference_weight
+			SHIP_SIZE = weaver_stage_1
+			ROLE = buffer_role
+			OPPOSITE_ROLE = debuffer_role
+		}
 	}
 }
 
@@ -752,19 +769,25 @@ tech_weaver_bio_fire_rate_1 = {
 
 	ai_weight = {
 		factor = @favored_weapon_ai_tech_factor
-        modifier = {
-            factor = 1.5
-            has_valid_ai_personality = yes
-            OR = {
-                has_ai_personality = honorbound_warriors
-                has_ai_personality = hegemonic_imperialists
-                has_ai_personality = democratic_crusaders
-                has_ai_personality = hive_mind
-                has_ai_personality = hive_mind_friend
-                has_ai_personality = benevolent_wilderness
-                has_ai_personality = rampant_wilderness
-            }
-        }
+		modifier = {
+			factor = 1.5
+			has_valid_ai_personality = yes
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = hive_mind
+				has_ai_personality = hive_mind_friend
+				has_ai_personality = benevolent_wilderness
+				has_ai_personality = rampant_wilderness
+			}
+		}
+		inline_script = {
+			script = ai/ship_role_preference_weight
+			SHIP_SIZE = weaver_stage_1
+			ROLE = buffer_role
+			OPPOSITE_ROLE = debuffer_role
+		}
 	}
 }
 
@@ -778,7 +801,7 @@ tech_weaver_bio_fire_rate_2 = {
 	prerequisites = { "tech_weaver_bio_fire_rate_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -791,19 +814,25 @@ tech_weaver_bio_fire_rate_2 = {
 
 	ai_weight = {
 		factor = @favored_weapon_ai_tech_factor
-        modifier = {
-            factor = 1.5
-            has_valid_ai_personality = yes
-            OR = {
-                has_ai_personality = honorbound_warriors
-                has_ai_personality = hegemonic_imperialists
-                has_ai_personality = democratic_crusaders
-                has_ai_personality = hive_mind
-                has_ai_personality = hive_mind_friend
-                has_ai_personality = benevolent_wilderness
-                has_ai_personality = rampant_wilderness
-            }
-        }
+		modifier = {
+			factor = 1.5
+			has_valid_ai_personality = yes
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = hive_mind
+				has_ai_personality = hive_mind_friend
+				has_ai_personality = benevolent_wilderness
+				has_ai_personality = rampant_wilderness
+			}
+		}
+		inline_script = {
+			script = ai/ship_role_preference_weight
+			SHIP_SIZE = weaver_stage_1
+			ROLE = buffer_role
+			OPPOSITE_ROLE = debuffer_role
+		}
 	}
 }
 
@@ -830,19 +859,25 @@ tech_weaver_bio_confuser_1 = {
 
 	ai_weight = {
 		factor = @favored_weapon_ai_tech_factor
-        modifier = {
-            factor = 1.5
-            has_valid_ai_personality = yes
-            OR = {
-                has_ai_personality = honorbound_warriors
-                has_ai_personality = hegemonic_imperialists
-                has_ai_personality = democratic_crusaders
-                has_ai_personality = hive_mind
-                has_ai_personality = hive_mind_friend
-                has_ai_personality = benevolent_wilderness
-                has_ai_personality = rampant_wilderness
-            }
-        }
+		modifier = {
+			factor = 1.5
+			has_valid_ai_personality = yes
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = hive_mind
+				has_ai_personality = hive_mind_friend
+				has_ai_personality = benevolent_wilderness
+				has_ai_personality = rampant_wilderness
+			}
+		}
+		inline_script = {
+			script = ai/ship_role_preference_weight
+			SHIP_SIZE = weaver_stage_1
+			ROLE = debuffer_role
+			OPPOSITE_ROLE = buffer_role
+		}
 	}
 }
 
@@ -856,7 +891,7 @@ tech_weaver_bio_confuser_2 = {
 	prerequisites = { "tech_weaver_bio_confuser_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -869,19 +904,25 @@ tech_weaver_bio_confuser_2 = {
 
 	ai_weight = {
 		factor = @favored_weapon_ai_tech_factor
-        modifier = {
-            factor = 1.5
-            has_valid_ai_personality = yes
-            OR = {
-                has_ai_personality = honorbound_warriors
-                has_ai_personality = hegemonic_imperialists
-                has_ai_personality = democratic_crusaders
-                has_ai_personality = hive_mind
-                has_ai_personality = hive_mind_friend
-                has_ai_personality = benevolent_wilderness
-                has_ai_personality = rampant_wilderness
-            }
-        }
+		modifier = {
+			factor = 1.5
+			has_valid_ai_personality = yes
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = hive_mind
+				has_ai_personality = hive_mind_friend
+				has_ai_personality = benevolent_wilderness
+				has_ai_personality = rampant_wilderness
+			}
+		}
+		inline_script = {
+			script = ai/ship_role_preference_weight
+			SHIP_SIZE = weaver_stage_1
+			ROLE = debuffer_role
+			OPPOSITE_ROLE = buffer_role
+		}
 	}
 }
 
@@ -895,7 +936,7 @@ tech_weaver_bio_anti_evasion_2 = {
 	prerequisites = { "tech_weaver_bio_anti_evasion_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -908,19 +949,25 @@ tech_weaver_bio_anti_evasion_2 = {
 
 	ai_weight = {
 		factor = @favored_weapon_ai_tech_factor
-        modifier = {
-            factor = 1.5
-            has_valid_ai_personality = yes
-            OR = {
-                has_ai_personality = honorbound_warriors
-                has_ai_personality = hegemonic_imperialists
-                has_ai_personality = democratic_crusaders
-                has_ai_personality = hive_mind
-                has_ai_personality = hive_mind_friend
-                has_ai_personality = benevolent_wilderness
-                has_ai_personality = rampant_wilderness
-            }
-        }
+		modifier = {
+			factor = 1.5
+			has_valid_ai_personality = yes
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = hive_mind
+				has_ai_personality = hive_mind_friend
+				has_ai_personality = benevolent_wilderness
+				has_ai_personality = rampant_wilderness
+			}
+		}
+		inline_script = {
+			script = ai/ship_role_preference_weight
+			SHIP_SIZE = weaver_stage_1
+			ROLE = debuffer_role
+			OPPOSITE_ROLE = buffer_role
+		}
 	}
 }
 
@@ -947,19 +994,25 @@ tech_weaver_bio_anti_fire_rate_1 = {
 
 	ai_weight = {
 		factor = @favored_weapon_ai_tech_factor
-        modifier = {
-            factor = 1.5
-            has_valid_ai_personality = yes
-            OR = {
-                has_ai_personality = honorbound_warriors
-                has_ai_personality = hegemonic_imperialists
-                has_ai_personality = democratic_crusaders
-                has_ai_personality = hive_mind
-                has_ai_personality = hive_mind_friend
-                has_ai_personality = benevolent_wilderness
-                has_ai_personality = rampant_wilderness
-            }
-        }
+		modifier = {
+			factor = 1.5
+			has_valid_ai_personality = yes
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = hive_mind
+				has_ai_personality = hive_mind_friend
+				has_ai_personality = benevolent_wilderness
+				has_ai_personality = rampant_wilderness
+			}
+		}
+		inline_script = {
+			script = ai/ship_role_preference_weight
+			SHIP_SIZE = weaver_stage_1
+			ROLE = debuffer_role
+			OPPOSITE_ROLE = buffer_role
+		}
 	}
 }
 
@@ -973,7 +1026,7 @@ tech_weaver_bio_anti_fire_rate_2 = {
 	prerequisites = { "tech_weaver_bio_anti_fire_rate_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -986,19 +1039,25 @@ tech_weaver_bio_anti_fire_rate_2 = {
 
 	ai_weight = {
 		factor = @favored_weapon_ai_tech_factor
-        modifier = {
-            factor = 1.5
-            has_valid_ai_personality = yes
-            OR = {
-                has_ai_personality = honorbound_warriors
-                has_ai_personality = hegemonic_imperialists
-                has_ai_personality = democratic_crusaders
-                has_ai_personality = hive_mind
-                has_ai_personality = hive_mind_friend
-                has_ai_personality = benevolent_wilderness
-                has_ai_personality = rampant_wilderness
-            }
-        }
+		modifier = {
+			factor = 1.5
+			has_valid_ai_personality = yes
+			OR = {
+				has_ai_personality = honorbound_warriors
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = hive_mind
+				has_ai_personality = hive_mind_friend
+				has_ai_personality = benevolent_wilderness
+				has_ai_personality = rampant_wilderness
+			}
+		}
+		inline_script = {
+			script = ai/ship_role_preference_weight
+			SHIP_SIZE = weaver_stage_1
+			ROLE = debuffer_role
+			OPPOSITE_ROLE = buffer_role
+		}
 	}
 }
 
@@ -1019,7 +1078,7 @@ tech_storm_manipulation = {
 	prerequisites = { "tech_industrial_storm_protection" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -1034,10 +1093,13 @@ tech_storm_manipulation = {
 
 		modifier = {
 			factor = 0
-			OR = {
-				has_origin = origin_storm_chasers # Unlocked in the origin situation
-				num_cosmic_storms_encountered < 3
-			}
+			has_origin = origin_storm_chasers # Unlocked in the origin situation
+		}
+
+		modifier = {
+			factor = 0
+			is_nomadic = no
+			num_cosmic_storms_encountered < 3
 		}
 	}
 
@@ -1098,6 +1160,7 @@ tech_industrial_storm_protection = {
 
 		modifier = {
 			factor = 0
+			is_nomadic = no
 			num_cosmic_storms_encountered < 1
 		}
 		modifier = {
@@ -1242,6 +1305,7 @@ tech_storm_prediction_1 = {
 
 		modifier = {
 			factor = 0
+			is_nomadic = no
 			num_cosmic_storms_encountered < 1
 		}
 
@@ -1306,6 +1370,7 @@ tech_ship_hull_storm_breaker_1 = {
 
 		modifier = {
 			factor = 0
+			is_nomadic = no
 			num_cosmic_storms_encountered < 1
 		}
 		modifier = {
@@ -1420,6 +1485,7 @@ tech_ship_storm_weapons_1 = {
 
 		modifier = {
 			factor = 0
+			is_nomadic = no
 			num_cosmic_storms_encountered < 1
 		}
 		modifier = {
@@ -1509,7 +1575,6 @@ tech_gargantuan_evolution = {
 	category = { biology }
 	tier = 1
 	is_rare = yes
-	ai_update_type = all
 	weight = 0
 
 	weight_modifier = {
@@ -1765,7 +1830,7 @@ tech_corvette_hull_1 = {
 	}
 
 	ai_weight = {
-
+		inline_script = "ai/hull_preference_weight"
 	}
 
 	technology_swap = {
@@ -1794,7 +1859,7 @@ tech_corvette_hull_2 = {
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -1826,7 +1891,7 @@ tech_corvette_hull_2 = {
 	}
 
 	ai_weight = {
-
+		inline_script = "ai/hull_preference_weight"
 	}
 
 	technology_swap = {
@@ -1902,7 +1967,7 @@ tech_destroyer_hull_1 = {
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -1924,7 +1989,7 @@ tech_destroyer_hull_1 = {
 	}
 
 	ai_weight = {
-
+		inline_script = "ai/hull_preference_weight"
 	}
 
 	technology_swap = {
@@ -2069,7 +2134,6 @@ tech_strike_craft_1 = {
 	cost = @tier1cost3
 	area = engineering
 	tier = 1
-	ai_update_type = military
 	category = { voidcraft }
 	weight = @tier1weight3
 
@@ -2094,13 +2158,9 @@ tech_strike_craft_1 = {
 
 	ai_weight = {
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_strike_craft
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_strike_craft }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_strike_craft
 		}
 	}
 	potential = {
@@ -2125,7 +2185,6 @@ tech_strike_craft_2 = {
 	cost = @tier2cost3
 	area = engineering
 	tier = 2
-	ai_update_type = military
 	category = { voidcraft }
 	prerequisites = { "tech_strike_craft_1" }
 	weight = @tier2weight3
@@ -2151,17 +2210,13 @@ tech_strike_craft_2 = {
 
 	ai_weight = {
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_strike_craft
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_strike_craft }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_strike_craft
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -2175,7 +2230,6 @@ tech_ship_armor_2 = {
 	cost = @tier1cost2
 	tier = 1
 	category = { materials }
-	ai_update_type = all
 	prerequisites = { "tech_ship_armor_1" }
 	weight = @tier1weight2
 
@@ -2207,7 +2261,7 @@ tech_ship_armor_2 = {
 	}
 
 	ai_weight = {
-
+		inline_script = "ai/armor_preference_weight"
 	}
 	potential = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
@@ -2227,7 +2281,6 @@ tech_ship_armor_3 = {
 	cost = @tier2cost2
 	tier = 2
 	category = { materials }
-	ai_update_type = all
 	prerequisites = { "tech_ship_armor_2" }
 	weight = @tier2weight2
 
@@ -2259,10 +2312,10 @@ tech_ship_armor_3 = {
 	}
 
 	ai_weight = {
-
+		inline_script = "ai/armor_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -2276,7 +2329,6 @@ tech_crystal_armor_1 = {
 	cost = @tier2cost3
 	tier = 2
 	category = { materials }
-	ai_update_type = all
 	weight = 0
 	weight_modifier = {
 		modifier = {
@@ -2286,10 +2338,10 @@ tech_crystal_armor_1 = {
 	}
 
 	ai_weight = {
-
+		inline_script = "ai/damage_reduction_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -2303,7 +2355,6 @@ tech_armor_hardeners_1 = {
 	cost = @tier2cost3
 	tier = 2
 	category = { materials }
-	ai_update_type = all
 	prerequisites = { "tech_advanced_metallurgy_1" "tech_rare_crystals" }
 	weight = @tier2weight3
 
@@ -2312,10 +2363,10 @@ tech_armor_hardeners_1 = {
 	}
 
 	ai_weight = {
-
+		inline_script = "ai/armor_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -2329,7 +2380,6 @@ tech_thrusters_2 = {
 	cost = @tier2cost1
 	tier = 2
 	category = { propulsion }
-	ai_update_type = all
 	prerequisites = { "tech_thrusters_1" }
 	weight = @tier2weight1
 
@@ -2375,7 +2425,7 @@ tech_thrusters_2 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -3258,7 +3308,6 @@ tech_afterburners_1 = {
 	cost = @tier1cost2
 	tier = 1
 	category = { propulsion }
-	ai_update_type = all
 	prerequisites = { "tech_thrusters_1" }
 	weight = @tier1weight2
 
@@ -3379,7 +3428,6 @@ tech_mass_drivers_2 = {
 	cost = @tier1cost2
 	tier = 1
 	category = { propulsion }
-	ai_update_type = military
 	prerequisites = { "tech_mass_drivers_1" }
 	weight = @tier1weight2
 
@@ -3423,13 +3471,9 @@ tech_mass_drivers_2 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_kinetic
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_kinetic }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_kinetic
 		}
 	}
 	potential = {
@@ -3450,7 +3494,6 @@ tech_mass_drivers_3 = {
 	cost = @tier2cost1
 	tier = 2
 	category = { propulsion }
-	ai_update_type = military
 	prerequisites = { "tech_mass_drivers_2" }
 	weight = @tier2weight1
 
@@ -3494,17 +3537,13 @@ tech_mass_drivers_3 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_kinetic
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_kinetic }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_kinetic
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -3518,7 +3557,6 @@ tech_autocannons_1 = {
 	cost = @tier2cost2
 	tier = 2
 	category = { propulsion }
-	ai_update_type = military
 	prerequisites = {
 		tech_mass_drivers_2
 	}
@@ -3568,17 +3606,13 @@ tech_autocannons_1 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_kinetic
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_kinetic }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_kinetic
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -3592,7 +3626,6 @@ tech_missiles_2 = {
 	cost = @tier1cost2
 	tier = 1
 	category = { propulsion }
-	ai_update_type = military
 	prerequisites = { "tech_missiles_1" "tech_fusion_power" }
 	weight = @tier1weight2
 
@@ -3618,13 +3651,9 @@ tech_missiles_2 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_explosive
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_explosive }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_explosive
 		}
 	}
 	potential = {
@@ -3646,7 +3675,6 @@ tech_missiles_3 = {
 	cost = @tier2cost1
 	tier = 2
 	category = { propulsion }
-	ai_update_type = military
 	prerequisites = { "tech_missiles_2" }
 	weight = @tier2weight1
 
@@ -3672,17 +3700,13 @@ tech_missiles_3 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_explosive
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_explosive }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_explosive
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -3697,7 +3721,6 @@ tech_swarmer_missiles_1 = {
 	cost = @tier2cost2
 	tier = 2
 	category = { propulsion }
-	ai_update_type = military
 	prerequisites = {
 		OR = {
 			tech_harbingers
@@ -3741,17 +3764,13 @@ tech_swarmer_missiles_1 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_explosive
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_explosive }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_explosive
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -3765,7 +3784,6 @@ tech_torpedoes_1 = {
 	cost = @tier1cost2
 	tier = 1
 	category = { propulsion }
-	ai_update_type = military
 	prerequisites = { "tech_corvettes" }
 	weight = @tier1weight2
 
@@ -3809,13 +3827,9 @@ tech_torpedoes_1 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_explosive
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_explosive }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_explosive
 		}
 	}
 }
@@ -3928,13 +3942,12 @@ tech_cloaking_1 = {
 	area = physics
 	tier = 2
 	category = { field_manipulation }
-	ai_update_type = all
 	is_rare = yes
 	prerequisites = { "tech_shields_2" }
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -3981,7 +3994,10 @@ tech_cloaking_1 = {
 	}
 
 	ai_weight = {
-
+		modifier = {
+			factor = 2.0
+			has_ai_personality_behaviour = sneak_attacker
+		}
 	}
 }
 
@@ -3991,13 +4007,12 @@ tech_detection_array = {
 	area = physics
 	tier = 2
 	category = { computing }
-	ai_update_type = all
 	is_rare = yes
 	prerequisites = { "tech_sensors_2" }
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4035,13 +4050,12 @@ tech_assisted_detection = {
 	area = physics
 	tier = 2
 	category = { computing }
-	ai_update_type = all
 	is_rare = yes
 	prerequisites = { "tech_detection_array" }
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4080,12 +4094,11 @@ tech_unusual_senses = {
 	area = physics
 	tier = 2
 	category = { particles }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4110,12 +4123,11 @@ tech_new_numbers = {
 	area = physics
 	tier = 2
 	category = { computing }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4135,12 +4147,11 @@ tech_trinary_computing = {
 	area = physics
 	tier = 2
 	category = { computing }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4161,12 +4172,11 @@ tech_atmospheric_orbital_mechanics = {
 	area = physics
 	tier = 2
 	category = { computing }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4201,12 +4211,11 @@ tech_predatory_tactics = {
 	area = society
 	tier = 2
 	category = { military_theory }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4246,12 +4255,11 @@ tech_satisfying_insults = {
 	area = society
 	tier = 2
 	category = { statecraft }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4284,12 +4292,11 @@ tech_compact_living = {
 	area = society
 	tier = 2
 	category = { statecraft }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4315,12 +4322,11 @@ tech_alien_topography = {
 	area = society
 	tier = 2
 	category = { new_worlds }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4361,12 +4367,11 @@ tech_xeno_aesthetics = {
 	area = society
 	tier = 2
 	category = { statecraft }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4393,12 +4398,11 @@ tech_lost_building_methods = {
 	area = engineering
 	tier = 2
 	category = { industry }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4419,12 +4423,11 @@ tech_supreme_alloy = {
 	area = engineering
 	tier = 2
 	category = { materials }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4444,12 +4447,11 @@ tech_ordered_retreat = {
 	area = engineering
 	tier = 2
 	category = { voidcraft }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4469,12 +4471,11 @@ tech_temple_of_transportation = {
 	area = engineering
 	tier = 2
 	category = { voidcraft }
-	ai_update_type = all
 	is_insight = yes
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4607,10 +4608,9 @@ tech_alien_cloning = {
 	category = { biology }
 	weight = @tier2weight1
 	prerequisites = { tech_gravity_wells }
-	ai_update_type = military
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4663,10 +4663,9 @@ tech_improved_incubators = {
 	category = { biology }
 	weight = @tier3weight1
 	prerequisites = { "tech_alien_cloning" }
-	ai_update_type = military
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4895,14 +4894,13 @@ tech_orbital_arc_furnace = {
     cost = @tier2cost3
     tier = 2
     category = { materials }
-    ai_update_type = all
     weight = 0
     is_rare = yes
     is_reverse_engineerable = no
     weight = @tier2weight3
 
     potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4962,14 +4960,13 @@ tech_dyson_swarm = {
     cost = @tier2cost3
     tier = 2
     category = { computing }
-    ai_update_type = all
     weight = 0
     is_rare = yes
     is_reverse_engineerable = no
     weight = @tier2weight3
 
     potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -5036,7 +5033,6 @@ tech_orbital_trash_dispersal = {
 	tier = 1
 	is_rare = yes
 	category = { propulsion }
-	ai_update_type = military
 	weight = 0
 
 	weight_modifier = {
@@ -5193,67 +5189,6 @@ tech_planetary_engineering = {
 
 	ai_weight = {
 	}
-}
-
-# source vanilla : 00_nomads_dlc_tech.txt
-tech_dyson_gun = {
-    area = engineering
-    cost = @tier2cost3
-    tier = 2
-    category = { materials }
-    ai_update_type = all
-    weight = 0
-    is_rare = yes
-    is_reverse_engineerable = no
-    weight = @tier2weight3
-
-    potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
-		OR = {
-			NOT = { has_origin = origin_adastra }
-			has_country_flag = adastra_completed
-		}
-        has_nomads_dlc = yes
-        is_nomadic = no
-    }
-
-    weight_modifier = {
-        modifier = {
-            factor = 0.5
-        }
-
-        modifier = {
-            factor = 0.2
-            NOR = {
-                has_trait_in_council = { TRAIT = leader_trait_expertise_materials }
-                has_trait_in_council = { TRAIT = leader_trait_curator }
-                has_trait_in_council = { TRAIT = leader_trait_spark_of_genius }
-                has_trait_in_council = { TRAIT = leader_trait_spark_of_genius_2 }
-                has_trait_in_council = { TRAIT = leader_trait_maniacal }
-                has_trait_in_council = { TRAIT = leader_trait_maniacal_2 }
-                has_trait_in_council = { TRAIT = leader_trait_maniacal_3 }
-            }
-        }
-        modifier = {
-            factor = 2
-            OR = {
-                has_megastructure = dyson_gun_0
-                has_megastructure = dyson_gun_1
-                has_megastructure = dyson_gun_2
-                has_megastructure = dyson_gun_3
-            }
-        }
-        inline_script = {
-            script = technologies/rare_technologies_weight_modifiers
-            TECHNOLOGY = tech_dyson_gun
-        }
-    }
-    prereqfor_desc = {
-        ship = {
-            title = "allow_dyson_gun"
-            desc = "dyson_gun_0_MEGASTRUCTURE_DETAILS"
-        }
-    }
 }
 
 # source vanilla : 00_overlord_tech.txt
@@ -6009,7 +5944,6 @@ tech_combat_computers_1 = {
 	tier = 1
 	cost = @tier1cost3
 	category = { computing }
-	ai_update_type = military
 	prerequisites = { "tech_administrative_ai" }
 	weight = @tier1weight3
 
@@ -6073,7 +6007,6 @@ tech_auxiliary_fire_control = {
 	tier = 1
 	cost = @tier1cost3
 	category = { computing }
-	ai_update_type = military
 	prerequisites = { "tech_combat_computers_1" }
 	weight = @tier1weight3
 
@@ -6310,7 +6243,6 @@ tech_fusion_power = {
 	cost = @tier1cost2
 	tier = 1
 	category = { particles }
-	ai_update_type = all
 	prerequisites = { "tech_fission_power" }
 	weight = @tier1weight2
 
@@ -6376,7 +6308,6 @@ tech_cold_fusion_power = {
 	cost = @tier2cost2
 	tier = 2
 	category = { particles }
-	ai_update_type = all
 	prerequisites = { "tech_fusion_power" }
 	weight = @tier2weight2
 
@@ -6423,7 +6354,7 @@ tech_cold_fusion_power = {
 
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6437,7 +6368,6 @@ tech_reactor_boosters_2 = {
 	cost = @tier1cost3
 	tier = 1
 	category = { particles }
-	ai_update_type = all
 	prerequisites = { "tech_fusion_power" "tech_reactor_boosters_1" }
 	weight = @tier1weight3
 
@@ -6467,7 +6397,6 @@ tech_reactor_boosters_3 = {
 	cost = @tier3cost3
 	tier = 1
 	category = { particles }
-	ai_update_type = all
 	prerequisites = { "tech_antimatter_power" "tech_reactor_boosters_2" }
 	weight = @tier3weight3
 
@@ -6497,7 +6426,6 @@ tech_shields_2 = {
 	cost = @tier1cost3
 	tier = 1
 	category = { field_manipulation }
-	ai_update_type = all
 	prerequisites = { "tech_shields_1" }
 	weight = @tier1weight3
 
@@ -6531,6 +6459,7 @@ tech_shields_2 = {
 			factor = @shattered_ring_ai_tech_factor
 			has_origin = origin_shattered_ring
 		}
+		inline_script = "ai/shield_preference_weight"
 	}
 	potential = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
@@ -6550,7 +6479,6 @@ tech_shields_3 = {
 	cost = @tier2cost3
 	tier = 2
 	category = { field_manipulation }
-	ai_update_type = all
 	prerequisites = { "tech_shields_2" }
 	weight = @tier2weight3
 
@@ -6580,10 +6508,10 @@ tech_shields_3 = {
 	}
 
 	ai_weight = {
-
+		inline_script = "ai/shield_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6597,7 +6525,6 @@ tech_shield_rechargers_1 = {
 	cost = @tier2cost3
 	tier = 2
 	category = { field_manipulation }
-	ai_update_type = all
 	prerequisites = { "tech_shields_3" }
 	weight = @tier2weight3
 
@@ -6606,10 +6533,10 @@ tech_shield_rechargers_1 = {
 	}
 
 	ai_weight = {
-
+		inline_script = "ai/shield_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6623,7 +6550,6 @@ tech_shield_hardeners_1 = {
 	cost = @tier2cost3
 	tier = 2
 	category = { field_manipulation }
-	ai_update_type = all
 	prerequisites = { "tech_shield_rechargers_1" "tech_exotic_gases" }
 	weight = @tier2weight3
 
@@ -6632,10 +6558,10 @@ tech_shield_hardeners_1 = {
 	}
 
 	ai_weight = {
-
+		inline_script = "ai/shield_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6649,7 +6575,6 @@ tech_sensors_2 = {
 	cost = @tier2cost1
 	tier = 2
 	category = { computing }
-	ai_update_type = all
 	weight = @tier2weight1
 
 	weight_modifier = {
@@ -6747,7 +6672,7 @@ tech_sensors_2 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6957,7 +6882,6 @@ tech_hyper_drive_2 = {
 	area = physics
 	tier = 2
 	category = { particles }
-	ai_update_type = all
 	is_reverse_engineerable = no
 	prerequisites = { "tech_hyper_drive_1" }
 	weight = @tier2weight2
@@ -7020,7 +6944,7 @@ tech_hyper_drive_2 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7070,7 +6994,6 @@ tech_lasers_2 = {
 	cost = @tier1cost2
 	tier = 1
 	category = { particles }
-	ai_update_type = military
 	prerequisites = { "tech_lasers_1" }
 	weight = @tier1weight2
 
@@ -7113,13 +7036,9 @@ tech_lasers_2 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_energy
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_energy }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_energy
 		}
 	}
 	potential = {
@@ -7140,7 +7059,6 @@ tech_lasers_3 = {
 	cost = @tier2cost1
 	tier = 2
 	category = { particles }
-	ai_update_type = military
 	prerequisites = { "tech_lasers_2" }
 	weight = @tier2weight1
 
@@ -7183,17 +7101,13 @@ tech_lasers_3 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_energy
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_energy }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_energy
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7207,7 +7121,6 @@ tech_plasma_1 = {
 	cost = @tier2cost2
 	tier = 2
 	category = { particles }
-	ai_update_type = military
 	weight = @tier2weight2
 	
 	modifier = {
@@ -7257,17 +7170,13 @@ tech_plasma_1 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_energy
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_energy }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_energy
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7281,7 +7190,6 @@ tech_disruptors_1 = {
 	cost = @tier2cost2
 	tier = 2
 	category = { particles }
-	ai_update_type = military
 	weight = @tier2weight2
 
 	prerequisites = { "tech_lasers_2" }
@@ -7325,17 +7233,13 @@ tech_disruptors_1 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_energy
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_energy }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_energy
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7349,7 +7253,6 @@ tech_pd_tracking_2 = {
 	tier = 2
 	cost = @tier2cost3
 	category = { computing }
-	ai_update_type = military
 	prerequisites = { "tech_pd_tracking_1" }
 	weight = @tier2weight3
 
@@ -7372,17 +7275,13 @@ tech_pd_tracking_2 = {
 	}
 
 	ai_weight = {
-		modifier = {
-			factor = @favored_weapon_ai_tech_factor
-			is_preferred_weapons = weapon_type_strike_craft
-		}
-		modifier = {
-			factor = @disfavored_weapon_ai_tech_factor
-			NOT = { is_preferred_weapons = weapon_type_strike_craft }
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_energy
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7396,7 +7295,6 @@ tech_mining_drone_weapon_1 = {
 	cost = @tier2cost2
 	tier = 2
 	category = { particles }
-	ai_update_type = military
 	weight = 0
 
 	technology_swap = {
@@ -7421,9 +7319,13 @@ tech_mining_drone_weapon_1 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_energy
+		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7438,7 +7340,6 @@ tech_space_cloud_weapon_1 = {
 	tier = 2
 	is_rare = yes
 	category = { particles }
-	ai_update_type = military
 	weight = 0
 
 	ai_weight = {
@@ -7451,9 +7352,13 @@ tech_space_cloud_weapon_1 = {
 			has_ethic = ethic_fanatic_militarist
 		}
 
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_energy
+		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7610,7 +7515,7 @@ tech_eco_simulation = {
 				has_valid_civic = civic_machine_assimilator
 				any_owned_planet = {
 					OR = {
-						has_any_capped_planet_farming_district = yes
+						has_any_planet_farming_district = yes
 						has_any_agriculture_zone = yes
 					}
 				}
@@ -7657,7 +7562,7 @@ tech_eco_simulation = {
 			}
 			any_owned_planet = {
 				OR = {
-					has_any_capped_planet_farming_district = yes
+					has_any_planet_farming_district = yes
 					has_any_agriculture_zone = yes
 				}
 			}
@@ -7697,7 +7602,7 @@ tech_gene_crops = {
 	}
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			adastra_vanilla_open_atomic = yes
@@ -7721,7 +7626,7 @@ tech_gene_crops = {
 				has_valid_civic = civic_machine_assimilator
 				any_owned_planet = {
 					OR = {
-						has_any_capped_planet_farming_district = yes
+						has_any_planet_farming_district = yes
 						has_any_agriculture_zone = yes
 					}
 				}
@@ -7804,7 +7709,7 @@ tech_food_processing_1 = {
 			factor = 5
 			any_owned_planet = {
 				OR = {
-					has_any_capped_planet_farming_district = yes
+					has_any_planet_farming_district = yes
 					has_any_agriculture_zone = yes
 				}
 			}
@@ -7824,7 +7729,7 @@ tech_food_processing_1 = {
 				has_valid_civic = civic_machine_assimilator
 				any_owned_planet = {
 					OR = {
-						has_any_capped_planet_farming_district = yes
+						has_any_planet_farming_district = yes
 						has_any_agriculture_zone = yes
 					}
 				}
@@ -8900,7 +8805,7 @@ tech_terrestrial_sculpting = {
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -8925,11 +8830,7 @@ tech_terrestrial_sculpting = {
 		}
 		modifier = { #if you're a fish, you're definitely gonna prioritise finding out how to make more oceans
 			factor = 1.25
-			has_trait = trait_aquatic
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_robot_aquatic
+			has_aquatic_trait = yes
 		}
 		modifier = {
 			factor = 1.25
@@ -8985,11 +8886,7 @@ tech_terrestrial_sculpting = {
 		}
 		modifier = { #Hydrocentric is really good and needs this
 			factor = 1000
-			has_trait = trait_aquatic
-		}
-		modifier = {
-			factor = 1000
-			has_trait = trait_robot_aquatic
+			has_aquatic_trait = yes
 		}
 		modifier = {
 			factor = 100
@@ -10895,7 +10792,8 @@ tech_federation_code = {
 	}
 
 	modifier = {
-		show_only_custom_tooltip = yes
+		show_only_custom_tooltip = no
+		diplomacy_influence_upkeep_mult = -0.25
 		custom_tooltip = tech_federation_code_effect
 	}
 
@@ -11358,7 +11256,6 @@ tech_amoeba_strike_craft_1 = {
 	cost = @tier2cost3
 	tier = 2
 	category = { biology }
-	ai_update_type = military
 	weight = 0
 
 	ai_weight = {
@@ -11370,9 +11267,14 @@ tech_amoeba_strike_craft_1 = {
 			factor = 1.5
 			has_ethic = ethic_fanatic_militarist
 		}
+
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_strike_craft
+		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -11386,7 +11288,6 @@ tech_space_whale_weapon_1 = {
 	cost = @tier1cost3
 	tier = 1
 	category = { biology }
-	ai_update_type = military
 	weight = 0
 
 	ai_weight = {
@@ -11397,6 +11298,11 @@ tech_space_whale_weapon_1 = {
 		modifier = {
 			factor = 1.5
 			has_ethic = ethic_fanatic_militarist
+		}
+
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_energy
 		}
 	}
 	potential = {

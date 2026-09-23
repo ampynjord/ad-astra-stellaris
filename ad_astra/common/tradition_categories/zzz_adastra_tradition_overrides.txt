@@ -1,8 +1,8 @@
 # Ad Astra 1.2 - verrouillage des traditions pendant le confinement.
 # FICHIER GENERE PAR tools/gen_tradition_overrides.py - NE PAS EDITER A LA MAIN.
 #
-# Categories reprises telles quelles depuis le jeu de base, avec une seule
-# garde ajoutee. Aucun autre empire n'est affecte.
+# Les categories sont reprises telles quelles depuis le jeu de base, avec
+# une seule garde ajoutee. Aucun autre empire n'est affecte.
 
 
 ### tradition_adaptability (00_adaptability.txt)
