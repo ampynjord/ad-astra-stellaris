@@ -194,7 +194,6 @@ tech_fission_power = {
 	tier = 0
 	start_tech = yes
 	category = { particles }
-	ai_update_type = all
 
 	prereqfor_desc = {
 		hide_prereq_for_desc = component
@@ -262,7 +261,6 @@ tech_missiles_1 = {
 	area = engineering
 	tier = 0
 	category = { propulsion }
-	ai_update_type = military
 	start_tech = yes
 
 	potential = {
@@ -291,7 +289,6 @@ tech_flak_batteries_1 = {
 	area = engineering
 	tier = 0
 	category = { propulsion }
-	ai_update_type = military
 	start_tech = yes
 
 	technology_swap = {
@@ -318,7 +315,6 @@ tech_pd_tracking_1 = {
 	area = physics
 	tier = 0
 	category = { computing }
-	ai_update_type = military
 	start_tech = yes
 
 	technology_swap = {
@@ -347,7 +343,6 @@ tech_lasers_1 = {
 	area = physics
 	start_tech = yes
 	category = { particles }
-	ai_update_type = military
 	start_tech = yes
 
 	technology_swap = {
@@ -447,7 +442,6 @@ tech_thrusters_1 = {
 	start_tech = yes
 	tier = 0
 	category = { propulsion }
-	ai_update_type = all
 
 	prereqfor_desc = {
 		hide_prereq_for_desc = component
@@ -620,7 +614,6 @@ tech_ship_armor_1 = {
 	area = engineering
 	tier = 0
 	category = { materials }
-	ai_update_type = all
 	start_tech = yes
 
 	technology_swap = {
@@ -657,7 +650,6 @@ tech_shields_1 = {
 	cost = 755
 	tier = 0
 	category = { field_manipulation }
-	ai_update_type = all
 	start_tech = yes
 
 	technology_swap = {
@@ -695,7 +687,6 @@ tech_reactor_boosters_1 = {
 	tier = 0
 	start_tech = yes
 	category = { particles }
-	ai_update_type = military
 	prerequisites = { "tech_fission_power" }
 
 	# 1.3 : une ligne sur la CARTE, pas seulement dans l'infobulle.
@@ -935,7 +926,6 @@ tech_mass_drivers_1 = {
 	area = engineering
 	start_tech = yes
 	category = { propulsion }
-	ai_update_type = military
 	start_tech = yes
 
 	technology_swap = {
@@ -995,7 +985,7 @@ tech_hydroponics = {
 				has_valid_civic = civic_machine_assimilator
 				any_owned_planet = {
 					OR = {
-						has_any_capped_planet_farming_district = yes
+						has_any_planet_farming_district = yes
 						has_any_agriculture_zone = yes
 					}
 				}

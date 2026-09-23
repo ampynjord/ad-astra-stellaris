@@ -102,7 +102,7 @@ zone_urban = {
 	}
 
 	ai_priority = 2
-	ai_weight_coefficient = 0.5
+	ai_weight_coefficient = 0.15
 }
 
 ### zone_industrial -> tech_adastra_steam_engine

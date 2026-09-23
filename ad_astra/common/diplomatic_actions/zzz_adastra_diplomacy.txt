@@ -413,13 +413,7 @@ action_form_research_agreement = {
 		}
 		custom_tooltip = {
 			fail_text = "federation_automatic_research"
-			NOT = {
-				AND = {
-					has_federation = yes
-					federation = { any_member = { is_same_value = root.from } }
-					federation = { has_federation_perk = research_federation_passive }
-				}
-			}
+			NOT = { has_free_research_pact_with = { TARGET = from } }
 		}
 		if = {
 			limit = {

@@ -148,7 +148,7 @@ grand_archive_0 = {
 			custom_tooltip = {
 				fail_text = "requires_no_existing_megastructure"
 				NOT = {
-					has_carrier_flag = megastructure
+					has_planet_flag = megastructure
 				}
 			}
 		} # use these for all non-star megastructures
@@ -198,7 +198,7 @@ grand_archive_0 = {
 			}
 		}
 		fromfrom.planet = {
-			set_carrier_flag = has_megastructure
+			set_planet_flag = has_megastructure
 		}
 	}
 }

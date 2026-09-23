@@ -1,5 +1,5 @@
 # Ad Astra - surcharge du déclencheur scripté vanilla is_regular_empire
-# (copie exacte 4.4.6 + le type adastra_grounded, pour que districts, bâtiments,
+# (copie exacte 4.5 + le type adastra_grounded, pour que districts, bâtiments,
 # zones et le reste de l'interface traitent l'empire verrouillé comme un empire normal.
 # Le filet de sécurité des avant-postes teste "is_country_type = default" en dur
 # et continue donc de nous ignorer.)
@@ -45,7 +45,7 @@ adastra_pays_energy_upkeep = {
 }
 
 # 1.2 - surcharge du declencheur scripte vanilla is_low_tech_start
-# (copie exacte 4.4.6 + notre origine pendant le confinement).
+# (copie exacte 4.5 + notre origine pendant le confinement).
 #
 # TROUVE LE 15/08 EN AUDITANT LES TECHNOS ANACHRONIQUES. Le jeu de base a deja
 # la notion exacte dont ce mod a besoin : « cet empire commence sans technique ».
