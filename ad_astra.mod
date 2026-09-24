@@ -5,5 +5,5 @@ tags={
 	"Technologies"
 }
 name="Ad Astra"
-supported_version="v4.4.*"
+supported_version="v4.5.*"
 path="C:/Program Files (x86)/Steam/steamapps/common/Stellaris/adastra_mod_data"

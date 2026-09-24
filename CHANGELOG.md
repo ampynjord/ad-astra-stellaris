@@ -4,13 +4,17 @@ All notable player-facing changes are recorded here. Dates use ISO format.
 
 ## 1.3.3 — 2026-09-24
 
+### Changed
+
+- Ad Astra now targets Stellaris 4.5 "Cygnus". Keys that 4.5 removed are gone from the mod's country type and starting technologies, and the mod no longer overrides the Dyson Gun technology, which 4.5 moved to tier 3.
+
 ### Fixed
 
 - The Starbase Program now completes when your home system already holds a starbase with no owner, or one that is already yours. It previously charged its cost, ran for 720 days, reported "The Sky Is Already Taken" and became available again, forever. The programme now takes over that starbase and delivers the construction ship. A starbase owned by another empire still blocks the decision, as before.
 
 ### Player action
 
-- Existing saves can keep going: enact the Starbase Program again after updating.
+- Stellaris 4.5 does not load 4.4 saves. Start a new game after updating.
 
 ## 1.3.2 — 2026-08-20
 
