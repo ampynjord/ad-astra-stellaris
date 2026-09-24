@@ -1,5 +1,5 @@
 # Ad Astra - cartes d'objectifs purement spatiales masquées pendant le verrouillage
-# Copies exactes vanilla 4.4.6 avec une clause possible ajoutée.
+# Copies exactes vanilla 4.5 avec une clause possible ajoutée.
 
 conquest_focus_105 = {
 	base = conquest_focus_100
@@ -423,6 +423,7 @@ conquest_focus_530 = {
 
 	possible = {
 		NOT = { has_country_flag = adastra_locked }
+		has_apocalypse_dlc = yes
 		NOR = {
 			has_civic = civic_beastmasters
 			country_uses_bio_ships = yes
@@ -451,6 +452,7 @@ conquest_focus_535 = {
 
 	possible = {
 		NOT = { has_country_flag = adastra_locked }
+		has_federations_dlc = yes
 		NOR = {
 			has_civic = civic_beastmasters
 			country_uses_bio_ships = yes
