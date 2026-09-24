@@ -1220,7 +1220,12 @@ building_order_keep = {
 		}
 
 		owner = { has_origin = origin_toxic_knights }
-		planet = { has_carrier_flag = toxic_knights_habitat }
+		planet = {
+			OR = {
+				has_planet_flag = toxic_knights_habitat
+				has_carrier_flag = toxic_knights_arkship
+			}
+		}
 		owner = { NOT = { has_country_flag = quest_abandoned } }
 	}
 

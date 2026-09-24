@@ -1554,6 +1554,46 @@ country_event = {
 			}
 		}
 
+		# 1.3.3 : la decision accepte une base stellaire SANS proprietaire ou
+		# DEJA a nous (seule une base etrangere la grise), mais la garde
+		# ci-dessus exigeait l'absence de toute base. Ces deux cas payaient le
+		# programme, attendaient 720 jours et tombaient sur « Le ciel est deja
+		# pris », sans fin. Retours Discord des 17/09 et 19/09 : systeme natal
+		# repris par `own` en console, puis systeme libre en nouvelle partie.
+		# On garde la base existante et on la fait notre, comme adastra.25 le
+		# fait a l'emergence.
+		else_if = {
+			limit = {
+				event_target:adastra_home_sys = {
+					starbase = {
+						OR = {
+							NOT = { exists = owner }
+							owner = { is_same_value = root }
+						}
+					}
+				}
+			}
+			event_target:adastra_home_sys = {
+				starbase = { set_owner = root }
+			}
+			set_country_flag = adastra_phase2_done
+			create_fleet = {
+				name = "adastra_fleet_constructor"
+				effect = {
+					set_owner = root
+					create_ship = {
+						name = random
+						design = "NAME_Adastra_Constructor"
+					}
+					set_location = {
+						target = event_target:adastra_capital_p
+						distance = 10
+						angle = random
+					}
+				}
+			}
+		}
+
 		# Le ciel est deja pris. La decision exige une orbite libre, mais le
 		# programme dure 360 jours : un empire peut s'y installer entre-temps.
 		# On ne lui construit pas un chantier par-dessus et on ne le lui prend
