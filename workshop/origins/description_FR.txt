@@ -8,6 +8,12 @@ Commencez Stellaris en [b]civilisation pré-PRL[/b] confinée à son monde natal
 [b]Aucun DLC requis.[/b] Le mod est jouable en français et en anglais.
 
 [hr][/hr]
+[h2]1.3.3 — Stellaris 4.5 et programme de base stellaire[/h2]
+
+Ad Astra fonctionne désormais sur Stellaris 4.5 « Cygnus ». Commencez une nouvelle partie après la mise à jour.
+
+Le programme de base stellaire ne tourne plus en boucle sur « Le ciel est déjà pris » quand votre système natal abrite une base sans propriétaire, ou déjà à vous : il reprend cette base et livre le vaisseau de construction.
+
 [h2]1.3.2 — Correctif de progression et d'economie[/h2]
 
 Cette mise à jour ciblée termine la série de correctifs des régressions de progression et d'économie de début de partie introduites en 1.3.0.
@@ -47,7 +53,7 @@ Cette mise à jour ciblée termine la série de correctifs des régressions de p
 [hr][/hr]
 [h2]Support et compatibilite[/h2]
 
-Stellaris v4.4.x · Aucun DLC requis · Nouvelle partie requise après les mises à jour · Succès désactivés.
+Stellaris v4.5.x · Aucun DLC requis · Nouvelle partie requise après les mises à jour · Succès désactivés.
 
 Le mod surcharge les technologies précoces, certains vaisseaux civils, des déclencheurs d'empire, plusieurs casus belli et buts de guerre, ainsi que des cartes d'objectifs. Ce sont les points de conflit les plus probables.
 
