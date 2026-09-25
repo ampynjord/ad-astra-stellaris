@@ -1,13 +1,13 @@
 # Testing the public beta
 
 The beta is an experimental local build, published as a **GitHub
-pre-release**. Steam Workshop remains the stable channel (1.3.2) and never
+pre-release**. Steam Workshop remains the stable channel (1.3.3) and never
 receives beta builds.
 
 ## Installation
 
 1. Download the beta `.zip` attached to the latest pre-release on the
-   project's GitHub **Releases** page, for example `beta-1.4.0-beta.8`.
+   project's GitHub **Releases** page, for example `beta-1.4.0-beta.9`.
 2. If an older beta is installed, **delete** `mod/adastra_beta` and
    `mod/adastra_beta.mod` first. Extracting a new beta over an old one keeps
    files that the new version removed.
@@ -44,7 +44,7 @@ allowed, redistribution and re-uploads are not.
 
 Run the **beta release** GitHub Actions workflow manually on the `beta`
 branch. Its tag must use the form `beta-MAJOR.MINOR.PATCH-beta.N`, for example
-`beta-1.4.0-beta.8`, and must match the descriptor version. The `beta-` prefix
+`beta-1.4.0-beta.9`, and must match the descriptor version. The `beta-` prefix
 is mandatory: `release.yml` publishes to the Workshop on any `v*` tag.
 
 The workflow runs the full checks, builds the beta archive, and creates a

@@ -1,14 +1,16 @@
-# Ad Astra 1.4.0-beta.8 — Test Notebook
+# Ad Astra 1.4.0-beta.9 — Test Notebook
 
-This is the public-beta test contract. Steam Workshop remains on 1.3.2.
+This is the public-beta test contract. Steam Workshop remains on 1.3.3.
 Enable only `Ad Astra: Origins - Beta`; never enable it alongside Workshop.
 While this local beta is installed, treat the Workshop copy as unusable and do
 not load its saves with the beta.
 
-**Beta.8** carries the beta.7 content plus two fixes (first-contact watch
-stage roll failure, sector re-creation only when the home starbase is yours).
-B20 and B22 remain **known failures**: rerun them to confirm or refine the
-reports, not to discover them.
+**Beta.9** is the first build for **Stellaris 4.5 "Cygnus"**. It carries the
+beta.8 content, merged again with the 4.5 game files, plus the outliner
+notice and `ADASTRA DIAG` log lines. Stellaris 4.5 does not load 4.4 saves:
+**no beta.8 save or checkpoint is valid**, and every card below must be run
+again on beta.9. B20 and B22 remain **known failures**: rerun them to confirm
+or refine the reports, not to discover them.
 
 ## Rules for every card
 
@@ -292,7 +294,7 @@ when unavailable; no missing asset, raw key or forced DLC dependency appears.
 
 ## B13 — Save migration
 
-**Setup:** copy of a 1.3.2 or older 1.4-development save. Never overwrite it.
+**Setup:** copy of a 1.3.3 save made on Stellaris 4.5. Never overwrite it.
 
 1. Load it with only the beta enabled and let one monthly pulse pass.
 2. Inspect situation, research decks, capital districts and resource bar.

@@ -2,11 +2,65 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## 1.4.0-beta.9 — 2026-09-25
+
+> Public beta for Stellaris 4.5 "Cygnus", published as a GitHub pre-release.
+> Stellaris 4.5 does not load 4.4 saves: start a new game. Never enable it
+> beside the Steam Workshop version, which keeps the stable 1.3.3 release.
+
+### Changed
+
+- Ad Astra now targets Stellaris 4.5 "Cygnus". The base-game technologies,
+  colony designations, buildings, zones, traditions and diplomacy that the
+  mod rewrites were merged again with the 4.5 files: the mod's age locks,
+  costs and guards are kept, and the 4.5 changes are carried over.
+- Keys that 4.5 removed are gone from the mod's country types and starting
+  technologies, and the mod no longer overrides the Dyson Gun technology,
+  which 4.5 moved to tier 3.
+- The Terror Camp now follows its age table and opens in the Steam Age.
+
+### Added
+
+- When another empire takes your home system, a notice tells you once per
+  occupation that your homeworld may have left the outliner, with a button
+  that takes you to it.
+- Each change of state of the home system (capital sector, system owner) is
+  written as an `ADASTRA DIAG` line in `game.log`, the evidence cards B19 and
+  B22 collect for the outliner issue.
+
+### Known issues
+
+- A first-contact chain can still end by revealing a star empire's name and
+  communications before emergence.
+- The homeworld can disappear from the outliner, reported when entering the
+  Bronze Age and while another empire holds your home system. The planet is
+  still yours and reachable from the galaxy map or the new notice.
+- A cosmic storm can impose an energy deficit before electricity exists.
+- The Energy Mogul leader trait can produce energy too early.
+- The Great Khan notification can appear before emergence.
+
+Report issues on GitHub or in the Discord bug-report forum with the beta tag,
+your starting age, the game date, a save and `error.log`.
+
+## 1.3.3 — 2026-09-24
+
+### Changed
+
+- Ad Astra now targets Stellaris 4.5 "Cygnus". Keys that 4.5 removed are gone from the mod's country type and starting technologies, and the mod no longer overrides the Dyson Gun technology, which 4.5 moved to tier 3.
+
+### Fixed
+
+- The Starbase Program now completes when your home system already holds a starbase with no owner, or one that is already yours. It previously charged its cost, ran for 720 days, reported "The Sky Is Already Taken" and became available again, forever. The programme now takes over that starbase and delivers the construction ship. A starbase owned by another empire still blocks the decision, as before.
+
+### Player action
+
+- Stellaris 4.5 does not load 4.4 saves. Start a new game after updating.
+
 ## 1.4.0-beta.8 — 2026-09-16
 
 > First **public** beta, published as a GitHub pre-release. It is a local mod
 > with its own name: never enable it beside the Steam Workshop version, and
-> start a new game. The Workshop keeps the stable 1.3.2 release.
+> start a new game. The Workshop kept the stable 1.3.2 release.
 
 ### Fixed
 
