@@ -28,6 +28,14 @@ All notable player-facing changes are recorded here. Dates use ISO format.
   written as an `ADASTRA DIAG` line in `game.log`, the evidence cards B19 and
   B22 collect for the outliner issue.
 
+### Fixed
+
+- With Gigastructural Engineering & More, the starting colony has its city
+  district again: the mod's regular-empire check now loads after
+  Gigastructures' own version and keeps its addition.
+- The Tankbound civic is no longer available with the Ad Astra origin: its
+  automated jobs are paid in energy, which does not exist before electricity.
+
 ### Known issues
 
 - A first-contact chain can still end by revealing a star empire's name and
