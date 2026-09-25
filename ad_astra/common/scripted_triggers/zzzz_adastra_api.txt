@@ -1,0 +1,46 @@
+# Ad Astra - interface publique pour les autres mods (26/09/2026).
+#
+# Ces declencheurs sont en anglais et stables : un autre mod peut s'en servir
+# pour verrouiller son propre contenu sur les ages d'Ad Astra, sans lire nos
+# drapeaux internes. Documentation : docs/MODDING_API.md.
+#
+# Le nom « zzzz_ » est voulu. Un mod qui veut s'en servir SANS dependre d'Ad
+# Astra declare chez lui les memes noms en version neutre, par exemple
+#     adastra_api_is_confined = { always = no }
+# et notre version, chargee apres la sienne, la remplace quand Ad Astra est
+# active. C'est le meme mecanisme que les declencheurs de compatibilite de
+# Gigastructural Engineering (00_giga_compat_overwrite_me.txt).
+#
+# Ces declencheurs s'appuient sur core_00_api_ages.txt, le point de lecture
+# unique des ages : aucune ligne ici ne lit un drapeau interne directement.
+
+# Ad Astra est charge (drapeau global pose au demarrage par adastra.191).
+adastra_api_loaded = {
+	has_global_flag = adastra_origins_charge
+}
+
+# Portee pays. Vrai tant que l'empire est un empire Ad Astra confine sur son
+# monde natal, faux des l'emergence.
+adastra_api_is_confined = {
+	core_est_confine = yes
+}
+
+# Portee pays. Vrai si l'empire a atteint l'age demande. Les ages s'accumulent :
+# un empire a l'age du fer a aussi atteint celui du bronze.
+# Valeurs de AGE : stone, bronze, iron, medieval, renaissance, steam,
+# industrial, machine, atomic, space.
+# Exemple : adastra_api_has_reached_age = { AGE = steam }
+adastra_api_has_reached_age = {
+	core_age_atteint = { age = $AGE$ }
+}
+
+# Portee pays. Vrai une fois l'ascension achevee (Hyperpropulsion).
+adastra_api_has_emerged = {
+	core_a_emerge = yes
+}
+
+# Detection sans dependance de Gigastructural Engineering & More, qui pose ce
+# drapeau global au demarrage (giga_mega.001). Faux avant son premier jour.
+adastra_api_gigastructures_loaded = {
+	has_global_flag = gigastructures_enabled
+}
