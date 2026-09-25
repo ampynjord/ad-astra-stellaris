@@ -1,0 +1,9 @@
+# Ad Astra - interface publique (26/09/2026).
+# Fichier separe, fusionne par le moteur avec les autres on_actions du mod.
+# Voir events/zzz_adastra_api_events.txt.
+
+on_game_start = {
+	events = {
+		adastra.191
+	}
+}
