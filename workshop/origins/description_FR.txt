@@ -9,7 +9,7 @@ Ad Astra transforme Stellaris en ascension historique. Commencez comme une [b]ci
 
 [b]Pour jouer :[/b] créez ou modifiez un empire et choisissez l'origine [b]Ad Astra[/b]. Sans elle, la partie démarre normalement.
 
-[b]Bêta publique 1.4 disponible[/b] sur [url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8]GitHub[/url] — détails plus bas. Cette page Workshop garde la version stable 1.3.2.
+[b]Bêta publique 1.4 disponible[/b] sur [url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.9]GitHub[/url] — détails plus bas. Cette page Workshop garde la version stable 1.3.3.
 
 [hr][/hr]
 [h2]L'ascension[/h2]
@@ -39,7 +39,7 @@ Pas de flotte offerte, ni de saut magique entre le pas de tir et l'empire galact
 [h2]1.4 « Galileo » — bêta publique[/h2]
 
 La prochaine mise à jour majeure est ouverte à tous en bêta publique, publiée sur GitHub :
-[url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8][b]Ad Astra: Origins 1.4.0-beta.8[/b][/url]
+[url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.9][b]Ad Astra: Origins 1.4.0-beta.9[/b][/url]
 
 [list]
 [*]Votre empire est une [b]vraie civilisation pré-PRL[/b] aux yeux du moteur : écusson d'époque, éveil, postes d'observation, premier contact vécu depuis le sol.
@@ -49,12 +49,12 @@ La prochaine mise à jour majeure est ouverte à tous en bêta publique, publié
 [*]Icônes et illustrations d'événements originales, risques de lancement et jalons spatiaux plus clairs.
 [/list]
 
-[b]Pour l'essayer :[/b] cette fiche Workshop reste sur la version stable 1.3.2 et ne reçoit jamais de bêta. Supprimez toute ancienne bêta, extrayez l'archive dans votre dossier utilisateur Stellaris, activez [i]Ad Astra: Origins - Beta[/i], désactivez cette version Workshop (jamais les deux ensemble) et lancez une nouvelle partie. Les étapes détaillées et les problèmes connus sont dans les notes de la release.
+[b]Pour l'essayer :[/b] cette fiche Workshop reste sur la version stable 1.3.3 et ne reçoit jamais de bêta. Supprimez toute ancienne bêta, extrayez l'archive dans votre dossier utilisateur Stellaris, activez [i]Ad Astra: Origins - Beta[/i], désactivez cette version Workshop (jamais les deux ensemble) et lancez une nouvelle partie. Les étapes détaillées et les problèmes connus sont dans les notes de la release.
 
 [hr][/hr]
 [h2]Compatibilité et support[/h2]
 
-[b]Stellaris v4.4.x[/b] · Aucun DLC requis · Succès désactivés · Nouvelle partie conseillée après une mise à jour majeure.
+[b]Stellaris v4.5.x[/b] · Aucun DLC requis · Succès désactivés · Nouvelle partie conseillée après une mise à jour majeure.
 
 Le mod surcharge les technologies précoces, certains vaisseaux civils, des déclencheurs d'empire, plusieurs casus belli et buts de guerre, ainsi que des cartes d'objectifs. Ce sont les points de conflit les plus probables.
 

@@ -9,7 +9,7 @@ Ad Astra turns Stellaris into a historical ascent. Begin as a [b]pre-FTL civiliz
 
 [b]How to play:[/b] create or edit an empire and choose the [b]Ad Astra[/b] origin. Without it, the game starts normally.
 
-[b]1.4 public beta available[/b] on [url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8]GitHub[/url] — details below. This Workshop page keeps the stable 1.3.2.
+[b]1.4 public beta available[/b] on [url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.9]GitHub[/url] — details below. This Workshop page keeps the stable 1.3.3.
 
 [hr][/hr]
 [h2]The ascent[/h2]
@@ -39,7 +39,7 @@ There is no gifted fleet and no magical leap from a launchpad to an empire.
 [h2]1.4 "Galileo" — public beta[/h2]
 
 The next major update is available to everyone as a public beta, published on GitHub:
-[url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8][b]Ad Astra: Origins 1.4.0-beta.8[/b][/url]
+[url=https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.9][b]Ad Astra: Origins 1.4.0-beta.9[/b][/url]
 
 [list]
 [*]Your empire is a [b]true pre-FTL civilization[/b] in the engine's eyes: era crests, awareness, observation posts, and first contact seen from the ground.
@@ -49,12 +49,12 @@ The next major update is available to everyone as a public beta, published on Gi
 [*]Original icons and event artwork, launch risks, and clearer space-program milestones.
 [/list]
 
-[b]How to try it:[/b] this Workshop item stays on the stable 1.3.2 and never receives beta builds. Delete any previous beta folder, extract the archive into your Stellaris user folder, enable [i]Ad Astra: Origins - Beta[/i], disable this Workshop version (never both together) and start a new game. Full steps and known issues are in the release notes.
+[b]How to try it:[/b] this Workshop item stays on the stable 1.3.3 and never receives beta builds. Delete any previous beta folder, extract the archive into your Stellaris user folder, enable [i]Ad Astra: Origins - Beta[/i], disable this Workshop version (never both together) and start a new game. Full steps and known issues are in the release notes.
 
 [hr][/hr]
 [h2]Compatibility and support[/h2]
 
-[b]Stellaris v4.4.x[/b] · No DLC required · Achievements disabled · Start a new game after a major update.
+[b]Stellaris v4.5.x[/b] · No DLC required · Achievements disabled · Start a new game after a major update.
 
 The mod overrides early technologies, selected civilian ships, scripted empire triggers, several casus belli and war goals, and focus cards. Those are the most likely conflict points.
 
