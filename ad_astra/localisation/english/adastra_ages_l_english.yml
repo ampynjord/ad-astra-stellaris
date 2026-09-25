@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  # Ad Astra 1.2 - Les Ages. GENERE par tools/gen_age_techs.py.
  # --- stone ---
  tech_adastra_fire:0 "Mastery of Fire"

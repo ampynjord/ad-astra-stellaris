@@ -144,7 +144,8 @@ def main():
             f"Unlocks the building: {french}",
             f"Unlocks the building: {english_name}",
         )
-    ENGLISH.write_text(english, encoding="utf-8", newline="\n")
+    # Stellaris exige l'UTF-8 avec BOM pour les localisations (retour Steam 25/09).
+    ENGLISH.write_text(english, encoding="utf-8-sig", newline="\n")
 
 
 if __name__ == "__main__":
