@@ -50,5 +50,6 @@ is mandatory: `release.yml` publishes to the Workshop on any `v*` tag.
 The workflow runs the full checks, builds the beta archive, and creates a
 GitHub **pre-release** with that archive and the release notes taken from the
 first `CHANGELOG.md` section. It never receives Steam secrets and never
-publishes to the Workshop. A published beta is never replaced: a fix becomes
-the next beta number.
+publishes to the Workshop. A published beta is not replaced: a fix becomes
+the next beta number. Replacing a published beta (deleting its release and
+tag, then publishing it again) is an exception reserved to the maintainer.

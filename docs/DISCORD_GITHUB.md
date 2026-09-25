@@ -24,7 +24,7 @@ noise and feedback loops while keeping the investigation visible on both sides.
 - `status: needs information`: context is insufficient to investigate;
 - `status: needs reproduction`: waiting for a reliable reproduction;
 - `status: confirmed`: observed in game or in source files;
-- `status: fixed`: fixed on `dev`, awaiting validation before closure;
+- `status: fixed`: fixed on `beta`, awaiting validation before closure;
 - `compatibility` and `balance`: optional cross-cutting dimensions.
 
 The GitHub templates use the same language as Discord: version, starting age,
