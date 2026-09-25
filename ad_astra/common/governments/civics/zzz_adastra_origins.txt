@@ -36,6 +36,16 @@ origin_adastra = {
 			NOT = { value = auth_machine_intelligence }
 		}
 		is_nomadic = no
+		# 25/09 - Tankbound (DLC Shroud) automatise fermiers, mineurs et
+		# techniciens : leur entretien se paie en energie, qu'un empire confine
+		# n'a pas avant l'electricite, et le depart troque deux districts
+		# agricoles contre des centrales (signale par Them8 sur le Workshop).
+		civics = {
+			NOR = {
+				value = civic_tankbound
+				value = civic_tankbound_corporate
+			}
+		}
 	}
 
 	flags = { adastra_origin }
