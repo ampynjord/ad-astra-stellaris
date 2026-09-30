@@ -4,7 +4,7 @@
 
 ![From the first fire to the first starbase](artwork/steam/ad-astra-1.4-hero.png)
 
-[![Stable](https://img.shields.io/badge/stable-1.3.3-2ea44f)](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/v1.3.3)
+[![Stable](https://img.shields.io/badge/stable-1.3.4-2ea44f)](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/v1.3.4)
 [![Public beta](https://img.shields.io/badge/public%20beta-1.4.0--beta.9-orange)](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.9)
 [![Stellaris](https://img.shields.io/badge/Stellaris-v4.5%20Cygnus-orange)](https://www.stellaris.com/)
 [![DLC](https://img.shields.io/badge/DLC-none%20required-green)](#compatibility)
@@ -25,7 +25,7 @@ Ad Astra lets you begin Stellaris as a civilization confined to its homeworld. C
 
 | | Stable | Public beta |
 |---|---|---|
-| **Version** | 1.3.3 — Starbase Program Fix | 1.4.0-beta.9 — "Galileo" |
+| **Version** | 1.3.4 — English Technology Names Fix | 1.4.0-beta.9 — "Galileo" |
 | **Where** | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257) | [GitHub pre-release](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.9) |
 | **Install** | Subscribe; Steam keeps it up to date | Extract into `Documents/Paradox Interactive/Stellaris/` as a separate local mod ([guide](docs/BETA.md)) |
 | **For** | A normal campaign | Trying 1.4 early and reporting what breaks |
