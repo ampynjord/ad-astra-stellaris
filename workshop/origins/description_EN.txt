@@ -8,6 +8,10 @@ Begin Stellaris as a [b]pre-FTL civilization[/b] confined to its homeworld. Choo
 [b]No DLC required.[/b] The mod is playable in English and French.
 
 [hr][/hr]
+[h2]1.3.4 — English Technology Names Fix[/h2]
+
+The 250 period technologies show their names and descriptions in English again, instead of raw keys. No new game needed.
+
 [h2]1.3.3 — Stellaris 4.5 and Starbase Program Fix[/h2]
 
 Ad Astra now runs on Stellaris 4.5 "Cygnus". Start a new game after updating.

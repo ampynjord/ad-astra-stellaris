@@ -2,6 +2,16 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## 1.3.4 — 2026-09-30
+
+### Fixed
+
+- English players see the names and descriptions of the 250 period technologies again. Since 1.3.2 the English file that holds them had lost its UTF-8 BOM, so Stellaris ignored it and displayed the raw keys (`tech_adastra_...`). French was not affected.
+
+### Player action
+
+- None: the fix applies to existing games.
+
 ## 1.3.3 — 2026-09-24
 
 ### Changed
