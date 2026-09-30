@@ -5,11 +5,11 @@
 ![From the first fire to the first starbase](https://raw.githubusercontent.com/ampynjord/ad-astra-stellaris/beta-1.4.0-beta.8/artwork/steam/ad-astra-1.4-hero.png)
 
 [![Stable](https://img.shields.io/badge/stable-1.3.4-2ea44f)](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/v1.3.4)
-[![Public beta](https://img.shields.io/badge/public%20beta-1.4.0--beta.8-orange)](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8)
+[![Public beta](https://img.shields.io/badge/public%20beta-1.4.0--beta.9-orange)](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.9)
 [![Stellaris](https://img.shields.io/badge/Stellaris-v4.5%20Cygnus-orange)](https://www.stellaris.com/)
 [![DLC](https://img.shields.io/badge/DLC-none%20required-green)](#compatibility)
 [![Languages](https://img.shields.io/badge/in--game%20languages-English%20%C2%B7%20French-lightgrey)](#compatibility)
-[![License](https://img.shields.io/badge/license-MIT%20(1.3.3)%20%C2%B7%20proprietary%20(1.4%2B)-lightgrey)](#credits-and-license)
+[![License](https://img.shields.io/badge/license-MIT%20(1.3.4)%20%C2%B7%20proprietary%20(1.4%2B)-lightgrey)](#credits-and-license)
 
 *Per aspera ad astra — through hardship, to the stars.*
 
@@ -17,7 +17,7 @@ Everyone else starts with a fleet. You start with one world, and a very long way
 
 Ad Astra lets you begin Stellaris as a civilization confined to its homeworld. Choose one of ten historical starting ages, climb through history by research, build a space program from nothing, and emerge into a galaxy that did not wait for you.
 
-**[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257)** · **[1.4 public beta](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8)** · [Discord](https://discord.gg/nKP4TfNzNX) · [Bug reports and ideas](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose) · [Changelog](https://github.com/ampynjord/ad-astra-stellaris/blob/beta-1.4.0-beta.8/CHANGELOG.md)
+**[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257)** · **[1.4 public beta](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.9)** · [Discord](https://discord.gg/nKP4TfNzNX) · [Bug reports and ideas](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose) · [Changelog](https://github.com/ampynjord/ad-astra-stellaris/blob/beta-1.4.0-beta.8/CHANGELOG.md)
 
 ---
 
@@ -25,8 +25,8 @@ Ad Astra lets you begin Stellaris as a civilization confined to its homeworld. C
 
 | | Stable | Public beta |
 |---|---|---|
-| **Version** | 1.3.4 — English Technology Names Fix | 1.4.0-beta.8 — "Galileo" |
-| **Where** | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257) | [GitHub pre-release](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8) |
+| **Version** | 1.3.4 — English Technology Names Fix | 1.4.0-beta.9 — "Galileo" |
+| **Where** | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257) | [GitHub pre-release](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.9) |
 | **Install** | Subscribe; Steam keeps it up to date | Extract into `Documents/Paradox Interactive/Stellaris/` as a separate local mod ([guide](docs/BETA.md)) |
 | **For** | A normal campaign | Trying 1.4 early and reporting what breaks |
 
@@ -57,7 +57,7 @@ Never enable the beta and the Workshop copy in the same playset. Start a **new g
 
 **Art and texts.** Custom icons for period technologies, telescopes and decisions, new event artwork, and a full English and French text pass.
 
-The complete list is in the [1.4.0-beta.8 release notes](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.8).
+The complete list is in the [1.4.0-beta.9 release notes](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.9).
 
 ### Known issues in the beta
 
@@ -134,5 +134,5 @@ Play reports, balance observations, writing help and ideas are welcome. Read [CO
 
 Created by **ampynjord**.
 
-- The code on this branch, **1.3.3**, is published under the [MIT License](LICENSE) included with it, like every version up to 1.3.3.
+- The code on this branch, **1.3.4**, is published under the [MIT License](LICENSE) included with it, like every version up to 1.3.4.
 - From **1.4** on, Ad Astra uses the [Ad Astra Proprietary License](https://github.com/ampynjord/ad-astra-stellaris/blob/beta-1.4.0-beta.8/LICENSE): personal use of official releases is welcome; re-uploads, mirrors, derivative releases, and reuse of original project assets are not permitted without written permission.
