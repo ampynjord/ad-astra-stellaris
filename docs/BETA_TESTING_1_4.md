@@ -1,16 +1,15 @@
-# Ad Astra 1.4.0-beta.9 — Test Notebook
+# Ad Astra 1.4.0-beta.10 — Test Notebook
 
-This is the public-beta test contract. Steam Workshop remains on 1.3.3.
+This is the public-beta test contract. Steam Workshop remains on 1.3.4.
 Enable only `Ad Astra: Origins - Beta`; never enable it alongside Workshop.
 While this local beta is installed, treat the Workshop copy as unusable and do
 not load its saves with the beta.
 
-**Beta.9** is the first build for **Stellaris 4.5 "Cygnus"**. It carries the
-beta.8 content, merged again with the 4.5 game files, plus the outliner
-notice and `ADASTRA DIAG` log lines. Stellaris 4.5 does not load 4.4 saves:
-**no beta.8 save or checkpoint is valid**, and every card below must be run
-again on beta.9. B20 and B22 remain **known failures**: rerun them to confirm
-or refine the reports, not to discover them.
+**Beta.10** fixes the Space Age dead end of every start earlier than the Space
+Age (B27), keeps star empires unknown in both directions (B20), and lifts the
+pre-electricity storm, Energy Mogul and Great Khan regressions (B23–B25).
+Beta.9 saves load, but **every card below must pass on beta.10**. B22 remains
+a **known failure**: rerun it to refine the report, not to discover it.
 
 ## Rules for every card
 
@@ -318,6 +317,45 @@ or missing infrastructure.
 **Fail:** duplicate contact/target text, stuck event or desync. Attach host and
 guest logs and saves separately.
 
+## B27 — Space Age reached by research *(new in beta.10)*
+
+**Setup:** new **Atomic Age** game, Accelerated History, no other mods. A
+beta.9 save stuck at the Space Age with an empty research pool is also valid
+for step 4.
+
+1. Research the Atomic Age period technologies until the Space Age begins.
+2. In the research screen, confirm that **Space Exploration** and
+   **Thrusters** can be drawn once the Space Age has started.
+3. Research Space Exploration, then follow B06–B07: the **Space Exploration
+   Program** decision must appear on the capital, and Colonization must
+   become researchable.
+4. Stuck beta.9 save only: load it, let two monthly pulses pass, and record
+   which of Space Exploration, Thrusters, Holo-Theatres, Interplanetary
+   Commerce and Hydroponics were added to the research options.
+
+**Pass:** the five foundations are researchable after a natural transition,
+and the Exploration Program decision appears.
+
+**Fail:** an empty research pool at the Space Age, or the decision absent
+after Space Exploration.
+
+## B23–B25 — before electricity and galaxy alerts *(new in beta.10)*
+
+**Setup:** any start before the Machine Age, all DLC, no other mods.
+
+- **B23 Storms:** when a cosmic storm covers the home system before the
+  Electrical Grid, record the storm, the age and the planet's jobs. No energy
+  or consumer goods upkeep may appear on farmers, miners or technicians.
+- **B24 Leaders:** if a leader gets **Energy Mogul** before the Electrical
+  Grid, its planet must not gain technician jobs. Record the jobs after the
+  Electrical Grid.
+- **B25 Galaxy alerts:** before emergence, record any window about a galactic
+  power, and especially the Great Khan. No "Drums of War" window may appear,
+  and the Khan must not join your contacts.
+
+**Pass:** no deficit in an unknown resource, no early technician jobs, no
+galactic alert before emergence.
+
 ## B20 — The unknown stays unknown *(new in beta.7)*
 
 **Setup:** new game, any age, several AI empires; play until foreign ships
@@ -337,7 +375,9 @@ are detected near the home system.
    chain and become completable.
 
 **Pass:** no magic reveals; exactly one declaration; watch sites resume at
-emergence.
+emergence. Beta.10: leave the game running for at least ten years after the
+first detection; no empire may join your contacts or send a closed-borders
+notice before it declares itself.
 
 **Fail:** communications from a watched site, unknown-empire intel leaking,
 window spam, or a site stuck after emergence.
@@ -381,11 +421,12 @@ is claimed by another empire, and after reclaiming it.
 
 **Fail (hard):** crash only.
 
-## Beta.7 exit rule
+## Beta.10 exit rule
 
-Any B06–B10, B15–B17 or B20–B21 failure requires a new beta build. A release
-candidate requires all B06–B10, B15–B17 and B20–B21 cards passing on the
-same version, two successful B11/B12 configurations, no unresolved critical
-log entry, and one natural B06–B10 run. B14 is strongly preferred but does
+Any B06–B10, B15–B17, B20–B21 or B27 failure requires a new beta build. A
+release candidate requires all B06–B10, B15–B17, B20–B21 and B27 cards
+passing on the same version, B23–B25 without a failure, two successful
+B11/B12 configurations, no unresolved critical log entry, and one natural
+B06–B10 run started before the Space Age. B14 is strongly preferred but does
 not block a single-player beta release; B19 and B22 record behaviour and only
 block on a crash.

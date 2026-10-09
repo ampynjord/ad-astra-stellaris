@@ -2,7 +2,12 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
-## Unreleased
+## 1.4.0-beta.10 — 2026-10-09
+
+> Public beta for Stellaris 4.5 "Cygnus", published as a GitHub pre-release.
+> Beta.9 saves load in beta.10, and saves stuck at the Space Age are repaired
+> on their own. Never enable it beside the Steam Workshop version, which keeps
+> the stable 1.3.4 release.
 
 ### Fixed
 
@@ -12,6 +17,29 @@ All notable player-facing changes are recorded here. Dates use ISO format.
   them: the research pool ran dry, the science ship decision never appeared
   and colony ships stayed locked. Saves already stuck are repaired within two
   months, with the missing technologies added to the research options.
+- Star empires you detect before emergence now stay unknown in both
+  directions. An empire that spotted you used to finish its own first
+  contact, which revealed its name, put it in your contacts and sent its
+  closed-borders notice. Nomads, enclaves, caravaneers, pirates and the
+  awakened Khan are now watched the same way as regular empires.
+- The Great Khan's rise no longer opens a window or establishes
+  communications with an empire that has not emerged.
+- Before electricity, cosmic storms no longer charge energy or consumer goods
+  upkeep to farmers, miners and technicians. Their other economic penalties are
+  lifted until then as well; their bonuses still apply.
+- The Energy Mogul leader trait no longer creates technician jobs before
+  electricity. Its jobs appear once the Electrical Grid is known.
+- "Lights in the Night" and "A Signal from the Void", which speak of radar,
+  pilots and radio telescopes, now wait for the Machine Age.
+
+### Known issues
+
+- The homeworld can disappear from the outliner, reported when entering the
+  Bronze Age and while another empire holds your home system. The planet is
+  still yours and reachable from the galaxy map or the outliner notice.
+
+Report issues on GitHub or in the Discord bug-report forum with the beta tag,
+your starting age, the game date, a save and `error.log`.
 
 ## 1.4.0-beta.9 — 2026-09-25
 
