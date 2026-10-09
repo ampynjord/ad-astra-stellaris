@@ -101,6 +101,18 @@ set_first_contact_starting_stage = {
 						is_country_type = fallen_empire
 						is_country_type = awakened_fallen_empire
 						is_country_type = dormant_marauders
+						# 09/10 - B20 : toute civilisation stellaire reste
+						# inconnue, pas seulement les empires classiques
+						# (argroww a rencontre une nomade au jour 1).
+						is_country_type = awakened_marauders
+						is_country_type = nomad
+						is_country_type = enclave
+						is_country_type = mindwarden_enclave
+						is_country_type = enclave_mercenary
+						is_country_type = caravaneer_fleet
+						is_country_type = caravaneer_home
+						is_country_type = pirate
+						is_country_type = neutral_faction
 					}
 				}
 			}
@@ -118,6 +130,25 @@ set_first_contact_starting_stage = {
 			# le site reste ouvert « a l'etude » et ne conclut jamais - son
 			# evenement d'etape (adastra.175) le remet en veille a chaque
 			# echeance. adastra.15 rend les sites au vanilla a l'emergence.
+			set_first_contact_stage = adastra_stage_veille
+		}
+		else_if = {
+			# AD ASTRA - LE CONTACT DANS L'AUTRE SENS (09/10, carte B20).
+			# Quand un empire stellaire repere une civilisation confinee, c'est
+			# SON site qui est cree ici, avec nous pour contact_country. Notre
+			# type de pays n'a pas de chemin vanilla : le site tombait dans le
+			# cas par defaut, sans etape, et finissait par se conclure - les
+			# communications s'etablissaient alors dans les deux sens. Constate
+			# par argroww (beta.7) : site 2220 en veille, puis en 2225 le nom de
+			# l'empire, sa place dans nos contacts et la fermeture de ses
+			# frontieres. Son site passe donc en veille lui aussi ; adastra.15
+			# le rend au vanilla a notre emergence.
+			limit = {
+				contact_country = {
+					is_country_type = adastra_grounded
+					has_country_flag = adastra_locked
+				}
+			}
 			set_first_contact_stage = adastra_stage_veille
 		}
 		else_if = {

@@ -2262,6 +2262,19 @@ country_event = {
 			limit = { is_current_first_contact_stage = adastra_stage_veille }
 			set_first_contact_stage = default_stage_1
 		}
+		# 09/10 - B20 : les sites des AUTRES empires qui nous ont reperes sont
+		# aussi gardes en veille (zzz_adastra_first_contact) ; ils reprennent
+		# la chaine vanilla en meme temps que les notres.
+		every_country = {
+			limit = { NOT = { is_same_value = root } }
+			every_first_contact = {
+				limit = {
+					is_current_first_contact_stage = adastra_stage_veille
+					contact_country = { is_same_value = root }
+				}
+				set_first_contact_stage = default_stage_1
+			}
+		}
 
 		# 1.2 : les modificateurs de « ressource pas encore inventee » sont posés
 		# et retirés par adastra.11, dont le trigger exige adastra_locked. Ce
@@ -3045,6 +3058,10 @@ country_event = {
 		has_origin = origin_adastra
 		has_country_flag = adastra_locked
 		NOT = { has_country_flag = adastra_seen_ufo }
+		# 09/10 - B20 (argroww, Age du Bronze) : radar, pilotes, etat-major et
+		# radiotelescopes n'ont de sens qu'a partir de l'Age des machines.
+		# Avant, la presence est racontee par adastra.171 et adastra.173.
+		core_age_atteint = { age = machine }
 		# 1.4 (2026-08-29 - PRESENCE PHYSIQUE OBLIGATOIRE.
 		# L'eveil seul ne suffit plus : ces evenements racontent une
 		# observation, il faut donc un observateur. Une flotte etrangere
@@ -3149,6 +3166,10 @@ country_event = {
 		has_country_flag = adastra_locked
 		has_country_flag = adastra_seen_ufo
 		NOT = { has_country_flag = adastra_signal_decoded }
+		# 09/10 - B20 (argroww, Age du Bronze) : radar, pilotes, etat-major et
+		# radiotelescopes n'ont de sens qu'a partir de l'Age des machines.
+		# Avant, la presence est racontee par adastra.171 et adastra.173.
+		core_age_atteint = { age = machine }
 		# 1.4 (2026-08-29 - branche sur l'EVEIL REEL plutot que sur les
 		# communications : un observateur doit exister pour qu'on l'observe.
 		# 1.4 (2026-08-29 - PRESENCE PHYSIQUE OBLIGATOIRE.
