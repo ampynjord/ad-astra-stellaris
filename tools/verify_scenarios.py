@@ -160,6 +160,26 @@ def main():
     check("set_country_flag = adastra_stage_astronomy" in event_block(events, 49),
           "adastra.49 doit poser adastra_stage_astronomy a l'entree dans l'Age spatial")
 
+    # 09/10 - regressions beta.7 B20, B23-B25 (rapports d'argroww).
+    common = ROOT / "ad_astra" / "common"
+    def lire(*parts):
+        path = common.joinpath(*parts)
+        return path.read_text(encoding="utf-8-sig") if path.is_file() else ""
+    contact = lire("scripted_effects", "zzz_adastra_first_contact.txt")
+    check(re.search(r"contact_country = \{\s*is_country_type = adastra_grounded", contact),
+          "B20 : le site d'un empire qui nous repere doit passer en veille")
+    check("contact_country = { is_same_value = root }" in event_block(events, 15),
+          "B20 : adastra.15 doit rendre au vanilla les sites des autres empires")
+    khan = lire("scripted_effects", "zzz_adastra_khan.txt")
+    check(khan.count("core_est_confine = no") == 4,
+          "B25 : les quatre diffusions du Khan doivent sauter les empires confines")
+    storms = lire("scripted_triggers", "zzzz_adastra_storms.txt")
+    check("system_has_negating_storm_building" in storms and "adastra_has_energy = no" in storms,
+          "B23 : les tempetes doivent epargner un empire sans electricite")
+    mogul = lire("traits", "zzz_adastra_leader_traits.txt")
+    check(mogul.count("adastra_has_energy = yes") == 4,
+          "B24 : Energy Mogul ne doit creer de technicien qu'apres l'electricite")
+
     if errors:
         print("== scenarios de regression ==")
         for error in errors:

@@ -34,6 +34,16 @@
 #       set_first_contact_starting_stage  copie vanilla + garde de perception
 #                               par age (la faune spatiale ne declenche pas de
 #                               chaine avant l'Atomique - matrice v1)
+#   common/scripted_triggers/zzzz_adastra_storms.txt
+#       system_has_negating_storm_building  copie vanilla + protection d'un
+#                               empire Ad Astra sans electricite (B23)
+#   common/traits/zzz_adastra_leader_traits.txt
+#       leader_trait_capitalist(_2)  copie vanilla ; emplois de technicien
+#                               seulement apres l'electricite (B24)
+#   common/scripted_effects/zzz_adastra_khan.txt
+#       make_khan_effect, make_heirs_khan, make_heirs_khan_tiny  copies
+#                               vanilla ; l'avenement du Khan saute les
+#                               empires confines (B25)
 #   common/defines/zz_adastra_defines.txt
 #       NGameplay.TECH_TO_SURVEY_OWNED  reactive un define vanilla commente :
 #                               la Teledetection rend le droit de prospecter

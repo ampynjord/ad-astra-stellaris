@@ -1,0 +1,31 @@
+# Ad Astra - surcharge du declencheur scripte vanilla
+# system_has_negating_storm_building (copie exacte 4.5.1 + une branche).
+#
+# 09/10 - retour d'argroww (beta.7, carte B23) : une tempete gravitationnelle
+# a l'Age du Bronze imposait -1 energie aux fermiers, mineurs et techniciens.
+# La tempete choisit entre une facture en biens de consommation et une en
+# energie selon country_uses_consumer_goods ; avant l'electricite, l'empire
+# ne produit ni l'une ni l'autre et le deficit etait inevitable.
+#
+# Le vanilla annule ces penalites quand un bouclier planetaire protege le
+# systeme. On etend cette protection a un empire Ad Astra qui n'a pas encore
+# l'electricite. Effet de bord assume : les autres penalites economiques des
+# tempetes qui consultent ce declencheur (vitesse de construction, entretien,
+# stabilite) sont aussi neutralisees avant l'electricite. Les bonus restent.
+
+system_has_negating_storm_building = {
+	OR = {
+		solar_system? = {
+			any_system_planet = {
+				has_building = building_planetary_shield_generator
+			}
+		}
+		AND = {
+			exists = owner
+			owner = {
+				has_origin = origin_adastra
+				adastra_has_energy = no
+			}
+		}
+	}
+}
