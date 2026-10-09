@@ -31,6 +31,10 @@ All notable player-facing changes are recorded here. Dates use ISO format.
   electricity. Its jobs appear once the Electrical Grid is known.
 - "Lights in the Night" and "A Signal from the Void", which speak of radar,
   pilots and radio telescopes, now wait for the Machine Age.
+- Without Gigastructural Engineering, `error.log` no longer fills with more
+  than 2,000 lines about one of its country types at every launch. The
+  regular-empire check no longer names that type; with Gigastructures, the
+  city district fix from beta.9 is kept.
 
 ### Known issues
 
