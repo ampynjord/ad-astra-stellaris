@@ -12,12 +12,16 @@
 # d'utah, error.log du 24/09). Ce nom se charge après celui de Giga ; on reprend
 # son ajout (katzenartig_imperium) pour ne pas casser son propre type d'empire.
 #
-# 09/10 - ajout de Giga RETIRE. Sans Giga, le moteur ne connait pas ce type et
-# ecrivait plus de 2 000 lignes « Failed to deferred read key reference
-# katzenartig_imperium » dans error.log a chaque lancement (partie de test
-# beta.10 d'ampynjord, sans autre mod). Un journal propre pour tous passe
-# avant le statut d'empire regulier de l'empire special de Giga, qui perd
-# seulement ses districts et batiments d'empire regulier.
+# 09/10 - l'ajout de Giga ne NOMME plus son type de pays. Sans Giga, le
+# moteur ne connait pas katzenartig_imperium et ecrivait plus de 2 000 lignes
+# « Failed to deferred read key reference » dans error.log a chaque lancement
+# (partie de test beta.10 d'ampynjord, sans autre mod) : une cle inconnue est
+# une erreur de lecture, quelle que soit la condition qui l'entoure.
+# On reconnait donc l'empire de Giga par ce que Giga seul pose : ses drapeaux
+# globaux (katzenartig_imperium_happened, sans _defeated) et sa cible
+# d'evenement d'espece (flusion_katzens), qui n'existent jamais sans lui.
+# Drapeaux et cibles ne sont pas des cles de base de donnees : sans Giga, la
+# branche est simplement fausse, sans aucune erreur.
 
 is_regular_empire = {
 	OR = {
@@ -28,6 +32,14 @@ is_regular_empire = {
 		is_country_type = awakened_fallen_empire
 		is_country_type = exiled
 		is_country_type = adastra_grounded
+		# Gigastructural Engineering & More : l'Imperium Katzenartig
+		AND = {
+			has_global_flag = katzenartig_imperium_happened
+			NOT = { has_global_flag = katzenartig_imperium_defeated }
+			exists = event_target:flusion_katzens
+			NOT = { is_country_type = primitive }
+			founder_species = { is_same_species = event_target:flusion_katzens }
+		}
 	}
 	NOT = { has_ethic = ethic_gestalt_consciousness	}
 }
