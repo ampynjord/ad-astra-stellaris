@@ -2912,6 +2912,13 @@ country_event = {
 			# le verrou de la situation nomme celles qui manquent.
 			set_country_flag = adastra_unlock_space
 			set_country_flag = adastra_vanilla_gift_space
+			# 09/10 - retours nellia et butah (beta.8/9) : le drapeau
+			# d'astronomie n'etait pose que pour un depart a l'Age spatial
+			# (adastra.2). Arrive ici par la recherche, un empire ne pouvait
+			# donc jamais chercher Exploration spatiale, Propulseurs, Holo,
+			# Commerce interplanetaire ni Hydroponie, ni Colonisation qui en
+			# depend : vivier vide, decision du vaisseau scientifique absente.
+			set_country_flag = adastra_stage_astronomy
 			# La fission reste octroyee : nos quatre coques la reclament par
 			# leur reacteur, et son verrou d'Age de l'atome est deja tombe.
 			give_technology = { tech = tech_fission_power message = no }

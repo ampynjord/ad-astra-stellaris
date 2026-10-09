@@ -2,6 +2,17 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## Unreleased
+
+### Fixed
+
+- Reaching the Space Age through research now opens Space Exploration,
+  Thrusters, Holo-Theatres, Interplanetary Commerce and Hydroponics, as a
+  Space Age start already did. Before, any earlier start could never research
+  them: the research pool ran dry, the science ship decision never appeared
+  and colony ships stayed locked. Saves already stuck are repaired within two
+  months, with the missing technologies added to the research options.
+
 ## 1.4.0-beta.9 — 2026-09-25
 
 > Public beta for Stellaris 4.5 "Cygnus", published as a GitHub pre-release.

@@ -38,6 +38,32 @@ country_event = {
 		adastra_preftl_sync = yes
 		adastra_maj_designation = yes
 
+		# 09/10 - REPARATION DES PARTIES BLOQUEES A L'AGE SPATIAL. Avant ce
+		# correctif, adastra.49 ne posait pas adastra_stage_astronomy : les
+		# fondatrices du lot astronomie restaient hors du tirage et le vivier
+		# pouvait se vider. Le drapeau est pose d'abord ; les options de
+		# recherche viennent au pouls SUIVANT, une fois le potential ouvert
+		# (meme regle que pour un drapeau d'age). Ce bloc precede la pose
+		# pour ne jamais agir le meme mois.
+		if = {
+			limit = { has_country_flag = adastra_reparation_astronomie }
+			remove_country_flag = adastra_reparation_astronomie
+			if = { limit = { NOT = { has_technology = tech_space_exploration } } add_research_option = tech_space_exploration }
+			if = { limit = { NOT = { has_technology = tech_thrusters_1 } } add_research_option = tech_thrusters_1 }
+			if = { limit = { NOT = { has_technology = tech_holo_entertainment } } add_research_option = tech_holo_entertainment }
+			if = { limit = { NOT = { has_technology = tech_interplanetary_commerce } } add_research_option = tech_interplanetary_commerce }
+			if = { limit = { NOT = { has_technology = tech_hydroponics } } add_research_option = tech_hydroponics }
+		}
+		if = {
+			limit = {
+				has_country_flag = adastra_reached_space
+				has_country_flag = adastra_unlock_space
+				NOT = { has_country_flag = adastra_stage_astronomy }
+			}
+			set_country_flag = adastra_stage_astronomy
+			set_country_flag = adastra_reparation_astronomie
+		}
+
 		# 12/09 - LE SECTEUR EXIGE LA BASE STELLAIRE. Le diagnostic pose le
 		# 31/08 a rendu son verdict dans le game.log d'argroww (beta.7,
 		# carte B22) : 435 tentatives, 435 refus, zero reussite, et le

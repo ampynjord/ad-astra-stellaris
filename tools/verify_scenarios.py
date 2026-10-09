@@ -146,6 +146,20 @@ def main():
           "add_building = building_state_academy" in resources,
           "Civil Education : Academie d'Etat non restauree apres l'electricite")
 
+    # 09/10 - retours nellia et butah : adastra_stage_astronomy n'etait pose
+    # que pour un depart a l'Age spatial. Un empire arrive par la recherche
+    # ne pouvait plus chercher les fondatrices du lot astronomie. Tout drapeau
+    # d'etape lu doit avoir un poseur, et l'entree naturelle dans l'Age
+    # spatial doit ouvrir l'astronomie comme le depart spatial.
+    mod_text = "\n".join(path.read_text(encoding="utf-8-sig")
+                         for path in (ROOT / "ad_astra").rglob("*.txt"))
+    read_flags = set(re.findall(r"has_country_flag\s*=\s*(adastra_stage_\w+)", mod_text))
+    set_flags = set(re.findall(r"set_country_flag\s*=\s*(adastra_stage_\w+)", mod_text))
+    for flag in sorted(read_flags - set_flags):
+        check(False, "drapeau d'etape lu mais jamais pose : %s" % flag)
+    check("set_country_flag = adastra_stage_astronomy" in event_block(events, 49),
+          "adastra.49 doit poser adastra_stage_astronomy a l'entree dans l'Age spatial")
+
     if errors:
         print("== scenarios de regression ==")
         for error in errors:
