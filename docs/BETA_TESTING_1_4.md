@@ -1,15 +1,15 @@
-# Ad Astra 1.4.0-beta.10 — Test Notebook
+# Ad Astra 1.4.0-beta.11 — Test Notebook
 
 This is the public-beta test contract. Steam Workshop remains on 1.3.4.
 Enable only `Ad Astra: Origins - Beta`; never enable it alongside Workshop.
 While this local beta is installed, treat the Workshop copy as unusable and do
 not load its saves with the beta.
 
-**Beta.10** fixes the Space Age dead end of every start earlier than the Space
-Age (B27), keeps star empires unknown in both directions (B20), and lifts the
-pre-electricity storm, Energy Mogul and Great Khan regressions (B23–B25).
-Beta.9 saves load, but **every card below must pass on beta.10**. B22 remains
-a **known failure**: rerun it to refine the report, not to discover it.
+**Beta.11** fixes the planetary housing and amenities scale (+100/+150/+200),
+ensures newly emerged AI regular empires remain dormant during galaxy freeze,
+and fixes pacing tooltips to state research speed. Beta.9 and beta.10 saves load,
+but **every card below must pass on beta.11**. B22 remains a **known failure**:
+rerun it to refine the report, not to discover it.
 
 ## Rules for every card
 

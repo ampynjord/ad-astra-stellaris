@@ -1,4 +1,4 @@
-﻿version="1.4.0-beta.10"
+﻿version="1.4.0-beta.11"
 tags={
 	"Gameplay"
 	"Events"

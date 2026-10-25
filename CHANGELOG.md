@@ -2,6 +2,31 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## 1.4.0-beta.11 — 2026-10-25
+
+> Public beta for Stellaris 4.5 "Cygnus", published as a GitHub pre-release.
+> Saves from beta.9 and beta.10 load cleanly in beta.11. Never enable it beside
+> the Steam Workshop version, which keeps the stable 1.3.4 release.
+
+### Fixed
+
+- Housing and amenities from age technologies now apply their intended planetary
+  scale (+100, +150, +200 in Stellaris 4.5). Previously, fractional modifiers
+  evaluated to +0.
+- The galaxy freeze option now continuously pacifies any newly emerged regular AI
+  empires throughout the pre-FTL ascent.
+- Pacing option tooltips now correctly display research speed modifiers (+50%,
+  -33%, -50%) matching actual game effects.
+
+### Known issues
+
+- The homeworld can disappear from the outliner, reported when entering the
+  Bronze Age and while another empire holds your home system. The planet is
+  still yours and reachable from the galaxy map or the outliner notice.
+
+Report issues on GitHub or in the Discord bug-report forum with the beta tag,
+your starting age, the game date, a save and `error.log`.
+
 ## 1.4.0-beta.10 — 2026-10-09
 
 > Public beta for Stellaris 4.5 "Cygnus", published as a GitHub pre-release.
@@ -35,13 +60,6 @@ All notable player-facing changes are recorded here. Dates use ISO format.
   than 2,000 lines about one of its country types at every launch. With
   Gigastructures, its Katzenartig Imperium still counts as a regular empire,
   and the city district fix from beta.9 is kept.
-- Housing and amenities from age technologies now apply their intended planetary
-  scale (+100, +150, +200 in Stellaris 4.5). Previously, fractional modifiers
-  evaluated to +0.
-- The galaxy freeze option now continuously pacifies any newly emerged regular AI
-  empires throughout the pre-FTL ascent.
-- Pacing option tooltips now correctly display research speed modifiers (+50%,
-  -33%, -50%) matching actual game effects.
 
 ### Known issues
 
