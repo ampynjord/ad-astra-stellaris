@@ -35,6 +35,13 @@ All notable player-facing changes are recorded here. Dates use ISO format.
   than 2,000 lines about one of its country types at every launch. With
   Gigastructures, its Katzenartig Imperium still counts as a regular empire,
   and the city district fix from beta.9 is kept.
+- Housing and amenities from age technologies now apply their intended planetary
+  scale (+100, +150, +200 in Stellaris 4.5). Previously, fractional modifiers
+  evaluated to +0.
+- The galaxy freeze option now continuously pacifies any newly emerged regular AI
+  empires throughout the pre-FTL ascent.
+- Pacing option tooltips now correctly display research speed modifiers (+50%,
+  -33%, -50%) matching actual game effects.
 
 ### Known issues
 

@@ -455,8 +455,28 @@ MAJEURES = {
 ECHELLE_MODS = 0.08
 
 
+# 25/10/2026 - LOGEMENT ET AGREMENTS EN CENTIEMES.
+#
+# Retour Workshop (donschmiddy, 11/10) : « amenity and housing bonuses from
+# tech do not work ». Exact. Les valeurs de la table (2 a 4) datent de
+# l'echelle d'avant la 4.0, ou 1 = un logement. Depuis la 4.0 le moteur compte
+# en centiemes : un district urbain vaut 1000, les technos vanilla de logement
+# ajoutent 100 ou 200 par district (00_urban_districts.txt). Passees en plus
+# par ECHELLE_MODS, elles sortaient a 0.16 - affiche « +0 », effet nul.
+#
+# Ces deux modificateurs plats ne cumulent pas un pourcentage : le correctif
+# 0.08 contre l'empilement (cooldude808) ne les concerne pas. On les convertit
+# donc a part, x50 : 2 -> 100, 4 -> 200, le meme ordre que les paliers vanilla.
+# Cumul sur l'ascension : environ 1350 logements et 1300 agrements, soit un
+# peu plus d'un district urbain - sensible, pas hors categorie.
+ECHELLE_PLATS_PLANETE = 50
+PLATS_PLANETE = ("planet_housing_add", "planet_amenities_add")
+
+
 def _mise_a_l_echelle(mods):
-    return {k: round(v * ECHELLE_MODS, 3) for k, v in mods.items()}
+    return {k: (int(v * ECHELLE_PLATS_PLANETE) if k in PLATS_PLANETE
+                else round(v * ECHELLE_MODS, 3))
+            for k, v in mods.items()}
 
 
 

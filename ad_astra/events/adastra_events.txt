@@ -1273,6 +1273,61 @@ country_event = {
 }
 
 ############################
+# adastra.13 : La galaxie en attente reste en attente (cache, mensuel)
+############################
+# 25/10/2026 - retour Workshop (donschmiddy, 11/10) : « the rest of the galaxy
+# is not frozen ». adastra.7 n'endort que les empires qui existent au jour 1.
+# Une civilisation pre-PRL IA qui perce pendant les deux siecles de notre
+# ascension devient un empire `default` bien eveille, et l'option promise ne
+# tient plus. On endort donc chaque mois les nouveaux venus, du seul type
+# `default` - celui que le reveil d'adastra.15 restaure. Les autres types
+# (enclaves, maraudeurs, types de mods tiers) ne sont pas touches.
+# set_country_type vide les reserves : meme protection que le reveil.
+country_event = {
+	id = adastra.13
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		is_ai = no
+		has_country_flag = adastra_dormant_active
+	}
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				is_ai = yes
+				is_country_type = default
+				NOT = { has_origin = origin_adastra }
+			}
+			export_resource_stockpile_to_variable = { resource = energy variable = adastra_st_energy }
+			export_resource_stockpile_to_variable = { resource = minerals variable = adastra_st_minerals }
+			export_resource_stockpile_to_variable = { resource = food variable = adastra_st_food }
+			export_resource_stockpile_to_variable = { resource = consumer_goods variable = adastra_st_cg }
+			export_resource_stockpile_to_variable = { resource = alloys variable = adastra_st_alloys }
+			export_resource_stockpile_to_variable = { resource = influence variable = adastra_st_influence }
+			export_resource_stockpile_to_variable = { resource = unity variable = adastra_st_unity }
+			set_country_type = adastra_dormant
+			add_resource = { energy = 1 mult = adastra_st_energy }
+			add_resource = { minerals = 1 mult = adastra_st_minerals }
+			add_resource = { food = 1 mult = adastra_st_food }
+			add_resource = { consumer_goods = 1 mult = adastra_st_cg }
+			add_resource = { alloys = 1 mult = adastra_st_alloys }
+			add_resource = { influence = 1 mult = adastra_st_influence }
+			add_resource = { unity = 1 mult = adastra_st_unity }
+			clear_variable = adastra_st_energy
+			clear_variable = adastra_st_minerals
+			clear_variable = adastra_st_food
+			clear_variable = adastra_st_cg
+			clear_variable = adastra_st_alloys
+			clear_variable = adastra_st_influence
+			clear_variable = adastra_st_unity
+		}
+	}
+}
+
+############################
 # adastra.91 : SUPPRIME le 31/08 (retour ampynjord : les astres se
 # relevaient tout seuls, le vaisseau n'avait plus rien a faire).
 # La prospection par presence revelait UN corps par mois sans ordre.

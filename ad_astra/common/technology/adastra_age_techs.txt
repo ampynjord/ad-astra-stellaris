@@ -341,7 +341,7 @@ tech_adastra_shelter = {
 	}
 
 	modifier = {
-		planet_housing_add = 0.16
+		planet_housing_add = 100
 	}
 
 	ai_weight = { factor = 5 }
@@ -840,7 +840,7 @@ tech_adastra_village = {
 	}
 
 	modifier = {
-		planet_housing_add = 0.16
+		planet_housing_add = 100
 		planet_stability_add = 0.24
 	}
 
@@ -1079,7 +1079,7 @@ tech_adastra_first_city = {
 
 	modifier = {
 		planet_stability_add = 0.4
-		planet_housing_add = 0.16
+		planet_housing_add = 100
 	}
 
 	ai_weight = { factor = 5 }
@@ -1385,7 +1385,7 @@ tech_adastra_brewing = {
 
 	modifier = {
 		pop_happiness = 0.01
-		planet_amenities_add = 0.24
+		planet_amenities_add = 150
 	}
 
 	ai_weight = { factor = 5 }
@@ -1462,7 +1462,7 @@ tech_adastra_fired_brick = {
 	}
 
 	modifier = {
-		planet_housing_add = 0.24
+		planet_housing_add = 150
 		planet_jobs_minerals_produces_mult = 0.01
 	}
 
@@ -2162,7 +2162,7 @@ tech_adastra_glass = {
 	}
 
 	modifier = {
-		planet_amenities_add = 0.32
+		planet_amenities_add = 200
 	}
 
 	ai_weight = { factor = 5 }
@@ -2200,7 +2200,7 @@ tech_adastra_aqueduct = {
 	}
 
 	modifier = {
-		planet_amenities_add = 0.24
+		planet_amenities_add = 150
 		planet_stability_add = 0.16
 	}
 
@@ -2816,7 +2816,7 @@ tech_adastra_lighthouse = {
 
 	modifier = {
 		country_trade_attractiveness = 0.01
-		planet_amenities_add = 0.16
+		planet_amenities_add = 100
 	}
 
 	ai_weight = { factor = 5 }
@@ -2892,8 +2892,8 @@ tech_adastra_concrete = {
 	}
 
 	modifier = {
-		planet_housing_add = 0.24
-		planet_amenities_add = 0.16
+		planet_housing_add = 150
+		planet_amenities_add = 100
 	}
 
 	ai_weight = { factor = 5 }
@@ -3013,7 +3013,7 @@ tech_adastra_stone_architecture = {
 	}
 
 	modifier = {
-		planet_housing_add = 0.24
+		planet_housing_add = 150
 	}
 
 	ai_weight = { factor = 5 }
@@ -4821,7 +4821,7 @@ tech_adastra_clear_glass = {
 
 	modifier = {
 		planet_jobs_consumer_goods_produces_mult = 0.01
-		planet_amenities_add = 0.24
+		planet_amenities_add = 150
 	}
 
 	ai_weight = { factor = 5 }
@@ -6567,8 +6567,8 @@ tech_adastra_steel_frame = {
 	}
 
 	modifier = {
-		planet_housing_add = 0.32
-		planet_amenities_add = 0.16
+		planet_housing_add = 200
+		planet_amenities_add = 100
 	}
 
 	ai_weight = { factor = 5 }
@@ -7688,7 +7688,7 @@ tech_adastra_reinforced_concrete = {
 	}
 
 	modifier = {
-		planet_housing_add = 0.32
+		planet_housing_add = 200
 	}
 
 	ai_weight = { factor = 5 }
@@ -8232,7 +8232,7 @@ tech_adastra_welfare_state = {
 
 	modifier = {
 		pop_happiness = 0.01
-		planet_amenities_add = 0.24
+		planet_amenities_add = 150
 	}
 
 	ai_weight = { factor = 5 }
@@ -8348,7 +8348,7 @@ tech_adastra_suburbs = {
 	}
 
 	modifier = {
-		planet_housing_add = 0.32
+		planet_housing_add = 200
 		pop_happiness = 0.01
 	}
 
@@ -8937,7 +8937,7 @@ tech_adastra_ecology = {
 
 	modifier = {
 		planet_stability_add = 0.48
-		planet_amenities_add = 0.32
+		planet_amenities_add = 200
 	}
 
 	ai_weight = { factor = 5 }
