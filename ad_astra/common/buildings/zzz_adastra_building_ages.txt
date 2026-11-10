@@ -1313,20 +1313,26 @@ building_order_keep = {
 			}
 		}
 
-		owner = { has_origin = origin_toxic_knights }
+		owner = {
+			has_origin = origin_toxic_knights
+			NOT = {
+				has_country_flag = quest_abandoned
+			}
+		}
 		planet = {
 			OR = {
 				has_planet_flag = toxic_knights_habitat
+				has_planet_flag = toxic_knights_settled_world
 				has_carrier_flag = toxic_knights_arkship
 			}
 		}
-		owner = { NOT = { has_country_flag = quest_abandoned } }
 	}
 
 	destroy_trigger = {
-		OR = {
-			NOT = { exists = owner }
-			NOT = { owner = { has_origin = origin_toxic_knights } }
+		NOT = {
+			owner? = {
+				has_origin = origin_toxic_knights
+			}
 		}
 	}
 
@@ -1337,14 +1343,20 @@ building_order_keep = {
 
 	triggered_planet_modifier = {
 		potential = {
-			owner = { has_country_flag = toxoids_7060_A }
+			owner = {
+				has_country_flag = toxoids_7060_A
+			}
 		}
 		job_knight_add = @building_static_jobs
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			owner = { NOT = { has_country_flag = quest_over } }
+			owner = {
+				NOT = {
+					has_country_flag = quest_over
+				}
+			}
 		}
 		modifier = {
 			job_knight_add = @building_static_jobs
@@ -1353,42 +1365,54 @@ building_order_keep = {
 
 	triggered_planet_modifier = {
 		potential = {
-			owner = { has_country_flag = toxoids_7090_a }
+			owner = {
+				has_country_flag = toxoids_7090_a
+			}
 		}
 		planet_stability_add = 5
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			owner = { has_country_flag = toxoids_7130_a }
+			owner = {
+				has_country_flag = toxoids_7130_a
+			}
 		}
 		job_knight_add = @building_static_jobs
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			owner = { has_country_flag = toxoids_7060_B }
+			owner = {
+				has_country_flag = toxoids_7060_B
+			}
 		}
 		job_knight_add = @building_static_jobs
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			owner = { has_country_flag = toxoids_7040_c }
+			owner = {
+				has_country_flag = toxoids_7040_c
+			}
 		}
 		job_knight_add = @building_static_jobs
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			owner = { has_country_flag = toxoids_7095_a }
+			owner = {
+				has_country_flag = toxoids_7095_a
+			}
 		}
 		job_knight_add = @building_static_jobs
 	}
 
 	triggered_planet_modifier = {
 		potential = {
-			owner = { has_country_flag = toxoids_7160_a }
+			owner = {
+				has_country_flag = toxoids_7160_a
+			}
 		}
 		job_knight_add = @building_static_jobs
 	}

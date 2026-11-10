@@ -962,18 +962,27 @@ col_fortress = {
 	potential = {
 		NOT = { owner? = { is_country_type = adastra_grounded has_country_flag = adastra_locked } }
 		NOR = {
-			uses_district_set = city_world
-			uses_district_set = ring_world
 			uses_district_set = habitat
 			uses_district_set = cosmogenesis_world
 		}
-		is_capital = no
 		is_special_colony_type = no
 		owner_or_space_owner? = {
 			is_wilderness_empire = no
 			is_nomadic = no
 		}
-		NOT = { is_planet_class = pc_nanotech }
+		NOT = {
+			is_planet_class = pc_nanotech
+		}
+		OR = {
+			has_building = building_order_keep
+			AND = {
+				NOR = {
+					uses_district_set = city_world
+					uses_district_set = ring_world
+				}
+				is_capital = no
+			}
+		}
 	}
 
 	planet_modifier = {
@@ -985,11 +994,20 @@ col_fortress = {
 
 	triggered_planet_modifier = {
 		potential = {
-			owner_or_space_owner? = { has_tradition = tr_adaptability_finish }
+			owner_or_space_owner? = {
+				has_tradition = tr_adaptability_finish
+			}
 		}
 		modifier = {
 			soldier_jobs_bonus_workforce_mult = 0.05
 		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_building = building_order_keep
+		}
+		pop_knight_bonus_workforce_mult = 0.05
 	}
 
 	ai_building_set_affinity = {
@@ -1000,6 +1018,10 @@ col_fortress = {
 		modifier = {
 			add = @stickiness
 			has_designation = col_fortress
+		}
+		modifier = {
+			add = 1000
+			has_building = building_order_keep
 		}
 		modifier = {
 			has_any_fortress_zone = yes

@@ -1,21 +1,14 @@
 #!/usr/bin/env python3
 """
-Ad Astra 1.1 - Générateur d'overrides pour les techs de tier 1 sans prérequis.
+Génère les surcharges des technologies vanilla de palier 1 et 2.
 
-Bug bêta : notre verrou couvre les 31 techs de départ, mais les techs de TIER 1
-SANS prérequis restent proposables par le tirage dès le début de partie
-("modern techs at Late Medieval age" - retour Nobumon).
-
-Ce script se lance quand le PC est en ligne, sur les fichiers vanilla 4.4 :
+Utiliser les fichiers de la version cible de Stellaris :
     python3 gen_tier1_overrides.py "<...>/Stellaris/common/technology" \
         --ours ../ad_astra/common/technology/zzz_adastra_tech_overrides.txt \
         --out  ../ad_astra/common/technology/zzz_adastra_tier1_overrides.txt
 
-Il copie chaque bloc vanilla concerné TEL QUEL et insère notre garde dans le
-potential (même formule que les 31 techs de départ) :
-    OR = { NOT = { has_origin = origin_adastra } has_country_flag = adastra_unlock_space }
-Les techs déjà couvertes par notre override et les start_tech sont exclues.
-Un rapport liste ce qui a été gaté pour relecture manuelle (mapping d'âge affinable).
+Les technologies de départ ont leurs propres surcharges. Les autres attendent
+l'émergence, sauf les exceptions datées dans vanilla_tech_age_map.py.
 """
 import argparse, os, re, sys
 
@@ -25,23 +18,17 @@ import argparse, os, re, sys
 # doivent survivre a une regeneration.
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from vanilla_tech_age_map import TECH_AGE  # noqa: E402
+from vanilla_age_map import AGE_UNLOCK_COST  # noqa: E402
 
-HISTORICAL = {k: "adastra_unlock_%s" % v[0] for k, v in TECH_AGE.items()}
+# Ces cinq cartes gardent leur condition de construction de vaisseaux.
+SHIP_TECHS = {
+    "tech_afterburners_1",
+    "tech_combat_computers_1",
+    "tech_doctrine_fleet_size_1",
+    "tech_doctrine_navy_size_1",
+    "tech_strike_craft_1",
+}
 
-# 16/08 : le palier 1 s'ouvre a l'Age spatial, le palier 2 attend l'emergence.
-# Le palier 3 exigeant six technos de palier 2 deja cherchees, il se ferme de
-# lui-meme - c'est ce qui empeche la terraformation et les cuirassiers
-# d'apparaitre avant la percee, sans enumerer un seul tech de palier 3.
-def guard_tier(tier):
-    drapeau = ("adastra_unlock_space" if tier == "1" else "adastra_completed")
-    return ("\t\t# Ad Astra : verrou d'age (tier %s)\n"
-            "\t\tOR = {\n"
-            "\t\t\tNOT = { has_origin = origin_adastra }\n"
-            "\t\t\thas_country_flag = %s\n"
-            "\t\t}" % (tier, drapeau))
-
-
-GUARD = guard_tier("1")
 
 def strip_comments(text):
     return re.sub(r"#[^\n]*", "", text)
@@ -78,9 +65,24 @@ def block_field(block, field):
 def has_block(block, field):
     return re.search(rf"\b{field}\s*=\s*\{{", strip_comments(block)) is not None
 
-def inject_guard(block, tier='1'):
-    """Insert GUARD inside existing potential, or add a potential block."""
-    garde = guard_tier(tier)
+def inject_guard(block, name):
+    """Insert the Ad Astra gate into the technology's potential."""
+    condition = "has_country_flag = adastra_completed"
+    if name in TECH_AGE:
+        age, _ = TECH_AGE[name]
+        condition = f"adastra_vanilla_open_{age} = yes"
+        if age in AGE_UNLOCK_COST:
+            block = re.sub(r"cost = @?[A-Za-z0-9_]+", f"cost = {AGE_UNLOCK_COST[age]}", block, count=1)
+    garde = ("\t\t# Ad Astra : verrou d'age\n"
+             "\t\tOR = {\n"
+             "\t\t\tNOT = { has_origin = origin_adastra }\n"
+             f"\t\t\t{condition}\n"
+             "\t\t}")
+    if name in SHIP_TECHS:
+        garde += ("\n\t\tOR = {\n"
+                  "\t\t\tNOT = { has_origin = origin_adastra }\n"
+                  "\t\t\tadastra_gameplay_vaisseaux = yes\n"
+                  "\t\t}")
     m = re.search(r"\bpotential\s*=\s*\{", block)
     if m:
         return block[:m.end()] + "\n" + garde + block[m.end():]
@@ -131,15 +133,13 @@ def main():
                 continue
             picked.append((fname, name, block))
 
-    with open(args.out, "w", encoding="utf-8") as f:
-        f.write("# Ad Astra 1.1 - Overrides generes : techs de tier 1 et 2,\n")
-        f.write("# gatees a l'Age spatial pour l'origine Ad Astra (les autres empires ne sont pas affectes).\n")
+    with open(args.out, "w", encoding="utf-8", newline="\n") as f:
+        f.write("# Ad Astra - Technologies de palier 1 et 2 verrouillees jusqu'a l'emergence,\n")
+        f.write("# sauf les exceptions historiques de vanilla_tech_age_map.py.\n")
         f.write("# Genere par tools/gen_tier1_overrides.py - NE PAS EDITER A LA MAIN.\n\n")
         for fname, name, block in picked:
             f.write(f"# source vanilla : {fname}\n")
-            out_block = inject_guard(block, block_field(block, "tier") or "1")
-            if name in HISTORICAL:
-                out_block = out_block.replace("adastra_unlock_space", HISTORICAL[name])
+            out_block = inject_guard(block, name)
             f.write(out_block.rstrip() + "\n\n")
 
     print(f"{len(picked)} tech(s) gatee(s) -> {args.out}")
@@ -149,8 +149,5 @@ def main():
         print(f"{len(skipped)} exclue(s) :")
         for name, why in skipped:
             print(f"  SKIP  {name}  ({why})")
-    print("\nRelecture manuelle : si une tech merite un age plus precoce que l'Age spatial,")
-    print("remplacer adastra_unlock_space par le flag d'age voulu dans le fichier genere.")
-
 if __name__ == "__main__":
     main()

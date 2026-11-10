@@ -11,6 +11,7 @@ slot_city_01 = {
 	included_zone_sets = {
 		urban
 		ark_forever_cruise_city
+		knights_settled_world
 	}
 
 	unlock = { # planet scope
@@ -43,6 +44,7 @@ slot_city_02 = {
 	included_zone_sets = {
 		urban
 		ark_forever_cruise_city
+		knights_settled_world
 	}
 
 	unlock = { # planet scope

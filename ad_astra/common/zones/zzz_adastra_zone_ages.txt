@@ -23,8 +23,7 @@ zone_urban = {
 		}
  # planet scope
 		hidden_trigger = {
-			exists = owner
-			owner = {
+			owner? = {
 				is_wilderness_empire = no
 			}
 		}
@@ -44,8 +43,7 @@ zone_urban = {
 		}
  # planet scope
 		hidden_trigger = {
-			exists = owner
-			owner = {
+			owner? = {
 				is_wilderness_empire = no
 			}
 		}
@@ -122,8 +120,7 @@ zone_industrial = {
 			}
 		}
  # planet scope
-		exists = owner
-		owner = {
+		owner? = {
 			country_uses_consumer_goods = yes
 		}
 	}
@@ -142,8 +139,7 @@ zone_industrial = {
 		}
  # planet scope
 		hidden_trigger = {
-			exists = owner
-			owner = {
+			owner? = {
 				country_uses_consumer_goods = yes
 			}
 		}
@@ -193,6 +189,14 @@ zone_industrial = {
 
 	ai_weight_coefficient = 1.1
 	ai_priority = 8
+
+	convert_to = {
+		zone_foundry
+		zone_foundry_arcology
+		zone_foundry_ring_world
+		zone_foundry_nexus
+		zone_foundry_hive
+	}
 
 	zone_sets = {
 		urban
@@ -321,8 +325,7 @@ zone_factory = {
 		}
  # planet scope
 		hidden_trigger ={
-			exists = owner
-			owner = {
+			owner? = {
 				country_uses_consumer_goods = yes
 			}
 		}
@@ -342,8 +345,7 @@ zone_factory = {
 		}
  # planet scope
 		hidden_trigger ={
-			exists = owner
-			owner = {
+			owner? = {
 				country_uses_consumer_goods = yes
 			}
 		}
@@ -385,6 +387,14 @@ zone_factory = {
 
 	ai_priority = 10
 
+	convert_to = {
+		zone_foundry
+		zone_foundry_arcology
+		zone_foundry_ring_world
+		zone_foundry_nexus
+		zone_foundry_hive
+	}
+
 	zone_sets = {
 		urban
 		habitat_urban
@@ -413,8 +423,7 @@ zone_research_unity = {
 		}
  # planet scope
 		hidden_trigger = {
-			exists = owner
-			owner = {
+			owner? = {
 				is_wilderness_empire = no
 			}
 		}
@@ -434,8 +443,7 @@ zone_research_unity = {
 		}
  # planet scope
 		hidden_trigger = {
-			exists = owner
-			owner = {
+			owner? = {
 				is_wilderness_empire = no
 			}
 		}
@@ -870,8 +878,7 @@ zone_unity = {
 			}
 		}
  # planet scope
-		hidden_trigger = { exists = owner }
-		owner = {
+		owner? = {
 			is_wilderness_empire = no
 			is_spiritualist = no
 			NOT = {
@@ -903,11 +910,12 @@ zone_unity = {
 		}
  # planet scope
 		hidden_trigger = {
-			exists = owner
-			owner = {
+			owner? = {
 				OR = {
 					is_wilderness_empire = no
-					NOT = { has_valid_civic = civic_machine_servitor }
+					NOT = {
+						has_valid_civic = civic_machine_servitor
+					}
 				}
 			}
 		}
@@ -948,6 +956,17 @@ zone_unity = {
 	}
 	ai_priority = 10
 
+	convert_to = {
+		zone_unity_spiritualist
+		zone_unity_spiritualist_arcology
+		zone_unity_spiritualist_ring_world
+		zone_unity_spiritualist_nexus
+		zone_unity_bio_trophy
+		zone_unity_bio_trophy_arcology
+		zone_unity_bio_trophy_ring_world
+		zone_unity_bio_trophy_nexus
+	}
+
 	zone_sets = {
 		urban
 		habitat_urban
@@ -956,11 +975,6 @@ zone_unity = {
 
 	inline_script = {
 		script = zones/shared_city_non_urban_zone_modifiers
-	}
-
-	convert_to = {
-		zone_unity_spiritualist
-		zone_unity_bio_trophy
 	}
 }
 
@@ -981,8 +995,7 @@ zone_unity_spiritualist = {
 			}
 		}
  # planet scope
-		hidden_trigger = { exists = owner }
-		owner = {
+		owner? = {
 			is_spiritualist = yes
 		}
 		OR = {
@@ -1047,6 +1060,17 @@ zone_unity_spiritualist = {
 	}
 	ai_priority = 10
 
+	convert_to = {
+		zone_unity
+		zone_unity_arcology
+		zone_unity_ring_world
+		zone_unity_nexus
+		zone_unity_bio_trophy
+		zone_unity_bio_trophy_arcology
+		zone_unity_bio_trophy_ring_world
+		zone_unity_bio_trophy_nexus
+	}
+
 	zone_sets = {
 		urban
 		habitat_urban
@@ -1055,11 +1079,6 @@ zone_unity_spiritualist = {
 
 	inline_script = {
 		script = zones/shared_city_non_urban_zone_modifiers
-	}
-
-	convert_to = {
-		zone_unity
-		zone_unity_bio_trophy
 	}
 }
 
