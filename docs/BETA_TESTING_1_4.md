@@ -75,8 +75,8 @@ natural checkpoint saves used by B07–B10.
    only enters the draw after a **radio telescope** is built, the last wave
    after the **space telescope**. The game must announce this rhythm at Space
    Age entry and remind you when the deck runs dry; the situation log must
-   also state the rule. Astronomical Observation costs 100 influence +
-   500 minerals and must grow **30% dearer** with each campaign.
+   also state the rule. Astronomical Observation starts at 100 influence and
+   500 minerals. Each completed campaign adds 30% of that base cost.
 3. Record every situation increase; inspect custom icons as cards appear.
 4. Build each telescope tier when required. The construction list must only
    offer the **highest researched tier**, and the radio telescope must upgrade
@@ -87,21 +87,24 @@ natural checkpoint saves used by B07–B10.
 5. Complete **First Suborbital Launch** once the situation instructs you to do
    so. If it fails, retry only after recording the visible failure; if it
    succeeds, confirm it disappears.
+6. Complete **First Satellite** and **First Crewed Flight**. If the home
+   system has a moon, complete **First Lunar Landing**. Enact **Deep Probe**
+   and let the monthly update run after it completes.
 
 **Pass:** every period technology adds one point, none completes instantly, and
-the stage reaches **250/400** only after all 25 period technologies. A successful
-First Suborbital Launch then reaches **275/400** and opens the Exploration
-Program. The satellite is a separate, one-time historical milestone and does
-not replace this launch.
+the stage reaches **250/400** only after all 25 period technologies. The
+situation stays at **250/400** until the probe and reaches
+**275/400** after Deep Probe, opening the Exploration Program.
 
 **Fail:** blank or instant deck, absent telescope icon/localisation, stale
 decision target, or a milestone that skips a stated requirement.
 
-**Output:** share a natural post-launch save named `B06-first-launch-DATE`.
+**Output:** share a natural post-launch save named `B06-first-launch-DATE`
+and an Exploration checkpoint named `B06-exploration-DATE`.
 
 ## B07 — Exploration and sublight survey
 
-**Setup:** B06 post-launch checkpoint.
+**Setup:** B06 Exploration checkpoint at 275/400.
 
 1. Research the Exploration-stage foundations.
 2. Enact the Space Exploration Program on Terra.
@@ -218,7 +221,7 @@ present until emergence, then gone.
 
 ## B17 — Deep probe economics *(new in beta.5)*
 
-**Setup:** B06 checkpoint or any Space Age save before the probe.
+**Setup:** B06 post-launch checkpoint or any Space Age save before the probe.
 
 1. The probe requires the lunar landing **only if the home system has a
    moon**; with no moon it opens directly after the crewed flight (galaxy

@@ -54,6 +54,17 @@ def inspecter(sauvegarde):
         "sauvegarde_marquee_triche": valeur(etat, "cheated_on_save"),
         "progression_ascension": progression,
         "lancement_suborbital": "core_suborbital_fait" in flags,
+        "jalons": {
+            nom: f"core_{nom}_fait" in flags
+            for nom in (
+                "suborbital",
+                "satellite",
+                "vol_habite",
+                "premier_corps",
+                "sonde_profonde",
+            )
+        },
+        "etapes": sorted(f for f in flags if f.startswith("adastra_stage_")),
         "emergence": "adastra_completed" in flags,
     }
 
