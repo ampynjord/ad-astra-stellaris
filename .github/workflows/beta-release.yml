@@ -26,6 +26,8 @@ jobs:
   checks:
     name: checks
     uses: ./.github/workflows/checks.yml
+    with:
+      expected_version: ${{ inputs.tag }}
 
   publish:
     name: publish GitHub beta

@@ -48,7 +48,7 @@ def lire(chemin):
 
 
 tag = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] else None
-attendu = (tag[1:] if tag.startswith("v") else tag) if tag else None
+attendu = tag.removeprefix("beta-").removeprefix("v") if tag else None
 
 mods = json.loads(REGISTRE.read_text(encoding="utf-8"))["mods"]
 principal = next(m for m in mods if m["cle"] == "origins")
@@ -80,12 +80,12 @@ if attendu and versions.get("origins") and versions["origins"] != attendu:
 
 # ---------------------------------------------------------------- changelog
 changelog = lire("CHANGELOG.md") or ""
-m = re.search(r"^##\s+(\d+\.\d+\.\d+)", changelog, re.M)
+premiere = next((l for l in changelog.splitlines() if l.startswith("## ")), "")
+m = re.match(r"##\s+(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)(?=\s|$)", premiere)
 tete = m.group(1) if m else None
 if not tete:
     err("CHANGELOG.md : la premiere section n'annonce pas de version x.y.z")
 
-premiere = next((l for l in changelog.splitlines() if l.startswith("## ")), "")
 en_cours = bool(re.search(r"en cours|in progress|WIP|TODO", premiere, re.I))
 
 if tag:

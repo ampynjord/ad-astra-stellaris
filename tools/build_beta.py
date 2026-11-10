@@ -7,8 +7,6 @@ Elle porte donc son propre nom et son propre dossier de launcher local.
 
 import argparse
 import re
-import shutil
-import tempfile
 import zipfile
 from pathlib import Path
 
@@ -50,29 +48,18 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     archive = output / f"ad_astra_beta_v{version}.zip"
 
-    with tempfile.TemporaryDirectory(prefix="ad_astra_beta_") as temporary:
-        staging = Path(temporary)
-        mod_root = staging / "mod"
-        content = mod_root / BETA_FOLDER
-        shutil.copytree(SOURCE, content)
-
-        beta_descriptor = replace_field(descriptor, "name", BETA_NAME)
-        beta_descriptor = re.sub(r'^remote_file_id\s*=.*\n?', "", beta_descriptor,
-                                 flags=re.MULTILINE)
-        (content / "descriptor.mod").write_text(beta_descriptor, encoding="utf-8")
-
-        beta_launcher = replace_field(descriptor, "name", BETA_NAME)
-        beta_launcher = re.sub(r'^remote_file_id\s*=.*\n?', "", beta_launcher,
-                                flags=re.MULTILINE)
-        beta_launcher = beta_launcher.rstrip() + f'\npath="mod/{BETA_FOLDER}"\n'
-        (mod_root / f"{BETA_FOLDER}.mod").write_text(beta_launcher, encoding="utf-8")
-
-        with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipped:
-            for file in sorted(staging.rglob("*")):
-                if file.is_file():
-                    zipped.write(file, file.relative_to(staging))
-            zipped.write(INSTALL, "INSTALL_BETA.md")
-            zipped.write(TEST_PLAN, "TEST_PLAN.md")
+    beta_descriptor = replace_field(descriptor, "name", BETA_NAME)
+    beta_descriptor = re.sub(r'^remote_file_id\s*=.*\n?', "", beta_descriptor,
+                             flags=re.MULTILINE)
+    beta_launcher = beta_descriptor.rstrip() + f'\npath="mod/{BETA_FOLDER}"\n'
+    with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipped:
+        for file in sorted(SOURCE.rglob("*")):
+            if file.is_file() and file != SOURCE / "descriptor.mod":
+                zipped.write(file, Path("mod") / BETA_FOLDER / file.relative_to(SOURCE))
+        zipped.writestr(f"mod/{BETA_FOLDER}/descriptor.mod", beta_descriptor)
+        zipped.writestr(f"mod/{BETA_FOLDER}.mod", beta_launcher)
+        zipped.write(INSTALL, "INSTALL_BETA.md")
+        zipped.write(TEST_PLAN, "TEST_PLAN.md")
 
     with zipfile.ZipFile(archive) as zipped:
         names = set(zipped.namelist())

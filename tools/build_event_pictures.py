@@ -33,7 +33,9 @@ def main() -> None:
             "\t\talwaystransparent = yes\n"
             "\t}\n"
         )
-    GFX_DESTINATION.write_text("spriteTypes = {\n" + "".join(sprites) + "}\n", encoding="utf-8")
+    GFX_DESTINATION.write_text(
+        "spriteTypes = {\n" + "".join(sprites) + "}\n", encoding="utf-8", newline="\n"
+    )
     print(f"ecrit : {GFX_DESTINATION.relative_to(ROOT)}")
 
 
