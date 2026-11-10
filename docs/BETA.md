@@ -1,7 +1,7 @@
 # Testing the public beta
 
 The beta is an experimental local build, published as a **GitHub
-pre-release**. Steam Workshop remains the stable channel (1.3.3) and never
+pre-release**. Steam Workshop remains the stable channel (1.3.4) and never
 receives beta builds.
 
 ## Installation

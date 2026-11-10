@@ -1,4 +1,4 @@
-# Ad Astra 1.4.0-beta.11 — Test Notebook
+# Ad Astra 1.4.0-beta.12 — Test Notebook
 
 This is the public-beta test contract. Steam Workshop remains on 1.3.4.
 Enable only `Ad Astra: Origins - Beta`; never enable it alongside Workshop.
@@ -7,9 +7,10 @@ not load its saves with the beta.
 
 **Beta.11** fixes the planetary housing and amenities scale (+100/+150/+200),
 ensures newly emerged AI regular empires remain dormant during galaxy freeze,
-and fixes pacing tooltips to state research speed. Beta.9 and beta.10 saves load,
-but **every card below must pass on beta.11**. B22 remains a **known failure**:
-rerun it to refine the report, not to discover it.
+and fixes pacing tooltips to state research speed. The missing homeworld in
+the outliner is a known issue
+tracked by B22. For beta.12, use Stellaris 4.5.3 (4e91) for the reference run
+and run B28 to check the updated colony rules.
 
 ## Rules for every card
 
@@ -23,6 +24,7 @@ Use this report header:
 
 ```text
 Beta tag / launcher version:
+Stellaris version / checksum:
 Card:
 PASS, FAIL or UNCLEAR:
 Starting age / approach / ascent pace / galaxy pace:
@@ -49,10 +51,8 @@ path); colony designations are locked to the era crest until emergence;
 the Orbital Yard Programme returns if the Builder is lost.
 
 - B00–B05 (install, early economies, prerequisite tree, slots, approaches)
-  **passed in earlier betas and are retired**: their mechanics are unchanged
-  in beta.7. Report a regression on any of them as a bug, not as a card.
-- B06–B10 are the space chain and must all pass on beta.7 before 1.4 can
-  become a release candidate.
+  passed in earlier betas and are retired. Report any regressions as bugs.
+- B06–B10 cover the space chain. See the release candidate criteria below.
 - B11–B13 are distributed by DLC and empire configuration; no tester needs to
   run every combination.
 - B14 is optional multiplayer coverage.
@@ -293,14 +293,15 @@ when unavailable; no missing asset, raw key or forced DLC dependency appears.
 
 ## B13 — Save migration
 
-**Setup:** copy of a 1.3.3 save made on Stellaris 4.5. Never overwrite it.
+**Setup.** Use a copy of a beta.11 save made on Stellaris 4.5. Repeat with
+beta.9 or beta.10 if testing an older checkpoint.
 
 1. Load it with only the beta enabled and let one monthly pulse pass.
 2. Inspect situation, research decks, capital districts and resource bar.
 3. Save under a new name, reload, then inspect the same items once more.
 
-**Pass:** progression recalibrates once; technologies/decks remain valid; capital
-economy stays coherent after reload.
+**Pass:** progression, technologies and the capital economy stay coherent
+after reload. A beta.9 save stuck at the Space Age resumes progression.
 
 **Fail:** reset to Stone, repeated monthly jumps, lost technologies, invalid cards
 or missing infrastructure.
@@ -421,10 +422,23 @@ is claimed by another empire, and after reclaiming it.
 
 **Fail (hard):** crash only.
 
-## Beta.10 exit rule
+## B28 — Stellaris 4.5.3 colony rules
 
-Any B06–B10, B15–B17, B20–B21 or B27 failure requires a new beta build. A
-release candidate requires all B06–B10, B15–B17, B20–B21 and B27 cards
+1. In a normal empire, change a colony's eligibility for Mixed Industry,
+   Civilian Industry or Administrative Hub. Check that a valid replacement
+   specialization appears when the original becomes invalid.
+2. With Toxoids, check a settled world eligible for the Order's Keep. Verify
+   that the building, Fortress World designation and urban specializations
+   are available under the base-game requirements.
+3. In a separate Ad Astra game, check that the city specialization slots
+   still unlock at Bronze and Iron and that the age requirements still apply.
+
+Record the affected specialization or designation and any script errors.
+
+## Release candidate criteria
+
+Any B06–B10, B15–B17, B20–B21, B27 or B28 failure requires a new beta build. A
+release candidate requires all B06–B10, B15–B17, B20–B21, B27 and B28 cards
 passing on the same version, B23–B25 without a failure, two successful
 B11/B12 configurations, no unresolved critical log entry, and one natural
 B06–B10 run started before the Space Age. B14 is strongly preferred but does

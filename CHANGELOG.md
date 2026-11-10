@@ -2,6 +2,20 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## 1.4.0-beta.12 — 2026-11-10
+
+### Fixed
+
+- Restored Stellaris 4.5.3 specialization conversions for Mixed Industry,
+  Civilian Industry and Administrative Hub when colony requirements change.
+- Restored the Order's Keep, Fortress World designation and urban
+  specialization slots for Knights of the Toxic God settled worlds.
+
+### Known issues
+
+- The homeworld can disappear from the outliner while remaining accessible
+  from the galaxy map. See B22 in the beta test plan.
+
 ## 1.4.0-beta.11 — 2026-10-25
 
 > Public beta for Stellaris 4.5 "Cygnus", published as a GitHub pre-release.
