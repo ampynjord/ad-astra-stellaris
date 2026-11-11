@@ -103,7 +103,7 @@
  adastra.80.a:0 "Que l'exploration commence."
  adastra.80.a.tooltip:0 "La décision §YProgramme d'exploration spatiale§! est disponible sur votre capitale (£energy£ 500 énergie, £minerals£ 300 minerais, £alloys£ 150 alliages - 6 mois). Recherchez §YConstruction spatiale§! et §YColonisation§! pour achever cette étape. Le vaisseau livré peut prospecter le système indépendamment."
  adastra.81.name:0 "Le programme de construction orbitale"
- adastra.81.desc:0 "La cartographie du système est achevée. Nous pouvons désormais fabriquer l'outil qui donnera une prise durable à notre civilisation dans le vide."
+ adastra.81.desc:0 "Le programme d'exploration a rempli sa mission. Nous pouvons désormais fabriquer l'outil qui donnera une prise durable à notre civilisation dans le vide."
  adastra.81.a:0 "Construisons le premier Bâtisseur."
  adastra.81.a.tooltip:0 "La décision §YProgramme de construction orbitale§! devient disponible sur la capitale. Elle livre un vaisseau de construction, pas une base stellaire."
  adastra.82.name:0 "Le premier avant-poste"

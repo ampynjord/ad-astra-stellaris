@@ -117,11 +117,12 @@ and an Exploration checkpoint named `B06-exploration-DATE`.
 6. Let one monthly pulse pass after the final body is surveyed.
 
 **Pass:** decision cost/duration are visible; vessel is usable; every body is
-surveyed by order only; stage reaches **300/400** only after research,
-decision and full survey.
+surveyed by order only; stage reaches **300/400** after the foundations and the
+decision. Surveying never blocks the stage (by design): a survey that is not
+finished when the stage opens is not a failure.
 
-**Fail:** no/duplicate vessel, impossible survey order, early stage advance, or
-stalled stage after every body is surveyed.
+**Fail:** no/duplicate vessel, impossible survey order, a body that flips to
+surveyed without an order, or a stage that opens before the decision completes.
 
 **Output:** natural Construction checkpoint at 300/400.
 

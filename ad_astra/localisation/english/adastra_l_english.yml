@@ -103,7 +103,7 @@
  adastra.80.a:0 "Let the exploration begin."
  adastra.80.a.tooltip:0 "The §YSpace Exploration Program§! decision is available on your capital (£energy£ 500 energy, £minerals£ 300 minerals, £alloys£ 150 alloys - 6 months). Research §YSpace Construction§! and §YColonization§! to complete this stage. The delivered ship can survey the system independently."
  adastra.81.name:0 "The Orbital Construction Program"
- adastra.81.desc:0 "The system survey is complete. We can now build the tool that will give our civilization a lasting foothold in the void."
+ adastra.81.desc:0 "The exploration programme has done its work. We can now build the tool that will give our civilization a lasting foothold in the void."
  adastra.81.a:0 "Build the first Builder."
  adastra.81.a.tooltip:0 "The §YOrbital Construction Program§! decision becomes available on the capital. It delivers a construction ship, not a starbase."
  adastra.82.name:0 "The First Outpost"
