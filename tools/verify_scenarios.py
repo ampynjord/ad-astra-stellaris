@@ -187,6 +187,14 @@ def main():
         check("trigger = { core_est_confine = no }" in texte and ("id = %s" % ident) in texte,
               "%s : l'evenement vanilla doit etre masque aux empires confines" % ident)
 
+    # 11/11 - galcom.6 et galcom.10 vont a tout empire portant galcom_form_nay, que le mod pose.
+    gc = (ROOT / "ad_astra" / "events" / "galactic_community_events.txt").read_text(encoding="utf-8")
+    for ident in ("galcom.6", "galcom.10"):
+        debut = gc.find("id = %s\n" % ident)
+        fin = gc.find("option = {", debut)
+        check(debut >= 0 and "core_est_confine = no" in gc[debut:fin],
+              "%s : l'evenement doit etre masque aux empires confines (B25)" % ident)
+
     # 11/11 - B09 : sans base, aucun ordre de construction n'existe (pas de frontieres).
     livraison = event_block(events, 86)
     effets = lire("scripted_effects", "zz_adastra_avant_poste.txt")

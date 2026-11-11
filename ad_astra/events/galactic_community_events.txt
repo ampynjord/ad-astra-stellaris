@@ -235,6 +235,9 @@ country_event = {
 
 	is_triggered_only = yes
 
+	# Ad Astra (11/11) : meme cause que galcom.10 (drapeau galcom_form_nay pose par le mod).
+	trigger = { core_est_confine = no }
+
 	option = {
 		name = galcom.6.a
 
@@ -253,6 +256,10 @@ country_event = {
 	show_sound = event_assembly_fight
 
 	is_triggered_only = yes
+
+	# Ad Astra (11/11) : adastra_events pose galcom_form_nay sur l'empire confine,
+	# ce qui le rendait destinataire de cet echec (B25, vu en jeu en 2249).
+	trigger = { core_est_confine = no }
 
 	option = {
 		name = galcom.10.a
