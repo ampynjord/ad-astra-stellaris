@@ -1,0 +1,29 @@
+# Ad Astra - avant-poste du systeme natal (ecrit a la main, non genere).
+#
+# 11/11 - DECISION D'AMPYNJORD, DEFAUT BLOQUANT B09 (test en jeu beta.12).
+# Sans base, le systeme natal n'a pas de frontieres et le moteur n'offre aucun
+# ordre « Construire une base » (vue systeme ni vue galaxie). On pose donc une
+# base minimale, au rang avant-poste, qui appartient au joueur ; il l'ameliore
+# lui-meme (adastra.75 exige port stellaire, modules et batiment).
+#
+# Le design d'avant-poste n'existe pour un pays que s'il connait tech_starbase_1
+# (error.log : « ship size starbase_outpost that doesn't have a design »). L'effet
+# ne fait donc rien tant que la technologie manque, et il est rappele des qu'elle
+# est recherchee (adastra.132). Idempotent : une base existante suffit.
+adastra_creer_avant_poste = {
+	if = {
+		limit = {
+			has_country_flag = adastra_constructor_ready
+			has_technology = tech_starbase_1
+			capital_scope = { solar_system = { NOT = { exists = starbase } } }
+		}
+		capital_scope = {
+			solar_system = {
+				create_starbase = {
+					size = starbase_outpost
+					owner = root
+				}
+			}
+		}
+	}
+}

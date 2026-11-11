@@ -189,8 +189,11 @@ def main():
 
     # 11/11 - B09 : sans base, aucun ordre de construction n'existe (pas de frontieres).
     livraison = event_block(events, 86)
-    check("create_starbase" in livraison and "size = starbase_outpost" in livraison,
-          "adastra.86 : la livraison du Batisseur doit poser un avant-poste appartenant au joueur")
+    effets = lire("scripted_effects", "zz_adastra_avant_poste.txt")
+    check("adastra_creer_avant_poste = yes" in livraison and "adastra_creer_avant_poste = yes" in event_block(events, 132),
+          "adastra.86 et adastra.132 doivent appeler adastra_creer_avant_poste")
+    check("create_starbase" in effets and "size = starbase_outpost" in effets and "has_technology = tech_starbase_1" in effets,
+          "adastra_creer_avant_poste doit creer un avant-poste du joueur, seulement avec tech_starbase_1")
 
     if errors:
         print("== scenarios de regression ==")

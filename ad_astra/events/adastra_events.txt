@@ -1685,6 +1685,7 @@ country_event = {
 			set_timed_country_flag = { flag = adastra_grace_energie days = 720 }
 		}
 		adastra_progression_recherche = yes
+		if = { limit = { last_increased_tech = tech_starbase_1 } adastra_creer_avant_poste = yes }
 		# Les commandes de test peuvent octroyer une technologie sans passer
 		# par tous les evenements de fin de recherche. Des l'Age spatial, on
 		# repart donc de l'inventaire reel : la barre ne peut plus rester a
@@ -2235,29 +2236,8 @@ country_event = {
 		# premiere base. Decision d'ampynjord : a la livraison du Batisseur on pose
 		# un AVANT-POSTE minimal qui est a nous ; le joueur l'ameliore lui-meme en
 		# port stellaire (adastra.75 l'exige, avec modules et batiment).
-		else_if = {
-			limit = {
-				capital_scope = { solar_system = { NOT = { exists = starbase } } }
-			}
-			# Sans tech_starbase_1 le moteur ne genere aucun design d'avant-poste pour
-			# ce pays (error.log : « ship size starbase_outpost that doesn't have a
-			# design » puis « Failed to create a starbase »). On donne la technologie
-			# juste avant. ATTENTION : adastra_lot_outpost_complet n'exige que cette
-			# technologie, donc l'etape avant-poste a sa fondation d'avance ; a
-			# confirmer avec ampynjord (voir passation).
-			if = {
-				limit = { NOT = { has_technology = tech_starbase_1 } }
-				give_technology = { tech = tech_starbase_1 message = no }
-			}
-			capital_scope = {
-				solar_system = {
-					create_starbase = {
-						size = starbase_outpost
-						owner = root
-					}
-				}
-			}
-		}
+		# (suite : adastra_creer_avant_poste, aussi appele par adastra.132)
+		adastra_creer_avant_poste = yes
 		every_situation = {
 			limit = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_constructor }
 			add_situation_progress = 5

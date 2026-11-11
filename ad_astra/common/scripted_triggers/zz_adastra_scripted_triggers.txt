@@ -147,7 +147,12 @@ adastra_gameplay_base = {
 # restent, elles, derriere l'avant-poste effectivement construit.
 adastra_gameplay_outpost = {
 	has_country_flag = adastra_unlock_space
-	has_country_flag = adastra_stage_outpost
+	# 11/11 : recherchable des l'etape constructeur, pour que le design d'avant-poste
+	# existe quand le Batisseur est livre (voir adastra_creer_avant_poste).
+	OR = {
+		has_country_flag = adastra_stage_constructor
+		has_country_flag = adastra_stage_outpost
+	}
 }
 
 # Coloniser : le Programme de colonisation s'ouvre a l'etape orbitale.
