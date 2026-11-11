@@ -13,6 +13,9 @@ All notable player-facing changes are recorded here. Dates use ISO format.
 
 - The Orbital Construction Program message no longer claims the system survey
   is complete: the stage opens after the exploration programme, surveyed or not.
+- The four space-milestone tooltips (First Suborbital Launch, First Satellite,
+  Crewed Flight, First Lunar Landing) no longer show a French heading in the
+  English interface.
 - Before emergence, the base-game notification announcing that a star nation
   was destroyed ("End of the ...") no longer names an empire you have never
   met, and the invitation to found the Galactic Community no longer reaches
