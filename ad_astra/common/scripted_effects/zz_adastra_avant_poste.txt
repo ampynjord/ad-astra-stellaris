@@ -17,6 +17,7 @@ adastra_creer_avant_poste = {
 			has_technology = tech_starbase_1
 			capital_scope = { solar_system = { NOT = { exists = starbase } } }
 		}
+		log = "ADASTRA avant-poste : creation demandee"
 		capital_scope = {
 			solar_system = {
 				create_starbase = {

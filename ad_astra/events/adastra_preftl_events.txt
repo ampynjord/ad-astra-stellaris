@@ -37,6 +37,8 @@ country_event = {
 		# designation restait invisible tout le premier mois.
 		adastra_preftl_sync = yes
 		adastra_maj_designation = yes
+		# 11/11 : filet mensuel de l'avant-poste du systeme natal (idempotent).
+		adastra_creer_avant_poste = yes
 
 		# 09/10 - REPARATION DES PARTIES BLOQUEES A L'AGE SPATIAL. Avant ce
 		# correctif, adastra.49 ne posait pas adastra_stage_astronomy : les
