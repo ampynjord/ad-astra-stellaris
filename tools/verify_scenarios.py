@@ -187,6 +187,11 @@ def main():
         check("trigger = { core_est_confine = no }" in texte and ("id = %s" % ident) in texte,
               "%s : l'evenement vanilla doit etre masque aux empires confines" % ident)
 
+    # 11/11 - B09 : sans base, aucun ordre de construction n'existe (pas de frontieres).
+    livraison = event_block(events, 86)
+    check("create_starbase" in livraison and "size = starbase_outpost" in livraison,
+          "adastra.86 : la livraison du Batisseur doit poser un avant-poste appartenant au joueur")
+
     if errors:
         print("== scenarios de regression ==")
         for error in errors:

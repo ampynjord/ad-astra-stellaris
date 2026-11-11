@@ -13,6 +13,10 @@ All notable player-facing changes are recorded here. Dates use ISO format.
 
 - The Orbital Construction Program message no longer claims the system survey
   is complete: the stage opens after the exploration programme, surveyed or not.
+- The Orbital Construction Program now leaves a bare outpost-rank starbase in
+  a free home system. Without any base the empire has no borders and Stellaris
+  offered no order to build one, so the ascent could not go past the Outpost
+  stage. You upgrade it to a starport yourself.
 - The four space-milestone tooltips (First Suborbital Launch, First Satellite,
   Crewed Flight, First Lunar Landing) no longer show a French heading in the
   English interface.

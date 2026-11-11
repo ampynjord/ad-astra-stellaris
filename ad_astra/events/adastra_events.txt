@@ -2227,6 +2227,27 @@ country_event = {
 			}
 			country_event = { id = adastra.184 }
 		}
+		# 11/11 - DEFAUT BLOQUANT B09 (test en jeu beta.12, partie sans IA).
+		# Le mod retire la base du systeme natal, et sans base l'empire n'a AUCUNE
+		# frontiere : le moteur ne propose alors aucun ordre « Construire une base »
+		# (ni en vue systeme, ni en vue galaxie ; seules les stations, refusees
+		# « hors de nos frontieres »). Le joueur ne pouvait donc jamais poser sa
+		# premiere base. Decision d'ampynjord : a la livraison du Batisseur on pose
+		# un AVANT-POSTE minimal qui est a nous ; le joueur l'ameliore lui-meme en
+		# port stellaire (adastra.75 l'exige, avec modules et batiment).
+		else_if = {
+			limit = {
+				capital_scope = { solar_system = { NOT = { exists = starbase } } }
+			}
+			capital_scope = {
+				solar_system = {
+					create_starbase = {
+						size = starbase_outpost
+						owner = root
+					}
+				}
+			}
+		}
 		every_situation = {
 			limit = { is_situation_type = situation_adastra_ascension current_stage = adastra_stage_program_constructor }
 			add_situation_progress = 5

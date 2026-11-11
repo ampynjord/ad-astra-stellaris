@@ -138,7 +138,7 @@ surveyed without an order, or a stage that opens before the decision completes.
 orders; no starbase is created by the decision; stage reaches **325/400** only
 after research and delivery.
 
-**Fail:** missing/duplicate constructor, automatic starbase, or premature stage
+**Fail:** missing/duplicate constructor, a starbase above outpost rank, or premature stage
 advance.
 
 **Output:** natural Outpost checkpoint at 325/400.
@@ -148,7 +148,7 @@ advance.
 **Setup:** B08 Outpost checkpoint.
 
 1. Research Outpost-stage foundations.
-2. Use the delivered constructor to build the first starbase in the home system through the normal Stellaris order.
+2. The constructor's delivery leaves a bare **outpost-rank starbase** in the home system (without a base the empire has no borders and Stellaris offers no build order). Upgrade it to a **starport** with the constructor / the normal starbase panel.
 3. Before completion, attempt a mining or research station on a surveyed deposit; repeat after the starbase exists.
 4. Let a monthly pulse pass, then complete Orbital-stage research and build one valid mining or research station.
 
