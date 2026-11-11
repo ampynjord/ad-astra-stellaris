@@ -24,6 +24,7 @@ adastra_creer_avant_poste = {
 			NOT = { has_technology = tech_starbase_1 }
 		}
 		give_technology = { tech = tech_starbase_1 message = no }
+		set_country_flag = adastra_techbase_octroyee
 	}
 	if = {
 		limit = {

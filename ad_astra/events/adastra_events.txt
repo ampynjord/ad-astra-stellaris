@@ -1985,6 +1985,14 @@ country_event = {
 	immediate = {
 		set_country_flag = adastra_home_outpost_built
 		every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 15 }
+		# 11/11 : la technologie donnee a la livraison (adastra_creer_avant_poste) n'a pas
+		# passe par adastra.132, qui accorde 10 points quand Starbase Construction est
+		# recherchee a l'etape avant-poste. Sans ce rattrapage l'etape resterait a 340.
+		if = {
+			limit = { has_country_flag = adastra_techbase_octroyee }
+			every_situation = { limit = { is_situation_type = situation_adastra_ascension } add_situation_progress = 10 }
+			remove_country_flag = adastra_techbase_octroyee
+		}
 	}
 }
 

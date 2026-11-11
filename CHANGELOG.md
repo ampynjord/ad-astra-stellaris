@@ -2,28 +2,33 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
-## 1.4.0-beta.12 — 2026-11-10
+## 1.4.0-beta.12 — 2026-11-11
+
+> Public beta for Stellaris 4.5.3 "Cygnus", published as a GitHub pre-release.
+> Beta.11 saves load, but the Space Age and Outpost fixes below need a new
+> game to be seen in full. Never enable it beside the Steam Workshop version,
+> which keeps the stable 1.3.4 release.
 
 ### Fixed
 
+- **The ascent can no longer stall at the Outpost stage.** The mod removes the
+  home-system starbase, and without any starbase the empire has no borders, so
+  Stellaris offered no order to build one. The Orbital Construction Program
+  now leaves a bare outpost-rank starbase in a free home system and grants
+  Starbase Construction with it. You upgrade it to a starport yourself.
 - Restored Stellaris 4.5.3 specialization conversions for Mixed Industry,
   Civilian Industry and Administrative Hub when colony requirements change.
 - Restored the Order's Keep, Fortress World designation and urban
   specialization slots for Knights of the Toxic God settled worlds.
-
 - The Orbital Construction Program message no longer claims the system survey
   is complete: the stage opens after the exploration programme, surveyed or not.
-- The Orbital Construction Program now leaves a bare outpost-rank starbase in
-  a free home system and grants Starbase Construction with it. Without any base the empire has no borders and
-  Stellaris offered no order to build one, so the ascent could not go past the
-  Outpost stage. You upgrade it to a starport yourself.
-- The four space-milestone tooltips (First Suborbital Launch, First Satellite,
-  Crewed Flight, First Lunar Landing) no longer show a French heading in the
-  English interface.
 - Before emergence, the base-game notification announcing that a star nation
   was destroyed ("End of the ...") no longer names an empire you have never
   met, and the invitation to found the Galactic Community no longer reaches
   your confined civilization.
+- The four space-milestone tooltips (First Suborbital Launch, First Satellite,
+  Crewed Flight, First Lunar Landing) no longer show a French heading in the
+  English interface.
 
 ### Known issues
 

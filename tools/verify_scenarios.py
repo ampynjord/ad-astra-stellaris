@@ -192,6 +192,8 @@ def main():
     effets = lire("scripted_effects", "zz_adastra_avant_poste.txt")
     check("adastra_creer_avant_poste = yes" in livraison and "adastra_creer_avant_poste = yes" in event_block(events, 132),
           "adastra.86 et adastra.132 doivent appeler adastra_creer_avant_poste")
+    check("adastra_techbase_octroyee" in effets and "adastra_techbase_octroyee" in event_block(events, 74),
+          "adastra.74 doit rattraper les 10 points de la technologie octroyee (sinon l'etape reste a 340)")
     check("create_starbase" in effets and "size = starbase_outpost" in effets and "has_technology = tech_starbase_1" in effets,
           "adastra_creer_avant_poste doit creer un avant-poste du joueur, seulement avec tech_starbase_1")
 
