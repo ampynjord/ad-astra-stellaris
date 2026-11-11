@@ -209,6 +209,9 @@ country_event = {
 
 	is_triggered_only = yes
 
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
+
 	option = {
 		name = galcom.5.a
 
@@ -345,6 +348,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		core_est_confine = no
 		is_galactic_community_member = no
 		NOR = {
 			has_country_flag = galcom_form_nay
@@ -563,6 +567,9 @@ country_event = {
 
 	is_triggered_only = yes
 
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
+
 	immediate = {
 		random_playable_country = {
 			limit = {
@@ -722,6 +729,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		core_est_confine = no
 		exists = event_target:market_founder_planet
 		any_owned_planet = {
 			is_same_value = event_target:market_founder_planet
@@ -773,6 +781,9 @@ country_event = {
 	show_sound = event_galactic_market
 
 	is_triggered_only = yes
+
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
 
 	immediate = {
 		set_country_flag = market_nomination_eligible
@@ -975,6 +986,9 @@ country_event = {
 
 	is_triggered_only = yes
 
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
+
 	option = {
 		name = galcom.106.a
 		trigger = {
@@ -1056,6 +1070,9 @@ country_event = {
 
 	is_triggered_only = yes
 
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
+
 	option = {
 		name = galcom.106.a
 		trigger = {
@@ -1086,6 +1103,9 @@ country_event = {
 	show_sound = event_assembly_fight
 
 	is_triggered_only = yes
+
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
 
 	immediate = {
 		set_timed_country_flag = { flag = resolution_breached_killed_tiyanki days = 3600 }
@@ -1149,6 +1169,9 @@ country_event = {
 
 	is_triggered_only = yes
 
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
+
 	option = {
 		name = galcom.106.a
 		trigger = {
@@ -1181,6 +1204,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		core_est_confine = no
 		is_country_type = default
 		is_galactic_community_formed = yes
 		is_galactic_community_member = yes
@@ -1230,6 +1254,9 @@ country_event = {
 	picture = GFX_evt_financial_instruments
 	show_sound = event_galactic_market
 	is_triggered_only = yes
+
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
 
 	immediate = {
 		set_global_flag = ongoing_market_relocation_nomination
@@ -1291,6 +1318,9 @@ country_event = {
 	picture = GFX_evt_financial_instruments
 	show_sound = event_galactic_market
 	is_triggered_only = yes
+
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
 
 	immediate = {
 		set_country_flag = market_nomination_eligible
@@ -1400,6 +1430,9 @@ country_event = {
 	location = event_target:galactic_market_station
 	is_triggered_only = yes
 
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
+
 	immediate = {
 		end_event_chain = market_founding_chain
 	}
@@ -1434,6 +1467,9 @@ country_event = {
 	location = event_target:galactic_market_station
 	is_triggered_only = yes
 
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
+
 	immediate = {
 		end_event_chain = market_founding_chain
 	}
@@ -1467,6 +1503,9 @@ country_event = {
 	show_sound = event_galactic_market
 
 	is_triggered_only = yes
+
+	# Ad Astra (12/11) : la Communaute galactique ne concerne pas un empire confine (B25).
+	trigger = { core_est_confine = no }
 
 	immediate = {
 		### set_country_flag = has_market_access

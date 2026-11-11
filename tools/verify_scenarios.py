@@ -195,6 +195,20 @@ def main():
         check(debut >= 0 and "core_est_confine = no" in gc[debut:fin],
               "%s : l'evenement doit etre masque aux empires confines (B25)" % ident)
 
+    # 12/11 - tout evenement visible de la Communaute galactique doit etre masque aux confines
+    # (galcom.16 invitait le joueur confine en 2316, vu en jeu).
+    for m in re.finditer(r"
+(?:country_event|event) = \{\s*
+\s*id = (galcom\.\d+)
+", gc):
+        fin = gc.find("
+}
+", m.start())
+        bloc = gc[m.start():fin]
+        if "hide_window = yes" not in bloc:
+            check("core_est_confine = no" in bloc,
+                  "%s : evenement visible non masque aux empires confines (B25)" % m.group(1))
+
     # 11/11 - B09 : sans base, aucun ordre de construction n'existe (pas de frontieres).
     livraison = event_block(events, 86)
     effets = lire("scripted_effects", "zz_adastra_avant_poste.txt")
