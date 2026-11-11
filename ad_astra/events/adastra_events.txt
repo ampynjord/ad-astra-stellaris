@@ -2239,6 +2239,16 @@ country_event = {
 			limit = {
 				capital_scope = { solar_system = { NOT = { exists = starbase } } }
 			}
+			# Sans tech_starbase_1 le moteur ne genere aucun design d'avant-poste pour
+			# ce pays (error.log : « ship size starbase_outpost that doesn't have a
+			# design » puis « Failed to create a starbase »). On donne la technologie
+			# juste avant. ATTENTION : adastra_lot_outpost_complet n'exige que cette
+			# technologie, donc l'etape avant-poste a sa fondation d'avance ; a
+			# confirmer avec ampynjord (voir passation).
+			if = {
+				limit = { NOT = { has_technology = tech_starbase_1 } }
+				give_technology = { tech = tech_starbase_1 message = no }
+			}
 			capital_scope = {
 				solar_system = {
 					create_starbase = {
