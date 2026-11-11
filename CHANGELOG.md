@@ -11,6 +11,11 @@ All notable player-facing changes are recorded here. Dates use ISO format.
 - Restored the Order's Keep, Fortress World designation and urban
   specialization slots for Knights of the Toxic God settled worlds.
 
+- Before emergence, the base-game notification announcing that a star nation
+  was destroyed ("End of the ...") no longer names an empire you have never
+  met, and the invitation to found the Galactic Community no longer reaches
+  your confined civilization.
+
 ### Known issues
 
 - The homeworld can disappear from the outliner while remaining accessible

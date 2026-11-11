@@ -44,6 +44,12 @@
 #       make_khan_effect, make_heirs_khan, make_heirs_khan_tiny  copies
 #                               vanilla ; l'avenement du Khan saute les
 #                               empires confines (B25)
+#   events/zzz_adastra_action62.txt
+#       action.62 (« End of the X »)  copie vanilla + trigger : pas de nation
+#                               stellaire detruite annoncee aux confines (B25)
+#   events/zzz_adastra_galcom2.txt
+#       galcom.2                copie vanilla + trigger : pas de proposition de
+#                               Communaute galactique aux confines
 #   common/defines/zz_adastra_defines.txt
 #       NGameplay.TECH_TO_SURVEY_OWNED  reactive un define vanilla commente :
 #                               la Teledetection rend le droit de prospecter

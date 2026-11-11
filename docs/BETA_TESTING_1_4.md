@@ -354,8 +354,9 @@ after Space Exploration.
   Grid, its planet must not gain technician jobs. Record the jobs after the
   Electrical Grid.
 - **B25 Galaxy alerts:** before emergence, record any window about a galactic
-  power, and especially the Great Khan. No "Drums of War" window may appear,
-  and the Khan must not join your contacts.
+  power, and especially the Great Khan. No "Drums of War" window, no
+  "End of the ..." star-nation notification and no Galactic Community
+  invitation may appear, and the Khan must not join your contacts.
 
 **Pass:** no deficit in an unknown resource, no early technician jobs, no
 galactic alert before emergence.

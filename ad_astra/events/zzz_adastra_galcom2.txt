@@ -1,0 +1,78 @@
+# Ad Astra - surcharge de l'evenement vanilla galcom.2 (proposition de fonder la
+# Communaute galactique), copie exacte 4.5.3 + un trigger marque Ad Astra.
+# 11/11 - partie de test beta.12 : la proposition arrivait au joueur confine
+# (2231). Toute mise a jour du jeu de base doit etre repercutee ici.
+
+namespace = galcom
+
+country_event = {
+	id = galcom.2
+	title = "galcom.2.name"
+	desc = {
+		trigger = {
+			NOT = { has_global_flag = galcom_form_failed }
+		}
+		text = galcom.2a.desc
+	}
+	desc = {
+		trigger = {
+			has_global_flag = galcom_form_failed
+		}
+		text = galcom.2b.desc
+	}
+	picture = GFX_evt_galactic_community
+	show_sound = event_vote
+
+	is_triggered_only = yes
+
+	# Ad Astra : un empire confine ne siege pas a la Communaute galactique avant
+	# l'emergence (« not a conventional empire »). Le drapeau de refus du mod ne
+	# bloque pas cette PROPOSITION, seulement les reinvitations (galcom.14/16).
+	trigger = { core_est_confine = no }
+
+	option = {
+		name = galcom.2.a
+		custom_tooltip = galcom_2_aye
+		hidden_effect = {
+			set_country_flag = galcom_form_aye
+		}
+		ai_chance = {
+			factor = 15
+			modifier = {
+				factor = 3
+				has_ethic = ethic_xenophile
+			}
+			modifier = {
+				factor = 10
+				has_ethic = ethic_fanatic_xenophile
+			}
+			modifier = {
+				factor = 10
+				OR = {
+					has_civic = civic_diplomatic_corps
+					has_civic = civic_public_relations_specialists
+					has_civic = civic_hive_empath
+					has_civic = civic_machine_servitor
+				}
+			}
+		}
+	}
+	option = {
+		name = galcom.2.b
+		custom_tooltip = galcom_2_nay
+		hidden_effect = {
+			set_country_flag = galcom_form_nay
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 3
+				has_ethic = ethic_xenophobe
+			}
+			modifier = {
+				factor = 10
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+	}
+}
