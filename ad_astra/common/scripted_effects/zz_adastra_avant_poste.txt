@@ -8,9 +8,23 @@
 #
 # Le design d'avant-poste n'existe pour un pays que s'il connait tech_starbase_1
 # (error.log : « ship size starbase_outpost that doesn't have a design »). L'effet
-# ne fait donc rien tant que la technologie manque, et il est rappele des qu'elle
-# est recherchee (adastra.132). Idempotent : une base existante suffit.
+# donne donc la technologie (prerequis tech_space_construction garanti par le
+# garde ci-dessous), puis cree la base ; rappele a la recherche (adastra.132) et
+# chaque mois (adastra.160). Idempotent : une base existante suffit.
 adastra_creer_avant_poste = {
+	# 11/11 - decision d'ampynjord : AUTOMATIQUE. La recherche automatique ne
+	# choisissait pas Starbase Construction (le joueur devait penser a la
+	# selectionner a la main). A la livraison du Batisseur, le prerequis
+	# tech_space_construction est toujours acquis (fondation de l'etape
+	# exploration) : on donne donc la technologie, qui ouvre le design de base.
+	if = {
+		limit = {
+			has_country_flag = adastra_constructor_ready
+			has_technology = tech_space_construction
+			NOT = { has_technology = tech_starbase_1 }
+		}
+		give_technology = { tech = tech_starbase_1 message = no }
+	}
 	if = {
 		limit = {
 			has_country_flag = adastra_constructor_ready

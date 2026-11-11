@@ -148,7 +148,7 @@ advance.
 **Setup:** B08 Outpost checkpoint.
 
 1. Research Outpost-stage foundations.
-2. **Research Starbase Construction (`tech_starbase_1`) during the Construction stage**, before the constructor arrives: it is what lets the game build the first base. The delivery (or the research, if later) leaves a bare **outpost-rank starbase** in the home system (without a base the empire has no borders and Stellaris offers no build order). Upgrade it to a **starport** with the normal starbase panel.
+2. The constructor's delivery grants **Starbase Construction** automatically and leaves a bare **outpost-rank starbase** in the home system (without a base the empire has no borders and Stellaris offers no build order). Upgrade it to a **starport** with the normal starbase panel.
 3. Before completion, attempt a mining or research station on a surveyed deposit; repeat after the starbase exists.
 4. Let a monthly pulse pass, then complete Orbital-stage research and build one valid mining or research station.
 
