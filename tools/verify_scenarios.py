@@ -197,13 +197,8 @@ def main():
 
     # 12/11 - tout evenement visible de la Communaute galactique doit etre masque aux confines
     # (galcom.16 invitait le joueur confine en 2316, vu en jeu).
-    for m in re.finditer(r"
-(?:country_event|event) = \{\s*
-\s*id = (galcom\.\d+)
-", gc):
-        fin = gc.find("
-}
-", m.start())
+    for m in re.finditer(r"\n(?:country_event|event) = \{\s*\n\s*id = (galcom\.\d+)\n", gc):
+        fin = gc.find("\n}\n", m.start())
         bloc = gc[m.start():fin]
         if "hide_window = yes" not in bloc:
             check("core_est_confine = no" in bloc,
