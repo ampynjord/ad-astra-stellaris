@@ -69,7 +69,7 @@ for _nom in sorted(os.listdir(_evenements)):
     if not _nom.endswith(".txt"):
         continue
     # Copies d'evenements vanilla (surcharges de trigger) : illustration d'origine.
-    if _nom in ("zzz_adastra_action62.txt", "zzz_adastra_galcom2.txt"):
+    if _nom in ("on_action_events_1.txt", "galactic_community_events.txt"):
         continue
     _texte = open(os.path.join(_evenements, _nom), encoding="utf-8").read()
     _pics += re.findall(r"^\s*picture\s*=\s*(GFX_evt_\w+)", _texte, re.M)

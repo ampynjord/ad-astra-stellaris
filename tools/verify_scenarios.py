@@ -181,7 +181,7 @@ def main():
           "B24 : Energy Mogul ne doit creer de technicien qu'apres l'electricite")
 
     # 11/11 - fuites vanilla observees en jeu (beta.12, partie confinee).
-    for nom, ident in (("zzz_adastra_action62.txt", "action.62"), ("zzz_adastra_galcom2.txt", "galcom.2")):
+    for nom, ident in (("on_action_events_1.txt", "action.62"), ("galactic_community_events.txt", "galcom.2")):
         chemin = ROOT / "ad_astra" / "events" / nom
         texte = chemin.read_text(encoding="utf-8") if chemin.is_file() else ""
         check("trigger = { core_est_confine = no }" in texte and ("id = %s" % ident) in texte,
