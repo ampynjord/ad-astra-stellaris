@@ -174,7 +174,15 @@ country_event = {
 				add_deposit = d_decrepit_dwellings
 			}
 			if = {
-				limit = { NOT = { has_deposit = d_failing_infrastructure } }
+				# 12/11 : sur la Terre le vanilla pose la variante _earth
+				# (swap d_delhi_sprawl) ; sans ce second test on doublait le
+				# blocage (constate au banc B15, partie Sol, age machine).
+				limit = {
+					NOR = {
+						has_deposit = d_failing_infrastructure
+						has_deposit = d_failing_infrastructure_earth
+					}
+				}
 				add_deposit = d_failing_infrastructure
 			}
 		}
