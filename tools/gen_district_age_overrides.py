@@ -108,6 +108,9 @@ def swap_upkeep(block, name):
             out = ["\t\tupkeep = {"] + lignes + ["\t\t\ttrigger = {"]
             if vanilla_cond:
                 out.append(vanilla_cond)
+            # 12/11 : une colonie sans proprietaire fait echouer owner = { }
+            # (erreurs au banc) ; exists evite le changement de scope.
+            out.append("\t\t\t\texists = owner")
             out.append("\t\t\t\t%s" % garde)
             out += ["\t\t\t}", "\t\t}"]
             return "\n".join(out)

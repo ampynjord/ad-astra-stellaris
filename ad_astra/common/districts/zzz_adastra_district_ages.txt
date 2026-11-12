@@ -115,6 +115,7 @@ district_city = {
 			energy = 2
 			trigger = {
 				NOT = { has_modifier = wooden_planet }
+				exists = owner
 				owner = { adastra_pays_energy_upkeep = yes }
 			}
 		}
@@ -126,6 +127,7 @@ district_city = {
 			food = 1
 			trigger = {
 				NOT = { has_modifier = wooden_planet }
+				exists = owner
 				owner = { NOT = { adastra_pays_energy_upkeep = yes } }
 			}
 		}
@@ -423,6 +425,7 @@ district_mining = {
 		upkeep = {
 			energy = 1
 			trigger = {
+				exists = owner
 				owner = { adastra_pays_energy_upkeep = yes }
 			}
 		}
@@ -433,6 +436,7 @@ district_mining = {
 			minerals = 1
 			food = 1
 			trigger = {
+				exists = owner
 				owner = { NOT = { adastra_pays_energy_upkeep = yes } }
 			}
 		}
@@ -584,6 +588,7 @@ district_farming = {
 		upkeep = {
 			energy = 1
 			trigger = {
+				exists = owner
 				owner = { adastra_pays_energy_upkeep = yes }
 			}
 		}
@@ -593,6 +598,7 @@ district_farming = {
 			# courant.
 			minerals = 1
 			trigger = {
+				exists = owner
 				owner = { NOT = { adastra_pays_energy_upkeep = yes } }
 			}
 		}
