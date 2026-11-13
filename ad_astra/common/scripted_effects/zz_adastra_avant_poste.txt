@@ -35,7 +35,6 @@ adastra_creer_avant_poste = {
 		# Le pays confine n'a aucun design de base : on force la generation des
 		# designs automatiques (ceux des tailles enable_default_design) avant de creer.
 		refresh_auto_generated_ship_designs = yes
-		log = "ADASTRA avant-poste : creation demandee"
 		capital_scope = {
 			solar_system = {
 				create_starbase = {

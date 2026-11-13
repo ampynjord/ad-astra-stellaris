@@ -10,17 +10,16 @@
 # n'exige donc pas de secteur : la premiere hypothese (planete absente faute
 # de secteur a nous) est fausse.
 #
-# Hypothese a confirmer (cartes B19/B22) : quand un autre empire pose son
+# 12/11 - cause PROUVEE au banc (carte B22) : quand un autre empire pose son
 # avant-poste chez nous, le systeme rejoint SON secteur, notre planete le
-# suit et sort de notre groupe frontalier. create_sector ne peut rien tant
-# que la base n'est pas a nous (« We do not own the starbase », 12/09).
+# suit et sort de notre groupe frontalier. Limite moteur : create_sector ne
+# peut rien tant que la base n'est pas a nous.
 #
-# adastra.176 ecrit dans game.log une ligne ADASTRA DIAG a chaque changement
-# d'etat (secteur de la capitale, proprietaire du systeme natal) : c'est la
-# preuve qui manque. adastra.177 previent le joueur, une fois par occupation,
-# que sa planete a quitte le panneau, et lui donne le bouton pour y aller.
+# 13/11 - les lignes ADASTRA DIAG de game.log, qui ont servi a cette preuve,
+# sont retirees. adastra.176 ne fait plus que prevenir le joueur, une fois
+# par occupation (adastra.177), avec le bouton pour aller a sa planete.
 
-# adastra.176 - diagnostic du panneau lateral (mensuel, cache)
+# adastra.176 - veille du panneau lateral (mensuel, cache)
 country_event = {
 	id = adastra.176
 	hide_window = yes
@@ -33,61 +32,6 @@ country_event = {
 	}
 
 	immediate = {
-		# Etat = secteur (0 ou 10) + proprietaire du systeme natal
-		# (0 personne, 1 nous, 2 un autre empire).
-		set_variable = { which = adastra_diag_nouvel_etat value = 0 }
-		if = {
-			limit = { capital_scope = { exists = sector } }
-			change_variable = { which = adastra_diag_nouvel_etat value = 10 }
-		}
-		if = {
-			limit = { capital_scope = { solar_system = { is_owned_by = root } } }
-			change_variable = { which = adastra_diag_nouvel_etat value = 1 }
-		}
-		else_if = {
-			limit = { capital_scope = { solar_system = { has_owner = yes } } }
-			change_variable = { which = adastra_diag_nouvel_etat value = 2 }
-		}
-
-		# Une ligne au premier passage puis a chaque changement, jamais plus :
-		# le journal doit rester lisible sur deux siecles de confinement.
-		if = {
-			limit = {
-				OR = {
-					NOT = { has_country_flag = adastra_diag_etat_connu }
-					NOT = {
-						check_variable = { which = adastra_diag_etat value = adastra_diag_nouvel_etat }
-					}
-				}
-			}
-			set_country_flag = adastra_diag_etat_connu
-			set_variable = { which = adastra_diag_etat value = adastra_diag_nouvel_etat }
-			if = {
-				limit = { check_variable = { which = adastra_diag_etat value = 0 } }
-				log = "ADASTRA DIAG panneau [This.GetName] : capitale SANS secteur, systeme natal SANS proprietaire"
-			}
-			else_if = {
-				limit = { check_variable = { which = adastra_diag_etat value = 1 } }
-				log = "ADASTRA DIAG panneau [This.GetName] : capitale SANS secteur, systeme natal A NOUS"
-			}
-			else_if = {
-				limit = { check_variable = { which = adastra_diag_etat value = 2 } }
-				log = "ADASTRA DIAG panneau [This.GetName] : capitale SANS secteur, systeme natal A UN AUTRE EMPIRE"
-			}
-			else_if = {
-				limit = { check_variable = { which = adastra_diag_etat value = 10 } }
-				log = "ADASTRA DIAG panneau [This.GetName] : capitale DANS un secteur, systeme natal SANS proprietaire"
-			}
-			else_if = {
-				limit = { check_variable = { which = adastra_diag_etat value = 11 } }
-				log = "ADASTRA DIAG panneau [This.GetName] : capitale DANS un secteur, systeme natal A NOUS"
-			}
-			else = {
-				log = "ADASTRA DIAG panneau [This.GetName] : capitale DANS un secteur, systeme natal A UN AUTRE EMPIRE"
-			}
-		}
-		clear_variable = adastra_diag_nouvel_etat
-
 		# Aide au joueur : le systeme natal est a un autre empire. Pas de
 		# condition sur le secteur (23/09) : la capitale n'en a jamais, et sous
 		# occupation elle peut tomber dans celui de l'occupant. Une fenetre par

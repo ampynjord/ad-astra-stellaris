@@ -257,10 +257,7 @@ This card records behaviour; some outcomes are known issues, not failures.
 2. With Remote Sensing researched, confirm the survey order works on the
    home system under a foreign flag.
 3. Record the known issue if it occurs: homeworld missing from the outliner
-   while the system is claimed. Attach the save **and**
-   `Documents/Paradox Interactive/Stellaris/logs/game.log` — the beta logs
-   an `ADASTRA DIAG` line each time it tries to recreate the sector, and
-   those lines are the evidence the fix needs.
+   while the system is claimed (engine limitation, see B22). Attach the save.
 
 **Pass:** survey truthfulness holds; the rest is observational.
 
@@ -420,10 +417,10 @@ starbase destroyed by the safety guard, or no claim on refusal.
 is claimed by another empire, and after reclaiming it.
 
 1. Note whether the homeworld appears in the outliner at each moment.
-2. After each session, copy the `ADASTRA DIAG` lines from
-   `Documents/Paradox Interactive/Stellaris/logs/game.log` into the report.
+2. The cause is established (the occupier's sector absorbs the home system),
+   so the `ADASTRA DIAG` log lines were removed after beta.14: a save is enough.
 
-**Pass:** observational — every report with its DIAG lines is a pass.
+**Pass:** observational — every report with its save is a pass.
 
 **Fail (hard):** crash only.
 

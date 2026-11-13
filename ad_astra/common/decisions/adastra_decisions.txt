@@ -117,7 +117,7 @@ decision_adastra_hyperdrive = {
 	icon = decision_adastra_hyperdrive
 
 	# ESSAI 2026-08-30 - demande d'ampynjord : le dernier geste de
-	# l'ascension doit peser. Douze ans de programme, et un cout qui engage
+	# l'ascension doit peser. Cinq ans de programme, et un cout qui engage
 	# toute l'economie de l'age spatial, alliages compris.
 	enactment_time = 1800
 
