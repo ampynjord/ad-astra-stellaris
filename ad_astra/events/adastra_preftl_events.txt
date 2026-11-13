@@ -56,6 +56,21 @@ country_event = {
 			if = { limit = { NOT = { has_technology = tech_interplanetary_commerce } } add_research_option = tech_interplanetary_commerce }
 			if = { limit = { NOT = { has_technology = tech_hydroponics } } add_research_option = tech_hydroponics }
 		}
+		# 13/11 - CRISE D'ENERGIE AVANT L'ELECTRICITE (banc, B11 config 2,
+		# depart Industriel, dictature militaire). Le plafond moteur de -90 %
+		# laisse un batiment vanilla (Civilian Industries du depart) payer 10 %
+		# de son entretien en energie : -0,40 par mois sur un stock de 0, donc
+		# situation « Energy Shortages » puis « Bankruptcy! » des 2201.08, avant
+		# la technologie. Tant que l'electricite manque, on maintient un petit
+		# stock (jamais plus de 20) : invisible, sans production anachronique.
+		if = {
+			limit = {
+				NOT = { adastra_has_energy = yes }
+				NOT = { has_resource = { type = energy amount >= 20 } }
+			}
+			add_resource = { energy = 10 }
+		}
+
 		if = {
 			limit = {
 				has_country_flag = adastra_reached_space
