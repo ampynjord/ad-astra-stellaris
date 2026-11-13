@@ -1,4 +1,4 @@
-# Ad Astra 1.4.0-beta.14 — Test Notebook
+# Ad Astra 1.4.0-beta.15 — Test Notebook
 
 This is the public-beta test contract. Steam Workshop remains on 1.3.4.
 Enable only `Ad Astra: Origins - Beta`; never enable it alongside Workshop.
@@ -9,7 +9,7 @@ not load its saves with the beta.
 ensures newly emerged AI regular empires remain dormant during galaxy freeze,
 and fixes pacing tooltips to state research speed. The missing homeworld in
 the outliner is a known engine limitation
-(the occupier's sector absorbs the home system) tracked by B22. For beta.14, use Stellaris 4.5.3 (4e91) for the reference run (4.5.4 changes no file the mod overrides)
+(the occupier's sector absorbs the home system) tracked by B22. For beta.15, use Stellaris 4.5.3 (4e91) for the reference run (4.5.4 changes no file the mod overrides)
 and run B28 to check the updated colony rules.
 
 ## Rules for every card

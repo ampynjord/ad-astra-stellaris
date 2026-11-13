@@ -2,6 +2,33 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## 1.4.0-beta.15 — 2026-11-13
+
+> Public beta for Stellaris 4.5.3 "Cygnus", published as a GitHub pre-release.
+> Beta.14 saves load. Never enable it beside the Steam Workshop version, which
+> keeps the stable 1.3.4 release.
+
+### Fixed
+
+- **The ascent no longer stalls in a home system without a moon.** The deep
+  probe closes the First Launch stage on its own when no lunar landing is
+  possible; the bar used to stay at 250 forever.
+- The State Academy (Civil Education) and the Dread Encampment (Reanimated
+  Armies) are given back once. They used to reappear every month after being
+  demolished.
+- When you buy your sky back, the occupant now receives the 1500 energy and
+  500 alloys you pay.
+
+### Changed
+
+- The `ADASTRA DIAG` diagnostic lines are no longer written to `game.log`.
+
+### Known issues
+
+- The homeworld leaves the outliner while another empire holds your home
+  system (the occupier's sector absorbs it). It stays yours and reachable from
+  the galaxy map. See B22 in the beta test plan.
+
 ## 1.4.0-beta.14 — 2026-11-13
 
 > Public beta for Stellaris 4.5.3 "Cygnus", published as a GitHub pre-release.
