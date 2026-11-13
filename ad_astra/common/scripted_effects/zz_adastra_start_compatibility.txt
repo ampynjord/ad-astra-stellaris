@@ -251,7 +251,8 @@ adastra_cleanup_start_infrastructure = {
 
 # Les batiments explicitement fournis par un civisme reviennent des que leur
 # economie est capable d'assurer leur entretien. L'effet est appele sur la
-# capitale et ne remplace jamais un batiment existant.
+# capitale, ne remplace jamais un batiment existant et ne rend chaque
+# batiment qu'une seule fois (13/11).
 adastra_grant_civic_infrastructure = {
 	if = {
 		limit = {
@@ -261,7 +262,9 @@ adastra_grant_civic_infrastructure = {
 			owner = { adastra_has_consumer_goods = yes }
 			free_building_slots > 0
 			NOT = { has_building = building_dread_encampment }
+			owner = { NOT = { has_country_flag = adastra_civique_rendu_building_dread_encampment } }
 		}
 		add_building = building_dread_encampment
+		owner = { set_country_flag = adastra_civique_rendu_building_dread_encampment }
 	}
 }

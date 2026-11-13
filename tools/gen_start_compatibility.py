@@ -47,7 +47,8 @@ def render():
         "",
         "# Les batiments explicitement fournis par un civisme reviennent des que leur",
         "# economie est capable d'assurer leur entretien. L'effet est appele sur la",
-        "# capitale et ne remplace jamais un batiment existant.",
+        "# capitale, ne remplace jamais un batiment existant et ne rend chaque",
+        "# batiment qu'une seule fois (13/11).",
         "adastra_grant_civic_infrastructure = {",
     ))
     for civic, data in sorted(CIVIC_BUILDING_UNLOCKS.items()):
@@ -60,8 +61,12 @@ def render():
             *["\t\t\towner = { %s = yes }" % trigger for trigger in data["triggers"]],
             "\t\t\tfree_building_slots > 0",
             "\t\t\tNOT = { has_building = %s }" % building,
+            # 13/11 : une seule restitution. Sans ce drapeau, le pouls mensuel
+            # (adastra.134) reposait le batiment a chaque demolition du joueur.
+            "\t\t\towner = { NOT = { has_country_flag = adastra_civique_rendu_%s } }" % building,
             "\t\t}",
             "\t\tadd_building = %s" % building,
+            "\t\towner = { set_country_flag = adastra_civique_rendu_%s }" % building,
             "\t}",
         ))
     out.append("}")

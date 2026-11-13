@@ -1388,7 +1388,13 @@ country_event = {
 			}
 		}
 		else_if = {
-			limit = { has_valid_civic = civic_civil_education }
+			# 13/11 : une seule restitution. Sans ce drapeau l'Academie
+			# revenait chaque mois quand le joueur la demolissait.
+			limit = {
+				has_valid_civic = civic_civil_education
+				NOT = { has_country_flag = adastra_academie_rendue }
+			}
+			set_country_flag = adastra_academie_rendue
 			capital_scope = {
 				if = {
 					limit = { NOT = { has_building = building_state_academy } }
