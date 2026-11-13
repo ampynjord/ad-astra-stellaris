@@ -2,6 +2,26 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## 1.4.0-beta.14 — 2026-11-13
+
+> Public beta for Stellaris 4.5.3 "Cygnus", published as a GitHub pre-release.
+> Beta.13 saves load. Never enable it beside the Steam Workshop version, which
+> keeps the stable 1.3.4 release.
+
+### Fixed
+
+- **No more energy crisis before electricity.** Industrial and later starts
+  could run an energy deficit in their first months (a base-game building
+  still pays a small energy upkeep), triggering the "Energy Shortages"
+  situation and a Bankruptcy event before electricity arrived. A small energy
+  reserve is now kept until the Electricity technology is researched.
+
+### Known issues
+
+- The homeworld leaves the outliner while another empire holds your home
+  system (the occupier's sector absorbs it). It stays yours and reachable from
+  the galaxy map. See B22 in the beta test plan.
+
 ## 1.4.0-beta.13 — 2026-11-13
 
 > Public beta for Stellaris 4.5.3 "Cygnus", published as a GitHub pre-release.
