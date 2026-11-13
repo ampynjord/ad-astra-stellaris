@@ -28,7 +28,7 @@
 #       col_pre_ftl_*           les 10 designations d'epoque elargies au
 #                               type adastra_grounded
 #   common/country_types/zzz_adastra_vanilla_country_types.txt
-#       default                 copie vanilla stricte + intel_effects_surveyed
+#       default                 copie vanilla stricte + intel_effects_surveyed et share_survey_data = no
 #                               (fuite d'affichage de prospection, teste 30/08)
 #   common/scripted_effects/zzz_adastra_first_contact.txt
 #       set_first_contact_starting_stage  copie vanilla + garde de perception
@@ -44,11 +44,11 @@
 #       make_khan_effect, make_heirs_khan, make_heirs_khan_tiny  copies
 #                               vanilla ; l'avenement du Khan saute les
 #                               empires confines (B25)
-#   events/on_action_events_1.txt   (FICHIER ENTIER, copie vanilla 4.5.3)
+#   events/on_action_events_1.txt   (FICHIER ENTIER, copie vanilla 4.5.3, identique au 4.5.4)
 #       + trigger sur action.62 (« End of the X ») : pas de nation stellaire
 #         detruite annoncee aux confines (B25). Un evenement ne se surcharge que
 #         par son fichier ; entre mods, le dernier charge gagne.
-#   events/galactic_community_events.txt   (FICHIER ENTIER, copie vanilla 4.5.3)
+#   events/galactic_community_events.txt   (FICHIER ENTIER, copie vanilla 4.5.3, identique au 4.5.4)
 #       + trigger sur galcom.2 : pas de proposition de Communaute galactique
 #         aux confines
 #   common/defines/zz_adastra_defines.txt

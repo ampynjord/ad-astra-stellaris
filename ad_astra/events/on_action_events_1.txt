@@ -1,4 +1,4 @@
-# AD ASTRA : copie EXACTE du fichier vanilla Stellaris 4.5.3 (events/on_action_events_1.txt) + un trigger sur l'evenement action.62.
+# AD ASTRA : copie EXACTE du fichier vanilla Stellaris 4.5.3, verifiee identique au 4.5.4 le 13/11 (events/on_action_events_1.txt) + un trigger sur l'evenement action.62.
 # Un evenement ne se surcharge que par le fichier entier. A refaire a chaque port Stellaris.
 #########################################
 #

@@ -1,4 +1,4 @@
-# AD ASTRA : copie EXACTE du fichier vanilla Stellaris 4.5.3 (events/galactic_community_events.txt) + un trigger sur l'evenement galcom.2.
+# AD ASTRA : copie EXACTE du fichier vanilla Stellaris 4.5.3, verifiee identique au 4.5.4 le 13/11 (events/galactic_community_events.txt) + un trigger sur l'evenement galcom.2.
 # Un evenement ne se surcharge que par le fichier entier. A refaire a chaque port Stellaris.
 ################################
 #
