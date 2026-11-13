@@ -2,6 +2,32 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## 1.4.0-beta.13 — 2026-11-13
+
+> Public beta for Stellaris 4.5.3 "Cygnus", published as a GitHub pre-release.
+> Beta.12 saves load. Never enable it beside the Steam Workshop version, which
+> keeps the stable 1.3.4 release.
+
+### Fixed
+
+- **The awakening chapters now fire.** Commission, Schism, Answer? and We Know
+  were wired only to a base-game hook that is not triggered when awareness
+  rises passively (foreign empires above you), so a confined civilization
+  could reach full awareness without seeing any of them. A monthly check now
+  opens the next chapter that matches the current awareness level, once each.
+- Earth's infrastructure blocker is no longer applied twice when the Machine
+  Age begins.
+- Era upkeep rules on districts no longer log script errors on colonies that
+  have no owner.
+- Every visible Galactic Community notification, including the invitation to
+  found it, is now hidden from a confined civilization.
+
+### Known issues
+
+- The homeworld leaves the outliner while another empire holds your home
+  system (the occupier's sector absorbs it). It stays yours and reachable from
+  the galaxy map. See B22 in the beta test plan.
+
 ## 1.4.0-beta.12 — 2026-11-11
 
 > Public beta for Stellaris 4.5.3 "Cygnus", published as a GitHub pre-release.
