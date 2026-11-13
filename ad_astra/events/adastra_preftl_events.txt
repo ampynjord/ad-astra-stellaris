@@ -325,6 +325,46 @@ country_event = {
 	}
 }
 
+# --- filet mensuel des chapitres d'eveil -----------------------------------
+# 13/11 : au banc (partie Earth, eveil 13 -> 83 en 90 ans, IA dans Sol),
+# aucun chapitre 162-165 ne s'est declenche : on_awareness_level_increase
+# n'est tire que par un vaisseau qui se decloque ou un add/set_awareness
+# d'evenement, pas par la hausse passive. Ce filet tire, un mois sur deux
+# au plus, le chapitre suivant selon le palier courant ; chaque chapitre
+# garde son drapeau une-seule-fois et sa condition, donc le hook vanilla
+# et le filet ne se doublent jamais. Un chapitre par mois : le suivant exige
+# le drapeau du precedent, pose a l'ouverture de la fenetre.
+country_event = {
+	id = adastra.178
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_adastra
+		has_country_flag = adastra_locked
+		NOT = { has_country_flag = adastra_eveil_certitude }
+		NOT = { current_awareness_level = none }
+	}
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = adastra_eveil_commission } }
+			country_event = { id = adastra.162 }
+		}
+		else_if = {
+			limit = { NOT = { has_country_flag = adastra_eveil_schisme } }
+			country_event = { id = adastra.163 }
+		}
+		else_if = {
+			limit = { NOT = { has_country_flag = adastra_eveil_emission } }
+			country_event = { id = adastra.164 }
+		}
+		else = {
+			country_event = { id = adastra.165 }
+		}
+	}
+}
+
 # ============================================================================
 # COUCHE E - RENDRE VISIBLE LE RYTHME DE L'ASTRONOMIE.
 #
