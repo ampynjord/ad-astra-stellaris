@@ -8,8 +8,8 @@ not load its saves with the beta.
 **Beta.11** fixes the planetary housing and amenities scale (+100/+150/+200),
 ensures newly emerged AI regular empires remain dormant during galaxy freeze,
 and fixes pacing tooltips to state research speed. The missing homeworld in
-the outliner is a known issue
-tracked by B22. For beta.12, use Stellaris 4.5.3 (4e91) for the reference run
+the outliner is a known engine limitation
+(the occupier's sector absorbs the home system) tracked by B22. For beta.12, use Stellaris 4.5.3 (4e91) for the reference run
 and run B28 to check the updated colony rules.
 
 ## Rules for every card

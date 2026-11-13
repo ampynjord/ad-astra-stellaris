@@ -62,7 +62,7 @@ The complete list is in the [1.4.0-beta.12 release notes](https://github.com/amp
 ### Known issues in the beta
 
 - A first-contact chain can still reveal a star empire before emergence.
-- The homeworld can vanish from the outliner at the Bronze Age; it stays reachable from the galaxy map.
+- The homeworld leaves the outliner while another empire holds your home system (the occupier's sector absorbs the system and the planet follows; the game offers no way to move it back). It stays yours and reachable from the galaxy map; it returns once the sky is reclaimed.
 - A cosmic storm or the Energy Mogul trait can involve energy before electricity exists.
 - The Great Khan notification can appear before emergence.
 
