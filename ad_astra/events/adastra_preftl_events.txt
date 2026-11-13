@@ -719,6 +719,11 @@ country_event = {
 		add_resource = { energy = -1500 alloys = -500 }
 		hidden_effect = {
 			adastra_cession_du_ciel = yes
+			# 13/11 : c'est une vente, l'occupant touche le prix (il
+			# disparaissait jusque-la).
+			event_target:adastra_occupant = {
+				add_resource = { energy = 1500 alloys = 500 }
+			}
 		}
 	}
 	option = {
