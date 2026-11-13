@@ -598,6 +598,12 @@ if (not _m110 or "random_system =" in _m110.group(1)
         or "set_surveyed = { surveyed = yes surveyor = root }" not in _m110.group(1)
         or "has_country_flag = core_premier_corps_fait" not in _m110.group(1)):
 	err("Premiers pas : la sonde doit reconnaitre un seul astre inconnu du systeme natal apres l alunissage")
+# 13/11 : sans lune, l'alunissage est impossible ; la sonde doit quand meme
+# faire passer la barre a 275, sinon l'ascension reste figee a 250.
+if _m110 and not re.search(
+        r"OR\s*=\s*\{\s*has_country_flag = core_premier_corps_fait\s*capital_scope\s*=\s*\{\s*solar_system\s*=\s*\{\s*"
+        r"NOT = \{ any_system_planet = \{ is_moon = yes \} \}", _m110.group(1)):
+	err("Premiers pas : adastra.110 doit conclure l'etape aussi quand le systeme natal n'a pas de lune")
 print("  5 paliers de risque, cibles locales et reussite verifies")
 
 # ------------------- plans de vaisseaux reconstructibles (1.2, Sithiya)

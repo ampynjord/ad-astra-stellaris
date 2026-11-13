@@ -277,7 +277,18 @@ country_event = {
 				has_country_flag = core_suborbital_fait
 				has_country_flag = core_satellite_fait
 				has_country_flag = core_vol_habite_fait
-				has_country_flag = core_premier_corps_fait
+				# 13/11 : l'alunissage n'est exige que s'il est possible (meme
+				# regle que la decision de la sonde). Sans lune, sa decision
+				# n'apparait jamais : la barre restait figee a 250, et le filet
+				# de adastra.71 est inatteignable depuis le 28/08.
+				OR = {
+					has_country_flag = core_premier_corps_fait
+					capital_scope = {
+						solar_system = {
+							NOT = { any_system_planet = { is_moon = yes } }
+						}
+					}
+				}
 				any_situation = {
 					is_situation_type = situation_adastra_ascension
 					current_stage = adastra_stage_first_launch
