@@ -100,7 +100,7 @@ Research **Hyperdrive** to complete the ascent. Your ships are refitted for FTL 
 
 | Item | Status |
 | --- | --- |
-| Stellaris | 4.5.x "Cygnus" |
+| Stellaris | 4.5.x "Cygnus" (tested on 4.5.4) |
 | DLC | None required |
 | Languages in game | English and French |
 | New game | Required after updates |
