@@ -1,0 +1,111 @@
+# Ad Astra 1.4 (integration pre-PRL) - effets partages.
+#
+# adastra_preftl_sync : aligne l'age pre-PRL moteur sur l'age Ad Astra
+# courant. Idempotent. Appele par adastra.160 (mensuel) et par adastra.2
+# (au demarrage - sans cet appel immediat, la designation d'epoque restait
+# invisible tout le premier mois, retour de test beta.5).
+#
+# On utilise l'effet moteur nu set_pre_ftl_age, JAMAIS l'effet scripte
+# vanilla set_pre_ftl_age_effect qui rase la capitale a chaque age.
+
+adastra_preftl_sync = {
+	if = {
+		limit = { has_country_flag = adastra_reached_space }
+		if = { limit = { NOT = { has_pre_ftl_age = early_space_age } } set_pre_ftl_age = early_space_age }
+	}
+	else_if = {
+		limit = { has_country_flag = adastra_reached_atomic }
+		if = { limit = { NOT = { has_pre_ftl_age = atomic_age } } set_pre_ftl_age = atomic_age }
+	}
+	else_if = {
+		limit = { has_country_flag = adastra_reached_machine }
+		if = { limit = { NOT = { has_pre_ftl_age = machine_age } } set_pre_ftl_age = machine_age }
+	}
+	else_if = {
+		limit = { has_country_flag = adastra_reached_industrial }
+		if = { limit = { NOT = { has_pre_ftl_age = industrial_age } } set_pre_ftl_age = industrial_age }
+	}
+	else_if = {
+		limit = { has_country_flag = adastra_reached_steam }
+		if = { limit = { NOT = { has_pre_ftl_age = steam_age } } set_pre_ftl_age = steam_age }
+	}
+	else_if = {
+		limit = { has_country_flag = adastra_reached_renaissance }
+		if = { limit = { NOT = { has_pre_ftl_age = renaissance_age } } set_pre_ftl_age = renaissance_age }
+	}
+	else_if = {
+		limit = { has_country_flag = adastra_reached_medieval }
+		if = { limit = { NOT = { has_pre_ftl_age = late_medieval_age } } set_pre_ftl_age = late_medieval_age }
+	}
+	else_if = {
+		limit = { has_country_flag = adastra_reached_iron }
+		if = { limit = { NOT = { has_pre_ftl_age = iron_age } } set_pre_ftl_age = iron_age }
+	}
+	else_if = {
+		limit = { has_country_flag = adastra_reached_bronze }
+		if = { limit = { NOT = { has_pre_ftl_age = bronze_age } } set_pre_ftl_age = bronze_age }
+	}
+	else_if = {
+		limit = { has_country_flag = adastra_reached_stone }
+		if = { limit = { NOT = { has_pre_ftl_age = stone_age } } set_pre_ftl_age = stone_age }
+	}
+}
+
+# adastra_maj_designation : force la designation d'epoque du monde natal.
+# Retour de test beta.5 : le moteur ne re-evalue pas la designation au
+# passage d'age - l'ancienne restait affichee, puis se vidait, et la nouvelle
+# n'etait jamais choisie seule. On la pose donc explicitement, apres la
+# synchronisation d'age (la designation exige has_pre_ftl_age).
+adastra_maj_designation = {
+	capital_scope = {
+		if = { limit = { owner = { has_pre_ftl_age = early_space_age } } set_colony_type = col_pre_ftl_early_space }
+		else_if = { limit = { owner = { has_pre_ftl_age = atomic_age } } set_colony_type = col_pre_ftl_atomic }
+		else_if = { limit = { owner = { has_pre_ftl_age = machine_age } } set_colony_type = col_pre_ftl_machine }
+		else_if = { limit = { owner = { has_pre_ftl_age = industrial_age } } set_colony_type = col_pre_ftl_industrial }
+		else_if = { limit = { owner = { has_pre_ftl_age = steam_age } } set_colony_type = col_pre_ftl_steam }
+		else_if = { limit = { owner = { has_pre_ftl_age = renaissance_age } } set_colony_type = col_pre_ftl_renaissance }
+		else_if = { limit = { owner = { has_pre_ftl_age = late_medieval_age } } set_colony_type = col_pre_ftl_medieval }
+		else_if = { limit = { owner = { has_pre_ftl_age = iron_age } } set_colony_type = col_pre_ftl_iron }
+		else_if = { limit = { owner = { has_pre_ftl_age = bronze_age } } set_colony_type = col_pre_ftl_bronze }
+		else_if = { limit = { owner = { has_pre_ftl_age = stone_age } } set_colony_type = col_pre_ftl_stone }
+	}
+}
+
+# adastra_cession_du_ciel : l'occupant rend le systeme natal (31/08).
+# Portee : le pays joueur ; exige event_target:adastra_occupant.
+# Save 2229.06.14 : ceder la seule base stellaire ne suffisait pas - les
+# stations minieres et de recherche de l'occupant continuaient d'interdire
+# toute construction, et ses releves gardaient chaque corps « deja
+# prospecte », grisant le vaisseau scientifique. La cession emporte donc :
+#   1. la base stellaire (set_owner, le mecanisme de preftl.180/1105) ;
+#   2. le demontage de ses stations minieres et de recherche (delete_fleet,
+#      demontage propre, pas d'epave) - le poste d'observation reste : il
+#      orbite notre monde et nourrit la matrice de perception ;
+#   3. l'effacement de ses releves sur les corps du systeme (set_surveyed
+#      surveyor = lui) : a nous de prospecter notre propre ciel.
+adastra_cession_du_ciel = {
+	capital_scope = {
+		solar_system = {
+			starbase = { set_owner = root }
+			every_fleet_in_system = {
+				limit = {
+					is_owned_by = event_target:adastra_occupant
+					OR = {
+						is_ship_size = mining_station
+						is_ship_size = research_station
+					}
+				}
+				delete_fleet = this
+			}
+			every_system_planet = {
+				set_surveyed = { surveyed = no surveyor = event_target:adastra_occupant }
+			}
+		}
+	}
+	# 31/08 - le ciel rendu, le secteur peut renaitre : la base stellaire
+	# vient de passer sous notre pavillon, et c'est precisement la condition
+	# que le moteur exige (« We do not own the starbase », verdict du
+	# 12/09). C'est le SEUL des trois appels d'origine qui pouvait aboutir ;
+	# les deux autres (jour 1, pouls mensuel inconditionnel) ont ete retires.
+	capital_scope = { create_sector = yes }
+}

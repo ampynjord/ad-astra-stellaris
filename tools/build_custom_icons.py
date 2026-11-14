@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+"""Genere les icones Ad Astra depuis les sources artistiques conservees.
+
+Les PNG haute definition vivent hors du dossier du mod afin que les DDS livres
+soient reproductibles. Les cadres de decisions sont appliques ici : ils restent
+identiques, sans dupliquer un asset vanilla.
+"""
+from pathlib import Path
+import subprocess
+import sys
+
+from PIL import Image, ImageDraw
+
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / "artwork" / "icon_sources" / "decisions"
+DESTINATION = ROOT / "ad_astra" / "gfx" / "interface" / "icons" / "decisions"
+BUILDING_SOURCE = ROOT / "artwork" / "icon_sources" / "buildings"
+BUILDING_DESTINATION = ROOT / "ad_astra" / "gfx" / "interface" / "icons" / "buildings"
+TECHNOLOGY_SOURCE = ROOT / "artwork" / "icon_sources" / "technologies"
+TECHNOLOGY_DESTINATION = ROOT / "ad_astra" / "gfx" / "interface" / "icons" / "technologies"
+
+# Nom de fichier source, nom d'icone employe dans common/decisions.
+DECISIONS = {
+    "decision_core_suborbital": "suborbital.png",
+    "decision_core_satellite": "satellite.png",
+    "decision_core_vol_habite": "manned_flight.png",
+    "decision_core_premier_corps": "first_landing.png",
+    "decision_core_sonde_profonde": "deep_probe.png",
+    "decision_adastra_explore": "explore.png",
+    "decision_adastra_starbase": "starbase.png",
+    "decision_adastra_hyperdrive": "hyperdrive.png",
+    "decision_adastra_navy": "navy.png",
+    "decision_adastra_national_programme": "national_programme.png",
+    "decision_adastra_colony": "colony.png",
+}
+
+DECISION_SIZE = 45
+BUILDING_SIZE = 78
+TECHNOLOGY_SIZE = 52
+FRAME = (48, 91, 80, 255)
+CORNER = (117, 240, 214, 255)
+
+
+def build_decision(source: Path) -> Image.Image:
+    """Reduit une source et pose le liseret commun des decisions."""
+    image = Image.open(source).convert("RGBA")
+    image = image.resize((DECISION_SIZE, DECISION_SIZE), Image.Resampling.LANCZOS)
+    draw = ImageDraw.Draw(image)
+    draw.rectangle((0, 0, DECISION_SIZE - 1, DECISION_SIZE - 1), outline=FRAME)
+    for point in ((0, 0), (DECISION_SIZE - 1, 0), (0, DECISION_SIZE - 1),
+                  (DECISION_SIZE - 1, DECISION_SIZE - 1)):
+        draw.point(point, fill=CORNER)
+    return image
+
+
+BUILDINGS = {
+    "building_adastra_seat": "seat.png",
+    "building_adastra_seat_bronze": "seat_bronze.png",
+    "building_adastra_seat_iron": "seat_iron.png",
+    "building_adastra_seat_medieval": "seat_medieval.png",
+    "building_adastra_seat_renaissance": "seat_renaissance.png",
+    "building_adastra_seat_steam": "seat_steam.png",
+    "building_adastra_seat_industrial": "seat_industrial.png",
+    "building_adastra_cave": "cave.png",
+    "building_adastra_granary": "granary.png",
+    "building_adastra_foundry": "foundry.png",
+    "building_adastra_tablet_house": "tablet_house.png",
+    "building_adastra_courthouse": "courthouse.png",
+    "building_adastra_mill": "mill.png",
+    "building_adastra_citadel": "citadel.png",
+    "building_adastra_university": "university.png",
+    "building_adastra_manufactory": "manufactory.png",
+    "building_adastra_radio": "radio.png",
+    "building_adastra_school": "school.png",
+}
+
+# Les telescopes sont des batiments Ad Astra a part entiere : leurs icones ne
+# doivent pas retomber sur les laboratoires vanilla.
+CORE_BUILDINGS = {
+    "building_core_observatory": "core_observatory.png",
+    "building_core_radio_telescope": "core_radio_telescope.png",
+    "building_core_space_telescope": "core_space_telescope.png",
+}
+
+
+def build_building(source: Path) -> Image.Image:
+    """Cadre un batiment transparent sans lui imposer une vue isometrique."""
+    image = Image.open(source).convert("RGBA")
+    box = image.getchannel("A").getbbox()
+    if not box:
+        raise ValueError(f"Alpha vide : {source}")
+    image = image.crop(box)
+    image.thumbnail((BUILDING_SIZE - 4, BUILDING_SIZE - 4), Image.Resampling.LANCZOS)
+    result = Image.new("RGBA", (BUILDING_SIZE, BUILDING_SIZE), (0, 0, 0, 0))
+    result.alpha_composite(image, ((BUILDING_SIZE - image.width) // 2,
+                                   BUILDING_SIZE - image.height - 1))
+    return result
+
+
+def build_technology(source: Path) -> Image.Image:
+    """Reduit une technologie opaque en conservant sa vignette sombre."""
+    image = Image.open(source).convert("RGB")
+    return image.resize((TECHNOLOGY_SIZE, TECHNOLOGY_SIZE), Image.Resampling.LANCZOS)
+
+
+def main() -> None:
+    splitter = ROOT / "tools" / "split_technology_icon_sheets.py"
+    if splitter.is_file():
+        subprocess.run([sys.executable, str(splitter)], check=True)
+    DESTINATION.mkdir(parents=True, exist_ok=True)
+    for icon, filename in DECISIONS.items():
+        source = SOURCE / filename
+        if not source.is_file():
+            raise FileNotFoundError(f"Source manquante : {source}")
+        target = DESTINATION / f"{icon}.dds"
+        build_decision(source).save(target, "DDS")
+        print(f"ecrit : {target.relative_to(ROOT)}")
+    BUILDING_DESTINATION.mkdir(parents=True, exist_ok=True)
+    for icon, filename in {**BUILDINGS, **CORE_BUILDINGS}.items():
+        source = BUILDING_SOURCE / filename
+        if not source.is_file():
+            raise FileNotFoundError(f"Source manquante : {source}")
+        target = BUILDING_DESTINATION / f"{icon}.dds"
+        build_building(source).save(target, "DDS")
+        print(f"ecrit : {target.relative_to(ROOT)}")
+    if TECHNOLOGY_SOURCE.is_dir():
+        TECHNOLOGY_DESTINATION.mkdir(parents=True, exist_ok=True)
+        for source in sorted(TECHNOLOGY_SOURCE.glob("*.png")):
+            target = TECHNOLOGY_DESTINATION / f"tech_adastra_{source.stem}.dds"
+            build_technology(source).save(target, "DDS")
+            print(f"ecrit : {target.relative_to(ROOT)}")
+
+
+if __name__ == "__main__":
+    main()

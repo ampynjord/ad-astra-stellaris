@@ -1,0 +1,18 @@
+# Ad Astra - interface publique (26/09/2026).
+#
+# core_declarer_origins (common/scripted_effects/core_00_conventions.txt)
+# existait depuis la 1.4 mais n'etait jamais appele : le drapeau global
+# adastra_origins_charge n'etait donc jamais pose, et core_origins_present
+# comme adastra_api_loaded restaient faux. On le pose ici, une fois, au
+# demarrage de la partie. Voir common/scripted_triggers/zzzz_adastra_api.txt.
+
+# adastra.191 - Ad Astra signale sa presence aux autres mods (cache)
+event = {
+	id = adastra.191
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		core_declarer_origins = yes
+	}
+}

@@ -1,4 +1,6 @@
 # Ad Astra - verrouillage des technologies de depart, reparties selon l'histoire reelle
+# Les technologies vanilla a cout zero etaient normalement donnees au debut.
+# Ici elles sont mises au tirage : elles doivent donc couter un palier tier 0.
 
 ### adastra_unlock_renaissance
 tech_basic_science_lab_1 = {
@@ -8,7 +10,7 @@ tech_basic_science_lab_1 = {
 			adastra_vanilla_open_renaissance = yes
 		}
 	}
-	cost = @tier0cost1
+	cost = 200
 	area = physics
 	tier = 0
 	category = { computing }
@@ -26,6 +28,7 @@ tech_basic_science_lab_1 = {
 	starting_potential = {
 		is_low_tech_start = no # So Broken Shackles origin players don't start with it
 	}
+
 }
 
 ### adastra_unlock_steam
@@ -36,7 +39,7 @@ tech_basic_industry = {
 			adastra_vanilla_open_steam = yes
 		}
 	}
-	cost = 0
+	cost = 270
 	area = engineering
 	start_tech = yes
 	category = { industry }
@@ -52,11 +55,12 @@ tech_basic_industry = {
 			is_wilderness_empire = yes
 		}
 	}
+
 }
 
 ### adastra_unlock_industrial
 tech_mechanized_mining = {
-	cost = 0
+	cost = 355
 	area = engineering
 	start_tech = yes
 	category = { industry }
@@ -75,6 +79,7 @@ tech_mechanized_mining = {
 	starting_potential = {
 		is_nomadic = no
 	}
+
 }
 
 tech_industrial_farming = {
@@ -84,13 +89,14 @@ tech_industrial_farming = {
 			adastra_vanilla_open_industrial = yes
 		}
 	}
-	cost = 0
+	cost = 355
 	area = society
 	tier = 0
 	category = { biology }
 	start_tech = yes
 
 	# unlocks farming districts
+
 }
 
 tech_assault_armies = {
@@ -100,12 +106,13 @@ tech_assault_armies = {
 			adastra_vanilla_open_machine = yes
 		}
 	}
-	cost = @tier1cost1
+	cost = 485
 	area = engineering
 	tier = 0
 	category = { voidcraft }
 	prerequisites = { "tech_planetary_defenses" }
 	start_tech = yes
+
 }
 
 ### adastra_unlock_machine
@@ -116,13 +123,14 @@ tech_power_plant_1 = {
 			adastra_vanilla_open_machine = yes
 		}
 	}
-	cost = 0
+	cost = 485
 	area = physics
 	tier = 0
 	category = { field_manipulation }
 	start_tech = yes
 
 	## unlock power plant lvl 1
+
 }
 
 tech_planetary_government = {
@@ -132,7 +140,7 @@ tech_planetary_government = {
 			adastra_vanilla_open_machine = yes
 		}
 	}
-	cost = @tier0cost1
+	cost = 485
 	area = society
 	tier = 0
 	category = { statecraft }
@@ -152,10 +160,11 @@ tech_planetary_government = {
 	starting_potential = {
 		is_low_tech_start = no # So Broken Shackles origin players don't start with it
 	}
+
 }
 
 tech_basic_health = {
-	cost = 0
+	cost = 485
 	area = society
 	start_tech = yes
 	tier = 0
@@ -169,6 +178,7 @@ tech_basic_health = {
 		is_regular_empire = yes
 		is_individual_machine = no
 	}
+
 }
 
 ### adastra_unlock_atomic
@@ -180,7 +190,7 @@ tech_fission_power = {
 		}
 	}
 	area = physics
-	cost = 0
+	cost = 740
 	tier = 0
 	start_tech = yes
 	category = { particles }
@@ -219,7 +229,7 @@ tech_planetary_defenses = {
 			adastra_vanilla_open_machine = yes
 		}
 	}
-	cost = 0
+	cost = 485
 	area = society
 	start_tech = yes
 	category = { military_theory }
@@ -244,6 +254,7 @@ tech_planetary_defenses = {
 	}
 
 	## unlock defense army, militia and basic attachments
+
 }
 
 tech_missiles_1 = {
@@ -265,6 +276,7 @@ tech_missiles_1 = {
 			has_technology = tech_cosmogenesis_escort
 		}
 	}
+
 }
 
 tech_flak_batteries_1 = {
@@ -290,6 +302,7 @@ tech_flak_batteries_1 = {
 			factor = 1
 		}
 	}
+
 }
 
 tech_pd_tracking_1 = {
@@ -315,6 +328,7 @@ tech_pd_tracking_1 = {
 			factor = 1
 		}
 	}
+
 }
 
 tech_lasers_1 = {
@@ -325,7 +339,7 @@ tech_lasers_1 = {
 		}
 	}
 	tier = 0
-	cost = @tier0cost1
+	cost = 740
 	area = physics
 	start_tech = yes
 	category = { particles }
@@ -342,10 +356,11 @@ tech_lasers_1 = {
 			factor = 1
 		}
 	}
+
 }
 
 tech_holo_entertainment = {
-	cost = 0
+	cost = 755
 	area = society
 	start_tech = yes
 	category = { statecraft }
@@ -370,12 +385,6 @@ tech_holo_entertainment = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 ### adastra_unlock_space
@@ -391,7 +400,7 @@ tech_space_exploration = {
 			adastra_gameplay_orbite = yes
 		}
 	}
-	cost = 0
+	cost = 755
 	area = physics
 	start_tech = yes
 	category = { computing }
@@ -414,12 +423,6 @@ tech_space_exploration = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_thrusters_1 = {
@@ -435,7 +438,7 @@ tech_thrusters_1 = {
 		}
 	}
 	area = engineering
-	cost = 0
+	cost = 755
 	start_tech = yes
 	tier = 0
 	category = { propulsion }
@@ -467,12 +470,6 @@ tech_thrusters_1 = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_solar_panel_network = {
@@ -503,12 +500,6 @@ tech_solar_panel_network = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_space_construction = {
@@ -523,7 +514,7 @@ tech_space_construction = {
 			adastra_gameplay_chantier = yes
 		}
 	}
-	cost = 0
+	cost = 755
 	area = engineering
 	tier = 0
 	category = { industry }
@@ -574,16 +565,10 @@ tech_space_construction = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_space_defense_station_1 = {
-	cost = 0
+	cost = 755
 	tier = 0
 	area = engineering
 	start_tech = yes
@@ -611,12 +596,6 @@ tech_space_defense_station_1 = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_ship_armor_1 = {
@@ -631,7 +610,7 @@ tech_ship_armor_1 = {
 			adastra_gameplay_vaisseaux = yes
 		}
 	}
-	cost = @tier1cost1
+	cost = 755
 	area = engineering
 	tier = 0
 	category = { materials }
@@ -653,12 +632,6 @@ tech_ship_armor_1 = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_shields_1 = {
@@ -674,7 +647,7 @@ tech_shields_1 = {
 		}
 	}
 	area = physics
-	cost = 0
+	cost = 755
 	tier = 0
 	category = { field_manipulation }
 	start_tech = yes
@@ -695,12 +668,6 @@ tech_shields_1 = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_reactor_boosters_1 = {
@@ -716,7 +683,7 @@ tech_reactor_boosters_1 = {
 		}
 	}
 	area = physics
-	cost = 0
+	cost = 755
 	tier = 0
 	start_tech = yes
 	category = { particles }
@@ -726,16 +693,10 @@ tech_reactor_boosters_1 = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_corvettes = {
-	cost = @tier0cost1
+	cost = 755
 	area = engineering
 	start_tech = yes
 	category = { voidcraft }
@@ -778,16 +739,10 @@ tech_corvettes = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_starbase_1 = {
-	cost = 0
+	cost = 755
 	area = engineering
 	start_tech = yes
 	category = { voidcraft }
@@ -802,7 +757,7 @@ tech_starbase_1 = {
 		# 1.3 : cherchable seulement si le jeu concerne est ouvert.
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_gameplay_base = yes
+			adastra_gameplay_outpost = yes
 		}
 		is_nomadic = no
 	}
@@ -824,16 +779,10 @@ tech_starbase_1 = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_starbase_2 = {
-	cost = 0
+	cost = 755
 	area = engineering
 	start_tech = yes
 	category = { voidcraft }
@@ -877,16 +826,10 @@ tech_starbase_2 = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_colonization_1 = {
-	cost = 0
+	cost = 755
 	area = society
 	tier = 0
 	category = { new_worlds }
@@ -936,16 +879,10 @@ tech_colonization_1 = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_interplanetary_commerce = {
-	cost = 0
+	cost = 755
 	area = society
 	start_tech = yes
 	category = { statecraft }
@@ -970,12 +907,6 @@ tech_interplanetary_commerce = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_mass_drivers_1 = {
@@ -991,7 +922,7 @@ tech_mass_drivers_1 = {
 		}
 	}
 	tier = 0
-	cost = @tier0cost1
+	cost = 755
 	area = engineering
 	start_tech = yes
 	category = { propulsion }
@@ -1013,16 +944,10 @@ tech_mass_drivers_1 = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 tech_hydroponics = {
-	cost = 0
+	cost = 755
 	area = society
 	tier = 0
 	category = { biology }
@@ -1095,12 +1020,6 @@ tech_hydroponics = {
 	# Les technologies d'epoque portent leur age ; celles-ci portent leur
 	# statut. A l'Age spatial le tirage melange les deux, et rien ne les
 	# distinguait a l'oeil.
-	prereqfor_desc = {
-		custom = {
-			title = "adastra_tech_marque_fondatrice"
-			desc = "adastra_tech_marque_fondatrice_desc"
-		}
-	}
 }
 
 ### adastra_unlock_ftl

@@ -1,0 +1,255 @@
+# Ad Astra 1.4 - « Premiers pas » : le ciel se remplit avant qu'on y aille.
+#
+# Jusqu'a la 1.3, tout le confinement se jouait au sol, et l'Age spatial
+# portait a lui seul le programme spatial entier. Le joueur regardait une
+# fenetre de planete pendant neuf ages et demi.
+#
+# Ces quatre decisions posent des objets dans le ciel AVANT les quatre grands
+# programmes. Elles sont additives : rien de la 1.3 ne change ici.
+#
+# L'HISTOIRE DECIDE DU PLACEMENT, PAS L'ENVIE.
+# Le plan de la 1.4 annoncait des satellites a l'Age atomique. C'est faux :
+# Spoutnik est d'octobre 1957, exactement la borne de l'Age spatial. L'Age
+# atomique (1945-1957) n'a donc qu'une seule chose a offrir - la fusee-sonde
+# de 1946, qui monte et retombe. C'est peu, et c'est juste : cet age est celui
+# ou l'on apprend a quitter le sol sans savoir y rester.
+#
+#   Age atomique  fusee-sonde (1946)      -> suborbital, et les echecs
+#   Age spatial   satellite (1957)        -> ce qui monte peut rester
+#                 vol habite (1961)       -> quelqu'un est la-haut
+#                 premier corps (1969)    -> on se pose ailleurs
+#
+# L'ECHEC FAIT PARTIE DE L'HISTOIRE. Un lancement peut rater, et la
+# probabilite baisse avec les technologies du rang. Regle de conception :
+# l'echec doit etre VISIBLEMENT evitable - attendre deux technologies, ou
+# payer davantage. Un de qui punit sans prevenir est de l'arbitraire, pas du
+# drame. Le cout est en influence et en minerais, comme les grands programmes.
+
+
+# ------------------------------------------------ observation astronomique
+# Le brouillard galactique ne se leve pas tout seul a chaque pulse mensuel.
+# Le joueur construit d'abord un instrument, puis consacre une campagne a
+# l'observation. Le resultat revele une etoile voisine, jamais ses mondes ni
+# ses ressources. La decision peut etre prise depuis n'importe quelle planete
+# qui abrite un telescope.
+decision_core_astronomical_observation = {
+	owned_planets_only = yes
+	icon = decision_core_sonde_profonde
+
+	# Deux ans de campagnes, de mesures et de verifications. La construction de
+	# l'instrument ne suffit pas : la carte ne bouge qu'a l'issue de ce travail.
+	enactment_time = 720
+
+	resources = {
+		category = decisions
+		# 31/08 - retour ampynjord : trop bon marche. Cout de base releve et
+		# +30 % par campagne deja menee (variable posee par adastra.92).
+		cost = {
+			influence = 100
+			minerals = 500
+			mult = value:adastra_cout_campagne_astro
+		}
+	}
+
+	potential = {
+		owner = {
+			has_origin = origin_adastra
+			has_technology = tech_adastra_astronomy
+			NOT = { has_country_flag = adastra_completed }
+		}
+		OR = {
+			has_building = building_core_observatory
+			has_building = building_core_radio_telescope
+			has_building = building_core_space_telescope
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_astronomical_observation_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.92 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 20
+	}
+}
+
+
+# ---------------------------------------------------------------- suborbital
+# Repetable : on ne lance pas une fusee, on lance un programme de fusees. Et
+# tant que le premier vol reussi n'est pas obtenu, il FAUT pouvoir reessayer -
+# sinon un echec au premier tir bloque tout l'Age atomique.
+decision_core_suborbital = {
+	owned_planets_only = yes
+	icon = decision_core_suborbital
+
+	enactment_time = 180
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 60
+			minerals = 200
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			core_est_confine = yes
+			core_poussee_1 = yes
+			# Une reussite est definitive. Sans ce garde-fou, la meme premiere
+			# fusee restait jouable jusqu'au vol habite suivant.
+			NOT = { has_country_flag = core_suborbital_fait }
+			# La recherche termine d'abord la preparation. La fusee est ensuite
+			# un jalon visible, annonce par la situation, jamais un raccourci.
+			any_situation = {
+				is_situation_type = situation_adastra_ascension
+				current_stage = adastra_stage_first_launch
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_suborbital_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.100 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 80
+	}
+}
+
+
+# ----------------------------------------------------------------- satellite
+# 1957. Ce qui monte peut rester. Ce jalon represente le premier satellite,
+# pas une filiere orbitale abstraite a empiler indefiniment.
+decision_core_satellite = {
+	owned_planets_only = yes
+	icon = decision_core_satellite
+
+	enactment_time = 240
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 80
+			minerals = 300
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			core_est_confine = yes
+			core_poussee_2 = yes
+			has_technology = tech_adastra_satellites
+			has_country_flag = core_suborbital_fait
+			NOT = { has_country_flag = core_satellite_fait }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_satellite_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.102 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 70
+	}
+}
+
+
+# --------------------------------------------------------------- vol habite
+# 1961. Quelqu'un est la-haut, et il faut le ramener. Une seule fois : le
+# premier homme dans l'espace n'arrive qu'une fois, et ce qui suit est de la
+# routine qu'on ne joue pas.
+decision_core_vol_habite = {
+	owned_planets_only = yes
+	icon = decision_core_vol_habite
+
+	enactment_time = 360
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 150
+			minerals = 500
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			core_est_confine = yes
+			core_poussee_2 = yes
+			has_technology = tech_adastra_manned_flight
+			has_country_flag = core_satellite_fait
+			NOT = { has_country_flag = core_vol_habite_fait }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_vol_habite_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.104 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 60
+	}
+}
+
+
+# -------------------------------------------------------------- premier corps
+# 1969. C'est une mission lunaire : sans lune dans le systeme natal, il n'y a
+# pas de premier alunissage a jouer. Le test passe par le pays puis sa capitale
+# afin de ne jamais demander `solar_system` depuis une portee de vaisseau.
+decision_core_premier_corps = {
+	owned_planets_only = yes
+	icon = decision_core_premier_corps
+
+	enactment_time = 540
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 250
+			minerals = 800
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			core_est_confine = yes
+			core_poussee_3 = yes
+			has_technology = tech_adastra_lunar_landing
+			has_country_flag = core_vol_habite_fait
+			NOT = { has_country_flag = core_premier_corps_fait }
+			capital_scope = {
+				solar_system = {
+					any_system_planet = { is_moon = yes }
+				}
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_core_premier_corps_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = adastra.106 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 50
+	}
+}

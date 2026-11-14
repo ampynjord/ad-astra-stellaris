@@ -1,21 +1,5 @@
-# Ad Astra - surcharge du déclencheur scripté vanilla is_regular_empire
-# (copie exacte 4.5 + le type adastra_grounded, pour que districts, bâtiments,
-# zones et le reste de l'interface traitent l'empire verrouillé comme un empire normal.
-# Le filet de sécurité des avant-postes teste "is_country_type = default" en dur
-# et continue donc de nous ignorer.)
-
-is_regular_empire = {
-	OR = {
-		is_country_type = default
-		#for checks in buildings and districts
-		is_country_type = awakened_marauders
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
-		is_country_type = exiled
-		is_country_type = adastra_grounded
-	}
-	NOT = { has_ethic = ethic_gestalt_consciousness	}
-}
+# is_regular_empire : surchargé dans zzzz_adastra_regular_empire.txt, qui se
+# charge après Gigastructural Engineering (25/09).
 
 # 1.2 - qui paie l'entretien de ses districts en energie.
 #
@@ -23,10 +7,24 @@ is_regular_empire = {
 # encore l'electricite : celui-la paie en minerais (voir la surcharge des
 # districts). Ecrit de facon a ce que le cas normal soit la premiere condition,
 # donc evalue en premier.
+# 1.4 (30/08, decision d'ampynjord) - PERIODE DE GRACE DU RESEAU.
+# Retour beta.5 : au deblocage de l'Electricite, l'entretien de tout
+# basculait instantanement vers l'energie alors qu'aucun generateur
+# n'existait encore (le district vient d'etre debloque) : deficit immediat
+# sans issue courte. L'entretien ne passe donc a l'energie que lorsque le
+# reseau existe : premier district generateur construit, ou deux ans ecoules
+# depuis la technologie (drapeau temporise pose par adastra.132).
+# La PRODUCTION d'energie (adastra_has_energy) demarre elle des la techno.
 adastra_pays_energy_upkeep = {
 	OR = {
 		NOT = { has_origin = origin_adastra }
-		adastra_has_energy = yes
+		AND = {
+			adastra_has_energy = yes
+			OR = {
+				any_owned_planet = { has_district = district_generator }
+				NOT = { has_country_flag = adastra_grace_energie }
+			}
+		}
 	}
 }
 
@@ -116,14 +114,14 @@ adastra_fondatrices_toutes = {
 # d'epoque - il y a de quoi chercher.
 adastra_gameplay_orbite = {
 	has_country_flag = adastra_unlock_space
-	has_country_flag = adastra_stage_explore
+	has_country_flag = adastra_stage_astronomy
 }
 
 # Le vaisseau de construction et les stations : c'est la phase de la base
 # stellaire qui les ouvre, puisque c'est sa decision qu'ils servent.
 adastra_gameplay_chantier = {
 	has_country_flag = adastra_unlock_space
-	has_country_flag = adastra_stage_orbital
+	has_country_flag = adastra_stage_explore
 }
 
 # Les vaisseaux : il faut pouvoir en faire. Deux chemins - le chantier orbital
@@ -132,8 +130,8 @@ adastra_gameplay_chantier = {
 adastra_gameplay_vaisseaux = {
 	has_country_flag = adastra_unlock_space
 	OR = {
-		has_country_flag = adastra_stage_orbital
-		has_country_flag = adastra_phase2_done
+		has_country_flag = adastra_stage_constructor
+		has_country_flag = adastra_constructor_ready
 	}
 }
 
@@ -142,13 +140,38 @@ adastra_gameplay_vaisseaux = {
 # sens, et l'evenement « Le ciel est deja pris » rend ce cas tout a fait reel.
 adastra_gameplay_base = {
 	has_country_flag = adastra_unlock_space
-	has_country_flag = adastra_phase2_done
+	has_country_flag = adastra_home_outpost_built
+}
+
+# La premiere base doit etre recherchable avant d'exister. Les ameliorations
+# restent, elles, derriere l'avant-poste effectivement construit.
+adastra_gameplay_outpost = {
+	has_country_flag = adastra_unlock_space
+	# 11/11 : recherchable des l'etape constructeur, pour que le design d'avant-poste
+	# existe quand le Batisseur est livre (voir adastra_creer_avant_poste).
+	OR = {
+		has_country_flag = adastra_stage_constructor
+		has_country_flag = adastra_stage_outpost
+	}
 }
 
 # Coloniser : le Programme de colonisation s'ouvre a l'etape orbitale.
+# ESSAI 2026-08-29 - VERROU CIRCULAIRE CORRIGE.
+#
+# `tech_colonization_1` etait gee ici par l'etape CONSTRUCTEUR (300-325).
+# Or `adastra_lot_explore_complet` exige `tech_space_construction` ET
+# `tech_colonization_1` pour faire passer l'etape EXPLORATION de 295 a 300.
+# Il fallait donc etre a l'etape constructeur pour obtenir la technologie
+# qui permet d'atteindre l'etape constructeur.
+#
+# Constate en partie : 250 technologies d'epoque, situation figee a 295,
+# `tech_space_construction` acquise, `tech_colonization_1` jamais proposee.
+#
+# On aligne sur `adastra_gameplay_chantier`, qui ouvre a l'etape EXPLORATION -
+# c'est ce que fait deja l'autre technologie du meme lot.
 adastra_gameplay_colonie = {
 	has_country_flag = adastra_unlock_space
-	has_country_flag = adastra_stage_orbital
+	has_country_flag = adastra_stage_explore
 }
 
 # Ce qui se joue entierement au sol. Ouvert a la phase d'exploration et non a
@@ -158,5 +181,108 @@ adastra_gameplay_colonie = {
 # longtemps, c'est frustrant ».
 adastra_gameplay_sol = {
 	has_country_flag = adastra_unlock_space
-	has_country_flag = adastra_stage_explore
+	has_country_flag = adastra_stage_astronomy
+}
+
+
+# ============================================================================
+# 1.4 (17/08) - LE SYSTEME NATAL N'EST PAS UN TERRAIN VAGUE
+#
+# Sans base stellaire, le systeme natal n'a pas de proprietaire, et le jeu de
+# base le traite comme un systeme libre : Argroww (Discord) a vu deux fois de
+# suite une station de drones miniers apparaitre chez lui. Surcharge de la
+# regle vanilla (00_scripted_triggers.txt) : identique, plus l'exclusion du
+# drapeau adastra_home_system pose par adastra.2. Sert a la fois aux drones
+# miniers et aux drones agressifs (an4_events).
+is_valid_drone_expansion_destination_system = {
+	NOR = {
+		has_star_flag = adastra_home_system
+		is_star_class = sc_black_hole
+		has_star_flag = mining_drone_expansion_starting_system
+		has_star_flag = aggressive_drone_expansion_starting_system
+		has_star_flag = mining_drone_expansion_destination_system
+		has_star_flag = aggressive_drone_expansion_destination_system
+		has_star_flag = hostile_system
+		has_star_flag = guardian
+		has_star_flag = tiyanki_home_system
+		has_star_flag = tiyanki_graveyard_system
+		has_star_flag = amoeba_home_system
+		has_star_flag = lcluster
+		has_star_flag = sealed_system
+		has_star_flag = voidworms_system
+		has_star_flag = frenzied_voidworms_system
+	}
+	any_system_planet = {
+		can_have_mineral_deposits = yes
+	}
+}
+
+
+# ============================================================================
+# 1.5 (19/08) - LES LOTS DU PROGRAMME SPATIAL
+#
+# Chaque jalon spatial exige son lot de technologies vanilla. Les cinq
+# technologies d'epoque du rang actif font en parallele 15 points de situation.
+adastra_lot_astronomy_complet = {
+	has_technology = tech_space_exploration
+	has_technology = tech_thrusters_1
+	has_technology = tech_holo_entertainment
+	has_technology = tech_interplanetary_commerce
+	has_technology = tech_hydroponics
+}
+adastra_lot_explore_complet = {
+	has_technology = tech_space_construction
+	has_technology = tech_colonization_1
+}
+adastra_lot_constructor_complet = {
+	has_technology = tech_corvettes
+	has_technology = tech_mass_drivers_1
+	has_technology = tech_ship_armor_1
+	has_technology = tech_shields_1
+	has_technology = tech_reactor_boosters_1
+}
+adastra_lot_outpost_complet = {
+	has_technology = tech_starbase_1
+}
+adastra_lot_orbital_complet = {
+	has_technology = tech_starbase_1
+	has_technology = tech_starbase_2
+	has_technology = tech_space_defense_station_1
+	has_technology = tech_solar_panel_network
+}
+# La derniere techno acquise appartient-elle au lot ? (adastra.132, points)
+adastra_lot_astronomy_tech = {
+	OR = {
+		last_increased_tech = tech_space_exploration
+		last_increased_tech = tech_thrusters_1
+		last_increased_tech = tech_holo_entertainment
+		last_increased_tech = tech_interplanetary_commerce
+		last_increased_tech = tech_hydroponics
+	}
+}
+
+adastra_lot_explore_tech = {
+	OR = {
+		last_increased_tech = tech_space_construction
+		last_increased_tech = tech_colonization_1
+	}
+}
+adastra_lot_constructor_tech = {
+	OR = {
+		last_increased_tech = tech_corvettes
+		last_increased_tech = tech_mass_drivers_1
+		last_increased_tech = tech_ship_armor_1
+		last_increased_tech = tech_shields_1
+		last_increased_tech = tech_reactor_boosters_1
+	}
+}
+adastra_lot_outpost_tech = {
+	last_increased_tech = tech_starbase_1
+}
+adastra_lot_orbital_tech = {
+	OR = {
+		last_increased_tech = tech_starbase_2
+		last_increased_tech = tech_space_defense_station_1
+		last_increased_tech = tech_solar_panel_network
+	}
 }

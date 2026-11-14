@@ -1,0 +1,306 @@
+# Ad Astra 1.5 - la progression, c'est la recherche.
+# FICHIER GENERE PAR tools/gen_age_techs.py - NE PAS EDITER A LA MAIN.
+#
+# Une technologie d'epoque acquise vaut un point de situation si elle
+# appartient a l'age courant. Vingt-cinq points font passer l'age.
+
+adastra_tech_epoque_stone = {
+	OR = {
+		last_increased_tech = tech_adastra_fire
+		last_increased_tech = tech_adastra_stone_tools
+		last_increased_tech = tech_adastra_hunting
+		last_increased_tech = tech_adastra_cave_art
+		last_increased_tech = tech_adastra_language
+		last_increased_tech = tech_adastra_seasons
+		last_increased_tech = tech_adastra_pigments
+		last_increased_tech = tech_adastra_cordage
+		last_increased_tech = tech_adastra_shelter
+		last_increased_tech = tech_adastra_burial
+		last_increased_tech = tech_adastra_cooking
+		last_increased_tech = tech_adastra_clan
+		last_increased_tech = tech_adastra_hafting
+		last_increased_tech = tech_adastra_lunar_count
+		last_increased_tech = tech_adastra_storytelling
+		last_increased_tech = tech_adastra_grinding
+		last_increased_tech = tech_adastra_weaving
+		last_increased_tech = tech_adastra_bow
+		last_increased_tech = tech_adastra_exchange
+		last_increased_tech = tech_adastra_canoe
+		last_increased_tech = tech_adastra_salt
+		last_increased_tech = tech_adastra_village
+		last_increased_tech = tech_adastra_agriculture
+		last_increased_tech = tech_adastra_pottery
+		last_increased_tech = tech_adastra_domestication
+	}
+}
+
+adastra_tech_epoque_bronze = {
+	OR = {
+		last_increased_tech = tech_adastra_bronze
+		last_increased_tech = tech_adastra_writing
+		last_increased_tech = tech_adastra_first_city
+		last_increased_tech = tech_adastra_calendar
+		last_increased_tech = tech_adastra_measures
+		last_increased_tech = tech_adastra_irrigation
+		last_increased_tech = tech_adastra_priesthood
+		last_increased_tech = tech_adastra_wheel
+		last_increased_tech = tech_adastra_sail
+		last_increased_tech = tech_adastra_plough
+		last_increased_tech = tech_adastra_brewing
+		last_increased_tech = tech_adastra_kingship
+		last_increased_tech = tech_adastra_fired_brick
+		last_increased_tech = tech_adastra_lever
+		last_increased_tech = tech_adastra_lost_wax
+		last_increased_tech = tech_adastra_sexagesimal
+		last_increased_tech = tech_adastra_faience
+		last_increased_tech = tech_adastra_shield_wall
+		last_increased_tech = tech_adastra_empire
+		last_increased_tech = tech_adastra_trade_colony
+		last_increased_tech = tech_adastra_chariot
+		last_increased_tech = tech_adastra_surveying
+		last_increased_tech = tech_adastra_medicine
+		last_increased_tech = tech_adastra_dyes
+		last_increased_tech = tech_adastra_diplomacy
+	}
+}
+
+adastra_tech_epoque_iron = {
+	OR = {
+		last_increased_tech = tech_adastra_iron
+		last_increased_tech = tech_adastra_law
+		last_increased_tech = tech_adastra_coinage
+		last_increased_tech = tech_adastra_astronomy
+		last_increased_tech = tech_adastra_geometry
+		last_increased_tech = tech_adastra_glass
+		last_increased_tech = tech_adastra_aqueduct
+		last_increased_tech = tech_adastra_alphabet
+		last_increased_tech = tech_adastra_standing_army
+		last_increased_tech = tech_adastra_star_catalogue
+		last_increased_tech = tech_adastra_atomism
+		last_increased_tech = tech_adastra_water_clock
+		last_increased_tech = tech_adastra_pulley
+		last_increased_tech = tech_adastra_lodestone
+		last_increased_tech = tech_adastra_cavalry
+		last_increased_tech = tech_adastra_tax_register
+		last_increased_tech = tech_adastra_clinical_medicine
+		last_increased_tech = tech_adastra_philosophy
+		last_increased_tech = tech_adastra_silk_road
+		last_increased_tech = tech_adastra_trireme
+		last_increased_tech = tech_adastra_crucible_steel
+		last_increased_tech = tech_adastra_roman_road
+		last_increased_tech = tech_adastra_lighthouse
+		last_increased_tech = tech_adastra_bellows
+		last_increased_tech = tech_adastra_concrete
+	}
+}
+
+adastra_tech_epoque_medieval = {
+	OR = {
+		last_increased_tech = tech_adastra_crop_rotation
+		last_increased_tech = tech_adastra_mills
+		last_increased_tech = tech_adastra_stone_architecture
+		last_increased_tech = tech_adastra_scholasticism
+		last_increased_tech = tech_adastra_guilds
+		last_increased_tech = tech_adastra_algebra
+		last_increased_tech = tech_adastra_optics
+		last_increased_tech = tech_adastra_heavy_plough
+		last_increased_tech = tech_adastra_hospices
+		last_increased_tech = tech_adastra_cartography
+		last_increased_tech = tech_adastra_stirrup
+		last_increased_tech = tech_adastra_paper_mill
+		last_increased_tech = tech_adastra_distillation
+		last_increased_tech = tech_adastra_translation_movement
+		last_increased_tech = tech_adastra_astrolabe
+		last_increased_tech = tech_adastra_gunpowder
+		last_increased_tech = tech_adastra_horse_collar
+		last_increased_tech = tech_adastra_trigonometry
+		last_increased_tech = tech_adastra_crop_diffusion
+		last_increased_tech = tech_adastra_paper_money
+		last_increased_tech = tech_adastra_blast_furnace
+		last_increased_tech = tech_adastra_compass
+		last_increased_tech = tech_adastra_caravanserai
+		last_increased_tech = tech_adastra_stern_rudder
+		last_increased_tech = tech_adastra_impetus
+	}
+}
+
+adastra_tech_epoque_renaissance = {
+	OR = {
+		last_increased_tech = tech_adastra_printing
+		last_increased_tech = tech_adastra_experimental_method
+		last_increased_tech = tech_adastra_anatomy
+		last_increased_tech = tech_adastra_mechanics
+		last_increased_tech = tech_adastra_banking
+		last_increased_tech = tech_adastra_chemistry
+		last_increased_tech = tech_adastra_metallurgy_casting
+		last_increased_tech = tech_adastra_clockwork
+		last_increased_tech = tech_adastra_double_entry
+		last_increased_tech = tech_adastra_navigation
+		last_increased_tech = tech_adastra_telescope
+		last_increased_tech = tech_adastra_heliocentrism
+		last_increased_tech = tech_adastra_magnetism
+		last_increased_tech = tech_adastra_vacuum_pump
+		last_increased_tech = tech_adastra_universal_gravitation
+		last_increased_tech = tech_adastra_microscope
+		last_increased_tech = tech_adastra_new_crops
+		last_increased_tech = tech_adastra_pike_and_shot
+		last_increased_tech = tech_adastra_joint_stock
+		last_increased_tech = tech_adastra_permanent_embassy
+		last_increased_tech = tech_adastra_caravel
+		last_increased_tech = tech_adastra_canal_lock
+		last_increased_tech = tech_adastra_bastion_fort
+		last_increased_tech = tech_adastra_deep_mining
+		last_increased_tech = tech_adastra_clear_glass
+	}
+}
+
+adastra_tech_epoque_steam = {
+	OR = {
+		last_increased_tech = tech_adastra_steam_engine
+		last_increased_tech = tech_adastra_coal
+		last_increased_tech = tech_adastra_railways
+		last_increased_tech = tech_adastra_telegraph
+		last_increased_tech = tech_adastra_sanitation
+		last_increased_tech = tech_adastra_gas_lighting
+		last_increased_tech = tech_adastra_electromagnetism
+		last_increased_tech = tech_adastra_machine_tools
+		last_increased_tech = tech_adastra_census
+		last_increased_tech = tech_adastra_anesthesia
+		last_increased_tech = tech_adastra_photography
+		last_increased_tech = tech_adastra_selective_breeding
+		last_increased_tech = tech_adastra_canals
+		last_increased_tech = tech_adastra_spinning_jenny
+		last_increased_tech = tech_adastra_political_economy
+		last_increased_tech = tech_adastra_iron_bridge
+		last_increased_tech = tech_adastra_balloon
+		last_increased_tech = tech_adastra_mass_conscription
+		last_increased_tech = tech_adastra_vaccine_cowpox
+		last_increased_tech = tech_adastra_scientific_expeditions
+		last_increased_tech = tech_adastra_atomic_theory
+		last_increased_tech = tech_adastra_steamship
+		last_increased_tech = tech_adastra_fraunhofer_lines
+		last_increased_tech = tech_adastra_difference_engine
+		last_increased_tech = tech_adastra_abolition
+	}
+}
+
+adastra_tech_epoque_industrial = {
+	OR = {
+		last_increased_tech = tech_adastra_bessemer
+		last_increased_tech = tech_adastra_thermodynamics
+		last_increased_tech = tech_adastra_fertilizers
+		last_increased_tech = tech_adastra_labour_law
+		last_increased_tech = tech_adastra_periodic_table
+		last_increased_tech = tech_adastra_refrigeration
+		last_increased_tech = tech_adastra_germ_theory
+		last_increased_tech = tech_adastra_universal_suffrage
+		last_increased_tech = tech_adastra_electricity
+		last_increased_tech = tech_adastra_social_insurance
+		last_increased_tech = tech_adastra_synthetic_dye
+		last_increased_tech = tech_adastra_spectroscopy
+		last_increased_tech = tech_adastra_antiseptic_surgery
+		last_increased_tech = tech_adastra_dynamite
+		last_increased_tech = tech_adastra_general_staff
+		last_increased_tech = tech_adastra_dynamo
+		last_increased_tech = tech_adastra_telephone
+		last_increased_tech = tech_adastra_ocean_liner
+		last_increased_tech = tech_adastra_machine_gun
+		last_increased_tech = tech_adastra_steel_frame
+		last_increased_tech = tech_adastra_colonial_partition
+		last_increased_tech = tech_adastra_radio_waves
+		last_increased_tech = tech_adastra_punch_cards
+		last_increased_tech = tech_adastra_x_rays
+		last_increased_tech = tech_adastra_steam_turbine
+	}
+}
+
+adastra_tech_epoque_machine = {
+	OR = {
+		last_increased_tech = tech_adastra_radio
+		last_increased_tech = tech_adastra_aviation
+		last_increased_tech = tech_adastra_antibiotics
+		last_increased_tech = tech_adastra_mass_education
+		last_increased_tech = tech_adastra_quantum_theory
+		last_increased_tech = tech_adastra_haber
+		last_increased_tech = tech_adastra_plastics
+		last_increased_tech = tech_adastra_epidemiology
+		last_increased_tech = tech_adastra_assembly_line
+		last_increased_tech = tech_adastra_petrochemistry
+		last_increased_tech = tech_adastra_jet_engine
+		last_increased_tech = tech_adastra_television
+		last_increased_tech = tech_adastra_relativity
+		last_increased_tech = tech_adastra_atomic_nucleus
+		last_increased_tech = tech_adastra_cosmic_rays
+		last_increased_tech = tech_adastra_expanding_universe
+		last_increased_tech = tech_adastra_radar
+		last_increased_tech = tech_adastra_cryptanalysis
+		last_increased_tech = tech_adastra_polar_exploration
+		last_increased_tech = tech_adastra_vitamins
+		last_increased_tech = tech_adastra_blood_transfusion
+		last_increased_tech = tech_adastra_propaganda
+		last_increased_tech = tech_adastra_total_war
+		last_increased_tech = tech_adastra_reinforced_concrete
+		last_increased_tech = tech_adastra_tractor
+	}
+}
+
+adastra_tech_epoque_atomic = {
+	OR = {
+		last_increased_tech = tech_adastra_fission
+		last_increased_tech = tech_adastra_electronics
+		last_increased_tech = tech_adastra_vaccination
+		last_increased_tech = tech_adastra_radio_astronomy
+		last_increased_tech = tech_adastra_containers
+		last_increased_tech = tech_adastra_human_rights
+		last_increased_tech = tech_adastra_computing
+		last_increased_tech = tech_adastra_cooperation
+		last_increased_tech = tech_adastra_nuclear_medicine
+		last_increased_tech = tech_adastra_sounding_rocket
+		last_increased_tech = tech_adastra_transistor
+		last_increased_tech = tech_adastra_decolonization
+		last_increased_tech = tech_adastra_welfare_state
+		last_increased_tech = tech_adastra_information_theory
+		last_increased_tech = tech_adastra_deterrence
+		last_increased_tech = tech_adastra_suburbs
+		last_increased_tech = tech_adastra_civil_aviation
+		last_increased_tech = tech_adastra_dna_structure
+		last_increased_tech = tech_adastra_maser
+		last_increased_tech = tech_adastra_nuclear_submarine
+		last_increased_tech = tech_adastra_solar_cell
+		last_increased_tech = tech_adastra_desegregation
+		last_increased_tech = tech_adastra_motorways
+		last_increased_tech = tech_adastra_magnetic_storage
+		last_increased_tech = tech_adastra_ballistic_missile
+	}
+}
+
+adastra_tech_epoque_space = {
+	OR = {
+		last_increased_tech = tech_adastra_rocketry
+		last_increased_tech = tech_adastra_remote_sensing
+		last_increased_tech = tech_adastra_genetics
+		last_increased_tech = tech_adastra_satellites
+		last_increased_tech = tech_adastra_microprocessor
+		last_increased_tech = tech_adastra_networks
+		last_increased_tech = tech_adastra_ecology
+		last_increased_tech = tech_adastra_green_revolution
+		last_increased_tech = tech_adastra_superconductivity
+		last_increased_tech = tech_adastra_laser
+		last_increased_tech = tech_adastra_chaos_theory
+		last_increased_tech = tech_adastra_quarks
+		last_increased_tech = tech_adastra_plate_tectonics
+		last_increased_tech = tech_adastra_cosmic_background
+		last_increased_tech = tech_adastra_fiber_optics
+		last_increased_tech = tech_adastra_birth_control
+		last_increased_tech = tech_adastra_transplant
+		last_increased_tech = tech_adastra_hotline
+		last_increased_tech = tech_adastra_deep_sea
+		last_increased_tech = tech_adastra_civil_rights
+		last_increased_tech = tech_adastra_manned_flight
+		last_increased_tech = tech_adastra_lunar_landing
+		last_increased_tech = tech_adastra_ion_drive
+		last_increased_tech = tech_adastra_heat_shield
+		last_increased_tech = tech_adastra_industrial_robot
+	}
+}
+

@@ -1,0 +1,571 @@
+# Ad Astra - surcharge des effets scriptes vanilla make_khan_effect
+# (marauder_scripted_effects.txt), make_heirs_khan et make_heirs_khan_tiny
+# (nomads_effects.txt). Copie STRICTE 4.5.1, avec une seule insertion repetee,
+# marquee "Ad Astra" : la diffusion de l'avenement du Khan saute les empires
+# encore confines. Toute mise a jour du jeu de base doit etre repercutee ici.
+#
+# 09/10 - retour d'argroww (beta.7, carte B25) : la fenetre "Drums of War"
+# apparaissait a l'Age atomique, avant l'emergence. La diffusion vanilla vise
+# chaque pays jouable et etablit en meme temps les communications avec le
+# Khan : un empire au sol apprenait ainsi l'existence d'une puissance
+# stellaire, ce que la veille du premier contact (B20) interdit. Apres
+# l'emergence, le Khan se rencontre par le premier contact normal.
+
+# --- copie de marauder_scripted_effects.txt
+make_khan_effect = {
+	set_country_type = awakened_marauders
+	set_global_flag = marauder_crisis_started
+	set_global_flag = marauder_crisis_ongoing
+	save_global_event_target_as = raider_khanate
+	save_global_event_target_as = great_khan_empire
+	if = {
+		limit = { has_country_flag = marauder_1 }
+		random_system = {
+			limit = { has_star_flag = marauder_capital_1 }
+			random_system_planet = {
+				limit = { has_planet_flag = raid_source }
+				save_global_event_target_as = marauder_rally_point
+				set_planet_flag = marauder_rally_point
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = marauder_2 }
+		random_system = {
+			limit = { has_star_flag = marauder_capital_2 }
+			random_system_planet = {
+				limit = { has_planet_flag = raid_source }
+				save_global_event_target_as = marauder_rally_point
+				set_planet_flag = marauder_rally_point
+			}
+		}
+	}
+	if = {
+		limit = { has_country_flag = marauder_3 }
+		random_system = {
+			limit = { has_star_flag = marauder_capital_3 }
+			random_system_planet = {
+				limit = { has_planet_flag = raid_source }
+				save_global_event_target_as = marauder_rally_point
+				set_planet_flag = marauder_rally_point
+			}
+		}
+	}
+	change_government = {
+		civics = { civic = civic_great_khans_vision }
+	}
+	set_name = random
+	change_country_flag = {
+		icon = {
+			category = "pirate"
+			file = "flag_pirate_11.dds"
+		}
+		background= {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors={
+			"red"
+			"red"
+			"null"
+			"null"
+		}
+	}
+	create_ship_design = { design = "NAME_Pirate_Transport" }
+	add_ship_design = last_created_design
+	create_ship_design = { design = "NAME_Clan_Builder" }
+	add_ship_design = last_created_design
+
+	### Ruler Khan
+	create_leader = {
+		class = commander
+		species = owner_main_species
+		name = random
+		skill = 10
+		leader_age_min = 22
+		leader_age_max = 40
+		randomize_traits = no
+		traits = {
+			trait = leader_trait_ruler_great_khan
+			trait = leader_trait_master_gunner
+			trait = subclass_commander_admiral
+			trait = leader_trait_gunship_specialization_2
+			trait = leader_trait_wrecker_2
+			trait = leader_trait_reckless_2
+			trait = leader_trait_artillerist_2
+			trait = leader_trait_demolisher_2
+		}
+	}
+	last_created_leader = {
+		set_leader_flag = great_khan
+		save_global_event_target_as = great_khan_ruler
+	}
+	assign_leader = last_created_leader
+	set_timed_global_flag = { flag = khan_no_die days = 7200 } # Should only die in battle first 20 years
+	country_event = { id = marauder.514 days = 10800 random = 5000 } # Khan dies of old age if still around
+
+	### Admiral Khan
+	clone_leader = {
+		target = event_target:great_khan_ruler
+		class = commander
+		tier = leader_tier_legendary
+		skill = 10
+		randomize_traits = no
+		effect = {
+			remove_trait = leader_trait_ruler_great_khan
+			add_trait = {
+				trait = leader_trait_great_khan
+			}
+			save_event_target_as = khan_fleet_admiral
+			set_leader_flag = great_khan
+			save_global_event_target_as = great_khan
+		}
+	}
+
+	create_1st_khan_fleet = yes
+	create_marauder_fleet = yes
+	create_marauder_fleet = yes
+	create_marauder_fleet = yes
+	create_marauder_armies = yes
+	create_marauder_armies = yes
+	create_marauder_armies = yes
+	create_marauder_armies = yes
+	create_marauder_constructors = yes
+	create_marauder_constructors = yes
+	create_marauder_constructors = yes
+	country_event = { id = marauder.520 days = 180 } # Start reinforcement cycle
+	if = {
+		limit = {
+			NOT = { has_global_flag = horde_triggered }
+		}
+		observer_event = { id = observer.13 }
+		every_playable_country = {
+			limit = { core_est_confine = no } # Ad Astra
+			establish_communications_no_message = root
+			country_event = { id = marauder.501 }
+		}
+	}
+	else = {
+		observer_event = { id = observer.18 }
+		every_playable_country = {
+			limit = { core_est_confine = no } # Ad Astra
+			establish_communications_no_message = root
+			country_event = { id = marauder.526 }
+		}
+	}
+
+	# Mercenaries Defect (Marauder 1)
+	if = {
+		limit = { has_country_flag = marauder_1 }
+		every_country = {
+			limit = {
+				OR = {
+					any_controlled_fleet = {
+						OR = {
+							has_fleet_flag = armada_of_the_voidborn
+							has_fleet_flag = star_rider_flotilla
+							has_fleet_flag = first_storm_wing
+						}
+					}
+					any_owned_leader = {
+						has_leader_flag = hired_merc_leader_1
+					}
+				}
+			}
+			country_event = { id = marauder.77 days = 20 }
+		}
+	}
+	# Mercenaries Defect (Marauder 2)
+	if = {
+		limit = { has_country_flag = marauder_2 }
+		every_country = {
+			limit = {
+				OR = {
+					any_controlled_fleet = {
+						OR = {
+							has_fleet_flag = dwamak_bashers
+							has_fleet_flag = unhinged_screamer_flotilla
+							has_fleet_flag = frenzied_volunteer_squadron
+						}
+					}
+					any_owned_leader = {
+						has_leader_flag = hired_merc_leader_1
+					}
+				}
+			}
+			country_event = { id = marauder.77 days = 20 }
+		}
+	}
+	# Mercenaries Defect (Marauder 3)
+	if = {
+		limit = { has_country_flag = marauder_3 }
+		every_country = {
+			limit = {
+				OR = {
+					any_controlled_fleet = {
+						OR = {
+							has_fleet_flag = her_chosen_champions
+							has_fleet_flag = order_of_eternal_night
+							has_fleet_flag = twilight_congregation
+						}
+					}
+					any_owned_leader = {
+						has_leader_flag = hired_merc_leader_1
+					}
+				}
+			}
+			country_event = { id = marauder.77 days = 20 }
+		}
+	}
+
+	# Mercenaries Join the Great Khan
+	country_event = { id = marauder.78 days = 20 }
+
+	# Should not attack Enclaves
+	every_country = {
+		limit = {
+			is_enclave_country = yes
+		}
+		event_target:raider_khanate = {
+			set_faction_hostility = {
+				target = prev
+				set_hostile = no
+				set_neutral = no
+				set_friendly = yes
+			}
+		}
+	}
+}
+
+# --- copie de nomads_effects.txt
+make_heirs_khan = {
+	set_global_flag = marauder_crisis_started
+	set_global_flag = marauder_crisis_ongoing
+	save_global_event_target_as = raider_khanate
+	save_global_event_target_as = great_khan_empire
+	if = {
+		limit = {
+			exists = event_target:marauder_country_1
+		}
+		event_target:marauder_country_1 = {
+			set_subject_of = {
+				who = prev
+				preset = preset_relic_satrapy
+			}
+			set_country_flag = heirs_of_khan_host
+		}
+		every_relation = {
+			limit = {
+				NOT = { is_same_value = event_target:marauder_country_1 }
+			}
+			establish_communications_no_message = event_target:marauder_country_1
+			if = {
+				limit = {
+					NOT = { is_hostile = root }
+				}
+				set_faction_hostility = {
+					target = event_target:marauder_country_1
+					set_hostile = no
+					set_neutral = yes
+					set_friendly = no
+				}
+			}
+		}
+	}
+	else = {
+		heirs_khan_dummy_country_system_finder = yes
+	}
+
+	if = {
+		limit = { has_federation = yes }
+		leave_alliance = { override_requirements = yes }
+	}
+	if = {
+		limit = { is_galactic_community_member = yes }
+		remove_from_galactic_community = yes
+	}
+	if = {
+		limit = {
+			is_galactic_council_established = yes
+			is_part_of_galactic_council = yes
+		}
+		remove_from_galactic_council = yes
+	}
+	if = {
+		limit = {
+			exists = overlord
+			NOT = {
+				is_same_species = root.species
+			}
+		}
+		release_subject = yes
+	}
+	every_agreement = {
+		if = {
+			limit = { NOT = { agreement_preset = preset_relic_satrapy } }
+			set_agreement_preset = { preset = preset_relic_satrapy }
+		}
+	}
+
+	set_country_flag = heir_of_the_khan_khan
+	event_target:marauder_country_1 = {
+		random_system_within_border = {
+			random_system_planet = {
+				save_global_event_target_as = marauder_rally_point
+				set_planet_flag = marauder_rally_point
+			}
+		}
+		every_owned_fleet = {
+			limit = {
+				is_mobile = yes
+			}
+			set_owner = root
+		}
+		while = {
+			count = 3
+			create_fleet = {
+				effect = {
+					set_owner = event_target:marauder_country_1
+					create_ship = {
+						name = random
+						design = "NAME_Clan_Builder"
+					}
+					set_location = {
+						target = event_target:marauder_rally_point
+						distance = 20
+						angle = random
+					}
+				}
+			}
+		}
+		country_event = { id = marauder.521 days = 180 } # Start reinforcement cycle
+	}
+	force_add_civic = civic_great_khans_vision
+	store_country_backup_data = {
+		flag = yes
+		room = yes
+	}
+	change_country_flag = {
+		icon = {
+			category = "pirate"
+			file = "flag_pirate_11.dds"
+		}
+		background= {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors={
+			"red"
+			"red"
+			"null"
+			"null"
+		}
+	}
+	room_name_override = ""
+
+	create_ship_design = { design = "NAME_Pirate_Transport" }
+	add_ship_design = last_created_design
+
+	### Ruler Khan
+	ruler = {
+		set_leader_flag = great_khan
+		save_global_event_target_as = great_khan_ruler
+		save_global_event_target_as = great_khan
+		add_trait = { trait = leader_trait_ruler_great_khan }
+	}
+	set_ruler_title_male = RT_GREAT_KHAN
+	set_ruler_title_female = RT_GREAT_KHAN
+	random_owned_leader = {
+		limit = {
+			leader_class = commander
+		}
+		weights = {
+			base = 1
+			modifier = {
+				add = trigger:has_base_skill
+			}
+			modifier = {
+				add = 10
+				has_trait = subclass_commander_admiral
+			}
+		}
+		save_event_target_as = khan_fleet_admiral
+	}
+	refresh_auto_generated_ship_designs = yes
+	create_1st_khan_fleet = yes
+	create_marauder_fleet = yes
+	create_marauder_fleet = yes
+	create_marauder_fleet = yes
+	create_marauder_armies = yes
+	create_marauder_armies = yes
+	create_marauder_armies = yes
+	create_marauder_armies = yes
+	observer_event = { id = observer.13 }
+	every_playable_country = {
+		limit = {
+			NOT = { is_same_value = root }
+			core_est_confine = no # Ad Astra
+		}
+		establish_communications_no_message = root
+		country_event = { id = marauder.501 }
+	}
+
+	# Mercenaries Defect (Marauder 1)
+	if = {
+		every_country = {
+			limit = {
+				OR = {
+					any_controlled_fleet = {
+						OR = {
+							has_fleet_flag = armada_of_the_voidborn
+							has_fleet_flag = star_rider_flotilla
+							has_fleet_flag = first_storm_wing
+						}
+					}
+					any_owned_leader = {
+						has_leader_flag = hired_merc_leader_1
+					}
+				}
+			}
+			country_event = { id = marauder.77 days = 20 }
+		}
+	}
+}
+
+# --- copie de nomads_effects.txt
+make_heirs_khan_tiny = {
+	set_global_flag = marauder_crisis_started
+	set_global_flag = marauder_crisis_ongoing
+	save_global_event_target_as = raider_khanate
+	save_global_event_target_as = great_khan_empire
+	heirs_khan_dummy_country_system_finder = yes
+
+	set_country_flag = heir_of_the_khan_khan
+	force_add_civic = civic_great_khans_vision
+	store_country_backup_data = {
+		flag = yes
+		room = yes
+	}
+	change_country_flag = {
+		icon = {
+			category = "pirate"
+			file = "flag_pirate_11.dds"
+		}
+		background= {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors={
+			"red"
+			"red"
+			"null"
+			"null"
+		}
+	}
+	room_name_override = ""
+	create_ship_design = { design = "NAME_Pirate_Transport" }
+	add_ship_design = last_created_design
+
+	if = {
+		limit = { has_federation = yes }
+		leave_alliance = { override_requirements = yes }
+	}
+	if = {
+		limit = { is_galactic_community_member = yes }
+		remove_from_galactic_community = yes
+	}
+	if = {
+		limit = {
+			is_galactic_council_established = yes
+			is_part_of_galactic_council = yes
+		}
+		remove_from_galactic_council = yes
+	}
+	if = {
+		limit = {
+			exists = overlord
+			NOT = {
+				is_same_species = root.species
+			}
+		}
+		release_subject = yes
+	}
+	every_agreement = {
+		if = {
+			limit = { NOT = { agreement_preset = preset_relic_satrapy } }
+			set_agreement_preset = { preset = preset_relic_satrapy }
+		}
+	}
+
+	event_target:marauder_country_1 = {
+		random_system_within_border = {
+			random_system_planet = {
+				save_global_event_target_as = marauder_rally_point
+				set_planet_flag = marauder_rally_point
+			}
+		}
+		every_owned_fleet = {
+			limit = {
+				is_mobile = yes
+			}
+			set_owner = root
+		}
+		while = {
+			count = 3
+			create_fleet = {
+				effect = {
+					set_owner = event_target:marauder_country_1
+					create_ship = {
+						name = random
+						design = "NAME_Clan_Builder"
+					}
+					set_location = {
+						target = event_target:marauder_rally_point
+						distance = 20
+						angle = random
+					}
+				}
+			}
+		}
+		country_event = { id = marauder.521 days = 180 } # Start reinforcement cycle
+	}
+
+	### Ruler Khan
+	ruler = {
+		set_leader_flag = great_khan
+		save_global_event_target_as = great_khan_ruler
+		save_global_event_target_as = great_khan
+		add_trait = { trait = leader_trait_ruler_great_khan }
+	}
+	set_ruler_title_male = RT_GREAT_KHAN
+	set_ruler_title_female = RT_GREAT_KHAN
+	random_owned_leader = {
+		limit = {
+			leader_class = commander
+		}
+		weights = {
+			base = 1
+			modifier = {
+				add = trigger:has_base_skill
+			}
+			modifier = {
+				add = 10
+				has_trait = subclass_commander_admiral
+			}
+		}
+		save_event_target_as = khan_fleet_admiral
+	}
+	refresh_auto_generated_ship_designs = yes
+	create_1st_khan_fleet = yes
+	create_marauder_armies = yes
+	create_marauder_armies = yes
+	observer_event = { id = observer.13 }
+	every_playable_country = {
+		limit = {
+			NOT = { is_same_value = root }
+			core_est_confine = no # Ad Astra
+		}
+		establish_communications_no_message = root
+		country_event = { id = marauder.501 }
+	}
+}

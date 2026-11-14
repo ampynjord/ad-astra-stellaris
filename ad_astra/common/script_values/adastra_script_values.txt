@@ -12,6 +12,14 @@
 #
 # Chaque relance ajoute 35 % au Programme d'exploration, 25 % a la flotte :
 # monter une seconde expedition n'a jamais ete aussi simple que la premiere.
+# 1.4 (17/08) : reecrit dans la syntaxe des script_values de STELLARIS.
+# `if / limit / has_variable` sont du CK3 : le moteur repondait « unknown
+# command 'if' for MTTH/script value » (error.log de PoW, Discord) et le
+# multiplicateur restait a 1 - les relances etaient gratuites. La syntaxe
+# valide (common/script_values/00_script_values.txt du jeu de base) : une
+# suite d'operations, et `modifier = { <operation> <trigger> }` pour une
+# operation conditionnelle. Le cout d'une decision s'evalue en portee
+# planete : la variable est sur owner.
 adastra_cout_relance_explore = {
 	base = 0
 	modifier = {
@@ -29,5 +37,30 @@ adastra_cout_relance_navy = {
 		owner = { is_variable_set = adastra_relances_navy }
 	}
 	mult = 0.25
+	add = 1
+}
+
+# ESSAI 2026-08-29 - cout progressif de la sonde profonde.
+# Meme forme que `adastra_cout_relance_explore` : +35 % par sonde deja lancee.
+adastra_cout_relance_sonde = {
+	base = 0
+	modifier = {
+		add = owner.adastra_relances_sonde
+		owner = { is_variable_set = adastra_relances_sonde }
+	}
+	mult = 0.35
+	add = 1
+}
+
+# 31/08 - cout progressif des campagnes d'observation astronomique
+# (retour ampynjord : 20 influence + 150 mineraux etait trop bon marche).
+# Meme forme que la sonde : +30 % par campagne deja menee.
+adastra_cout_campagne_astro = {
+	base = 0
+	modifier = {
+		add = owner.adastra_campagnes_astro
+		owner = { is_variable_set = adastra_campagnes_astro }
+	}
+	mult = 0.30
 	add = 1
 }

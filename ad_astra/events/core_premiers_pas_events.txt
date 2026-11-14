@@ -1,0 +1,354 @@
+# Ad Astra 1.4 - les evenements des Premiers pas.
+#
+# adastra.100  lancement suborbital : on tire le sort
+# adastra.101  ... et il a rate
+# adastra.102  satellite en orbite
+# adastra.104  vol habite
+# adastra.106  premier corps atteint
+# adastra.107  ... mais le systeme n'offre rien a atteindre
+#
+# LE SORT DU LANCEMENT. La probabilite d'echec part de 50 % et tombe a 10 %
+# quand tout ce qui aide est connu. Ce qui aide : le bouclier ablatif, la
+# theorie de l'information (le guidage), l'electronique. Le joueur peut donc
+# choisir - tirer tout de suite et risquer, ou attendre trois technologies.
+# C'est ca, un echec visiblement evitable.
+
+namespace = adastra
+
+# --------------------------------------------------------- 100 : on tire
+country_event = {
+	id = adastra.100
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# On compte ce qui aide. Chaque element retire 10 points de risque.
+		set_variable = { which = core_risque value = 50 }
+		if = {
+			limit = { has_technology = tech_adastra_heat_shield }
+			change_variable = { which = core_risque value = -10 }
+		}
+		if = {
+			limit = { has_technology = tech_adastra_information_theory }
+			change_variable = { which = core_risque value = -10 }
+		}
+		if = {
+			limit = { has_technology = tech_adastra_electronics }
+			change_variable = { which = core_risque value = -10 }
+		}
+		# Un programme deja rode rate moins. La quatrieme tentative est plus
+		# sure que la premiere, meme sans technologie nouvelle : c'est ce que
+		# raconte l'histoire de tous les programmes spatiaux.
+		if = {
+			limit = { check_variable = { which = core_tirs value > 2 } }
+			change_variable = { which = core_risque value = -10 }
+		}
+		change_variable = { which = core_tirs value = 1 }
+
+		# 18/08/2026 : random_list ne lit pas une variable comme poids. Les deux
+		# entrees a 50 donnaient donc toujours 50 % d'echec, quelle que soit la
+		# recherche. On choisit le palier explicitement : l'intention de jeu est
+		# enfin la probabilite jouee, y compris les 10 % d'une quatrieme tentative.
+		if = {
+			limit = { check_variable = { which = core_risque value >= 50 } }
+			random_list = {
+				50 = { country_event = { id = adastra.101 } }
+				50 = { country_event = { id = adastra.103 } }
+			}
+		}
+		else_if = {
+			limit = { check_variable = { which = core_risque value >= 40 } }
+			random_list = {
+				40 = { country_event = { id = adastra.101 } }
+				60 = { country_event = { id = adastra.103 } }
+			}
+		}
+		else_if = {
+			limit = { check_variable = { which = core_risque value >= 30 } }
+			random_list = {
+				30 = { country_event = { id = adastra.101 } }
+				70 = { country_event = { id = adastra.103 } }
+			}
+		}
+		else_if = {
+			limit = { check_variable = { which = core_risque value >= 20 } }
+			random_list = {
+				20 = { country_event = { id = adastra.101 } }
+				80 = { country_event = { id = adastra.103 } }
+			}
+		}
+		else = {
+			random_list = {
+				10 = { country_event = { id = adastra.101 } }
+				90 = { country_event = { id = adastra.103 } }
+			}
+		}
+		clear_variable = core_risque
+	}
+}
+
+# ------------------------------------------------------- 101 : elle a rate
+country_event = {
+	id = adastra.101
+	title = "adastra.101.name"
+	desc = "adastra.101.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	immediate = {
+		add_modifier = {
+			modifier = core_mod_echec_lancement
+			days = 3600
+		}
+	}
+
+	option = {
+		name = "adastra.101.a"
+		custom_tooltip = "adastra.101.recap"
+	}
+}
+
+# -------------------------------------------- 103 : le premier vol reussi
+country_event = {
+	id = adastra.103
+	title = "adastra.103.name"
+	desc = "adastra.103.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = core_suborbital_fait
+		add_modifier = {
+			modifier = core_mod_suborbital
+			days = 3600
+		}
+	}
+
+	option = {
+		name = "adastra.103.a"
+		custom_tooltip = "adastra.103.recap"
+	}
+}
+
+# ------------------------------------------------------- 102 : le satellite
+country_event = {
+	id = adastra.102
+	title = "adastra.102.name"
+	desc = "adastra.102.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = core_satellite_fait
+		add_modifier = {
+			modifier = core_mod_satellites
+			days = 3600
+		}
+	}
+
+	option = {
+		name = "adastra.102.a"
+		custom_tooltip = "adastra.102.recap"
+	}
+}
+
+# ------------------------------------------------------ 104 : le vol habite
+country_event = {
+	id = adastra.104
+	title = "adastra.104.name"
+	desc = "adastra.104.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = core_vol_habite_fait
+		add_modifier = {
+			modifier = core_mod_vol_habite
+			days = 3600
+		}
+	}
+
+	option = {
+		name = "adastra.104.a"
+		custom_tooltip = "adastra.104.recap"
+	}
+}
+
+# ---------------------------------------------------- 106 : le premier corps
+# La mission est lunaire. La decision verifie deja qu'une lune existe ; ici,
+# on en choisit une et on la reconnait sans prospecter ses ressources.
+country_event = {
+	id = adastra.106
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = core_premier_corps_fait
+		capital_scope = {
+			save_event_target_as = core_natal
+			solar_system = {
+				random_system_planet = {
+					limit = {
+						is_moon = yes
+						NOT = { is_same_value = event_target:core_natal }
+					}
+					# 18/08/2026 : cible locale au pays. Une cible globale survit
+					# a un autre empire et peut faire croire a tort qu'une lune existe.
+					save_event_target_as = core_cible
+				}
+			}
+		}
+		if = {
+			limit = { exists = event_target:core_cible }
+			event_target:core_cible = {
+				set_surveyed = { surveyed = yes surveyor = root }
+			}
+			country_event = { id = adastra.108 }
+		}
+		else = {
+			# Garde-fou pour une save ou une generation atypique.
+			country_event = { id = adastra.107 }
+		}
+	}
+}
+
+# ------------------------------------------ 108 : on s'est pose quelque part
+country_event = {
+	id = adastra.108
+	title = "adastra.108.name"
+	desc = "adastra.108.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	immediate = {
+		add_modifier = {
+			modifier = core_mod_premier_corps
+			days = 3600
+		}
+	}
+
+	option = {
+		name = "adastra.108.a"
+	}
+}
+
+# --------------------------------------------- 107 : il n'y avait rien a toucher
+country_event = {
+	id = adastra.107
+	title = "adastra.107.name"
+	desc = "adastra.107.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	immediate = {
+		add_modifier = {
+			modifier = core_mod_station_permanente
+			days = 3600
+		}
+	}
+
+	option = {
+		name = "adastra.107.a"
+	}
+}
+
+# ------------------------------------------------- 110 : la sonde arrive
+# La sonde est le premier objet interplanetaire autonome. Elle ne quitte pas
+# encore le systeme natal : elle reconnait un seul astre qui reste inconnu,
+# sans reveler ni ressources ni gisements.
+country_event = {
+	id = adastra.110
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		# Les jalons orbitaux forment une chaine : le programme ne commence
+		# qu'apres lancement, satellite, equipage et sonde profonde.
+		set_country_flag = core_sonde_profonde_fait
+		# ESSAI 2026-08-29 - compteur de relances : chaque sonde rencherit la
+		# suivante de 35 % via `adastra_cout_relance_sonde`.
+		if = {
+			limit = { NOT = { is_variable_set = adastra_relances_sonde } }
+			set_variable = { which = adastra_relances_sonde value = 0 }
+		}
+		change_variable = { which = adastra_relances_sonde value = 1 }
+		if = {
+			limit = {
+				has_country_flag = core_suborbital_fait
+				has_country_flag = core_satellite_fait
+				has_country_flag = core_vol_habite_fait
+				# 13/11 : l'alunissage n'est exige que s'il est possible (meme
+				# regle que la decision de la sonde). Sans lune, sa decision
+				# n'apparait jamais : la barre restait figee a 250, et le filet
+				# de adastra.71 est inatteignable depuis le 28/08.
+				OR = {
+					has_country_flag = core_premier_corps_fait
+					capital_scope = {
+						solar_system = {
+							NOT = { any_system_planet = { is_moon = yes } }
+						}
+					}
+				}
+				any_situation = {
+					is_situation_type = situation_adastra_ascension
+					current_stage = adastra_stage_first_launch
+				}
+			}
+			every_situation = {
+				limit = { is_situation_type = situation_adastra_ascension }
+				set_situation_progress = 275
+			}
+		}
+		capital_scope = {
+			save_event_target_as = core_natal
+			solar_system = {
+				random_system_planet = {
+					limit = {
+						is_star = no
+						NOT = { is_same_value = event_target:core_natal }
+						NOT = { is_surveyed = { who = root status = yes } }
+					}
+					save_event_target_as = core_sonde_cible
+				}
+			}
+		}
+		if = {
+			limit = { exists = event_target:core_sonde_cible }
+			event_target:core_sonde_cible = {
+				set_surveyed = { surveyed = yes surveyor = root }
+			}
+			country_event = { id = adastra.111 }
+		}
+		else = {
+			country_event = { id = adastra.112 }
+		}
+	}
+}
+
+# ------------------------------------------- 111 : elle a atteint quelque chose
+country_event = {
+	id = adastra.111
+	title = "adastra.111.name"
+	desc = "adastra.111.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.111.a"
+		custom_tooltip = "adastra.111.recap"
+	}
+}
+
+# --------------------------------------- 112 : elle n'a rien trouve de neuf
+country_event = {
+	id = adastra.112
+	title = "adastra.112.name"
+	desc = "adastra.112.desc"
+	picture = GFX_evt_adastra_age_space
+	is_triggered_only = yes
+
+	option = {
+		name = "adastra.112.a"
+		custom_tooltip = "adastra.112.recap"
+	}
+}

@@ -1,0 +1,15 @@
+Ad Astra: Origins
+Copyright (c) 2026 ampynjord. All rights reserved.
+
+This is an official Ad Astra distribution. Personal use of this unmodified mod
+is allowed. Re-uploading, mirroring, redistributing, modifying for release, or
+reusing its original code, artwork, icons, text, or other assets is prohibited
+without prior written permission from ampynjord.
+
+Official links:
+Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257
+GitHub: https://github.com/ampynjord/ad-astra-stellaris
+Discord: https://discord.gg/nKP4TfNzNX
+
+Stellaris, Paradox Interactive, Steam, and Valve assets and marks belong to
+their respective owners.

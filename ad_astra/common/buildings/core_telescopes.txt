@@ -1,0 +1,223 @@
+# Ad Astra 1.4 - un observatoire qui grandit avec les instruments.
+#
+# Ecrits a la main et non par gen_age_buildings.py : ce ne sont pas des
+# batiments d'epoque comme les onze autres. Ils ne marquent pas un age, ils
+# ouvrent une capacite - et ils portent le prefixe core_ parce qu'ils devront
+# servir aussi aux empires normaux le jour ou Frontier existera.
+#
+# Les trois paliers suivent leurs dates reelles :
+#   observatoire optique  Renaissance   Lunette astronomique, 1609
+#   reseau radio          Atomique      Radioastronomie, 1951
+#   reseau orbital        Age spatial   Teledetection, 1960
+#
+# Le radiotelescope tombe a l'Age ATOMIQUE et non a celui de la machine :
+# Jansky capte en 1932, mais la radioastronomie ne devient une discipline
+# qu'apres-guerre, et c'est cette date-la que porte la technologie. La
+# contrainte historique decide du placement, pas le plan.
+#
+# La chaine remplace le batiment precedent. Construire l'instrument ne revele
+# jamais la carte : seule la decision d'observation choisit une etoile et la
+# rend visible, sans prospecter les astres ni leurs ressources.
+
+
+# ---------------------------------------------------- observatoire optique
+# 1.4 (2026-08-29 - CHAINE D'AMELIORATION DEBLOQUEE.
+# Chaque palier portait dans son `allow` un `NOT = { has_technology = <palier
+# suivant> }`, destine a fermer la CONSTRUCTION d'un telescope perime. Effet
+# de bord : le batiment deja bati cesse d'etre autorise des qu'on apprend la
+# techno suivante, et son bouton d'amelioration devient inoperant - le joueur
+# se retrouve avec un radiotelescope qu'il ne peut plus faire evoluer.
+# Le `planet_limit` et la chaine `upgrades` suffisent a empecher les doublons.
+building_core_observatory = {
+	can_build = yes
+	base_buildtime = 360
+	category = research
+	icon = "building_core_observatory"
+
+	building_sets = {
+		research
+	}
+
+	prerequisites = { "tech_adastra_telescope" }
+
+	# 1.4 (2026-08-29 - CHAINE LINEAIRE OBLIGATOIRE.
+	# Lister aussi le telescope spatial ici creait deux chemins vers lui
+	# (direct, et via le radiotelescope) : le moteur detecte une « upgrades
+	# loop » (error.log, building_type.cpp) et CASSE la chaine - c'etait la
+	# cause du radiotelescope inameliorable. Un seul successeur par palier.
+	upgrades = {
+		"building_core_radio_telescope"
+	}
+
+	planet_limit = {
+		base = 1
+	}
+
+	# 1.4 (2026-08-29 - la liste de construction ne montre que le plus haut
+	# palier disponible, comme en vanilla. Un palier perime disparait de la
+	# liste des que la technologie du suivant est connue - mais un exemplaire
+	# DEJA BATI reste valide (l'echappatoire has_building), sans quoi un
+	# potential faux detruirait le batiment existant (bug connu de la 1.2).
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+		OR = {
+			has_building = building_core_observatory
+			owner = { NOT = { has_technology = tech_adastra_radio_astronomy } }
+		}
+	}
+
+	allow = {
+		owner = {
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 200 }
+		upkeep = {
+			energy = 2
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 2
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = @building_static_jobs_low_2
+	}
+
+	country_modifier = {
+		all_technology_research_speed = 0.02
+		planet_jobs_physics_research_produces_mult = 0.10
+	}
+
+	ai_weight = { weight = 6 }
+}
+
+
+# ------------------------------------------------------------ radiotelescope
+# Celui-ci ne sert pas qu'a chercher : il ENTEND. C'est lui qui, en 1.7,
+# permettra de detecter le poste d'observation qui vous epie.
+building_core_radio_telescope = {
+	can_build = yes
+	base_buildtime = 540
+	category = research
+	icon = "building_core_radio_telescope"
+
+	building_sets = {
+		research
+	}
+
+	prerequisites = { "tech_adastra_radio_astronomy" }
+
+	upgrades = {
+		"building_core_space_telescope"
+	}
+
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+		OR = {
+			has_building = building_core_radio_telescope
+			owner = { NOT = { has_technology = tech_adastra_remote_sensing } }
+		}
+	}
+
+	allow = {
+		owner = {
+			NOT = { has_country_flag = adastra_completed }
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 400 }
+		upkeep = {
+			energy = 4
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 4
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = @building_static_jobs_low_3
+	}
+
+	country_modifier = {
+		all_technology_research_speed = 0.04
+		planet_jobs_physics_research_produces_mult = 0.18
+	}
+
+	ai_weight = { weight = 8 }
+}
+
+
+# ------------------------------------------------------- telescope spatial
+# Au-dessus de l'air, plus rien ne trouble l'image. C'est le premier
+# instrument qui regarde vraiment loin.
+building_core_space_telescope = {
+	can_build = yes
+	base_buildtime = 720
+	category = research
+	icon = "building_core_space_telescope"
+
+	building_sets = {
+		research
+	}
+
+	prerequisites = { "tech_adastra_remote_sensing" }
+
+	planet_limit = {
+		base = 1
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_origin = origin_adastra }
+	}
+
+	allow = {
+		owner = {
+			NOT = { has_country_flag = adastra_completed }
+			core_poussee_2 = yes
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = { minerals = 700 }
+		upkeep = {
+			energy = 6
+			trigger = { owner = { adastra_pays_energy_upkeep = yes } }
+		}
+		upkeep = {
+			minerals = 6
+			trigger = { owner = { NOT = { adastra_pays_energy_upkeep = yes } } }
+		}
+	}
+
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = @building_static_jobs_low_3
+	}
+
+	country_modifier = {
+		all_technology_research_speed = 0.06
+		planet_jobs_physics_research_produces_mult = 0.28
+	}
+
+	ai_weight = { weight = 10 }
+}

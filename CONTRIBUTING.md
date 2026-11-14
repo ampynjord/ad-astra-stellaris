@@ -22,7 +22,7 @@ Use the idea form or the Discord ideas forum. Explain the play moment that promp
 ## Contribute code or localization
 
 1. Open an issue first for changes beyond a small, obvious fix.
-2. Branch from the active development branch, not from `main`.
+2. Branch from `beta`, the development and public-beta branch, not from `main`.
 3. Keep one focused concern per pull request and explain its player-facing effect.
 4. Do not edit files marked as generated. Change their source data or generator, then regenerate them.
 5. Keep public repository documentation and GitHub issue fields in English. In-game localization remains English and French.

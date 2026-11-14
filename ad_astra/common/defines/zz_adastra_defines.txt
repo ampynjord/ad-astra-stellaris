@@ -1,0 +1,29 @@
+# Ad Astra 1.4 (integration pre-PRL) - 2026-08-29
+#
+# LE DROIT DE PROSPECTER SON PROPRE CIEL.
+#
+# Probleme : quand un empire s'installe dans le systeme natal pendant le
+# confinement, le moteur refuse toute prospection manuelle - « on ne prospecte
+# pas le systeme d'un autre ». Le joueur perd le clic droit « Survey System »
+# et ne peut plus rien relever chez lui. (L'ancien contournement adastra.91,
+# un astre par mois par presence, est supprime depuis le 31/08.)
+#
+# Le jeu de base prevoit pourtant le cas, mais desactive :
+#     common/defines/00_defines.txt, bloc NGameplay, ligne 1224 :
+#     # TECH_TO_SURVEY_OWNED = "tech_galactic_ambitions"
+#
+# La ligne est commentee, donc la fonctionnalite est eteinte. En la reactivant
+# et en la pointant sur une technologie que SEULS nos empires possedent, on
+# rend le droit de prospecter un systeme possede a la civilisation confinee,
+# via la TELEDETECTION - la technologie qui, dans la fiction comme dans le mod,
+# permet justement d'observer a distance ce qu'on ne peut pas atteindre.
+# et a elle seule : aucune IA n'a jamais de `tech_adastra_*`.
+#
+# Bloc NGameplay obligatoire : ailleurs, un define est ignore en silence.
+#
+# CONFIRME utile en jeu ; depuis le 31/08 c'est l'UNIQUE voie de prospection
+# en systeme revendique (adastra.91 supprime).
+
+NGameplay = {
+	TECH_TO_SURVEY_OWNED = "tech_adastra_remote_sensing"
+}

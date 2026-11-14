@@ -1,0 +1,36 @@
+# Ad Astra 1.4 (integration pre-PRL) - 2026-08-28
+#
+# Surcharge d'un declencheur du jeu de base.
+# Charge apres `00_scripted_triggers.txt` (prefixe zzz) et apres les
+# surcharges du mod (`zz_adastra_scripted_triggers.txt`), avec lesquelles
+# il n'y a aucune collision : ce declencheur n'y figure pas.
+#
+# COUCHE C - faire exister notre empire comme « primitif rencontre ».
+#
+# Original : common/scripted_triggers/00_scripted_triggers.txt l. 1883.
+# Reproduit a l'identique, avec pour seule modification l'elargissement du
+# type de pays au confine d'Ad Astra.
+#
+# Ce que ca debloque, cote AUTRES empires : la politique `interference`
+# (Directive Premiere) a pour `potential` exactement `has_met_primitives`.
+# Sans cette surcharge, un empire qui nous rencontre n'a jamais acces aux
+# quatre postures — non-ingerence, subtile, active, agressive — et ne peut
+# donc ni se retenir de nous attaquer par principe, ni s'autoriser a le
+# faire. C'est le pivot du « etre traite comme un pre-PRL ».
+#
+# A noter : la posture `interference_aggressive` est ce qui *autorise* un
+# empire a nous attaquer (`can_take_hostile_actions`, game_rules l. 701).
+# Elargir ce declencheur nous protege donc autant que ca nous expose.
+
+has_met_primitives = {
+	OR = {
+		has_country_flag = encountered_first_primitive
+		any_relation = {
+			has_communications = root
+			OR = {
+				is_country_type = primitive
+				is_country_type = adastra_grounded
+			}
+		}
+	}
+}

@@ -106,7 +106,6 @@ def construire(mod, build, note):
         for f in sorted(contenu.rglob("*")):
             if f.is_file():
                 z.write(f, Path(mod["source"]) / f.relative_to(contenu))
-        z.write(RACINE / mod["lanceur"], mod["lanceur"])
 
     fichiers = sum(1 for f in contenu.rglob("*") if f.is_file())
     print("  %-9s v%-10s %4d fichiers  %5.1f Mio"

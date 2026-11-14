@@ -1,0 +1,62 @@
+# Ad Astra: Core - REGISTRE DES SURCHARGES VANILLA.
+#
+# Ce fichier ne definit rien. Il tient la liste de tout ce que la collection
+# ecrase dans le jeu de base. C'est la premiere cause de conflit entre mods,
+# et jusqu'ici cette liste n'existait nulle part - elle etait dispersee dans
+# les descriptions Workshop, ou pas ecrite du tout.
+#
+# REGLE : aucune nouvelle surcharge n'est ajoutee sans une ligne ici.
+#
+# ---------------------------------------------------------------- Origins
+#   common/scripted_triggers/00_scripted_triggers.txt
+#       is_regular_empire      elargi au confinement  <- LE point de conflit
+#       is_low_tech_start      elargi au confinement
+#   common/technology/00_*.txt
+#       technologies de depart et de palier 1-2  (verrou par `potential`)
+#   common/ship_sizes/
+#       trois tailles de vaisseaux civils
+#   common/casus_belli/, common/war_goals/
+#       quinze CB et buts de guerre elargis a l'empire au sol
+#   common/country_focus/focus_cards/
+#       46 cartes d'objectifs
+#
+# ------------------------------------- surcharges 1.4 (integration pre-PRL)
+#   common/scripted_triggers/zzz_adastra_preftl_triggers.txt
+#       has_met_primitives      elargi au confinement (ouvre la politique
+#                               d'ingerence des autres empires envers nous)
+#   common/colony_types/zzz_adastra_preftl_colony_types.txt
+#       col_pre_ftl_*           les 10 designations d'epoque elargies au
+#                               type adastra_grounded
+#   common/country_types/zzz_adastra_vanilla_country_types.txt
+#       default                 copie vanilla stricte + intel_effects_surveyed et share_survey_data = no
+#                               (fuite d'affichage de prospection, teste 30/08)
+#   common/scripted_effects/zzz_adastra_first_contact.txt
+#       set_first_contact_starting_stage  copie vanilla + garde de perception
+#                               par age (la faune spatiale ne declenche pas de
+#                               chaine avant l'Atomique - matrice v1)
+#   common/scripted_triggers/zzzz_adastra_storms.txt
+#       system_has_negating_storm_building  copie vanilla + protection d'un
+#                               empire Ad Astra sans electricite (B23)
+#   common/traits/zzz_adastra_leader_traits.txt
+#       leader_trait_capitalist(_2)  copie vanilla ; emplois de technicien
+#                               seulement apres l'electricite (B24)
+#   common/scripted_effects/zzz_adastra_khan.txt
+#       make_khan_effect, make_heirs_khan, make_heirs_khan_tiny  copies
+#                               vanilla ; l'avenement du Khan saute les
+#                               empires confines (B25)
+#   events/on_action_events_1.txt   (FICHIER ENTIER, copie vanilla 4.5.3, identique au 4.5.4)
+#       + trigger sur action.62 (« End of the X ») : pas de nation stellaire
+#         detruite annoncee aux confines (B25). Un evenement ne se surcharge que
+#         par son fichier ; entre mods, le dernier charge gagne.
+#   events/galactic_community_events.txt   (FICHIER ENTIER, copie vanilla 4.5.3, identique au 4.5.4)
+#       + trigger sur galcom.2 : pas de proposition de Communaute galactique
+#         aux confines
+#   common/defines/zz_adastra_defines.txt
+#       NGameplay.TECH_TO_SURVEY_OWNED  reactive un define vanilla commente :
+#                               la Teledetection rend le droit de prospecter
+#                               un systeme possede par autrui
+#
+# ---------------------------------------------------- code core_ (a extraire)
+#   (rien - ce qui porte le prefixe core_ n'ecrase aucun fichier du jeu de
+#    base, et ne doit jamais le faire. C'est la condition pour qu'il devienne
+#    un jour une bibliotheque installable seule.)

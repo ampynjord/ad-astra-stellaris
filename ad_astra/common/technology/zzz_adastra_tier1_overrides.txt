@@ -210,7 +210,7 @@ tech_astral_harvesting = {
 	}
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -666,7 +666,7 @@ tech_weaver_bio_healing_2 = {
 	prerequisites = { "tech_weaver_bio_healing_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -711,7 +711,7 @@ tech_weaver_bio_evasion_2 = {
 	prerequisites = { "tech_weaver_bio_evasion_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -801,7 +801,7 @@ tech_weaver_bio_fire_rate_2 = {
 	prerequisites = { "tech_weaver_bio_fire_rate_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -891,7 +891,7 @@ tech_weaver_bio_confuser_2 = {
 	prerequisites = { "tech_weaver_bio_confuser_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -936,7 +936,7 @@ tech_weaver_bio_anti_evasion_2 = {
 	prerequisites = { "tech_weaver_bio_anti_evasion_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -1026,7 +1026,7 @@ tech_weaver_bio_anti_fire_rate_2 = {
 	prerequisites = { "tech_weaver_bio_anti_fire_rate_1" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -1078,7 +1078,7 @@ tech_storm_manipulation = {
 	prerequisites = { "tech_industrial_storm_protection" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -1859,7 +1859,7 @@ tech_corvette_hull_2 = {
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -1967,7 +1967,7 @@ tech_destroyer_hull_1 = {
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -2216,7 +2216,7 @@ tech_strike_craft_2 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -2315,7 +2315,7 @@ tech_ship_armor_3 = {
 		inline_script = "ai/armor_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -2341,7 +2341,7 @@ tech_crystal_armor_1 = {
 		inline_script = "ai/damage_reduction_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -2366,7 +2366,7 @@ tech_armor_hardeners_1 = {
 		inline_script = "ai/armor_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -2425,7 +2425,7 @@ tech_thrusters_2 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -2687,7 +2687,7 @@ tech_space_mining_4 = {
 
 # source vanilla : 00_eng_tech.txt
 tech_mining_1 = {
-	cost = @tier1cost1
+	cost = 485
 	area = engineering
 	tier = 1
 	category = { industry }
@@ -2736,7 +2736,7 @@ tech_mining_1 = {
 
 # source vanilla : 00_eng_tech.txt
 tech_mining_2 = {
-	cost = @tier2cost1
+	cost = 740
 	area = engineering
 	tier = 2
 	category = { industry }
@@ -2774,7 +2774,7 @@ tech_mining_2 = {
 
 # source vanilla : 00_eng_tech.txt
 tech_mineral_purification_1 = {
-	cost = @tier1cost3
+	cost = 755
 	area = engineering
 	tier = 1
 	category = { industry }
@@ -2819,14 +2819,14 @@ tech_mineral_purification_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_industrial = yes
+			adastra_vanilla_open_space = yes
 		}
 	}
 }
 
 # source vanilla : 00_eng_tech.txt
 tech_mineral_purification_2 = {
-	cost = @tier2cost3
+	cost = 740
 	area = engineering
 	tier = 2
 	category = { industry }
@@ -2873,7 +2873,7 @@ tech_mineral_purification_2 = {
 
 # source vanilla : 00_eng_tech.txt
 tech_alloys_1 = {
-	cost = @tier1cost3
+	cost = 485
 	area = engineering
 	tier = 1
 	category = { materials }
@@ -2949,7 +2949,7 @@ tech_advanced_metallurgy_1 = {
 
 # source vanilla : 00_eng_tech.txt
 tech_luxuries_1 = {
-	cost = @tier1cost3
+	cost = 355
 	area = engineering
 	tier = 1
 	category = { materials }
@@ -3543,7 +3543,7 @@ tech_mass_drivers_3 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -3612,7 +3612,7 @@ tech_autocannons_1 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -3706,7 +3706,7 @@ tech_missiles_3 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -3770,7 +3770,7 @@ tech_swarmer_missiles_1 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -3947,7 +3947,7 @@ tech_cloaking_1 = {
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4012,7 +4012,7 @@ tech_detection_array = {
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4055,7 +4055,7 @@ tech_assisted_detection = {
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4098,7 +4098,7 @@ tech_unusual_senses = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4127,7 +4127,7 @@ tech_new_numbers = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4151,7 +4151,7 @@ tech_trinary_computing = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4176,7 +4176,7 @@ tech_atmospheric_orbital_mechanics = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4215,7 +4215,7 @@ tech_predatory_tactics = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4259,7 +4259,7 @@ tech_satisfying_insults = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4296,7 +4296,7 @@ tech_compact_living = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4326,7 +4326,7 @@ tech_alien_topography = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4371,7 +4371,7 @@ tech_xeno_aesthetics = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4402,7 +4402,7 @@ tech_lost_building_methods = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4427,7 +4427,7 @@ tech_supreme_alloy = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4451,7 +4451,7 @@ tech_ordered_retreat = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4475,7 +4475,7 @@ tech_temple_of_transportation = {
 	weight = 0
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4610,7 +4610,7 @@ tech_alien_cloning = {
 	prerequisites = { tech_gravity_wells }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4665,7 +4665,7 @@ tech_improved_incubators = {
 	prerequisites = { "tech_alien_cloning" }
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4900,7 +4900,7 @@ tech_orbital_arc_furnace = {
     weight = @tier2weight3
 
     potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -4966,7 +4966,7 @@ tech_dyson_swarm = {
     weight = @tier2weight3
 
     potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6354,7 +6354,7 @@ tech_cold_fusion_power = {
 
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6511,7 +6511,7 @@ tech_shields_3 = {
 		inline_script = "ai/shield_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6536,7 +6536,7 @@ tech_shield_rechargers_1 = {
 		inline_script = "ai/shield_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6561,7 +6561,7 @@ tech_shield_hardeners_1 = {
 		inline_script = "ai/shield_preference_weight"
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6672,7 +6672,7 @@ tech_sensors_2 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -6682,7 +6682,7 @@ tech_sensors_2 = {
 
 # source vanilla : 00_phys_tech.txt
 tech_power_plant_2 = {
-	cost = @tier1cost1
+	cost = 740
 	area = physics
 	tier = 1
 	category = { field_manipulation }
@@ -6772,7 +6772,7 @@ tech_power_plant_3 = {
 
 # source vanilla : 00_phys_tech.txt
 tech_power_hub_1 = {
-	cost = @tier1cost3
+	cost = 755
 	area = physics
 	tier = 1
 	category = { field_manipulation }
@@ -6821,14 +6821,14 @@ tech_power_hub_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-			adastra_vanilla_open_machine = yes
+			adastra_vanilla_open_space = yes
 		}
 	}
 }
 
 # source vanilla : 00_phys_tech.txt
 tech_power_hub_2 = {
-	cost = @tier2cost3
+	cost = 740
 	area = physics
 	tier = 2
 	category = { field_manipulation }
@@ -6944,7 +6944,7 @@ tech_hyper_drive_2 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7107,7 +7107,7 @@ tech_lasers_3 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7176,7 +7176,7 @@ tech_plasma_1 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7239,7 +7239,7 @@ tech_disruptors_1 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7281,7 +7281,7 @@ tech_pd_tracking_2 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7325,7 +7325,7 @@ tech_mining_drone_weapon_1 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7358,7 +7358,7 @@ tech_space_cloud_weapon_1 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -7486,7 +7486,7 @@ tech_space_trading = {
 
 # source vanilla : 00_soc_tech.txt
 tech_eco_simulation = {
-	cost = @tier1cost1
+	cost = 485
 	area = society
 	tier = 1
 	category = { biology }
@@ -7590,7 +7590,7 @@ tech_eco_simulation = {
 
 # source vanilla : 00_soc_tech.txt
 tech_gene_crops = {
-	cost = @tier2cost1
+	cost = 740
 	area = society
 	tier = 2
 	category = { biology }
@@ -7602,7 +7602,7 @@ tech_gene_crops = {
 	}
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			adastra_vanilla_open_atomic = yes
@@ -7677,7 +7677,7 @@ tech_gene_crops = {
 
 # source vanilla : 00_soc_tech.txt
 tech_food_processing_1 = {
-	cost = @tier1cost2
+	cost = 755
 	area = society
 	tier = 1
 	category = { biology }
@@ -7779,10 +7779,7 @@ tech_food_processing_1 = {
 		# Ad Astra 1.1 : verrou d'age (tier 1)
 		OR = {
 			NOT = { has_origin = origin_adastra }
-		# 1.3 : ce n'est pas une technologie de depart. Dans une partie
-		# classique on la CHERCHE ; un empire confine n'a donc aucune raison
-		# de se la voir proposer avant d'etre sorti. Elle attend l'emergence.
-			has_country_flag = adastra_completed
+			adastra_vanilla_open_space = yes
 		}
 	}
 }
@@ -8808,7 +8805,7 @@ tech_terrestrial_sculpting = {
 	weight = @tier2weight3
 
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed
@@ -9020,7 +9017,7 @@ tech_volcanic_terraforming = {
 
 # source vanilla : 00_soc_tech.txt
 tech_genome_mapping = {
-	cost = @tier1cost1
+	cost = 740
 	area = society
 	tier = 1
 	category = { biology }
@@ -11277,7 +11274,7 @@ tech_amoeba_strike_craft_1 = {
 		}
 	}
 	potential = {
-		# Ad Astra 1.1 : verrou d'age (tier 1)
+		# Ad Astra : verrou d'age (tier 2)
 		OR = {
 			NOT = { has_origin = origin_adastra }
 			has_country_flag = adastra_completed

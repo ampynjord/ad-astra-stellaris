@@ -5,10 +5,8 @@ origin_adastra = {
 	is_origin = yes
 	icon = "gfx/interface/icons/origins/origin_default_pre_ftl.dds"
 
-	# 1.2 : l'image d'Unification durable (une metropole qui s'eleve) plutot que
-	# celle de Colonie perdue (une epave). Ad Astra ne raconte pas un naufrage :
-	# c'est une civilisation qui se construit sur son propre monde.
-	picture = GFX_evt_metropolis
+	# L'astronomie, le premier lancement et les etoiles resumment l'origine.
+	picture = GFX_evt_adastra_origins
 
 	description = "origin_adastra_effects"
 
@@ -38,6 +36,16 @@ origin_adastra = {
 			NOT = { value = auth_machine_intelligence }
 		}
 		is_nomadic = no
+		# 25/09 - Tankbound (DLC Shroud) automatise fermiers, mineurs et
+		# techniciens : leur entretien se paie en energie, qu'un empire confine
+		# n'a pas avant l'electricite, et le depart troque deux districts
+		# agricoles contre des centrales (signale par Them8 sur le Workshop).
+		civics = {
+			NOR = {
+				value = civic_tankbound
+				value = civic_tankbound_corporate
+			}
+		}
 	}
 
 	flags = { adastra_origin }
