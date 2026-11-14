@@ -4,8 +4,7 @@
 
 ![From the first fire to the first starbase](artwork/steam/ad-astra-1.4-hero.png)
 
-[![Stable](https://img.shields.io/badge/stable-1.3.4-2ea44f)](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/v1.3.4)
-[![Public beta](https://img.shields.io/badge/public%20beta-1.4.0--beta.15-orange)](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.15)
+[![Version](https://img.shields.io/badge/version-1.4.0%20Galileo-2ea44f)](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/v1.4.0)
 [![Stellaris](https://img.shields.io/badge/Stellaris-v4.5%20Cygnus-orange)](https://www.stellaris.com/)
 [![DLC](https://img.shields.io/badge/DLC-none%20required-green)](#compatibility)
 [![Languages](https://img.shields.io/badge/in--game%20languages-English%20%C2%B7%20French-lightgrey)](#compatibility)
@@ -17,26 +16,19 @@ Everyone else starts with a fleet. You start with one world, and a very long way
 
 Ad Astra lets you begin Stellaris as a civilization confined to its homeworld. Choose one of ten historical starting ages, climb through history by research, build a space program from nothing, and emerge into a galaxy that did not wait for you.
 
-**[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257)** · **[1.4 public beta](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.15)** · [Discord](https://discord.gg/nKP4TfNzNX) · [Bug reports and ideas](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose) · [Changelog](CHANGELOG.md)
+**[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257)** · [Discord](https://discord.gg/nKP4TfNzNX) · [Bug reports and ideas](https://github.com/ampynjord/ad-astra-stellaris/issues/new/choose) · [Changelog](CHANGELOG.md)
 
 ---
 
 ## Get it
 
-| | Stable | Public beta |
-|---|---|---|
-| **Version** | 1.3.4 — English Technology Names Fix | 1.4.0-beta.15 — "Galileo" |
-| **Where** | [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257) | [GitHub pre-release](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.15) |
-| **Install** | Subscribe; Steam keeps it up to date | Extract into `Documents/Paradox Interactive/Stellaris/` as a separate local mod ([guide](docs/BETA.md)) |
-| **For** | A normal campaign | Trying 1.4 early and reporting what breaks |
-
-Never enable the beta and the Workshop copy in the same playset. Start a **new game** after installing either, then create or edit an empire and choose the **Ad Astra** origin.
+Subscribe on the **[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3781408257)**; Steam keeps the mod up to date. Start a **new game**, then create or edit an empire and choose the **Ad Astra** origin. Without it, the game starts normally.
 
 ---
 
 ## 1.4 "Galileo" — what's new
 
-1.4 is the biggest update so far. It is available as a public beta; the scope is frozen and only test-driven fixes remain before release.
+1.4 is the biggest update so far.
 
 **Research drives the ascent.** Every period technology advances the *Beyond the Stars* situation through a historical prerequisite tree: no passive timer, no scripted waves. Each technology states what it unlocks, and building slots, urban capacity and district specializations open with the discoveries that make them plausible.
 
@@ -57,14 +49,11 @@ Never enable the beta and the Workshop copy in the same playset. Start a **new g
 
 **Art and texts.** Custom icons for period technologies, telescopes and decisions, new event artwork, and a full English and French text pass.
 
-The complete list is in the [1.4.0-beta.15 release notes](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/beta-1.4.0-beta.15).
+The complete list is in the [1.4.0 release notes](https://github.com/ampynjord/ad-astra-stellaris/releases/tag/v1.4.0) and the [changelog](CHANGELOG.md).
 
-### Known issues in the beta
+### Known issue
 
-- A first-contact chain can still reveal a star empire before emergence.
-- The homeworld leaves the outliner while another empire holds your home system (the occupier's sector absorbs the system and the planet follows; the game offers no way to move it back). It stays yours and reachable from the galaxy map; it returns once the sky is reclaimed.
-- A cosmic storm or the Energy Mogul trait can involve energy before electricity exists.
-- The Great Khan notification can appear before emergence.
+- The homeworld leaves the outliner while another empire holds your home system (the occupier's sector absorbs it). It stays yours, reachable from the galaxy map, and returns once you reclaim your sky.
 
 ---
 
@@ -92,7 +81,7 @@ In the Space Age, base-game founding technologies are researched rather than gra
 
 ### Emergence
 
-Research **Hyperdrive** to complete the ascent. Your ships are refitted for FTL travel, the normal technology tree opens, and your **Legacy of the Ascent** becomes permanent. In 1.4 it combines a bonus that grows with how far back you started and one specialization of your choice: scientific, industrial, civic, pioneer or orbital.
+Research **Hyperdrive** to complete the ascent. Your ships are refitted for FTL travel, the normal technology tree opens, and your **Legacy of the Ascent** becomes permanent. It combines a bonus that grows with how far back you started and one specialization of your choice: scientific, industrial, civic, pioneer or orbital.
 
 ---
 
@@ -112,15 +101,9 @@ Known reports: **Gigastructural Engineering & More** can leave the starting colo
 
 ---
 
-## Roadmap
+## One mod, no dependency
 
-The roadmap is a direction, not a release calendar: a version ships only after its targeted in-game tests pass.
-
-- **Now — 1.4 "Galileo".** Public beta; the remaining work is test-driven fixes and the release gates: Atomic, Renaissance and Stone starts, the full chain up to Hyperdrive, save migration, and civic, ethic, trait and DLC combinations.
-- **Next — 1.5.** Scope to be defined once 1.4 is stable.
-- **Long term.** Nomadic arks, generation ships, Gestalts and deeper planetary politics may come to Origins after prototypes and playtesting — never as separate mods or promises.
-
-**Ad Astra: Origins** is the only Ad Astra mod and depends on no other mod. Whatever it may need one day will be built in-house.
+**Ad Astra: Origins** is the only Ad Astra mod and depends on no other mod.
 
 ---
 

@@ -2,6 +2,67 @@
 
 All notable player-facing changes are recorded here. Dates use ISO format.
 
+## 1.4.0 — "Galileo" — 2026-11-14
+
+> Stable release for Stellaris 4.5 "Cygnus", tested on 4.5.4. It gathers the
+> public betas 1.4.0-beta.9 to beta.15.
+
+### Changed
+
+- Research drives the ascent. Every period technology advances the *Beyond the
+  Stars* situation through a historical prerequisite tree: no passive timer,
+  no scripted waves. Each technology states what it unlocks.
+- Building slots, urban capacity and district specializations open with the
+  discoveries that make them plausible; capitals and telescopes follow one
+  clean upgrade chain.
+- The engine treats your empire as a genuine pre-FTL civilization: an era
+  crest from day one, awareness, observation posts and era hardships.
+- The Early Space Age is a chain of real steps: astronomy, first launch,
+  satellite, crewed flight, lunar landing when your home system has a moon,
+  deep probe, sublight exploration, construction, orbital infrastructure and
+  the Hyperspace Programme.
+- Star empires you detect stay unknown until someone introduces themselves.
+- Stellaris 4.5 "Cygnus": the base-game content the mod rewrites was merged
+  again with the 4.5 files.
+
+### Added
+
+- Awareness told from the ground: four chapters that follow your awareness
+  level, and sightings, signals and abductions only when someone is watching.
+- Perception by era for space fauna, foreign visitors and an occupied sky.
+- *Reclaim Our Sky*: when another empire holds your home system, its ethics
+  decide whether it cedes, sells, asks for tribute or refuses (which gives you
+  a claim).
+- Legacy of the Ascent: a permanent bonus that grows with how far back you
+  started, plus one specialization of your choice at emergence.
+- A free government reform at emergence.
+- Custom icons for period technologies, telescopes and decisions, new event
+  artwork, and a full English and French text pass.
+
+### Fixed
+
+- The ascent no longer stalls at the Outpost stage, in a home system without
+  a moon, or at late starts.
+- No energy crisis before electricity at Industrial and later starts.
+- Galactic Community notifications, the Great Khan and destroyed-empire
+  notices no longer reach a confined civilization.
+- Cosmic storms and the Energy Mogul trait no longer involve energy before
+  electricity.
+- Civic buildings given back at electricity or emergence are given once.
+- When you buy your sky back, the occupant receives the price.
+- Scope errors on several decisions, zero-cost technology cards and skipped
+  situation points.
+
+### Known issues
+
+- The homeworld leaves the outliner while another empire holds your home
+  system (the occupier's sector absorbs it). It stays yours, reachable from
+  the galaxy map, and returns once you reclaim your sky.
+
+### Player action
+
+- Start a new game after updating from 1.3.
+
 ## 1.4.0-beta.15 — 2026-11-13
 
 > Public beta for Stellaris 4.5.3 "Cygnus", published as a GitHub pre-release.
